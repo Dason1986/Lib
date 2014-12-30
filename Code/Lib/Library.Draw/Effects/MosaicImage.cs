@@ -23,14 +23,56 @@ namespace Library.Draw.Effects
 
 因此，区块越大，处理效果越明显；也可得出，源图片(R)对处理后的图片(S)是多对一映射，也就是说：马赛克处理后的图片是不可逆的，不要试图用可逆算法复原。
          */
+        public int Granularity
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Granularity;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Granularity = value;
+            }
+        }
+
+        #region Option
+
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new MosaicOption();
+        }
+        private MosaicOption _opetion;
+
+
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is MosaicOption == false) throw new ImageException("Opetion is not MosaicOption");
+                _opetion = value as MosaicOption;
+            }
+        }
+        public class MosaicOption : ImageOption
+        {
+            public int Granularity { get; set; }
+        }
+        public override ImageOption CreateOption()
+        {
+            return new MosaicOption();
+        }
+        #endregion
         #region IImageProcessable 成员
 
-        public override Image ProcessBitmap( )
+        public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
             int width = bmp.Width;
             int height = bmp.Height;
-            const int N = 5;//效果粒度，值越大码越严重
+            int N = Granularity;//效果粒度，值越大码越严重
+            if (N <= 0) throw new ImageException("粒度值不能小於0");
             int r = 0, g = 0, b = 0;
             Color c;
             for (int y = 0; y < height; y++)
@@ -63,12 +105,13 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        public unsafe override Image UnsafeProcessBitmap( )
+        public unsafe override Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
             int width = bmp.Width;
             int height = bmp.Height;
-            const int N = 5;//效果粒度，值越大码越严重
+            int N = Granularity;//效果粒度，值越大码越严重
+            if (N <= 0) throw new ImageException("粒度值不能小於0");
             int r = 0, g = 0, b = 0;
             Rectangle rect = new Rectangle(0, 0, width, height);
             BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);

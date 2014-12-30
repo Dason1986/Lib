@@ -9,10 +9,52 @@ namespace Library.Draw.Effects
     public class BrightnessImage : ImageBuilder
     {
 
+
         /// <summary>
         /// 
         /// </summary>
-        public int Brightness { get; set; }
+        public int Brightness
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Brightness;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Brightness = value;
+            }
+        }
+        #region Option
+
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new BrightnessOption();
+        }
+        private BrightnessOption _opetion;
+
+
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is BrightnessOption == false) throw new ImageException("Opetion is not BrightnessOption");
+                _opetion = value as BrightnessOption;
+            }
+        }
+        public class BrightnessOption : ImageOption
+        {
+            public int Brightness { get; set; }
+        }
+        public override ImageOption CreateOption()
+        {
+            return new BrightnessOption();
+        }
+        #endregion
+
+        #region Process
 
         public override Image ProcessBitmap()
         {
@@ -33,7 +75,7 @@ namespace Library.Draw.Effects
             {
                 for (int column = 0; column < widht; column++)
                 {
-                    var pixelValue = sourceImage.GetPixel(column,row);
+                    var pixelValue = sourceImage.GetPixel(column, row);
 
 
 
@@ -70,7 +112,7 @@ namespace Library.Draw.Effects
 
 
 
-                    sourceImage.SetPixel(column,row,  Color.FromArgb(pixelValue.A, r, g, b));
+                    sourceImage.SetPixel(column, row, Color.FromArgb(pixelValue.A, r, g, b));
                 }
             }
             return sourceImage;
@@ -134,5 +176,6 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
+        #endregion
     }
 }

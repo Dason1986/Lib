@@ -4,6 +4,13 @@ using System.Drawing.Imaging;
 
 namespace Library.Draw.Effects
 {
+    public class ColorOption : ImageOption
+    {
+        public int Red { get; set; }
+        public int Green { get; set; }
+        public int Blue { get; set; }
+    }
+
     /// <summary>
     /// 霓虹处理
     /// </summary>
@@ -17,9 +24,74 @@ b = 2 * sqrt( (b1 - b2)^2 + (b1 - b3)^2 )
 
 f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
          */
+
+        public int Red
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Red;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Red = value;
+            }
+        }
+        public int Green
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Green;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Green = value;
+            }
+        }
+        public int Blue
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Blue;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Blue = value;
+            }
+        }
+        #region Option
+
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new ColorOption();
+        }
+        private ColorOption _opetion;
+
+
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is ColorOption == false) throw new ImageException("Opetion is not ColorOption");
+                _opetion = value as ColorOption;
+            }
+        }
+    
+        public override ImageOption CreateOption()
+        {
+            return new ColorOption();
+        }
+        #endregion
         public override Image ProcessBitmap()
         {
             Bitmap bmp = this.Source.Clone() as Bitmap;
+            if (bmp == null) throw new ImageException("bmp");
             int width = bmp.Width;
             int height = bmp.Height;
             for (int i = 0; i < width - 1; i++)//注意边界的控制
@@ -33,8 +105,9 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                     int rr = 2 * (int)Math.Sqrt((cc3.R - cc1.R) * (cc3.R - cc1.R) + (cc2.R - cc1.R) * (cc2.R - cc1.R));
                     int gg = 2 * (int)Math.Sqrt((cc3.G - cc1.G) * (cc3.G - cc1.G) + (cc2.G - cc1.G) * (cc2.G - cc1.G));
                     int bb = 2 * (int)Math.Sqrt((cc3.B - cc1.B) * (cc3.B - cc1.B) + (cc2.B - cc1.B) * (cc2.B - cc1.B));
-
-
+                    rr += Red;
+                    gg += Green;
+                    bb += Blue;
                     if (rr > 255) rr = 255;
                     if (gg > 255) gg = 255;
                     if (bb > 255) bb = 255;
@@ -49,9 +122,10 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
         #region IImageProcessable 成员
 
 
-        public unsafe Image UnsafeProcessBitmap()
+        public override unsafe Image UnsafeProcessBitmap()
         {
             Bitmap bmp = this.Source.Clone() as Bitmap;
+            if (bmp == null) throw new ImageException("bmp");
             int width = bmp.Width;
             int height = bmp.Height;
             Rectangle rect = new Rectangle(0, 0, width, height);
@@ -61,9 +135,13 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
             {
                 for (int j = 0; j < width - 1; j++)
                 {
+
                     byte bb = (byte)(2 * Math.Sqrt((ptr[4] - ptr[0]) * (ptr[4] - ptr[0])) + (ptr[bmpData.Stride] - ptr[0]) * (ptr[bmpData.Stride] - ptr[0]));//b;
                     byte gg = (byte)(2 * Math.Sqrt((ptr[5] - ptr[1]) * (ptr[5] - ptr[1])) + (ptr[bmpData.Stride + 1] - ptr[1]) * (ptr[bmpData.Stride + 1] - ptr[1]));//g
                     byte rr = (byte)(2 * Math.Sqrt((ptr[6] - ptr[2]) * (ptr[6] - ptr[2])) + (ptr[bmpData.Stride + 2] - ptr[2]) * (ptr[bmpData.Stride + 2] - ptr[2]));//r
+                    rr += (byte)Red;
+                    gg += (byte)Green;
+                    bb += (byte)Blue;
                     if (rr > 255) rr = 255;
                     if (gg > 255) gg = 255;
                     if (bb > 255) bb = 255;

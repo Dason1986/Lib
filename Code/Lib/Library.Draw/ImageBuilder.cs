@@ -2,8 +2,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using Library.Annotations;
-using Library.Draw.Effects;
+using Library.Annotations; 
 
 namespace Library.Draw
 {
@@ -46,6 +45,8 @@ namespace Library.Draw
         /// </summary>
         /// <param name="size"></param>
         void SetTrageSize(Size size);
+
+        ImageOption CreateOption();
     }
 
     public abstract class ImageBuilder : IImageBuilder
@@ -72,6 +73,11 @@ namespace Library.Draw
                 return null;
 
             }
+        }
+
+        public virtual ImageOption CreateOption()
+        {
+            return new ImageOption();
         }
         /// <summary>
         /// 

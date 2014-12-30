@@ -11,7 +11,6 @@ Code/Lib/TestPj/bin/Debug/TestPj.exe.mdb
 
 Code/Lib/TestPj/bin/Debug/TestPj.exe.config
 
-*.exe
 
 Code/Lib/TestPj/bin/Debug/Library.xml
 
@@ -36,3 +35,12 @@ Code/Lib/TestPj/bin/Debug/Library.Draw.dll
 Code/Lib/TestPj/bin/Debug/Library.Core.xml
 
 Code/Lib/Library/obj/Debug/Library.dll
+*.dll
+*.dll
+*.pdb
+*.XML
+Code/Lib/Bin/Library.Core.dll
+Code/Lib/Bin/Library.Core.XML
+Code/Lib/Bin/Library.dll
+Code/Lib/Library.Win.Controls/obj/Release/Library.Win.Controls.csproj.GenerateResource.Cache
+Code/Lib/TestPj/obj/Release/TestPj.exe

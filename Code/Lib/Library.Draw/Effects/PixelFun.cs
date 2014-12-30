@@ -8,6 +8,55 @@ namespace Library.Draw.Effects
     /// </summary>
     public class PixelFunImage : ImageBuilder
     {
+
+        public PixelType Pixel
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Pixel;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Pixel = value;
+            }
+        }
+        public enum PixelType
+        {
+            Weighted,
+            Average,
+            Max
+        }
+
+        #region Option
+
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new PixelOption();
+        }
+        private PixelOption _opetion;
+
+
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is PixelOption == false) throw new ImageException("Opetion is not PixelOption");
+                _opetion = value as PixelOption;
+            }
+        }
+        public class PixelOption : ImageOption
+        {
+            public PixelType Pixel { get; set; }
+        }
+        public override ImageOption CreateOption()
+        {
+            return new PixelOption();
+        }
+        #endregion
+        #region Process
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -36,14 +85,6 @@ namespace Library.Draw.Effects
                 }
             }
             return bmp;
-        }
-
-        public PixelType Pixel { get; set; }
-        public enum PixelType
-        {
-            Weighted,
-            Average,
-            Max
         }
         public override unsafe Image UnsafeProcessBitmap()
         {
@@ -80,5 +121,6 @@ namespace Library.Draw.Effects
             bmp.UnlockBits(bmpData);
             return bmp;
         }
+        #endregion
     }
 }

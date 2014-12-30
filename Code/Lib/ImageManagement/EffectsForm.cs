@@ -22,7 +22,7 @@ namespace ImageManagement
             {
                 "BlueImage", "GreenImage", "RedImage", "BrightnessImage", "ContrastImage", "FogImage"
             ,"GaussianBlurImage","ImageFlip","MosaicImage","NeonImage","PixelFunImage","RebelliousImage"
-            ,"ReliefImage","SharpenImage","TwoValueImage"
+            ,"ReliefImage","SharpenImage","TwoValueImage","ColorGradationImage"
             };
             comboBox1.DataSource = source;
             effectsAssembly = typeof(ImageBuilder).Assembly;
@@ -48,11 +48,26 @@ namespace ImageManagement
         }
 
         private IImageBuilder builderobj;
+        private ImageOption option;
         private void button2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                button2.Enabled = false;
+                builderobj.SetOpetion(option);
+                this.pictureBox2.Image = checkBox1.Checked
+                    ? builderobj.UnsafeProcessBitmap()
+                    : builderobj.ProcessBitmap();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
 
-
-            this.pictureBox2.Image = checkBox1.Checked ? builderobj.UnsafeProcessBitmap() : builderobj.ProcessBitmap();
+            }
+            finally
+            {
+                button2.Enabled = true;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,10 +79,12 @@ namespace ImageManagement
                 var typeobj = effectsAssembly.GetType(classname);
                 if (typeobj == null) throw new Exception();
                 builderobj = typeobj.CreateInstance<IImageBuilder>();
-                grid.SelectedObject = new ImageOption();
+              
                 var tmp = new byte[fileBytes.Length];
-                fileBytes.CopyTo(tmp,0);
+                fileBytes.CopyTo(tmp, 0);
                 builderobj.SetSourceImage(tmp);
+                option = builderobj.CreateOption();
+                grid.SelectedObject = option;
             }
         }
     }

@@ -4,19 +4,61 @@ using System.IO;
 
 namespace Library.Draw.Effects
 {
+
     /// <summary>
     /// µ¹Ïó
     /// </summary>
     public class ImageFlip : ImageBuilder
     {
+        public FlipType Flip
+        {
+            get
+            {
+                InitOption(); return _opetion.Flip;
+            }
+            set
+            {
+                InitOption(); _opetion.Flip = value;
+            }
+        }
+        #region Option
+        
         public enum FlipType
         {
             Horizontally,
             Vertically,
             HorizontallyAndVertically,
         }
+        public class FilpOption : ImageOption
+        {
+            public FlipType Flip { get; set; }
+        }
 
-        public FlipType Flip { get; set; }
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new FilpOption();
+        }
+        private FilpOption _opetion;
+
+
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is FilpOption == false) throw new ImageException("Opetion is not FilpOption");
+                _opetion = value as FilpOption;
+            }
+        }
+        public override ImageOption CreateOption()
+        {
+            return new FilpOption();
+        }
+
+        #endregion
+
+        #region Process
+        
         public Image CreateImage(FlipType flip)
         {
 
@@ -76,5 +118,6 @@ namespace Library.Draw.Effects
         {
             return CreateImage(Flip);
         }
+        #endregion
     }
 }

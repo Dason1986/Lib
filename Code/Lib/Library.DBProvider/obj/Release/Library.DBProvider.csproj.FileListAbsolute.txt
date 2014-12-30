@@ -10,3 +10,9 @@ C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.DBProvider.pdb
 C:\Dason\Coder\TestPj\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.csprojResolveAssemblyReference.cache
 C:\Dason\Coder\TestPj\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.dll
 C:\Dason\Coder\TestPj\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.pdb
+C:\Dason\Lib\Code\Lib\Bin\Library.DBProvider.XML
+C:\Dason\Lib\Code\Lib\Bin\Library.DBProvider.dll
+C:\Dason\Lib\Code\Lib\Bin\Library.DBProvider.pdb
+C:\Dason\Lib\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.csprojResolveAssemblyReference.cache
+C:\Dason\Lib\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.dll
+C:\Dason\Lib\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.pdb

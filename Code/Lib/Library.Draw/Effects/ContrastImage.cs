@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 
 namespace Library.Draw.Effects
@@ -10,23 +11,65 @@ namespace Library.Draw.Effects
     {/// <summary>
         /// 对比度
         /// </summary>
-        public double Contrast { get; set; }
+        public double Contrast
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Contrast;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Contrast = value;
+            }
+        }
+
+        #region Option
+
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new ContrastOption();
+        }
+        private ContrastOption _opetion;
+
+
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is ContrastOption == false) throw new ImageException("Opetion is not ContrastOption");
+                _opetion = value as ContrastOption;
+            }
+        }
+        public class ContrastOption : ImageOption
+        {
+            public double Contrast { get; set; }
+        }
+        public override ImageOption CreateOption()
+        {
+            return new ContrastOption();
+        }
+        #endregion
+        #region Process
         public override Image ProcessBitmap()
         {
 
 
 
             var sourceImage = Source.Clone() as Bitmap;
-            if (Contrast < -100)
+            var tmpContrast = Contrast;
+            if (tmpContrast < -100)
             {
-                Contrast = -100;
+                tmpContrast = -100;
             }
-            else if (Contrast > 100)
+            else if (tmpContrast > 100)
             {
-                Contrast = 100;
+                tmpContrast = 100;
             }
-            Contrast = (100.0 + Contrast) / 100.0;
-            Contrast *= Contrast;
+            tmpContrast = (100.0 + tmpContrast) / 100.0;
+            tmpContrast *= tmpContrast;
 
             int height = sourceImage.Height;
             int width = sourceImage.Width;
@@ -41,7 +84,7 @@ namespace Library.Draw.Effects
                     double pixelR = pixelValue.R / 255.0;
                     pixelR -= 0.5;
 
-                    pixelR *= Contrast;
+                    pixelR *= tmpContrast;
                     pixelR += 0.5;
                     pixelR *= 255;
                     if (pixelR < 0) pixelR = 0;
@@ -49,7 +92,7 @@ namespace Library.Draw.Effects
 
                     double pixelG = pixelValue.G / 255.0;
                     pixelG -= 0.5;
-                    pixelG *= Contrast;
+                    pixelG *= tmpContrast;
                     pixelG += 0.5;
                     pixelG *= 255;
                     if (pixelG < 0) pixelG = 0;
@@ -57,7 +100,7 @@ namespace Library.Draw.Effects
 
                     double pixelB = pixelValue.B / 255.0;
                     pixelB -= 0.5;
-                    pixelB *= Contrast;
+                    pixelB *= tmpContrast;
                     pixelB += 0.5;
                     pixelB *= 255;
                     if (pixelB < 0) pixelB = 0;
@@ -75,6 +118,7 @@ namespace Library.Draw.Effects
 
         public override unsafe Image UnsafeProcessBitmap()
         {
+            throw new NotImplementedException();
             var bmp = Source.Clone() as Bitmap;
             int width = bmp.Width;
             int height = bmp.Height;
@@ -119,5 +163,7 @@ namespace Library.Draw.Effects
             bmp.UnlockBits(bmpData);
             return bmp;
         }
+
+        #endregion
     }
 }

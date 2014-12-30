@@ -6,100 +6,117 @@
     <members>
         <member name="T:Library.AbException">
             <summary>
-            </summary>
-        </member>
-        <member name="P:Library.AbException.ResultCode">
-            <summary>
+            
             </summary>
         </member>
         <member name="M:Library.AbException.#ctor">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.AbException.#ctor(System.String,System.Double)">
             <summary>
+            
             </summary>
-            <param name="message">
-            </param>
-            <param name="resultCode">
-            </param>
+            <param name="message"></param>
+            <param name="resultCode"></param>
         </member>
         <member name="M:Library.AbException.#ctor(System.String,System.Double,System.Exception)">
             <summary>
+            
             </summary>
-            <param name="message">
-            </param>
-            <param name="resultCode">
-            </param>
-            <param name="inner">
-            </param>
+            <param name="message"></param>
+            <param name="resultCode"></param>
+            <param name="inner"></param>
+        </member>
+        <member name="P:Library.AbException.ResultCode">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Library.FormatConst">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.FormatConst.FormatddMMyyyy">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.FormatConst.FormatyyyyMMdd">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.FormatConst.FormatddMMyyyyhhmmssttFull">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.FieldCollection">
             <summary>
+             
             </summary>
         </member>
         <member name="T:Library.Data.FilterCollection">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.IQueryField">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryField.Name">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryField.DisplayName">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryField.IsSelected">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.QueryField">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Data.QueryField.#ctor">
             <summary>
-            </summary>
-        </member>
-        <member name="P:Library.Data.QueryField.Same">
-            <summary>
+            
             </summary>
         </member>
         <member name="F:Library.Data.QueryField.Comparer">
             <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Library.Data.QueryField.Same">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.OrderType">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.Data.OrderType.Desc">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.Data.OrderType.Asc">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.IQueryFilter">
@@ -109,34 +126,42 @@
         </member>
         <member name="P:Library.Data.IQueryFilter.Filed">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryFilter.DisplayName">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryFilter.Value">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryFilter.Condition">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryFilter.Relation">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryFilter.Value2">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryFilter.FiledType">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryFilter.FunctionName">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.QueryFiledType">
@@ -146,37 +171,41 @@
         </member>
         <member name="F:Library.Data.QueryFiledType.Filter">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.Data.QueryFiledType.Functon">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.QueryFilter">
             <summary>
-            </summary>
-        </member>
-        <member name="P:Library.Data.QueryFilter.Filters">
-            <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Data.QueryFilter.Clone">
             <summary>
+            
             </summary>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryFilter.Begin">
             <summary>
+            
             </summary>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryFilter.End">
             <summary>
+            
             </summary>
-            <returns>
-            </returns>
+            <returns></returns>
+        </member>
+        <member name="P:Library.Data.QueryFilter.Filters">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Library.Data.Relation">
             <summary>
@@ -185,23 +214,27 @@
         </member>
         <member name="F:Library.Data.Relation.And">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.Data.Relation.Or">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.Data.Relation.Begin">
             <summary>
+            
             </summary>
         </member>
         <member name="F:Library.Data.Relation.End">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.Condition">
             <summary>
-            条件
+             条件
             </summary>
         </member>
         <member name="F:Library.Data.Condition.Equal">
@@ -286,14 +319,17 @@
         </member>
         <member name="T:Library.Data.IQueryOrder">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryOrder.Filed">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Data.IQueryOrder.Order">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Data.QueryOrder">
@@ -303,374 +339,386 @@
         </member>
         <member name="M:Library.Data.QueryOrder.#ctor(System.String,Library.Data.OrderType)">
             <summary>
+            
             </summary>
-            <param name="filed">
-            </param>
-            <param name="order">
-            </param>
+            <param name="filed"></param>
+            <param name="order"></param>
         </member>
         <member name="M:Library.Data.QueryOrder.Desc(System.String)">
             <summary>
+            
             </summary>
-            <param name="filed">
-            </param>
-            <returns>
-            </returns>
+            <param name="filed"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryOrder.Asc(System.String)">
             <summary>
+            
             </summary>
-            <param name="filed">
-            </param>
-            <returns>
-            </returns>
+            <param name="filed"></param>
+            <returns></returns>
         </member>
         <member name="T:Library.Data.OrderCollection">
             <summary>
+             
             </summary>
         </member>
         <member name="T:Library.Data.QueryHelper">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Data.QueryHelper.AddGreaterThanFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
-            创建字段名大于值的过滤条件(例如 USR &gt; '')
+            创建字段名大于值的过滤条件(例如 USR > '')
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddInFilter(Library.Data.IQueryFilter,System.String,System.Object[])">
             <summary>
             创建字段名包含的过滤条件（例如 USR IN ('','','')）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="values">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddGreaterThanOrEqualFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
-            创建字段名大于等于的过滤条件（例如 USR &gt;= ''）
+            创建字段名大于等于的过滤条件（例如 USR >= ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddLessThanFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
             创建字段名小于的过滤条件（例如 USR &lt; ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddLessThanOrEqualFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
             创建字段名小于等于的过滤条件（例如 USR &lt;= ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddEqualFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
             创建字段名等于的过滤条件（例如 USR = ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddNotEqualFilte(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
-            创建字段名不等于的过滤条件（例如 USR &lt;&gt; ''）
+            创建字段名不等于的过滤条件（例如 USR &lt;> ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddLikeFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
             创建字段名模糊匹配的过滤条件（例如 USR like ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddBetweenFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
             创建字段名区间匹配的过滤条件（例如 USR between '' and ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddNotInFilter(Library.Data.IQueryFilter,System.String,System.Object[])">
             <summary>
             创建字段名不包含的过滤条件（例如 USR NOT IN ('','','')）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="values">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.AddNotLikeFilter(Library.Data.IQueryFilter,System.String,System.Object)">
             <summary>
             创建字段名非模糊匹配的过滤条件（例如 USR NOT LIKE ''）
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.QueryHelper.TryAddFilter(Library.Data.IQueryFilter,System.String,System.Object,Library.Data.Condition,Library.Data.Relation)">
             <summary>
+            
             </summary>
-            <param name="filter">
-            </param>
+            <param name="filter"></param>
             <param name="filed">字段名</param>
             <param name="value">值</param>
-            <param name="condition">逻辑操作符枚举（=、小于、&gt;、LIKE.....）</param>
+            <param name="condition">逻辑操作符枚举（=、小于、>、LIKE.....）</param>
             <param name="relation">关系操作符枚举（AND、OR、左括号、右括号）</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="T:Library.Data.IDataCacheMonitor">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.GetCacheIDs">
             <summary>
+            
             </summary>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.Contains(System.String)">
             <summary>
+            
             </summary>
-            <param name="id">
-            </param>
-            <returns>
-            </returns>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.Clear">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.AddCurrentAssembly">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.AddCurrentDirectory">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.AddDataCache(System.Reflection.Assembly)">
             <summary>
+            
             </summary>
-            <param name="assembly">
-            </param>
+            <param name="assembly"></param>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.AddDataCache(System.IO.Stream)">
             <summary>
+            
             </summary>
-            <param name="stream">
-            </param>
+            <param name="stream"></param>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor.GetCache(System.String)">
             <summary>
+            
             </summary>
-            <param name="id">
-            </param>
-            <returns>
-            </returns>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:Library.Data.IDataCacheMonitor`1">
             <summary>
+            
             </summary>
-            <typeparam name="T">
-            </typeparam>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor`1.GetCache(System.String)">
             <summary>
+            
             </summary>
-            <param name="id">
-            </param>
-            <returns>
-            </returns>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Data.IDataCacheMonitor`1.AddDataCache(`0)">
             <summary>
+            
             </summary>
-            <param name="dataCache">
-            </param>
+            <param name="dataCache"></param>
         </member>
         <member name="T:Library.IO.IOMonitor">
             <summary>
-            </summary>
-        </member>
-        <member name="P:Library.IO.IOMonitor.BeginTime">
-            <summary>
-            ��ʼʱ��
-            </summary>
-        </member>
-        <member name="P:Library.IO.IOMonitor.IsRunning">
-            <summary>
-            �Ƿ�����
+            
             </summary>
         </member>
         <member name="M:Library.IO.IOMonitor.Start">
             <summary>
-            ����
+            启动
             </summary>
         </member>
         <member name="M:Library.IO.IOMonitor.Stop">
             <summary>
-            ֹͣ
+            停止
             </summary>
         </member>
         <member name="M:Library.IO.IOMonitor.Close">
             <summary>
-            �ر�
+            关闭
+            </summary>
+        </member>
+        <member name="P:Library.IO.IOMonitor.BeginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Library.IO.IOMonitor.IsRunning">
+            <summary>
+            是否运行
             </summary>
         </member>
         <member name="T:Library.IParameter">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.IParameter.Group">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.IParameter.Key">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.IParameter.Value">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.IO.IPrintModel">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.IO.IPrintModel.GetPrintObjects">
             <summary>
-            ȡ��ӡ����
+            取打印對象
             </summary>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="T:Library.Controls.IQueryControl">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Controls.IQueryControl.QueryDataID">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Controls.IQueryControl.Fields">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Controls.IQueryControl.DataSource">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Controls.IQueryControl.Filters">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Controls.IQueryControl.Orders">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Controls.IQueryControl.ValueMember">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Controls.IQueryControl.DisplayMember">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Controls.IQueryDataProvider">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Controls.IQueryDataProvider.GetDataSource(Library.Controls.IQueryControl)">
             <summary>
+            
             </summary>
-            <param name="control">
-            </param>
-            <returns>
-            </returns>
+            <param name="control"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Controls.IQueryDataProvider.ClearCache">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Controls.IQueryDataProvider.ChangeCache(System.String)">
             <summary>
+            
             </summary>
-            <param name="queryID">
-            </param>
+            <param name="queryID"></param>
         </member>
         <member name="T:Library.IRangeItem`1">
             <summary>
+            
             </summary>
-            <typeparam name="T">
-            </typeparam>
-        </member>
-        <member name="P:Library.IRangeItem`1.Begin">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:Library.IRangeItem`1.End">
-            <summary>
-            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:Library.IRangeItem`1.IsInside(`0)">
             <summary>
             Check if the specified value is inside of the range.
             </summary>
+            
             <param name="x">Value to check.</param>
-            <returns>
-                <b>True</b> if the specified value is inside of the range or
+            
+            <returns><b>True</b> if the specified value is inside of the range or
             <b>false</b> otherwise.</returns>
+            
+        </member>
+        <member name="P:Library.IRangeItem`1.Begin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Library.IRangeItem`1.End">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Library.EditableModel">
             <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Library.PropertyChangeModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.PropertyChangeModel.OnPropertyChanged(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="E:Library.PropertyChangeModel.PropertyChanged">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Annotations.CanBeNullAttribute">
@@ -678,42 +726,37 @@
             Indicates that the value of the marked element could be <c>null</c> sometimes,
             so the check for <c>null</c> is necessary before its usage
             </summary>
-            <example>
-                <code>
+            <example><code>
             [CanBeNull] public object Test() { return null; }
             public void UseTest() {
-            var p = Test();
-            var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+              var p = Test();
+              var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
             }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.NotNullAttribute">
             <summary>
-            Indicates that the value of the marked element could never be <c>null</c></summary>
-            <example>
-                <code>
+            Indicates that the value of the marked element could never be <c>null</c>
+            </summary>
+            <example><code>
             [NotNull] public object Foo() {
-            return null; // Warning: Possible 'null' assignment
+              return null; // Warning: Possible 'null' assignment
             }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.StringFormatMethodAttribute">
             <summary>
             Indicates that the marked method builds string by format pattern and (optional) arguments.
             Parameter, which contains format string, should be given in constructor. The format string
-            should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])" />-like form
+            should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>-like form
             </summary>
-            <example>
-                <code>
+            <example><code>
             [StringFormatMethod("message")]
             public void ShowError(string message, params object[] args) { /* do something */ }
             public void Foo() {
-            ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+              ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
             }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="M:Library.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
             <param name="formatParameterName">
@@ -724,107 +767,107 @@
             <summary>
             Indicates that the function argument should be string literal and match one
             of the parameters of the caller function. For example, ReSharper annotates
-            the parameter of <see cref="T:System.ArgumentNullException" /></summary>
-            <example>
-                <code>
+            the parameter of <see cref="T:System.ArgumentNullException"/>
+            </summary>
+            <example><code>
             public void Foo(string param) {
-            if (param == null)
-            throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+              if (param == null)
+                throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
             }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.NotifyPropertyChangedInvocatorAttribute">
-            <summary>
-            Indicates that the method is contained in a type that implements
-            <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> interface
-            and this method is used to notify that some property value changed
-            </summary>
-            <remarks>
-            The method should be non-static and conform to one of the supported signatures:
-            <list><item><c>NotifyChanged(string)</c></item><item><c>NotifyChanged(params string[])</c></item><item><c>NotifyChanged{T}(Expression{Func{T}})</c></item><item><c>NotifyChanged{T,U}(Expression{Func{T,U}})</c></item><item><c>SetProperty{T}(ref T, T, string)</c></item></list></remarks>
-            <example>
-                <code>
-            public class Foo : INotifyPropertyChanged {
-            public event PropertyChangedEventHandler PropertyChanged;
-            [NotifyPropertyChangedInvocator]
-            protected virtual void NotifyChanged(string propertyName) { ... }
-            private string _name;
-            public string Name {
-            get { return _name; }
-            set { _name = value; NotifyChanged("LastName"); /* Warning */ }
-            }
-            }
-            </code>
-            Examples of generated notifications:
-            <list><item><c>NotifyChanged("Property")</c></item><item><c>NotifyChanged(() =&gt; Property)</c></item><item><c>NotifyChanged((VM x) =&gt; x.Property)</c></item><item><c>SetProperty(ref myField, value, "Property")</c></item></list></example>
+             <summary>
+             Indicates that the method is contained in a type that implements
+             <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface
+             and this method is used to notify that some property value changed
+             </summary>
+             <remarks>
+             The method should be non-static and conform to one of the supported signatures:
+             <list>
+             <item><c>NotifyChanged(string)</c></item>
+             <item><c>NotifyChanged(params string[])</c></item>
+             <item><c>NotifyChanged{T}(Expression{Func{T}})</c></item>
+             <item><c>NotifyChanged{T,U}(Expression{Func{T,U}})</c></item>
+             <item><c>SetProperty{T}(ref T, T, string)</c></item>
+             </list>
+             </remarks>
+             <example><code>
+             public class Foo : INotifyPropertyChanged {
+               public event PropertyChangedEventHandler PropertyChanged;
+               [NotifyPropertyChangedInvocator]
+               protected virtual void NotifyChanged(string propertyName) { ... }
+            
+               private string _name;
+               public string Name {
+                 get { return _name; }
+                 set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+               }
+             }
+             </code>
+             Examples of generated notifications:
+             <list>
+             <item><c>NotifyChanged("Property")</c></item>
+             <item><c>NotifyChanged(() =&gt; Property)</c></item>
+             <item><c>NotifyChanged((VM x) =&gt; x.Property)</c></item>
+             <item><c>SetProperty(ref myField, value, "Property")</c></item>
+             </list>
+             </example>
         </member>
         <member name="T:Library.Annotations.ContractAnnotationAttribute">
             <summary>
             Describes dependency between method input and output
             </summary>
             <syntax>
-                <p>Function Definition Table syntax:</p>
-                <list>
-                    <item>FDT      ::= FDTRow [;FDTRow]*</item>
-                    <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
-                    <item>Input    ::= ParameterName: Value [, Input]*</item>
-                    <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
-                    <item>Value    ::= true | false | null | notnull | canbenull</item>
-                </list>
-            If method has single input parameter, it's name could be omitted.<br />
+            <p>Function Definition Table syntax:</p>
+            <list>
+            <item>FDT      ::= FDTRow [;FDTRow]*</item>
+            <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
+            <item>Input    ::= ParameterName: Value [, Input]*</item>
+            <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
+            <item>Value    ::= true | false | null | notnull | canbenull</item>
+            </list>
+            If method has single input parameter, it's name could be omitted.<br/>
             Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same)
-            for method output means that the methos doesn't return normally.<br /><c>canbenull</c> annotation is only applicable for output parameters.<br />
+            for method output means that the methos doesn't return normally.<br/>
+            <c>canbenull</c> annotation is only applicable for output parameters.<br/>
             You can use multiple <c>[ContractAnnotation]</c> for each FDT row,
-            or use single attribute with rows separated by semicolon.<br /></syntax>
-            <examples>
-                <list>
-                    <item>
-                        <code>
-            [ContractAnnotation("=&gt; halt")]
+            or use single attribute with rows separated by semicolon.<br/>
+            </syntax>
+            <examples><list>
+            <item><code>
+            [ContractAnnotation("=> halt")]
             public void TerminationMethod()
-            </code>
-                    </item>
-                    <item>
-                        <code>
+            </code></item>
+            <item><code>
             [ContractAnnotation("halt &lt;= condition: false")]
             public void Assert(bool condition, string text) // regular assertion method
-            </code>
-                    </item>
-                    <item>
-                        <code>
-            [ContractAnnotation("s:null =&gt; true")]
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null => true")]
             public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
-            </code>
-                    </item>
-                    <item>
-                        <code>
+            </code></item>
+            <item><code>
             // A method that returns null if the parameter is null, and not null if the parameter is not null
-            [ContractAnnotation("null =&gt; null; notnull =&gt; notnull")]
-            public object Transform(object data)
-            </code>
-                    </item>
-                    <item>
-                        <code>
-            [ContractAnnotation("s:null=&gt;false; =&gt;true,result:notnull; =&gt;false, result:null")]
+            [ContractAnnotation("null => null; notnull => notnull")]
+            public object Transform(object data) 
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null=>false; =>true,result:notnull; =>false, result:null")]
             public bool TryParse(string s, out Person result)
-            </code>
-                    </item>
-                </list>
-            </examples>
+            </code></item>
+            </list></examples>
         </member>
         <member name="T:Library.Annotations.LocalizationRequiredAttribute">
             <summary>
             Indicates that marked element should be localized or not
             </summary>
-            <example>
-                <code>
+            <example><code>
             [LocalizationRequiredAttribute(true)]
             public class Foo {
-            private string str = "my string"; // Warning: Localizable string
+              private string str = "my string"; // Warning: Localizable string
             }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.CannotApplyEqualityOperatorAttribute">
             <summary>
@@ -833,35 +876,31 @@
             should be used instead. However, using '==' or '!=' for comparison
             with <c>null</c> is always permitted.
             </summary>
-            <example>
-                <code>
+            <example><code>
             [CannotApplyEqualityOperator]
             class NoEquality { }
             class UsesNoEquality {
-            public void Test() {
-            var ca1 = new NoEquality();
-            var ca2 = new NoEquality();
-            if (ca1 != null) { // OK
-            bool condition = ca1 == ca2; // Warning
+              public void Test() {
+                var ca1 = new NoEquality();
+                var ca2 = new NoEquality();
+                if (ca1 != null) { // OK
+                  bool condition = ca1 == ca2; // Warning
+                }
+              }
             }
-            }
-            }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.BaseTypeRequiredAttribute">
             <summary>
             When applied to a target attribute, specifies a requirement for any type marked
             with the target attribute to implement or inherit specific type or types.
             </summary>
-            <example>
-                <code>
+            <example><code>
             [BaseTypeRequired(typeof(IComponent)] // Specify requirement
             public class ComponentAttribute : Attribute { }
             [Component] // ComponentAttribute requires implementing IComponent interface
             public class MyComponent : IComponent { }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.UsedImplicitlyAttribute">
             <summary>
@@ -895,8 +934,9 @@
         <member name="T:Library.Annotations.ImplicitUseTargetFlags">
             <summary>
             Specify what is considered used implicitly
-            when marked with <see cref="T:Library.Annotations.MeansImplicitUseAttribute" />
-            or <see cref="T:Library.Annotations.UsedImplicitlyAttribute" /></summary>
+            when marked with <see cref="T:Library.Annotations.MeansImplicitUseAttribute"/>
+            or <see cref="T:Library.Annotations.UsedImplicitlyAttribute"/>
+            </summary>
         </member>
         <member name="F:Library.Annotations.ImplicitUseTargetFlags.Members">
             <summary>Members of entity marked with attribute are considered used</summary>
@@ -922,16 +962,15 @@
         <member name="T:Library.Annotations.PureAttribute">
             <summary>
             Indicates that a method does not make any observable state changes.
-            The same as <c>System.Diagnostics.Contracts.PureAttribute</c></summary>
-            <example>
-                <code>
+            The same as <c>System.Diagnostics.Contracts.PureAttribute</c>
+            </summary>
+            <example><code>
             [Pure] private int Multiply(int x, int y) { return x * y; }
             public void Foo() {
-            const int a = 2, b = 2;
-            Multiply(a, b); // Waring: Return value of pure method is not used
+              const int a = 2, b = 2;
+              Multiply(a, b); // Waring: Return value of pure method is not used
             }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.PathReferenceAttribute">
             <summary>
@@ -945,33 +984,38 @@
             ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
             is an MVC action. If applied to a method, the MVC action name is calculated
             implicitly from the context. Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c></summary>
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcAreaAttribute">
             <summary>
             ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
             Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c></summary>
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcControllerAttribute">
             <summary>
             ASP.NET MVC attribute. If applied to a parameter, indicates that
             the parameter is an MVC controller. If applied to a method,
             the MVC controller name is calculated implicitly from the context.
-            Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c></summary>
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcMasterAttribute">
             <summary>
             ASP.NET MVC attribute. Indicates that a parameter is an MVC Master.
             Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Controller.View(String, String)</c></summary>
+            <c>System.Web.Mvc.Controller.View(String, String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcModelTypeAttribute">
             <summary>
             ASP.NET MVC attribute. Indicates that a parameter is an MVC model type.
             Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Controller.View(String, Object)</c></summary>
+            <c>System.Web.Mvc.Controller.View(String, Object)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcPartialViewAttribute">
             <summary>
@@ -979,7 +1023,8 @@
             the parameter is an MVC partial view. If applied to a method,
             the MVC partial view name is calculated implicitly from the context.
             Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c></summary>
+            <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcSupressViewErrorAttribute">
             <summary>
@@ -990,65 +1035,55 @@
         <member name="T:Library.Annotations.AspMvcDisplayTemplateAttribute">
             <summary>
             ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
-            Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c></summary>
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcEditorTemplateAttribute">
             <summary>
             ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
             Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c></summary>
+            <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcTemplateAttribute">
             <summary>
             ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
             Use this attribute for custom wrappers similar to
-            <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c></summary>
+            <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcViewAttribute">
             <summary>
             ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
             is an MVC view. If applied to a method, the MVC view name is calculated implicitly
             from the context. Use this attribute for custom wrappers similar to
-            <c>System.Web.Mvc.Controller.View(Object)</c></summary>
+            <c>System.Web.Mvc.Controller.View(Object)</c>
+            </summary>
         </member>
         <member name="T:Library.Annotations.AspMvcActionSelectorAttribute">
             <summary>
             ASP.NET MVC attribute. When applied to a parameter of an attribute,
             indicates that this parameter is an MVC action name
             </summary>
-            <example>
-                <code>
+            <example><code>
             [ActionName("Foo")]
             public ActionResult Login(string returnUrl) {
-            ViewBag.ReturnUrl = Url.Action("Foo"); // OK
-            return RedirectToAction("Bar"); // Error: Cannot resolve action
+              ViewBag.ReturnUrl = Url.Action("Foo"); // OK
+              return RedirectToAction("Bar"); // Error: Cannot resolve action
             }
-            </code>
-            </example>
+            </code></example>
         </member>
         <member name="T:Library.Annotations.RazorSectionAttribute">
             <summary>
             Razor attribute. Indicates that a parameter or a method is a Razor section.
-            Use this attribute for custom wrappers similar to
-            <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c></summary>
-        </member>
-        <member name="T:Library.PropertyChangeModel">
-            <summary>
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>
             </summary>
-        </member>
-        <member name="E:Library.PropertyChangeModel.PropertyChanged">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Library.PropertyChangeModel.OnPropertyChanged(System.String)">
-            <summary>
-            </summary>
-            <param name="propertyName">
-            </param>
         </member>
         <member name="T:Library.RevertibleChangeModel">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Library.Timestamp">
@@ -1058,49 +1093,38 @@
         </member>
         <member name="M:Library.Timestamp.ToUtp(System.DateTime)">
             <summary>
+            
             </summary>
-            <param name="dt">
-            </param>
-            <returns>
-            </returns>
+            <param name="dt"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Timestamp.ToUtp(System.Int32,System.Int32,System.Int32)">
             <summary>
+            
             </summary>
-            <param name="year">
-            </param>
-            <param name="month">
-            </param>
-            <param name="day">
-            </param>
-            <returns>
-            </returns>
+            <param name="year"></param>
+            <param name="month"></param>
+            <param name="day"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Timestamp.ToUtp(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
+            
             </summary>
-            <param name="year">
-            </param>
-            <param name="month">
-            </param>
-            <param name="day">
-            </param>
-            <param name="hour">
-            </param>
-            <param name="minute">
-            </param>
-            <param name="second">
-            </param>
-            <returns>
-            </returns>
+            <param name="year"></param>
+            <param name="month"></param>
+            <param name="day"></param>
+            <param name="hour"></param>
+            <param name="minute"></param>
+            <param name="second"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Timestamp.FromUtp(System.Int64)">
             <summary>
+            
             </summary>
-            <param name="tp">
-            </param>
-            <returns>
-            </returns>
+            <param name="tp"></param>
+            <returns></returns>
         </member>
         <member name="P:Library.Timestamp.Now">
             <summary>
@@ -1109,175 +1133,167 @@
         </member>
         <member name="T:Library.TryResult">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.TryResult.#ctor(System.Collections.Generic.IEnumerable{System.Exception})">
             <summary>
+            
             </summary>
-            <param name="exceptions">
-            </param>
+            <param name="exceptions"></param>
         </member>
         <member name="M:Library.TryResult.#ctor(System.Exception[])">
             <summary>
+            
             </summary>
-            <param name="exceptions">
-            </param>
+            <param name="exceptions"></param>
         </member>
         <member name="M:Library.TryResult.#ctor(System.Boolean)">
             <summary>
+            
             </summary>
-            <param name="flag">
-            </param>
+            <param name="flag"></param>
+        </member>
+        <member name="M:Library.TryResult.op_Implicit(System.Exception)~Library.TryResult">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult.op_Implicit(System.Boolean)~Library.TryResult">
+            <summary>
+            
+            </summary>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult.op_Implicit(Library.TryResult)~System.Boolean">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult.op_True(Library.TryResult)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult.op_False(Library.TryResult)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
         </member>
         <member name="P:Library.TryResult.HasError">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.TryResult.Error">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.TryResult.Errors">
             <summary>
+            
             </summary>
-        </member>
-        <member name="M:Library.TryResult.op_Implicit(System.Exception)~Library.TryResult">
-            <summary>
-            </summary>
-            <param name="ex">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult.op_Implicit(System.Boolean)~Library.TryResult">
-            <summary>
-            </summary>
-            <param name="flag">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult.op_Implicit(Library.TryResult)~System.Boolean">
-            <summary>
-            </summary>
-            <param name="value">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult.op_True(Library.TryResult)">
-            <summary>
-            </summary>
-            <param name="x">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult.op_False(Library.TryResult)">
-            <summary>
-            </summary>
-            <param name="x">
-            </param>
-            <returns>
-            </returns>
         </member>
         <member name="T:Library.TryResult`1">
             <summary>
+            
             </summary>
-            <typeparam name="T">
-            </typeparam>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:Library.TryResult`1.#ctor(`0)">
             <summary>
+            
             </summary>
-            <param name="value">
-            </param>
+            <param name="value"></param>
         </member>
         <member name="M:Library.TryResult`1.#ctor(System.Exception)">
             <summary>
+            
             </summary>
-            <param name="exception">
-            </param>
+            <param name="exception"></param>
         </member>
         <member name="M:Library.TryResult`1.#ctor(`0,System.Exception)">
             <summary>
+            
             </summary>
-            <param name="exception">
-            </param>
-            <param name="defaultValue">
-            </param>
+            <param name="exception"></param>
+            <param name="defaultValue"></param>
+        </member>
+        <member name="M:Library.TryResult`1.op_Implicit(`0)~Library.TryResult{`0}">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult`1.op_Implicit(System.Exception)~Library.TryResult{`0}">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult`1.op_Implicit(Library.TryResult{`0})~`0">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult`1.op_True(Library.TryResult{`0})">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult`1.op_False(Library.TryResult{`0})">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult`1.Cast``1(Library.TryResult{System.Object})">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <typeparam name="TModel"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Library.TryResult`1.Cast``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <typeparam name="TModel"></typeparam>
+            <returns></returns>
         </member>
         <member name="P:Library.TryResult`1.Error">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.TryResult`1.Value">
             <summary>
+            
             </summary>
         </member>
         <member name="P:Library.TryResult`1.HasError">
             <summary>
+            
             </summary>
-        </member>
-        <member name="M:Library.TryResult`1.op_Implicit(`0)~Library.TryResult{`0}">
-            <summary>
-            </summary>
-            <param name="value">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult`1.op_Implicit(System.Exception)~Library.TryResult{`0}">
-            <summary>
-            </summary>
-            <param name="ex">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult`1.op_Implicit(Library.TryResult{`0})~`0">
-            <summary>
-            </summary>
-            <param name="value">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult`1.op_True(Library.TryResult{`0})">
-            <summary>
-            </summary>
-            <param name="x">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult`1.op_False(Library.TryResult{`0})">
-            <summary>
-            </summary>
-            <param name="x">
-            </param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult`1.Cast``1(Library.TryResult{System.Object})">
-            <summary>
-            </summary>
-            <param name="obj">
-            </param>
-            <typeparam name="TModel">
-            </typeparam>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.TryResult`1.Cast``1(System.Object)">
-            <summary>
-            </summary>
-            <param name="obj">
-            </param>
-            <typeparam name="TModel">
-            </typeparam>
-            <returns>
-            </returns>
         </member>
     </members>
 </doc>

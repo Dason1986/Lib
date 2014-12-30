@@ -14,7 +14,47 @@ namespace Library.Draw.Effects
         /*
          * 对每个像素A(i,j)进行处理，用其周围一定范围内随机点A(i+d,j+d),(-k<d<k)的像素替代。显然，以该点为圆心的圆半径越大，则雾化效果越明显。
          */
-        public int Fog { get; set; }
+        public int Fog
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Fog;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Fog = value;
+            }
+        }
+        #region Option
+
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new FogOption();
+        }
+        private FogOption _opetion;
+
+
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is FogOption == false) throw new ImageException("Opetion is not FogOption");
+                _opetion = value as FogOption;
+            }
+        }
+        public class FogOption : ImageOption
+        {
+            public int Fog { get; set; }
+        }
+        public override ImageOption CreateOption()
+        {
+            return new FogOption();
+        }
+        #endregion
+        #region Process
         #region IImageProcessable 成员
 
         public override Image ProcessBitmap()
@@ -54,6 +94,7 @@ namespace Library.Draw.Effects
 
         public override unsafe Image UnsafeProcessBitmap()
         {
+            throw new NotImplementedException();
             var fog = Fog == 0 ? 7 : Fog;
             return UnsafeProcessBitmap(Source, fog);
         }
@@ -100,6 +141,8 @@ namespace Library.Draw.Effects
             bmp.UnlockBits(bmpData);
             return bmp;
         }
+        #endregion
+
         #endregion
     }
 }

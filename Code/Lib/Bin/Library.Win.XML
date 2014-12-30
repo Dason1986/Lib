@@ -15,8 +15,7 @@
             </summary>
             <param name="caption">标题</param>
             <param name="codeImage">图片</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="M:Library.Win.InputDialog.InputBox(System.String,System.String,System.String)">
             <summary>
@@ -25,51 +24,94 @@
             <param name="caption">标题</param>
             <param name="hint">提示内容</param>
             <param name="Default">默认值</param>
-            <returns>
-            </returns>
+            <returns></returns>
         </member>
         <member name="T:Library.Draw.Print.PrintUntity">
             <summary>
+            
             </summary>
         </member>
         <member name="M:Library.Draw.Print.PrintUntity.Create(Library.Draw.Print.IPrintBuilder,Library.Draw.Print.PrintOption)">
             <summary>
+            
             </summary>
-            <param name="builder">
-            </param>
-            <param name="option">
-            </param>
-            <returns>
-            </returns>
+            <param name="builder"></param>
+            <param name="option"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Draw.Print.PrintUntity.Create(Library.Draw.Print.IPrintBuilder)">
             <summary>
+            
             </summary>
-            <param name="builder">
-            </param>
-            <returns>
-            </returns>
+            <param name="builder"></param> 
+            <returns></returns>
         </member>
         <member name="M:Library.Draw.Print.PrintUntity.Create(Library.IO.IPrintModel,Library.Draw.Print.PrintOption)">
             <summary>
+            
             </summary>
-            <param name="model">
-            </param>
-            <param name="option">
-            </param>
-            <returns>
-            </returns>
+            <param name="model"></param>
+            <param name="option"></param>
+            <returns></returns>
         </member>
         <member name="M:Library.Draw.Print.PrintUntity.Create(Library.IO.IPrintModel)">
             <summary>
+            
             </summary>
-            <param name="model">
-            </param>
-            <returns>
-            </returns>
+            <param name="model"></param> 
+            <returns></returns>
         </member>
         <member name="M:Library.Draw.Print.PrintUntity.#ctor">
             <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.FactoryBuilder">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.Initiative">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.Print">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.OnPrint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.OnPreview">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.PrintDocument_PrintPage(System.Object,System.Drawing.Printing.PrintPageEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.InitPrintDialog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.InitPrintPreviewDialog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintUntity.InitPrintDocumen">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:Library.Draw.Print.PrintUntity.Model">
@@ -120,48 +162,6 @@
         <member name="P:Library.Draw.Print.PrintUntity.HasBackgroundImage">
             <summary>
             要打印背景图
-            </summary>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.FactoryBuilder">
-            <summary>
-            </summary>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.Initiative">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.Print">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.OnPrint">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.OnPreview">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.PrintDocument_PrintPage(System.Object,System.Drawing.Printing.PrintPageEventArgs)">
-            <summary>
-            </summary>
-            <param name="sender">
-            </param>
-            <param name="e">
-            </param>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.InitPrintDialog">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.InitPrintPreviewDialog">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Library.Draw.Print.PrintUntity.InitPrintDocumen">
-            <summary>
             </summary>
         </member>
     </members>

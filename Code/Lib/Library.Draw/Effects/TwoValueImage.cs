@@ -5,6 +5,9 @@ using System.Runtime.InteropServices;
 
 namespace Library.Draw.Effects
 {
+    /// <summary>
+    /// 二值处理
+    /// </summary>
     public class TwoValueImage : ImageBuilder
     {
 

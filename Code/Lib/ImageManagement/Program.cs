@@ -17,10 +17,11 @@ namespace ImageManagement
         [STAThread]
         static void Main(string[] Args)
         {
-
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            ColorDialog dialog = new ColorDialog() { AllowFullOpen =true,AnyColor = true,FullOpen = true};
+            dialog.ShowDialog();
             Application.Run(new EffectsForm());
         }
 

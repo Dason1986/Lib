@@ -10,3 +10,9 @@ C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.Win.pdb
 C:\Dason\Coder\TestPj\Code\Lib\Library.Win\obj\Release\Library.Win.csprojResolveAssemblyReference.cache
 C:\Dason\Coder\TestPj\Code\Lib\Library.Win\obj\Release\Library.Win.dll
 C:\Dason\Coder\TestPj\Code\Lib\Library.Win\obj\Release\Library.Win.pdb
+C:\Dason\Lib\Code\Lib\Bin\Library.Win.XML
+C:\Dason\Lib\Code\Lib\Bin\Library.Win.dll
+C:\Dason\Lib\Code\Lib\Bin\Library.Win.pdb
+C:\Dason\Lib\Code\Lib\Library.Win\obj\Release\Library.Win.csprojResolveAssemblyReference.cache
+C:\Dason\Lib\Code\Lib\Library.Win\obj\Release\Library.Win.dll
+C:\Dason\Lib\Code\Lib\Library.Win\obj\Release\Library.Win.pdb
