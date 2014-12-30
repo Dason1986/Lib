@@ -1,0 +1,633 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Library.Draw</name>
+    </assembly>
+    <members>
+        <member name="P:Library.Draw.Code.BarCode.BarCodeText">
+            <summary>
+            条码文本,最后一次调用时的BarCode
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Code.BarCode.StringFormat">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Code.BarCode.Create">
+            <summary>
+            生成条码Bitmap,自定义条码高度,自定义文字对齐样式
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:Library.Draw.DrawHelper">
+            <summary>
+            System.Drawing.ColorTranslator
+            </summary>
+        </member>
+        <member name="M:Library.Draw.DrawHelper.ImageToIcon(System.Drawing.Image)">
+            <summary>
+            Image转换为Icon
+            </summary>
+            <param name="orgImg">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.DrawHelper.ImageFromByteArray(System.Byte[])">
+            <summary>
+            字节流 转化为 Image
+            </summary>
+            <param name="btArray">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.DrawHelper.ImageToByteArray(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            Image 转化为 字节流
+            </summary>
+            <param name="image">
+            </param>
+            <param name="format">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.DrawHelper.CreateNoise(System.Int32,System.Int32)">
+            <summary>
+            創建黑白雜點圖
+            </summary>
+            <param name="width">
+            </param>
+            <param name="height">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.DrawHelper.GetDominantColor(System.Drawing.Bitmap)">
+            <summary>
+            主要色調（平均色）
+            </summary>
+            <param name="bmp">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.DrawHelper.GetTakePicDateTime(System.String)">
+            <summary>
+            获取拍照日期/时间
+            </summary>
+            <param name="fileName">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.DrawHelper.GetExifProperties(System.String)">
+            <summary>
+            </summary>
+            <param name="fileName">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:Library.Draw.Effects.BlueImage">
+            <summary>
+            ��ɫ
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.BrightnessImage">
+            <summary>
+            ����
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Effects.BrightnessImage.Brightness">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.ContrastImage">
+            <summary>
+            对比度
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Effects.ContrastImage.Contrast">
+            <summary>
+            对比度
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.FogImage">
+            <summary>
+            ����Ч��
+            ͼ���������������ǻ���ͼ�������ص�֮���ļ���,���Ǹ�ͼ�����ص���ɫֵ����һ��������ֵ,
+            ʹͼ������ë������ˮ������Ч��..
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Effects.FogImage.UnsafeProcessBitmap(System.Drawing.Image,System.Int32)">
+            <summary>
+            </summary>
+            <param name="source">
+            </param>
+            <param name="n">
+            </param>
+        </member>
+        <member name="T:Library.Draw.Effects.GaussianBlurImage">
+            <summary>
+            高斯模板
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.GreenImage">
+            <summary>
+            绿色
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.MosaicImage">
+            <summary>
+            马赛克
+            是把一张图片分割成若干个N * N像素的小区块（可能在边缘有零星的小块，但不影响整体算法）
+            ，每个小区块的颜色都是相同的。
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.NeonImage">
+            <summary>
+            霓虹处理
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.PixelFunImage">
+            <summary>
+            黑白效果
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.RebelliousImage">
+            <summary>
+            逆反处理
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.RedImage">
+            <summary>
+            ��ɫ
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.ReliefImage">
+            <summary>
+            浮雕处理
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Effects.ReliefImage.ProcessBitmap">
+            ******************************************************************
+                     *
+                     * 浮雕处理原理：通过对图像像素点的像素值与相邻像素点的像素值相减后加上128, 然后作为新的像素点的值...
+                     *  g(i,j)=f(i,i)-f(i+1,j)+128
+                     *
+                     * *****************************************************************</member>
+        <member name="T:Library.Draw.Effects.SharpenImage">
+            <summary>
+            锐化
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.ThumbnailImage">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Effects.ThumbnailImage.ThumbnailModel">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Library.Draw.Effects.ThumbnailImage.ThumbnailModel.HW">
+            <summary>
+            指定高宽缩放（可能变形）
+            </summary>
+        </member>
+        <member name="F:Library.Draw.Effects.ThumbnailImage.ThumbnailModel.W">
+            <summary>
+            指定宽，高按比例
+            </summary>
+        </member>
+        <member name="F:Library.Draw.Effects.ThumbnailImage.ThumbnailModel.H">
+            <summary>
+            指定高，宽按比例
+            </summary>
+        </member>
+        <member name="F:Library.Draw.Effects.ThumbnailImage.ThumbnailModel.Cut">
+            <summary>
+            指定高宽裁减（不变形）
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Effects.ThumbnailImage.Model">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Effects.ThumbnailImage.TragetFormat">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Effects.ThumbnailImage.TragetSize">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Effects.WaterImageBuilder.SetWaterImage(System.String)">
+            <summary>
+            </summary>
+            <param name="waterImgPath">
+            </param>
+        </member>
+        <member name="M:Library.Draw.Effects.WaterImageBuilder.SetWaterImage(System.Byte[])">
+            <summary>
+            </summary>
+            <param name="buffter">
+            </param>
+        </member>
+        <member name="T:Library.Draw.IImageBuilder">
+            <summary>
+            ͼ����������
+            </summary>
+        </member>
+        <member name="M:Library.Draw.IImageBuilder.SetSourceImage(System.String)">
+            <summary>
+            </summary>
+            <param name="sourceImgPath">
+            </param>
+        </member>
+        <member name="M:Library.Draw.IImageBuilder.SetOpetion(Library.Draw.ImageOption)">
+            <summary>
+            </summary>
+            <param name="opetion">
+            </param>
+        </member>
+        <member name="M:Library.Draw.IImageBuilder.ProcessBitmap">
+            <summary>
+            .net�Դ���������
+            </summary>
+        </member>
+        <member name="M:Library.Draw.IImageBuilder.UnsafeProcessBitmap">
+            <summary>
+            ����ȫ���봦������
+            </summary>
+        </member>
+        <member name="M:Library.Draw.IImageBuilder.SetOpacity(System.Single)">
+            <summary>
+            </summary>
+            <param name="opacity">
+            </param>
+        </member>
+        <member name="M:Library.Draw.IImageBuilder.SetTrageSize(System.Drawing.Size)">
+            <summary>
+            </summary>
+            <param name="size">
+            </param>
+        </member>
+        <member name="M:Library.Draw.ImageBuilder.SetSourceImage(System.String)">
+            <summary>
+            </summary>
+            <param name="sourceImgPath">
+            </param>
+        </member>
+        <member name="M:Library.Draw.ImageBuilder.SetSourceImage(System.Byte[])">
+            <summary>
+            </summary>
+            <param name="buffter">
+            </param>
+        </member>
+        <member name="M:Library.Draw.ImageBuilder.ProcessBitmap(Library.Draw.IImageBuilder,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="processable">
+            </param>
+            <param name="sourcePath">
+            </param>
+            <param name="savePath">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:Library.Draw.Effects.ImageFlip">
+            <summary>
+            ����
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Code.ImageCode">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Code.ImageCode.Code">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Code.ImageCode.Width">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Code.ImageCode.Height">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Code.ImageCode.TwistImage(System.Drawing.Bitmap,System.Boolean,System.Double,System.Double)">
+            <summary>
+            正弦曲线Wave扭曲图片
+            </summary>
+            <param name="srcBmp">图片路径</param>
+            <param name="bXDir">如果扭曲则选择为True</param>
+            <param name="dMultValue">波形的幅度倍数，越大扭曲的程度越高,一般为3</param>
+            <param name="dPhase">波形的起始相位,取值区间[0-2*PI)</param>
+        </member>
+        <member name="T:Library.Draw.Effects.ImageZoom">
+            <summary>
+            �Ŵ��R
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Effects.ImageZoom.GetDominantColor(System.Drawing.Bitmap,System.Boolean)">
+            <summary>
+            Returns the dominant color of an image
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Effects.ImageZoom.CalculateOppositeColor(System.Drawing.Color)">
+            <summary>
+            Calculates the opposite color of a given color.
+            Source: http://dotnetpulse.blogspot.com/2007/01/function-to-calculate-opposite-color.html
+            </summary>
+            <param name="clr">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.Effects.ImageZoom.ShrinkToDimensions(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constricts a set of given dimensions while keeping aspect ratio.
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Print.IPrintBuilder">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.Model">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.HasMorePages">
+            <summary>
+            是否多页
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.CurrentPageIndex">
+            <summary>
+            当前页索引
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.IPrintBuilder.CanNextPange">
+            <summary>
+            能否下一页
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.TotalPages">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.PageRectangle">
+            <summary>
+            页面区域
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.PreviewBackgroundImage">
+            <summary>
+            预览模式下的底图
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.FromPage">
+            <summary>
+            超始页
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder.ToPage">
+            <summary>
+            结束页
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.IPrintBuilder.CreateCurrentBitmap">
+            <summary>
+            生成当前打印内容
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.Print.IPrintBuilder.CreateNextBitmap">
+            <summary>
+            生成下一页打印内容
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.Print.IPrintBuilder.Validate">
+            <summary>
+            验证数据
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.IPrintBuilder.ResetIndex">
+            <summary>
+            重置打印索引页
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.IPrintBuilder.SetPageRange(System.Int32,System.Int32)">
+            <summary>
+            设置打印区间页
+            </summary>
+            <param name="formPage">超始页</param>
+            <param name="toPage">结束页</param>
+        </member>
+        <member name="T:Library.Draw.Print.IPrintBuilder`1">
+            <summary>
+            </summary>
+            <typeparam name="T">
+            </typeparam>
+        </member>
+        <member name="P:Library.Draw.Print.IPrintBuilder`1.Model">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Print.PrintBuilder">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilder.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintBuilder.PageRectangle">
+            <summary>
+            页面区域
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintBuilder.PreviewBackgroundImage">
+            <summary>
+            预览模式下的底图
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilder.Validate">
+            <summary>
+            验证数据
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilder.CanNextPange">
+            <summary>
+            能否下一页
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintBuilder.HasMorePages">
+            <summary>
+            是否多页
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintBuilder.CurrentPageIndex">
+            <summary>
+            当前页索引
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintBuilder.TotalPages">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilder.CreateCurrentBitmap">
+            <summary>
+            生成当前打印内容
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilder.CreateNextBitmap">
+            <summary>
+            生成下一页打印内容
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="P:Library.Draw.Print.PrintBuilder.FromPage">
+            <summary>
+            超始页
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintBuilder.ToPage">
+            <summary>
+            结束页
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilder.ResetIndex">
+            <summary>
+            重置打印索引页
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilder.SetPageRange(System.Int32,System.Int32)">
+            <summary>
+            设置打印区间页
+            </summary>
+            <param name="formPage">超始页</param>
+            <param name="toPage">结束页</param>
+        </member>
+        <member name="T:Library.Draw.Print.PrintBuilder`1">
+            <summary>
+            </summary>
+            <typeparam name="T">
+            </typeparam>
+        </member>
+        <member name="T:Library.Draw.Print.PrintActionAttribute">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Library.Draw.Print.PrintBuilderHelper">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilderHelper.FactoryBuilder(System.Object)">
+            <summary>
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Library.Draw.Print.PrintBuilderHelper.PrintToImageFile(Library.Draw.Print.IPrintBuilder,System.String)">
+            <summary>
+            </summary>
+            <param name="builder">
+            </param>
+            <param name="path">
+            </param>
+        </member>
+        <member name="T:Library.Draw.Print.PrintException">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintException.#ctor(System.String,System.Double)">
+            <summary>
+            </summary>
+            <param name="message">
+            </param>
+            <param name="stateCode">
+            </param>
+        </member>
+        <member name="M:Library.Draw.Print.PrintException.#ctor(System.String,System.Double,System.Exception)">
+            <summary>
+            </summary>
+            <param name="message">
+            </param>
+            <param name="stateCode">
+            </param>
+            <param name="inner">
+            </param>
+        </member>
+        <member name="T:Library.Draw.Print.PrintOption">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintOption.IsPreview">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Print.PrintOption.MovePoint">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Library.Draw.Print.PrintOption.SetIsPreview(System.Boolean)">
+            <summary>
+            </summary>
+            <param name="isPreview">
+            </param>
+        </member>
+        <member name="M:Library.Draw.Print.PrintOption.SetMovePoint(System.Drawing.Point)">
+            <summary>
+            </summary>
+            <param name="movePoint">
+            </param>
+        </member>
+        <member name="P:Library.Draw.Effects.WaterImageTileOption.Offset">
+            <summary>
+            偏移
+            </summary>
+        </member>
+        <member name="P:Library.Draw.Effects.WaterImageTileOption.Space">
+            <summary>
+            隔多少空間
+            </summary>
+        </member>
+        <member name="T:Library.Draw.RegularPolygon">
+            <summary>
+            多邊形
+            </summary>
+        </member>
+        <member name="M:Library.Draw.RegularPolygon.CreateRegularPolygon(System.Int32,System.Int32,System.Int32,System.Drawing.Point,System.Drawing.Size)">
+            <summary>
+            多邊形
+            </summary>
+            <param name="sides">
+            </param>
+            <param name="radius">
+            </param>
+            <param name="startingAngle">
+            </param>
+            <param name="center">
+            </param>
+            <param name="canvasSize">
+            </param>
+            <returns>
+            </returns>
+        </member>
+    </members>
+</doc>

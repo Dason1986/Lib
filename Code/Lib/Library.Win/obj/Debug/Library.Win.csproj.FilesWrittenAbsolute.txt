@@ -1,0 +1,5 @@
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.Win/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Bin/Library.Win.dll.mdb
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Bin/Library.Win.dll
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.Win/obj/Debug/Library.Win.dll
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.Win/obj/Debug/Library.Win.dll.mdb

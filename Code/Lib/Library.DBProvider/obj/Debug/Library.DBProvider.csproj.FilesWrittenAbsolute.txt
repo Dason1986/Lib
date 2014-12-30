@@ -1,0 +1,5 @@
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.DBProvider/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Bin/Library.DBProvider.dll.mdb
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Bin/Library.DBProvider.dll
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.DBProvider/obj/Debug/Library.DBProvider.dll
+/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.DBProvider/obj/Debug/Library.DBProvider.dll.mdb

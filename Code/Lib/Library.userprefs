@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestPj/Program.cs">
+    <Files>
+      <File FileName="Library.Draw/Effects/BlueImage.cs" Line="25" Column="25" />
+      <File FileName="TestPj/tset/RangeItemTest.cs" Line="14" Column="14" />
+      <File FileName="TestPj/Program.cs" Line="4" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

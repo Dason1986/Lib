@@ -6,47 +6,38 @@
     <members>
         <member name="T:Library.DBProvider.IDBUtility">
             <summary>
-            
             </summary>
         </member>
         <member name="P:Library.DBProvider.IDBUtility.ConnectionString">
             <summary>
-            
             </summary>
         </member>
         <member name="P:Library.DBProvider.IDBUtility.TextExecute">
             <summary>
-            
             </summary>
         </member>
         <member name="P:Library.DBProvider.IDBUtility.ProcedureExecute">
             <summary>
-            
             </summary>
         </member>
         <member name="P:Library.DBProvider.IDBUtility.ExecuteByCmd">
             <summary>
-            
             </summary>
         </member>
         <member name="P:Library.DBProvider.IDBUtility.DBVersion">
             <summary>
-            
             </summary>
         </member>
         <member name="T:Library.DBProvider.IDBExecute">
             <summary>
-            
             </summary>
         </member>
         <member name="T:Library.DBProvider.IDBExecuteByCmd">
             <summary>
-            
             </summary>
         </member>
         <member name="T:Library.DBProvider.ITextExecute">
             <summary>
-            
             </summary>
         </member>
     </members>
