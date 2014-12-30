@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,22 +11,7 @@ namespace TestPj.tset
 {
     public class RangeItemTest
     {
-        class AppData : IRangeItem<DateTime>
-        {
-            public DateTime? ItemDate { get; set; }
-            public DateTime? StartTime { get; set; }
-            public DateTime? EndTime { get; set; }
-
-            DateTime IRangeItem<DateTime>.Begin
-            {
-                get { return this.StartTime.GetValueOrDefault(); }
-            }
-
-            DateTime IRangeItem<DateTime>.End
-            {
-                get { return this.EndTime.GetValueOrDefault(); }
-            }
-        }
+         class AppData : IRangeItem<DateTime>        {            public DateTime? ItemDate { get; set; }            public DateTime? StartTime { get; set; }            public DateTime? EndTime { get; set; }            DateTime IRangeItem<DateTime>.Begin            {                get { return this.StartTime.GetValueOrDefault(); }            }            DateTime IRangeItem<DateTime>.End            {                get { return this.EndTime.GetValueOrDefault(); }            }            public bool IsInside(DateTime x)            {                return true;            }        }
         readonly List<AppData> _list = new List<AppData>();
         readonly List<AppData> _erlist = new List<AppData>();
 
