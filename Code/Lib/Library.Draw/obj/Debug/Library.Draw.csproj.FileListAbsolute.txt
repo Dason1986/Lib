@@ -1,0 +1,4 @@
+C:\Dason\Coder\TestPj\Library.Draw\bin\Debug\Library.Draw.dll
+C:\Dason\Coder\TestPj\Library.Draw\bin\Debug\Library.Draw.pdb
+C:\Dason\Coder\TestPj\Library.Draw\obj\Debug\Library.Draw.dll
+C:\Dason\Coder\TestPj\Library.Draw\obj\Debug\Library.Draw.pdb

@@ -1,0 +1,11 @@
+C:\Dason\Coder\TestPj\TestPj\bin\Release\TestPj.exe.config
+C:\Dason\Coder\TestPj\TestPj\obj\Release\TestPj.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\TestPj\bin\Release\TestPj.exe
+C:\Dason\Coder\TestPj\TestPj\bin\Release\TestPj.pdb
+C:\Dason\Coder\TestPj\TestPj\bin\Release\nunit.framework.dll
+C:\Dason\Coder\TestPj\TestPj\bin\Release\nunit.framework.xml
+C:\Dason\Coder\TestPj\TestPj\obj\Release\TestPj.exe
+C:\Dason\Coder\TestPj\TestPj\obj\Release\TestPj.pdb
+C:\Dason\Coder\TestPj\Code\Lib\TestPj\obj\Release\TestPj.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\Code\Lib\TestPj\obj\Release\TestPj.exe
+C:\Dason\Coder\TestPj\Code\Lib\TestPj\obj\Release\TestPj.pdb

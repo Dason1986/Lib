@@ -1,0 +1,10 @@
+C:\Dason\Coder\TestPj\Library.Draw\bin\Release\Library.Draw.dll
+C:\Dason\Coder\TestPj\Library.Draw\bin\Release\Library.Draw.pdb
+C:\Dason\Coder\TestPj\Library.Draw\obj\Release\Library.Draw.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\Library.Draw\obj\Release\Library.Draw.dll
+C:\Dason\Coder\TestPj\Library.Draw\obj\Release\Library.Draw.pdb
+C:\Dason\Coder\TestPj\Code\Lib\Library.Draw\bin\Release\Library.Draw.dll
+C:\Dason\Coder\TestPj\Code\Lib\Library.Draw\bin\Release\Library.Draw.pdb
+C:\Dason\Coder\TestPj\Code\Lib\Library.Draw\obj\Release\Library.Draw.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\Code\Lib\Library.Draw\obj\Release\Library.Draw.dll
+C:\Dason\Coder\TestPj\Code\Lib\Library.Draw\obj\Release\Library.Draw.pdb

@@ -1,0 +1,11 @@
+C:\Dason\Coder\TestPj\Bin\Library.Core.XML
+C:\Dason\Coder\TestPj\Bin\Library.Core.dll
+C:\Dason\Coder\TestPj\Bin\Library.Core.pdb
+C:\Dason\Coder\TestPj\Library.Core\obj\Release\Library.Core.dll
+C:\Dason\Coder\TestPj\Library.Core\obj\Release\Library.Core.pdb
+C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.Core.XML
+C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.Core.dll
+C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.Core.pdb
+C:\Dason\Coder\TestPj\Code\Lib\Library.Core\obj\Release\Library.Core.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\Code\Lib\Library.Core\obj\Release\Library.Core.dll
+C:\Dason\Coder\TestPj\Code\Lib\Library.Core\obj\Release\Library.Core.pdb

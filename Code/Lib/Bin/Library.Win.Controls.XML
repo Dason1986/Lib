@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Library.Win.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:Library.Controls.CheckBox">
+            <summary>
+            仿QQ效果的CheckBox
+            </summary>
+        </member>
+        <member name="F:Library.Controls.DataGridViewColumnSelector.MaxHeight">
+            <summary>
+            The max height of the popup
+            </summary>
+        </member>
+        <member name="F:Library.Controls.DataGridViewColumnSelector.Width">
+            <summary>
+            The width of the popup
+            </summary>
+        </member>
+        <member name="P:Library.Controls.DataGridViewColumnSelector.DataGridView">
+            <summary>
+            Gets or sets the DataGridView to which the DataGridViewColumnSelector is attached
+            </summary>
+        </member>
+        <member name="M:Library.Controls.DataGridViewMenu.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Library.Controls.DataGridViewMenu.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Library.Controls.IDataCellConverter.Convert(System.Object,System.Object,System.Windows.Forms.DataGridViewCellStyle)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param> 
+            <param name="parameter"></param>
+            <param name="cellStyle"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Library.Controls.QueryLabel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Library.Controls.QueryLabel._gpRealTime">
+            <summary>
+            按钮的位置范围
+            </summary>
+        </member>
+        <member name="M:Library.Controls.QueryLabel.SetItemCore(System.Int32,System.Object)">
+            <summary>
+            在派生类中重写时，在派生类中设置具有指定索引的对象。
+            </summary>
+            <param name="index">对象的数组索引。</param><param name="value">设置的对象。</param>
+        </member>
+        <member name="M:Library.Controls.DataGridViewQueryLabelCell.InitializeEditingControl(System.Int32,System.Object,System.Windows.Forms.DataGridViewCellStyle)">
+            <summary>
+            附加并初始化寄宿的编辑控件。
+            </summary>
+            <param name="rowIndex">所编辑的行的索引。</param><param name="initialFormattedValue">要在控件中显示的初始值。</param><param name="dataGridViewCellStyle">用于确定寄宿控件外观的单元格样式。</param><filterpriority>1</filterpriority><PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true"/><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true"/><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence"/><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true"/></PermissionSet>
+        </member>
+        <member name="M:Library.Controls.DataGridViewQueryLabelCell.Paint(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Int32,System.Windows.Forms.DataGridViewElementStates,System.Object,System.Object,System.String,System.Windows.Forms.DataGridViewCellStyle,System.Windows.Forms.DataGridViewAdvancedBorderStyle,System.Windows.Forms.DataGridViewPaintParts)">
+            <param name="graphics">The <see cref="T:System.Drawing.Graphics"/> used to paint the <see cref="T:System.Windows.Forms.DataGridViewCell"/>.</param><param name="clipBounds">A <see cref="T:System.Drawing.Rectangle"/> that represents the area of the <see cref="T:System.Windows.Forms.DataGridView"/> that needs to be repainted.</param><param name="cellBounds">A <see cref="T:System.Drawing.Rectangle"/> that contains the bounds of the <see cref="T:System.Windows.Forms.DataGridViewCell"/> that is being painted.</param><param name="rowIndex">The row index of the cell that is being painted.</param><param name="cellState">A bitwise combination of <see cref="T:System.Windows.Forms.DataGridViewElementStates"/> values that specifies the state of the cell.</param><param name="value">The data of the <see cref="T:System.Windows.Forms.DataGridViewCell"/> that is being painted.</param><param name="formattedValue">The formatted data of the <see cref="T:System.Windows.Forms.DataGridViewCell"/> that is being painted.</param><param name="errorText">An error message that is associated with the cell.</param><param name="cellStyle">A <see cref="T:System.Windows.Forms.DataGridViewCellStyle"/> that contains formatting and style information about the cell.</param><param name="advancedBorderStyle">A <see cref="T:System.Windows.Forms.DataGridViewAdvancedBorderStyle"/> that contains border styles for the cell that is being painted.</param><param name="paintParts">A bitwise combination of the <see cref="T:System.Windows.Forms.DataGridViewPaintParts"/> values that specifies which parts of the cell need to be painted.</param>
+        </member>
+        <member name="T:Library.Controls.GlassButton">
+            <summary>
+            仿QQ效果的GlassButton
+            </summary>
+        </member>
+        <member name="P:Library.Controls.GlassButton.Total">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="T:Library.Controls.GroupBox">
+            <summary>
+            GroupBox control that provides functionality to 
+            allow it to be collapsed.
+            </summary>
+        </member>
+        <member name="F:Library.Controls.GroupBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Library.Controls.GroupBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Library.Controls.GroupBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Library.Controls.GroupBox.CollapseBoxClickedEventHandler">
+            <summary>Fired when the Collapse Toggle button is pressed</summary>
+        </member>
+        <member name="T:Library.Controls.ColorTable">
+            <summary>
+            实现仿QQ效果控件内部使用颜色表
+            </summary>
+        </member>
+        <member name="F:Library.Controls.ControlState.Normal">
+            <summary>
+            正常状态
+            </summary>
+        </member>
+        <member name="F:Library.Controls.ControlState.Highlight">
+            <summary>
+             /鼠标进入
+            </summary>
+        </member>
+        <member name="F:Library.Controls.ControlState.Down">
+            <summary>
+            鼠标按下
+            </summary>
+        </member>
+        <member name="F:Library.Controls.ControlState.Focus">
+            <summary>
+            获得焦点
+            </summary>
+        </member>
+        <member name="F:Library.Controls.ControlState.Disabled">
+            <summary>
+            控件禁止
+            </summary>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.SetFormRoundRectRgn(System.Windows.Forms.Form,System.Int32)">
+            <summary>
+            设置窗体的圆角矩形
+            </summary>
+            <param name="form">需要设置的窗体</param>
+            <param name="rgnRadius">圆角矩形的半径</param>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.MoveWindow(System.Windows.Forms.Form)">
+            <summary>
+            移动窗体
+            </summary>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.LOWORD(System.Int32)">
+            <summary>
+            取低位 X 坐标
+            </summary>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.HIWORD(System.Int32)">
+            <summary>
+            取高位 Y 坐标
+            </summary>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.DrawFormFringe(System.Windows.Forms.Form,System.Drawing.Graphics,System.Drawing.Image,System.Int32)">
+            <summary>
+            绘制窗体边框
+            </summary>
+            <param name="destForm">需要绘制边框的窗体</param>
+            <param name="g">绘制边框所用的绘图对象</param>
+            <param name="fringeImg">边框图片</param>
+            <param name="radius">边框的圆角矩形</param>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.DrawImageWithNineRect(System.Drawing.Graphics,System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            利用九宫图绘制图像
+            </summary>
+            <param name="g">绘图对象</param>
+            <param name="img">所需绘制的图片</param>
+            <param name="targetRect">目标矩形</param>
+            <param name="srcRect">来源矩形</param>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.GetImageFormResourceStream(System.String)">
+            <summary>
+            获取当前命名空间下嵌入的资源图片
+            </summary>
+            <param name="imagePath">嵌入的图片资源的路径</param>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.GetStringImgWithShadowEffect(System.String,System.Drawing.Font,System.Drawing.Color,System.Drawing.Color,System.Int32)">
+            <summary>
+            获取绘制带有阴影的字符串的图像
+            </summary>
+            <param name="str">需要绘制的字符串</param>
+            <param name="font">显示字符串的字体</param>
+            <param name="foreColor">字符串的颜色</param>
+            <param name="shadowColor">字符串阴影颜色</param>
+            <param name="shadowWidth">阴影的宽度</param>
+            <returns>绘有发光字符串的Image对象</returns>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.CreateRoundPath(System.Drawing.Rectangle,System.Int32)">
+            <summary>
+            建立带有圆角样式的路径。
+            </summary>
+            <param name="rect">用来建立路径的矩形。</param>
+            <param name="radius">圆角的大小。</param>
+            <returns>建立的路径。</returns>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.GetColor(System.Drawing.Color,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            返回给定的颜色的ARGB的分量差值的颜色
+            </summary>
+            <param name="colorBase"></param>
+            <param name="a">A</param>
+            <param name="r">R</param>
+            <param name="g">G</param>
+            <param name="b">B</param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.Controls.RenderHelper.DrawFromAlphaMainPart(System.Windows.Forms.Form,System.Drawing.Graphics)">
+            <summary>
+            绘制窗体主体部分白色透明层
+            </summary>
+            <param name="form"></param>
+            <param name="g"></param>
+        </member>
+        <member name="T:Library.Controls.ImageButton">
+            <summary>
+            图形按钮类
+            </summary>
+        </member>
+        <member name="T:Library.Controls.RadioButton">
+            <summary>
+            仿QQ效果的RadioButton
+            </summary>
+        </member>
+        <member name="T:Library.Controls.SplitButton">
+            <summary>
+            Note.  This control has two challanges to overcome
+            1	allow the client to bind to the drop down click events
+            2	have design time support.  This design time support will
+            be covered in a subsequent article
+            </summary>
+        </member>
+        <member name="F:Library.Controls.SplitButton._normalImage">
+            <summary>
+            Store the 4 possible image names (5 image states).  _HoverImage and 
+            _FocusedImage share the same image state.
+            </summary>
+        </member>
+        <member name="F:Library.Controls.SplitButton._defaultSplitImages">
+            <summary>
+            Images are housed here
+            </summary>
+        </member>
+        <member name="F:Library.Controls.SplitButton._dropDownsEventHandlers">
+            <summary>
+            A dictionary allowing the events to be tied to the drop down list.
+            
+            The first generic type, string, is the identifier of the event the key 
+            and we will make it the text display of the drop down item.  The second 
+            generic type, EventHandler is the EventHandler for the event.
+            
+            This is the mechanism through which we keep the control's interface to 
+            its client without exposing the ContextMenuStrip itself.
+            </summary>
+        </member>
+        <member name="F:Library.Controls.SplitButton.ZeroTime">
+            <summary>
+            I am using the timers to keep track of the open/close state of the
+            drop-down menu.
+            </summary>
+        </member>
+        <member name="M:Library.Controls.SplitButton.EventFire(System.EventHandler,System.EventArgs)">
+            <summary>
+            Notice the NoInlining decoration of the method as a mechanism for 
+            preventing the optimized compiler from optimizing this call away.
+            See article for further discussion.
+            </summary> 
+            <param name="evntHndlr"></param>
+            <param name="ea"></param>
+        </member>
+        <member name="M:Library.Controls.SplitButton.SplitButtonDropDownClosed(System.Object,System.Windows.Forms.ToolStripDropDownClosedEventArgs)">
+            <summary>
+            Set the time when the menu drop-down was closed.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Library.Controls.SplitButton.SplitButtonDropDownOpening(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Clear the time when the menu drop-down was closed.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:Library.Controls.SplitButton.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Library.Controls.SplitButton.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Library.Controls.SplitButton.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Library.Controls.SplitButton.FillSplitHeight">
+            <summary>
+            Gets or sets a value indicating whether [fill split height].
+            </summary>
+            <value><c>true</c> if [fill split height]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Library.Controls.TextBox">
+            <summary>
+            仿QQ效果的TextBox
+            </summary>
+        </member>
+    </members>
+</doc>

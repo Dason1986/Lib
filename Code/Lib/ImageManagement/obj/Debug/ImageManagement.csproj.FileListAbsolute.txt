@@ -1,0 +1,14 @@
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\ImageManagement.exe
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\ImageManagement.pdb
+C:\Dason\Coder\TestPj\ImageManagement\obj\Debug\ImageManagement.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\ImageManagement\obj\Debug\ImageManagement.Form1.resources
+C:\Dason\Coder\TestPj\ImageManagement\obj\Debug\ImageManagement.Properties.Resources.resources
+C:\Dason\Coder\TestPj\ImageManagement\obj\Debug\ImageManagement.csproj.GenerateResource.Cache
+C:\Dason\Coder\TestPj\ImageManagement\obj\Debug\ImageManagement.exe
+C:\Dason\Coder\TestPj\ImageManagement\obj\Debug\ImageManagement.pdb
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\Library.Core.dll
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\Library.dll
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\Library.Draw.dll
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\Library.Core.pdb
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\Library.Draw.pdb
+C:\Dason\Coder\TestPj\ImageManagement\bin\Debug\Library.pdb

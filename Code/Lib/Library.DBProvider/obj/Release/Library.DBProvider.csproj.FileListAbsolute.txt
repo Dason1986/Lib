@@ -1,0 +1,12 @@
+C:\Dason\Coder\TestPj\Bin\Library.DBProvider.XML
+C:\Dason\Coder\TestPj\Bin\Library.DBProvider.dll
+C:\Dason\Coder\TestPj\Bin\Library.DBProvider.pdb
+C:\Dason\Coder\TestPj\Library.DBProvider\obj\Release\Library.DBProvider.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\Library.DBProvider\obj\Release\Library.DBProvider.dll
+C:\Dason\Coder\TestPj\Library.DBProvider\obj\Release\Library.DBProvider.pdb
+C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.DBProvider.XML
+C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.DBProvider.dll
+C:\Dason\Coder\TestPj\Code\Lib\Bin\Library.DBProvider.pdb
+C:\Dason\Coder\TestPj\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.csprojResolveAssemblyReference.cache
+C:\Dason\Coder\TestPj\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.dll
+C:\Dason\Coder\TestPj\Code\Lib\Library.DBProvider\obj\Release\Library.DBProvider.pdb

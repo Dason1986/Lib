@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C2B69EBE-B5B0-43F3-B310-534DE58E83F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library.Win.Controls</RootNamespace>
+    <AssemblyName>Library.Win.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Bin\Library.Win.Controls.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Library.Win.Controls.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Standard\Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\CheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\ComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\DataGridView\DataGridViewColumnSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Standard\DataGridView\DataGridViewConverterLabelColumn.cs" />
+    <Compile Include="Standard\DataGridView\DataGridViewDateTimeColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\DataGridView\DataGridViewMultiColumnComboColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\DataGridView\DataGridViewQueryLabelColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\GlassButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\GroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\GroupBox.designer.cs">
+      <DependentUpon>GroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Standard\Helper\ClassStyle.cs" />
+    <Compile Include="Standard\Helper\ColorTable.cs" />
+    <Compile Include="Standard\Helper\ControlState.cs" />
+    <Compile Include="Standard\Helper\MouseDownEventHandler.cs" />
+    <Compile Include="Standard\Helper\MouseOperate.cs" />
+    <Compile Include="Standard\Helper\RenderHelper.cs" />
+    <Compile Include="Standard\Helper\SystemButtonState.cs" />
+    <Compile Include="Standard\Helper\Win32.cs" />
+    <Compile Include="Standard\Helper\WindowStyle.cs" />
+    <Compile Include="Standard\ImageButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\MultiColumnComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\QueryLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\RadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standard\SplitButton.designer.cs">
+      <DependentUpon>SplitButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Standard\TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Library.Win.Controls.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Standard\GroupBox.bmp" />
+    <EmbeddedResource Include="Standard\Image\check.png" />
+    <EmbeddedResource Include="Standard\Image\dot.png" />
+    <EmbeddedResource Include="Standard\Image\fringe_bkg.png" />
+    <EmbeddedResource Include="Standard\Image\glassbtn_down.png" />
+    <EmbeddedResource Include="Standard\Image\glassbtn_hot.png" />
+    <EmbeddedResource Include="Standard\Image\minus.png" />
+    <EmbeddedResource Include="Standard\Image\plus.png" />
+    <EmbeddedResource Include="Standard\Image\qqbtn_down.png" />
+    <EmbeddedResource Include="Standard\Image\qqbtn_focus.png" />
+    <EmbeddedResource Include="Standard\Image\qqbtn_highlight.png" />
+    <EmbeddedResource Include="Standard\Image\qqbtn_normal.png" />
+    <EmbeddedResource Include="Standard\Image\qqcmb.png" />
+    <EmbeddedResource Include="Standard\Image\total.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Standard\GroupBox.resx">
+      <DependentUpon>GroupBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standard\QueryLabel.resx">
+      <DependentUpon>QueryLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standard\SplitButton.resx">
+      <DependentUpon>SplitButton.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Core\Library.Core.csproj">
+      <Project>{fe81d872-05ab-4cb1-8feb-7231d9b7db94}</Project>
+      <Name>Library.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Draw\Library.Draw.csproj">
+      <Project>{4612e29a-0f6c-4029-adbc-b8d3ee99d241}</Project>
+      <Name>Library.Draw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"%25ProgramFiles%25\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\gacutil.exe"  /i $(TargetPath)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

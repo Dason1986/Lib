@@ -1,0 +1,11 @@
+<Modules>
+  <Module PersistentId="67EAD53C-A855-4BC4-91EB-14CF8D812D36" ModuleId="Library" />
+  <Module PersistentId="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94" ModuleId="Library.Core" />
+  <Module PersistentId="AA7FF516-0C06-4EF3-A446-B7A75BC3174B" ModuleId="TestPj" />
+  <Module PersistentId="4612E29A-0F6C-4029-ADBC-B8D3EE99D241" ModuleId="Library.Draw" />
+  <Module PersistentId="AA560131-7590-435D-9D8F-CA0DA08BBBC7" ModuleId="ImageManagement" />
+  <Module PersistentId="7020124F-9FFC-4AC3-8F3D-AAB8E0240759" ModuleId="Miscellaneous Files" />
+  <Module PersistentId="1300F433-479F-4ADD-8280-DDCA70C3EA65" ModuleId="Library.DBProvider" />
+  <Module PersistentId="C2B69EBE-B5B0-43F3-B310-534DE58E83F7" ModuleId="Library.Win.Controls" />
+  <Module PersistentId="BBB78556-201D-4857-8212-47D89D2B8FC2" ModuleId="Library.Win" />
+</Modules>
