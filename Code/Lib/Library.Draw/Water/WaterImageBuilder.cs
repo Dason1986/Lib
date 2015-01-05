@@ -1,10 +1,9 @@
 using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using Library.Annotations;
 
-namespace Library.Draw.Effects
+namespace Library.Draw.Water
 {
     public abstract class WaterImageBuilder : ImageBuilder
     {

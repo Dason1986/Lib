@@ -51,6 +51,7 @@
     <Compile Include="Code\BarCode.cs" />
     <Compile Include="Code\QRCode.cs" />
     <Compile Include="DrawHelper.cs" />
+    <Compile Include="Effects\BlindsImage.cs" />
     <Compile Include="Effects\BlueImage.cs" />
     <Compile Include="Effects\BrightnessImage.cs" />
     <Compile Include="Effects\ColorGradationImage.cs" />
@@ -67,13 +68,13 @@
     <Compile Include="Effects\SharpenImage.cs" />
     <Compile Include="Effects\ThumbnailImage.cs" />
     <Compile Include="Effects\TwoValueImage.cs" />
-    <Compile Include="Effects\WaterImageBuilder.cs" />
-    <Compile Include="Effects\WaterImageFactory.cs" />
+    <Compile Include="Water\WaterImageBuilder.cs" />
+    <Compile Include="Water\WaterImageFactory.cs" />
     <Compile Include="ImageBuilder.cs" />
     <Compile Include="ImageException.cs" />
-    <Compile Include="Effects\WaterImageBuilderByFill.cs" />
-    <Compile Include="Effects\WaterImageBuilderByPixel.cs" />
-    <Compile Include="Effects\WaterImageBuilderByTile.cs" />
+    <Compile Include="Water\WaterImageBuilderByFill.cs" />
+    <Compile Include="Water\WaterImageBuilderByPixel.cs" />
+    <Compile Include="Water\WaterImageBuilderByTile.cs" />
     <Compile Include="ImageOption.cs" />
     <Compile Include="GifImage.cs" />
     <Compile Include="Effects\ImageFlip.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="Print\PrintException.cs" />
     <Compile Include="Print\PrintOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Effects\WaterImageTileOption.cs" />
+    <Compile Include="Water\WaterImageTileOption.cs" />
     <Compile Include="RegularPolygon.cs" />
   </ItemGroup>
   <ItemGroup>

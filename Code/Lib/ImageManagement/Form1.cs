@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Library.Draw;
 using Library.Draw.Effects;
+using Library.Draw.Water;
 
 namespace ImageManagement
 {

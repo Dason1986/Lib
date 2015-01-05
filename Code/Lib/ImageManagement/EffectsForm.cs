@@ -22,7 +22,7 @@ namespace ImageManagement
             {
                 "BlueImage", "GreenImage", "RedImage", "BrightnessImage", "ContrastImage", "FogImage"
             ,"GaussianBlurImage","ImageFlip","MosaicImage","NeonImage","PixelFunImage","RebelliousImage"
-            ,"ReliefImage","SharpenImage","TwoValueImage","ColorGradationImage"
+            ,"ReliefImage","SharpenImage","TwoValueImage","ColorGradationImage","BlindsImage"
             };
             comboBox1.DataSource = source;
             effectsAssembly = typeof(ImageBuilder).Assembly;
@@ -79,10 +79,13 @@ namespace ImageManagement
                 var typeobj = effectsAssembly.GetType(classname);
                 if (typeobj == null) throw new Exception();
                 builderobj = typeobj.CreateInstance<IImageBuilder>();
-              
-                var tmp = new byte[fileBytes.Length];
-                fileBytes.CopyTo(tmp, 0);
-                builderobj.SetSourceImage(tmp);
+
+                if (fileBytes != null)
+                {
+                    var tmp = new byte[fileBytes.Length];
+                    fileBytes.CopyTo(tmp, 0);
+                    builderobj.SetSourceImage(tmp);
+                }
                 option = builderobj.CreateOption();
                 grid.SelectedObject = option;
             }

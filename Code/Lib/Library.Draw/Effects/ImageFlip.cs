@@ -1,44 +1,46 @@
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 
 namespace Library.Draw.Effects
 {
+    [Flags]
+    public enum AlignmentType
+    {
+        Horizontally = 1,
+        Vertically = 2,
 
+    }
     /// <summary>
     /// µ¹Ïó
     /// </summary>
     public class ImageFlip : ImageBuilder
     {
-        public FlipType Flip
+        public AlignmentType Flip
         {
             get
             {
-                InitOption(); return _opetion.Flip;
+                InitOption(); return _opetion.Alignment;
             }
             set
             {
-                InitOption(); _opetion.Flip = value;
+                InitOption(); _opetion.Alignment = value;
             }
         }
         #region Option
-        
-        public enum FlipType
+
+
+        public class FlipOption : ImageOption
         {
-            Horizontally,
-            Vertically,
-            HorizontallyAndVertically,
-        }
-        public class FilpOption : ImageOption
-        {
-            public FlipType Flip { get; set; }
+            public AlignmentType Alignment { get; set; }
         }
 
         protected override void InitOption()
         {
-            if (_opetion == null) _opetion = new FilpOption();
+            if (_opetion == null) _opetion = new FlipOption();
         }
-        private FilpOption _opetion;
+        private FlipOption _opetion;
 
 
         protected override ImageOption Opetion
@@ -46,20 +48,20 @@ namespace Library.Draw.Effects
             get { return _opetion; }
             set
             {
-                if (value is FilpOption == false) throw new ImageException("Opetion is not FilpOption");
-                _opetion = value as FilpOption;
+                if (value is FlipOption == false) throw new ImageException("Opetion is not AlignmentOption");
+                _opetion = value as FlipOption;
             }
         }
         public override ImageOption CreateOption()
         {
-            return new FilpOption();
+            return new FlipOption();
         }
 
         #endregion
 
         #region Process
-        
-        public Image CreateImage(FlipType flip)
+
+        public Image CreateImage(AlignmentType flip)
         {
 
             MemoryStream sourcestream = new MemoryStream(SourceImgBuffter);
@@ -73,25 +75,25 @@ namespace Library.Draw.Effects
                 Matrix m = null;
                 switch (flip)
                 {
-                    case FlipType.HorizontallyAndVertically:
+                    case AlignmentType.Horizontally | AlignmentType.Vertically:
                         {
                             m = new Matrix(-1, 0, 0, -1, 0, 0);
                             m.Translate(flippedImage.Width, flippedImage.Height, MatrixOrder.Append);
                             break;
                         }
-                    case FlipType.Horizontally:
+                    case AlignmentType.Horizontally:
                         {
                             m = new Matrix(-1, 0, 0, 1, 0, 0);
                             m.Translate(flippedImage.Width, 0, MatrixOrder.Append);
                             break;
                         }
-                    case FlipType.Vertically:
+                    case AlignmentType.Vertically:
                         {
                             m = new Matrix(1, 0, 0, -1, 0, 0);
                             m.Translate(0, flippedImage.Height, MatrixOrder.Append);
                             break;
                         }
-                    default: throw new ImageException("");
+                    default: throw new ImageException("Not support");
                 }
 
 

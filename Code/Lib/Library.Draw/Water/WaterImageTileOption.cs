@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Library.Draw.Effects
+namespace Library.Draw.Water
 {
     public sealed class WaterImageTileOption : ImageOption
     {

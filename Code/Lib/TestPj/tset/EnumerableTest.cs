@@ -101,7 +101,7 @@ namespace TestPj
         public void FilterByNotLinq()
         {
             var loginusername = GetLoginUserName();
-            CodeTimer.Time("NotLinq Filter", ConstValue.Times99999, () =>
+            CodeTimer.Time("NotLinq Filter", 10, () =>
             {
 
                 foreach (var ea in _list)

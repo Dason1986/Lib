@@ -1,7 +1,8 @@
 using System;
 using System.Drawing;
+using Library.Draw.Effects;
 
-namespace Library.Draw.Effects
+namespace Library.Draw.Water
 {
     public class WaterImageBuilderByTile : WaterImageBuilder
     {

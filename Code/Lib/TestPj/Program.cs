@@ -36,22 +36,8 @@ namespace TestPj
         static void Main(string[] args)
         {
 
-            var bit = new Bitmap(255, 255 );
-
-            for (int x = 0; x < bit.Width; x++)
-            {
-                for (int y = 255 - 1; y >= 0; y--)
-                {
-                    int rr = 255, gg = 255, bb = 0;
-                    rr = y;
-                    gg = x;
-                   // bb = x;
-                    bit.SetPixel(x, y, Color.FromArgb(0, rr, gg, bb));
-                }
-              
-
-            }
-            bit.Save(@"C:\aa.bmp", ImageFormat.Bmp);
+           var table= System.Data.Common.DbProviderFactories.GetFactoryClasses();
+            Console.WriteLine(table);
             Console.WriteLine("ff");
             Console.ReadKey();
             Console.ReadLine();

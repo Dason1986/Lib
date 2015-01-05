@@ -8,7 +8,7 @@ namespace Library.Draw
         /*
         色譜來源： http://baike.baidu.com/view/48715.htm
          */
-        public static class ReadColor
+        public static class RedColor
         {
             /// <summary>
             /// 品红、洋红Magenta（热情）

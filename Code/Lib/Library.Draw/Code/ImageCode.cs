@@ -7,17 +7,20 @@ using System.IO;
 namespace Library.Draw.Code
 {
     /// <summary>
-    /// 
+    /// 圖片驗證碼
     /// </summary>
     public class ImageCode
     {
-
+        /*
+         默認：4位,純數字，寬100，高50的圖片驗證碼
+         */
 
         public ImageCode(int width = 100, int height = 50)
         {
             CodeLength = 4;
             Height = height;
             Width = width;
+            ContentType = ContentTypeEnum.Number;
         }
         private int _codeLength = 4;
         private int _height;
