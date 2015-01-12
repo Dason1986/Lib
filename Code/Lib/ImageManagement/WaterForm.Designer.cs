@@ -1,6 +1,6 @@
 ﻿namespace ImageManagement
 {
-    partial class Form1
+    partial class WaterForm
     {
         /// <summary>
         /// 設計工具所需的變數。

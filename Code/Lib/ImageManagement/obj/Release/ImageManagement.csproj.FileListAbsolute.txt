@@ -41,6 +41,7 @@ C:\Dason\Lib\Code\Lib\ImageManagement\bin\Release\Library.xml
 C:\Dason\Lib\Code\Lib\ImageManagement\bin\Release\System.Windows.Interactivity.xml
 C:\Dason\Lib\Code\Lib\ImageManagement\obj\Release\ImageManagement.csprojResolveAssemblyReference.cache
 C:\Dason\Lib\Code\Lib\ImageManagement\obj\Release\ImageManagement.EffectsForm.resources
-C:\Dason\Lib\Code\Lib\ImageManagement\obj\Release\ImageManagement.Form1.resources
 C:\Dason\Lib\Code\Lib\ImageManagement\obj\Release\ImageManagement.Properties.Resources.resources
 C:\Dason\Lib\Code\Lib\ImageManagement\obj\Release\ImageManagement.csproj.GenerateResource.Cache
+C:\Dason\Lib\Code\Lib\ImageManagement\obj\Release\ImageManagement.WaterForm.resources
+C:\Dason\Lib\Code\Lib\ImageManagement\obj\Release\ImageManagement.SheetForm.resources

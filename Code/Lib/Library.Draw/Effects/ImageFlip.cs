@@ -15,7 +15,7 @@ namespace Library.Draw.Effects
     /// <summary>
     /// µ¹Ïó
     /// </summary>
-    public class ImageFlip : ImageBuilder
+    public class FlipImage : ImageBuilder
     {
         public AlignmentType Flip
         {
@@ -54,7 +54,7 @@ namespace Library.Draw.Effects
         }
         public override ImageOption CreateOption()
         {
-            return new FlipOption();
+            return new FlipOption(){Alignment = AlignmentType.Horizontally|AlignmentType.Vertically  };
         }
 
         #endregion

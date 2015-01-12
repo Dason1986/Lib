@@ -21,15 +21,22 @@ namespace ImageManagement
             List<string> source = new List<string>()
             {
                 "BlueImage", "GreenImage", "RedImage", "BrightnessImage", "ContrastImage", "FogImage"
-            ,"GaussianBlurImage","ImageFlip","MosaicImage","NeonImage","PixelFunImage","RebelliousImage"
-            ,"ReliefImage","SharpenImage","TwoValueImage","ColorGradationImage","BlindsImage"
+            ,"GaussianBlurImage","FlipImage","MosaicImage","NeonImage","GrayImage","RebelliousImage"
+            ,"ReliefImage","SharpenImage","TwoValueImage","ColorGradationImage","BlindsImage","IlluminationImage"
             };
             comboBox1.DataSource = source;
             effectsAssembly = typeof(ImageBuilder).Assembly;
-
+           var currass= Assembly.GetExecutingAssembly();
+           var files = currass.GetManifestResourceStream("ImageManagement.original.jpg");
+            if (files != null)
+            {
+                Image image = new Bitmap(files);
+                this.pictureBox1.Image = image;
+                fileBytes = files.ToArray();
+            }
         }
 
-        private Assembly effectsAssembly;
+        private readonly Assembly effectsAssembly;
         private byte[] fileBytes;
         private void button1_Click(object sender, EventArgs e)
         {

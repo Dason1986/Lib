@@ -21,7 +21,7 @@ namespace ImageManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
        
-            Application.Run(new EffectsForm());
+            Application.Run(new SheetForm());
         }
 
     

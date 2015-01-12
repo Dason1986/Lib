@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -80,10 +80,12 @@
     <Compile Include="HelperUtility\EmptyUtility.cs" />
     <Compile Include="HelperUtility\EnumHelper.cs" />
     <Compile Include="HelperUtility\StreamHelper.cs" />
-    <Compile Include="Test\ITestLogic.cs" />
+    <Compile Include="IDCrad\ChineseIDCard.cs" />
+    <Compile Include="IDCrad\HongKongIDCard.cs" />
+    <Compile Include="IDCrad\MacauIDCard.cs" />
+    <Compile Include="IDCrad\TaiwanIDCard.cs" />
     <Compile Include="PermutationAndCombination.cs" />
     <Compile Include="RangeItemHelper.cs" />
-    <Compile Include="Test\CodeTimer.cs" />
     <Compile Include="HelperUtility\ADONetHepler.cs" />
     <Compile Include="HelperUtility\CompareUtility.cs" />
     <Compile Include="HelperUtility\EnumerableHelper.cs" />
@@ -103,8 +105,8 @@
   <ItemGroup>
     <None Include="Library.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

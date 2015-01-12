@@ -21,7 +21,6 @@ C:\Dason\Lib\Code\Lib\TestPj\bin\Release\Library.Core.xml
 C:\Dason\Lib\Code\Lib\TestPj\bin\Release\Library.Draw.pdb
 C:\Dason\Lib\Code\Lib\TestPj\bin\Release\Library.pdb
 C:\Dason\Lib\Code\Lib\TestPj\bin\Release\Library.xml
-C:\Dason\Lib\Code\Lib\TestPj\bin\Release\nunit.framework.xml
 C:\Dason\Lib\Code\Lib\TestPj\obj\Release\TestPj.csprojResolveAssemblyReference.cache
 C:\Dason\Lib\Code\Lib\TestPj\obj\Release\TestPj.exe
 C:\Dason\Lib\Code\Lib\TestPj\obj\Release\TestPj.pdb

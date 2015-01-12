@@ -21,7 +21,8 @@ namespace Library.Draw
     {
         Pixel,
         Full,
-        Tile
+        Tile,
+        Text,
     }
 
     public enum Localization

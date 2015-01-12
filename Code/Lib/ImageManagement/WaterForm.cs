@@ -15,9 +15,9 @@ using Library.Draw.Water;
 
 namespace ImageManagement
 {
-    public partial class Form1 : Form
+    public partial class WaterForm : Form
     {
-        public Form1()
+        public WaterForm()
         {
             InitializeComponent();
             this.PicTarget.ContextMenu = new ContextMenu();
@@ -57,11 +57,11 @@ namespace ImageManagement
             if (ChkPreview.Checked) Builder(path, TxtWaterPic.Text);
         }
 
-        readonly WaterImageBuilder _builder = WaterImageFactory.CreateBuilder(WaterImageType.Tile);
+        readonly WaterImageBuilder _builder = WaterImageFactory.CreateBuilder(WaterImageType.Text);
         public void Builder(string sourceImg, string waterImg)
         {
             _builder.SetSourceImage(sourceImg);
-
+            if (_builder is WaterImageBuilderByText ==false)
             _builder.SetWaterImage ( waterImg);
      
            var opetion = new WaterImageTileOption

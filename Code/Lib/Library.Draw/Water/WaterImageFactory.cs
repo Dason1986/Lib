@@ -12,6 +12,7 @@ namespace Library.Draw.Water
                 case WaterImageType.Full: builder = new WaterImageBuilderByFill(); break;
                 case WaterImageType.Pixel: builder = new WaterImageBuilderByPixel(); break;
                 case WaterImageType.Tile: builder = new WaterImageBuilderByTile(); break;
+                case WaterImageType.Text: builder = new WaterImageBuilderByText(); break;
 
             }
             return builder;

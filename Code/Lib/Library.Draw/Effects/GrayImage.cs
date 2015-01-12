@@ -6,10 +6,10 @@ namespace Library.Draw.Effects
     /// <summary>
     /// 黑白效果
     /// </summary>
-    public class PixelFunImage : ImageBuilder
+    public class GrayImage : ImageBuilder
     {
 
-        public PixelType Pixel
+        public GrayType Pixel
         {
             get
             {
@@ -22,20 +22,38 @@ namespace Library.Draw.Effects
                 _opetion.Pixel = value;
             }
         }
-        public enum PixelType
+        public enum GrayType
         {
+            /// <summary>
+            /// 加權
+            /// </summary>
             Weighted,
+            /// <summary>
+            /// 平均
+            /// </summary>
             Average,
-            Max
+            /// <summary>
+            /// 最大值
+            /// </summary>
+            Max,
+            /// <summary>
+            /// 位移
+            /// </summary>
+            Shift,
+            /// <summary>
+            /// 整數
+            /// </summary>
+            Integer,
+
         }
 
         #region Option
 
         protected override void InitOption()
         {
-            if (_opetion == null) _opetion = new PixelOption();
+            if (_opetion == null) _opetion = new GrayOption();
         }
-        private PixelOption _opetion;
+        private GrayOption _opetion;
 
 
         protected override ImageOption Opetion
@@ -43,17 +61,17 @@ namespace Library.Draw.Effects
             get { return _opetion; }
             set
             {
-                if (value is PixelOption == false) throw new ImageException("Opetion is not PixelOption");
-                _opetion = value as PixelOption;
+                if (value is GrayOption == false) throw new ImageException("Opetion is not GrayOption");
+                _opetion = value as GrayOption;
             }
         }
-        public class PixelOption : ImageOption
+        public class GrayOption : ImageOption
         {
-            public PixelType Pixel { get; set; }
+            public GrayType Pixel { get; set; }
         }
         public override ImageOption CreateOption()
         {
-            return new PixelOption();
+            return new GrayOption();
         }
         #endregion
         #region Process
@@ -70,13 +88,19 @@ namespace Library.Draw.Effects
                     int ret = 0;
                     switch (Pixel)
                     {
-                        case PixelType.Average:
+                        case GrayType.Average://（R+G+B）/3; 　
                             ret = (curColor.R + curColor.G + curColor.B) / 3;
                             break;
-                        case PixelType.Weighted:
+                        case GrayType.Weighted:
                             ret = (int)(curColor.R * 0.299 + curColor.G * 0.587 + curColor.B * 0.114);
                             break;
-                        case PixelType.Max:
+                        case GrayType.Shift://(R*28+G*151+B*77)>>8
+                            ret = ((int)(curColor.R * 28 + curColor.G * 151 + curColor.B * 77)) >> 8;
+                            break;
+                        case GrayType.Integer://(R*30+G*59+B*11)/100 　
+                            ret = ((int)(curColor.R * 30 + curColor.G * 59 + curColor.B * 11)/100) ;
+                            break;
+                        case GrayType.Max:
                             ret = curColor.R > curColor.G ? curColor.R : curColor.G;
                             ret = ret > curColor.B ? ret : curColor.B;
                             break;
@@ -99,16 +123,22 @@ namespace Library.Draw.Effects
                 for (int j = 0; j < w; j++)
                 {
                     byte temp = (byte)(0.299 * ptr[2] + 0.587 * ptr[1] + 0.114 * ptr[0]);
-                 
+
                     switch (Pixel)
                     {
-                        case PixelType.Average:
+                        case GrayType.Average:
                             temp = (byte)((ptr[2] + ptr[1] + ptr[0]) / 3);
                             break;
-                        case PixelType.Weighted:
-                            temp = (byte)(0.299 * ptr[2] + 0.587 * ptr[1] + 0.114 * ptr[0]);//(int)(curColor.R * 0.299 + curColor.G * 0.587 + curColor.B * 0.114);
+                        case GrayType.Weighted:
+                            temp = (byte)(0.299 * ptr[2] + 0.587 * ptr[1] + 0.114 * ptr[0]);
                             break;
-                        case PixelType.Max:
+                        case GrayType.Shift:
+                            temp = (byte)((int)(28 * ptr[2] + 151 * ptr[1] + 77 * ptr[0])>>8);
+                            break;
+                        case GrayType.Integer:
+                            temp = (byte)((30 * ptr[2] + 59 * ptr[1] + 11 * ptr[0])/100);
+                            break;
+                        case GrayType.Max:
                             temp = ptr[2] > ptr[1] ? ptr[2] : ptr[1];
                             temp = temp > ptr[0] ? temp : ptr[0];
                             break;

@@ -73,7 +73,7 @@ namespace Library.Draw.Water
 
         }
 
-        private Graphics CreateGraphics(Image tmpimg, Image sourceImg)
+        protected Graphics CreateGraphics(Image tmpimg, Image sourceImg)
         {
             Graphics gType = Graphics.FromImage(tmpimg);
             var trageSize = Opetion == null ? null : Opetion.TrageSize;

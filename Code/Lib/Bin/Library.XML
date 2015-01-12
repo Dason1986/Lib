@@ -873,166 +873,24 @@
             <param name="stream"></param>
             <returns></returns>
         </member>
-        <member name="T:Library.Test.ExceptionEventArgs">
+        <member name="T:Library.IDCrad.ChineseIDCard">
             <summary>
-            
+            中華人民共和國大陆居民身份證
             </summary>
         </member>
-        <member name="M:Library.Test.ExceptionEventArgs.#ctor(System.Exception)">
+        <member name="T:Library.IDCrad.HongKongIDCard">
             <summary>
-            
-            </summary>
-            <param name="error"></param>
-        </member>
-        <member name="P:Library.Test.ExceptionEventArgs.Error">
-            <summary>
-            
+            中華人民共和國香港特別行政區居民身份證
             </summary>
         </member>
-        <member name="T:Library.Test.MessageType">
+        <member name="T:Library.IDCrad.MacauIDCard">
             <summary>
-            
+            中華人民共和國澳門特別行政區居民身份證
             </summary>
         </member>
-        <member name="F:Library.Test.MessageType.Info">
+        <member name="T:Library.IDCrad.TaiwanIDCard">
             <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Library.Test.MessageType.OKAction">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Library.Test.CompletedEventArgs">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Library.Test.CompletedEventArgs.#ctor(System.TimeSpan)">
-            <summary>
-            
-            </summary>
-            <param name="useTime"></param>
-        </member>
-        <member name="P:Library.Test.CompletedEventArgs.UseTime">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Library.Test.MessageEventArgs">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Library.Test.MessageEventArgs.#ctor(System.String,Library.Test.MessageType)">
-            <summary>
-            
-            </summary>
-            <param name="message"></param>
-            <param name="messageType"></param>
-        </member>
-        <member name="P:Library.Test.MessageEventArgs.Message">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Library.Test.MessageEventArgs.MessageInfo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Library.Test.CompletedEventHandler">
-            <summary>
-            
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="T:Library.Test.ExceptionEventHandler">
-            <summary>
-            
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="T:Library.Test.MessageEventHandler">
-            <summary>
-            
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="T:Library.Test.ITestLogic">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Library.Test.ITestLogic.Start">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="E:Library.Test.ITestLogic.Messge">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="E:Library.Test.ITestLogic.Failure">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="E:Library.Test.ITestLogic.Completed">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Library.Test.TestLogic">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Library.Test.TestLogic.OnFailure(System.Exception)">
-            <summary>
-            
-            </summary> 
-        </member>
-        <member name="M:Library.Test.TestLogic.OnCompleted(System.TimeSpan)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Library.Test.TestLogic.OnMessge(System.String,Library.Test.MessageType)">
-            <summary>
-            
-            </summary>
-            <param name="message"></param>
-            <param name="messageType"></param>
-        </member>
-        <member name="M:Library.Test.TestLogic.Start">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Library.Test.TestLogic.OnStart">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="E:Library.Test.TestLogic.Messge">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="E:Library.Test.TestLogic.Failure">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="E:Library.Test.TestLogic.Completed">
-            <summary>
-            
+            中華人民共和國臺灣居民身份證
             </summary>
         </member>
         <member name="M:Library.PermutationAndCombination`1.Swap(`0@,`0@)">
@@ -1237,19 +1095,6 @@
             <param name="x"></param>
             <param name="y"></param>
             <returns></returns>
-        </member>
-        <member name="T:Library.Test.CodeTimer">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Library.Test.CodeTimer.Time(System.String,System.Int32,System.Action)">
-            <summary>
-            
-            </summary>
-            <param name="name"></param>
-            <param name="iteration"></param>
-            <param name="action"></param>
         </member>
         <member name="T:Library.HelperUtility.ADONetHepler">
             <summary>
