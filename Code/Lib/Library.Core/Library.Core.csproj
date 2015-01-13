@@ -55,7 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Date\CalendarInfo.cs" />
     <Compile Include="Date\ChineseCalendar.cs" />
+    <Compile Include="interface\IHoliday.cs" />
+    <Compile Include="Date\LunarHoliday.cs" />
+    <Compile Include="Date\SolarHoliday.cs" />
+    <Compile Include="Date\WeekHoliday.cs" />
     <Compile Include="Ex\AbException.cs" />
     <Compile Include="FormatConst.cs" />
     <Compile Include="interface\Data\FieldCollection.cs" />

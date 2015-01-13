@@ -7,310 +7,18 @@ namespace Library.Date
     /// <summary>
     /// 中国日历异常处理
     /// </summary>
-    public class ChineseCalendarException : LibException
+    public class ChineseDateTimeException : LibException
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="msg"></param>
-        public ChineseCalendarException(string msg)
+        public ChineseDateTimeException(string msg)
             : base(msg)
         {
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public interface IHoliday
-    {
-        /// <summary>
-        /// 月
-        /// </summary>
-        int Month { get; }
-        /// <summary>
-        /// 日
-        /// </summary>
-        int Day { get; }
-
-        /// <summary>
-        /// 節日名稱
-        /// </summary>
-        string HolidayName { get; }
-    }
-    /// <summary>
-    /// 
-    /// </summary>
-    public struct SolarHoliday : IHoliday
-    {
-        public int Month { get; private set; }
-        public int Day { get; private set; }
-
-        public string HolidayName { get; private set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="month"></param>
-        /// <param name="day"></param>
-        /// <param name="name"></param>
-        public SolarHoliday(int month, int day, string name)
-            : this()
-        {
-            Month = month;
-            Day = day;
-            HolidayName = name;
-        }
-    }
-    /// <summary>
-    /// 
-    /// </summary>
-    public struct LunarHoliday : IHoliday
-    {
-        public int Month { get; private set; }
-        public int Day { get; private set; }
-        public string HolidayName { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="month"></param>
-        /// <param name="day"></param>
-        /// <param name="name"></param>
-        public LunarHoliday(int month, int day, string name)
-            : this()
-        {
-            Month = month;
-            Day = day;
-
-            HolidayName = name;
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public struct WeekHoliday : IHoliday
-    {
-        /// <summary>
-        /// 月份
-        /// </summary>
-        public int Month { get; private set; }
-        /// <summary>
-        /// 第幾個星期
-        /// </summary>
-        public int WeekAtMonth { get; private set; }
-        /// <summary>
-        /// 星期
-        /// </summary>
-        public int WeekDay { get; private set; }
-        /// <summary>
-        /// 節日名稱
-        /// </summary>
-        public string HolidayName { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="month"></param>
-        /// <param name="weekAtMonth"></param>
-        /// <param name="weekDay"></param>
-        /// <param name="name"></param>
-        public WeekHoliday(int month, int weekAtMonth, int weekDay, string name)
-            : this()
-        {
-            Month = month;
-            WeekAtMonth = weekAtMonth;
-            WeekDay = weekDay;
-            HolidayName = name;
-        }
-
-
-
-        int IHoliday.Day
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public static class CalendarInfo
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public static readonly string[] ChineseMonths =
-        {
-              "正月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "寒月", "腊月"
-        };
-        /// <summary>
-        /// 天幹
-        /// </summary>
-        public static readonly string[] Gan = { "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸" };
-
-        /// <summary>
-        /// 地支
-        /// </summary>
-        public static readonly string[] Zhi = { "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥" };
-
-        /// <summary>
-        /// 生肖
-        /// </summary>
-        public static readonly string[] ChineseZodiac = { "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪" };
-
-        #region 星座名称
-        /// <summary>
-        /// 星座名称
-        /// </summary>
-        public static readonly string[] ConstellationName = { 
-                    "白羊座", "金牛座", "双子座", 
-                    "巨蟹座", "狮子座", "处女座", 
-                    "天秤座", "天蝎座", "射手座", 
-                    "摩羯座", "水瓶座", "双鱼座"
-                };
-        #endregion
-
-        #region 二十四節氣
-        /// <summary>
-        /// 二十四節氣
-        /// </summary>
-        public static readonly string[] LunarHolidayName = 
-                    { //(节) (气)    (节)    (气)
-                    "小寒", "大寒", "立春", "雨水", 
-                    "惊蛰", "春分", "清明", "谷雨", 
-                    "立夏", "小满", "芒种", "夏至", 
-                    "小暑", "大暑", "立秋", "处暑", 
-                    "白露", "秋分", "寒露", "霜降", 
-                    "立冬", "小雪", "大雪", "冬至"
-                    };
-        #endregion
-
-        #region 二十八星宿
-        /// <summary>
-        /// 二十八星宿
-        /// </summary>
-        public readonly static string[] ChineseConstellationName =
-            {
-                  //四   五    六      日    一      二      三  
-                "角宿","亢宿","氐宿","房宿","心宿","尾宿","箕宿",
-                "斗宿","牛宿","女宿","虚宿","危宿","室宿","壁宿",
-                "奎宿","娄宿","胃宿","昴宿","毕宿","觜宿","参宿",
-                "井宿","鬼宿","柳宿","星宿","张宿","翼宿","轸宿" 
-            };
-        /// <summary>
-        /// 二十八星宿
-        /// </summary>
-        public readonly static string[] ChineseConstellationAnimalName =
-            {
-                  //四        五      六         日        一      二      三  
-                "角木蛟","亢金龙","氐土貉","房日兔","心月狐","尾火虎","箕水豹",
-                "斗木獬","牛金牛","女土蝠","虚日鼠","危月燕","室火猪","壁水獝",
-                "奎木狼","娄金狗","胃土彘","昴日鸡","毕月乌","觜火猴","参水猿",
-                "井木犴","鬼金羊","柳土獐","星日马","张月鹿","翼火蛇","轸水蚓" 
-            };
-        #endregion
-
-        #region 節氣数据
-        /// <summary>
-        /// 節氣数据
-        /// </summary>
-
-        internal static readonly int[] STermInfo = new int[] { 0, 21208, 42467, 63836, 85337, 107014, 128867, 150921, 173149, 195551, 218072, 240693, 263343, 285989, 308563, 331033, 353350, 375494, 397447, 419210, 440795, 462224, 483532, 504758 };
-        #endregion
-
-        #region 按公历计算的節日
-        /// <summary>
-        /// 按公历计算的節日
-        /// </summary>
-        public static readonly SolarHoliday[] SolarHolidays = new SolarHoliday[]{
-            new SolarHoliday(1, 1, "元旦"),
-            new SolarHoliday(2, 2,  "世界湿地日"),
-            new SolarHoliday(2, 10,  "国际气象节"),
-            new SolarHoliday(2, 14,  "情人节"),
-            new SolarHoliday(3, 1,  "国际海豹日"),
-            new SolarHoliday(3, 8,  "妇女节"), 
-            new SolarHoliday(3, 12,  "植树节"), 
-            new SolarHoliday(3, 14,  "国际警察日"),
-            new SolarHoliday(3, 15,  "消费者权益日"),
-            new SolarHoliday(3, 17,  "中国国医节 国际航海日"),
-            new SolarHoliday(3, 21,  "世界森林日 消除种族歧视国际日 世界儿歌日"),
-            new SolarHoliday(3, 22,  "世界水日"),
-            new SolarHoliday(3, 24,  "世界防治结核病日"),
-            new SolarHoliday(4, 1,  "愚人节"),
-            new SolarHoliday(4, 7,  "世界卫生日"),
-            new SolarHoliday(4, 22,  "世界地球日"),
-            new SolarHoliday(5, 1,  "劳动节"),  
-            new SolarHoliday(5, 4,  "青年节"), 
-            new SolarHoliday(5, 8,  "世界红十字日"),
-            new SolarHoliday(5, 12,  "国际护士节"), 
-            new SolarHoliday(5, 31,  "世界无烟日"), 
-            new SolarHoliday(6, 1,  "国际儿童节"), 
-            new SolarHoliday(6, 5,  "世界环境保护日"),
-            new SolarHoliday(6, 26,  "国际禁毒日"),
-            new SolarHoliday(7, 1,  "建党节 香港回归纪念 世界建筑日"),
-            new SolarHoliday(7, 11,  "世界人口日"),
-            new SolarHoliday(8, 1,  "建军节"), 
-          //  new SolarHoliday(8, 8,  "中国男子节 父亲节"),
-            new SolarHoliday(8, 15,  "抗日战争胜利纪念"),
-            
-            new SolarHoliday(9, 10,  "教师节"), 
-         //   new SolarHoliday(9, 18,  "九·一八事变纪念日"),
-            new SolarHoliday(9, 20,  "国际爱牙日"),
-            new SolarHoliday(9, 27,  "世界旅游日"),
-        //    new SolarHoliday(9, 28,  "孔子诞辰"),
-            new SolarHoliday(10, 1,  "国庆节"),
-        //    new SolarHoliday(10, 6,  "老人节"), 
-            new SolarHoliday(10, 24,  "联合国日"),
-            new SolarHoliday(11, 10,  "世界青年节"),
-        //    new SolarHoliday(11, 12,  "孙中山诞辰纪念"), 
-            new SolarHoliday(12, 1,  "世界艾滋病日"), 
-            new SolarHoliday(12, 3,  "世界残疾人日"), 
-            new SolarHoliday(12, 20,  "澳门回归纪念"), 
-            new SolarHoliday(12, 24,  "平安夜"), 
-            new SolarHoliday(12, 25,  "圣诞节")
-         
-           };
-        #endregion
-
-        #region 按農曆计算的節日
-        /// <summary>
-        /// 按農曆计算的節日
-        /// </summary>
-        public static readonly LunarHoliday[] LunarHolidays =
-        {
-            new LunarHoliday(1, 1,  "春节"), 
-            new LunarHoliday(1, 15,  "元宵节"), 
-            new LunarHoliday(5, 5,  "端午节"), 
-            new LunarHoliday(7, 7,  "七夕情人节"),
-            new LunarHoliday(7, 15,  "中元节 盂兰盆节"), 
-            new LunarHoliday(8, 15,  "中秋节"), 
-            new LunarHoliday(9, 9, "重阳节"), 
-            new LunarHoliday(12, 8,  "腊八节"),
-            new LunarHoliday(12, 23, "北方小年(扫房)"),
-            new LunarHoliday(12, 24,  "南方小年(掸尘)"),
-            new LunarHoliday(12, 30,  "除夕")  //注意除夕需要其它方法进行计算
-        };
-        #endregion
-
-        #region 按某月第几个星期几
-        /// <summary>
-        /// 按某月第几个星期几
-        /// </summary>
-        public static readonly WeekHoliday[] WeekHolidays = new WeekHoliday[]{
-            new WeekHoliday(5, 2, 1, "母亲节"), 
-            new WeekHoliday(5, 3, 1, "全国助残日"), 
-            new WeekHoliday(6, 3, 1, "父亲节"), 
-            new WeekHoliday(9, 3, 3, "国际和平日"), 
-            new WeekHoliday(9, 4, 1, "国际聋人节"), 
-            new WeekHoliday(10, 1, 2, "国际住房日"), 
-            new WeekHoliday(10, 1, 4, "国际减轻自然灾害日"),
-            new WeekHoliday(11, 4, 5, "感恩节")
-        };
-        #endregion
-    }
     #endregion
 
     /// <summary>
@@ -319,7 +27,7 @@ namespace Library.Date
     /// <remarks>
     /// 本程序使用数据来源于网上的万年历查询，并综合了一些其它数据
     /// </remarks>
-    public class ChineseCalendar
+    public class ChineseDateTime
     {
         #region 内部结构
 
@@ -408,7 +116,7 @@ namespace Library.Date
         /// 用一个标准的公历日期来初使化
         /// </summary>
         /// <param name="dt"></param>
-        public ChineseCalendar(DateTime dt)
+        public ChineseDateTime(DateTime dt)
         {
             int i;
 
@@ -472,7 +180,7 @@ namespace Library.Date
         /// <param name="cm">農曆月</param>
         /// <param name="cd">農曆日</param>
         /// <param name="leapMonthFlag"></param>
-        public ChineseCalendar(int cy, int cm, int cd, bool leapMonthFlag)
+        public ChineseDateTime(int cy, int cm, int cd, bool leapMonthFlag)
         {
             int i, temp;
 
@@ -510,7 +218,7 @@ namespace Library.Date
                 //检查日期是否大于最大天
                 if (cd > GetChineseMonthDays(cy, cm))
                 {
-                    throw new ChineseCalendarException("不合法的農曆日期");
+                    throw new ChineseDateTimeException("不合法的農曆日期");
                 }
                 offset = offset + cd; //加上当月的天数
 
@@ -533,7 +241,7 @@ namespace Library.Date
 
                     if (cd > GetChineseMonthDays(cy, cm))
                     {
-                        throw new ChineseCalendarException("不合法的農曆日期");
+                        throw new ChineseDateTimeException("不合法的農曆日期");
                     }
                     offset = offset + cd;
                 }
@@ -548,7 +256,7 @@ namespace Library.Date
 
                     if (cd > GetChineseLeapMonthDays(cy))
                     {
-                        throw new ChineseCalendarException("不合法的農曆日期");
+                        throw new ChineseDateTimeException("不合法的農曆日期");
                     }
                     offset = offset + cd;
                 }
@@ -625,7 +333,7 @@ namespace Library.Date
         /// </summary>
         /// <param name="year"></param>
         /// <returns></returns>
-        private int GetChineseYearDays(int year)
+        public static  int GetChineseYearDays(int year)
         {
             int sumDay = 348;
             int i = 0x8000;
@@ -689,7 +397,7 @@ namespace Library.Date
         /// <param name="dt"></param>
         public static void ValidateDateLimit(DateTime dt)
         {
-            if ((dt < MinDay) || (dt > MaxDay)) throw new ChineseCalendarException("超出可转换的日期");
+            if ((dt < MinDay) || (dt > MaxDay)) throw new ChineseDateTimeException("超出可转换的日期");
         }
 
         #endregion
@@ -705,15 +413,15 @@ namespace Library.Date
         /// <param name="leapMonth"></param>
         public static void ValidateChineseDateLimit(int year, int month, int day, bool leapMonth)
         {
-            if ((year < MinYear) || (year > MaxYear)) throw new ChineseCalendarException("非法農曆日期");
+            if ((year < MinYear) || (year > MaxYear)) throw new ChineseDateTimeException("非法農曆日期");
 
-            if ((month < 1) || (month > 12)) throw new ChineseCalendarException("非法農曆日期");
+            if ((month < 1) || (month > 12)) throw new ChineseDateTimeException("非法農曆日期");
             //中国的月最多30天
-            if ((day < 1) || (day > 30)) throw new ChineseCalendarException("非法農曆日期");
+            if ((day < 1) || (day > 30)) throw new ChineseDateTimeException("非法農曆日期");
 
 
             int leap = GetChineseLeapMonth(year); // 计算该年应该闰哪个月
-            if (leapMonth && (month != leap)) throw new ChineseCalendarException("非法農曆日期");
+            if (leapMonth && (month != leap)) throw new ChineseDateTimeException("非法農曆日期");
 
 
 
@@ -746,33 +454,7 @@ namespace Library.Date
 
         #region ConvertDayOfWeek
 
-        /// <summary>
-        /// 将星期几转成数字表示
-        /// </summary>
-        /// <param name="dayOfWeek"></param>
-        /// <returns></returns>
-        private static int ConvertDayOfWeek(DayOfWeek dayOfWeek)
-        {
-            switch (dayOfWeek)
-            {
-                case DayOfWeek.Sunday:
-                    return 1;
-                case DayOfWeek.Monday:
-                    return 2;
-                case DayOfWeek.Tuesday:
-                    return 3;
-                case DayOfWeek.Wednesday:
-                    return 4;
-                case DayOfWeek.Thursday:
-                    return 5;
-                case DayOfWeek.Friday:
-                    return 6;
-                case DayOfWeek.Saturday:
-                    return 7;
-                default:
-                    return 0;
-            }
-        }
+     
 
         #endregion
 
@@ -786,26 +468,34 @@ namespace Library.Date
         /// <param name="week"></param>
         /// <param name="day"></param>
         /// <returns></returns>
-        private static bool CompareWeekDayHoliday(DateTime date, int month, int week, int day)
+        private static bool CompareWeekDayHoliday(DateTime date, int month, int week, DayOfWeek day)
         {
 
 
             if (date.Month != month) return false;
-            if (ConvertDayOfWeek(date.DayOfWeek) != day) return false;
+            if ( date.DayOfWeek  != day) return false;
             DateTime firstDay = new DateTime(date.Year, date.Month, 1); //生成当月第一天
-            int i = ConvertDayOfWeek(firstDay.DayOfWeek);
-            int firWeekDays = 7 - ConvertDayOfWeek(firstDay.DayOfWeek) + 1; //计算第一周剩余天数
+           
+            int firstweekday =  (int)firstDay.DayOfWeek+1 ;
+            int weekday = (int)day+1;
+            int firWeekDays = 8 - firstweekday; //计算第一周剩余天数
             bool ret = false;
-            if (i > day)
+            var weekAtMonth = week;
+            if (week == 0)
             {
-                if ((week - 1) * 7 + day + firWeekDays == date.Day)
+                weekAtMonth =(int)Math.Ceiling( (DateTime.DaysInMonth(date.Year, date.Month) + firstweekday) / 7.0);
+
+            }
+            if (firstweekday > weekday)
+            {
+                if ((weekAtMonth - 1) * 7 + weekday + firWeekDays == date.Day)
                 {
                     ret = true;
                 }
             }
             else
             {
-                if (day + firWeekDays + (week - 2) * 7 == date.Day)
+                if (weekday + firWeekDays + (weekAtMonth - 2) * 7 == date.Day)
                 {
                     ret = true;
                 }
@@ -813,7 +503,7 @@ namespace Library.Date
 
             return ret;
         }
-
+     
         #endregion
 
         #endregion
@@ -921,6 +611,15 @@ namespace Library.Date
         public DateTime Date
         {
             get { return _date; }
+
+        }    
+        /// <summary>
+        /// 取对应的公历日期
+        /// </summary>
+        [Category("公曆"), DisplayName("公曆星期")]
+        public DayOfWeek WeekDay
+        {
+            get { return _date.DayOfWeek; }
 
         }
         #region Constellation
@@ -1037,7 +736,7 @@ namespace Library.Date
         [Category("農曆"), DisplayName("農曆")]
         public virtual string ChineseDate
         {
-            get { return string.Format("{0}{1}", ChineseMonth, ChineseDay); }
+            get { return string.Format("{0}{1}{2}", this._cIsLeapMonth ? "闰" : string.Empty,ChineseMonth,  ChineseDay); }
         }
 
         #region ChineseDayString
@@ -1078,7 +777,7 @@ namespace Library.Date
         {
             get
             {
-                if (this._cMonth < 0 || this._cMonth > 12) throw new ChineseCalendarException("月份無效");
+                if (this._cMonth < 0 || this._cMonth > 12) throw new ChineseDateTimeException("月份無效");
                 return CalendarInfo.ChineseMonths[this._cMonth - 1];
             }
         }
