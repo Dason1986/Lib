@@ -1,63 +1,63 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByFill.cs" caret="36" fromTop="2" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByTile.cs" caret="2401" fromTop="68" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageOption.cs" caret="543" fromTop="24" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2764" fromTop="34" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:NeonImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ImageZoom.cs" caret="739" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ImageFlip.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:IlluminationImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:GreenImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:GaussianBlurImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="1930" fromTop="31" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:MosaicImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ContrastImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ColorGradationImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:BrightnessImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:BlueImage.cs" caret="0" fromTop="0" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:BlindsImage.cs" caret="0" fromTop="0" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:FogImage.cs" caret="671" fromTop="27" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageFactory.cs" caret="651" fromTop="14" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:WaterForm.cs" caret="2693" fromTop="26" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="689" fromTop="24" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByText.cs" caret="454" fromTop="0" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilder.cs" caret="170" fromTop="7" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByPixel.cs" caret="2380" fromTop="16" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:EffectsForm.cs" caret="1017" fromTop="29" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:RebelliousImage.cs" caret="0" fromTop="0" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="196" fromTop="10" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ImageFlip.cs" caret="201" fromTop="0" />
+    <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/d:HelperUtility/f:StreamHelper.cs" caret="5070" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LibException.cs" caret="105" fromTop="5" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:Timestamp.cs" caret="1989" fromTop="66" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:EffectsForm.cs" caret="1361" fromTop="20" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="676" fromTop="23" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/f:FormatConst.cs" caret="0" fromTop="0" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/f:IoC.cs" caret="1469" fromTop="17" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:SheetForm.Designer.cs" caret="1502" fromTop="35" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:DateForm.Designer.cs" caret="2505" fromTop="22" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:DateForm.cs" caret="429" fromTop="13" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:SheetForm.cs" caret="365" fromTop="16" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="42213" fromTop="2" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:GifImage.cs" caret="816" fromTop="5" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintOption.cs" caret="0" fromTop="0" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintException.cs" caret="0" fromTop="0" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintActionAttribute.cs" caret="0" fromTop="0" />
+    <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/d:HelperUtility/f:AttributeHelper.cs" caret="896" fromTop="22" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="4381" fromTop="27" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintBuilderHelper.cs" caret="297" fromTop="14" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="1146" fromTop="36" />
   </RecentFiles>
   <RecentEdits>
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByText.cs" caret="436" fromTop="9" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByText.cs" caret="4171" fromTop="13" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByText.cs" caret="126" fromTop="2" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByText.cs" caret="4357" fromTop="34" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageFactory.cs" caret="651" fromTop="14" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageOption.cs" caret="543" fromTop="24" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:WaterForm.cs" caret="2132" fromTop="13" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:WaterForm.cs" caret="2319" fromTop="17" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByText.cs" caret="650" fromTop="13" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByText.cs" caret="4169" fromTop="25" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="294" fromTop="13" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="836" fromTop="22" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="1282" fromTop="32" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="982" fromTop="22" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="1897" fromTop="34" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="1687" fromTop="37" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="463" fromTop="14" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="577" fromTop="19" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="674" fromTop="23" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="2435" fromTop="23" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:TwoValueImage.cs" caret="3343" fromTop="34" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="196" fromTop="10" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="196" fromTop="26" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="409" fromTop="17" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="1448" fromTop="42" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="196" fromTop="9" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="196" fromTop="2" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="2204" fromTop="42" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="990" fromTop="7" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Effects/f:ReliefImage.cs" caret="196" fromTop="0" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="19" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="19" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="11" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="19" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="10" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="15" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="36" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="27" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="42" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="11" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="19" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="34" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="19" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="38805" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="24481" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="18585" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="18585" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="18585" fromTop="38" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="18585" fromTop="27" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="11392" fromTop="22" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13" fromTop="0" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintBuilderHelper.cs" caret="292" fromTop="14" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="1252" fromTop="29" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="1168" fromTop="35" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="961" fromTop="38" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="434" fromTop="15" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="1144" fromTop="36" />
   </RecentEdits>
 </RecentFiles>

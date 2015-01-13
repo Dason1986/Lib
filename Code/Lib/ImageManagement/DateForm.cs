@@ -16,6 +16,7 @@ namespace ImageManagement
         {
             InitializeComponent();
             dateTimePicker1_ValueChanged(this,EventArgs.Empty);
+            grid.SelectedObject = new ChineseCalendar(new DateTime(2015,2,19));
         }
 
       
