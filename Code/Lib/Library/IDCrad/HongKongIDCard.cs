@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Library.IDCrad
 {
     /// <summary>
     /// 中華人民共和國香港特別行政區居民身份證
     /// </summary>
+     [Guid("BE8FEC7D-7DE9-46F1-A1FF-A2B257CAEDBC")]
     public class HongKongIDCard: IIDCard
     {
         /*
@@ -56,12 +58,14 @@ Z	持证人报称在香港出生
         public Guid CardTypeID { get { return Cardtype; } }
         public string CardTypeName { get { return Cardname; } }
         public int Version { get { return 2; } }
-        public string NewID()
-        {
-            throw new NotImplementedException();
-        }
+        public string IDNumber { get; private set; }
 
-        public bool Validate(string idnumber)
+        public HongKongIDCard(string idnumber)
+        {
+            Validate(idnumber);
+            IDNumber = idnumber;
+        }
+        public void Validate(string idnumber)
         {
             throw new NotImplementedException();
         }

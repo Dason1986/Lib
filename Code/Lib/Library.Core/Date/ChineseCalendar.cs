@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Library.Date
 {
@@ -9,12 +10,36 @@ namespace Library.Date
     /// </summary>
     public class ChineseDateTimeException : LibException
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="msg"></param>
-        public ChineseDateTimeException(string msg)
-            : base(msg)
+
+        public ChineseDateTimeException()
+        {
+        }
+        protected ChineseDateTimeException(string message, double resultCode)
+            : base(message, resultCode)
+        {
+
+        }
+
+        protected ChineseDateTimeException(string message, double resultCode, Exception inner)
+            : base(message, resultCode, inner)
+        {
+
+        }
+
+        public ChineseDateTimeException(string message)
+            : base(message)
+        {
+        }
+
+        public ChineseDateTimeException(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
+
+        protected ChineseDateTimeException(
+            SerializationInfo info,
+            StreamingContext context)
+            : base(info, context)
         {
         }
     }
@@ -333,7 +358,7 @@ namespace Library.Date
         /// </summary>
         /// <param name="year"></param>
         /// <returns></returns>
-        public static  int GetChineseYearDays(int year)
+        public static int GetChineseYearDays(int year)
         {
             int sumDay = 348;
             int i = 0x8000;
@@ -454,7 +479,7 @@ namespace Library.Date
 
         #region ConvertDayOfWeek
 
-     
+
 
         #endregion
 
@@ -473,17 +498,17 @@ namespace Library.Date
 
 
             if (date.Month != month) return false;
-            if ( date.DayOfWeek  != day) return false;
+            if (date.DayOfWeek != day) return false;
             DateTime firstDay = new DateTime(date.Year, date.Month, 1); //生成当月第一天
-           
-            int firstweekday =  (int)firstDay.DayOfWeek+1 ;
-            int weekday = (int)day+1;
+
+            int firstweekday = (int)firstDay.DayOfWeek + 1;
+            int weekday = (int)day + 1;
             int firWeekDays = 8 - firstweekday; //计算第一周剩余天数
             bool ret = false;
             var weekAtMonth = week;
             if (week == 0)
             {
-                weekAtMonth =(int)Math.Ceiling( (DateTime.DaysInMonth(date.Year, date.Month) + firstweekday) / 7.0);
+                weekAtMonth = (int)Math.Ceiling((DateTime.DaysInMonth(date.Year, date.Month) + firstweekday) / 7.0);
 
             }
             if (firstweekday > weekday)
@@ -503,7 +528,7 @@ namespace Library.Date
 
             return ret;
         }
-     
+
         #endregion
 
         #endregion
@@ -612,7 +637,7 @@ namespace Library.Date
         {
             get { return _date; }
 
-        }    
+        }
         /// <summary>
         /// 取对应的公历日期
         /// </summary>
@@ -736,7 +761,7 @@ namespace Library.Date
         [Category("農曆"), DisplayName("農曆")]
         public virtual string ChineseDate
         {
-            get { return string.Format("{0}{1}{2}", this._cIsLeapMonth ? "闰" : string.Empty,ChineseMonth,  ChineseDay); }
+            get { return string.Format("{0}{1}{2}", this._cIsLeapMonth ? "闰" : string.Empty, ChineseMonth, ChineseDay); }
         }
 
         #region ChineseDayString

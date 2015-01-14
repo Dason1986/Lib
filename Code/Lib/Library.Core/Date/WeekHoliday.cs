@@ -5,7 +5,7 @@ namespace Library.Date
     /// <summary>
     /// 
     /// </summary>
-    public struct WeekHoliday : IHoliday
+    public struct WeekHoliday : IHoliday, IFormattable
     {
         /// <summary>
         /// ÔÂ·Ý
@@ -77,6 +77,21 @@ namespace Library.Date
             get { throw new NotImplementedException(); }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public string ToString(string format)
+        {
+            return string.Format(HolidayFormat.FormatProvider, format, this);
+        }
 
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return HolidayFormat.FormatProvider.Format(format, this, formatProvider);
+
+        }
     }
 }

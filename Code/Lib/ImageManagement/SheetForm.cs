@@ -18,6 +18,7 @@ namespace ImageManagement
             listBox1.Items.Add("ImageManagement.WaterForm");
             listBox1.Items.Add("ImageManagement.EffectsForm");
             listBox1.Items.Add("ImageManagement.DateForm");
+            listBox1.Items.Add("ImageManagement.IDCardForm");
             
         }
 

@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
+using Library.Annotations;
+using Library.HelperUtility;
 
 namespace Library.IDCrad
 {
     /// <summary>
     /// 中華人民共和國大陆居民身份證
     /// </summary>
+    [Guid("98FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865")]
     public class ChineseIDCard : IIDCard
     {
 
@@ -49,21 +55,195 @@ namespace Library.IDCrad
 5、通过上面得知如果余数是3，就会在身份证的第18位数字上出现的是9。如果对应的数字是2，身份证的最后一位号码就是罗马数字x。
 例如：某男性的身份证号码为【53010219200508011x】， 我们看看这个身份证是不是合法的身份证。
 首先我们得出前17位的乘积和【(5*7)+(3*9)+(0*10)+(1*5)+(0*8)+(2*4)+(1*2)+(9*1)+(2*6)+(0*3)+(0*7)+(5*9)+(0*10)+(8*5)+(0*8)+(1*4)+(1*2)】是189，然后用189除以11得出的结果是189/11=17----2，也就是说其余数是2。最后通过对应规则就可以知道余数2对应的检验码是X。所以，可以判定这是一个正确的身份证号码。         
+      
+         * 
+     地址码     http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/ 
          */
+
+        private static readonly int[] CoefficientCodes = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
+        private static readonly IDictionary<int, string> DicCoefficientCodes = new Dictionary<int, string>
+        {
+            {0,"1"},{1,"0"},{2,"x"},{3,"9"},{4,"8"},{5,"7"},
+            {6,"6"},{7,"5"},{8,"4"},{9,"3"},{10,"2"},
+        };
+        private static readonly IDictionary<int, string> DicProvinceCodes = new Dictionary<int, string>
+        {
+            {11,"北京市"},{12,"天津市"},{13,"河北省"},{14,"山西省"},{15,"内蒙古自治区"},
+            {21,"辽宁省"},{22,"吉林省"},{23,"黑龙江省"},    
+            {31,"上海市"},{32,"江苏省"},{33,"浙江省"},{34,"安徽省"},{35,"福建省"},{36,"江西省"},{37,"山东省"},
+            {41,"河南省"},{42,"湖北省"},{43,"湖南省"},{44,"广东省"},{45,"广西壮族自治区"},{46,"海南省"},    
+            {50,"重庆市"},{51,"四川省"},{52,"贵州省"},{53,"云南省"},{54,"西藏自治区"},
+            {61,"陕西省"},{62,"甘肃省"},{63,"青海省"},{64,"宁夏回族自治区"},{65,"新疆维吾尔自治区"},
+            {7121,"台湾省"},{81,"香港特别行政区"},{82,"澳门特别行政区"},  
+        };
         private static readonly Guid Cardtype = Guid.Parse("98FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865");
         private const string Cardname = "中華人民共和國大陆居民身份證";
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型Guid")]
         public Guid CardTypeID { get { return Cardtype; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型名稱")]
         public string CardTypeName { get { return Cardname; } }
 
+        /// <summary>
+        /// 
+        /// </summary>
+         [Category("證件"), DisplayName("證件版本")]
         public int Version { get { return 2; } }
-        public string NewID()
+        /// <summary>
+        /// 
+        /// </summary>
+         [Category("證件信息"), DisplayName("證件號碼")]
+        public string IDNumber { get; private set; }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idnumber"></param>
+        public ChineseIDCard(string idnumber)
         {
-            throw new NotImplementedException();
+            Validate(idnumber);
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idnumber"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void Validate([NotNull] string idnumber)
+        {
+            if (string.IsNullOrEmpty(idnumber)) throw new IDCardException("證件號碼為空", new ArgumentNullException("idnumber"));
+            if (idnumber.Length != 18) throw new IDCardException("證件號碼長度不符合");
+            if ((!Regex.IsMatch(idnumber, @"^\d{18}$|^\d{17}(\d|X|x)$", RegexOptions.IgnoreCase))) throw new IDCardException("證件號碼格式不符合");
+            IDNumber = idnumber;
+            ValidateProvince();
+            ValidateCity();
+            ValidateCounty();
+            ValidateBirthday();
+            ValidateSix();
+            ValidateByChecksumDigit();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("省份值")]
+        public int ProvinceCode { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("省名稱")]
+        public string ProvinceName { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("城市值")]
+        public int CityCode { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("縣區值")]
+        public int CountyCode { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("校驗碼")]
+        public string ChecksumDigitCode { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("出生日期值")]
+        public string BirthdayCode { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("出生日期")]
+        public DateTime Birthday { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("性別值")]
+        public int SixCode { get; private set; }
+        private void ValidateProvince()
+        {
+            var code = StringUtility.TryCast<int>(IDNumber.Substring(0, 2));
+            if (code.HasError) throw new IDCardException("轉換省份值出錯", code.Error);
+            if (!DicProvinceCodes.ContainsKey(code.Value)) throw new IDCardException("不存在對應省份");
+            ProvinceName = DicProvinceCodes[code.Value];
+            ProvinceCode = code.Value;
         }
 
-        public bool Validate(string idnumber)
+
+        private void ValidateCity()
         {
-            throw new NotImplementedException();
+            var code = StringUtility.TryCast<int>(IDNumber.Substring(2, 2));
+            if (code.HasError) throw new IDCardException("轉換城市值出錯", code.Error);
+            CityCode = code;
+
         }
+
+        private void ValidateCounty()
+        {
+            var code = StringUtility.TryCast<int>(IDNumber.Substring(4, 2));
+            if (code.HasError) throw new IDCardException("轉換縣區值出錯", code.Error);
+            CountyCode = code;
+
+        }
+
+
+        private void ValidateBirthday()
+        {
+            var code = (IDNumber.Substring(6, 8));
+            var yearcode = StringUtility.TryCast<int>(code.Substring(0, 4));
+            var monthcode = StringUtility.TryCast<int>(code.Substring(4, 2));
+            var daycode = StringUtility.TryCast<int>(code.Substring(6, 2));
+            if (yearcode.HasError | monthcode.HasError | daycode.HasError) throw new IDCardException("轉換出生日期值出錯", yearcode.Error);
+            try
+            {
+                Birthday = new DateTime(yearcode, monthcode, daycode);
+            }
+            catch (Exception ex)
+            {
+
+                throw new IDCardException("轉換出生日期值出錯", ex);
+            }
+
+            BirthdayCode = code;
+        }
+
+
+
+
+        private void ValidateSix()
+        {
+            var code = StringUtility.TryCast<int>(IDNumber.Substring(16, 1));
+            if (code.HasError) throw new IDCardException("轉換性別值出錯", code.Error);
+            SixCode = code.Value;
+            Sex = SixCode % 2 == 1 ? SexEnum.Man : SexEnum.Woman;
+        }
+
+        public SexEnum Sex { get; set; }
+
+
+        private void ValidateByChecksumDigit()
+        {
+            var digitCode = IDNumber.Substring(17, 1);
+            int sum = 0;
+            for (int i = 0; i < 17; i++)
+            {
+                var num = Convert.ToInt32(IDNumber[i].ToString());
+                sum += CoefficientCodes[i] * num;
+            }
+            var remainder = sum % 11;
+            if (!DicCoefficientCodes.ContainsKey(remainder)) throw new IDCardException();
+            if (!string.Equals(digitCode, DicCoefficientCodes[remainder], StringComparison.OrdinalIgnoreCase)) throw new IDCardException();
+            ChecksumDigitCode = digitCode;
+        }
+
+
     }
 }

@@ -27,17 +27,17 @@ namespace Library
         string CardTypeName { get; }
 
         /// <summary>
-        /// 新身份證
+        /// 身份證
         /// </summary>
         /// <returns></returns>
-        string NewID();
+        string IDNumber { get; }
 
         /// <summary>
         /// 驗證身份證號碼
         /// </summary>
         /// <param name="idnumber"></param>
         /// <returns></returns>
-        bool Validate(string idnumber);
+        void Validate(string idnumber);
     }
 
     /// <summary>

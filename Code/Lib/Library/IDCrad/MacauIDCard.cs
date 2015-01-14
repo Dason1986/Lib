@@ -1,10 +1,11 @@
 ﻿using System;
-
+using System.Runtime.InteropServices;
 namespace Library.IDCrad
 {
     /// <summary>
     /// 中華人民共和國澳門特別行政區居民身份證
     /// </summary>
+    [Guid("4B9AF4D5-C837-4087-B031-4BCB9B94A3F2")]
     public class MacauIDCard : IIDCard
     {
         /*
@@ -27,12 +28,14 @@ F持证人为女性（Feminino）智能身份证时新增 [4]
         public Guid CardTypeID { get { return Cardtype; } }
         public string CardTypeName { get { return Cardname; } }
         public int Version { get { return 2; } }
-        public string NewID()
-        {
-            throw new NotImplementedException();
-        }
+        public string IDNumber { get; private set; }
 
-        public bool Validate(string idnumber)
+        public MacauIDCard(string idnumber)
+        {
+            Validate(idnumber);
+            IDNumber = idnumber;
+        }
+        public void Validate(string idnumber)
         {
             throw new NotImplementedException();
         }

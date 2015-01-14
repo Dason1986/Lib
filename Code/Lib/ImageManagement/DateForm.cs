@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -23,7 +24,8 @@ namespace ImageManagement
             listBox1.DataSource = list;
             listBox1.DisplayMember = "Key";
             listBox1.ValueMember = "Value";
-
+            comboBox1.SelectedIndex = 0;
+            listBox1.SelectedIndex = 1;
         }
 
 
@@ -39,6 +41,7 @@ namespace ImageManagement
             if (selectedValue == null) return;
             var holiday = selectedValue;
             dateTimePicker1.Value = holiday.ConvertDateTime(dateTimePicker2.Value.Year);
+            label1.Text = selectedValue.ToString(comboBox1.SelectedItem.ToString(), checkBox1.Checked ? CultureInfo.GetCultureInfo("zh-CN") : CultureInfo.GetCultureInfo("en-US"));
         }
     }
 }

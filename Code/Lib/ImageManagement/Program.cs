@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms; 
+using System.Globalization;
+using System.Windows.Forms;
+using Library.Date;
 
 namespace ImageManagement
 {
@@ -20,11 +16,10 @@ namespace ImageManagement
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-       
+          
             Application.Run(new SheetForm());
         }
-
-    
+         
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var ex = e.ExceptionObject as Exception;

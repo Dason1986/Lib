@@ -82,6 +82,7 @@
     <Compile Include="HelperUtility\StreamHelper.cs" />
     <Compile Include="IDCrad\ChineseIDCard.cs" />
     <Compile Include="IDCrad\HongKongIDCard.cs" />
+    <Compile Include="IDCrad\IDCardException.cs" />
     <Compile Include="IDCrad\MacauIDCard.cs" />
     <Compile Include="IDCrad\TaiwanIDCard.cs" />
     <Compile Include="PermutationAndCombination.cs" />
@@ -105,7 +106,9 @@
   <ItemGroup>
     <None Include="Library.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="IDCrad\gbt2260.Db.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

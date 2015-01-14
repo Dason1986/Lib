@@ -5,7 +5,7 @@ namespace Library.Date
     /// <summary>
     /// 
     /// </summary>
-    public interface IHoliday
+    public interface IHoliday : IFormattable
     {
         /// <summary>
         /// ÔÂ

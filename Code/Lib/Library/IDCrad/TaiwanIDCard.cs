@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Library.IDCrad
 {
     /// <summary>
     /// 中華人民共和國臺灣居民身份證
     /// </summary>
+     [Guid("385F62C2-2255-4886-A81E-01A5C4355DAB")]
     public class TaiwanIDCard: IIDCard
     {
         /*
@@ -72,12 +74,14 @@ n1\times 1+n2\times 9+n3\times 8 +n4\times 7+n5\times 6 +n6\times 5+n7\times 4 +
         public Guid CardTypeID { get { return Cardtype; } }
         public string CardTypeName { get { return Cardname; } }
         public int Version { get { return 6; } }
-        public string NewID()
-        {
-            throw new NotImplementedException();
-        }
+        public string IDNumber { get; private set; }
 
-        public bool Validate(string idnumber)
+        public TaiwanIDCard(string idnumber)
+        {
+            Validate(idnumber);
+            IDNumber = idnumber;
+        }
+        public void Validate(string idnumber)
         {
             throw new NotImplementedException();
         }

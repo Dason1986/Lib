@@ -1,5 +1,0 @@
-/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.Core/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Bin/Library.Core.dll.mdb
-/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Bin/Library.Core.dll
-/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.Core/obj/Debug/Library.Core.dll
-/Users/dason/Documents/Code/SVN/Lib/Lib/Code/Lib/Library.Core/obj/Debug/Library.Core.dll.mdb

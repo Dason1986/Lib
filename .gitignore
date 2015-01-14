@@ -44,3 +44,14 @@ Code/Lib/Bin/Library.Core.XML
 Code/Lib/Bin/Library.dll
 Code/Lib/Library.Win.Controls/obj/Release/Library.Win.Controls.csproj.GenerateResource.Cache
 Code/Lib/TestPj/obj/Release/TestPj.exe
+/Code/Lib/Library.Win/obj/Debug
+/Code/Lib/Library.Win.Controls/obj/Debug
+/Code/Lib/Library.Web/obj
+/Code/Lib/Library.Draw/obj/Debug
+/Code/Lib/TestPj/obj/Debug
+/Code/Lib/Library.Core/obj/Debug
+/Code/Lib/Library/obj/Debug
+/Code/Lib/ImageManagement/obj
+/Code/Lib/Bin
+/Code/Lib/Bin
+/Code/Lib/Bin/Library.dll

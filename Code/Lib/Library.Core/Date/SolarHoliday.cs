@@ -5,7 +5,7 @@ namespace Library.Date
     /// <summary>
     /// 
     /// </summary>
-    public struct SolarHoliday : IHoliday
+    public struct SolarHoliday : IHoliday, IFormattable
     {
         public int Month { get; private set; }
         public int Day { get; private set; }
@@ -32,6 +32,22 @@ namespace Library.Date
         public DateTime ConvertDateTime(int year)
         {
             return new DateTime(year, Month, Day);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public string ToString(string format)
+        {
+            return string.Format(HolidayFormat.FormatProvider, format, this);
+        }
+
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return HolidayFormat.FormatProvider.Format(format, this, formatProvider);
+
         }
     }
 }
