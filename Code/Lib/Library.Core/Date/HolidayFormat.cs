@@ -72,134 +72,267 @@ namespace Library.Date
         public static readonly HolidayFormat FormatProvider = new HolidayFormat();
         public object GetFormat(Type formatType)
         {
-            if (formatType == typeof(ICustomFormatter))
-                return this;
-            else
-                return null;
+            return formatType == typeof(ICustomFormatter) ? this : null;
         }
-      
+
+        private const string NStr1 = "日一二三四五六七八九";
+        private const string NStr2 = "初十廿卅";
         private static readonly string[] Weeks = { "最後一個", "第一個", "第二個", "第三個", "第四個" };
-        private static readonly string[] Weeksshort = { "{0} last {1}", "the first {1} of {0}", "the sec {1} of {0}", "the 3rd {1} of {0}", "the fourth {1} of {0}", };//Tuesday July first
+        private static readonly string[] Weeksshort = { "{0} last {1}", "the first {1} of {0}", "the sec {1} of {0}", "the 3rd {1} of {0}", "the fourth {1} of {0}" };//Tuesday July first
         private static readonly string[] Weekslong = { "the last {1} of {0}", "the first {1} of {0}", "the second {1} of {0}", "the third {1} of {0}", "the fourth  {1} of {0}" };
         public string Format(string format, object arg, IFormatProvider formatProvider)
         {
             if (arg is IHoliday == false) throw new ChineseDateTimeException("不支持類型格式化輸了", new FormatException());
             IHoliday holiday = arg as IHoliday;
-            var result = format;
             CultureInfo cul = formatProvider as CultureInfo ?? CultureInfo.CurrentCulture;
-            
-            
-            var fomart = cul.DateTimeFormat;
 
+
+            HolidayToString holidayToString;
             switch (cul.Name.Substring(0, 2))
             {
                 case "en":
-                    #region en
-                    if (format.Length == 1)
-                    {
-                        if (holiday is WeekHoliday)
-                        {
-                            WeekHoliday week = (WeekHoliday)holiday;
-                            switch (format[0])
-                            {
-                                case 'd':
-                                    {
-                                        result = string.Format(Weeksshort[week.WeekAtMonth], fomart.AbbreviatedMonthNames[week.Month - 1], fomart.AbbreviatedDayNames[(int)week.WeekDay]); break;
-                                        break;
-                                    }
-
-                                case 'D':
-                                    {
-                                        result = string.Format(Weekslong[week.WeekAtMonth], fomart.MonthNames[week.Month - 1], fomart.DayNames[(int)week.WeekDay]); break;
-                                        break;
-                                    }
-                                case 'f':
-                                    {
-                                        result = string.Format(Weeksshort[week.WeekAtMonth], fomart.AbbreviatedMonthNames[week.Month - 1], fomart.AbbreviatedDayNames[(int)week.WeekDay]);
-                                        result = string.Format("{0},{1}", result, week.HolidayName);
-                                        
-                                        break;
-
-
-                                    }
-                                case 'F':
-                                    {
-                                        result = string.Format(Weekslong[week.WeekAtMonth], fomart.MonthNames[week.Month - 1], fomart.DayNames[(int)week.WeekDay]);
-                                        result = string.Format("{0},{1}", result, week.HolidayName);
-                                        break;
-                                      
-                                    }
-                                //
-                            }
-                        }
-                        else
-                        {
-                            switch (format[0])
-                            {
-                                case 'd': result = string.Format("{0:d2}/{1:d2}", holiday.Month, holiday.Day); break;
-                                case 'D': result = string.Format("{0} {1}", fomart.AbbreviatedMonthNames[holiday.Month - 1], holiday.Day); break;
-                                case 'f': result = string.Format("{0:d2}/{1:d2},{2}", holiday.Month, holiday.Day, holiday.HolidayName); break;
-                                case 'F': result = string.Format("{0} {1},{2}", fomart.MonthNames[holiday.Month - 1], holiday.Day, holiday.HolidayName); break;
-                            }
-                        }
-
-                    }
-                    #endregion
+                    holidayToString = new En(format, holiday, cul);
                     break;
                 case "zh":
                     {
-                        #region zh-CN
-                        if (format.Length == 1)
-                        {
-                            if (holiday is WeekHoliday)
-                            {
-                                WeekHoliday week = (WeekHoliday)holiday;
-                                switch (format[0])
-                                {
-                                    case 'd':
-                                    {
-                                        var tmpweek = week.WeekAtMonth == 0 ? "最後1個" : string.Format("第{0}個", week.WeekAtMonth);
-                                        result = string.Format("{0}月的{1}{2}", week.Month, tmpweek, fomart.AbbreviatedDayNames[(int)week.WeekDay]); break;
-                                        break;
-                                    }
+                        holidayToString = new Cn(format, holiday, cul);
 
-                                    case 'D':
-                                    {
-                                        result = string.Format("{0}的{1}{2}", fomart.AbbreviatedMonthNames[week.Month - 1], Weeks[week.WeekAtMonth], fomart.DayNames[(int)week.WeekDay]); break;
-                                        break;
-                                    }
-                                    case 'f':
-                                    {
-                                        var tmpweek = week.WeekAtMonth == 0 ? "最後1個" : string.Format("第{0}個", week.WeekAtMonth);
-                                        result = string.Format("{0}月的{1}{2},{3}", week.Month, tmpweek, fomart.AbbreviatedDayNames[(int)week.WeekDay], week.HolidayName); break;
-                                        
-                                    }
-                                    case 'F':
-                                    {
-                                        result = string.Format("{0}的{1}{2},{3}", fomart.AbbreviatedMonthNames[week.Month - 1], Weeks[week.WeekAtMonth], fomart.DayNames[(int)week.WeekDay], week.HolidayName); break;
-                                    }
-                                    //
-                                }
-                            }
-                            else
-                            {
-                                switch (format[0])
-                                {
-                                    case 'd': result = string.Format("{0:d2}-{1:d2}", holiday.Month, holiday.Day); break;
-                                    case 'D': result = string.Format("{0}月{1}日", holiday.Month, holiday.Day); break;
-                                    case 'f': result = string.Format("{0:d2}-{1:d2},{2}", holiday.Month, holiday.Day, holiday.HolidayName); break;
-                                    case 'F': result = string.Format("{0}月{1}日,{2}", holiday.Month, holiday.Day, holiday.HolidayName); break;
-                                }
-                            }
-
-                        }
-                        #endregion
                     }
+                    break;
+                default:
+                    holidayToString = new En(format, holiday, cul);
                     break;
             }
 
 
-            return result;
+            return holidayToString.ToFormat();
         }
+
+        private abstract class HolidayToString
+        {
+            protected readonly string FormatStr;
+            protected readonly IHoliday Holiday;
+            protected readonly CultureInfo Cul;
+
+            protected HolidayToString(string format, object obj, CultureInfo cul)
+            {
+                FormatStr = format;
+                Holiday = obj as IHoliday;
+                Cul = cul;
+            }
+
+            public virtual string ToFormat()
+            {
+                if (FormatStr.Length != 1) return FormatStr;
+
+                if (Holiday is WeekHoliday)
+                {
+                    return WeekHoliday();
+                }
+                if (Holiday is LunarHoliday)
+                {
+                    return LunarHoliday();
+                }
+                return SolarHoliday();
+
+            }
+            public abstract string WeekHoliday();
+
+            public abstract string LunarHoliday();
+
+            public abstract string SolarHoliday();
+        }
+
+        class Cn : HolidayToString
+        {
+            public Cn(string format, object obj, CultureInfo cul)
+                : base(format, obj, cul)
+            {
+            }
+
+         
+            public override string WeekHoliday()
+            {
+                var formatDateTime = Cul.DateTimeFormat;
+                WeekHoliday week = (WeekHoliday)Holiday;
+                var result = string.Empty;
+                switch (FormatStr[0])
+                {
+                    case 'd':
+                        {
+                            var tmpweek = week.WeekAtMonth == 0 ? "最後1個" : string.Format("第{0}個", week.WeekAtMonth);
+                            result = string.Format("{0}月的{1}{2}", week.Month, tmpweek,
+                                formatDateTime.AbbreviatedDayNames[(int)week.WeekDay]);
+
+                            break;
+                        }
+
+                    case 'D':
+                        {
+                            result = string.Format("{0}的{1}{2}", formatDateTime.AbbreviatedMonthNames[week.Month - 1],
+                                Weeks[week.WeekAtMonth], formatDateTime.DayNames[(int)week.WeekDay]);
+
+                            break;
+                        }
+                    case 'f':
+                        {
+                            var tmpweek = week.WeekAtMonth == 0 ? "最後1個" : string.Format("第{0}個", week.WeekAtMonth);
+                            result = string.Format("{0}月的{1}{2},{3}", week.Month, tmpweek,
+                                formatDateTime.AbbreviatedDayNames[(int)week.WeekDay], week.HolidayName);
+                            break;
+                        }
+                    case 'F':
+                        {
+                            result = string.Format("{0}的{1}{2},{3}", formatDateTime.AbbreviatedMonthNames[week.Month - 1],
+                                Weeks[week.WeekAtMonth], formatDateTime.DayNames[(int)week.WeekDay], week.HolidayName);
+                            break;
+                        }
+                }
+                return result;
+            }
+
+            public override string LunarHoliday()
+            {
+                LunarHoliday lunar = (LunarHoliday)Holiday;
+                string daystr, result = string.Empty;
+                switch (lunar.Day)
+                {
+                    case 0:
+                        daystr = "";
+                        break;
+                    case 10:
+                        daystr = "初十";
+                        break;
+                    case 20:
+                        daystr = "二十";
+                        break;
+                    case 30:
+                        daystr = "三十";
+                        break;
+                    default:
+                        daystr = string.Format("{0}{1}", NStr2[lunar.Day / 10], NStr1[lunar.Day % 10]);
+                        break;
+                }
+                switch (FormatStr[0])
+                {
+                    case 'd':
+                        result = string.Format("{0:d2}/{1:d2}", Holiday.Month, Holiday.Day);
+                        break;
+                    case 'D':
+                        result = string.Format("{0}{1}", CalendarInfo.ChineseMonths[Holiday.Month - 1], daystr);
+                        break;
+                    case 'f':
+                        result = string.Format("{0:d2}/{1:d2},{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
+                        break;
+                    case 'F':
+                        result = string.Format("{0}{1},{2}", CalendarInfo.ChineseMonths[Holiday.Month - 1], daystr,
+                            Holiday.HolidayName);
+                        break;
+                }
+                return result;
+            }
+
+            public override string SolarHoliday()
+            {
+                var result = string.Empty;
+                switch (FormatStr[0])
+                {
+                    case 'd':
+                        result = string.Format("{0:d2}-{1:d2}", Holiday.Month, Holiday.Day);
+                        break;
+                    case 'D':
+                        result = string.Format("{0}月{1}日", Holiday.Month, Holiday.Day);
+                        break;
+                    case 'f':
+                        result = string.Format("{0:d2}-{1:d2},{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
+                        break;
+                    case 'F':
+                        result = string.Format("{0}月{1}日,{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
+                        break;
+                }
+                return result;
+            }
+        }
+
+        class En : HolidayToString
+        {
+            public En(string format, object obj, CultureInfo cul)
+                : base(format, obj, cul)
+            {
+            }
+
+      
+            public override string WeekHoliday()
+            {
+                string result = string.Empty;
+                var formatDateTime = Cul.DateTimeFormat;
+                WeekHoliday week = (WeekHoliday)Holiday;
+                switch (FormatStr[0])
+                {
+                    case 'd':
+                        {
+                            result = string.Format(Weeksshort[week.WeekAtMonth], formatDateTime.AbbreviatedMonthNames[week.Month - 1],
+                                formatDateTime.AbbreviatedDayNames[(int)week.WeekDay]);
+                            break;
+                        }
+
+                    case 'D':
+                        {
+                            result = string.Format(Weekslong[week.WeekAtMonth], formatDateTime.MonthNames[week.Month - 1],
+                                formatDateTime.DayNames[(int)week.WeekDay]);
+                            break;
+
+                        }
+                    case 'f':
+                        {
+                            result = string.Format(Weeksshort[week.WeekAtMonth], formatDateTime.AbbreviatedMonthNames[week.Month - 1],
+                                formatDateTime.AbbreviatedDayNames[(int)week.WeekDay]);
+                            result = string.Format("{0},{1}", result, week.HolidayName);
+
+                            break;
+                        }
+                    case 'F':
+                        {
+                            result = string.Format(Weekslong[week.WeekAtMonth], formatDateTime.MonthNames[week.Month - 1],
+                                formatDateTime.DayNames[(int)week.WeekDay]);
+                            result = string.Format("{0},{1}", result, week.HolidayName);
+                            break;
+                        }
+                    //
+                }
+                return result;
+            }
+
+            public override string LunarHoliday()
+            {
+                return SolarHoliday();
+            }
+
+            public override string SolarHoliday()
+            {
+                var result = FormatStr;
+                var formatDateTime = Cul.DateTimeFormat;
+                switch (FormatStr[0])
+                {
+                    case 'd':
+                        result = string.Format("{0:d2}/{1:d2}", Holiday.Month, Holiday.Day);
+                        break;
+                    case 'D':
+                        result = string.Format("{0} {1}", formatDateTime.AbbreviatedMonthNames[Holiday.Month - 1], Holiday.Day);
+                        break;
+                    case 'f':
+                        result = string.Format("{0:d2}/{1:d2},{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
+                        break;
+                    case 'F':
+                        result = string.Format("{0} {1},{2}", formatDateTime.MonthNames[Holiday.Month - 1], Holiday.Day,
+                            Holiday.HolidayName);
+                        break;
+                }
+                return result;
+            }
+        }
+
+
+
     }
 }

@@ -731,6 +731,15 @@ namespace Library.Date
         #endregion
 
         #region 農曆日期
+
+        /// <summary>
+        /// 當前日期
+        /// </summary>
+        [Category("農曆"), DisplayName("當前日期")]
+        public static ChineseDateTime Now
+        {
+            get { return new ChineseDateTime(DateTime.Now); }
+        }
         #region IsChineseLeapMonth
         /// <summary>
         /// 是否闰月
@@ -831,19 +840,19 @@ namespace Library.Date
         [Category("二十四節氣"), DisplayName("當前節氣")]
         public virtual string ChineseTwentyFourDay { get; private set; }
 
-
+        static readonly DateTime BaseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
         private void SetChineseTwentyFourDay()
         {
-            DateTime baseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
+
             string tempStr = string.Empty;
 
-            int y = this._date.Year;
+            double y = 525948.76 * (this._date.Year - 1900);
 
             for (int i = 1; i <= 24; i++)
             {
-                double num = 525948.76 * (y - 1900) + CalendarInfo.STermInfo[i - 1];
+                double num = y + CalendarInfo.STermInfo[i - 1];
 
-                DateTime newDate = baseDateAndTime.AddMinutes(num);
+                DateTime newDate = BaseDateAndTime.AddMinutes(num);
                 if (newDate.DayOfYear != _date.DayOfYear) continue;
 
 
@@ -856,16 +865,16 @@ namespace Library.Date
 
         private void SetChineseTwentyFourPrevDay()
         {
-            DateTime baseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
+
             string tempStr = string.Empty;
 
-            int y = this._date.Year;
+            double y = 525948.76 * (this._date.Year - 1900);
 
             for (int i = 24; i >= 1; i--)
             {
-                double num = 525948.76 * (y - 1900) + CalendarInfo.STermInfo[i - 1];
+                double num = y + CalendarInfo.STermInfo[i - 1];
 
-                DateTime newDate = baseDateAndTime.AddMinutes(num);
+                DateTime newDate = BaseDateAndTime.AddMinutes(num);
 
                 if (newDate.DayOfYear >= _date.DayOfYear) continue;
                 tempStr = string.Format("{0}[{1}]", CalendarInfo.LunarHolidayName[i - 1], newDate.ToString("yyyy-MM-dd"));
@@ -882,16 +891,16 @@ namespace Library.Date
 
         private void SetChineseTwentyFourNextDay()
         {
-            DateTime baseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
+
             string tempStr = string.Empty;
 
-            int y = this._date.Year;
+            double y = 525948.76 * (this._date.Year - 1900);
 
             for (int i = 1; i <= 24; i++)
             {
-                double num = 525948.76 * (y - 1900) + CalendarInfo.STermInfo[i - 1];
+                double num = y + CalendarInfo.STermInfo[i - 1];
 
-                DateTime newDate = baseDateAndTime.AddMinutes(num);
+                DateTime newDate = BaseDateAndTime.AddMinutes(num);
 
                 if (newDate.DayOfYear <= _date.DayOfYear) continue;
                 tempStr = string.Format("{0}[{1}]", CalendarInfo.LunarHolidayName[i - 1], newDate.ToString("yyyy-MM-dd"));
@@ -1046,6 +1055,6 @@ namespace Library.Date
         #endregion
         #endregion
 
-
+       
     }
 }

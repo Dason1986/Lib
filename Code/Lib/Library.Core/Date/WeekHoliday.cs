@@ -5,7 +5,7 @@ namespace Library.Date
     /// <summary>
     /// 
     /// </summary>
-    public struct WeekHoliday : IHoliday, IFormattable
+    public struct WeekHoliday : IHoliday, IFormattable, IComparable, IComparable<WeekHoliday>, IEquatable<WeekHoliday>
     {
         /// <summary>
         /// ÔÂ·Ý
@@ -93,5 +93,116 @@ namespace Library.Date
             return HolidayFormat.FormatProvider.Format(format, this, formatProvider);
 
         }
+
+        #region operator
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator <(WeekHoliday t1, WeekHoliday t2)
+        {
+
+            return t1.Month * 100 + t1.WeekAtMonth * 7 + t1.WeekDay < t2.Month * 100 + t2.WeekAtMonth * 7 + t2.WeekDay;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator <=(WeekHoliday t1, WeekHoliday t2)
+        {
+            return t1.Month * 100 + t1.WeekAtMonth * 7 + t1.WeekDay <= t2.Month * 100 + t2.WeekAtMonth * 7 + t2.WeekDay;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator ==(WeekHoliday t1, WeekHoliday t2)
+        {
+            return t1.WeekAtMonth == t2.WeekAtMonth && t1.Month == t2.Month && t1.WeekDay == t2.WeekDay;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator !=(WeekHoliday t1, WeekHoliday t2)
+        {
+            return t1.WeekAtMonth != t2.WeekAtMonth || t1.Month != t2.Month || t1.WeekDay != t2.WeekDay;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator >(WeekHoliday t1, WeekHoliday t2)
+        {
+            return t1.Month * 100 + t1.WeekAtMonth * 7 + t1.WeekDay > t2.Month * 100 + t2.WeekAtMonth * 7 + t2.WeekDay;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator >=(WeekHoliday t1, WeekHoliday t2)
+        {
+            return t1.Month * 100 + t1.WeekAtMonth * 7 + t1.WeekDay >= t2.Month * 100 + t2.WeekAtMonth * 7 + t2.WeekDay;
+        }
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+            if (obj is WeekHoliday == false) throw new ChineseDateTimeException();
+            return CompareTo((WeekHoliday)obj);
+        }
+
+        public int CompareTo(WeekHoliday other)
+        {
+            var x = this.Month * 100 + this.WeekAtMonth * 7 + this.WeekDay;
+            var y = other.Month * 100 + other.WeekAtMonth * 7 + other.WeekDay;
+            if (x < y) return -1;
+            if (x > y) return 1;
+            return 0;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        public int CompareTo(IHoliday other,int year)
+        {
+            if (other is WeekHoliday) return CompareTo((WeekHoliday)other);
+            var x = this.ConvertDateTime(year);
+            var y = other.ConvertDateTime(year);
+            return y.CompareTo(y);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool Equals(WeekHoliday t1, WeekHoliday t2)
+        {
+            return t1.Equals(t2);
+        }
+        public bool Equals(WeekHoliday other)
+        {
+            return CompareTo(other) == 0;
+        }
+        #endregion
     }
 }
