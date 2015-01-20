@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Library.IDCrad
@@ -55,17 +56,34 @@ Z	持证人报称在香港出生
 
         private static readonly Guid Cardtype = Guid.Parse("BE8FEC7D-7DE9-46F1-A1FF-A2B257CAEDBC");
         private const string Cardname = "中華人民共和國香港特別行政區居民身份證";
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型Guid")]
         public Guid CardTypeID { get { return Cardtype; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型名稱")]
         public string CardTypeName { get { return Cardname; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件版本")]
         public int Version { get { return 2; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("證件號碼")]
         public string IDNumber { get; private set; }
 
         public HongKongIDCard(string idnumber)
         {
-            Validate(idnumber);
             IDNumber = idnumber;
+            Validate();
         }
-        public void Validate(string idnumber)
+        public void Validate()
         {
             throw new NotImplementedException();
         }

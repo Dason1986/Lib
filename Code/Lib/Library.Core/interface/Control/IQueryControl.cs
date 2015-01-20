@@ -35,5 +35,10 @@ namespace Library.Controls
         /// 
         /// </summary>
         string DisplayMember { get; set; }
+
+        /// <summary>
+        /// ßx“ñÖµ
+        /// </summary>
+        object SelectedValue { get; set; }
     }
 }

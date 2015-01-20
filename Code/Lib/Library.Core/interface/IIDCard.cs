@@ -35,28 +35,34 @@ namespace Library
         /// <summary>
         /// 驗證身份證號碼
         /// </summary>
-        /// <param name="idnumber"></param>
         /// <returns></returns>
-        void Validate(string idnumber);
+        void Validate();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IIDCardProvider
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IIDCard CreateNew();
+    }
     /// <summary>
     /// 
     /// </summary>
     public enum SexEnum
     {
         /// <summary>
-        /// 男
-        /// </summary>
-        Man,
-        /// <summary>
         /// 女
         /// </summary>
         Woman,
         /// <summary>
-        /// 未知
+        /// 男
         /// </summary>
-        Secrecy
+        Man,
     }
 
 

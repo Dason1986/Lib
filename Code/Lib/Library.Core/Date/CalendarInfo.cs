@@ -45,14 +45,20 @@ namespace Library.Date
         /// <summary>
         /// 二十四節氣
         /// </summary>
-        public static readonly string[] LunarHolidayName = 
-        { //(节) (气)    (节)    (气)
-            "小寒", "大寒", "立春", "雨水", 
-            "惊蛰", "春分", "清明", "谷雨", 
-            "立夏", "小满", "芒种", "夏至", 
-            "小暑", "大暑", "立秋", "处暑", 
-            "白露", "秋分", "寒露", "霜降", 
-            "立冬", "小雪", "大雪", "冬至"
+        public static readonly TheSolarTermsHoliday[] TheSolarTermsHolidays = 
+        {    //(节) (气)    (节)    (气)
+            //"小寒", "大寒", "立春", "雨水", 
+            TheSolarTermsHoliday.SlightCold,             TheSolarTermsHoliday.GreatCold,          TheSolarTermsHoliday.TheBeginningOfSpring, TheSolarTermsHoliday.RainWater,
+            //"惊蛰", "春分", "清明", "谷雨", 
+            TheSolarTermsHoliday.TheWakingOfInsects,     TheSolarTermsHoliday.TheSpringEquinox,   TheSolarTermsHoliday.PureBrightness,       TheSolarTermsHoliday.GrainRain,
+            //"立夏", "小满", "芒种", "夏至", 
+             TheSolarTermsHoliday.TheBeginningOfSummer,  TheSolarTermsHoliday.GrainFull,          TheSolarTermsHoliday.GraininEar,           TheSolarTermsHoliday.TheSummerSolstice,
+            //"小暑", "大暑", "立秋", "处暑", 
+            TheSolarTermsHoliday.SlightHeat,             TheSolarTermsHoliday.GreatHeat,          TheSolarTermsHoliday.TheBeginningOfAutumn, TheSolarTermsHoliday.TheLimitOfHeat,
+            //"白露", "秋分", "寒露", "霜降", 
+            TheSolarTermsHoliday.WhiteDew,               TheSolarTermsHoliday.TheAutumnalEquinox, TheSolarTermsHoliday.ColdDew,              TheSolarTermsHoliday.FrostsDescent,
+            //"立冬", "小雪", "大雪", "冬至"
+            TheSolarTermsHoliday.TheBeginningOfWinter,   TheSolarTermsHoliday.SlightSnow,         TheSolarTermsHoliday.GreatSnow,            TheSolarTermsHoliday.TheWinterSolstice
         };
         #endregion
 

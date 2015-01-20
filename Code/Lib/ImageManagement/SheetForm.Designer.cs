@@ -1,4 +1,4 @@
-﻿namespace ImageManagement
+﻿namespace TestWinfrom
 {
     partial class SheetForm
     {

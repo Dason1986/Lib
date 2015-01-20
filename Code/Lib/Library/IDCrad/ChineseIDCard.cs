@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 using Library.Annotations;
 using Library.HelperUtility;
 
@@ -60,13 +63,15 @@ namespace Library.IDCrad
      地址码     http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/ 
          */
 
-        private static readonly int[] CoefficientCodes = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
-        private static readonly IDictionary<int, string> DicCoefficientCodes = new Dictionary<int, string>
+        internal static readonly int[] CoefficientCodes = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
+
+        internal static readonly IDictionary<int, string> DicCoefficientCodes = new Dictionary<int, string>
         {
             {0,"1"},{1,"0"},{2,"x"},{3,"9"},{4,"8"},{5,"7"},
             {6,"6"},{7,"5"},{8,"4"},{9,"3"},{10,"2"},
         };
-        private static readonly IDictionary<int, string> DicProvinceCodes = new Dictionary<int, string>
+
+        internal static readonly IDictionary<int, string> DicProvinceCodes = new Dictionary<int, string>
         {
             {11,"北京市"},{12,"天津市"},{13,"河北省"},{14,"山西省"},{15,"内蒙古自治区"},
             {21,"辽宁省"},{22,"吉林省"},{23,"黑龙江省"},    
@@ -92,12 +97,12 @@ namespace Library.IDCrad
         /// <summary>
         /// 
         /// </summary>
-         [Category("證件"), DisplayName("證件版本")]
+        [Category("證件"), DisplayName("證件版本")]
         public int Version { get { return 2; } }
         /// <summary>
         /// 
         /// </summary>
-         [Category("證件信息"), DisplayName("證件號碼")]
+        [Category("證件信息"), DisplayName("證件號碼")]
         public string IDNumber { get; private set; }
 
 
@@ -107,20 +112,21 @@ namespace Library.IDCrad
         /// <param name="idnumber"></param>
         public ChineseIDCard(string idnumber)
         {
-            Validate(idnumber);
+            IDNumber = idnumber;
+            Validate();
 
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="idnumber"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void Validate([NotNull] string idnumber)
+        public void Validate()
         {
-            if (string.IsNullOrEmpty(idnumber)) throw new IDCardException("證件號碼為空", new ArgumentNullException("idnumber"));
-            if (idnumber.Length != 18) throw new IDCardException("證件號碼長度不符合");
-            if ((!Regex.IsMatch(idnumber, @"^\d{18}$|^\d{17}(\d|X|x)$", RegexOptions.IgnoreCase))) throw new IDCardException("證件號碼格式不符合");
-            IDNumber = idnumber;
+            if (string.IsNullOrEmpty(IDNumber)) throw new IDCardException("證件號碼為空", new ArgumentNullException("idnumber"));
+            if (IDNumber.Length != 18) throw new IDCardException("證件號碼長度不符合");
+            if ((!Regex.IsMatch(IDNumber, @"^\d{18}$|^\d{17}(\d|X|x)$", RegexOptions.IgnoreCase))) throw new IDCardException("證件號碼格式不符合");
+
             ValidateProvince();
             ValidateCity();
             ValidateCounty();
@@ -168,6 +174,11 @@ namespace Library.IDCrad
         /// </summary>
         [Category("證件信息"), DisplayName("性別值")]
         public int SixCode { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("性")]
+        public SexEnum Sex { get; private set; }
         private void ValidateProvince()
         {
             var code = StringUtility.TryCast<int>(IDNumber.Substring(0, 2));
@@ -226,8 +237,6 @@ namespace Library.IDCrad
             Sex = SixCode % 2 == 1 ? SexEnum.Man : SexEnum.Woman;
         }
 
-        public SexEnum Sex { get; set; }
-
 
         private void ValidateByChecksumDigit()
         {
@@ -245,5 +254,91 @@ namespace Library.IDCrad
         }
 
 
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ChineseIDCardProvider : IIDCardProvider
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string DistrictFullCode { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime Birthday { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int CodeRange { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Order { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public SexEnum Sex { get; set; }
+
+        private const string XmlPath = "Library.IDCrad.gbt2260.Db.xml";
+
+        IIDCard IIDCardProvider.CreateNew()
+        {
+            return CreateNew();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ChineseIDCard CreateNew()
+        {
+            if (string.IsNullOrEmpty(DistrictFullCode) || DistrictFullCode.Length != 6) throw new IDCardException("省市全值代碼不符合");
+            if (!ChineseIDCard.DicProvinceCodes.ContainsKey(int.Parse(DistrictFullCode.Substring(0, 2)))) throw new IDCardException("不存在對應省份");
+
+            using (Stream xmlStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(XmlPath))
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(xmlStream);
+                var node = doc.SelectSingleNode(string.Format("/Code/Province/City/County[@Full='{0}']", DistrictFullCode));
+                if (node == null) throw new IDCardException("省市全值代碼不存在");
+            }
+            if (CodeRange < 0 || CodeRange > 990) throw new IDCardException("3位编码段,有誤");
+            var idnumber = string.Format("{0}{1:yyyyMMdd}{2}", DistrictFullCode, Birthday, CodeRange + ((Order-1)*2 + (int)Sex));
+            int sum = 0;
+            for (int i = 0; i < idnumber.Length; i++)
+            {
+                var num = Convert.ToInt32(idnumber[i].ToString());
+                sum += ChineseIDCard.CoefficientCodes[i] * num;
+            }
+            var remainder = sum % 11;
+            return new ChineseIDCard(string.Format("{0}{1}", idnumber, ChineseIDCard.DicCoefficientCodes[remainder]));
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="districtFullCode">省市全值代碼</param>
+        /// <param name="birthday">出生日期</param>
+        /// <param name="sex">性別</param>
+        /// <param name="codeRange">3位编码段</param>
+        /// <param name="order">領證順序</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static ChineseIDCard CreateNew([NotNull] string districtFullCode, DateTime birthday, SexEnum sex, int codeRange, int order)
+        {
+            return new ChineseIDCardProvider
+            {
+                DistrictFullCode = districtFullCode,
+                Birthday = birthday,
+                Sex = sex,
+                CodeRange = codeRange,
+                Order = order
+            }.CreateNew();
+        }
     }
 }

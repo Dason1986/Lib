@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ImageManagement
+namespace TestWinfrom
 {
     partial class EffectsForm
     {

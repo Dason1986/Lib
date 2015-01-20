@@ -22,6 +22,8 @@ using Library;
 using Library.Draw;
 using Library.Draw.Code;
 using Library.HelperUtility;
+using Library.IDCrad;
+using TestPj.Gbt;
 
 namespace TestPj
 {
@@ -38,7 +40,7 @@ namespace TestPj
 
            var table= System.Data.Common.DbProviderFactories.GetFactoryClasses();
             Console.WriteLine(table);
-            Console.WriteLine("ff");
+            
             Console.ReadKey();
             Console.ReadLine();
         }

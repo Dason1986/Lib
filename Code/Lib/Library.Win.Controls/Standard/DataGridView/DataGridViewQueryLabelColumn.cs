@@ -9,6 +9,9 @@ using Library.Data;
 
 namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelColumn : DataGridViewTextBoxColumn, IQueryControl
     {
@@ -21,10 +24,23 @@ namespace Library.Controls
         private CurrencyManager _manager;
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public DataGridViewQueryLabelColumn()
         {
             this.CellTemplate = new DataGridViewQueryLabelCell();
         }
+
+        public override sealed DataGridViewCell CellTemplate
+        {
+            get { return base.CellTemplate; }
+            set { base.CellTemplate = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public IQueryDataProvider CurrentQueryDataProvider { get; set; }
         [DefaultValue(null)]
@@ -65,7 +81,7 @@ namespace Library.Controls
         [DefaultValue(null)]
         public string ValueMember { get; set; }
 
-
+        object IQueryControl.SelectedValue { get { throw new NotSupportedException(); } set { throw new NotSupportedException(); } }
         internal object GetDislpayName(object key)
         {
             if (_manager == null)
@@ -116,9 +132,9 @@ namespace Library.Controls
             stringBuilder.Append("DataGridViewQueryLabelColumn { Name=");
             stringBuilder.Append(this.Name);
             stringBuilder.Append(", Index=");
-            stringBuilder.Append(this.Index.ToString((IFormatProvider)CultureInfo.CurrentCulture));
+            stringBuilder.Append(this.Index.ToString(CultureInfo.CurrentCulture));
             stringBuilder.Append(" }");
-            return ((object)stringBuilder).ToString();
+            return stringBuilder.ToString();
         }
 
 
@@ -126,6 +142,9 @@ namespace Library.Controls
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelEditingControl : QueryLabel, IDataGridViewEditingControl
     {
@@ -133,7 +152,10 @@ namespace Library.Controls
         {
 
         }
-        public DataGridViewQueryLabelCell OwnerCell = null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public DataGridViewQueryLabelCell OwnerCell { get; set; }
         public DataGridView EditingControlDataGridView
         {
             get;
@@ -180,27 +202,30 @@ namespace Library.Controls
 
 
 
-        public bool RepositionEditingControlOnValueChange { get; private set; }
+        public bool RepositionEditingControlOnValueChange { get; protected set; }
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelCell : DataGridViewTextBoxCell
     {
 
-        private static Type defaultEditType = typeof(DataGridViewQueryLabelEditingControl);
+        private static readonly Type DefaultEditType = typeof(DataGridViewQueryLabelEditingControl);
 
         public override Type EditType
         {
             get
             {
-                return defaultEditType; // the type is DataGridViewNumericUpDownEditingControl
+                return DefaultEditType; // the type is DataGridViewNumericUpDownEditingControl
             }
         }
 
         public override string ToString()
         {
-            return "DataGridViewQueryLabelCell { ColumnIndex=" + this.ColumnIndex.ToString((IFormatProvider)CultureInfo.CurrentCulture) + ", RowIndex=" + this.RowIndex.ToString((IFormatProvider)CultureInfo.CurrentCulture) + " }";
+            return "DataGridViewQueryLabelCell { ColumnIndex=" + this.ColumnIndex.ToString(CultureInfo.CurrentCulture) + ", RowIndex=" + this.RowIndex.ToString(CultureInfo.CurrentCulture) + " }";
         }
         /// <summary>
         /// 附加并初始化寄宿的编辑控件。
@@ -372,10 +397,7 @@ namespace Library.Controls
                 size.Width = proposedSize.Width;
             if (size.Height > proposedSize.Height)
                 size.Height = proposedSize.Height;
-            if (size == proposedSize)
-                return cellBounds;
-            else
-                return new Rectangle(GetTextLocation(cellBounds, size, flags, cellStyle), size);
+            return size == proposedSize ? cellBounds : new Rectangle(GetTextLocation(cellBounds, size, flags, cellStyle), size);
         }
 
 

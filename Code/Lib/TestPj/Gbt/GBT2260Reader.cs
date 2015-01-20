@@ -22,6 +22,8 @@ namespace TestPj.Gbt
             xtw.WriteStartElement("Code");
             string currnetProvince = null;
             string currnetCity = null;
+            string currnetProvinceName = null;
+            string currnetCityName = null;
             int prcount = 0, citycount = 0;
             foreach (string cont in reader)
             {
@@ -45,6 +47,7 @@ namespace TestPj.Gbt
                     xtw.WriteAttributeString("ID", provinceCode);
                     xtw.WriteAttributeString("Full", cont.Substring(0, 6));
                     xtw.WriteAttributeString("Name", cont.Substring(6).Trim());
+                    currnetProvinceName = cont.Substring(6).Trim();
                     continue;
                     // xtw.WriteEndAttribute();
                 }
@@ -67,6 +70,7 @@ namespace TestPj.Gbt
                     xtw.WriteAttributeString("ID", cityCode);
                     xtw.WriteAttributeString("Full", cont.Substring(0, 6));
                     xtw.WriteAttributeString("Name", cont.Substring(6).Trim());
+                    currnetCityName = cont.Substring(6).Trim();
                     continue;
                 }
 
@@ -74,7 +78,9 @@ namespace TestPj.Gbt
                 xtw.WriteStartElement("County");
                 xtw.WriteAttributeString("ID", countyCode);
                 xtw.WriteAttributeString("Full", cont.Substring(0, 6));
-                xtw.WriteAttributeString("Name", cont.Substring(6).Trim());
+                var countyname = cont.Substring(6).Trim();
+                xtw.WriteAttributeString("Name", countyname);
+                xtw.WriteAttributeString("FullName", string.Format("{0}{1}{2}", currnetProvinceName, currnetCityName, countyname));
                 xtw.WriteEndElement();
             }
             xtw.WriteEndElement();

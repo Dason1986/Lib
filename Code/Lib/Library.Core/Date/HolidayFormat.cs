@@ -124,7 +124,7 @@ namespace Library.Date
             public virtual string ToFormat()
             {
                 if (FormatStr.Length != 1) return FormatStr;
-
+                if (Holiday is TheSolarTermsHoliday) return string.Format("{0}", Holiday.HolidayName);
                 if (Holiday is WeekHoliday)
                 {
                     return WeekHoliday();
@@ -150,7 +150,7 @@ namespace Library.Date
             {
             }
 
-         
+
             public override string WeekHoliday()
             {
                 var formatDateTime = Cul.DateTimeFormat;
@@ -261,7 +261,7 @@ namespace Library.Date
             {
             }
 
-      
+
             public override string WeekHoliday()
             {
                 string result = string.Empty;

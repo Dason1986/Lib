@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Date\HolidayBuilder.cs" />
     <Compile Include="FastReflection\ConstructorInvoker.cs" />
     <Compile Include="FastReflection\ConstructorInvokerCache.cs" />
     <Compile Include="FastReflection\ConstructorInvokerFactory.cs" />

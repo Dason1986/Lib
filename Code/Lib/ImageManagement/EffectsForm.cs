@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
+using ImageManagement;
 using Library.Draw;
 using Library.HelperUtility;
 
-namespace ImageManagement
+namespace TestWinfrom
 {
     public partial class EffectsForm : Form
     {
@@ -26,14 +23,11 @@ namespace ImageManagement
             };
             comboBox1.DataSource = source;
             effectsAssembly = typeof(ImageBuilder).Assembly;
-           var currass= Assembly.GetExecutingAssembly();
-           var files = currass.GetManifestResourceStream("ImageManagement.original.jpg");
-            if (files != null)
-            {
-                Image image = new Bitmap(files);
-                this.pictureBox1.Image = image;
-                fileBytes = files.ToArray();
-            }
+
+            if (Program.Original == null) return;
+            Image image = new Bitmap(new MemoryStream(Program.Original));
+            this.pictureBox1.Image = image;
+            fileBytes = Program.Original;
         }
 
         private readonly Assembly effectsAssembly;

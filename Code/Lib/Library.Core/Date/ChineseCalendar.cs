@@ -545,7 +545,7 @@ namespace Library.Date
             SetWeekDayHoliday();
             SetChineseConstellation();
             ChineseHour = GetChineseHour(Date);
-            SetChineseTwentyFourDay();
+            SetTheSolarTerms();
             SetChineseTwentyFourPrevDay();
             SetChineseTwentyFourNextDay();
             SetGanZhiMonth();
@@ -838,10 +838,10 @@ namespace Library.Date
         /// 定气时可以保证春、秋两分必然在昼夜平分的那两天。
         /// </remarks>
         [Category("二十四節氣"), DisplayName("當前節氣")]
-        public virtual string ChineseTwentyFourDay { get; private set; }
+        public virtual string TheSolarTerms { get; private set; }
 
         static readonly DateTime BaseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
-        private void SetChineseTwentyFourDay()
+        private void SetTheSolarTerms()
         {
 
             string tempStr = string.Empty;
@@ -850,16 +850,16 @@ namespace Library.Date
 
             for (int i = 1; i <= 24; i++)
             {
-                double num = y + CalendarInfo.STermInfo[i - 1];
+                double num = y + CalendarInfo.TheSolarTermsHolidays[i - 1].TheSolarTermsData;
 
                 DateTime newDate = BaseDateAndTime.AddMinutes(num);
                 if (newDate.DayOfYear != _date.DayOfYear) continue;
 
 
-                tempStr = CalendarInfo.LunarHolidayName[i - 1];
+                tempStr = CalendarInfo.TheSolarTermsHolidays[i - 1].HolidayName;
                 break;
             }
-            ChineseTwentyFourDay = tempStr;
+            TheSolarTerms = tempStr;
 
         }
 
@@ -877,7 +877,7 @@ namespace Library.Date
                 DateTime newDate = BaseDateAndTime.AddMinutes(num);
 
                 if (newDate.DayOfYear >= _date.DayOfYear) continue;
-                tempStr = string.Format("{0}[{1}]", CalendarInfo.LunarHolidayName[i - 1], newDate.ToString("yyyy-MM-dd"));
+                tempStr = string.Format("{0}[{1}]", CalendarInfo.TheSolarTermsHolidays[i - 1].HolidayName, newDate.ToString("yyyy-MM-dd"));
                 break;
             }
             ChineseTwentyFourPrevDay = tempStr;
@@ -903,7 +903,7 @@ namespace Library.Date
                 DateTime newDate = BaseDateAndTime.AddMinutes(num);
 
                 if (newDate.DayOfYear <= _date.DayOfYear) continue;
-                tempStr = string.Format("{0}[{1}]", CalendarInfo.LunarHolidayName[i - 1], newDate.ToString("yyyy-MM-dd"));
+                tempStr = string.Format("{0}[{1}]", CalendarInfo.TheSolarTermsHolidays[i - 1].HolidayName, newDate.ToString("yyyy-MM-dd"));
                 break;
             }
             ChineseTwentyFourNextDay = tempStr;

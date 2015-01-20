@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Library.HelperUtility;
 
-namespace ImageManagement
+namespace TestWinfrom
 {
     public partial class SheetForm : Form
     {
         public SheetForm()
         {
             InitializeComponent();
-            listBox1.Items.Add("ImageManagement.WaterForm");
-            listBox1.Items.Add("ImageManagement.EffectsForm");
-            listBox1.Items.Add("ImageManagement.DateForm");
-            listBox1.Items.Add("ImageManagement.IDCardForm");
+            listBox1.Items.Add("TestWinfrom.WaterForm");
+            listBox1.Items.Add("TestWinfrom.EffectsForm");
+            listBox1.Items.Add("TestWinfrom.DateForm");
+            listBox1.Items.Add("TestWinfrom.IDCardForm");
             
         }
 

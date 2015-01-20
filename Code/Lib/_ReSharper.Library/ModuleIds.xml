@@ -9,5 +9,4 @@
   <Module PersistentId="C2B69EBE-B5B0-43F3-B310-534DE58E83F7" ModuleId="Library.Win.Controls" />
   <Module PersistentId="BBB78556-201D-4857-8212-47D89D2B8FC2" ModuleId="Library.Win" />
   <Module PersistentId="9532F560-E33A-48AC-8933-7D2264B2B29A" ModuleId="Library.Web" />
-  <Module PersistentId="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, mvid=3e47475e-95fe-42e6-a243-cf5a610648e9" ModuleId="mscorlib" />
 </Modules>

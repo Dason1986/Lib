@@ -42,7 +42,7 @@ namespace Library.Date
         /// <returns></returns>
         public DateTime ConvertDateTime(int year)
         {
-            var day = Day == 30 ? ChineseDateTime.GetChineseMonthDays(year, Month) :Day;
+            var day = Day == 30 ? ChineseDateTime.GetChineseMonthDays(year, Month) : Day;
             ChineseDateTime date = new ChineseDateTime(year, Month, day, false);
             return date.Date;
         }
@@ -143,7 +143,7 @@ namespace Library.Date
             if (x < y) return -1;
             if (x > y) return 1;
             return 0;
-        }  
+        }
         /// <summary>
         /// 
         /// </summary>

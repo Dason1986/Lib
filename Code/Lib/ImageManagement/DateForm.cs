@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Library.Date;
 
-namespace ImageManagement
+namespace TestWinfrom
 {
     public partial class DateForm : Form
     {
@@ -18,9 +14,14 @@ namespace ImageManagement
         {
             InitializeComponent();
             List<DictionaryEntry> list = new List<DictionaryEntry>();
+            list.Add(new DictionaryEntry("------農      曆------", ""));
             list.AddRange(CalendarInfo.LunarHolidays.Select(holiday => new DictionaryEntry(holiday.HolidayName, holiday)));
+            list.Add(new DictionaryEntry("------星      期------", ""));
             list.AddRange(CalendarInfo.WeekHolidays.Select(holiday => new DictionaryEntry(holiday.HolidayName, holiday)));
+            list.Add(new DictionaryEntry("------西      曆------", ""));
             list.AddRange(CalendarInfo.SolarHolidays.Select(holiday => new DictionaryEntry(holiday.HolidayName, holiday)));
+            list.Add(new DictionaryEntry("------二十四節氣------", ""));
+            list.AddRange(CalendarInfo.TheSolarTermsHolidays.Select(holiday => new DictionaryEntry(holiday.HolidayName, holiday)));
             listBox1.DataSource = list;
             listBox1.DisplayMember = "Key";
             listBox1.ValueMember = "Value";

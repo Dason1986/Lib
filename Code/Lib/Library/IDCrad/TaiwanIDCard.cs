@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
+using Library.Annotations;
+using Library.HelperUtility;
 
 namespace Library.IDCrad
 {
     /// <summary>
     /// 中華人民共和國臺灣居民身份證
     /// </summary>
-     [Guid("385F62C2-2255-4886-A81E-01A5C4355DAB")]
-    public class TaiwanIDCard: IIDCard
+    [Guid("385F62C2-2255-4886-A81E-01A5C4355DAB")]
+    public class TaiwanIDCard : IIDCard
     {
         /*
 目前的中华民国身分证字号一共有十码，包括起首一个大写的英文字母与接续的九个阿拉伯数字。
@@ -66,24 +71,95 @@ n1\times 1+n2\times 9+n3\times 8 +n4\times 7+n5\times 6 +n6\times 5+n7\times 4 +
 \frac{120}{10}
 如果整除，该组号码有效
 120 \equiv 0 \pmod{10}         
-         
-         */
 
-        private static readonly Guid Cardtype = Guid.Parse("385F62C2-2255-4886-A81E-01A5C4355DAB"); 
+         */
+        private static readonly string[,] Citycodes =
+        {
+            {"A","10","台北市"},{"B","11","台中市"},{"C","12","基隆市"},{"D","13","台南市"},{"E","14","高雄市"},
+            {"F","15","新北市"},{"G","16","宜兰县"},{"H","17","桃园市"},{"I","34","嘉义市"},{"J","18","新竹县"},
+            {"K","19","苗栗县"},{"M","21","南投县"},{"N","22","彰化县"},{"O","35","新竹市"},{"P","23","云林县"},
+            {"Q","24","嘉义县"},{"T","27","屏东县"},{"U","28","花莲县"},{"V","29","台东县"},{"W","32","金门县"},
+            {"X","30","澎湖县"},{"Z","33","连江县"},{"L","20","台中县"},{"R","25","台南县"},{"S","26","高雄县"},{"Y","31","阳明山管理局"}
+        };
+        private static readonly Guid Cardtype = Guid.Parse("385F62C2-2255-4886-A81E-01A5C4355DAB");
         private const string Cardname = "中華人民共和國臺灣居民身份證";
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型Guid")]
         public Guid CardTypeID { get { return Cardtype; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型名稱")]
         public string CardTypeName { get { return Cardname; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件版本")]
         public int Version { get { return 6; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("證件號碼")]
         public string IDNumber { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idnumber"></param>
         public TaiwanIDCard(string idnumber)
         {
-            Validate(idnumber);
             IDNumber = idnumber;
+            Validate();
+
         }
-        public void Validate(string idnumber)
+
+        private readonly int[] _coefficientCodes = { 0x9, 0x8, 0x7, 0x6, 0x5, 0x4, 0x3, 0x2, 0x1, 0x1 };
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="IDCardException"></exception>
+        public void Validate()
         {
-            throw new NotImplementedException();
+
+            if (IDNumber == null || IDNumber.Length != 15) throw new IDCardException("證件號碼格式不符合");
+            CityCode = IDNumber[0].ToString(CultureInfo.InvariantCulture).ToUpper();
+            var number = 0;
+            ChecksumDigitCode = IDNumber.Substring(12,2);
+            for (int i = 0; i < Citycodes.Length; i++)
+            {
+                if (Citycodes[i, 0] != CityCode) continue;
+                CityName = Citycodes[0, 2];
+                number = StringUtility.TryCast<int>(Citycodes[0, 1]);
+                break;
+            }
+
+            for (int i = 1; i < _coefficientCodes.Length; i++)
+            {
+                number += number + (Convert.ToInt32(IDNumber[i].ToString(CultureInfo.InvariantCulture)) * _coefficientCodes[i]);
+            }
+            if(number%10!=0)  throw new IDCardException("證件號碼驗證不通過");
+            if (number.ToString(CultureInfo.InvariantCulture).Substring(1, 2) != ChecksumDigitCode) throw new IDCardException("證件號碼检验码不通過");
         }
+
+        /// <summary>
+        /// 检验码
+        /// </summary>
+        [Category("證件信息"), DisplayName("检验码")]
+        public string ChecksumDigitCode { get; private set; }
+
+        /// <summary>
+        /// 城市名称
+        /// </summary>
+        [Category("證件信息"), DisplayName("城市名称")]
+        public string CityName { get; private set; }
+
+        /// <summary>
+        /// 城市代码
+        /// </summary>
+        [Category("證件信息"), DisplayName("城市代码")]
+        public string CityCode { get; private set; }
     }
 }

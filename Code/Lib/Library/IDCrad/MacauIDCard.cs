@@ -1,5 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using Library.Annotations;
+
 namespace Library.IDCrad
 {
     /// <summary>
@@ -25,19 +29,52 @@ F持证人为女性（Feminino）智能身份证时新增 [4]
          */
         private static readonly Guid Cardtype = Guid.Parse("4B9AF4D5-C837-4087-B031-4BCB9B94A3F2"); 
         private const string Cardname = "中華人民共和國澳門特別行政區居民身份證";
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型Guid")]
         public Guid CardTypeID { get { return Cardtype; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件類型名稱")]
         public string CardTypeName { get { return Cardname; } }
-        public int Version { get { return 2; } }
-        public string IDNumber { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件"), DisplayName("證件版本")]
+        public int Version { get { return 2; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("證件信息"), DisplayName("證件號碼")]
+        public string IDNumber { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idnumber"></param>
         public MacauIDCard(string idnumber)
         {
-            Validate(idnumber);
             IDNumber = idnumber;
+            Validate();
         }
-        public void Validate(string idnumber)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Validate()
         {
-            throw new NotImplementedException();
+            if ((!Regex.IsMatch(IDNumber, @"\d{7}(d{1})", RegexOptions.IgnoreCase))) throw new IDCardException("證件號碼格式不符合");
+            var code = IDNumber[0];
+            switch (code)
+            {
+                case '1': break;
+                case '5': break;
+                case '7': break;
+                default:
+                    throw new IDCardException("證件號碼格式不符合");
+            }
         }
     }
 }
