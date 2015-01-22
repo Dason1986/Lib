@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using Library.Draw;
 using Library.Draw.Water;
 
-namespace TestWinfrom
+namespace TestWinform
 {
     public partial class WaterForm : Form
     {

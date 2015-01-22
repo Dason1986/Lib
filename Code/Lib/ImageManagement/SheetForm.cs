@@ -2,17 +2,17 @@
 using System.Windows.Forms;
 using Library.HelperUtility;
 
-namespace TestWinfrom
+namespace TestWinform
 {
     public partial class SheetForm : Form
     {
         public SheetForm()
         {
             InitializeComponent();
-            listBox1.Items.Add("TestWinfrom.WaterForm");
-            listBox1.Items.Add("TestWinfrom.EffectsForm");
-            listBox1.Items.Add("TestWinfrom.DateForm");
-            listBox1.Items.Add("TestWinfrom.IDCardForm");
+            listBox1.Items.Add("TestWinform.WaterForm");
+            listBox1.Items.Add("TestWinform.EffectsForm");
+            listBox1.Items.Add("TestWinform.DateForm");
+            listBox1.Items.Add("TestWinform.IDCardForm");
             
         }
 

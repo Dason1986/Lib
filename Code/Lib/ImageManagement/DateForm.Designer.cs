@@ -1,4 +1,4 @@
-﻿namespace TestWinfrom
+﻿namespace TestWinform
 {
     partial class DateForm
     {

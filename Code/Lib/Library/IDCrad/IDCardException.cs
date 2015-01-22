@@ -18,13 +18,13 @@ namespace Library.IDCrad
         {
         }
 
-        protected IDCardException(string message, double resultCode)
+        public IDCardException(string message, double resultCode)
             : base(message, resultCode)
         {
 
         }
 
-        protected IDCardException(string message, double resultCode, Exception inner)
+        public IDCardException(string message, double resultCode, Exception inner)
             : base(message, resultCode, inner)
         {
 

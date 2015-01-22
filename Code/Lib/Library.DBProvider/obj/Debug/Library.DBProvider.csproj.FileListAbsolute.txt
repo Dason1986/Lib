@@ -1,0 +1,6 @@
+C:\Dason\Lib\Code\Lib\Bin\Library.DBProvider.XML
+C:\Dason\Lib\Code\Lib\Bin\Library.DBProvider.dll
+C:\Dason\Lib\Code\Lib\Bin\Library.DBProvider.pdb
+C:\Dason\Lib\Code\Lib\Library.DBProvider\obj\Debug\Library.DBProvider.csprojResolveAssemblyReference.cache
+C:\Dason\Lib\Code\Lib\Library.DBProvider\obj\Debug\Library.DBProvider.dll
+C:\Dason\Lib\Code\Lib\Library.DBProvider\obj\Debug\Library.DBProvider.pdb

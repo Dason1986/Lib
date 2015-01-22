@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
-using Library.Date;
 using Library.HelperUtility;
-using TestWinfrom;
 
-namespace ImageManagement
+namespace TestWinform
 {
     static class Program
     {
@@ -21,7 +18,7 @@ namespace ImageManagement
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var file = Assembly.GetEntryAssembly().GetManifestResourceStream("ImageManagement.original.jpg");
+            var file = Assembly.GetEntryAssembly().GetManifestResourceStream("TestWinform.original.jpg");
             if (file != null)
             {
 

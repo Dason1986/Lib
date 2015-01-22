@@ -1,0 +1,15 @@
+2015/01/22-09:13:26.938 cac Recovering log #8
+2015/01/22-09:13:26.948 cac Level-0 table #10: started
+2015/01/22-09:13:27.049 cac Level-0 table #10: 3008256 bytes OK
+2015/01/22-09:13:27.096 cac Delete type=0 #8
+2015/01/22-09:13:27.097 cac Delete type=3 #6
+2015/01/22-11:10:00.125 c20 Compacting 2@0 + 0@1 files
+2015/01/22-11:10:00.363 c20 Generated table #12: 1463 keys, 2941375 bytes
+2015/01/22-11:10:00.491 c20 Generated table #13: 9 keys, 6567 bytes
+2015/01/22-11:10:00.491 c20 Compacted 2@0 + 0@1 files => 2947942 bytes
+2015/01/22-11:10:00.530 c20 Delete type=2 #7
+2015/01/22-11:10:00.530 c20 Delete type=2 #10
+2015/01/22-11:10:00.531 c20 compacted to: files[ 0 2 1 0 0 0 0 ]
+2015/01/22-12:59:27.159 c20 Level-0 table #15: started
+2015/01/22-12:59:27.328 c20 Level-0 table #15: 4254901 bytes OK
+2015/01/22-12:59:27.414 c20 Delete type=0 #11

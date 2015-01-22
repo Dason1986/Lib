@@ -10,16 +10,26 @@ using Library.Draw.Print;
 
 namespace Library.Win
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class PrintComponent : Component
     {
         private object _pintObj;
         private IPrintBuilder _pintbuilder;
         private PrintDialog _dialog;
+        /// <summary>
+        /// 
+        /// </summary>
         public PrintComponent()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
         public PrintComponent(IContainer container)
         {
             container.Add(this);
@@ -27,7 +37,10 @@ namespace Library.Win
             InitializeComponent();
         }
 
-        [DefaultValue(null)]
+        /// <summary>
+        /// 打印對象
+        /// </summary>
+        [DefaultValue(null), DisplayName("打印對象"), Category("打印相關")]
         public object PintObj
         {
             get { return _pintObj; }
@@ -36,11 +49,18 @@ namespace Library.Win
                 if (object.ReferenceEquals(_pintObj, value)) return;
                 _pintbuilder = PrintBuilderHelper.FactoryBuilder(value);
                 _pintObj = value;
-
+                
 
             }
         }
-
+        /// <summary>
+        /// 打印設置
+        /// </summary>
+        [DefaultValue(null), DisplayName("打印設置"), Category("打印相關")]
+        public PrintOption Option { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShowPrintDialog()
         {
             _pintbuilder.Validate();

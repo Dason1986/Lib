@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AA560131-7590-435D-9D8F-CA0DA08BBBC7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestWinform</RootNamespace>
+    <AssemblyName>TestWinform</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TestWinform.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\Caliburn.Micro.2.0.1\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateForm.Designer.cs">
+      <DependentUpon>DateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EffectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EffectsForm.Designer.cs">
+      <DependentUpon>EffectsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IDCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IDCardForm.Designer.cs">
+      <DependentUpon>IDCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SheetForm.Designer.cs">
+      <DependentUpon>SheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaterForm.Designer.cs">
+      <DependentUpon>WaterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DateForm.resx">
+      <DependentUpon>DateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EffectsForm.resx">
+      <DependentUpon>EffectsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SheetForm.resx">
+      <DependentUpon>SheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaterForm.resx">
+      <DependentUpon>WaterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Core\Library.Core.csproj">
+      <Project>{fe81d872-05ab-4cb1-8feb-7231d9b7db94}</Project>
+      <Name>Library.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Draw\Library.Draw.csproj">
+      <Project>{4612e29a-0f6c-4029-adbc-b8d3ee99d241}</Project>
+      <Name>Library.Draw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Win.Controls\Library.Win.Controls.csproj">
+      <Project>{c2b69ebe-b5b0-43f3-b310-534de58e83f7}</Project>
+      <Name>Library.Win.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Win\Library.Win.csproj">
+      <Project>{bbb78556-201d-4857-8212-47d89d2b8fc2}</Project>
+      <Name>Library.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="original.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -94,16 +94,7 @@ namespace Library.Draw.Print
     /// </summary>
     public abstract class PrintBuilder : IPrintBuilder
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        protected PrintBuilder()
-        {
-            CurrentPageIndex = -1;
-            FromPage = 1;
-            ToPage = 1;
-            TotalPages = 1;
-        }
+      
         /// <summary>
         /// 页面区域
         /// </summary>
@@ -129,15 +120,24 @@ namespace Library.Draw.Print
         /// </summary>
         public bool HasMorePages { get { return TotalPages > 1; } }
 
-         
+
         /// <summary>
         /// 当前页索引
         /// </summary>
-        public int CurrentPageIndex { get; protected set; }
+        public int CurrentPageIndex
+        {
+            get { return _currentPageIndex; }
+            protected set { _currentPageIndex = value; }
+        }
+
         /// <summary>
         /// 总页数
         /// </summary>
-        public uint TotalPages { get; protected set; }
+        public uint TotalPages
+        {
+            get { return _totalPages; }
+            protected set { _totalPages = value; }
+        }
 
         public virtual object Model { get; set; }
         /// <summary>
@@ -152,27 +152,35 @@ namespace Library.Draw.Print
         /// <returns></returns>
         public virtual Image CreateNextBitmap()
         {
-            if (!CanNextPange()) throw new PrintException("没有下一页");
+            if (!CanNextPange()) throw new PrintException("没有下一页", 14001.022);
             CurrentPageIndex++;
             return CreateCurrentBitmap();
         }
+
         /// <summary>
         /// 超始页
         /// </summary>
-        public uint FromPage { get; private set; }
+        public uint FromPage
+        {
+            get { return _fromPage; }
+            private set { _fromPage = value; }
+        }
+
         /// <summary>
         /// 结束页
         /// </summary>
-        public uint ToPage { get; private set; }
+        public uint ToPage
+        {
+            get { return _toPage; }
+            private set { _toPage = value; }
+        }
+
         /// <summary>
         /// 重置打印索引页
         /// </summary>
         public void ResetIndex()
         {
-
-            CurrentPageIndex = -1;
-            FromPage = 1;
-            ToPage = TotalPages;
+            _currentPageIndex = -1;
         }
 
         /// <summary>
@@ -182,8 +190,8 @@ namespace Library.Draw.Print
         /// <param name="toPage">结束页</param>
         public void SetPageRange(int formPage, int toPage)
         {
-            if (formPage < 1 || toPage < formPage || formPage > TotalPages) throw new PrintException("起始页不能大于结束页，或大于总页数");
-            if (toPage < formPage || toPage> TotalPages) throw new PrintException("结束页不能小于起始页，或大于总页数");
+            if (toPage < formPage || toPage > TotalPages) throw new PrintException("结束页不能小于起始页，或大于总页数", 14001.002);
+            if (formPage < 1 || toPage < formPage || formPage > TotalPages) throw new PrintException("起始页不能大于结束页，或大于总页数", 14001.003);
             CurrentPageIndex = (formPage - 2);
             FromPage = (uint)formPage;
             ToPage = (uint)toPage;
@@ -192,6 +200,11 @@ namespace Library.Draw.Print
 
 
         private object _current;
+        private int _currentPageIndex=-1;
+        private uint _fromPage=1;
+        private uint _toPage=1;
+        private uint _totalPages=1;
+
         object System.Collections.IEnumerator.Current
         {
             get { return _current; }

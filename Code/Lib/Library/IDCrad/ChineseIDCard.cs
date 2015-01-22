@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Library.Annotations;
@@ -123,9 +122,8 @@ namespace Library.IDCrad
         /// <exception cref="NotImplementedException"></exception>
         public void Validate()
         {
-            if (string.IsNullOrEmpty(IDNumber)) throw new IDCardException("證件號碼為空", new ArgumentNullException("idnumber"));
-            if (IDNumber.Length != 18) throw new IDCardException("證件號碼長度不符合");
-            if ((!Regex.IsMatch(IDNumber, @"^\d{18}$|^\d{17}(\d|X|x)$", RegexOptions.IgnoreCase))) throw new IDCardException("證件號碼格式不符合");
+
+            if ((!Regex.IsMatch(IDNumber, @"^\d{18}$|^\d{17}(\d|X|x)$", RegexOptions.IgnoreCase))) throw new IDCardException("證件號碼格式不符合", 11001.1);
 
             ValidateProvince();
             ValidateCity();
@@ -182,8 +180,8 @@ namespace Library.IDCrad
         private void ValidateProvince()
         {
             var code = StringUtility.TryCast<int>(IDNumber.Substring(0, 2));
-            if (code.HasError) throw new IDCardException("轉換省份值出錯", code.Error);
-            if (!DicProvinceCodes.ContainsKey(code.Value)) throw new IDCardException("不存在對應省份");
+            if (code.HasError) throw new IDCardException("轉換值出錯,不為數字", 11001.105, code.Error);
+            if (!DicProvinceCodes.ContainsKey(code.Value)) throw new IDCardException("不存在對應省份", 11001.106);
             ProvinceName = DicProvinceCodes[code.Value];
             ProvinceCode = code.Value;
         }
@@ -192,7 +190,7 @@ namespace Library.IDCrad
         private void ValidateCity()
         {
             var code = StringUtility.TryCast<int>(IDNumber.Substring(2, 2));
-            if (code.HasError) throw new IDCardException("轉換城市值出錯", code.Error);
+            if (code.HasError) throw new IDCardException("轉換值出錯,不為數字", 11001.105, code.Error);
             CityCode = code;
 
         }
@@ -200,7 +198,7 @@ namespace Library.IDCrad
         private void ValidateCounty()
         {
             var code = StringUtility.TryCast<int>(IDNumber.Substring(4, 2));
-            if (code.HasError) throw new IDCardException("轉換縣區值出錯", code.Error);
+            if (code.HasError) throw new IDCardException("轉換值出錯,不為數字", 11001.105, code.Error);
             CountyCode = code;
 
         }
@@ -212,7 +210,7 @@ namespace Library.IDCrad
             var yearcode = StringUtility.TryCast<int>(code.Substring(0, 4));
             var monthcode = StringUtility.TryCast<int>(code.Substring(4, 2));
             var daycode = StringUtility.TryCast<int>(code.Substring(6, 2));
-            if (yearcode.HasError | monthcode.HasError | daycode.HasError) throw new IDCardException("轉換出生日期值出錯", yearcode.Error);
+            if (yearcode.HasError | monthcode.HasError | daycode.HasError) throw new IDCardException("轉換日期值出錯", 11001.107, yearcode.Error);
             try
             {
                 Birthday = new DateTime(yearcode, monthcode, daycode);
@@ -220,7 +218,7 @@ namespace Library.IDCrad
             catch (Exception ex)
             {
 
-                throw new IDCardException("轉換出生日期值出錯", ex);
+                throw new IDCardException("轉換出生日期值出錯", 11001.107, ex);
             }
 
             BirthdayCode = code;
@@ -232,7 +230,7 @@ namespace Library.IDCrad
         private void ValidateSix()
         {
             var code = StringUtility.TryCast<int>(IDNumber.Substring(16, 1));
-            if (code.HasError) throw new IDCardException("轉換性別值出錯", code.Error);
+            if (code.HasError) throw new IDCardException("轉換值出錯,不為數字", 11001.105, code.Error);
             SixCode = code.Value;
             Sex = SixCode % 2 == 1 ? SexEnum.Man : SexEnum.Woman;
         }
@@ -248,8 +246,8 @@ namespace Library.IDCrad
                 sum += CoefficientCodes[i] * num;
             }
             var remainder = sum % 11;
-            if (!DicCoefficientCodes.ContainsKey(remainder)) throw new IDCardException();
-            if (!string.Equals(digitCode, DicCoefficientCodes[remainder], StringComparison.OrdinalIgnoreCase)) throw new IDCardException();
+            if (!DicCoefficientCodes.ContainsKey(remainder)) throw new IDCardException("身份證校驗碼不正確", 11001.104);
+            if (!string.Equals(digitCode, DicCoefficientCodes[remainder], StringComparison.OrdinalIgnoreCase)) throw new IDCardException("身份證校驗碼不正確", 11001.104);
             ChecksumDigitCode = digitCode;
         }
 
@@ -261,6 +259,9 @@ namespace Library.IDCrad
     /// </summary>
     public class ChineseIDCardProvider : IIDCardProvider
     {
+        private int _codeRange = 100;
+        private int _order = 1;
+
         /// <summary>
         /// 
         /// </summary>
@@ -270,15 +271,33 @@ namespace Library.IDCrad
         /// 
         /// </summary>
         public DateTime Birthday { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int CodeRange { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int Order { get; set; }
+        public int CodeRange
+        {
+            get { return _codeRange; }
+            set
+            {
+
+                _codeRange = value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Order
+        {
+            get { return _order; }
+            set
+            {
+
+                _order = value;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -296,25 +315,26 @@ namespace Library.IDCrad
         /// <returns></returns>
         public ChineseIDCard CreateNew()
         {
-            if (string.IsNullOrEmpty(DistrictFullCode) || DistrictFullCode.Length != 6) throw new IDCardException("省市全值代碼不符合");
-            if (!ChineseIDCard.DicProvinceCodes.ContainsKey(int.Parse(DistrictFullCode.Substring(0, 2)))) throw new IDCardException("不存在對應省份");
-
+            if (string.IsNullOrEmpty(DistrictFullCode) || DistrictFullCode.Length != 6) throw new IDCardException("省市全值代碼不符合", 11001.101);
+            if (Order < 1) throw new IDCardException("順序號不能小於1", 11001.103);
+            if (CodeRange < 100 || CodeRange > 990) throw new IDCardException("3位编码段有誤", 11001.102);
             using (Stream xmlStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(XmlPath))
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(xmlStream);
                 var node = doc.SelectSingleNode(string.Format("/Code/Province/City/County[@Full='{0}']", DistrictFullCode));
-                if (node == null) throw new IDCardException("省市全值代碼不存在");
+                if (node == null) throw new IDCardException("省市全值代碼不存在", 11001.112);
             }
-            if (CodeRange < 0 || CodeRange > 990) throw new IDCardException("3位编码段,有誤");
-            var idnumber = string.Format("{0}{1:yyyyMMdd}{2}", DistrictFullCode, Birthday, CodeRange + ((Order-1)*2 + (int)Sex));
+
+            var idnumber = string.Format("{0}{1:yyyyMMdd}{2}", DistrictFullCode, Birthday, CodeRange + ((Order - 1) * 2 + (int)Sex));
             int sum = 0;
             for (int i = 0; i < idnumber.Length; i++)
             {
-                var num = Convert.ToInt32(idnumber[i].ToString());
+                var num = Convert.ToInt32(idnumber[i].ToString(CultureInfo.InvariantCulture));
                 sum += ChineseIDCard.CoefficientCodes[i] * num;
             }
             var remainder = sum % 11;
+            if (!ChineseIDCard.DicCoefficientCodes.ContainsKey(remainder)) throw new IDCardException("身份證校驗碼不正確", 11001.104);
             return new ChineseIDCard(string.Format("{0}{1}", idnumber, ChineseIDCard.DicCoefficientCodes[remainder]));
 
         }

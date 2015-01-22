@@ -4,11 +4,10 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using ImageManagement;
 using Library.Draw;
 using Library.HelperUtility;
 
-namespace TestWinfrom
+namespace TestWinform
 {
     public partial class EffectsForm : Form
     {

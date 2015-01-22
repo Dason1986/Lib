@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Library
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class LibException : AbException
     {
         //

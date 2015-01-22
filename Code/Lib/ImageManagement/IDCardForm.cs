@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace TestWinfrom
+namespace TestWinform
 {
     public partial class IDCardForm : Form
     {

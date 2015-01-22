@@ -14,13 +14,13 @@ namespace Library.Date
         public ChineseDateTimeException()
         {
         }
-        protected ChineseDateTimeException(string message, double resultCode)
+        public ChineseDateTimeException(string message, double resultCode)
             : base(message, resultCode)
         {
 
         }
 
-        protected ChineseDateTimeException(string message, double resultCode, Exception inner)
+        public ChineseDateTimeException(string message, double resultCode, Exception inner)
             : base(message, resultCode, inner)
         {
 
@@ -54,9 +54,7 @@ namespace Library.Date
     /// </remarks>
     public class ChineseDateTime
     {
-        #region 内部结构
-
-        #endregion
+         
 
         #region 内部变量
 
@@ -243,7 +241,7 @@ namespace Library.Date
                 //检查日期是否大于最大天
                 if (cd > GetChineseMonthDays(cy, cm))
                 {
-                    throw new ChineseDateTimeException("不合法的農曆日期");
+                    throw new ChineseDateTimeException("不合法的農曆日期,日不存在。", 11002.103);
                 }
                 offset = offset + cd; //加上当月的天数
 
@@ -266,7 +264,7 @@ namespace Library.Date
 
                     if (cd > GetChineseMonthDays(cy, cm))
                     {
-                        throw new ChineseDateTimeException("不合法的農曆日期");
+                        throw new ChineseDateTimeException("不合法的農曆日期,日不存在。", 11002.103);
                     }
                     offset = offset + cd;
                 }
@@ -281,7 +279,7 @@ namespace Library.Date
 
                     if (cd > GetChineseLeapMonthDays(cy))
                     {
-                        throw new ChineseDateTimeException("不合法的農曆日期");
+                        throw new ChineseDateTimeException("不合法的農曆日期,日不存在。", 11002.103);
                     }
                     offset = offset + cd;
                 }
@@ -422,7 +420,7 @@ namespace Library.Date
         /// <param name="dt"></param>
         public static void ValidateDateLimit(DateTime dt)
         {
-            if ((dt < MinDay) || (dt > MaxDay)) throw new ChineseDateTimeException("超出可转换的日期");
+            if ((dt < MinDay) || (dt > MaxDay)) throw new ChineseDateTimeException("超出可转换的日期",11002.1);
         }
 
         #endregion
@@ -438,15 +436,15 @@ namespace Library.Date
         /// <param name="leapMonth"></param>
         public static void ValidateChineseDateLimit(int year, int month, int day, bool leapMonth)
         {
-            if ((year < MinYear) || (year > MaxYear)) throw new ChineseDateTimeException("非法農曆日期");
+            if ((year < MinYear) || (year > MaxYear)) throw new ChineseDateTimeException("不合法的農曆日期,年份不在可轉換範圍。", 11002.101);
 
-            if ((month < 1) || (month > 12)) throw new ChineseDateTimeException("非法農曆日期");
+            if ((month < 1) || (month > 12)) throw new ChineseDateTimeException("不合法的農曆日期,月份不存在。", 11002.102);
             //中国的月最多30天
-            if ((day < 1) || (day > 30)) throw new ChineseDateTimeException("非法農曆日期");
+            if ((day < 1) || (day > 30)) throw new ChineseDateTimeException("不合法的農曆日期,日不存在。", 11002.103);
 
 
             int leap = GetChineseLeapMonth(year); // 计算该年应该闰哪个月
-            if (leapMonth && (month != leap)) throw new ChineseDateTimeException("非法農曆日期");
+            if (leapMonth && (month != leap)) throw new ChineseDateTimeException("不合法的農曆日期,該月不為闰月。", 11002.104);
 
 
 
@@ -468,7 +466,7 @@ namespace Library.Date
         {
 
             if ((bitpostion > 31) || (bitpostion < 0))
-                throw new Exception("Error Param: bitpostion[0-31]:" + bitpostion);
+                throw new ChineseDateTimeException("天數不為有效值[0-31]:" + bitpostion, 11002.105);
 
             int bit = 1 << bitpostion;
 
@@ -477,11 +475,7 @@ namespace Library.Date
 
         #endregion
 
-        #region ConvertDayOfWeek
-
-
-
-        #endregion
+      
 
         #region CompareWeekDayHoliday
 
@@ -682,7 +676,7 @@ namespace Library.Date
         #endregion
         #endregion
 
-        //#region WeekDay
+      
 
 
 
@@ -811,7 +805,7 @@ namespace Library.Date
         {
             get
             {
-                if (this._cMonth < 0 || this._cMonth > 12) throw new ChineseDateTimeException("月份無效");
+                if (this._cMonth < 0 || this._cMonth > 12) throw new ChineseDateTimeException("不合法的農曆日期,月份不存在。", 11002.102);
                 return CalendarInfo.ChineseMonths[this._cMonth - 1];
             }
         }

@@ -145,7 +145,7 @@ namespace Library.Draw.Print
         {
 
             var builder = PrintBuilderHelper.FactoryBuilder(Model);
-            if (builder == null) throw new PrintException("创建Builder为空");
+            if (builder == null) throw new PrintException("创建Builder为空", 14001.021);
 
             return builder;
 

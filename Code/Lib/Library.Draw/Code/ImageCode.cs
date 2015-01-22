@@ -45,8 +45,8 @@ namespace Library.Draw.Code
             get { return _width; }
             protected set
             {
-                if (value < 100) throw new ImageException();
-                if (value > 800) throw new ImageException();
+                if (value < 100|value > 800) throw new ImageException();
+          
                 _width = value;
             }
         }
@@ -59,8 +59,8 @@ namespace Library.Draw.Code
             get { return _height; }
             protected set
             {
-                if (value < 50) throw new ImageException();
-                if (value > 400) throw new ImageException();
+                if (value < 50||value > 400) throw new ImageException();
+          
                 _height = value;
             }
         }
@@ -70,8 +70,8 @@ namespace Library.Draw.Code
             get { return _codeLength; }
             set
             {
-                if (value < 4) throw new ImageException("");
-                if (value > 10) throw new ImageException("");
+                if (value < 4||value > 10) throw new ImageException("");
+              
                 _codeLength = value;
                 var tmpwidth = (int)Math.Ceiling(_codeLength * 25.0);
                 if (tmpwidth > Width) Width = tmpwidth;
