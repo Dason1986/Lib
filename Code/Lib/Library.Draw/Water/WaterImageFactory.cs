@@ -24,7 +24,8 @@ namespace Library.Draw.Water
 
             builder.SetSourceImage(sourceImgPath);
             builder.SetWaterImage(waterImgPath);
-            return builder.ProcessBitmap(option);
+            builder.SetOpetion(option);
+            return builder.ProcessBitmap();
         }
     }
 }

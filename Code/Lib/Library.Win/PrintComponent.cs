@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace Library.Win
         private object _pintObj;
         private IPrintBuilder _pintbuilder;
         private PrintDialog _dialog;
+        private PrintDocument _document;
         /// <summary>
         /// 
         /// </summary>
@@ -49,8 +51,6 @@ namespace Library.Win
                 if (object.ReferenceEquals(_pintObj, value)) return;
                 _pintbuilder = PrintBuilderHelper.FactoryBuilder(value);
                 _pintObj = value;
-                
-
             }
         }
         /// <summary>
@@ -64,12 +64,73 @@ namespace Library.Win
         public void ShowPrintDialog()
         {
             _pintbuilder.Validate();
+            CreateDocument();
             _dialog = new PrintDialog();
-            _dialog.Document = new PrintDocument();
+            _dialog.Document = _document;
+            if (_dialog.ShowDialog() == DialogResult.OK)
+            {
+                _document.Print();
+            }
+
+        }
+
+        private void CreateDocument()
+        {
+            _document = new PrintDocument();
+            _document.BeginPrint += Document_BeginPrint;
+            _document.EndPrint += Document_EndPrint;
+            _document.PrintPage += document_PrintPage;
+            _document.QueryPageSettings += document_QueryPageSettings;
+
+        }
+
+        void document_QueryPageSettings(object sender, QueryPageSettingsEventArgs e)
+        {
+            //  throw new NotImplementedException();
+        }
+
+
+        void document_PrintPage(object sender, PrintPageEventArgs e)
+        {
 
             var image = _pintbuilder.CreateCurrentBitmap();
+            e.Graphics.DrawImage(image, new Point(0, 0));
+            //throw new NotImplementedException();
+        }
 
-            _dialog.ShowDialog();
+        void Document_EndPrint(object sender, PrintEventArgs e)
+        {
+            //    throw new NotImplementedException();
+        }
+
+        void Document_BeginPrint(object sender, PrintEventArgs e)
+        {
+            //     throw new NotImplementedException();
+        }
+        /// <summary> 
+        /// 清除任何使用中的資源。
+        /// </summary>
+        /// <param name="disposing">如果應該處置 Managed 資源則為 true，否則為 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                if (_document != null)
+                {
+                    _document.BeginPrint -= Document_BeginPrint;
+                    _document.EndPrint -= Document_EndPrint;
+                    _document.PrintPage -= document_PrintPage;
+                    _document.QueryPageSettings -= document_QueryPageSettings;
+                    _document.Dispose();
+                }
+                if (_dialog != null)
+                {
+                    _dialog.Dispose();
+                }
+                components.Dispose();
+
+            }
+            base.Dispose(disposing);
         }
     }
 }

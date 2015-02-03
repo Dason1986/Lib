@@ -94,7 +94,7 @@ namespace Library.Draw.Effects
 
         public override unsafe Image UnsafeProcessBitmap()
         {
-            throw new NotImplementedException();
+        //    throw new NotImplementedException();
             var fog = Fog == 0 ? 7 : Fog;
             return UnsafeProcessBitmap(Source, fog);
         }

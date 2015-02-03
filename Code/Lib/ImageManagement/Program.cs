@@ -18,7 +18,7 @@ namespace TestWinform
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var file = Assembly.GetEntryAssembly().GetManifestResourceStream("TestWinform.original.jpg");
+            var file = typeof(SheetForm).Assembly.GetManifestResourceStream("TestWinform.original.jpg");
             if (file != null)
             {
 

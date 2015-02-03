@@ -53,16 +53,17 @@ namespace TestWinform
         public void Builder(string sourceImg, string waterImg)
         {
             _builder.SetSourceImage(sourceImg);
-            if (_builder is WaterImageBuilderByText ==false)
-            _builder.SetWaterImage ( waterImg);
-     
-           var opetion = new WaterImageTileOption
-            {
-                Offset = new Point((int) NumOffsetX.Value, (int) NumOffsetY.Value),
-                Space = new Size((int) NumspaceX.Value, (int) NumspaceY.Value),
-                Opacity = (float) NumOpacity.Value/100
-            };
-           PicTarget.Image = _builder.ProcessBitmap(opetion);
+            if (_builder is WaterImageBuilderByText == false)
+                _builder.SetWaterImage(waterImg);
+
+            var opetion = new WaterImageTileOption
+             {
+                 Offset = new Point((int)NumOffsetX.Value, (int)NumOffsetY.Value),
+                 Space = new Size((int)NumspaceX.Value, (int)NumspaceY.Value),
+                 Opacity = (float)NumOpacity.Value / 100
+             };
+            _builder.SetOpetion(opetion);
+            PicTarget.Image = _builder.ProcessBitmap();
 
         }
 
@@ -82,6 +83,6 @@ namespace TestWinform
             }
         }
     }
-   
-   
+
+
 }

@@ -1,23 +1,63 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using Library.Annotations; 
+using Library.Annotations;
 
 namespace Library.Draw
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ImageEventArgs : EventArgs
+    {
+        public Exception Error { get; protected set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Image Image { get; protected set; }
+
+
+        protected internal ImageEventArgs(Image image)
+        {
+            Image = image;
+
+        }
+
+        protected internal ImageEventArgs(Exception error)
+        {
+            Error = error;
+
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public delegate void ImageCompletedEventHandler(object sender, ImageEventArgs e);
     /// <summary>
     /// 图像处理功能
     /// </summary>
     public interface IImageBuilder
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        event ImageCompletedEventHandler ProcessCompleted;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="sourceImgPath"></param>
         void SetSourceImage([NotNull] string sourceImgPath);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="buffter"></param>
         void SetSourceImage([NotNull] byte[] buffter);
         /// <summary>
         /// 
@@ -29,8 +69,15 @@ namespace Library.Draw
         /// </summary>
         Image ProcessBitmap();
 
-        Image ProcessBitmap(ImageOption opetion);
+        /// <summary>
+        /// 
+        /// </summary>
+        void ProcessBitmapAsync();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        unsafe void UnsafeProcessBitmapAsync();
         /// <summary>
         /// 不安全代码处理方法
         /// </summary>
@@ -46,11 +93,20 @@ namespace Library.Draw
         /// <param name="size"></param>
         void SetTrageSize(Size size);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         ImageOption CreateOption();
     }
 
     public abstract class ImageBuilder : IImageBuilder
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ImageCompletedEventHandler ProcessCompleted;
         protected string SourceImgPath { get; private set; }
         protected byte[] SourceImgBuffter { get; private set; }
         private Image _source;
@@ -106,6 +162,23 @@ namespace Library.Draw
             return ProcessBitmap();
         }
 
+        public unsafe void UnsafeProcessBitmapAsync()
+        {
+            BackgroundWorker background = new BackgroundWorker();
+            Image image = null;
+            background.DoWork += (x, y) =>
+            {
+                image = UnsafeProcessBitmap();
+            };
+            background.RunWorkerCompleted += (x, y) =>
+            {
+                //y.Error
+                OnProcessBitmapCompleted(y.Error == null ? new ImageEventArgs(image) : new ImageEventArgs(y.Error));
+            };
+
+            background.RunWorkerAsync();
+        }
+
         public virtual unsafe Image UnsafeProcessBitmap()
         {
             throw new NotImplementedException();
@@ -135,6 +208,20 @@ namespace Library.Draw
             if (Opetion == null) Opetion = new ImageOption();
         }
         public abstract Image ProcessBitmap();
+        public void ProcessBitmapAsync()
+        {
+            BackgroundWorker background = new BackgroundWorker();
+            Image image = null;
+            background.DoWork += (x, y) =>
+            {
+                image = ProcessBitmap();
+            };
+            background.RunWorkerCompleted += (x, y) =>
+            {
+                OnProcessBitmapCompleted(y.Error == null ? new ImageEventArgs(image) : new ImageEventArgs(y.Error));
+            };
+            background.RunWorkerAsync();
+        }
 
 
         protected ImageAttributes GetOpacity(float opacity)
@@ -180,5 +267,13 @@ namespace Library.Draw
 
             return true;
         }
+
+        protected virtual void OnProcessBitmapCompleted(ImageEventArgs e)
+        {
+            var handler = ProcessCompleted;
+            if (handler != null) handler(this, e);
+        }
+
+
     }
 }

@@ -61,7 +61,7 @@ namespace Library.Draw.Effects
         }
         public override ImageOption CreateOption()
         {
-            return new MosaicOption();
+            return new MosaicOption(){Granularity = 1};
         }
         #endregion
         #region IImageProcessable 成员

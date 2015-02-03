@@ -32,12 +32,8 @@ namespace Library.Draw.Water
         {
             if (_opetion == null) _opetion = new WaterImageTileOption();
         }
+ 
 
-        public Image CreateImage(WaterImageTileOption opetion)
-        {
-            if (opetion == null) throw new ArgumentNullException("opetion");
-            return base.ProcessBitmap(opetion);
-        }
 
         protected override Image CreateFillImage(Rectangle rectangle, Image waterImg)
         {

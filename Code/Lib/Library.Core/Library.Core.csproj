@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Att\LanguageDescriptionAttribute.cs" />
     <Compile Include="Date\CalendarInfo.cs" />
     <Compile Include="Date\ChineseCalendar.cs" />
     <Compile Include="Date\HolidayFormat.cs" />

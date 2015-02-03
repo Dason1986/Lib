@@ -1,5 +1,19 @@
-2015/01/22-18:04:41.995 1508 Recovering log #21
-2015/01/22-18:04:41.999 1508 Level-0 table #26: started
-2015/01/22-18:04:42.207 1508 Level-0 table #26: 2070833 bytes OK
-2015/01/22-18:04:42.415 1508 Delete type=0 #21
-2015/01/22-18:04:42.416 1508 Delete type=3 #16
+2015/02/03-09:20:40.171 1cbc Recovering log #49
+2015/02/03-09:20:40.179 1cbc Level-0 table #60: started
+2015/02/03-09:20:40.531 1cbc Level-0 table #60: 2142384 bytes OK
+2015/02/03-09:20:40.572 1cbc Delete type=0 #49
+2015/02/03-09:20:40.573 1cbc Delete type=2 #51
+2015/02/03-09:20:40.573 1cbc Delete type=3 #43
+2015/02/03-09:42:15.644 1e54 Moved #60 to level-1 2142384 bytes OK: files[ 0 1 5 0 0 0 0 ]
+2015/02/03-09:44:34.785 1e54 Compacting 1@1 + 4@2 files
+2015/02/03-09:44:35.056 1e54 Generated table #62: 891 keys, 2105837 bytes
+2015/02/03-09:44:35.287 1e54 Generated table #63: 162 keys, 2115897 bytes
+2015/02/03-09:44:35.427 1e54 Generated table #64: 327 keys, 2105765 bytes
+2015/02/03-09:44:35.638 1e54 Generated table #65: 498 keys, 3264912 bytes
+2015/02/03-09:44:35.638 1e54 Compacted 1@1 + 4@2 files => 9592411 bytes
+2015/02/03-09:44:35.668 1e54 Delete type=2 #54
+2015/02/03-09:44:35.668 1e54 Delete type=2 #55
+2015/02/03-09:44:35.669 1e54 Delete type=2 #56
+2015/02/03-09:44:35.669 1e54 Delete type=2 #57
+2015/02/03-09:44:35.669 1e54 Delete type=2 #60
+2015/02/03-09:44:35.670 1e54 compacted to: files[ 0 0 5 0 0 0 0 ]

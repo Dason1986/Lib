@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Library.Draw;
 using Library.HelperUtility;
+using Library.Win.Controls;
 
 namespace TestWinform
 {
@@ -27,6 +30,7 @@ namespace TestWinform
             Image image = new Bitmap(new MemoryStream(Program.Original));
             this.pictureBox1.Image = image;
             fileBytes = Program.Original;
+            CreateBuilder();
         }
 
         private readonly Assembly effectsAssembly;
@@ -42,7 +46,7 @@ namespace TestWinform
                 fileBytes = File.ReadAllBytes(fileDialog.FileName);
                 var stream = fileDialog.OpenFile();
                 this.pictureBox1.Image = new Bitmap(stream);
-                comboBox1_SelectedIndexChanged(this, EventArgs.Empty);
+                CreateBuilder();
             }
 
         }
@@ -51,44 +55,97 @@ namespace TestWinform
         private ImageOption option;
         private void button2_Click(object sender, EventArgs e)
         {
+
+
             try
             {
-                button2.Enabled = false;
+
+                panel1.Enabled = false;
                 builderobj.SetOpetion(option);
+
                 this.pictureBox2.Image = checkBox1.Checked
                     ? builderobj.UnsafeProcessBitmap()
                     : builderobj.ProcessBitmap();
             }
             catch (Exception ex)
             {
+                this.pictureBox2.Image = null;
                 MessageBox.Show(ex.Message);
 
             }
             finally
             {
-                button2.Enabled = true;
+                panel1.Enabled = true;
+
             }
         }
-
+        readonly IDictionary<Type, IImageBuilder> _dicinObjects = new ConcurrentDictionary<Type, IImageBuilder>();
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CreateBuilder();
+        }
 
-            if (effectsAssembly != null)
+        private void CreateBuilder()
+        {
+            if (effectsAssembly == null) return;
+            string classname = string.Format("Library.Draw.Effects.{0}", comboBox1.Text);
+            var typeobj = effectsAssembly.GetType(classname);
+            if (typeobj == null) throw new Exception();
+            if (_dicinObjects.ContainsKey(typeobj))
             {
-                string classname = string.Format("Library.Draw.Effects.{0}", comboBox1.Text);
-                var typeobj = effectsAssembly.GetType(classname);
-                if (typeobj == null) throw new Exception();
+                builderobj = _dicinObjects[typeobj];
+            }
+            else
+            {
                 builderobj = typeobj.CreateInstance<IImageBuilder>();
-
+                builderobj.ProcessCompleted += builderobj_ProcessCompleted;
                 if (fileBytes != null)
                 {
                     var tmp = new byte[fileBytes.Length];
                     fileBytes.CopyTo(tmp, 0);
                     builderobj.SetSourceImage(tmp);
                 }
-                option = builderobj.CreateOption();
-                grid.SelectedObject = option;
             }
+            option = builderobj.CreateOption();
+            grid.SelectedObject = option;
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            foreach (var imageBuilder in _dicinObjects.Values)
+            {
+                imageBuilder.ProcessCompleted -= builderobj_ProcessCompleted;
+            }
+            _dicinObjects.Clear();
+            base.OnClosed(e);
+        }
+
+        void builderobj_ProcessCompleted(object sender, ImageEventArgs e)
+        {
+            this.pictureBox2.Image = e.Image;
+            if (e.Error != null) MessageBox.Show(e.Error.Message);
+
+            panel1.Enabled = true;
+            cmd.HideOpaqueLayer();
+        }
+
+        private OpaqueCommand cmd;
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            panel1.Enabled = false;
+            cmd = OpaqueLayer.Show(this, 125, true);
+            builderobj.SetOpetion(option);
+
+            if (checkBox1.Checked)
+            {
+                builderobj.UnsafeProcessBitmapAsync();
+            }
+            else
+            {
+                builderobj.ProcessBitmapAsync();
+            }
+
         }
     }
 }

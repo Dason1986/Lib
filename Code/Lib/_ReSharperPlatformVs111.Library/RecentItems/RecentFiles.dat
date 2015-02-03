@@ -1,53 +1,57 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Gbt/f:GBT2260Reader.cs" caret="355" fromTop="17" />
-    <File id="C2B69EBE-B5B0-43F3-B310-534DE58E83F7/d:Standard/f:CheckBox.cs" caret="458" fromTop="16" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:interface/f:IIDCard.cs" caret="863" fromTop="15" />
-    <File id="C2B69EBE-B5B0-43F3-B310-534DE58E83F7/d:Standard/d:Helper/f:RenderHelper.cs" caret="7669" fromTop="39" />
-    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/f:Program.cs" caret="1106" fromTop="21" />
-    <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/d:IDCrad/f:gbt2260.Db.xml" caret="176307" fromTop="23" />
-    <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/d:IDCrad/f:ChineseIDCard.cs" caret="192" fromTop="0" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LibException.cs" caret="103" fromTop="6" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageException.cs" caret="575" fromTop="17" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintException.cs" caret="187" fromTop="9" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Code/f:ImageCode.cs" caret="7020" fromTop="21" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13814" fromTop="29" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="4385" fromTop="4" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintBuilderHelper.cs" caret="297" fromTop="14" />
     <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintUntity.cs" caret="565" fromTop="4" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintOption.cs" caret="139" fromTop="9" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="1795" fromTop="31" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.Designer.cs" caret="214" fromTop="9" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintOption.cs" caret="139" fromTop="0" />
+    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="866" fromTop="18" />
+    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/f:Program.cs" caret="0" fromTop="0" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="368" fromTop="4" />
+    <File id="C2B69EBE-B5B0-43F3-B310-534DE58E83F7/d:Standard/f:Button.cs" caret="351" fromTop="11" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageDescriptionAttribute.cs" caret="764" fromTop="31" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:EffectsForm.Designer.cs" caret="7251" fromTop="33" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageFactory.cs" caret="1086" fromTop="14" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByTile.cs" caret="967" fromTop="16" />
+    <File id="C2B69EBE-B5B0-43F3-B310-534DE58E83F7/d:Standard/d:Helper/f:RenderHelper.cs" caret="204" fromTop="0" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:EffectsForm.cs" caret="3121" fromTop="24" />
+    <File id="C2B69EBE-B5B0-43F3-B310-534DE58E83F7/d:Standard/d:Loading/f:OpaqueLayer.cs" caret="1096" fromTop="23" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:WaterForm.cs" caret="2462" fromTop="14" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:SheetForm.cs" caret="255" fromTop="11" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:DateForm.cs" caret="2155" fromTop="24" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="4515" fromTop="11" />
   </RecentFiles>
   <RecentEdits>
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13630" fromTop="27" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12839" fromTop="7" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13643" fromTop="27" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="14317" fromTop="25" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="24113" fromTop="21" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="7576" fromTop="21" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="8308" fromTop="21" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="8891" fromTop="36" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Code/f:ImageCode.cs" caret="1764" fromTop="13" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Code/f:ImageCode.cs" caret="1497" fromTop="14" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Code/f:ImageCode.cs" caret="1172" fromTop="15" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintUntity.cs" caret="4703" fromTop="25" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintBuilderHelper.cs" caret="869" fromTop="21" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:PrintBuilderHelper.cs" caret="413" fromTop="16" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="3822" fromTop="11" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="4713" fromTop="31" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="678" fromTop="11" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="524" fromTop="6" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="3085" fromTop="17" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13814" fromTop="29" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="4430" fromTop="30" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="4054" fromTop="24" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="4255" fromTop="23" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="3304" fromTop="23" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="5287" fromTop="21" />
-    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Print/f:IPrintBuilder.cs" caret="2182" fromTop="11" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="938" fromTop="10" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="1409" fromTop="26" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="1340" fromTop="21" />
-    <File id="BBB78556-201D-4857-8212-47D89D2B8FC2/f:PrintComponent.cs" caret="290" fromTop="13" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageDescriptionAttribute.cs" caret="764" fromTop="31" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:EffectsForm.cs" caret="3496" fromTop="7" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="21" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="35" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="43" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageFactory.cs" caret="1086" fromTop="14" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Water/f:WaterImageBuilderByTile.cs" caret="967" fromTop="16" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:WaterForm.cs" caret="3126" fromTop="14" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:WaterForm.cs" caret="2462" fromTop="14" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="18" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="18" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="25" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="201" fromTop="9" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="12" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="16" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="13" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="17" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2485" fromTop="21" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2475" fromTop="21" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2340" fromTop="20" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:EffectsForm.cs" caret="3121" fromTop="24" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="6012" fromTop="21" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="5762" fromTop="14" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="7710" fromTop="38" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="2475" fromTop="25" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="936" fromTop="16" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="7636" fromTop="35" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="4324" fromTop="7" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="4733" fromTop="17" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageBuilder.cs" caret="4515" fromTop="11" />
   </RecentEdits>
 </RecentFiles>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Library.HelperUtility;
+using Library.Win.Controls;
 
 namespace TestWinform
 {
@@ -8,7 +9,7 @@ namespace TestWinform
     {
         public SheetForm()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             listBox1.Items.Add("TestWinform.WaterForm");
             listBox1.Items.Add("TestWinform.EffectsForm");
             listBox1.Items.Add("TestWinform.DateForm");
