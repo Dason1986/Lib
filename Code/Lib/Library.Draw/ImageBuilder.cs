@@ -184,6 +184,9 @@ namespace Library.Draw
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected virtual ImageOption Opetion { get; set; }
 
         public virtual void SetOpetion([NotNull] ImageOption opetion)
@@ -200,9 +203,12 @@ namespace Library.Draw
         public virtual void SetTrageSize(Size size)
         {
             InitOption();
-            Opetion.TrageSize = size;
+            Opetion.TragetSize = size;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected virtual void InitOption()
         {
             if (Opetion == null) Opetion = new ImageOption();
@@ -267,7 +273,20 @@ namespace Library.Draw
 
             return true;
         }
-
+        /// <summary>
+        /// 色彩值漏出處理
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        protected byte Truncate(int a)
+        {
+            if (a < 0)
+                return 0;
+            else if (a > 255)
+                return 255;
+            else
+                return (byte)a;
+        }
         protected virtual void OnProcessBitmapCompleted(ImageEventArgs e)
         {
             var handler = ProcessCompleted;

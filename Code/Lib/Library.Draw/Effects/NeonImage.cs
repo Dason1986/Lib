@@ -1,19 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
-    public class ColorOption : ImageOption
-    {
-        public int Red { get; set; }
-        public int Green { get; set; }
-        public int Blue { get; set; }
-    }
-
     /// <summary>
     /// 霓虹处理
     /// </summary>
+    [LanguageDescription("霓虹处理"), LanguageDisplayName("霓虹处理")]
     public class NeonImage : ImageBuilder
     {
         /*
@@ -24,7 +20,11 @@ b = 2 * sqrt( (b1 - b2)^2 + (b1 - b3)^2 )
 
 f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
          */
-
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("濾鏡選項")]
+        [LanguageDescription("顏色RGB:紅"), LanguageDisplayName("紅")]
         public int Red
         {
             get
@@ -38,6 +38,11 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                 _opetion.Red = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("濾鏡選項")]
+        [LanguageDescription("顏色RGB:綠"), LanguageDisplayName("綠")]
         public int Green
         {
             get
@@ -51,6 +56,11 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                 _opetion.Green = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("濾鏡選項")]
+        [LanguageDescription("顏色RGB:藍"), LanguageDisplayName("藍")]
         public int Blue
         {
             get
@@ -79,10 +89,10 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
             set
             {
                 if (value is ColorOption == false) throw new ImageException("Opetion is not ColorOption");
-                _opetion = value as ColorOption;
+                _opetion = (ColorOption)value;
             }
         }
-    
+
         public override ImageOption CreateOption()
         {
             return new ColorOption();
@@ -105,12 +115,10 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                     int rr = 2 * (int)Math.Sqrt((cc3.R - cc1.R) * (cc3.R - cc1.R) + (cc2.R - cc1.R) * (cc2.R - cc1.R));
                     int gg = 2 * (int)Math.Sqrt((cc3.G - cc1.G) * (cc3.G - cc1.G) + (cc2.G - cc1.G) * (cc2.G - cc1.G));
                     int bb = 2 * (int)Math.Sqrt((cc3.B - cc1.B) * (cc3.B - cc1.B) + (cc2.B - cc1.B) * (cc2.B - cc1.B));
-                    rr += Red;
-                    gg += Green;
-                    bb += Blue;
-                    if (rr > 255) rr = 255;
-                    if (gg > 255) gg = 255;
-                    if (bb > 255) bb = 255;
+                    rr = Truncate(rr + Red);
+                    gg = Truncate(gg + Green);
+                    bb = Truncate(bb + Blue);
+
                     bmp.SetPixel(i, j, Color.FromArgb(rr, gg, bb));
 
                 }
@@ -139,12 +147,9 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                     byte bb = (byte)(2 * Math.Sqrt((ptr[4] - ptr[0]) * (ptr[4] - ptr[0])) + (ptr[bmpData.Stride] - ptr[0]) * (ptr[bmpData.Stride] - ptr[0]));//b;
                     byte gg = (byte)(2 * Math.Sqrt((ptr[5] - ptr[1]) * (ptr[5] - ptr[1])) + (ptr[bmpData.Stride + 1] - ptr[1]) * (ptr[bmpData.Stride + 1] - ptr[1]));//g
                     byte rr = (byte)(2 * Math.Sqrt((ptr[6] - ptr[2]) * (ptr[6] - ptr[2])) + (ptr[bmpData.Stride + 2] - ptr[2]) * (ptr[bmpData.Stride + 2] - ptr[2]));//r
-                    rr += (byte)Red;
-                    gg += (byte)Green;
-                    bb += (byte)Blue;
-                    if (rr > 255) rr = 255;
-                    if (gg > 255) gg = 255;
-                    if (bb > 255) bb = 255;
+                    rr = Truncate(rr + Red);
+                    gg = Truncate(gg + Green);
+                    bb = Truncate(bb + Blue);
                     ptr[0] = bb;
                     ptr[1] = gg;
                     ptr[2] = rr;

@@ -1,14 +1,21 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 色階
     /// </summary>
+    [LanguageDescription("色階"), LanguageDisplayName("色階")]
     public class ColorGradationImage : ImageBuilder
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        [LanguageDescription("RGB:紅"), LanguageDisplayName("紅"), Category("濾鏡選項")]
+
         public int Red
         {
             get
@@ -22,6 +29,11 @@ namespace Library.Draw.Effects
                 _opetion.Red = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary> 
+        [LanguageDescription("RGB:綠"), LanguageDisplayName("綠"), Category("濾鏡選項")]
+
         public int Green
         {
             get
@@ -35,6 +47,11 @@ namespace Library.Draw.Effects
                 _opetion.Green = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary> 
+        [LanguageDescription("RGB:藍"), LanguageDisplayName("藍"), Category("濾鏡選項")]
+
         public int Blue
         {
             get
@@ -63,7 +80,7 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is ColorOption == false) throw new ImageException("Opetion is not ColorOption");
-                _opetion = value as ColorOption;
+                _opetion = (ColorOption)value;
             }
         }
 
@@ -83,16 +100,11 @@ namespace Library.Draw.Effects
                 for (int column = 0; column < widht; column++)
                 {
                     var pixelValue = bmp.GetPixel(column, row);
-                    int rr = pixelValue.R + Red;
-                    int gg = pixelValue.G + Green;
-                    int bb = pixelValue.B + Blue;
+                    int rr = Truncate(pixelValue.R + Red);
+                    int gg = Truncate(pixelValue.G + Green);
+                    int bb = Truncate(pixelValue.B + Blue);
 
-                    if (rr > 255) rr = 255;
-                    if (rr < 0) rr = 0;
-                    if (gg > 255) gg = 255;
-                    if (gg < 0) gg = 0;
-                    if (bb > 255) bb = 255;
-                    if (bb < 0) bb = 0;
+
                     bmp.SetPixel(column, row, Color.FromArgb(pixelValue.A, rr, gg, bb));
                 }
             }
@@ -112,15 +124,10 @@ namespace Library.Draw.Effects
                 for (int j = 0; j < width; j++)
                 {
 
-                    int rr = ptr[2] + Red;
-                    int gg = ptr[1] + Green;
-                    int bb = ptr[0] + Blue;
-                    if (rr > 255) rr = 255;
-                    if (rr < 0) rr = 0;
-                    if (gg > 255) gg = 255;
-                    if (gg < 0) gg = 0;
-                    if (bb > 255) bb = 255;
-                    if (bb < 0) bb = 0;
+                    int rr = Truncate(ptr[2] + Red);
+                    int gg = Truncate(ptr[1] + Green);
+                    int bb = Truncate(ptr[0] + Blue);
+
                     ptr[2] = (byte)rr;//B
                     ptr[1] = (byte)gg;//G
                     ptr[0] = (byte)bb;//R

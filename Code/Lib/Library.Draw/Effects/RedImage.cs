@@ -1,25 +1,27 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// бли╚
     /// </summary>
+    [LanguageDescription("бли╚"), LanguageDisplayName("бли╚")]
     public class RedImage : ImageBuilder
     {
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
             int height = bmp.Height;
-            int widht = bmp.Width;
+            int width = bmp.Width;
 
             for (int row = 0; row < height; row++)
             {
-                for (int column = 0; column < widht; column++)
+                for (int column = 0; column < width; column++)
                 {
-                    var pixelValue = bmp.GetPixel( column,row);
-                    bmp.SetPixel( column,row, Color.FromArgb(pixelValue.A, pixelValue.R, 0, 0));
+                    var pixelValue = bmp.GetPixel(column, row);
+                    bmp.SetPixel(column, row, Color.FromArgb(pixelValue.A, pixelValue.R, 0, 0));
                 }
             }
             return bmp;

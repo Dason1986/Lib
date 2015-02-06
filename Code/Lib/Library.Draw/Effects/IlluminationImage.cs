@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -16,6 +18,8 @@ namespace Library.Draw.Effects
         /// 
         /// </summary>
         [DefaultValue(50)]
+        [LanguageDescription("光點大小"), LanguageDisplayName("光點大小"), Category("濾鏡選項")]
+
         public int Radii
         {
             get
@@ -33,6 +37,8 @@ namespace Library.Draw.Effects
         /// 
         /// </summary>
         [DefaultValue(typeof(Point), "10,50")]
+        [LanguageDescription("光點位置"), LanguageDisplayName("光點位置"), Category("濾鏡選項")]
+
         public Point Center
         {
             get
@@ -62,18 +68,23 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is IlluminationsOption == false) throw new ImageException("Opetion is not IlluminationsOption");
-                _opetion = value as IlluminationsOption;
+                _opetion = (IlluminationsOption)value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public class IlluminationsOption : ImageOption
         {
             /// <summary>
-            /// 
+            /// 光點大小
             /// </summary>
+            [LanguageDescription("光點大小"), LanguageDisplayName("光點大小"), Category("濾鏡選項")]
             public int Radii { get; set; }
             /// <summary>
-            /// 
-            /// </summary>
+            /// 光點位置
+            /// </summary> 
+            [LanguageDescription("光點位置"), LanguageDisplayName("光點位置"), Category("濾鏡選項")]
             public Point Center { get; set; }
         }
         public override ImageOption CreateOption()
@@ -117,6 +128,49 @@ namespace Library.Draw.Effects
                 }
             }
             return myBmp;
+        }
+
+        public override unsafe Image UnsafeProcessBitmap()
+        {
+            var bmp = Source.Clone() as Bitmap;
+            int width = bmp.Width;
+            int height = bmp.Height;
+            int R = Radii;
+            int r = 0, g = 0, b = 0;
+            Point myCenter = this.Center;
+            Rectangle rect = new Rectangle(0, 0, width, height);
+            BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+            byte* ptr = (byte*)(bmpData.Scan0);
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    float myLength = (float)Math.Sqrt(Math.Pow((x - myCenter.X), 2) + Math.Pow((y - myCenter.Y), 2));
+                    //如果像素位于”光晕”之内
+                    if (!(myLength < R))
+                    {
+                        ptr += 4;
+                        continue;
+                    }
+
+                    //220亮度增加常量，该值越大，光亮度越强
+                    float myPixel = 220.0f * (1.0f - myLength / R);
+                    r = ptr[2] + (int)myPixel;
+
+                    g = ptr[1] + (int)myPixel;
+
+                    b = ptr[0] + (int)myPixel;
+                    ptr[2] = this.Truncate(r);
+                    ptr[1] = this.Truncate(g);
+                    ptr[0] = this.Truncate(b);
+
+
+                    ptr += 4;
+                }
+                ptr += bmpData.Stride - width * 4;
+            }
+            bmp.UnlockBits(bmpData);
+            return bmp;
         }
     }
 }

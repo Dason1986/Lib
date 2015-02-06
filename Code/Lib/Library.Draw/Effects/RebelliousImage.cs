@@ -1,11 +1,13 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 逆反处理
     /// </summary>
+    [LanguageDescription("逆反处理"), LanguageDisplayName("逆反处理")]
     public class RebelliousImage : ImageBuilder
     {
         /*

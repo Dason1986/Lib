@@ -22,7 +22,7 @@ namespace Library.Att
                 if (!this.replaced)
                 {
                     this.replaced = true;
-                  //  this.DescriptionValue = SR.GetString(base.Description);
+                    //  this.DescriptionValue = SR.GetString(base.Description);
                 }
                 return base.Description;
             }
@@ -35,6 +35,36 @@ namespace Library.Att
         [TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")]
         public LanguageDescriptionAttribute(string description)
             : base(description)
+        {
+        }
+    }    /// <summary>
+    /// 
+    /// </summary>
+    [AttributeUsage(AttributeTargets.All)]
+    public class LanguageDisplayNameAttribute : DisplayNameAttribute
+    {
+        private bool replaced;
+
+        public override string DisplayName
+        {
+            get
+            {
+                if (!this.replaced)
+                {
+                    this.replaced = true;
+                    //  this.DisplayNameValue = SR.GetString(base.DisplayName);
+                }
+                return base.DisplayName;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayName"></param>
+        [TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")]
+        public LanguageDisplayNameAttribute(string displayName)
+            : base(displayName)
         {
         }
     }

@@ -2,12 +2,15 @@ using System.Drawing;
 
 namespace Library.Draw
 {
-    
+
     namespace ChromatoGram
     {
         /*
         色譜來源： http://baike.baidu.com/view/48715.htm
          */
+        /// <summary>
+        /// 紅色
+        /// </summary>
         public static class RedColor
         {
             /// <summary>
@@ -90,6 +93,9 @@ namespace Library.Draw
 
         }
 
+        /// <summary>
+        /// 橙色
+        /// </summary>
         public static class OrangeColor
         {
             /// <summary>
@@ -150,6 +156,9 @@ namespace Library.Draw
             public static readonly Color Coffee = Color.FromArgb(106, 75, 35);
         }
 
+        /// <summary>
+        /// 黃色
+        /// </summary>
         public static class YellowColor
         {
 
@@ -199,6 +208,9 @@ namespace Library.Draw
             public static readonly Color Khaki = Color.FromArgb(176, 136, 39);
         }
 
+        /// <summary>
+        /// 綠色
+        /// </summary>
         public static class GreenColor
         {
             /// <summary>
@@ -269,6 +281,9 @@ namespace Library.Draw
             public static readonly Color PeacockGreen = Color.FromArgb(0, 128, 119);
         }
 
+        /// <summary>
+        /// 藍色
+        /// </summary>
         public static class BlueColor
         {
             /// <summary>
@@ -360,7 +375,7 @@ namespace Library.Draw
             /// <summary>
             /// 石青Mineral-blue（认真）
             /// </summary>
-            public static readonly Color MineralBlue = Color.FromArgb(0,81,120);
+            public static readonly Color MineralBlue = Color.FromArgb(0, 81, 120);
             /// <summary>
             ///亮蓝Strong-blue（礼节）
             /// </summary>
@@ -384,69 +399,72 @@ namespace Library.Draw
             /// <summary>
             /// 深蓝Midnight-blue（传统）
             /// </summary>
-            public static readonly Color MidnightBlue = Color.FromArgb(4,22,58);
+            public static readonly Color MidnightBlue = Color.FromArgb(4, 22, 58);
         }
 
+        /// <summary>
+        /// 紫色
+        /// </summary>
         public static class PurpleColor
         {
             /// <summary>
             /// 紫藤Wisteria（风雅）
             /// </summary>
-            public static readonly Color Wisteria = Color.FromArgb(115,91,159);
+            public static readonly Color Wisteria = Color.FromArgb(115, 91, 159);
             /// <summary>
             /// 淡紫色Mauve（神秘）
             /// </summary>
-            public static readonly Color Mauve = Color.FromArgb(124,80,157);
+            public static readonly Color Mauve = Color.FromArgb(124, 80, 157);
             /// <summary>
             /// 铁线莲Clematis（赞美）
             /// </summary>
-            public static readonly Color Clematis = Color.FromArgb(216,191,203);
+            public static readonly Color Clematis = Color.FromArgb(216, 191, 203);
             /// <summary>
             /// 丁香Lilac（清香）
             /// </summary>
-            public static readonly Color Lilac = Color.FromArgb(187,161,203);
+            public static readonly Color Lilac = Color.FromArgb(187, 161, 203);
             /// <summary>
             /// 薰衣草Lavender（品格）
             /// </summary>
-            public static readonly Color Lavender = Color.FromArgb(166,136,177);
+            public static readonly Color Lavender = Color.FromArgb(166, 136, 177);
             /// <summary>
             /// 紫水晶Amethyst（直觉）
             /// </summary>
-            public static readonly Color Amethyst = Color.FromArgb(126,73,133);
+            public static readonly Color Amethyst = Color.FromArgb(126, 73, 133);
             /// <summary>
             /// 紫色Purple（神圣）
             /// </summary>
-            public static readonly Color Purple = Color.FromArgb(146,61,146);
+            public static readonly Color Purple = Color.FromArgb(146, 61, 146);
 
             /// <summary>
             /// 香水草Heliotrope（高尚）
             /// </summary>
-            public static readonly Color Heliotrope = Color.FromArgb(111,25,111);
+            public static readonly Color Heliotrope = Color.FromArgb(111, 25, 111);
             /// <summary>
             /// 紫罗兰Mineral violet（怀旧）
             /// </summary>
-            public static readonly Color MineralViolet = Color.FromArgb(197,175,192);
+            public static readonly Color MineralViolet = Color.FromArgb(197, 175, 192);
             /// <summary>
             /// 三色堇、蝴蝶花Pansy（思虑）
             /// </summary>
-            public static readonly Color Pansy = Color.FromArgb(139,0,98);
+            public static readonly Color Pansy = Color.FromArgb(139, 0, 98);
 
             /// <summary>
             /// 锦葵Mallow（妖精）
             /// </summary>
-            public static readonly Color Mallow = Color.FromArgb(211,105,164);
+            public static readonly Color Mallow = Color.FromArgb(211, 105, 164);
             /// <summary>
             /// 兰花Orchid（温和）
             /// </summary>
-            public static readonly Color Orchid = Color.FromArgb(209,136,168);
+            public static readonly Color Orchid = Color.FromArgb(209, 136, 168);
             /// <summary>
             /// 浅莲灰Pale-lilac（萌芽）
             /// </summary>
-            public static readonly Color PaleLilac = Color.FromArgb(237,224,230);
+            public static readonly Color PaleLilac = Color.FromArgb(237, 224, 230);
             /// <summary>
             /// 灰紫Gray-purple（神秘）
             /// </summary>
-            public static readonly Color GrayPurple = Color.FromArgb(157,137,157);
+            public static readonly Color GrayPurple = Color.FromArgb(157, 137, 157);
         }
     }
 

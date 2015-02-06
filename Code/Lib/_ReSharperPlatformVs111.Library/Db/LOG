@@ -1,19 +1,73 @@
-2015/02/03-09:20:40.171 1cbc Recovering log #49
-2015/02/03-09:20:40.179 1cbc Level-0 table #60: started
-2015/02/03-09:20:40.531 1cbc Level-0 table #60: 2142384 bytes OK
-2015/02/03-09:20:40.572 1cbc Delete type=0 #49
-2015/02/03-09:20:40.573 1cbc Delete type=2 #51
-2015/02/03-09:20:40.573 1cbc Delete type=3 #43
-2015/02/03-09:42:15.644 1e54 Moved #60 to level-1 2142384 bytes OK: files[ 0 1 5 0 0 0 0 ]
-2015/02/03-09:44:34.785 1e54 Compacting 1@1 + 4@2 files
-2015/02/03-09:44:35.056 1e54 Generated table #62: 891 keys, 2105837 bytes
-2015/02/03-09:44:35.287 1e54 Generated table #63: 162 keys, 2115897 bytes
-2015/02/03-09:44:35.427 1e54 Generated table #64: 327 keys, 2105765 bytes
-2015/02/03-09:44:35.638 1e54 Generated table #65: 498 keys, 3264912 bytes
-2015/02/03-09:44:35.638 1e54 Compacted 1@1 + 4@2 files => 9592411 bytes
-2015/02/03-09:44:35.668 1e54 Delete type=2 #54
-2015/02/03-09:44:35.668 1e54 Delete type=2 #55
-2015/02/03-09:44:35.669 1e54 Delete type=2 #56
-2015/02/03-09:44:35.669 1e54 Delete type=2 #57
-2015/02/03-09:44:35.669 1e54 Delete type=2 #60
-2015/02/03-09:44:35.670 1e54 compacted to: files[ 0 0 5 0 0 0 0 ]
+2015/02/05-09:04:08.329 150 Recovering log #108
+2015/02/05-09:04:08.330 150 Level-0 table #111: started
+2015/02/05-09:04:08.564 150 Level-0 table #111: 216037 bytes OK
+2015/02/05-09:04:08.756 150 Delete type=0 #108
+2015/02/05-09:04:08.757 150 Delete type=3 #73
+2015/02/05-09:46:10.873 18b4 Compacting 1@0 + 1@1 files
+2015/02/05-09:46:11.108 18b4 Generated table #113: 265 keys, 425458 bytes
+2015/02/05-09:46:11.108 18b4 Compacted 1@0 + 1@1 files => 425458 bytes
+2015/02/05-09:46:11.189 18b4 Delete type=2 #109
+2015/02/05-09:46:11.190 18b4 Delete type=2 #111
+2015/02/05-09:46:11.190 18b4 compacted to: files[ 0 1 6 0 0 0 0 ]
+2015/02/05-09:49:39.986 18b4 Level-0 table #115: started
+2015/02/05-09:49:40.213 18b4 Level-0 table #115: 4183715 bytes OK
+2015/02/05-09:49:40.272 18b4 Delete type=0 #112
+2015/02/05-10:44:36.709 18b4 Compacting 1@0 + 1@1 files
+2015/02/05-10:44:36.924 18b4 Generated table #116: 338 keys, 1963493 bytes
+2015/02/05-10:44:36.924 18b4 Compacted 1@0 + 1@1 files => 1963493 bytes
+2015/02/05-10:44:37.006 18b4 Delete type=2 #113
+2015/02/05-10:44:37.006 18b4 Delete type=2 #115
+2015/02/05-10:44:37.007 18b4 compacted to: files[ 0 1 6 0 0 0 0 ]
+2015/02/05-10:56:29.039 18b4 Compacting 1@1 + 6@2 files
+2015/02/05-10:56:29.259 18b4 Generated table #117: 896 keys, 2101873 bytes
+2015/02/05-10:56:29.449 18b4 Generated table #118: 172 keys, 2141172 bytes
+2015/02/05-10:56:29.568 18b4 Generated table #119: 208 keys, 2105553 bytes
+2015/02/05-10:56:29.710 18b4 Generated table #120: 658 keys, 2293472 bytes
+2015/02/05-10:56:29.852 18b4 Generated table #121: 2 keys, 3007618 bytes
+2015/02/05-10:56:29.895 18b4 Generated table #122: 17 keys, 8079 bytes
+2015/02/05-10:56:29.895 18b4 Compacted 1@1 + 6@2 files => 11657767 bytes
+2015/02/05-10:56:29.940 18b4 Delete type=2 #100
+2015/02/05-10:56:29.941 18b4 Delete type=2 #103
+2015/02/05-10:56:29.941 18b4 Delete type=2 #104
+2015/02/05-10:56:29.942 18b4 Delete type=2 #105
+2015/02/05-10:56:29.942 18b4 Delete type=2 #106
+2015/02/05-10:56:29.943 18b4 Delete type=2 #107
+2015/02/05-10:56:29.944 18b4 Delete type=2 #116
+2015/02/05-10:56:29.944 18b4 compacted to: files[ 0 0 6 0 0 0 0 ]
+2015/02/05-17:41:47.546 18b4 Level-0 table #124: started
+2015/02/05-17:41:47.729 18b4 Level-0 table #124: 4149263 bytes OK
+2015/02/05-17:41:47.754 18b4 Delete type=0 #114
+2015/02/06-09:03:45.703 18b4 Compacting 1@1 + 6@2 files
+2015/02/06-09:03:45.917 18b4 Generated table #125: 918 keys, 2105866 bytes
+2015/02/06-09:03:46.179 18b4 Generated table #126: 178 keys, 2104682 bytes
+2015/02/06-09:03:46.321 18b4 Generated table #127: 203 keys, 2111030 bytes
+2015/02/06-09:03:46.470 18b4 Generated table #128: 691 keys, 2379739 bytes
+2015/02/06-09:03:46.653 18b4 Generated table #129: 2 keys, 3007618 bytes
+2015/02/06-09:03:46.762 18b4 Generated table #130: 18 keys, 8164 bytes
+2015/02/06-09:03:46.762 18b4 Compacted 1@1 + 6@2 files => 11717099 bytes
+2015/02/06-09:03:46.839 18b4 Delete type=2 #117
+2015/02/06-09:03:46.840 18b4 Delete type=2 #118
+2015/02/06-09:03:46.840 18b4 Delete type=2 #119
+2015/02/06-09:03:46.840 18b4 Delete type=2 #120
+2015/02/06-09:03:46.840 18b4 Delete type=2 #121
+2015/02/06-09:03:46.841 18b4 Delete type=2 #122
+2015/02/06-09:03:46.841 18b4 Delete type=2 #124
+2015/02/06-09:03:46.841 18b4 compacted to: files[ 0 0 6 0 0 0 0 ]
+2015/02/06-16:18:44.891 18b4 Level-0 table #132: started
+2015/02/06-16:18:45.361 18b4 Level-0 table #132: 4060132 bytes OK
+2015/02/06-16:18:45.425 18b4 Delete type=2 #121
+2015/02/06-16:18:45.426 18b4 Delete type=0 #123
+2015/02/06-16:27:21.236 18b4 Compacting 1@1 + 5@2 files
+2015/02/06-16:27:21.390 18b4 Generated table #133: 919 keys, 2102036 bytes
+2015/02/06-16:27:21.598 18b4 Generated table #134: 179 keys, 2118962 bytes
+2015/02/06-16:27:21.770 18b4 Generated table #135: 202 keys, 2110741 bytes
+2015/02/06-16:27:21.879 18b4 Generated table #136: 699 keys, 2485479 bytes
+2015/02/06-16:27:21.973 18b4 Generated table #137: 2 keys, 3007618 bytes
+2015/02/06-16:27:21.974 18b4 Compacted 1@1 + 5@2 files => 11824836 bytes
+2015/02/06-16:27:21.990 18b4 Delete type=2 #125
+2015/02/06-16:27:21.990 18b4 Delete type=2 #126
+2015/02/06-16:27:21.991 18b4 Delete type=2 #127
+2015/02/06-16:27:21.991 18b4 Delete type=2 #128
+2015/02/06-16:27:21.992 18b4 Delete type=2 #129
+2015/02/06-16:27:21.992 18b4 Delete type=2 #132
+2015/02/06-16:27:21.993 18b4 compacted to: files[ 0 0 6 0 0 0 0 ]

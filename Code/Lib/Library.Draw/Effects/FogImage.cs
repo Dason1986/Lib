@@ -1,6 +1,8 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -9,11 +11,17 @@ namespace Library.Draw.Effects
     /// 图像的雾化处理不是基于图像中像素点之间的计算,而是给图像像素的颜色值引入一定的随机值, 
     /// 使图像具有毛玻璃带水雾般的效果..
     /// </summary>
+    [LanguageDescription("对比度"), LanguageDisplayName("雾化效果")]
     public class FogImage : ImageBuilder
     {
         /*
          * 对每个像素A(i,j)进行处理，用其周围一定范围内随机点A(i+d,j+d),(-k<d<k)的像素替代。显然，以该点为圆心的圆半径越大，则雾化效果越明显。
          */
+        /// <summary>
+        /// 圆半徑
+        /// </summary> 
+        [LanguageDescription("圆半徑"), LanguageDisplayName("圆半徑"), Category("濾鏡選項")]
+        
         public int Fog
         {
             get
@@ -42,11 +50,18 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is FogOption == false) throw new ImageException("Opetion is not FogOption");
-                _opetion = value as FogOption;
+                _opetion = (FogOption)value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public class FogOption : ImageOption
         {
+            /// <summary>
+            /// 圆半徑
+            /// </summary>
+            [LanguageDescription("圆半徑"), LanguageDisplayName("圆半徑"), Category("濾鏡選項")]
             public int Fog { get; set; }
         }
         public override ImageOption CreateOption()
@@ -94,21 +109,9 @@ namespace Library.Draw.Effects
 
         public override unsafe Image UnsafeProcessBitmap()
         {
-        //    throw new NotImplementedException();
-            var fog = Fog == 0 ? 7 : Fog;
-            return UnsafeProcessBitmap(Source, fog);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="n"></param>
-        public static unsafe Bitmap UnsafeProcessBitmap(Image source, int n)
-        {
-            var bmp = source.Clone() as Bitmap;
+            //    throw new NotImplementedException();
+            var n = Fog == 0 ? 7 : Fog;
+            var bmp = Source.Clone() as Bitmap;
             int width = bmp.Width;
             int height = bmp.Height;
             Rectangle rect = new Rectangle(0, 0, width, height);
@@ -141,6 +144,10 @@ namespace Library.Draw.Effects
             bmp.UnlockBits(bmpData);
             return bmp;
         }
+
+
+
+
         #endregion
 
         #endregion

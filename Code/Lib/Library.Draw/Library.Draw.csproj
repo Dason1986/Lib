@@ -52,25 +52,36 @@
     <Compile Include="ChromatoGram.cs" />
     <Compile Include="Code\BarCode.cs" />
     <Compile Include="Code\QRCode.cs" />
+    <Compile Include="Color\CMYKColor.cs" />
+    <Compile Include="Color\ColorHelper.cs" />
+    <Compile Include="Color\HSVColor.cs" />
+    <Compile Include="Color\IToRGBColor.cs" />
     <Compile Include="DrawHelper.cs" />
+    <Compile Include="Effects\AutoLevelImage.cs" />
     <Compile Include="Effects\BlindsImage.cs" />
     <Compile Include="Effects\BlueImage.cs" />
-    <Compile Include="Effects\BrightnessImage.cs" />
+    <Compile Include="Effects\BrightContrastImage.cs" />
+    <Compile Include="Effects\CleanGlassImage.cs" />
     <Compile Include="Effects\ColorGradationImage.cs" />
-    <Compile Include="Effects\ContrastImage.cs" />
+    <Compile Include="Effects\ColorOption.cs" />
+    <Compile Include="Effects\ColorQuantizeImage.cs" />
+    <Compile Include="Effects\ColorToneImage.cs" />
+    <Compile Include="Effects\FeatherImage.cs" />
     <Compile Include="Effects\FogImage.cs" />
-    <Compile Include="Effects\GaussianBlurImage.cs" />
     <Compile Include="Effects\GreenImage.cs" />
+    <Compile Include="Effects\HistogramEqualImage.cs" />
     <Compile Include="Effects\IlluminationImage.cs" />
     <Compile Include="Effects\MosaicImage.cs" />
     <Compile Include="Effects\NeonImage.cs" />
     <Compile Include="Effects\GrayImage.cs" />
+    <Compile Include="Effects\RaiseFrameImage.cs" />
     <Compile Include="Effects\RebelliousImage.cs" />
     <Compile Include="Effects\RedImage.cs" />
     <Compile Include="Effects\ReliefImage.cs" />
     <Compile Include="Effects\SharpenImage.cs" />
-    <Compile Include="Effects\ThumbnailImage.cs" />
     <Compile Include="Effects\TwoValueImage.cs" />
+    <Compile Include="Effects\ZoomBlurImage.cs" />
+    <Compile Include="Color\HSLColor.cs" />
     <Compile Include="Water\WaterImageBuilder.cs" />
     <Compile Include="Water\WaterImageBuilderByText.cs" />
     <Compile Include="Water\WaterImageFactory.cs" />
@@ -104,6 +115,9 @@
       <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
       <Name>Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Color\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

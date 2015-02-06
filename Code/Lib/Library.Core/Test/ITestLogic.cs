@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Library.Test
+namespace Library.Logic
 {
     /// <summary>
     /// 
@@ -78,12 +78,17 @@ namespace Library.Test
         /// <summary>
         /// 
         /// </summary>
+        public DateTime Time { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="message"></param>
         /// <param name="messageType"></param>
-        internal MessageEventArgs(string message, MessageType messageType = MessageType.Info)
+        public MessageEventArgs(string message, MessageType messageType = MessageType.Info)
         {
             Message = message;
             MessageInfo = messageType;
+            Time = DateTime.Now;
         }
     }
     /// <summary>
@@ -109,7 +114,7 @@ namespace Library.Test
     /// <summary>
     /// 
     /// </summary>
-    public interface ITestLogic
+    public interface ILogic
     {
         /// <summary>
         /// 
@@ -131,7 +136,7 @@ namespace Library.Test
     /// <summary>
     /// 
     /// </summary>
-    public abstract class TestLogic : ITestLogic
+    public abstract class BaseLogic : ILogic
     {
         /// <summary>
         /// 

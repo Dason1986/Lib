@@ -51,7 +51,7 @@ namespace Library.Draw.Water
             MemoryStream waterImagestream = new MemoryStream(SourceImgBuffter);
             var sourceImg = Image.FromStream(sourcestream);
             var waterImg = Image.FromStream(waterImagestream);
-            var trageSize = Opetion == null ? null : Opetion.TrageSize;
+            var trageSize = Opetion == null ? null : Opetion.TragetSize;
             Image tmpimg = trageSize != null ? new Bitmap(trageSize.Value.Width, trageSize.Value.Height) : new Bitmap(sourceImg.Width, sourceImg.Height);
             Graphics gType = CreateGraphics(tmpimg, sourceImg);
             var attributes = GetOpacity(Opetion.Opacity);
@@ -76,7 +76,7 @@ namespace Library.Draw.Water
         protected Graphics CreateGraphics(Image tmpimg, Image sourceImg)
         {
             Graphics gType = Graphics.FromImage(tmpimg);
-            var trageSize = Opetion == null ? null : Opetion.TrageSize;
+            var trageSize = Opetion == null ? null : Opetion.TragetSize;
             if (trageSize != null)
             {
                 gType.DrawImage(sourceImg, new Rectangle(new Point(0, 0), trageSize.Value), 0, 0, sourceImg.Width,

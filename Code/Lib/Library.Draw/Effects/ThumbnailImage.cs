@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -38,17 +40,73 @@ namespace Library.Draw.Effects
         /// <summary>
         /// 
         /// </summary>
-        public ThumbnailModel Model { get; set; }
+        [LanguageDescription("縮放方式"), Category("濾鏡選項")]
+        public ThumbnailModel Model
+        {
+            get
+            {
+                InitOption();
+                return _opetion.Model;
+            }
+            set
+            {
+                InitOption();
+                _opetion.Model = value;
+            }
+        }
+
+        /// <summary>
+        /// 新尺寸
+        /// </summary>
+        [LanguageDescription("新尺寸"), Category("濾鏡選項")]
+        public Size TragetSize
+        {
+            get
+            {
+                InitOption();
+                return _opetion.TragetSize.GetValueOrDefault();
+            }
+            set
+            {
+                InitOption();
+                _opetion.TragetSize = value;
+            }
+        }
+
+        #region Option
+
+        protected override void InitOption()
+        {
+            if (_opetion == null) _opetion = new ThumbnailOption();
+        }
+        private ThumbnailOption _opetion;
+
         /// <summary>
         /// 
         /// </summary>
-        public ImageFormat TragetFormat { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public Size TragetSize { get; set; }
+        public class ThumbnailOption : ImageOption
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public ThumbnailModel Model { get; set; }
+        }
 
+        protected override ImageOption Opetion
+        {
+            get { return _opetion; }
+            set
+            {
+                if (value is ThumbnailOption == false) throw new ImageException("Opetion is not ThumbnailOption");
+                _opetion = (ThumbnailOption) value;
+            }
+        }
 
+        public override ImageOption CreateOption()
+        {
+            return new ThumbnailOption();
+        }
+        #endregion
 
         public override Image ProcessBitmap()
         {
@@ -98,7 +156,7 @@ namespace Library.Draw.Effects
             g.DrawImage(bmp, new Rectangle(0, 0, towidth, toheight), new Rectangle(x, y, ow, oh), GraphicsUnit.Pixel);
             MemoryStream ms = new MemoryStream();
 
-            bitmap.Save(ms, TragetFormat);
+            bitmap.Save(ms, ImageFormat.Png);
 
 
             ms.Dispose();

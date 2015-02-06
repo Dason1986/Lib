@@ -1,11 +1,13 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// бли╚
     /// </summary>
+    [LanguageDescription("бли╚"), LanguageDisplayName("бли╚")]
     public class BlueImage : ImageBuilder
     {
         public override Image ProcessBitmap()
@@ -18,8 +20,8 @@ namespace Library.Draw.Effects
             {
                 for (int column = 0; column < widht; column++)
                 {
-                    var pixelValue = bmp.GetPixel(column,row);
-                    bmp.SetPixel( column,row, Color.FromArgb(pixelValue.A, 0, 0, pixelValue.B));
+                    var pixelValue = bmp.GetPixel(column, row);
+                    bmp.SetPixel(column, row, Color.FromArgb(pixelValue.A, 0, 0, pixelValue.B));
                 }
             }
             return bmp;

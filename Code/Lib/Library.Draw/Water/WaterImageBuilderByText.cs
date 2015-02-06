@@ -22,7 +22,7 @@ namespace Library.Draw.Water
 
             var sourceImg = Image.FromStream(sourcestream);
 
-            var trageSize = Opetion == null ? null : Opetion.TrageSize;
+            var trageSize = Opetion == null ? null : Opetion.TragetSize;
             Image tmpimg = trageSize != null ? new Bitmap(trageSize.Value.Width, trageSize.Value.Height) : new Bitmap(sourceImg.Width, sourceImg.Height);
             Graphics gType = CreateGraphics(tmpimg, sourceImg);
             var attributes = GetOpacity(Opetion.Opacity);

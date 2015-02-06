@@ -1,14 +1,22 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 黑白效果
     /// </summary>
+    [LanguageDescription("黑白效果"), LanguageDisplayName("黑白效果")]
     public class GrayImage : ImageBuilder
     {
 
+        /// <summary>
+        /// 
+        /// </summary> 
+        [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法"), Category("濾鏡選項")]
+       
         public GrayType Pixel
         {
             get
@@ -22,27 +30,36 @@ namespace Library.Draw.Effects
                 _opetion.Pixel = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法")]
         public enum GrayType
         {
             /// <summary>
             /// 加權
-            /// </summary>
+            /// </summary> 
+            [LanguageDescription("加權"), LanguageDisplayName("加權")]
             Weighted,
             /// <summary>
             /// 平均
-            /// </summary>
+            /// </summary> 
+            [LanguageDescription("平均"), LanguageDisplayName("平均")]
             Average,
             /// <summary>
             /// 最大值
-            /// </summary>
+            /// </summary> 
+            [LanguageDescription("最大值"), LanguageDisplayName("最大值")]
             Max,
             /// <summary>
             /// 位移
-            /// </summary>
+            /// </summary> 
+            [LanguageDescription("位移"), LanguageDisplayName("位移")]
             Shift,
             /// <summary>
             /// 整數
-            /// </summary>
+            /// </summary> 
+            [LanguageDescription("整數"), LanguageDisplayName("整數")]
             Integer,
 
         }
@@ -62,11 +79,18 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is GrayOption == false) throw new ImageException("Opetion is not GrayOption");
-                _opetion = value as GrayOption;
+                _opetion = (GrayOption)value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public class GrayOption : ImageOption
         {
+            /// <summary>
+            /// 黑白算法
+            /// </summary>
+           [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法"), Category("濾鏡選項")]
             public GrayType Pixel { get; set; }
         }
         public override ImageOption CreateOption()
@@ -98,7 +122,7 @@ namespace Library.Draw.Effects
                             ret = ((int)(curColor.R * 28 + curColor.G * 151 + curColor.B * 77)) >> 8;
                             break;
                         case GrayType.Integer://(R*30+G*59+B*11)/100 　
-                            ret = ((int)(curColor.R * 30 + curColor.G * 59 + curColor.B * 11)/100) ;
+                            ret = ((int)(curColor.R * 30 + curColor.G * 59 + curColor.B * 11) / 100);
                             break;
                         case GrayType.Max:
                             ret = curColor.R > curColor.G ? curColor.R : curColor.G;
@@ -133,10 +157,10 @@ namespace Library.Draw.Effects
                             temp = (byte)(0.299 * ptr[2] + 0.587 * ptr[1] + 0.114 * ptr[0]);
                             break;
                         case GrayType.Shift:
-                            temp = (byte)((int)(28 * ptr[2] + 151 * ptr[1] + 77 * ptr[0])>>8);
+                            temp = (byte)((int)(28 * ptr[2] + 151 * ptr[1] + 77 * ptr[0]) >> 8);
                             break;
                         case GrayType.Integer:
-                            temp = (byte)((30 * ptr[2] + 59 * ptr[1] + 11 * ptr[0])/100);
+                            temp = (byte)((30 * ptr[2] + 59 * ptr[1] + 11 * ptr[0]) / 100);
                             break;
                         case GrayType.Max:
                             temp = ptr[2] > ptr[1] ? ptr[2] : ptr[1];

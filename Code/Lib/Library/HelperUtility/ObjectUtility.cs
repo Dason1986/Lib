@@ -20,7 +20,7 @@ namespace Library.HelperUtility
         {
             try
             {
-                return (T)Cast(value, typeof(T),default(T));
+                return (T)Cast(value, typeof(T), default(T));
             }
             catch (Exception ex)
             {
@@ -38,7 +38,7 @@ namespace Library.HelperUtility
         public static T Cast<T>(object value)
         {
 
-            return (T)Cast(value, typeof(T),default(T));
+            return (T)Cast(value, typeof(T), default(T));
 
         }
 
@@ -74,7 +74,7 @@ namespace Library.HelperUtility
 
             try
             {
-                return Cast(value, targetType,null);
+                return Cast(value, targetType, null);
 
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace Library.HelperUtility
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="NotSupportedException"></exception>
-        public static object Cast(object value, Type targetType,object defaultValue=null)
+        public static object Cast(object value, Type targetType, object defaultValue = null)
         {
             if (value == null) return defaultValue;
             if (targetType == null) throw new ArgumentNullException("targetType");
@@ -145,6 +145,21 @@ namespace Library.HelperUtility
             if (toConvter.CanConvertTo(tmpType)) return toConvter.ConvertTo(value, tmpType);
 
             throw new NotSupportedException();
+        }
+
+        static readonly Random random = new Random();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static int GetRandomInt(int a, int b)
+        {
+            int min = Math.Min(a, b);
+            int max = Math.Max(a, b);
+           
+            return random.Next(min, max);
         }
     }
 }

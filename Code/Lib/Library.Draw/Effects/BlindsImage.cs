@@ -1,17 +1,26 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 以百叶效果显示图像
-    /// </summary>
+    /// </summary> 
+    [LanguageDescription("百叶效果"), LanguageDisplayName("百叶效果")]
     public class BlindsImage : ImageBuilder
     {
         /*
           根据图像的高度或宽度和定制的百叶窗显示条宽度计算百叶窗显示的条目数量
          */
         #region Option
+        /// <summary>
+        /// 方向
+        /// </summary>
+
+        [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
+      
         public AlignmentType Alignment
         {
             get
@@ -23,6 +32,12 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Alignment = value;
             }
         }
+        /// <summary>
+        /// 線條數量
+        /// </summary>
+
+        [LanguageDescription("線條數量"), LanguageDisplayName("線條數量"), Category("濾鏡選項")]
+     
         public int BarCount
         {
             get
@@ -34,6 +49,12 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Count = value;
             }
         }
+        /// <summary>
+        /// 線條大小
+        /// </summary>
+
+        [LanguageDescription("線條大小"), LanguageDisplayName("線條大小"), Category("濾鏡選項")]
+        
         public int BarPixel
         {
             get
@@ -45,6 +66,12 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Pixel = value;
             }
         }
+        /// <summary>
+        /// 線條顏色
+        /// </summary>
+
+        [LanguageDescription("線條顏色"), LanguageDisplayName("線條顏色"), Category("濾鏡選項")]
+ 
         public Color BarColor
         {
             get
@@ -58,12 +85,31 @@ namespace Library.Draw.Effects
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public class BlindsOption : ImageOption
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
             public AlignmentType Alignment { get; set; }
+            /// <summary>
+            /// 
+            /// </summary> 
+            [LanguageDescription("線條數量"), LanguageDisplayName("線條數量"), Category("濾鏡選項")]
             public int Count { get; set; }
+            /// <summary>
+            /// 
+            /// </summary> 
+            [LanguageDescription("線條大小"), LanguageDisplayName("線條大小"), Category("濾鏡選項")]
             public int Pixel { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            [LanguageDescription("線條顏色"), LanguageDisplayName("線條顏色"), Category("濾鏡選項")]
             public Color BarColor { get; set; }
         }
 
@@ -80,7 +126,7 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is BlindsOption == false) throw new ImageException("Opetion is not BlindsOption");
-                _opetion = value as BlindsOption;
+                _opetion = (BlindsOption) value;
             }
         }
         public override ImageOption CreateOption()
@@ -181,70 +227,70 @@ namespace Library.Draw.Effects
             switch (Alignment)
             {
                 case AlignmentType.Horizontally:
-                {
-                    int dw = width;
-                    int dh = height / count;
-                    var spaceFirst = dw * 4 * pixel;
-                    var spaceRec = dw * 4 * (dh - pixel);
-                    Point[] myPoint = new Point[count - 1];
-                    for (int y = 0; y < myPoint.Length; y++)
                     {
-                        myPoint[y].Y = (y + 1) * dh;
-                        myPoint[y].X = 0;
-                    }
-
-                    ptr += spaceFirst;
-                    foreach (Point t in myPoint)
-                    {
-                        ptr += spaceRec;
-                        for (int i = 0; i < pixel; i++)
+                        int dw = width;
+                        int dh = height / count;
+                        var spaceFirst = dw * 4 * pixel;
+                        var spaceRec = dw * 4 * (dh - pixel);
+                        Point[] myPoint = new Point[count - 1];
+                        for (int y = 0; y < myPoint.Length; y++)
                         {
-                            for (int k = 0; k < dw; k++)
-                            {
-                                ptr[0] = bb;
-                                ptr[1] = gg;
-                                ptr[2] = rr;
-                                ptr += 4;
-                            }
+                            myPoint[y].Y = (y + 1) * dh;
+                            myPoint[y].X = 0;
                         }
-                    }
-                    break;
-                }
 
-                case AlignmentType.Vertically:
-                {
-                    int dw = width / count;
-                    int dh = height;
-                    var spaceFirst = 4 * dw;
-                    var spaceRec = 4 * (dw - 4);
-                    var spaceend = 4*(width - dw*count);
-                    Point[] myPoint = new Point[count - 1];
-                    for (int x = 0; x < myPoint.Length; x++)
-                    {
-                        myPoint[x].Y = 0;
-                        myPoint[x].X = (x + 1) * dw;
-                    }
-                    for (int k = 0; k < dh; k++)
-                    {
                         ptr += spaceFirst;
                         foreach (Point t in myPoint)
                         {
-
-
+                            ptr += spaceRec;
                             for (int i = 0; i < pixel; i++)
                             {
-                                ptr[0] = bb;
-                                ptr[1] = gg;
-                                ptr[2] = rr;
-                                ptr += 4;
+                                for (int k = 0; k < dw; k++)
+                                {
+                                    ptr[0] = bb;
+                                    ptr[1] = gg;
+                                    ptr[2] = rr;
+                                    ptr += 4;
+                                }
                             }
-                            ptr += spaceRec;
-
                         }
-                        ptr += spaceend;
+                        break;
                     }
-                    break;
-                }
+
+                case AlignmentType.Vertically:
+                    {
+                        int dw = width / count;
+                        int dh = height;
+                        var spaceFirst = 4 * dw;
+                        var spaceRec = 4 * (dw - 4);
+                        var spaceend = 4 * (width - dw * count);
+                        Point[] myPoint = new Point[count - 1];
+                        for (int x = 0; x < myPoint.Length; x++)
+                        {
+                            myPoint[x].Y = 0;
+                            myPoint[x].X = (x + 1) * dw;
+                        }
+                        for (int k = 0; k < dh; k++)
+                        {
+                            ptr += spaceFirst;
+                            foreach (Point t in myPoint)
+                            {
+
+
+                                for (int i = 0; i < pixel; i++)
+                                {
+                                    ptr[0] = bb;
+                                    ptr[1] = gg;
+                                    ptr[2] = rr;
+                                    ptr += 4;
+                                }
+                                ptr += spaceRec;
+
+                            }
+                            ptr += spaceend;
+                        }
+                        break;
+                    }
                 default: throw new ImageException("Not support");
             }
 

@@ -1,11 +1,13 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 绿色
     /// </summary>
+    [LanguageDescription("绿色"), LanguageDisplayName("绿色")]
     public class GreenImage : ImageBuilder
     {
         public override Image ProcessBitmap()

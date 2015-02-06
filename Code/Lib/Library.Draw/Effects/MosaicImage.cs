@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -8,6 +10,7 @@ namespace Library.Draw.Effects
     /// 是把一张图片分割成若干个N * N像素的小区块（可能在边缘有零星的小块，但不影响整体算法）
     /// ，每个小区块的颜色都是相同的。
     /// </summary>
+    [LanguageDescription("马赛克"), LanguageDisplayName("马赛克")]
     public class MosaicImage : ImageBuilder
     {
         /*
@@ -23,6 +26,11 @@ namespace Library.Draw.Effects
 
 因此，区块越大，处理效果越明显；也可得出，源图片(R)对处理后的图片(S)是多对一映射，也就是说：马赛克处理后的图片是不可逆的，不要试图用可逆算法复原。
          */
+        /// <summary>
+        /// 
+        /// </summary>
+        [LanguageDescription("效果粒度，值越大码越严重"), LanguageDisplayName("粒度"), Category("濾鏡選項")]
+       
         public int Granularity
         {
             get
@@ -52,11 +60,19 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is MosaicOption == false) throw new ImageException("Opetion is not MosaicOption");
-                _opetion = value as MosaicOption;
+                _opetion = (MosaicOption) value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public class MosaicOption : ImageOption
         {
+            /// <summary>
+            /// 粒度
+            /// </summary>
+            /// <remarks>效果粒度，值越大码越严重</remarks>
+            [LanguageDescription("效果粒度，值越大码越严重"), LanguageDisplayName("粒度"), Category("濾鏡選項")]
             public int Granularity { get; set; }
         }
         public override ImageOption CreateOption()
@@ -71,7 +87,7 @@ namespace Library.Draw.Effects
             var bmp = Source.Clone() as Bitmap;
             int width = bmp.Width;
             int height = bmp.Height;
-            int N = Granularity;//效果粒度，值越大码越严重
+            int N = Granularity;//效果粒度，值越大码越严重.粒度值不能小於0
             if (N <= 0) throw new ImageException("粒度值不能小於0");
             int r = 0, g = 0, b = 0;
             Color c;

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 锐化
     /// </summary>
+    [LanguageDescription("锐化"), LanguageDisplayName("锐化")]
     public class SharpenImage : ImageBuilder
     {
         readonly int[] Laplacian = { -1, -1, -1, -1, 9, -1, -1, -1, -1 };
@@ -40,12 +42,12 @@ namespace Library.Draw.Effects
                         }
                     }
                     //处理颜色值溢出
-                    r = r > 255 ? 255 : r;
-                    r = r < 0 ? 0 : r;
-                    g = g > 255 ? 255 : g;
-                    g = g < 0 ? 0 : g;
-                    b = b > 255 ? 255 : b;
-                    b = b < 0 ? 0 : b;
+                    r = Truncate(r);
+
+                    g = Truncate(g);
+
+                    b = Truncate(b);
+
                     bitmap.SetPixel(x - 1, y - 1, Color.FromArgb(r, g, b));
                 }
             }
@@ -61,7 +63,7 @@ namespace Library.Draw.Effects
             int w = bmpData.Width;
             int h = bmpData.Height;
             byte* ptr = (byte*)(bmpData.Scan0);
-       
+
             for (int x = 1; x < w; x++)
             {
                 for (int y = 1; y < h; y++)
@@ -79,20 +81,17 @@ namespace Library.Draw.Effects
                             index++;
                         }
                     }
-                    //处理颜色值溢出
-                    if (rr > 255) rr = 255;
-                    if (rr < 0) rr = 0;
-                    if (gg > 255) gg = 255;
-                    if (gg < 0) gg = 0;
-                    if (bb > 255) bb = 255;
-                    if (bb < 0) bb = 0;
+                  
+                    rr = Truncate(rr);
+                    gg = Truncate(gg);
+                    bb = Truncate(bb);
                     ptr[0] = (byte)bb;
                     ptr[1] = (byte)gg;
                     ptr[2] = (byte)rr;
                     ptr += 3;
 
                 }
-              //  ptr += bmpData.Stride - w * 3;
+                //  ptr += bmpData.Stride - w * 3;
             }
             bmp.UnlockBits(bmpData);
             return bmp;

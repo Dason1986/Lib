@@ -1,14 +1,27 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
+    /// <summary>
+    /// 方向
+    /// </summary>
     [Flags]
     public enum AlignmentType
     {
+        /// <summary>
+        /// 垂直
+        /// </summary>
+        [LanguageDescription("垂直"), LanguageDisplayName("垂直")]
         Horizontally = 1,
+        /// <summary>
+        /// 橫向
+        /// </summary> 
+        [LanguageDescription("橫向"), LanguageDisplayName("橫向")]
         Vertically = 2,
 
     }
@@ -17,6 +30,11 @@ namespace Library.Draw.Effects
     /// </summary>
     public class FlipImage : ImageBuilder
     {
+        /// <summary>
+        /// 
+        /// </summary> 
+        [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
+   
         public AlignmentType Flip
         {
             get
@@ -31,8 +49,15 @@ namespace Library.Draw.Effects
         #region Option
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public class FlipOption : ImageOption
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
             public AlignmentType Alignment { get; set; }
         }
 
@@ -49,12 +74,12 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is FlipOption == false) throw new ImageException("Opetion is not AlignmentOption");
-                _opetion = value as FlipOption;
+                _opetion = (FlipOption)value;
             }
         }
         public override ImageOption CreateOption()
         {
-            return new FlipOption(){Alignment = AlignmentType.Horizontally|AlignmentType.Vertically  };
+            return new FlipOption() { Alignment = AlignmentType.Horizontally | AlignmentType.Vertically };
         }
 
         #endregion
@@ -66,8 +91,8 @@ namespace Library.Draw.Effects
 
             MemoryStream sourcestream = new MemoryStream(SourceImgBuffter);
             Image image = new Bitmap(sourcestream);
-            Bitmap flippedImage = Opetion != null && Opetion.TrageSize != null
-                ? new Bitmap(Opetion.TrageSize.Value.Width, Opetion.TrageSize.Value.Height)
+            Bitmap flippedImage = Opetion != null && Opetion.TragetSize != null
+                ? new Bitmap(Opetion.TragetSize.Value.Width, Opetion.TragetSize.Value.Height)
                 : new Bitmap(image.Width, image.Height);
             using (Graphics g = Graphics.FromImage(flippedImage))
             {

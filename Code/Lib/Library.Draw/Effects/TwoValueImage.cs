@@ -1,18 +1,22 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 二值处理
     /// </summary>
+    [LanguageDescription("二值处理"), LanguageDisplayName("二值处理")]
     public class TwoValueImage : ImageBuilder
     {
         /// <summary>
         /// 判斷值的侵害點
-        /// </summary>
+        /// </summary>  
+        [LanguageDescription("侵害點, 0-255"), LanguageDisplayName("判斷值的侵害點"), Category("濾鏡選項")]
         public int Pointcut
         {
             get
@@ -47,13 +51,20 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is TwoValueOption == false) throw new ImageException("Opetion is not TwoValueOption");
-                _opetion = value as TwoValueOption;
+                _opetion = (TwoValueOption)value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public class TwoValueOption : ImageOption
         {
             private int _pointcut;
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <exception cref="ImageException"></exception>
+            [LanguageDescription("侵害點 , 0-255"), LanguageDisplayName("侵害點"), Category("濾鏡選項")]
             public int Pointcut
             {
                 get { return _pointcut; }
