@@ -11,6 +11,9 @@ namespace Library.Draw.Effects
     [LanguageDescription("该方法从图象的灰度概率域入手，将概率谱分为两个等面积的集群，通过判定群间距离检测图象的边缘。"), LanguageDisplayName("灰度概率域")]
     public class HistogramEqualImage : ImageBuilder
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(1f)]
         [LanguageDescription("强度对比"), LanguageDisplayName("强度对比"), Category("濾鏡選項")]
         public float ContrastIntensity
@@ -18,21 +21,21 @@ namespace Library.Draw.Effects
             get
             {
                 InitOption();
-                return _opetion.ContrastIntensity;
+                return _opetion.Value;
             }
             set
             {
                 InitOption();
-                _opetion.ContrastIntensity = value;
+                _opetion.Value = value;
             }
         }
         #region Option
 
         protected override void InitOption()
         {
-            if (_opetion == null) _opetion = new HistogramEqualOption();
+            if (_opetion == null) _opetion = new ValueOption();
         }
-        private HistogramEqualOption _opetion;
+        private ValueOption _opetion;
 
 
         protected override ImageOption Opetion
@@ -40,24 +43,14 @@ namespace Library.Draw.Effects
             get { return _opetion; }
             set
             {
-                if (value is HistogramEqualOption == false) throw new ImageException("Opetion is not HistogramEqualOption");
-                _opetion = (HistogramEqualOption)value;
+                if (value is ValueOption == false) throw new ImageException("Opetion is not ValueOption");
+                _opetion = (ValueOption)value;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public class HistogramEqualOption : ImageOption
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            [LanguageDescription("强度对比"), LanguageDisplayName("强度对比"), Category("濾鏡選項")]
-            public float ContrastIntensity { get; set; }
-        }
+     
         public override ImageOption CreateOption()
         {
-            return new HistogramEqualOption() { ContrastIntensity = 1f };
+            return new ValueOption() { Value = 1f };
         }
         #endregion
 

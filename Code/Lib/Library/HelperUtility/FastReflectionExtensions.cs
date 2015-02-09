@@ -123,8 +123,7 @@ namespace Library.HelperUtility
             if (type == null)
                 return null;
             var iConstructor = type.GetConstructor(new Type[] { });
-            if (iConstructor == null)
-                return null;
+            if (iConstructor == null)throw new NotSupportedException("無構造函數，無法創建對象");
             var obj = iConstructor.FastInvoke();
             return obj;
         }

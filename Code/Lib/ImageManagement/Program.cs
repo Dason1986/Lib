@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Windows.Forms;
+using Library;
 using Library.HelperUtility;
 
 namespace TestWinform
@@ -15,15 +16,19 @@ namespace TestWinform
         [STAThread]
         static void Main(string[] Args)
         {
+           
+        
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+          
             var file = typeof(SheetForm).Assembly.GetManifestResourceStream("TestWinform.original.jpg");
             if (file != null)
             {
 
                 Original = file.ToArray();
             }
+       
             Application.Run(new SheetForm());
         }
 

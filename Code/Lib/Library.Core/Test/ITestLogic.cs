@@ -184,7 +184,7 @@ namespace Library.Logic
         /// </summary>
         public void Start()
         {
-            Stopwatch watch=new Stopwatch();
+            Stopwatch watch = new Stopwatch();
             watch.Start();
             try
             {
@@ -194,8 +194,12 @@ namespace Library.Logic
             {
                 OnFailure(ex);
             }
-            watch.Stop();
-            OnCompleted(watch.Elapsed);
+            finally
+            {
+
+                watch.Stop();
+                OnCompleted(watch.Elapsed);
+            }
         }
         /// <summary>
         /// 

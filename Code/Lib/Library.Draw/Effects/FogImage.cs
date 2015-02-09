@@ -21,27 +21,27 @@ namespace Library.Draw.Effects
         /// 圆半徑
         /// </summary> 
         [LanguageDescription("圆半徑"), LanguageDisplayName("圆半徑"), Category("濾鏡選項")]
-        
-        public int Fog
+
+        public float Fog
         {
             get
             {
                 InitOption();
-                return _opetion.Fog;
+                return _opetion.Value;
             }
             set
             {
                 InitOption();
-                _opetion.Fog = value;
+                _opetion.Value = value;
             }
         }
         #region Option
 
         protected override void InitOption()
         {
-            if (_opetion == null) _opetion = new FogOption();
+            if (_opetion == null) _opetion = new ValueOption();
         }
-        private FogOption _opetion;
+        private ValueOption _opetion;
 
 
         protected override ImageOption Opetion
@@ -49,24 +49,14 @@ namespace Library.Draw.Effects
             get { return _opetion; }
             set
             {
-                if (value is FogOption == false) throw new ImageException("Opetion is not FogOption");
-                _opetion = (FogOption)value;
+                if (value is ValueOption == false) throw new ImageException("Opetion is not ValueOption");
+                _opetion = (ValueOption)value;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public class FogOption : ImageOption
-        {
-            /// <summary>
-            /// 圆半徑
-            /// </summary>
-            [LanguageDescription("圆半徑"), LanguageDisplayName("圆半徑"), Category("濾鏡選項")]
-            public int Fog { get; set; }
-        }
+
         public override ImageOption CreateOption()
         {
-            return new FogOption();
+            return new ValueOption();
         }
         #endregion
         #region Process
@@ -124,8 +114,8 @@ namespace Library.Draw.Effects
                 {
                     int k = rnd.Next(-12345, 12345);
                     //像素块大小 常量N的大小决定雾化模糊度
-                    int dj = j + k % n; //水平向右方向像素偏移后
-                    int di = i + k % n; //垂直向下方向像素偏移后
+                    int dj = j + (int)(k % n); //水平向右方向像素偏移后
+                    int di = i + (int)(k % n); //垂直向下方向像素偏移后
                     if (dj >= width) dj = width - 1;
                     if (di >= height) di = height - 1;
                     if (di < 0)

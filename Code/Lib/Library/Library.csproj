@@ -86,6 +86,7 @@
     <Compile Include="IDCrad\IDCardException.cs" />
     <Compile Include="IDCrad\MacauIDCard.cs" />
     <Compile Include="IDCrad\TaiwanIDCard.cs" />
+    <Compile Include="IoC.cs" />
     <Compile Include="PermutationAndCombination.cs" />
     <Compile Include="RangeItemHelper.cs" />
     <Compile Include="HelperUtility\ADONetHepler.cs" />

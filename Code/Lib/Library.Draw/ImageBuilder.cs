@@ -286,6 +286,20 @@ namespace Library.Draw
                 return 255;
             else
                 return (byte)a;
+        }  
+        /// <summary>
+        /// 色彩值漏出處理
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        protected byte Truncate(float a)
+        {
+            if (a < 0)
+                return 0;
+            else if (a > 255)
+                return 255;
+            else
+                return (byte)a;
         }
         protected virtual void OnProcessBitmapCompleted(ImageEventArgs e)
         {

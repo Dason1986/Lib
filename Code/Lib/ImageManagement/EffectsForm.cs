@@ -19,11 +19,12 @@ namespace TestWinform
             InitializeComponent();
             List<string> source = new List<string>()
             {
-                "BlueImage", "GreenImage", "RedImage",  "FogImage"
+                "BlueImage", "GreenImage", "RedImage",  "FogImage","GaussianBlurImage"
             ,"FlipImage","MosaicImage","NeonImage","GrayImage","RebelliousImage"
             ,"ReliefImage","SharpenImage","TwoValueImage","ColorGradationImage","BlindsImage","IlluminationImage"
             ,"ZoomBlurImage","ColorQuantizeImage","ColorToneImage","AutoLevelImage","HistogramEqualImage"
-            ,"BrightContrastImage",  "CleanGlassImage" ,"FeatherImage","RaiseFrameImage"
+            ,"BrightContrastImage",  "CleanGlassImage" ,"FeatherImage","RaiseFrameImage","ReflectionImage"
+          ,"ThreeDGridImage"
             };
             comboBox1.DataSource = source;
             effectsAssembly = typeof(ImageBuilder).Assembly;

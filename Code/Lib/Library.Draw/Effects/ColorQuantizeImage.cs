@@ -22,21 +22,21 @@ namespace Library.Draw.Effects
             get
             {
                 InitOption();
-                return _opetion.Levels;
+                return _opetion.Value;
             }
             set
             {
                 InitOption();
-                _opetion.Levels = value;
+                _opetion.Value = value;
             }
         }
         #region Option
 
         protected override void InitOption()
         {
-            if (_opetion == null) _opetion = new ColorQuantizeOption();
+            if (_opetion == null) _opetion = new ValueOption();
         }
-        private ColorQuantizeOption _opetion;
+        private ValueOption _opetion;
 
 
         protected override ImageOption Opetion
@@ -44,23 +44,14 @@ namespace Library.Draw.Effects
             get { return _opetion; }
             set
             {
-                if (value is ColorQuantizeOption == false) throw new ImageException("Opetion is not ColorQuantizeOption");
-                _opetion = (ColorQuantizeOption)value;
+                if (value is ValueOption == false) throw new ImageException("Opetion is not ValueOption");
+                _opetion = (ValueOption)value;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public class ColorQuantizeOption : ImageOption
-        { /// <summary>
-            /// µÈ¼‰
-            /// </summary>
-            [LanguageDescription("µÈ¼‰"), LanguageDisplayName("µÈ¼‰"), Category("žVçRßxí—")]
-            public float Levels { get; set; }
-        }
+
         public override ImageOption CreateOption()
         {
-            return new ColorQuantizeOption() { Levels = 5 };
+            return new ValueOption() { Value = 5 };
         }
         #endregion
         public override Image ProcessBitmap()

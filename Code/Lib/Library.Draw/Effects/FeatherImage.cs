@@ -15,17 +15,17 @@ namespace Library.Draw.Effects
         ///  
         /// </summary>
         [LanguageDescription("∑…“›÷µ"), LanguageDisplayName("∑…“›÷µ"), Category("ûVÁRﬂxÌó")]
-        public float Size
+        public float FeatherValue
         {
             get
             {
                 InitOption();
-                return _opetion.Size;
+                return _opetion.Value;
             }
             set
             {
                 InitOption();
-                _opetion.Size = value;
+                _opetion.Value = value;
             }
         }
 
@@ -33,9 +33,9 @@ namespace Library.Draw.Effects
 
         protected override void InitOption()
         {
-            if (_opetion == null) _opetion = new FeatherOption();
+            if (_opetion == null) _opetion = new ValueOption();
         }
-        private FeatherOption _opetion;
+        private ValueOption _opetion;
 
 
         protected override ImageOption Opetion
@@ -43,21 +43,14 @@ namespace Library.Draw.Effects
             get { return _opetion; }
             set
             {
-                if (value is FeatherOption == false) throw new ImageException("Opetion is not FeatherOption");
-                _opetion = (FeatherOption)value;
+                if (value is ValueOption == false) throw new ImageException("Opetion is not ValueOption");
+                _opetion = (ValueOption)value;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public class FeatherOption : ImageOption
-        {
-            [LanguageDescription("∑…“›÷µ"), LanguageDisplayName("∑…“›÷µ"), Category("ûVÁRﬂxÌó")]
-            public float Size { get; set; }
-        }
+       
         public override ImageOption CreateOption()
         {
-            return new FeatherOption() { Size = 0.5f };
+            return new ValueOption() { Value = 0.5f };
         }
         #endregion
         public override Image ProcessBitmap()
@@ -74,7 +67,7 @@ namespace Library.Draw.Effects
             int cx = width >> 1;
             int cy = height >> 1;
             int max = cx * cx + cy * cy;
-            int min = (int)(max * (1 - Size));
+            int min = (int)(max * (1 - FeatherValue));
             int diff = max - min;
 
             for (int y = 0; y < height; y++)
@@ -123,7 +116,7 @@ namespace Library.Draw.Effects
             int cx = width >> 1;
             int cy = height >> 1;
             int max = cx * cx + cy * cy;
-            int min = (int)(max * (1 - Size));
+            int min = (int)(max * (1 - FeatherValue));
             int diff = max - min;
             Rectangle rect = new Rectangle(0, 0, width, height);
             BitmapData bmpData = clone.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);

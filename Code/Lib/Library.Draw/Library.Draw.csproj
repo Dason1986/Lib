@@ -56,6 +56,7 @@
     <Compile Include="Color\ColorHelper.cs" />
     <Compile Include="Color\HSVColor.cs" />
     <Compile Include="Color\IToRGBColor.cs" />
+    <Compile Include="Color\YCbCrColor.cs" />
     <Compile Include="DrawHelper.cs" />
     <Compile Include="Effects\AutoLevelImage.cs" />
     <Compile Include="Effects\BlindsImage.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Effects\ColorToneImage.cs" />
     <Compile Include="Effects\FeatherImage.cs" />
     <Compile Include="Effects\FogImage.cs" />
+    <Compile Include="Effects\GaussianBlurImage.cs" />
     <Compile Include="Effects\GreenImage.cs" />
     <Compile Include="Effects\HistogramEqualImage.cs" />
     <Compile Include="Effects\IlluminationImage.cs" />
@@ -77,9 +79,12 @@
     <Compile Include="Effects\RaiseFrameImage.cs" />
     <Compile Include="Effects\RebelliousImage.cs" />
     <Compile Include="Effects\RedImage.cs" />
+    <Compile Include="Effects\ReflectionImage.cs" />
     <Compile Include="Effects\ReliefImage.cs" />
     <Compile Include="Effects\SharpenImage.cs" />
+    <Compile Include="Effects\ThreeDGridImage.cs" />
     <Compile Include="Effects\TwoValueImage.cs" />
+    <Compile Include="Effects\ValueOption.cs" />
     <Compile Include="Effects\ZoomBlurImage.cs" />
     <Compile Include="Color\HSLColor.cs" />
     <Compile Include="Water\WaterImageBuilder.cs" />

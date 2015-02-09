@@ -21,12 +21,12 @@ namespace Library.Draw.Effects
             get
             {
                 InitOption();
-                return _opetion.Size;
+                return _opetion.Value;
             }
             set
             {
                 InitOption();
-                _opetion.Size = value;
+                _opetion.Value = value;
             }
         }
 
@@ -34,9 +34,9 @@ namespace Library.Draw.Effects
 
         protected override void InitOption()
         {
-            if (_opetion == null) _opetion = new CleanGlassOption();
+            if (_opetion == null) _opetion = new ValueOption();
         }
-        private CleanGlassOption _opetion;
+        private ValueOption _opetion;
 
 
         protected override ImageOption Opetion
@@ -44,21 +44,14 @@ namespace Library.Draw.Effects
             get { return _opetion; }
             set
             {
-                if (value is CleanGlassOption == false) throw new ImageException("Opetion is not CleanGlassOption");
-                _opetion = (CleanGlassOption)value;
+                if (value is ValueOption == false) throw new ImageException("Opetion is not ValueOption");
+                _opetion = (ValueOption)value;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public class CleanGlassOption : ImageOption
-        {
-            [LanguageDescription("³ß´ç [0, 1]"), LanguageDisplayName("³ß´ç"), Category("žVçRßxí—")]
-            public float Size { get; set; }
-        }
+
         public override ImageOption CreateOption()
         {
-            return new CleanGlassOption() { Size = 0.5f };
+            return new ValueOption() { Value = 0.5f };
         }
         #endregion
 
