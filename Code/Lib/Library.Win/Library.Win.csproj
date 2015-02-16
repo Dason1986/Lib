@@ -49,15 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InputDialog.cs" />
     <Compile Include="MVP\IPresenter.cs" />
-    <Compile Include="PrintComponent.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PrintComponent.Designer.cs">
-      <DependentUpon>PrintComponent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PrintUntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,7 +69,6 @@
       <Name>Library</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

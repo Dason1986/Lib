@@ -53,6 +53,11 @@ namespace Library.Draw
         /// </summary>
         /// <param name="sourceImgPath"></param>
         void SetSourceImage([NotNull] string sourceImgPath);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        void SetSourceImage([NotNull]Image source);
 
         /// <summary>
         /// 
@@ -135,6 +140,17 @@ namespace Library.Draw
         {
             return new ImageOption();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        public void SetSourceImage([NotNull] Image source)
+        {
+            if (source == null) throw new ArgumentNullException("source");
+            this._source = source;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -286,7 +302,7 @@ namespace Library.Draw
                 return 255;
             else
                 return (byte)a;
-        }  
+        }
         /// <summary>
         /// 色彩值漏出處理
         /// </summary>

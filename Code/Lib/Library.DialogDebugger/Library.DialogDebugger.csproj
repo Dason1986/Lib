@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5C5A3F0C-DEB2-4E5A-A703-2C768BE27511}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library.DialogDebugger</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChineseCalendarVisualizer.cs" />
+    <Compile Include="ImageEffectsVisualizer.cs" />
+    <Compile Include="ImageVisualizer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Core\Library.Core.csproj">
+      <Project>{fe81d872-05ab-4cb1-8feb-7231d9b7db94}</Project>
+      <Name>Library.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.DBProvider\Library.DBProvider.csproj">
+      <Project>{1300f433-479f-4add-8280-ddca70c3ea65}</Project>
+      <Name>Library.DBProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Draw\Library.Draw.csproj">
+      <Project>{4612e29a-0f6c-4029-adbc-b8d3ee99d241}</Project>
+      <Name>Library.Draw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Web\Library.Web.csproj">
+      <Project>{9532f560-e33a-48ac-8933-7d2264b2b29a}</Project>
+      <Name>Library.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Win.Controls\Library.Win.Controls.csproj">
+      <Project>{c2b69ebe-b5b0-43f3-b310-534de58e83f7}</Project>
+      <Name>Library.Win.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Win\Library.Win.csproj">
+      <Project>{bbb78556-201d-4857-8212-47d89d2b8fc2}</Project>
+      <Name>Library.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

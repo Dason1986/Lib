@@ -49,9 +49,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Standard\Loading\OpaqueLayer.cs">
+    <Compile Include="Standard\Draw\IImageEffectsView.cs" />
+    <Compile Include="Standard\Draw\ImageEffectsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standard\Draw\ImageEffectsView.Designer.cs">
+      <DependentUpon>ImageEffectsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Standard\IO\InputDialog.cs" />
+    <Compile Include="Standard\IO\PrintComponent.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Standard\IO\PrintComponent.Designer.cs">
+      <DependentUpon>PrintComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Standard\IO\PrintUntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Standard\Button.cs">
       <SubType>Component</SubType>
@@ -96,6 +108,9 @@
     <Compile Include="Standard\ImageButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Standard\Loading\OpaqueLayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Standard\MultiColumnComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -119,6 +134,9 @@
     <None Include="Library.Win.Controls.snk" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Standard\Draw\ImageEffectsView.resx">
+      <DependentUpon>ImageEffectsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Standard\Image\loading.gif" />
     <Content Include="Standard\GroupBox.bmp" />
     <EmbeddedResource Include="Standard\Image\check.png" />

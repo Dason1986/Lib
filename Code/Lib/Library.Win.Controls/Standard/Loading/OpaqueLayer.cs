@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Threading;
 using Library.Controls;
 
-namespace Library.Win.Controls
+namespace Library.Controls
 {
     /// <summary>
     /// 自定义控件:半透明控件

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Library.HelperUtility;
-using Library.Win.Controls;
+using Library.Controls;
 
 namespace TestWinform
 {

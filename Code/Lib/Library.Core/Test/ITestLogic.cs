@@ -184,22 +184,20 @@ namespace Library.Logic
         /// </summary>
         public void Start()
         {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
+
             try
             {
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
                 OnStart();
+                watch.Stop();
+                OnCompleted(watch.Elapsed);
             }
             catch (Exception ex)
             {
                 OnFailure(ex);
             }
-            finally
-            {
 
-                watch.Stop();
-                OnCompleted(watch.Elapsed);
-            }
         }
         /// <summary>
         /// 

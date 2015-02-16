@@ -59,5 +59,14 @@ namespace TestWinform.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查詢類似 测试 的當地語系化字串。
+        /// </summary>
+        internal static string Test {
+            get {
+                return ResourceManager.GetString("Test", System.Globalization.CultureInfo .CurrentUICulture);
+            }
+        }
     }
 }

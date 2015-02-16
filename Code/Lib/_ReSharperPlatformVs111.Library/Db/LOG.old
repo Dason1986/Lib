@@ -1,20 +1,27 @@
-2015/02/06-17:27:57.039 49c Recovering log #131
-2015/02/06-17:27:57.045 49c Level-0 table #139: started
-2015/02/06-17:27:57.371 49c Level-0 table #139: 1698595 bytes OK
-2015/02/06-17:27:57.622 49c Delete type=0 #131
-2015/02/06-17:27:57.623 49c Delete type=3 #110
-2015/02/06-17:29:42.380 2e7c Moved #139 to level-1 1698595 bytes OK: files[ 0 1 6 0 0 0 0 ]
-2015/02/06-17:30:27.208 2e7c Compacting 1@1 + 5@2 files
-2015/02/06-17:30:27.487 2e7c Generated table #141: 917 keys, 2104471 bytes
-2015/02/06-17:30:27.599 2e7c Generated table #142: 176 keys, 2110802 bytes
-2015/02/06-17:30:27.710 2e7c Generated table #143: 201 keys, 2124967 bytes
-2015/02/06-17:30:27.812 2e7c Generated table #144: 697 keys, 2490878 bytes
-2015/02/06-17:30:27.946 2e7c Generated table #145: 2 keys, 3007618 bytes
-2015/02/06-17:30:27.946 2e7c Compacted 1@1 + 5@2 files => 11838736 bytes
-2015/02/06-17:30:27.995 2e7c Delete type=2 #133
-2015/02/06-17:30:27.996 2e7c Delete type=2 #134
-2015/02/06-17:30:27.997 2e7c Delete type=2 #135
-2015/02/06-17:30:27.998 2e7c Delete type=2 #136
-2015/02/06-17:30:27.998 2e7c Delete type=2 #137
-2015/02/06-17:30:27.999 2e7c Delete type=2 #139
-2015/02/06-17:30:27.999 2e7c compacted to: files[ 0 0 6 0 0 0 0 ]
+2015/02/13-15:28:16.666 1f84 Recovering log #206
+2015/02/13-15:28:16.680 1f84 Level-0 table #216: started
+2015/02/13-15:28:16.798 1f84 Level-0 table #216: 3630984 bytes OK
+2015/02/13-15:28:16.936 1f84 Delete type=0 #206
+2015/02/13-15:28:16.936 1f84 Delete type=3 #204
+2015/02/13-15:45:46.050 1f90 Moved #216 to level-1 3630984 bytes OK: files[ 0 1 7 0 0 0 0 ]
+2015/02/13-15:50:32.440 1f90 Compacting 1@1 + 7@2 files
+2015/02/13-15:50:32.582 1f90 Generated table #218: 952 keys, 2109259 bytes
+2015/02/13-15:50:32.741 1f90 Generated table #219: 182 keys, 2108306 bytes
+2015/02/13-15:50:33.053 1f90 Generated table #220: 179 keys, 2101656 bytes
+2015/02/13-15:50:33.214 1f90 Generated table #221: 769 keys, 2862799 bytes
+2015/02/13-15:50:33.282 1f90 Generated table #222: 2 keys, 3007618 bytes
+2015/02/13-15:50:33.358 1f90 Generated table #223: 2 keys, 3007618 bytes
+2015/02/13-15:50:33.393 1f90 Generated table #224: 19 keys, 8711 bytes
+2015/02/13-15:50:33.393 1f90 Compacted 1@1 + 7@2 files => 15205967 bytes
+2015/02/13-15:50:33.409 1f90 Delete type=2 #208
+2015/02/13-15:50:33.411 1f90 Delete type=2 #209
+2015/02/13-15:50:33.411 1f90 Delete type=2 #210
+2015/02/13-15:50:33.412 1f90 Delete type=2 #211
+2015/02/13-15:50:33.413 1f90 Delete type=2 #212
+2015/02/13-15:50:33.414 1f90 Delete type=2 #213
+2015/02/13-15:50:33.415 1f90 Delete type=2 #214
+2015/02/13-15:50:33.415 1f90 Delete type=2 #216
+2015/02/13-15:50:33.416 1f90 compacted to: files[ 0 0 7 0 0 0 0 ]
+2015/02/13-16:20:59.401 1f90 Level-0 table #226: started
+2015/02/13-16:20:59.535 1f90 Level-0 table #226: 4165499 bytes OK
+2015/02/13-16:20:59.550 1f90 Delete type=0 #217

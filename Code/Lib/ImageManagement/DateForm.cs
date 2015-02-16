@@ -27,6 +27,7 @@ namespace TestWinform
             listBox1.ValueMember = "Value";
             comboBox1.SelectedIndex = 0;
             listBox1.SelectedIndex = 1;
+          
         }
 
 

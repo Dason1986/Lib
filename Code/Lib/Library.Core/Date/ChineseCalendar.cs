@@ -52,6 +52,7 @@ namespace Library.Date
     /// <remarks>
     /// 本程序使用数据来源于网上的万年历查询，并综合了一些其它数据
     /// </remarks>
+    [System.Serializable]
     public class ChineseDateTime
     {
          

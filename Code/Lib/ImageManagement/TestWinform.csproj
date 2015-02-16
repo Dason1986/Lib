@@ -38,6 +38,7 @@
     <StartupObject>TestWinform.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -72,6 +73,16 @@
     <Compile Include="IDCardForm.Designer.cs">
       <DependentUpon>IDCardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resource.en-US1.Designer.cs">
+      <DependentUpon>Resource.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resource.zh-TW1.Designer.cs">
+      <DependentUpon>Resource.zh-TW.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="SheetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +102,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EffectsForm.resx">
       <DependentUpon>EffectsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en-US1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.zh-TW.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.zh-TW1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SheetForm.resx">
       <DependentUpon>SheetForm.cs</DependentUpon>
@@ -124,6 +145,10 @@
     <ProjectReference Include="..\Library.Core\Library.Core.csproj">
       <Project>{fe81d872-05ab-4cb1-8feb-7231d9b7db94}</Project>
       <Name>Library.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.DialogDebugger\Library.DialogDebugger.csproj">
+      <Project>{5c5a3f0c-deb2-4e5a-a703-2c768be27511}</Project>
+      <Name>Library.DialogDebugger</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.Draw\Library.Draw.csproj">
       <Project>{4612e29a-0f6c-4029-adbc-b8d3ee99d241}</Project>

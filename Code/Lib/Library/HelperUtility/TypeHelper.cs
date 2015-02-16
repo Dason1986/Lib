@@ -84,7 +84,7 @@ namespace Library.HelperUtility
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
-        public static string GetAllExceptionInfo(Exception ex)
+        public static string GetAllExceptionInfo(this Exception ex)
         {
             StringBuilder sbexception = new StringBuilder();
             var e = ex;

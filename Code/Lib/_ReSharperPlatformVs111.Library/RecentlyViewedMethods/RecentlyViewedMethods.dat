@@ -1,3 +1,19 @@
 ﻿<RecentlyViewedMethods>
-  <RecentlyViewedMethods />
+  <RecentlyViewedMethods>
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="5c5a3f0c-deb2-4e5a-a703-2c768be27511%28Library.DialogDebugger%29-56270ECF/M%3ALibrary.ImageVisualizer.Show%28Microsoft.VisualStudio.DebuggerVisualizers.IDialogVisualizerService%2CMicrosoft.VisualStudio.DebuggerVisualizers.IVisualizerObjectProvider%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/P%3ALibrary.Date.ChineseDateTime.ChineseCalendarHoliday" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.DateForm.dateTimePicker1_ValueChanged%28System.Object%2CSystem.EventArgs%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.DateForm.%23ctor" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.DateForm.listBox1_SelectedIndexChanged%28System.Object%2CSystem.EventArgs%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/P%3ATestWinform.Properties.Resources.Culture" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/P%3ATestWinform.Properties.Resources.ResourceManager" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Properties.Resources.get_ResourceManager" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.DateForm.%23ctor" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Properties.Resources.get_ResourceManager" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/P%3ATestWinform.Properties.Resources.ResourceManager" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Properties.Resources.get_Test" />
+  </RecentlyViewedMethods>
 </RecentlyViewedMethods>

@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Library.Draw;
 using Library.HelperUtility;
-using Library.Win.Controls;
+using Library.Controls;
 
 namespace TestWinform
 {
