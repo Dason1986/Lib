@@ -39,9 +39,11 @@ namespace Library.Controls
             this.BtnBuilder = new Library.Controls.Button();
             this.BtnOK = new Library.Controls.Button();
             this.checkBox1 = new Library.Controls.CheckBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +81,7 @@ namespace Library.Controls
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.listBox1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
@@ -142,6 +145,17 @@ namespace Library.Controls
             this.checkBox1.Text = "指針算法";
             this.checkBox1.UseVisualStyleBackColor = false;
             // 
+            // listBox1
+            // 
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(3, 18);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(261, 276);
+            this.listBox1.TabIndex = 5;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // ImageEffectsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -157,6 +171,7 @@ namespace Library.Controls
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -172,5 +187,6 @@ namespace Library.Controls
         private Panel panel1;
         private Panel panel2;
         private GroupBox groupBox2;
+        private ListBox listBox1;
     }
 }

@@ -75,6 +75,7 @@
     <Compile Include="FastReflection\PropertyAccessorFactory.cs" />
     <Compile Include="HelperUtility\AttributeHelper.cs" />
     <Compile Include="HelperUtility\DictionaryHelper.cs" />
+    <Compile Include="HelperUtility\ExpressionHelper.cs" />
     <Compile Include="HelperUtility\FastReflectionExtensions.cs" />
     <Compile Include="HelperUtility\FileUtility.cs" />
     <Compile Include="HelperUtility\FormatUtility.cs" />
@@ -121,7 +122,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GAC.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Library.snk" />
+    <Content Include="GAC_u.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="IDCrad\gbt2260.Db.xml" />

@@ -51,7 +51,7 @@ namespace Library
                 if (!objectProvider.IsObjectReplaceable) return;
                 IImageEffectsView view = displayForm;
                 objectProvider.ReplaceObject(view.ResultImage);
-                objectProvider.TransferObject(view.ResultImage);
+               // objectProvider.TransferObject(view.ResultImage);
             }
         }
 

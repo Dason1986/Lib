@@ -71,8 +71,8 @@ namespace Library.Draw.Effects
         public Image CreateImage(AlignmentType flip)
         {
 
-            MemoryStream sourcestream = new MemoryStream(SourceImgBuffter);
-            Image image = new Bitmap(sourcestream);
+
+            Image image = Source;
             Bitmap flippedImage = Opetion != null && Opetion.TragetSize != null
                 ? new Bitmap(Opetion.TragetSize.Value.Width, Opetion.TragetSize.Value.Height)
                 : new Bitmap(image.Width, image.Height);
@@ -119,7 +119,7 @@ namespace Library.Draw.Effects
                 //clean up
                 m.Dispose();
             }
-            sourcestream.Dispose();
+   
             return flippedImage;
         }
 

@@ -28,7 +28,7 @@ namespace TestWinform
             Properties.Resources.Culture = new CultureInfo("en-us");
             Properties.Resources.ResourceManager.IgnoreCase = true;
             var obj = Properties.Resources.Test;
-          Console.WriteLine(obj);
+            Console.WriteLine(obj);
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -40,7 +40,7 @@ namespace TestWinform
                 Original = file.ToArray();
             }
             Gbitmap = new Bitmap(new MemoryStream(Original));
-
+           // ImageEffectsVisualizer.TestShowVisualizer(Gbitmap);
             Application.Run(new SheetForm());
         }
 

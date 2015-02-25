@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using Library;
 using Library.Draw;
 using Library.HelperUtility;
 using Library.Controls;
@@ -17,6 +18,7 @@ namespace TestWinform
         public EffectsForm()
         {
             InitializeComponent();
+      
             List<string> source = new List<string>()
             {
                 "BlueImage", "GreenImage", "RedImage",  "FogImage","GaussianBlurImage"
@@ -30,7 +32,8 @@ namespace TestWinform
             effectsAssembly = typeof(ImageBuilder).Assembly;
 
             if (Program.Original == null) return;
-            Image image = new Bitmap(new MemoryStream(Program.Original));
+            Image image = new Bitmap(new MemoryStream(Program.Original));  
+            ImageEffectsVisualizer.TestShowVisualizer(image);
             this.pictureBox1.Image = image;
             fileBytes = Program.Original;
             CreateBuilder();
