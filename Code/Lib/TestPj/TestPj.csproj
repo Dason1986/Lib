@@ -58,13 +58,14 @@
     <Compile Include="ItemComaper.cs" />
     <Compile Include="PermutationAndCombination.cs" />
     <Compile Include="testobj\ConstValue.cs" />
-    <Compile Include="tset\AdoTset.cs" />
-    <Compile Include="tset\EnumerableTest.cs" />
-    <Compile Include="tset\NullableTset.cs" />
+    <Compile Include="Test\AdoTset.cs" />
+    <Compile Include="Test\EnumerableTest.cs" />
+    <Compile Include="Test\LanguageTest.cs" />
+    <Compile Include="Test\NullableTset.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tset\RangeItemTest.cs" />
-    <Compile Include="tset\StringTest.cs" />
+    <Compile Include="Test\RangeItemTest.cs" />
+    <Compile Include="Test\StringTest.cs" />
     <Compile Include="testobj\ParsonModle.cs" />
   </ItemGroup>
   <ItemGroup>

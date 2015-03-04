@@ -2,7 +2,7 @@
 using Library.HelperUtility;
 using NUnit.Framework;
 
-namespace TestPj
+namespace TestPj.Test
 {
     [TestFixture]
     public class AdoTset

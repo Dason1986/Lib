@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Library
 {
-    public class LogicException : AbException
+    public class LogicException : CodeException
     {
 
 
@@ -38,7 +38,22 @@ namespace Library
             : base(message, inner)
         {
         }
+        public LogicException(double resultCode, object[] formatages)
+            : base(resultCode, formatages)
+        {
+            ResultCode = resultCode;
+        }
+        public LogicException(double resultCode, string resourceName)
+            : base(resultCode, resourceName)
+        {
+            ResultCode = resultCode;
+        }
 
+        public LogicException(double resultCode, object[] formatages, string resourceName)
+            : base(resultCode, formatages, resourceName)
+        {
+            ResultCode = resultCode;
+        }
         protected LogicException(
             SerializationInfo info,
             StreamingContext context)

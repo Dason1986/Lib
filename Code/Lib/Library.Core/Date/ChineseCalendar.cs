@@ -8,7 +8,7 @@ namespace Library.Date
     /// <summary>
     /// 中国日历异常处理
     /// </summary>
-    public class ChineseDateTimeException : LibException
+    public sealed class ChineseDateTimeException : LibException
     {
 
         public ChineseDateTimeException()
@@ -25,7 +25,16 @@ namespace Library.Date
         {
 
         }
-
+        public ChineseDateTimeException(double resultCode, object[] formatages)
+            : base(resultCode, formatages, "Global")
+        {
+            ResultCode = resultCode;
+        }
+        public ChineseDateTimeException(double resultCode)
+            : base(resultCode, "Global")
+        {
+            ResultCode = resultCode;
+        }
         public ChineseDateTimeException(string message)
             : base(message)
         {
@@ -55,7 +64,7 @@ namespace Library.Date
     [System.Serializable]
     public class ChineseDateTime
     {
-         
+
 
         #region 内部变量
 
@@ -421,7 +430,7 @@ namespace Library.Date
         /// <param name="dt"></param>
         public static void ValidateDateLimit(DateTime dt)
         {
-            if ((dt < MinDay) || (dt > MaxDay)) throw new ChineseDateTimeException("超出可转换的日期",11002.1);
+            if ((dt < MinDay) || (dt > MaxDay)) throw new ChineseDateTimeException("超出可转换的日期", 11002.1);
         }
 
         #endregion
@@ -467,7 +476,7 @@ namespace Library.Date
         {
 
             if ((bitpostion > 31) || (bitpostion < 0))
-                throw new ChineseDateTimeException("天數不為有效值[0-31]:" + bitpostion, 11002.105);
+                throw new ChineseDateTimeException(string.Format("[{0}]天數不為有效值[0-31]", bitpostion), 11002.105);
 
             int bit = 1 << bitpostion;
 
@@ -476,7 +485,7 @@ namespace Library.Date
 
         #endregion
 
-      
+
 
         #region CompareWeekDayHoliday
 
@@ -677,7 +686,7 @@ namespace Library.Date
         #endregion
         #endregion
 
-      
+
 
 
 
@@ -1050,6 +1059,6 @@ namespace Library.Date
         #endregion
         #endregion
 
-       
+
     }
 }

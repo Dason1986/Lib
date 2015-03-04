@@ -4,9 +4,12 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Resources;
+using System.Threading;
 using System.Windows.Forms;
 using Library;
+using Library.Att;
 using Library.HelperUtility;
+using Library.IDCrad;
 using Microsoft.VisualStudio.DebuggerVisualizers;
 
 
@@ -24,11 +27,7 @@ namespace TestWinform
         [STAThread]
         static void Main(string[] Args)
         {
-
-            Properties.Resources.Culture = new CultureInfo("en-us");
-            Properties.Resources.ResourceManager.IgnoreCase = true;
-            var obj = Properties.Resources.Test;
-            Console.WriteLine(obj);
+         
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -40,7 +39,7 @@ namespace TestWinform
                 Original = file.ToArray();
             }
             Gbitmap = new Bitmap(new MemoryStream(Original));
-           // ImageEffectsVisualizer.TestShowVisualizer(Gbitmap);
+            // ImageEffectsVisualizer.TestShowVisualizer(Gbitmap);
             Application.Run(new SheetForm());
         }
 

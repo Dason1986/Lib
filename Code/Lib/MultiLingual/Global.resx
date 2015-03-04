@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Code11001_1" xml:space="preserve">
+    <value>證件號碼格式不符合</value>
+  </data>
+  <data name="Code11001_104" xml:space="preserve">
+    <value>身份證校驗碼不正確</value>
+  </data>
+  <data name="Code11001_105" xml:space="preserve">
+    <value>轉換值出錯,不為數字</value>
+  </data>
+  <data name="Code11001_106" xml:space="preserve">
+    <value>不存在對應省份</value>
+  </data>
+  <data name="Code11001_107" xml:space="preserve">
+    <value>轉換日期值出錯</value>
+  </data>
   <data name="Test" xml:space="preserve">
-    <value>測試</value>
+    <value>Test</value>
   </data>
 </root>

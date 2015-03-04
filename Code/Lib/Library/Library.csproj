@@ -73,7 +73,6 @@
     <Compile Include="FastReflection\PropertyAccessor.cs" />
     <Compile Include="FastReflection\PropertyAccessorCache.cs" />
     <Compile Include="FastReflection\PropertyAccessorFactory.cs" />
-    <Compile Include="HelperUtility\AttributeHelper.cs" />
     <Compile Include="HelperUtility\DictionaryHelper.cs" />
     <Compile Include="HelperUtility\ExpressionHelper.cs" />
     <Compile Include="HelperUtility\FastReflectionExtensions.cs" />
@@ -81,6 +80,7 @@
     <Compile Include="HelperUtility\FormatUtility.cs" />
     <Compile Include="HelperUtility\EmptyUtility.cs" />
     <Compile Include="HelperUtility\EnumHelper.cs" />
+    <Compile Include="HelperUtility\OSUtility.cs" />
     <Compile Include="HelperUtility\StreamHelper.cs" />
     <Compile Include="IDCrad\ChineseIDCard.cs" />
     <Compile Include="IDCrad\HongKongIDCard.cs" />

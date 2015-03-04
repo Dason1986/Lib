@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using Library.Annotations;
@@ -50,6 +51,33 @@ namespace Library.HelperUtility
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="ch"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static string[] ReomveFirstAndLastChar([NotNull] string[] arr, char ch)
+        {
+            if (arr == null) throw new ArgumentNullException("arr");
+            var newarr = new string[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                var tmp = arr[i];
+                if (string.IsNullOrEmpty(tmp))
+                {
+                    newarr[i] = string.Empty;
+                    continue;
+                }
+                if (tmp[0] == ch) tmp = tmp.Substring(1);
+                if (tmp.Length > 0 && tmp[tmp.Length - 1] == ch) tmp = tmp.Substring(0, tmp.Length - 1);
+                newarr[i] = tmp;
+            }
+            return newarr;
+        }
+
+      
         /// <summary>
         /// 
         /// </summary>

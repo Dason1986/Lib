@@ -6,7 +6,7 @@ namespace Library
     /// <summary>
     /// 
     /// </summary>
-    public class LibException : AbException
+    public class LibException : CodeException
     {
         //
         // For guidelines regarding the creation of new exception types, see
@@ -39,12 +39,29 @@ namespace Library
             : base(message, inner)
         {
         }
+        public LibException(double resultCode, object[] formatages)
+            : base(resultCode, formatages)
+        {
+            ResultCode = resultCode;
+        }
+        public LibException(double resultCode, string resourceName)
+            : base(resultCode, resourceName)
+        {
+            ResultCode = resultCode;
+        }
 
+        public LibException(double resultCode, object[] formatages, string resourceName)
+            : base(resultCode, formatages, resourceName)
+        {
+            ResultCode = resultCode;
+        }
         protected LibException(
             SerializationInfo info,
             StreamingContext context)
             : base(info, context)
         {
         }
+
+
     }
 }

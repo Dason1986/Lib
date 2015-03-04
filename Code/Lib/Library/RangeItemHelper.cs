@@ -116,7 +116,7 @@ namespace Library
     /// 
     /// </summary>
     [Serializable]
-    public class IntersectException : Exception
+    public class IntersectException : LibException
     {
         /// <summary>
         /// 

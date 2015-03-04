@@ -11,10 +11,12 @@ namespace Library
     {
         protected internal void OnSaveBaseValue(string propetyname, object value)
         {
+            this.OnPropertyChanged(propetyname);
             if (_isrejecting) return;
             if (_cacheValue == null) _cacheValue = new Dictionary<string, object>();
             if (_cacheValue.ContainsKey(propetyname)) return;
             _cacheValue.Add(propetyname, value);
+
         }
 
         private bool _isrejecting;

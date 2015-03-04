@@ -11,4 +11,7 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>"1" "2" "cdssaf" "c:\sdfsd dsfdf\fdsf" "2015-02-23 16:18:00"</StartArguments>
+  </PropertyGroup>
 </Project>

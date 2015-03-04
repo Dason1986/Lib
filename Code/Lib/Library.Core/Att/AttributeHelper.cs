@@ -34,29 +34,10 @@ namespace Library.HelperUtility
             return attributes.OfType<T>().FirstOrDefault();
         }
 #endif
-        /// <summary>
-        ///  取所有属性
-        /// </summary>
-        /// <param name="type">类型</param>
-        /// <returns></returns>
-        public static IEnumerable<PropertyInfo> GetAllProperties(this Type type)
-        {
-
-            return type.GetInterfaces().Concat(new[] { type }).SelectMany(itf => itf.GetProperties()).Distinct();
-        }
+    
 
 
-
-        /// <summary>
-        ///  取所有属性
-        /// </summary>
-        /// <param name="type">类型</param>
-        /// <returns></returns>
-        public static IEnumerable<MethodInfo> GetAllMethodInfos(this Type type)
-        {
-
-            return type.GetInterfaces().Concat(new[] { type }).SelectMany(itf => itf.GetMethods()).Distinct();
-        }
+    
         /// <summary>
         /// 取成员属性
         /// </summary>

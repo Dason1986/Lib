@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime;
 using System.Text;
 
+[assembly: Library.Att.LanguageRegisterAttribute(typeof(MultiLingual.Global), "MultiLingual.Global", "Global")]
 namespace Library.Att
 {
     /// <summary>
@@ -13,6 +12,7 @@ namespace Library.Att
     [AttributeUsage(AttributeTargets.All)]
     public class LanguageDescriptionAttribute : DescriptionAttribute
     {
+        private readonly string _resourceName;
         private bool replaced;
 
         public override string Description
@@ -22,50 +22,32 @@ namespace Library.Att
                 if (!this.replaced)
                 {
                     this.replaced = true;
-                    //  this.DescriptionValue = SR.GetString(base.Description);
+                    this.DescriptionValue = LanguageResourceManagement.GetString(base.Description, _resourceName ?? "Global");
                 }
                 return base.Description;
             }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="description"></param>
+
+        public LanguageDescriptionAttribute(string description)
+            : base(description)
+        {
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="description"></param>
-        [TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")]
-        public LanguageDescriptionAttribute(string description)
+        /// <param name="resourceName"></param>
+        public LanguageDescriptionAttribute(string description, string resourceName)
             : base(description)
         {
-        }
-    }    /// <summary>
-    /// 
-    /// </summary>
-    [AttributeUsage(AttributeTargets.All)]
-    public class LanguageDisplayNameAttribute : DisplayNameAttribute
-    {
-        private bool replaced;
-
-        public override string DisplayName
-        {
-            get
-            {
-                if (!this.replaced)
-                {
-                    this.replaced = true;
-                    //  this.DisplayNameValue = SR.GetString(base.DisplayName);
-                }
-                return base.DisplayName;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="displayName"></param>
-        [TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")]
-        public LanguageDisplayNameAttribute(string displayName)
-            : base(displayName)
-        {
+            _resourceName = resourceName;
         }
     }
 }

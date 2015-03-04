@@ -73,16 +73,6 @@
     <Compile Include="IDCardForm.Designer.cs">
       <DependentUpon>IDCardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resource.en-US1.Designer.cs">
-      <DependentUpon>Resource.en-US.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\Resource.zh-TW1.Designer.cs">
-      <DependentUpon>Resource.zh-TW.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="SheetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,16 +92,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EffectsForm.resx">
       <DependentUpon>EffectsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resource.en-US.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.en-US1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resource.zh-TW.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.zh-TW1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SheetForm.resx">
       <DependentUpon>SheetForm.cs</DependentUpon>
@@ -165,6 +145,10 @@
     <ProjectReference Include="..\Library\Library.csproj">
       <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
       <Name>Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MultiLingual\MultiLingual.csproj">
+      <Project>{f20a2bce-36c6-49b8-bb1d-a2b950792938}</Project>
+      <Name>MultiLingual</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

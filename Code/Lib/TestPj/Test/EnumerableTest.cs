@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Library;
 using Library.HelperUtility;
 using Library.Test;
 using NUnit.Framework;
 
-namespace TestPj
+namespace TestPj.Test
 {
     [TestFixture]
     public class EnumerableTest

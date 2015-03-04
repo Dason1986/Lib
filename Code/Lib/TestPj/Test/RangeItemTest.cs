@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Library;
 using NUnit.Framework;
 
-namespace TestPj.tset
+namespace TestPj.Test
 {
     public class RangeItemTest
     {

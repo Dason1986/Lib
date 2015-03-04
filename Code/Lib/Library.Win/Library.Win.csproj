@@ -49,7 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVP\IApplicationFacade.cs" />
     <Compile Include="MVP\IPresenter.cs" />
+    <Compile Include="MVP\IView.cs" />
+    <Compile Include="MVP\IViewAware.cs" />
+    <Compile Include="MVP\ViewAttachedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

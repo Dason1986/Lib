@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
-using Library;
 using Library.Test;
 using NUnit.Framework;
 
-namespace TestPj
+namespace TestPj.Test
 {
     [TestFixture]
     public class NullableTset
