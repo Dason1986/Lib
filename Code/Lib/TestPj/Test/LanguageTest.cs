@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Threading;
 using Library;
 using Library.Att;
+using Library.Date;
 using NUnit.Framework;
 
 namespace TestPj.Test
@@ -19,8 +20,12 @@ namespace TestPj.Test
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-cn");
             ex = new CodeException(11001.1);
             Console.WriteLine(ex);
+            ex = new ChineseDateTimeException(11002.106);
+            Console.WriteLine(ex);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-pt");
             ex = new CodeException(11001.1);
+            Console.WriteLine(ex);
+            ex = new ChineseDateTimeException(11002.106);
             Console.WriteLine(ex);
         }
          [Test]

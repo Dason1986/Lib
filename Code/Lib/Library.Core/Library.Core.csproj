@@ -66,6 +66,21 @@
     <Compile Include="Date\HolidayFormat.cs" />
     <Compile Include="Date\TheSolarTermsHoliday.cs" />
     <Compile Include="Ex\CodeException.cs" />
+    <Compile Include="Global.Designer.cs">
+      <DependentUpon>Global.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Global.en-US.Designer.cs">
+      <DependentUpon>Global.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Global.pt-PT.Designer.cs">
+      <DependentUpon>Global.pt-PT.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="interface\ComponentPatterns\ActivationEventArgs.cs" />
     <Compile Include="interface\ComponentPatterns\ActivationProcessedEventArgs.cs" />
     <Compile Include="interface\ComponentPatterns\DeactivationEventArgs.cs" />
@@ -113,10 +128,21 @@
     <None Include="Library.Core.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MultiLingual\MultiLingual.csproj">
-      <Project>{f20a2bce-36c6-49b8-bb1d-a2b950792938}</Project>
-      <Name>MultiLingual</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Global.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.en-US.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Global.pt-PT.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.pt-PT.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Global.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

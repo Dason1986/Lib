@@ -1,3 +1,54 @@
 ﻿<RecentlyViewedMethods>
-  <RecentlyViewedMethods />
+  <RecentlyViewedMethods>
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.OSUtility.GetServesN" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.OSUtility.GetProcessN" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/P%3ALibrary.HelperUtility.OSUtility.OSStartTime" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.OSUtility.%23cctor" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageDescriptionAttribute.get_Description" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageDescriptionAttribute.%23ctor%28System.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageDescriptionAttribute.%23ctor%28System.String%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageDescriptionAttribute.get_Description" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageDescriptionAttribute.%23ctor%28System.String%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/F%3ALibrary.Att.LanguageDescriptionAttribute._resourceName" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.IDCrad.ChineseIDCard.Validate" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.IDCrad.ChineseIDCard.ValidateProvince" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.IDCrad.ChineseIDCard.ValidateCity" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.IDCrad.ChineseIDCard.ValidateBirthday" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.IDCrad.ChineseIDCard.ValidateByChecksumDigit" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.IDCrad.MacauIDCard.Validate" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.LogicException.%23ctor%28System.String%2CSystem.Double%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/P%3ALibrary.Att.LanguageDescriptionAttribute.Description" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageRegisterAttribute.%23ctor%28System.Type%2CSystem.String%2CSystem.String%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetException%28System.String%2CSystem.Double%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetException%28System.String%2CSystem.Double%2CSystem.Object%5B%5D%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetException%28System.String%2CSystem.Double%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetException%28System.String%2CSystem.Double%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetException%28System.Double%2CSystem.Object%5B%5D%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageRegisterAttribute.%23ctor%28System.Type%2CSystem.String%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetResourceNames" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetString%28System.String%2CSystem.String%2CSystem.Globalization.CultureInfo%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetException%28System.String%2CSystem.Double%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Date.ChineseDateTime.%23ctor%28System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Date.ChineseDateTime.BitTest32%28System.Int32%2CSystem.Int32%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.CodeException.%23ctor%28System.Double%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.LibException.%23ctor%28System.String%2CSystem.Double%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.LibException.%23ctor%28System.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.LogicException.%23ctor%28System.String%2CSystem.Double%2CSystem.Exception%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.LogicException.%23ctor%28System.String%2CSystem.Double%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.CodeException.%23ctor%28System.Double%2CSystem.Object%5B%5D%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.CodeException.%23ctor%28System.Double%2CSystem.Object%5B%5D%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Date.ChineseDateTime.ValidateDateLimit%28System.DateTime%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Date.ChineseDateTime.ValidateChineseDateLimit%28System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Date.ChineseDateTime.get_ChineseMonth" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Date.SolarHoliday.CompareTo%28System.Object%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Date.WeekHoliday.CompareTo%28Library.Date.WeekHoliday%29" />
+  </RecentlyViewedMethods>
 </RecentlyViewedMethods>

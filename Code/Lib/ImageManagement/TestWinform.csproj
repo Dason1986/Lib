@@ -146,10 +146,6 @@
       <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
       <Name>Library</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MultiLingual\MultiLingual.csproj">
-      <Project>{f20a2bce-36c6-49b8-bb1d-a2b950792938}</Project>
-      <Name>MultiLingual</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="original.jpg" />

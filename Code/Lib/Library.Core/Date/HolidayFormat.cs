@@ -82,7 +82,7 @@ namespace Library.Date
         private static readonly string[] Weekslong = { "the last {1} of {0}", "the first {1} of {0}", "the second {1} of {0}", "the third {1} of {0}", "the fourth  {1} of {0}" };
         public string Format(string format, object arg, IFormatProvider formatProvider)
         {
-            if (arg is IHoliday == false) throw new ChineseDateTimeException("不支持類型格式化輸了", new FormatException());
+            if (arg is IHoliday == false) throw new ChineseDateTimeException(11002.106);
             IHoliday holiday = arg as IHoliday;
             CultureInfo cul = formatProvider as CultureInfo ?? CultureInfo.CurrentCulture;
 

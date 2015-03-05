@@ -164,7 +164,7 @@ namespace Library.Date
         public int CompareTo(object obj)
         {
             if (obj == null) return 1;
-            if (obj is WeekHoliday == false) throw new ChineseDateTimeException();
+            if (obj is WeekHoliday == false) throw new ChineseDateTimeException(11002.107);
             return CompareTo((WeekHoliday)obj);
         }
 

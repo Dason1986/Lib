@@ -52,30 +52,20 @@ namespace Library.Att
             }
             return managers[name];
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="msg"></param>
         /// <param name="resultCode"></param>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        public static string GetException(string msg, double resultCode, string resourceName)
+        public static string GetException(double resultCode, string resourceName)
         {
             string name = "Code" + resultCode.ToString(CultureInfo.InvariantCulture).Replace(".", "_");
             var tmpmsg = GetString(resourceName, name);
-            return tmpmsg ?? msg;
+            return tmpmsg ;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="msg"></param>
-        /// <param name="resultCode"></param>
-        /// <returns></returns>
-        public static string GetException(string msg, double resultCode)
-        {
-            return GetException(msg, resultCode, "Global");
-
-        }
+     
         /// <summary>
         /// 
         /// </summary>
@@ -83,43 +73,12 @@ namespace Library.Att
         /// <returns></returns>
         public static string GetException(double resultCode)
         {
-            return GetException(string.Empty, resultCode, "Global");
+            return GetException( resultCode, "Global");
 
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="msg"></param>
-        /// <returns></returns>
-        public static string GetException(string msg)
-        {
-            return GetString("Global", msg);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="resultCode"></param>
-        /// <param name="formatages"></param>
-        /// <returns></returns>
-        public static string GetException(string message, double resultCode, object[] formatages)
-        {
-            var str = GetException(message, resultCode);
-            return string.Format(str, formatages);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="resultCode"></param>
-        /// <param name="formatages"></param>
-        /// <param name="resourceName"></param>
-        /// <returns></returns>
-        public static string GetException(string message, double resultCode, object[] formatages, string resourceName)
-        {
-            var str = GetException(message, resultCode, resourceName);
-            return string.Format(str, formatages);
-        }
+     
+     
+      
         /// <summary>
         /// 
         /// </summary>
@@ -128,7 +87,7 @@ namespace Library.Att
         /// <returns></returns>
         public static string GetException(double resultCode, object[] formatages)
         {
-            var str = GetException(string.Empty, resultCode);
+            var str = GetException( resultCode);
             return string.Format(str, formatages);
         }
         /// <summary>
@@ -140,7 +99,7 @@ namespace Library.Att
         /// <returns></returns>
         public static string GetException(double resultCode, object[] formatages, string resourceName)
         {
-            var str = GetException(string.Empty, resultCode, resourceName);
+            var str = GetException( resultCode, resourceName);
             return string.Format(str, formatages);
         }
         /// <summary>
