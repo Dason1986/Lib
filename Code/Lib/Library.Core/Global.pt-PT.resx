@@ -117,22 +117,89 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Code11001_1" xml:space="preserve">
-    <value>p_證件號碼格式不符合</value>
+  <data name="Apply" xml:space="preserve">
+    <value>Aplicar</value>
   </data>
-  <data name="Code11001_104" xml:space="preserve">
-    <value>p_身份證校驗碼不正確</value>
+  <data name="Author" xml:space="preserve">
+    <value>Autor</value>
   </data>
-  <data name="Code11001_105" xml:space="preserve">
-    <value>p_轉換值出錯,不為數字</value>
+  <data name="Batch" xml:space="preserve">
+    <value>Fornada</value>
   </data>
-  <data name="Code11001_106" xml:space="preserve">
-    <value>p_不存在對應省份</value>
+  <data name="Chinese" xml:space="preserve">
+    <value>Chinesa</value>
   </data>
-  <data name="Code11001_107" xml:space="preserve">
-    <value>p_轉換日期值出錯</value>
+  <data name="Comment" xml:space="preserve">
+    <value>Comentário</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Direitos autorais</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Inglês</value>
+  </data>
+  <data name="FileInfo" xml:space="preserve">
+    <value>Informações do Arquivo</value>
+    <comment>*</comment>
+  </data>
+  <data name="Keyword" xml:space="preserve">
+    <value>Palavra chave</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Língua</value>
+  </data>
+  <data name="Portuguese" xml:space="preserve">
+    <value>Português</value>
+  </data>
+  <data name="RawFormat" xml:space="preserve">
+    <value>Formato original</value>
+    <comment>*</comment>
+  </data>
+  <data name="RawFormatID" xml:space="preserve">
+    <value>Formato original id</value>
+    <comment>*</comment>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Rejeitar</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="Solution" xml:space="preserve">
+    <value>Solução</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Assunto</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submeter</value>
   </data>
   <data name="Test" xml:space="preserve">
-    <value>p_測試</value>
+    <value>Teste</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versão</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Vista</value>
+    <comment>*</comment>
+  </data>
+  <data name="_Code11001_1" xml:space="preserve">
+    <value>IDcard formato de número wong</value>
   </data>
 </root>

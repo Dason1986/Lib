@@ -87,6 +87,8 @@
     <Compile Include="Effects\ValueOption.cs" />
     <Compile Include="Effects\ZoomBlurImage.cs" />
     <Compile Include="Color\HSLColor.cs" />
+    <Compile Include="Map\GPSGeo.cs" />
+    <Compile Include="ImageExif.cs" />
     <Compile Include="Water\WaterImageBuilder.cs" />
     <Compile Include="Water\WaterImageBuilderByText.cs" />
     <Compile Include="Water\WaterImageFactory.cs" />

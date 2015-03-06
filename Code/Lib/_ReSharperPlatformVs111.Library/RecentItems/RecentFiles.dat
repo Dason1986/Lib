@@ -1,16 +1,9 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="5C5A3F0C-DEB2-4E5A-A703-2C768BE27511/f:ImageVisualizer.cs" caret="191" fromTop="8" />
-    <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/d:IDCrad/f:MacauIDCard.cs" caret="2558" fromTop="75" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Properties/f:AssemblyInfo.cs" caret="1096" fromTop="38" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageDisplayNameAttribute.cs" caret="0" fromTop="0" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageRegisterAttribute.cs" caret="1385" fromTop="26" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:AttributeHelper.cs" caret="1982" fromTop="6" />
     <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/d:IDCrad/f:IDCardException.cs" caret="170" fromTop="2" />
     <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/d:IDCrad/f:ChineseIDCard.cs" caret="9194" fromTop="5" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:CalendarInfo.cs" caret="2769" fromTop="31" />
     <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/f:GAC_u.bat" caret="558" fromTop="0" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageResourceManagement.cs" caret="3159" fromTop="20" />
     <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/f:GAC.bat" caret="798" fromTop="19" />
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:AdoTset.cs" caret="87" fromTop="4" />
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:EnumerableTest.cs" caret="3622" fromTop="128" />
@@ -18,49 +11,53 @@
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:RangeItemTest.cs" caret="5555" fromTop="135" />
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:StringTest.cs" caret="2324" fromTop="78" />
     <File id="67EAD53C-A855-4BC4-91EB-14CF8D812D36/f:RangeItemHelper.cs" caret="3580" fromTop="33" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LogicException.cs" caret="1458" fromTop="40" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LibException.cs" caret="164" fromTop="5" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:CodeException.cs" caret="182" fromTop="0" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="7420" fromTop="10" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageDescriptionAttribute.cs" caret="168" fromTop="5" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/f:Global.Designer.cs" caret="374" fromTop="13" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:LunarHoliday.cs" caret="4091" fromTop="22" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:SolarHoliday.cs" caret="3736" fromTop="22" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:WeekHoliday.cs" caret="5642" fromTop="30" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:HolidayFormat.cs" caret="4746" fromTop="22" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="690" fromTop="16" />
-    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:LanguageTest.cs" caret="722" fromTop="23" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:CodeException.cs" caret="204" fromTop="10" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/f:Global.Designer.cs" caret="916" fromTop="0" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageRegisterAttribute.cs" caret="1438" fromTop="39" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LibException.cs" caret="2876" fromTop="97" />
+    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:LanguageTest.cs" caret="315" fromTop="16" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LogicException.cs" caret="2898" fromTop="39" />
+    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageResourceManagement.cs" caret="1806" fromTop="15" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:GifImage.cs" caret="0" fromTop="0" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="1708" fromTop="23" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="5813" fromTop="27" />
   </RecentFiles>
   <RecentEdits>
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LibException.cs" caret="1840" fromTop="30" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LibException.cs" caret="1218" fromTop="30" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LogicException.cs" caret="1637" fromTop="44" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LogicException.cs" caret="1104" fromTop="29" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LogicException.cs" caret="1279" fromTop="34" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Ex/f:LogicException.cs" caret="1458" fromTop="40" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="33" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="30" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="31" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="7" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="37" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="12383" fromTop="14" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13333" fromTop="30" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13163" fromTop="26" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="23584" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="13805" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="18165" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="7161" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="7890" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:ChineseCalendar.cs" caret="8458" fromTop="37" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Att/f:LanguageDescriptionAttribute.cs" caret="168" fromTop="5" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:HolidayFormat.cs" caret="4781" fromTop="12" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:SolarHoliday.cs" caret="3745" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:LunarHoliday.cs" caret="4091" fromTop="22" />
-    <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Date/f:WeekHoliday.cs" caret="5326" fromTop="22" />
-    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:LanguageTest.cs" caret="897" fromTop="25" />
-    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:LanguageTest.cs" caret="722" fromTop="23" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="1713" fromTop="24" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="9334" fromTop="9" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="9334" fromTop="200" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="336" fromTop="17" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="468" fromTop="22" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="591" fromTop="27" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="714" fromTop="32" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="836" fromTop="22" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="964" fromTop="27" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="1096" fromTop="32" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="1294" fromTop="25" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="1416" fromTop="30" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="1549" fromTop="35" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="1682" fromTop="26" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="1811" fromTop="31" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="1949" fromTop="36" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="2086" fromTop="32" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="2223" fromTop="28" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="2348" fromTop="33" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="2516" fromTop="26" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="2651" fromTop="31" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="2785" fromTop="36" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="2903" fromTop="37" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="3146" fromTop="28" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="3011" fromTop="29" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="6867" fromTop="14" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="6867" fromTop="28" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="6866" fromTop="3" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="6281" fromTop="0" />
+    <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:ImageExif.cs" caret="5813" fromTop="0" />
   </RecentEdits>
 </RecentFiles>

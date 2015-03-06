@@ -39,6 +39,7 @@ namespace Library.Att
             ResourceName = resourceName ?? ResourceType.Name;
 
             var manager = new ResourceManager(resourcePath, resourceType.Assembly);
+            manager.IgnoreCase = true;
             LanguageResourceManagement.AddResource(ResourceName, manager);
         }
     }

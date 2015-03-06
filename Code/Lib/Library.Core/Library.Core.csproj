@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Att\AttributeHelper.cs" />
+    <Compile Include="Att\LanguageCategoryAttribute.cs" />
     <Compile Include="Att\LanguageDescriptionAttribute.cs" />
     <Compile Include="AlignmentType.cs" />
     <Compile Include="Att\LanguageDisplayNameAttribute.cs" />
@@ -67,19 +68,9 @@
     <Compile Include="Date\TheSolarTermsHoliday.cs" />
     <Compile Include="Ex\CodeException.cs" />
     <Compile Include="Global.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Global.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Global.en-US.Designer.cs">
-      <DependentUpon>Global.en-US.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Global.pt-PT.Designer.cs">
-      <DependentUpon>Global.pt-PT.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="interface\ComponentPatterns\ActivationEventArgs.cs" />
     <Compile Include="interface\ComponentPatterns\ActivationProcessedEventArgs.cs" />
@@ -129,19 +120,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Global.en-US.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Global.pt-PT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Global.pt-PT.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Global.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Global.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
