@@ -2,4 +2,3 @@ C:\Dason\Lib\Code\Lib\Bin\Library.Design.dll
 C:\Dason\Lib\Code\Lib\Bin\Library.Design.pdb
 C:\Dason\Lib\Code\Lib\Library.Design\obj\Debug\Library.Design.dll
 C:\Dason\Lib\Code\Lib\Library.Design\obj\Debug\Library.Design.pdb
-C:\Dason\Lib\Code\Lib\Library.Design\obj\Debug\Library.Design.csprojResolveAssemblyReference.cache

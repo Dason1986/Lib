@@ -1,0 +1,4 @@
+C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\Library.Management.dll
+C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\Library.Management.pdb
+C:\Dason\Lib\Code\Lib\Library.Management\obj\Debug\Library.Management.dll
+C:\Dason\Lib\Code\Lib\Library.Management\obj\Debug\Library.Management.pdb

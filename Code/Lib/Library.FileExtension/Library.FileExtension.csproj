@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataElement.cs" />
-    <Compile Include="ExcelBuilder.cs" />
+    <Compile Include="Execl\ExcelBuilder.cs" />
     <Compile Include="ExcelDataReader\Core\BinaryFormat\Enums.cs" />
     <Compile Include="ExcelDataReader\Core\BinaryFormat\XlsBiffBlankCell.cs" />
     <Compile Include="ExcelDataReader\Core\BinaryFormat\XlsBiffBOF.cs" />
@@ -112,7 +112,10 @@
     <Compile Include="ExcelDataReader\Factory.cs" />
     <Compile Include="ExcelDataReader\IExcelDataReader.cs" />
     <Compile Include="FileBuilder.cs" />
-    <Compile Include="PDFBuilder.cs" />
+    <Compile Include="FileBuilderHelper.cs" />
+    <Compile Include="PDF\PDFBuilder.cs" />
+    <Compile Include="PDF\PDFElementBuilder.cs" />
+    <Compile Include="PDF\PDFTableBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

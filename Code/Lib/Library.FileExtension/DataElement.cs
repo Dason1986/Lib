@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.ComponentModel;
 using System.Data;
 using Library.Draw;
 
@@ -79,14 +81,31 @@ namespace Library.FileExtension
 
     public class TableElement : DataElement
     {
-        public TableElement(ElementPosition position, DataTable dt)
+        public TableElement(ElementPosition position, object dt)
         {
             Position = position;
             DataSource = dt;
         }
 
         public static float DefalutWidth = 100;
-        public DataTable DataSource { get; set; }
+        private object _dataSource;
+
+        public object DataSource
+        {
+            get { return _dataSource; }
+            set
+            {
+                if (value != null)
+                {
+                    if (value is IListSource == false && value is IList == false)
+                    {
+                        throw new Exception("datasoucre");
+                    }
+                }
+                _dataSource = value;
+            }
+        }
+
         /// <summary>
         /// 不夠指定行數時填充空白行記錄
         /// </summary>

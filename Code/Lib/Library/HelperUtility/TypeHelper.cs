@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
@@ -274,6 +276,112 @@ namespace Library.HelperUtility
                     return true;
             }
             return false;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="listAccessors"></param>
+        /// <returns></returns>
+        public static PropertyDescriptorCollection GetListItemProperties(object list, PropertyDescriptor[] listAccessors = null)
+        {
+            PropertyDescriptorCollection pdc = null;
+
+
+            object target = list;
+
+
+            if (target is ITypedList)
+            {
+                return (target as ITypedList).GetItemProperties(listAccessors);
+            }
+            var type = target.GetType();
+            if (IsListBasedType(type))
+            {
+
+                var basetype = GetListGenericType(type);
+
+                pdc = TypeDescriptor.GetProperties(basetype);
+
+            }
+
+
+
+
+            return pdc;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static bool IsListBasedType(Type type)
+        {
+            // check for IList, ITypedList, IListSource
+            if (typeof(IList).IsAssignableFrom(type) ||
+                typeof(ITypedList).IsAssignableFrom(type) ||
+                typeof(IListSource).IsAssignableFrom(type))
+            {
+                return true;
+            }
+
+            // check for IList<>:
+            if (type.IsGenericType && !type.IsGenericTypeDefinition)
+            {
+                if (typeof(IList<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+                {
+                    return true;
+                }
+            }
+
+            // check for SomeObject<T> : IList<T> / SomeObject : IList<(SpecificListObjectType)>
+            foreach (Type curInterface in type.GetInterfaces())
+            {
+                if (curInterface.IsGenericType)
+                {
+                    if (typeof(IList<>).IsAssignableFrom(curInterface.GetGenericTypeDefinition()))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static Type GetListGenericType(Type type)
+        {
+
+
+            // check for IList<>:
+            if (type.IsGenericType && !type.IsGenericTypeDefinition)
+            {
+                if (typeof(IList<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+                {
+                    return type.GetGenericArguments()[0];
+                }
+            }
+
+            // check for SomeObject<T> : IList<T> / SomeObject : IList<(SpecificListObjectType)>
+            foreach (Type curInterface in type.GetInterfaces())
+            {
+                if (curInterface.IsGenericType)
+                {
+                    if (typeof(IList<>).IsAssignableFrom(curInterface.GetGenericTypeDefinition()))
+                    {
+                        return curInterface.GetGenericArguments()[0];
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

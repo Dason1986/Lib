@@ -55,6 +55,7 @@
     <Compile Include="MVP\IViewAware.cs" />
     <Compile Include="MVP\ViewAttachedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library.Win.snk" />
