@@ -12,7 +12,10 @@ namespace Library.Draw
     [TypeConverter(typeof(CMYKColorConverter))]
     public struct CMYKColor : IToRGBColor
     {
-
+        /// <summary>
+        /// Gets an empty RGB structure;
+        /// </summary>
+        public static readonly CMYKColor Empty = new CMYKColor();
         /// <summary>
         /// За
         /// </summary>
@@ -76,6 +79,39 @@ namespace Library.Draw
             int myB = (int)(bb / 2.55);
             cmyk.Yellow = ((100 - myB - cmyk.Black) / div) * 100;
             return cmyk;
+        }
+
+        public static bool operator ==(CMYKColor item1, CMYKColor item2)
+        {
+            return (
+                item1.Cyan == item2.Cyan
+                && item1.Magenta == item2.Magenta
+                && item1.Yellow == item2.Yellow
+                && item1.Black == item2.Black
+                );
+        }
+
+        public static bool operator !=(CMYKColor item1, CMYKColor item2)
+        {
+            return (
+                item1.Cyan != item2.Cyan
+                || item1.Magenta != item2.Magenta
+                || item1.Yellow != item2.Yellow
+                || item1.Black != item2.Black
+                );
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+
+            return (this == (CMYKColor)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Cyan.GetHashCode() ^
+              Magenta.GetHashCode() ^ Yellow.GetHashCode() ^ Black.GetHashCode();
         }
     }
 

@@ -79,7 +79,7 @@ namespace Library.Controls
         private void SetImageInfo()
         {
             this.pictureBox1.Image = Source;
-            this.propertyGrid1.SelectedObject = ImageExif.GetInfo(Source);
+            this.propertyGrid1.SelectedObject = ImageExif.GetExifInfo(Source);
         }
 
 

@@ -27,7 +27,8 @@ namespace TestWinform
         [STAThread]
         static void Main(string[] Args)
         {
-         
+       
+
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

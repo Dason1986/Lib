@@ -15,6 +15,7 @@ namespace Library.Draw
     /// </summary>
     public static class DrawHelper
     {
+#if !MONO
         [DllImport("gdi32.dll")]
         private static extern bool DeleteObject(IntPtr hObject);
         /// <summary>
@@ -31,7 +32,7 @@ namespace Library.Draw
             DeleteObject(h);
             return icon;
         }
-
+#endif
 
         /// <summary>
         ///  字节流 转化为 Image

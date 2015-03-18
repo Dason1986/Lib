@@ -67,10 +67,10 @@
     <Compile Include="Date\HolidayFormat.cs" />
     <Compile Include="Date\TheSolarTermsHoliday.cs" />
     <Compile Include="Ex\CodeException.cs" />
-    <Compile Include="Global.Designer.cs">
+    <Compile Include="GlobalResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Global.resx</DependentUpon>
+      <DependentUpon>GlobalResource.resx</DependentUpon>
     </Compile>
     <Compile Include="interface\ComponentPatterns\ActivationEventArgs.cs" />
     <Compile Include="interface\ComponentPatterns\ActivationProcessedEventArgs.cs" />
@@ -95,6 +95,7 @@
     <Compile Include="interface\Data\QueryHelper.cs" />
     <Compile Include="interface\IDataCacheMonitor.cs" />
     <Compile Include="interface\IIDCard.cs" />
+    <Compile Include="interface\IO\IFileBuilder.cs" />
     <Compile Include="interface\IO\IOMonitor.cs" />
     <Compile Include="interface\IParameter.cs" />
     <Compile Include="interface\IO\IPrintModel.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="interface\Control\IQueryDataProvider.cs" />
     <Compile Include="interface\IRangeItem.cs" />
     <Compile Include="interface\IUserInfo.cs" />
+    <Compile Include="Model\DocumentInfo.cs" />
     <Compile Include="Model\EditableModel.cs" />
     <Compile Include="Ex\LibException.cs" />
     <Compile Include="Ex\LogicException.cs" />
@@ -119,16 +121,16 @@
     <None Include="Library.Core.snk" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Global.en-US.resx">
+    <EmbeddedResource Include="GlobalResource.en-US.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Global.pt-PT.resx">
+    <EmbeddedResource Include="GlobalResource.pt-PT.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Global.resx">
+    <EmbeddedResource Include="GlobalResource.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+      <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 
 namespace Library.Logic
@@ -60,6 +62,21 @@ namespace Library.Logic
             UseTime = useTime;
         }
     }
+
+
+    public class ProgressChangedEventArgs : EventArgs
+    {
+
+
+        public ProgressChangedEventArgs(int progressPercentage)
+        {
+            ProgressPercentage = progressPercentage;
+        }
+
+        public int ProgressPercentage { get; protected set; }
+
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -91,6 +108,12 @@ namespace Library.Logic
             Time = DateTime.Now;
         }
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public delegate void ProgressChangedEventHandler(object sender, ProgressChangedEventArgs e);
     /// <summary>
     /// 
     /// </summary>
@@ -128,10 +151,20 @@ namespace Library.Logic
         /// 
         /// </summary>
         event CompletedEventHandler Completed;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        event ProgressChangedEventHandler ProgressChanged;
         /// <summary>
         /// 
         /// </summary>
         void Start();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void StartAsync();
     }
     /// <summary>
     /// 
@@ -151,6 +184,10 @@ namespace Library.Logic
         /// 
         /// </summary>
         public event CompletedEventHandler Completed;
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ProgressChangedEventHandler ProgressChanged;
         /// <summary>
         /// 
         /// </summary> 
@@ -178,7 +215,40 @@ namespace Library.Logic
             MessageEventHandler handler = Messge;
             if (handler != null) handler(this, new MessageEventArgs(message, messageType));
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void StartAsync()
+        {
+            BackgroundWorker background = new BackgroundWorker();
+            Stopwatch watch = new Stopwatch();
 
+            background.DoWork += (x, y) =>
+            {
+                watch.Start();
+                OnStart();
+                watch.Stop();
+            };
+            background.ProgressChanged += (x, y) =>
+            {
+                OnProgressChanged(y.ProgressPercentage);
+
+            };
+            background.RunWorkerCompleted += (x, y) =>
+            {
+                if (y.Error == null)
+                {
+                    OnCompleted(watch.Elapsed);
+                }
+                else
+                {
+                    OnFailure(y.Error);
+                }
+
+            };
+
+            background.RunWorkerAsync();
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -203,5 +273,11 @@ namespace Library.Logic
         /// 
         /// </summary>
         protected abstract void OnStart();
+
+        protected virtual void OnProgressChanged(int progressPercentage)
+        {
+            var handler = ProgressChanged;
+            if (handler != null) handler(this, new ProgressChangedEventArgs(progressPercentage));
+        }
     }
 }

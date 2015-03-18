@@ -94,7 +94,7 @@ namespace Library.Map
             Format              Description                             Real format                             Example
             =========           =================================       ======================                  =======================     
             "g"                 google map
-            "f"
+            "f"                 
  49бу30'00" S 12бу30'00" E
         */
 

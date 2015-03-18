@@ -52,11 +52,14 @@
     <Compile Include="ChromatoGram.cs" />
     <Compile Include="Code\BarCode.cs" />
     <Compile Include="Code\QRCode.cs" />
+    <Compile Include="Color\CIEXYZColor.cs" />
     <Compile Include="Color\CMYKColor.cs" />
     <Compile Include="Color\ColorHelper.cs" />
     <Compile Include="Color\HSVColor.cs" />
     <Compile Include="Color\IToRGBColor.cs" />
+    <Compile Include="Color\RGBColor.cs" />
     <Compile Include="Color\YCbCrColor.cs" />
+    <Compile Include="Color\YUVColor.cs" />
     <Compile Include="DrawHelper.cs" />
     <Compile Include="Effects\AutoLevelImage.cs" />
     <Compile Include="Effects\BlindsImage.cs" />
@@ -87,8 +90,14 @@
     <Compile Include="Effects\ValueOption.cs" />
     <Compile Include="Effects\ZoomBlurImage.cs" />
     <Compile Include="Color\HSLColor.cs" />
+    <Compile Include="DrawResource.Designer.cs">
+      <DependentUpon>DrawResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Map\GPSGeo.cs" />
     <Compile Include="ImageExif.cs" />
+    <Compile Include="Margin.cs" />
     <Compile Include="Water\WaterImageBuilder.cs" />
     <Compile Include="Water\WaterImageBuilderByText.cs" />
     <Compile Include="Water\WaterImageFactory.cs" />
@@ -125,6 +134,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Color\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DrawResource.en-US.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrawResource.pt-PT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrawResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DrawResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

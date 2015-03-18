@@ -15,7 +15,10 @@ namespace Library.Draw
     [TypeConverter(typeof(HSLColorConverter))]
     public struct HSLColor : IToRGBColor
     {
-
+        /// <summary>
+        /// Gets an empty RGB structure;
+        /// </summary>
+        public static readonly HSLColor Empty = new HSLColor();
         /// <summary>
         /// 色相
         /// </summary>
@@ -25,7 +28,7 @@ namespace Library.Draw
         /// 饱和度
         /// </summary>
         [LanguageDescription("亮度，取0-100%"), LanguageDisplayName("亮度")]
-        public float Luminosity { get; private set; }
+        public float Luminance { get; private set; }
         /// <summary>
         /// 亮度
         /// </summary>
@@ -42,7 +45,7 @@ namespace Library.Draw
         {
             this.Hue = h;
             this.Saturation = s;
-            this.Luminosity = l;
+            this.Luminance = l;
         }
 
         // HSL to RGB helper routine
@@ -61,7 +64,23 @@ namespace Library.Draw
             return v1;
         }
 
+        public static bool operator ==(HSLColor item1, HSLColor item2)
+        {
+            return (
+                item1.Hue == item2.Hue
+                && item1.Saturation == item2.Saturation
+                && item1.Luminance == item2.Luminance
+                );
+        }
 
+        public static bool operator !=(HSLColor item1, HSLColor item2)
+        {
+            return (
+                item1.Hue != item2.Hue
+                || item1.Saturation != item2.Saturation
+                || item1.Luminance != item2.Luminance
+                );
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -72,16 +91,16 @@ namespace Library.Draw
             if (this.Hue == 0)
             {
                 // gray values
-                r = g = b = (byte)(this.Luminosity * 255);
+                r = g = b = (byte)(this.Luminance * 255);
             }
             else
             {
                 double hue = (double)this.Hue / 360;
 
-                double v2 = (this.Luminosity < 0.5) ?
-                    (this.Luminosity * (1 + this.Saturation)) :
-                    ((this.Luminosity + this.Saturation) - (this.Luminosity * this.Saturation));
-                var v1 = 2 * this.Luminosity - v2;
+                double v2 = (this.Luminance < 0.5) ?
+                    (this.Luminance * (1 + this.Saturation)) :
+                    ((this.Luminance + this.Saturation) - (this.Luminance * this.Saturation));
+                var v1 = 2 * this.Luminance - v2;
 
                 r = (byte)(255 * Hue_2_RGB(v1, v2, hue + (1.0 / 3)));
                 g = (byte)(255 * Hue_2_RGB(v1, v2, hue));
@@ -98,10 +117,21 @@ namespace Library.Draw
         /// <returns></returns>
         public HSLColor Interpolate(HSLColor c2, float amount)
         {
-            return new HSLColor(this.Hue + ((c2.Hue - this.Hue) * amount), this.Saturation + ((c2.Saturation - this.Saturation) * amount), this.Luminosity + ((c2.Luminosity - this.Luminosity) * amount));
+            return new HSLColor(this.Hue + ((c2.Hue - this.Hue) * amount), this.Saturation + ((c2.Saturation - this.Saturation) * amount), this.Luminance + ((c2.Luminance - this.Luminance) * amount));
         }
 
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
 
+            return (this == (HSLColor)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Hue.GetHashCode() ^ Saturation.GetHashCode() ^
+                Luminance.GetHashCode();
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -111,17 +141,17 @@ namespace Library.Draw
             int r, g, b;
             if (Saturation == 0)
             {
-                r = (Byte)(Luminosity * 255);
-                g = (Byte)(Luminosity * 255);
-                b = (Byte)(Luminosity * 255);
+                r = (Byte)(Luminance * 255);
+                g = (Byte)(Luminance * 255);
+                b = (Byte)(Luminance * 255);
             }
             else
             {
                 float var2;
-                if (Luminosity < 0.5) var2 = Luminosity * (1 + Saturation);
-                else var2 = (Luminosity + Saturation) - (Saturation * Luminosity);
+                if (Luminance < 0.5) var2 = Luminance * (1 + Saturation);
+                else var2 = (Luminance + Saturation) - (Saturation * Luminance);
 
-                var var1 = 2 * Luminosity - var2;
+                var var1 = 2 * Luminance - var2;
 
                 r = (Byte)(255 * Hue_2_RGB(var1, var2, Hue + (1 / 3)));
                 g = (Byte)(255 * Hue_2_RGB(var1, var2, Hue));
@@ -159,7 +189,7 @@ namespace Library.Draw
             double delta = max - min;
             HSLColor hsl = new HSLColor();
             // get luminance value
-            hsl.Luminosity = (float)(max + min) / 2;
+            hsl.Luminance = (float)(max + min) / 2;
 
             if (delta == 0)
             {
@@ -170,7 +200,7 @@ namespace Library.Draw
             else
             {
                 // get saturation value
-                hsl.Saturation = (float)((hsl.Luminosity < 0.5) ? (delta / (max + min)) : (delta / (2 - max - min)));
+                hsl.Saturation = (float)((hsl.Luminance < 0.5) ? (delta / (max + min)) : (delta / (2 - max - min)));
 
                 // get hue value
                 double del_r = (((max - r) / 6) + (delta / 2)) / delta;

@@ -97,8 +97,8 @@ namespace Library.HelperUtility
         /// <returns></returns>
         public static T FastInvoke<T>(this ConstructorInfo constructorInfo, params object[] parameters)
         {
-            return typeof (T).IsAssignableFrom(constructorInfo.DeclaringType)
-                       ? (T) FastInvoke(constructorInfo, parameters)
+            return typeof(T).IsAssignableFrom(constructorInfo.DeclaringType)
+                       ? (T)FastInvoke(constructorInfo, parameters)
                        : default(T);
         }
 
@@ -110,7 +110,7 @@ namespace Library.HelperUtility
         /// <returns></returns>
         public static T CreateInstance<T>(this Type type)
         {
-            return typeof (T).IsAssignableFrom(type) ? (T) CreateInstance(type) : default(T);
+            return typeof(T).IsAssignableFrom(type) ? (T)CreateInstance(type) : default(T);
         }
 
         /// <summary>
@@ -123,7 +123,11 @@ namespace Library.HelperUtility
             if (type == null)
                 return null;
             var iConstructor = type.GetConstructor(new Type[] { });
-            if (iConstructor == null)throw new NotSupportedException("無構造函數，無法創建對象");
+            if (iConstructor == null)
+            {
+                iConstructor = type.GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null);
+                if (iConstructor == null) throw new NotSupportedException("無構造函數，無法創建對象");
+            }
             var obj = iConstructor.FastInvoke();
             return obj;
         }

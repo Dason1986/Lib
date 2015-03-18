@@ -11,69 +11,8 @@ using Library.Annotations;
 
 namespace Library.HelperUtility
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public interface IErrorMessageBuilder
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        Type ErrorType { get; }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="exception"></param>
-        /// <returns></returns>
-        string GetMessage(Exception exception);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="exception"></param>
-        /// <returns></returns>
-        bool CanExcute(Exception exception);
-    }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public class ErrorMessageBuilder : IErrorMessageBuilder
-    {
-        private readonly Func<Exception, string> _fun;
-        public Type ErrorType { get; protected set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="errorType"></param>
-        /// <param name="fun"></param>
-        public ErrorMessageBuilder([NotNull] Type errorType, [NotNull] Func<Exception, string> fun)
-        {
-            if (errorType == null) throw new ArgumentNullException("errorType");
-            this.ErrorType = errorType;
-            if (fun == null) throw new ArgumentNullException("fun");
-            _fun = fun;
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="exception"></param>
-        /// <returns></returns>
-        public string GetMessage(Exception exception)
-        {
-            return _fun(exception);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="exception"></param>
-        /// <returns></returns>
-        public bool CanExcute(Exception exception)
-        {
-            return ErrorType.IsInstanceOfType(exception);
-        }
-    }
     /// <summary>
     /// 
     /// </summary>
@@ -100,7 +39,8 @@ namespace Library.HelperUtility
 
             return sbexception.ToString();
         }
-        static readonly IList<IErrorMessageBuilder> ErrorFuncs = new List<IErrorMessageBuilder>();
+
+        private static readonly IList<IErrorMessageBuilder> ErrorFuncs = new List<IErrorMessageBuilder>();
 
         /// <summary>
         /// 
@@ -114,7 +54,8 @@ namespace Library.HelperUtility
 
         static TypeHelper()
         {
-            ErrorFuncs.Add(new ErrorMessageBuilder(typeof(ArgumentException), n => string.Format(" ParamName : {0} ", ((ArgumentException)n).ParamName)));
+            ErrorFuncs.Add(new ErrorMessageBuilder(typeof(ArgumentException),
+                n => string.Format(" ParamName : {0} ", ((ArgumentException)n).ParamName)));
             ErrorFuncs.Add(new ErrorMessageBuilder(typeof(SqlException), n =>
             {
                 var sql = (SqlException)n;
@@ -189,6 +130,7 @@ namespace Library.HelperUtility
             }));
 
         }
+
         private static string GetExceptionInfo(Exception ex, int count)
         {
             StringBuilder sbexception = new StringBuilder();
@@ -221,7 +163,8 @@ namespace Library.HelperUtility
                                 if (key != null)
                                 {
                                     var skey = Convert.ToString(key);
-                                    sbexception.AppendLine(string.Format(" Key :{0} , Value:{1}", skey, Convert.ToString(ex.Data[key])));
+                                    sbexception.AppendLine(string.Format(" Key :{0} , Value:{1}", skey,
+                                        Convert.ToString(ex.Data[key])));
                                 }
                                 else
                                 {
@@ -230,14 +173,17 @@ namespace Library.HelperUtility
                             }
                             catch (Exception e1)
                             {
-                                sbexception.AppendLine(string.Format("**  Exception occurred when writting log *** [{0}] ", e1.Message));
+                                sbexception.AppendLine(
+                                    string.Format("**  Exception occurred when writting log *** [{0}] ", e1.Message));
                             }
-                        } sbexception.AppendLine("==================================================");
+                        }
+                        sbexception.AppendLine("==================================================");
                     }
                 }
                 catch (Exception ex1)
                 {
-                    sbexception.AppendLine(string.Format("**  Exception occurred when writting log *** [{0}] ", ex1.Message));
+                    sbexception.AppendLine(string.Format("**  Exception occurred when writting log *** [{0}] ",
+                        ex1.Message));
                 }
             }
 
@@ -253,6 +199,44 @@ namespace Library.HelperUtility
 
         }
 
+        private static readonly Dictionary<Type, Func<Type, object>> TypeDefaultdictionary = new Dictionary<Type, Func<Type, object>>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="funk"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void SetTypeDefault([NotNull] Type type, [NotNull] Func<Type, object> funk)
+        {
+            if (type == null) throw new ArgumentNullException("type");
+            if (funk == null) throw new ArgumentNullException("funk");
+            if (TypeDefaultdictionary.ContainsKey(type))
+            {
+                TypeDefaultdictionary[type] = funk;
+                return;
+            }
+            TypeDefaultdictionary.Add(type, funk);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static object GetDefaultValue([NotNull] this Type obj)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            if (TypeDefaultdictionary.ContainsKey(obj)) return TypeDefaultdictionary[obj](obj);
+            return obj.IsClass ? null : obj.CreateInstance();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static Type RemoveNullabl([NotNull] this Type obj)
         {
             if (obj == null) throw new ArgumentNullException("obj");

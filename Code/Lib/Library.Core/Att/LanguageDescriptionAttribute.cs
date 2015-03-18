@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-[assembly: Library.Att.LanguageRegisterAttribute(typeof(Library.Global), "Library.Global", "Global")]
+
 namespace Library.Att
 {
     /// <summary>

@@ -12,7 +12,10 @@ namespace Library.Draw
     /// [Editor("Library.Draw.Design.HSVColorEditor, Library.Draw.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
     [TypeConverter(typeof(HSVColorConverter))]
     public struct HSVColor : IToRGBColor
-    {
+    {  /// <summary>
+        /// Gets an empty RGB structure;
+        /// </summary>
+        public static readonly HSVColor Empty = new HSVColor();
         /// <summary>
         /// Й«Па
         /// </summary>
@@ -134,7 +137,35 @@ namespace Library.Draw
             if (i > 255) return 255;
             return i;
         }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
 
+            return (this == (HSVColor)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Hue.GetHashCode() ^ Saturation.GetHashCode() ^
+                Value.GetHashCode();
+        }
+        public static bool operator ==(HSVColor item1, HSVColor item2)
+        {
+            return (
+                item1.Hue == item2.Hue
+                && item1.Saturation == item2.Saturation
+                && item1.Value == item2.Value
+                );
+        }
+
+        public static bool operator !=(HSVColor item1, HSVColor item2)
+        {
+            return (
+                item1.Hue != item2.Hue
+                || item1.Saturation != item2.Saturation
+                || item1.Value != item2.Value
+                );
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -192,4 +223,5 @@ namespace Library.Draw
     {
 
     }
+
 }

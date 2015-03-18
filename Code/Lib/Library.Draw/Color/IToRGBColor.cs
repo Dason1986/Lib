@@ -13,4 +13,6 @@ namespace Library.Draw
         /// <returns></returns>
         Color ToRGB();
     }
+
+ 
 }
