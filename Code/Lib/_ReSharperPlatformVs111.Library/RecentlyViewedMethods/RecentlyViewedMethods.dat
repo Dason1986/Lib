@@ -1,10 +1,23 @@
 ﻿<RecentlyViewedMethods>
   <RecentlyViewedMethods>
-    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.PdfTest.WrapperTest" />
-    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.PdfTest.WrapperTest" />
-    <RecentMethod id="3b9dea76-4456-4c12-8bcc-5cd46ce8d9cf%28Library.FileExtension%29-E0EA681D/P%3ALibrary.FileExtension.TableHeadElement.CellElement" />
-    <RecentMethod id="3b9dea76-4456-4c12-8bcc-5cd46ce8d9cf%28Library.FileExtension%29-E0EA681D/M%3ALibrary.FileExtension.PDFBuilder.DrawTable%28Library.FileExtension.TableElement%29" />
-    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.PdfTest.WrapperTest" />
-    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.PdfTest.WrapperTest" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.matchDriveLetterWithSerial" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/F%3ALibrary.Management.USBDeiver._serialNumber" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.getValueInQuotes%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.parseSerialFromDeviceID%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.parseSerialFromDeviceID%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.matchDriveLetterWithSerial" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.getSerialNumberFromDriveLetter%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.matchDriveLetterWithSerial" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.parseSerialFromDeviceID%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.matchDriveLetterWithSerial" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.getSerialNumberFromDriveLetter%28System.String%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.Program.Main%28System.String%5B%5D%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.matchDriveLetterWithSerial" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.getSerialNumberFromDriveLetter%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.parseSerialFromDeviceID%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.getSerialNumberFromDriveLetter%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.getValueInQuotes%28System.String%29" />
+    <RecentMethod id="c1cb331b-f9b1-4489-ac4a-4c26f84d6e07%28Library.Management%29-689100A9/M%3ALibrary.Management.USBDeiver.getValueInQuotes%28System.String%29" />
   </RecentlyViewedMethods>
 </RecentlyViewedMethods>

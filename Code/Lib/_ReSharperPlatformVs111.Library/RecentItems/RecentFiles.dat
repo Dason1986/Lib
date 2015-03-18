@@ -14,35 +14,14 @@
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/d:Color/f:CMYKColor.cs" caret="3554" fromTop="38" />
     <File id="4612E29A-0F6C-4029-ADBC-B8D3EE99D241/f:Margin.cs" caret="1905" fromTop="40" />
     <File id="FE81D872-05AB-4CB1-8FEB-7231D9B7DB94/d:Test/f:ITestLogic.cs" caret="6843" fromTop="16" />
-    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="676" fromTop="21" />
     <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:DataElement.cs" caret="2407" fromTop="38" />
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:PdfTest.cs" caret="326" fromTop="3" />
     <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="6378" fromTop="4" />
+    <File id="7020124F-9FFC-4AC3-8F3D-AAB8E0240759/f:System.Management.PropertyDataCollection.cs/l:..?..?..?..?Users?Dason?AppData?Local?Temp?5248$System.Management.dll$v4.0.30319$NoDynamic?System.Management.PropertyDataCollection.cs" caret="325" fromTop="8" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="772" fromTop="26" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="1242" fromTop="7" />
   </RecentFiles>
   <RecentEdits>
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="4488" fromTop="6" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="6089" fromTop="30" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="5182" fromTop="8" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="24" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="28" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="24" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="15" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="31" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="26" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="20" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="25" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="24" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8824" fromTop="24" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8739" fromTop="22" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="6318" fromTop="9" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="7222" fromTop="24" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8151" fromTop="32" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="7707" fromTop="27" />
-    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:PdfTest.cs" caret="2323" fromTop="17" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="8153" fromTop="27" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="5459" fromTop="13" />
-    <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:PdfTest.cs" caret="2325" fromTop="26" />
-    <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="746" fromTop="22" />
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:PdfTest.cs" caret="2323" fromTop="19" />
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:PdfTest.cs" caret="813" fromTop="22" />
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:PdfTest.cs" caret="564" fromTop="4" />
@@ -50,5 +29,28 @@
     <File id="AA7FF516-0C06-4EF3-A446-B7A75BC3174B/d:Test/f:PdfTest.cs" caret="2305" fromTop="35" />
     <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:DataElement.cs" caret="2407" fromTop="38" />
     <File id="3B9DEA76-4456-4C12-8BCC-5CD46CE8D9CF/f:PDFBuilder.cs" caret="6592" fromTop="9" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="385" fromTop="17" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="385" fromTop="44" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="385" fromTop="21" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="462" fromTop="11" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="3561" fromTop="83" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="914" fromTop="21" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="481" fromTop="11" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="3052" fromTop="35" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2812" fromTop="25" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2812" fromTop="25" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2977" fromTop="28" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="235" fromTop="5" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2539" fromTop="15" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2539" fromTop="18" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2540" fromTop="32" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="690" fromTop="22" />
+    <File id="AA560131-7590-435D-9D8F-CA0DA08BBBC7/f:Program.cs" caret="772" fromTop="26" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2442" fromTop="27" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2066" fromTop="17" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="1477" fromTop="24" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="3403" fromTop="15" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="1655" fromTop="12" />
+    <File id="C1CB331B-F9B1-4489-AC4A-4C26F84D6E07/f:USBSerialNumber.cs" caret="2204" fromTop="22" />
   </RecentEdits>
 </RecentFiles>
