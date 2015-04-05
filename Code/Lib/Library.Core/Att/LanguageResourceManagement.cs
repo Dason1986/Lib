@@ -61,7 +61,8 @@ namespace Library.Att
         /// <returns></returns>
         public static string GetException(double resultCode, string resourceName)
         {
-            string name = "_Code" + resultCode.ToString(CultureInfo.InvariantCulture).Replace(".", "_");
+            if (resultCode == 0) return GetString("Unknown", "Global");
+            string name = "_Code" + resultCode.ToString(CultureInfo.InvariantCulture).Replace(".", "_").Replace("-", "__");
             var tmpmsg = GetString(name,resourceName);
             return tmpmsg;
         }

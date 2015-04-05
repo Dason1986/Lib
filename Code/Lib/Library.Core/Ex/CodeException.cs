@@ -24,6 +24,7 @@ namespace Library
         /// 
         /// </summary>
         public CodeException()
+            : base(LanguageResourceManagement.GetException(0))
         {
 
         }
@@ -83,7 +84,7 @@ namespace Library
         /// <param name="resultCode"></param>
         /// <param name="resourceName"></param>
         public CodeException(double resultCode, string resourceName)
-            : base(LanguageResourceManagement.GetException( resultCode, resourceName))
+            : base(LanguageResourceManagement.GetException(resultCode, resourceName))
         {
             ResultCode = resultCode;
         }

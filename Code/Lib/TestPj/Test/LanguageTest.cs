@@ -19,6 +19,9 @@ namespace TestPj.Test
             Console.WriteLine(ex);
             NUnit.Framework.StringAssert.AreEqualIgnoringCase("IDCard number format wong", ex.Message);
 
+            ex = new CodeException();
+            Console.WriteLine(ex);
+            NUnit.Framework.StringAssert.AreEqualIgnoringCase("Unknown", ex.Message);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-pt");
             ex = new CodeException(11001.1);
             Console.WriteLine(ex);

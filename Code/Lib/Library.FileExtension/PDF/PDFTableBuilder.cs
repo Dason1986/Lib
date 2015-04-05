@@ -3,6 +3,7 @@ using System.Collections;
 using System.ComponentModel;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Library.Data;
 using Library.HelperUtility;
 
 namespace Library.FileExtension
@@ -48,28 +49,22 @@ namespace Library.FileExtension
 
         private void BuilBodyData(PdfPTable pdfPTable)
         {
-            IList datalist;
+            DataManager manager = new DataManager(table.DataSource){NameIgnoreCase = true};
+           
             int columns = headwidth.Length;
-            if (table.DataSource is IListSource)
-            {
-                datalist = ((IListSource)table.DataSource).GetList();
-            }
-            else
-            {
-                datalist = (IList)table.DataSource;
-            }
 
-            PropertyDescriptorCollection proprerys = TypeHelper.GetListItemProperties(datalist);
-            foreach (var row in datalist)
+
+
+            for(int i=0;i<manager.Count;i++)
             {
+                manager.Position = i;
                 PdfPCell[] rowCells = new PdfPCell[columns];
                 for (int j = 0; j < columns; j++)
                 {
                     var col = table.Heads[j];
-                    var property = proprerys[col.BindName];
-                    if (property == null) throw new LibException(string.Format("[{0}] not exist", col.BindName));
 
-                    var cel = ObjectUtility.Cast<string>(property.GetValue(row));
+
+                    var cel = ObjectUtility.Cast<string>(manager.GetValue(col.BindName));
 
                     rowCells[j] = new PdfPCell((new Phrase(string.IsNullOrEmpty(cel) ? " " : cel, PDFBuilder.DefaultFont)))
                     {
@@ -82,7 +77,7 @@ namespace Library.FileExtension
                 pdfPTable.CompleteRow();
             }
             if (!table.FillRows) return;
-            var count = table.FillRowCounts - datalist.Count;
+            var count = table.FillRowCounts - manager.Count;
             if (count > 0)
             {
                 FillTabel(count, pdfPTable);

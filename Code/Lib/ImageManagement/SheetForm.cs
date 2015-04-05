@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Library.Att;
 using Library.HelperUtility;
 using Library.Controls;
+using Library.Management;
 
 namespace TestWinform
 {
@@ -12,16 +13,21 @@ namespace TestWinform
     {
         public SheetForm()
         {
-            InitializeComponent(); 
+            if (sheet != null) throw new Exception("sheet exist");
+            InitializeComponent();
             listBox1.Items.Add("TestWinform.WaterForm");
             listBox1.Items.Add("TestWinform.EffectsForm");
             listBox1.Items.Add("TestWinform.DateForm");
             listBox1.Items.Add("TestWinform.IDCardForm");
-            
+            sheet = this;
         }
 
-    
-   
+        private static SheetForm sheet;
+
+        public static void SetObject(object obj)
+        {
+            if (sheet != null) sheet.propertyGrid1.SelectedObject = obj;
+        }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {

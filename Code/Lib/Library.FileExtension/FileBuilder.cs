@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Library.Annotations;
 using Library.Draw;
 using Library.IO;
 using Library.Logic;
@@ -10,7 +11,7 @@ namespace Library.FileExtension
     public abstract class FileBuilder : BaseLogic, IFileBuilder
     {
 
-        public string SaveFilePath { get; set; }
+
         public Stream BufferStream { get; protected set; }
         private PageSize _documentPageSize = PageSize.A4;
         private Margin _documentMargin = Margin.M5;
@@ -20,8 +21,18 @@ namespace Library.FileExtension
             get { return _documentMargin; }
             set { _documentMargin = value; }
         }
+        protected Stream TemplateStream { get; private set; }
+        public void SetTemplate(string path)
+        {
+            if (!File.Exists(path)) throw new LibException();
+            TemplateStream = new MemoryStream(File.ReadAllBytes(path));
+        }
+        public void SetTemplate([NotNull] Stream stream)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
+            TemplateStream = stream;
+        }
 
-        public string FileTemplate { get; set; }
         public DocumentInfo DocumentInfo { get; set; }
         public PageSize DocumentPageSize
         {

@@ -27,10 +27,7 @@ namespace TestWinform
         [STAThread]
         static void Main(string[] Args)
         {
-
-
-            string serial = USBDeiver.GetSerialNumber(@"D");
-            //Console.WriteLine(serial);
+          
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

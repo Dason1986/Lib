@@ -101,6 +101,7 @@
     <Compile Include="interface\IO\IPrintModel.cs" />
     <Compile Include="interface\Control\IQueryControl.cs" />
     <Compile Include="interface\Control\IQueryDataProvider.cs" />
+    <Compile Include="interface\IPlugin.cs" />
     <Compile Include="interface\IRangeItem.cs" />
     <Compile Include="interface\IUserInfo.cs" />
     <Compile Include="Model\DocumentInfo.cs" />

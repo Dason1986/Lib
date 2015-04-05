@@ -1,0 +1,4 @@
+C:\Dason\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Dason\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Dason\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Dason\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

@@ -29,12 +29,14 @@ namespace Library.FileExtension
         protected internal PdfWriter writer { get; private set; }
         protected internal float Height { get; private set; }
         protected internal float Width { get; private set; }
+
+        
         protected PdfTemplate Template;
         protected override void BuildFile()
         {
-            if (!string.IsNullOrWhiteSpace(FileTemplate) && File.Exists(FileTemplate))
+            if (TemplateStream!=null)
             {
-                readerFileTemplate = new PdfReader(FileTemplate);
+                readerFileTemplate = new PdfReader(TemplateStream);
                 document = new Document(readerFileTemplate.GetPageSize(1));
                 writer = PdfWriter.GetInstance(document, BufferStream);
                 document.Open();
@@ -183,14 +185,10 @@ namespace Library.FileExtension
         {
             //  writer.Close();
             document.Close();
-            if (!string.IsNullOrEmpty(SaveFilePath))
-            {
-                var file = new FileStream(SaveFilePath, FileMode.Create);
-                BufferStream.CopyTo(file);
-                file.Close();
-            }
-            BufferStream.Close();
-            readerFileTemplate.Close();
+
+            if (BufferStream != null) BufferStream.Close();
+            if (readerFileTemplate != null) readerFileTemplate.Close();
+            if (TemplateStream != null) TemplateStream.Close();
         }
 
 
