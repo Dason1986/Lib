@@ -36,7 +36,10 @@ namespace Library.Draw
         /// </summary>
         [LanguageDescription(""), LanguageDisplayName("ºÚ")]
         public int Black { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Color ToRGB()
         {
             float myC = this.Cyan / 100;
@@ -80,7 +83,12 @@ namespace Library.Draw
             cmyk.Yellow = ((100 - myB - cmyk.Black) / div) * 100;
             return cmyk;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator ==(CMYKColor item1, CMYKColor item2)
         {
             return (
@@ -90,7 +98,12 @@ namespace Library.Draw
                 && item1.Black == item2.Black
                 );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator !=(CMYKColor item1, CMYKColor item2)
         {
             return (
@@ -100,14 +113,21 @@ namespace Library.Draw
                 || item1.Black != item2.Black
                 );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(Object obj)
         {
             if (obj == null || GetType() != obj.GetType()) return false;
 
             return (this == (CMYKColor)obj);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return Cyan.GetHashCode() ^

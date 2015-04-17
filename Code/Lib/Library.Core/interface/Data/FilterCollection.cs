@@ -12,23 +12,34 @@ namespace Library.Data
 #endif
     public class FilterCollection : Collection<QueryFilter>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filters"></param>
         public FilterCollection(IEnumerable<QueryFilter> filters)
         {
             ReSet(filters);
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public FilterCollection()
         {
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filters"></param>
         public void ReSet(IEnumerable<QueryFilter> filters)
         {
             this.Clear();
-            if (filters != null)
-                foreach (var filter in filters)
-                {
-                    this.Add(filter);
-                }
+            if (filters == null) return;
+            foreach (var filter in filters)
+            {
+                this.Add(filter);
+            }
         }
     }
 }

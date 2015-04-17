@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using Library.Att;
 using Library.HelperUtility;
 using Library.Controls;
+using Library.Diagnostics;
 using Library.Management;
+using Library.Win;
 
 namespace TestWinform
 {
@@ -20,6 +23,7 @@ namespace TestWinform
             listBox1.Items.Add("TestWinform.DateForm");
             listBox1.Items.Add("TestWinform.IDCardForm");
             sheet = this;
+
         }
 
         private static SheetForm sheet;
@@ -62,6 +66,33 @@ namespace TestWinform
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("pt-pt");
             Change();
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            RtxInfo.Clear();
+        }
+
+        private void SheetForm_Load(object sender, EventArgs e)
+        {
+            RichTextBoxTraceListener listener = new RichTextBoxTraceListener(RtxInfo);
+            listener.BindTrace();
+            Trace.TraceWarning("trace iii");
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = ".rtf";
+            saveFileDialog.Filter = "Rich Text Format(RTF)(*.rtf)|*.rtf";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var file = saveFileDialog.OpenFile();
+                RtxInfo.SaveFile(file, RichTextBoxStreamType.TextTextOleObjs);
+                file.Close();
+                file.Dispose();
+            }
+
         }
     }
 }

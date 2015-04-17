@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.ComponentModel;
+using System.Data;
 using System.Runtime.Remoting.Messaging;
 using Library.Annotations;
 
@@ -44,7 +46,18 @@ namespace Library.HelperUtility
             return array;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static bool HasRecord(this IListSource list, int count = 1)
+        {
+            if (list == null) return false;
+            var tmplist = list.GetList();
+            return tmplist.HasRecord(count); 
+        }
         /// <summary>
         /// 
         /// </summary>

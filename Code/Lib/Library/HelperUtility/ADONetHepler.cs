@@ -71,7 +71,12 @@ namespace Library.HelperUtility
 
             return list;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataReader"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static object GetEntity(this IDataReader dataReader, Type type)
         {
             if (dataReader == null) throw new ArgumentNullException("dataReader");

@@ -53,12 +53,11 @@ namespace Library.Web
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-
-        /// <typeparam name="TModel"></typeparam>
-        /// <returns></returns>
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <returns></returns>
         public static TryResult<TModel> TryGetModelWithPost<TModel>() where TModel : class  ,new()
         {
             var model = new TModel();

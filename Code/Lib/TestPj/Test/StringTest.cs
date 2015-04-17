@@ -1,4 +1,5 @@
 ﻿using System;
+using Library.HelperUtility;
 using Library.Test;
 using NUnit.Framework;
 
@@ -73,6 +74,23 @@ namespace TestPj.Test
                       var flag = string.Equals(Sourcestr, Tragestr, StringComparison.OrdinalIgnoreCase);
 
                   });
+
+        }
+
+        [Test]
+        public void DateFormatText()
+        {
+
+            
+            var now = DateTime.Now;
+            var few = now.AddMinutes(-5);
+            Console.WriteLine("{0} {1}", few, FormatUtility.DateFormatChinese(few));
+            for (int i = 0; i < 365; i++)
+            {
+                var time = now.AddDays(-i);
+                Console.WriteLine("{0} {1} {2}", time, FormatUtility.DateFormatPeriod(time), FormatUtility.DateFormatChinese(time));
+            }
+
 
         }
     }

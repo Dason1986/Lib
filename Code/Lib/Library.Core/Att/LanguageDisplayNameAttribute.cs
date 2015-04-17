@@ -12,7 +12,9 @@ namespace Library.Att
     {
         private bool replaced;
         private readonly string _resourceName;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override string DisplayName
         {
             get
@@ -20,7 +22,7 @@ namespace Library.Att
                 if (!this.replaced)
                 {
                     this.replaced = true;
-                    this.DisplayNameValue = LanguageResourceManagement.GetString(base.DisplayName, _resourceName ?? "Global");
+                    this.DisplayNameValue = LanguageResourceManagement.GetString(base.DisplayName, _resourceName ?? @"Global");
 
                 }
                 return base.DisplayName;

@@ -37,14 +37,18 @@ namespace Library.Draw.Effects
          */
 
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new TwoValueOption();
         }
         private TwoValueOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -54,12 +58,14 @@ namespace Library.Draw.Effects
                 _opetion = (TwoValueOption)value;
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
         public class TwoValueOption : ImageOption
         {
             private int _pointcut;
+
             /// <summary>
             /// 
             /// </summary>
@@ -75,12 +81,21 @@ namespace Library.Draw.Effects
                 }
             }
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new TwoValueOption() { Pointcut = 128 };
         }
         #endregion
         #region IImageProcessable 成员
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -101,6 +116,10 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public unsafe override Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

@@ -78,7 +78,11 @@ namespace Library.FastReflection
             if (!propertyInfo.CanWrite) return;
             this._mSetMethodInvoker = new MethodInvoker(propertyInfo.GetSetMethod(true));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public object GetValue(object o)
         {
             if (this._mGetter == null)
@@ -88,7 +92,11 @@ namespace Library.FastReflection
 
             return this._mGetter(o);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="value"></param>
         public void SetValue(object o, object value)
         {
             if (this._mSetMethodInvoker == null)

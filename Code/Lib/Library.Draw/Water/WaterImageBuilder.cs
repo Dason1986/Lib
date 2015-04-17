@@ -5,13 +5,21 @@ using Library.Annotations;
 
 namespace Library.Draw.Water
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class WaterImageBuilder : ImageBuilder
     {
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected string WaterImgPath { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         protected byte[] WaterImgBuffter { get; private set; }
 
 
@@ -38,11 +46,20 @@ namespace Library.Draw.Water
             if (buffter == null) throw new ArgumentNullException("buffter");
             WaterImgBuffter = buffter;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceImg"></param>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected virtual Rectangle GetWaterRectangle(Image sourceImg, Image waterImg)
         {
             return new Rectangle(0, 0, sourceImg.Width, sourceImg.Height);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             if (Opetion == null) throw new ImageException("Opetion is null");
@@ -72,7 +89,12 @@ namespace Library.Draw.Water
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tmpimg"></param>
+        /// <param name="sourceImg"></param>
+        /// <returns></returns>
         protected Graphics CreateGraphics(Image tmpimg, Image sourceImg)
         {
             Graphics gType = Graphics.FromImage(tmpimg);
@@ -88,7 +110,12 @@ namespace Library.Draw.Water
             }
             return gType;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected abstract Image CreateFillImage(Rectangle rectangle, Image waterImg);
 
 

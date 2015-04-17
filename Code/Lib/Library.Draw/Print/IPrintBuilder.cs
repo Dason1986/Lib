@@ -138,7 +138,9 @@ namespace Library.Draw.Print
             get { return _totalPages; }
             protected set { _totalPages = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual object Model { get; set; }
         /// <summary>
         /// 生成当前打印内容
@@ -230,7 +232,9 @@ namespace Library.Draw.Print
     public abstract class PrintBuilder<T> : PrintBuilder, IPrintBuilder<T>
     {
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public new T Model
         {
             get

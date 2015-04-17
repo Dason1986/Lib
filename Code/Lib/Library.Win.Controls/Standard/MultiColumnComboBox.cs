@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MultiColumnComboBox : ComboBox
     {
         private string _columnNameString = "";
@@ -17,7 +20,9 @@ namespace Library.Controls
         private int _ValueMemberColumnIndex = 0;
         private readonly Collection<string> _columnNames = new Collection<string>();
         private readonly Collection<int> _columnWidths = new Collection<int>();
-
+        /// <summary>
+        /// 
+        /// </summary>
         public MultiColumnComboBox()
         {
             BackColorOdd = Color.White;
@@ -26,17 +31,29 @@ namespace Library.Controls
 
             ContextMenu = new ContextMenu();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public event System.EventHandler OpenSearchForm;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool AutoComplete { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool AutoDropdown { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Color BackColorEven { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Color BackColorOdd { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Collection<string> ColumnNameCollection
         {
             get
@@ -44,7 +61,9 @@ namespace Library.Controls
                 return _columnNames;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string ColumnNames
         {
             get
@@ -89,7 +108,9 @@ namespace Library.Controls
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Collection<int> ColumnWidthCollection
         {
             get
@@ -97,7 +118,9 @@ namespace Library.Controls
                 return _columnWidths;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int ColumnWidthDefault
         {
             get
@@ -110,6 +133,9 @@ namespace Library.Controls
             }
         }
         readonly char[] _delimiterChars = { ',', ';', ':' };
+        /// <summary>
+        /// 
+        /// </summary>
         public string ColumnWidths
         {
             get
@@ -177,7 +203,9 @@ namespace Library.Controls
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public new DrawMode DrawMode
         {
             get
@@ -193,7 +221,9 @@ namespace Library.Controls
                 base.DrawMode = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public new ComboBoxStyle DropDownStyle
         {
             get
@@ -209,7 +239,9 @@ namespace Library.Controls
                 base.DropDownStyle = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int LinkedColumnIndex
         {
             get
@@ -225,7 +257,9 @@ namespace Library.Controls
                 _linkedColumnIndex = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public TextBox LinkedTextBox
         {
             get
@@ -241,16 +275,24 @@ namespace Library.Controls
                 _linkedTextBox.TabStop = false;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int TotalWidth { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnDataSourceChanged(EventArgs e)
         {
             base.OnDataSourceChanged(e);
 
             InitializeColumns();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
             base.OnDrawItem(e);
@@ -353,7 +395,10 @@ namespace Library.Controls
 
             e.DrawFocusRectangle();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnDropDown(EventArgs e)
         {
             base.OnDropDown(e);
@@ -363,7 +408,10 @@ namespace Library.Controls
                 ? TotalWidth + SystemInformation.VerticalScrollBarWidth
                 : TotalWidth;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnKeyDown(KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -389,6 +437,10 @@ namespace Library.Controls
         // Some of the code for OnKeyPress was derived from some VB.NET code  
         // posted by Laurent Muller as a suggested improvement for another control.
         // http://www.codeproject.com/vb/net/autocomplete_combobox.asp?df=100&forumid=3716&select=579095#xx579095xx
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             int idx;
@@ -454,7 +506,10 @@ namespace Library.Controls
 
             e.Handled = true;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSelectedValueChanged(EventArgs e)
         {
             base.OnSelectedValueChanged(e);
@@ -463,14 +518,19 @@ namespace Library.Controls
             if (_linkedColumnIndex >= _columnNames.Count) return;
             _linkedTextBox.Text = Convert.ToString(FilterItemOnProperty(SelectedItem, _columnNames[_linkedColumnIndex]));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnValueMemberChanged(EventArgs e)
         {
             base.OnValueMemberChanged(e);
 
             InitializeValueMemberColumn();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitializeColumns()
         {
             if (Convert.ToBoolean(_columnNameString.Length))

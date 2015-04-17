@@ -2,6 +2,10 @@ using System.Collections.Generic;
 
 namespace Library
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PermutationAndCombination<T>
     {
         /// <summary>

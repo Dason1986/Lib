@@ -31,6 +31,9 @@ namespace Library.HelperUtility
     public class ErrorMessageBuilder : IErrorMessageBuilder
     {
         private readonly Func<Exception, string> _fun;
+        /// <summary>
+        /// 
+        /// </summary>
         public Type ErrorType { get; protected set; }
         /// <summary>
         /// 

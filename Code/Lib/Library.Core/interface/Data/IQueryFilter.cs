@@ -97,24 +97,42 @@ namespace Library.Data
     {
         private Condition _condition = Condition.Equal;
         private readonly FilterCollection _filters = new FilterCollection();
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string DisplayName { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Filed { get; set; }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public object Value { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public object Value2 { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Condition Condition
         {
             get { return _condition; }
             set { _condition = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Relation Relation { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public QueryFiledType FiledType { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string FunctionName { get; set; }
 
 

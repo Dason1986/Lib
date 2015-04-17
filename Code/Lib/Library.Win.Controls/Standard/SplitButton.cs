@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Drawing.Drawing2D;
@@ -35,7 +36,9 @@ namespace Library.Controls
         private string _clickedImage;
         private string _disabledImage;
         private string _focusedImage;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool PersistDropDownName
         {
             get
@@ -75,7 +78,9 @@ namespace Library.Controls
         #endregion
 
         #region Events
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(true)]
         [Category("Action")]
         [Description("Occurs when the button part of the SplitButton is clicked.")]
@@ -84,7 +89,9 @@ namespace Library.Controls
         #endregion
 
         #region Construction
-
+        /// <summary>
+        /// 
+        /// </summary>
         public SplitButton()
         {
             InitializeComponent();
@@ -224,7 +231,7 @@ namespace Library.Controls
                 catch (Exception ex)
                 {
                     // eat up the exception
-                    System.Diagnostics.Debug.WriteLine(string.Format("Exception in InitDefaultSplitImages(refresh:={0}).  Exception = {1}", refresh, ex.ToString()));
+                    Trace.WriteLine(string.Format("Exception in InitDefaultSplitImages(refresh:={0}).  Exception = {1}", refresh, ex.ToString()));
                 }
             }
         }
@@ -395,7 +402,7 @@ namespace Library.Controls
                     //
                     // Eat the exception
                     //
-                    System.Diagnostics.Debug.WriteLine(string.Format("SplitButton failed delegate call {0}.  Exception {1}", i, ex.ToString()));
+                    Trace.WriteLine(string.Format("SplitButton failed delegate call {0}.  Exception {1}", i, ex.ToString()));
                 }
 
                 ++i;
@@ -426,7 +433,9 @@ namespace Library.Controls
         #endregion
 
         #region Properties Exposing States
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button")]
         [Description("Indicates whether the split rectangle must be calculated (basing on Split image size)")]
         [DefaultValue(true)]
@@ -460,7 +469,9 @@ namespace Library.Controls
             get { return _fillSplitHeight; }
             set { _fillSplitHeight = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button")]
         [Description("The split height (ignored if CalculateSplitRect is setted to true).")]
         [DefaultValue(0)]
@@ -480,7 +491,9 @@ namespace Library.Controls
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button")]
         [Description("The split width (ignored if CalculateSplitRect is setted to true).")]
         [DefaultValue(0)]
@@ -500,7 +513,9 @@ namespace Library.Controls
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button Images")]
         [Description("The Normal status image name in the ImageList, corresponding to the image name.")]
         [DefaultValue("Normal")]
@@ -513,7 +528,9 @@ namespace Library.Controls
             get { return _normalImage; }
             set { _normalImage = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button Images")]
         [Description("The Hover status image name in the ImageList.")]
         [DefaultValue("Hover")]
@@ -526,7 +543,9 @@ namespace Library.Controls
             get { return _hoverImage; }
             set { _hoverImage = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button Images")]
         [Description("The Clicked status image name in the ImageList.")]
         [DefaultValue("Clicked")]
@@ -539,7 +558,9 @@ namespace Library.Controls
             get { return _clickedImage; }
             set { _clickedImage = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button Images")]
         [Description("The Disabled status image name in the ImageList.")]
         [DefaultValue("Disabled")]
@@ -552,7 +573,9 @@ namespace Library.Controls
             get { return _disabledImage; }
             set { _disabledImage = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Split Button Images")]
         [Description("The Focused status image name in the ImageList.")]
         [DefaultValue("Hover")]
@@ -569,7 +592,9 @@ namespace Library.Controls
         #endregion
 
         #region Overridable Methods
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void OnCreateControl()
         {
             InitDefaultSplitImages();
@@ -581,7 +606,10 @@ namespace Library.Controls
 
             base.OnCreateControl();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseMove(MouseEventArgs mevent)
         {
             if (Enabled)
@@ -591,7 +619,10 @@ namespace Library.Controls
 
             base.OnMouseMove(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
         {
             if (Enabled)
@@ -599,7 +630,10 @@ namespace Library.Controls
 
             base.OnMouseLeave(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             if (Enabled)
@@ -609,7 +643,10 @@ namespace Library.Controls
 
             base.OnMouseDown(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
             if (Enabled)
@@ -632,7 +669,10 @@ namespace Library.Controls
 
             base.OnMouseUp(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
         {
             if (Enabled)
@@ -646,7 +686,10 @@ namespace Library.Controls
 
             base.OnEnabledChanged(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnGotFocus(EventArgs e)
         {
             if (Enabled)
@@ -654,7 +697,10 @@ namespace Library.Controls
 
             base.OnGotFocus(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
         {
             if (Enabled)
@@ -662,7 +708,10 @@ namespace Library.Controls
 
             base.OnLostFocus(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClick(EventArgs e)
         {
 
@@ -679,14 +728,20 @@ namespace Library.Controls
 
         #region Additional Interface Methods
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void ClearDropDownItems()
         {
             SplitButtonDropDown.Items.Clear();
             _dropDownsEventHandlers = new Dictionary<string, EventHandler>();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="handler"></param>
         public void AddDropDownItemAndHandle(string text, EventHandler handler)
         {
 
@@ -701,7 +756,10 @@ namespace Library.Controls
 
         #region Internal Events Handling
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
         public void SetClickItem(int index)
         {
             if (!_persistDropDownName || SplitButtonDropDown == null) return;
@@ -715,7 +773,10 @@ namespace Library.Controls
             Text = textDisplay;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
         public void SetClickItem(string text)
         {
             if (!_persistDropDownName || SplitButtonDropDown == null) return;

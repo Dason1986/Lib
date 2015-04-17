@@ -30,14 +30,18 @@ namespace Library.Draw.Effects
         }
 
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
         private ValueOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -47,12 +51,19 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
-       
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption() { Value = 0.5f };
         }
         #endregion
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             byte r, g, b;
@@ -101,7 +112,10 @@ namespace Library.Draw.Effects
             }
             return clone;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             byte r, g, b;

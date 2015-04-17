@@ -12,6 +12,9 @@ namespace Library.Draw
     /// </summary>
     public class ImageEventArgs : EventArgs
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public Exception Error { get; protected set; }
 
         /// <summary>
@@ -19,13 +22,19 @@ namespace Library.Draw
         /// </summary>
         public Image Image { get; protected set; }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
         protected internal ImageEventArgs(Image image)
         {
             Image = image;
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="error"></param>
         protected internal ImageEventArgs(Exception error)
         {
             Error = error;
@@ -104,7 +113,9 @@ namespace Library.Draw
         /// <returns></returns>
         ImageOption CreateOption();
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class ImageBuilder : IImageBuilder
     {
 
@@ -112,9 +123,18 @@ namespace Library.Draw
         /// 
         /// </summary>
         public event ImageCompletedEventHandler ProcessCompleted;
+        /// <summary>
+        /// 
+        /// </summary>
         protected string SourceImgPath { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
         protected byte[] SourceImgBuffter { get; private set; }
         private Image _source;
+        /// <summary>
+        /// 
+        /// </summary>
         protected Image Source
         {
             get
@@ -135,7 +155,10 @@ namespace Library.Draw
 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public virtual ImageOption CreateOption()
         {
             return new ImageOption();
@@ -171,13 +194,19 @@ namespace Library.Draw
             if (buffter == null) throw new ArgumentNullException("buffter");
             SourceImgBuffter = buffter;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="opetion"></param>
+        /// <returns></returns>
         public virtual Image ProcessBitmap(ImageOption opetion)
         {
             SetOpetion(opetion);
             return ProcessBitmap();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public unsafe void UnsafeProcessBitmapAsync()
         {
             BackgroundWorker background = new BackgroundWorker();
@@ -194,7 +223,10 @@ namespace Library.Draw
 
             background.RunWorkerAsync();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public virtual unsafe Image UnsafeProcessBitmap()
         {
             throw new NotImplementedException();
@@ -204,18 +236,28 @@ namespace Library.Draw
         /// 
         /// </summary>
         protected virtual ImageOption Opetion { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="opetion"></param>
         public virtual void SetOpetion([NotNull] ImageOption opetion)
         {
             if (opetion == null) throw new ArgumentNullException("opetion");
             Opetion = opetion;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="opacity"></param>
         public virtual void SetOpacity(float opacity)
         {
             InitOption();
             Opetion.Opacity = opacity;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="size"></param>
         public virtual void SetTrageSize(Size size)
         {
             InitOption();
@@ -229,7 +271,14 @@ namespace Library.Draw
         {
             if (Opetion == null) Opetion = new ImageOption();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public abstract Image ProcessBitmap();
+        /// <summary>
+        /// 
+        /// </summary>
         public void ProcessBitmapAsync()
         {
             BackgroundWorker background = new BackgroundWorker();
@@ -245,7 +294,11 @@ namespace Library.Draw
             background.RunWorkerAsync();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="opacity"></param>
+        /// <returns></returns>
         protected ImageAttributes GetOpacity(float opacity)
         {
             float[][] nArray =
@@ -298,11 +351,11 @@ namespace Library.Draw
         {
             if (a < 0)
                 return 0;
-            else if (a > 255)
+            if (a > 255)
                 return 255;
-            else
-                return (byte)a;
+            return (byte)a;
         }
+
         /// <summary>
         /// 色彩值漏出處理
         /// </summary>
@@ -312,11 +365,14 @@ namespace Library.Draw
         {
             if (a < 0)
                 return 0;
-            else if (a > 255)
+            if (a > 255)
                 return 255;
-            else
-                return (byte)a;
+            return (byte)a;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected virtual void OnProcessBitmapCompleted(ImageEventArgs e)
         {
             var handler = ProcessCompleted;

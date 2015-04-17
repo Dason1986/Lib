@@ -1,4 +1,6 @@
 ﻿using System;
+using System.CodeDom.Compiler;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -8,9 +10,11 @@ using System.Threading;
 using System.Windows.Forms;
 using Library;
 using Library.Att;
+using Library.Diagnostics;
 using Library.HelperUtility;
 using Library.IDCrad;
 using Library.Management;
+using Library.Win;
 using Microsoft.VisualStudio.DebuggerVisualizers;
 
 
@@ -27,10 +31,11 @@ namespace TestWinform
         [STAThread]
         static void Main(string[] Args)
         {
-          
+
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            UDPTraceListener listener = new UDPTraceListener(9090);
 
             var file = typeof(SheetForm).Assembly.GetManifestResourceStream("TestWinform.original.jpg");
             if (file != null)

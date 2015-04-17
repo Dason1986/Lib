@@ -19,21 +19,38 @@ namespace Library.Win.MVP
     /// </summary>
     public abstract class Presenter : IPresenter
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string DisplayName { get; protected set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="view"></param>
+        /// <param name="context"></param>
         public void AttachView(object view, object context = null)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public object GetView(object context = null)
         {
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual object View { get; protected set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual bool IsActive { get; protected set; }
 
         /// <summary>
@@ -51,12 +68,17 @@ namespace Library.Win.MVP
         /// 
         /// </summary>
         public event EventHandler<DeactivationEventArgs> Deactivated;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Activate()
         {
             OnActivate();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="close"></param>
         public void Deactivate(bool close)
         {
             OnDeactivate();
@@ -70,11 +92,17 @@ namespace Library.Win.MVP
         /// 
         /// </summary>
         protected abstract void OnDeactivate();
+        /// <summary>
+        /// 
+        /// </summary>
         public void TryClose()
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="callback"></param>
         public void CanClose(Action<bool> callback)
         {
 
@@ -99,6 +127,15 @@ namespace Library.Win.MVP
         {
             var handler = Activated;
             if (handler != null) handler(this, new ActivationEventArgs(wasInitialized));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnViewAttached(ViewAttachedEventArgs e)
+        {
+            var handler = ViewAttached;
+            if (handler != null) handler(this, e);
         }
     }
 }

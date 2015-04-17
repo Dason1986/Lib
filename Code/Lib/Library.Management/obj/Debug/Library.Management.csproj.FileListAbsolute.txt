@@ -13,5 +13,3 @@ C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\Library.pdb
 C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\Library.xml
 C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\en-US\Library.Core.resources.dll
 C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\pt-PT\Library.Core.resources.dll
-C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\en-US\Library.resources.dll
-C:\Dason\Lib\Code\Lib\Library.Management\bin\Debug\zh-TW\Library.resources.dll

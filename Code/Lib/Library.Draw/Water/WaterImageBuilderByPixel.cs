@@ -2,16 +2,27 @@ using System.Drawing;
 
 namespace Library.Draw.Water
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WaterImageBuilderByPixel : WaterImageBuilder
     {
         private Localization _localization = Localization.BottomRight;
+        /// <summary>
+        /// 
+        /// </summary>
         public Localization Localization
         {
             get { return _localization; }
             set { _localization = value; }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceImg"></param>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected override Rectangle GetWaterRectangle(Image sourceImg, Image waterImg)
         {
 
@@ -51,7 +62,12 @@ namespace Library.Draw.Water
             }
             return waterRectangle;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected override Image CreateFillImage(Rectangle rectangle, Image waterImg)
         {
             return waterImg;

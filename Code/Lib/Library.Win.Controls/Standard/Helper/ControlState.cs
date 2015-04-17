@@ -1,5 +1,8 @@
 ﻿namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum ControlState
     {
         /// <summary>

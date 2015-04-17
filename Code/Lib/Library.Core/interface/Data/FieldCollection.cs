@@ -12,22 +12,33 @@ namespace Library.Data
 #endif
     public class FieldCollection : Collection<QueryField>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public FieldCollection()
         {
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fields"></param>
         public FieldCollection(IEnumerable<QueryField> fields)
         {
             ReSet(fields);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fields"></param>
         public void ReSet(IEnumerable<QueryField> fields)
         {
             this.Clear();
-            if (fields != null)
-                foreach (var field in fields)
-                {
-                    this.Add(field);
-                }
+            if (fields == null) return;
+            foreach (var field in fields)
+            {
+                this.Add(field);
+            }
         }
     }
 }

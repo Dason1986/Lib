@@ -3,17 +3,33 @@ using System.IO;
 
 namespace Library.Draw.Water
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WaterImageBuilderByText : WaterImageBuilder
     {
         private Localization _localization = Localization.BottomRight;
+        /// <summary>
+        /// 
+        /// </summary>
         public Localization Localization
         {
             get { return _localization; }
             set { _localization = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Text { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public Font TextFont { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             if (Opetion == null) throw new ImageException("Opetion is null");
@@ -45,6 +61,12 @@ namespace Library.Draw.Water
             }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceImg"></param>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected override Rectangle GetWaterRectangle(Image sourceImg, Image waterImg)
         {
 
@@ -84,6 +106,11 @@ namespace Library.Draw.Water
             }
             return waterRectangle;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected Image CreateFillImage(Image waterImg)
         {
             Graphics gType = Graphics.FromImage(waterImg);
@@ -91,7 +118,12 @@ namespace Library.Draw.Water
             gType.DrawString(Text, TextFont, new SolidBrush(Color.White), 0, 0);
             return waterImg;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected override Image CreateFillImage(Rectangle rectangle, Image waterImg)
         {
             return CreateFillImage(waterImg);

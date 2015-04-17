@@ -10,7 +10,7 @@ namespace Library
     /// </summary>
     public abstract class EditableModel : PropertyChangeModel, IEditableObject
     {
-        private bool _canEdit = false;
+        private bool _canEdit;
         IDictionary<string, object> _cacheValue;
         private bool _isrejecting;
 
@@ -21,13 +21,17 @@ namespace Library
         {
             if (!_canEdit) throw new EditableObjectException("沒啟動修改模式");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void BeginEdit()
         {
             _canEdit = true;
             _cacheValue = new Dictionary<string, object>();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void CancelEdit()
         {
             if (_cacheValue == null || !_canEdit) return;
@@ -43,14 +47,20 @@ namespace Library
             _isrejecting = false;
             _canEdit = false;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void EndEdit()
         {
             _canEdit = false;
             _cacheValue.Clear();
             _cacheValue = null;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="oldValue"></param>
         protected internal void OnSaveBaseValue(string propertyName, string oldValue)
         {
             if (_isrejecting) return;

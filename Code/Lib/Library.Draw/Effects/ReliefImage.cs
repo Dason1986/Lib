@@ -18,6 +18,12 @@ namespace Library.Draw.Effects
          *  g(i,j)=f(i,i)-f(i+1,j)+128
          * 
          * ******************************************************************/
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -45,7 +51,10 @@ namespace Library.Draw.Effects
 
         #region IImageProcessable 成员
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public unsafe override Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

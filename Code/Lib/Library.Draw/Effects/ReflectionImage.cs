@@ -64,14 +64,18 @@ namespace Library.Draw.Effects
             [LanguageDescription("Æ«ÒÆ"), LanguageDisplayName("Æ«ÒÆ"), Category("žVçRßxí—")]
             public float Offset { get; set; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ReflectionOption();
         }
         private ReflectionOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -81,12 +85,20 @@ namespace Library.Draw.Effects
                 _opetion = (ReflectionOption)value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ReflectionOption() { Alignment = AlignmentType.Horizontally, Offset = 0.5f };
         }
 
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
 
@@ -174,7 +186,10 @@ namespace Library.Draw.Effects
                 default: throw new NotImplementedException();
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             byte r, g, b;

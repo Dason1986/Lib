@@ -2,6 +2,9 @@
 
 namespace Library.Draw.Water
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed class WaterImageTileOption : ImageOption
     {
         /// <summary>

@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Library;
 
 namespace TestPj
@@ -9,7 +10,8 @@ namespace TestPj
         private string _account;
         private int _age;
         private string _proxy;
-     
+        private string _pwd;
+
 
         public string UserName
         {
@@ -55,6 +57,18 @@ namespace TestPj
                 if (value == _proxy) return;
                 _proxy = value;
                 OnPropertyChanged("Proxy");
+            }
+        }
+
+        [Browsable(false)]
+        public string PWD
+        {
+            get { return _pwd; }
+            set
+            {
+                if (value == _pwd) return;
+                _pwd = value;
+                OnPropertyChanged("PWD");
             }
         }
     }

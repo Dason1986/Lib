@@ -75,14 +75,18 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
             }
         }
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ColorOption();
         }
         private ColorOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -92,12 +96,19 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                 _opetion = (ColorOption)value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ColorOption();
         }
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             Bitmap bmp = this.Source.Clone() as Bitmap;
@@ -129,7 +140,10 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
 
         #region IImageProcessable 成员
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             Bitmap bmp = this.Source.Clone() as Bitmap;

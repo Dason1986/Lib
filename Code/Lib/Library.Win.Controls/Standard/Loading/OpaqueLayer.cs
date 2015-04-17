@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
 using Library.Controls;
 
@@ -79,7 +80,10 @@ namespace Library.Controls
             this.Controls.Add(pictureBox_Loading);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -119,7 +123,9 @@ namespace Library.Controls
             e.Graphics.FillRectangle(labelBackColorBrush, 0, 0, vlblControlWidth, vlblControlHeight);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override CreateParams CreateParams//v1.10 
         {
             get
@@ -135,6 +141,9 @@ namespace Library.Controls
          * 一般用于说明你自定义控件的属性（Property）。
          * Category用于说明该属性属于哪个分类，Description自然就是该属性的含义解释。
          */
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("OpaqueLayer"), Description("是否使用透明,默认为True")]
         public bool TransparentBG
         {
@@ -216,6 +225,7 @@ namespace Library.Controls
             }
             catch (Exception ex)
             {
+                Trace.TraceError(ex.Message);
                 //MessageBox.Show(ex.Message);
             }
         }

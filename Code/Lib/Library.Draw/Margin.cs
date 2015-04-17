@@ -51,7 +51,12 @@ namespace Library.Draw
         /// 
         /// </summary>
         public float Top { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator ==(Margin item1, Margin item2)
         {
             return (
@@ -61,7 +66,12 @@ namespace Library.Draw
                 && item1.Top == item2.Top
                 );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator !=(Margin item1, Margin item2)
         {
             return (
@@ -71,6 +81,24 @@ namespace Library.Draw
                 || item1.Top != item2.Top
                 );
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return base.Equals((Margin)obj);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     /// <summary>
@@ -78,8 +106,97 @@ namespace Library.Draw
     /// </summary>
     public enum PageSize
     {
+        /// <summary>
+        /// 
+        /// </summary>
         _11X17,
-        A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10,
-        B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10,
+        /// <summary>
+        /// 
+        /// </summary>
+        A0,
+        /// <summary>
+        /// 
+        /// </summary>
+        A1,
+        /// <summary>
+        /// 
+        /// </summary>
+        A2,
+        /// <summary>
+        /// 
+        /// </summary>
+        A3,
+        /// <summary>
+        /// 
+        /// </summary>
+        A4,
+        /// <summary>
+        /// 
+        /// </summary>
+        A5,
+        /// <summary>
+        /// 
+        /// </summary>
+        A6,
+        /// <summary>
+        /// 
+        /// </summary>
+        A7,
+        /// <summary>
+        /// 
+        /// </summary>
+        A8,
+        /// <summary>
+        /// 
+        /// </summary>
+        A9,
+        /// <summary>
+        /// 
+        /// </summary>
+        A10,
+        /// <summary>
+        /// 
+        /// </summary>
+        B0, 
+        /// <summary>
+        /// 
+        /// </summary>
+        B1,
+        /// <summary>
+        /// 
+        /// </summary>
+        B2,
+        /// <summary>
+        /// 
+        /// </summary>
+        B3,
+        /// <summary>
+        /// 
+        /// </summary>
+        B4,
+        /// <summary>
+        /// 
+        /// </summary>
+        B5,
+        /// <summary>
+        /// 
+        /// </summary>
+        B6,
+        /// <summary>
+        /// 
+        /// </summary>
+        B7,
+        /// <summary>
+        /// 
+        /// </summary>
+        B8,
+        /// <summary>
+        /// 
+        /// </summary>
+        B9,
+        /// <summary>
+        /// 
+        /// </summary>
+        B10,
     }
 }

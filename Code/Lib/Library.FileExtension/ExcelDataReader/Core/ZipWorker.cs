@@ -188,7 +188,7 @@ namespace Library.FileExtension.ExcelDataReader.Core
 			{
 				//TODO: minimally add some logging so we know this happened. log4net?
 				if (!catchIoError)
-					throw;
+					throw ex;
 			}
 			
 		}

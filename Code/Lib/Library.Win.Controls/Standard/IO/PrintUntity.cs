@@ -300,6 +300,9 @@ namespace Library.Draw.Print
             System.GC.SuppressFinalize(this);
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);

@@ -12,7 +12,9 @@ namespace Library.Controls
     public class TextBox : System.Windows.Forms.TextBox
     {
         #region Field
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected ControlState State = ControlState.Normal;
         private Font _defaultFont = new Font("微软雅黑", 9);
 
@@ -23,7 +25,9 @@ namespace Library.Controls
         #endregion
 
         #region Constructor
-
+        /// <summary>
+        /// 
+        /// </summary>
         public TextBox()
         {
             SetStyles();
@@ -34,7 +38,9 @@ namespace Library.Controls
         #endregion
 
         #region Properites
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Description("当Text属性为空时编辑框内出现的提示文本")]
         public String EmptyTextTip
         {
@@ -46,7 +52,9 @@ namespace Library.Controls
                 Invalidate();
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Description("获取或设置EmptyTextTip的颜色")]
         public Color EmptyTextTipColor
         {
@@ -62,13 +70,19 @@ namespace Library.Controls
         #endregion
 
         #region Override
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
         {
             State = ControlState.Highlight;
             base.OnMouseEnter(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
         {
             if (State == ControlState.Highlight && Focused)
@@ -85,7 +99,10 @@ namespace Library.Controls
             }
             base.OnMouseLeave(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             if (mevent.Button == MouseButtons.Left)
@@ -94,7 +111,10 @@ namespace Library.Controls
             }
             base.OnMouseDown(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
             if (mevent.Button == MouseButtons.Left)
@@ -103,19 +123,28 @@ namespace Library.Controls
             }
             base.OnMouseUp(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
         {
             State = ControlState.Normal;
             base.OnLostFocus(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
         {
             State = Enabled ? ControlState.Normal : ControlState.Disabled;
             base.OnEnabledChanged(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {//TextBox是由系统进程绘制，重载OnPaint方法将不起作用
 
@@ -125,7 +154,10 @@ namespace Library.Controls
                 WmPaint(ref m);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -153,12 +185,17 @@ namespace Library.Controls
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             UpdateStyles();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="m"></param>
         protected virtual void WmPaint(ref Message m)
         {
             Draw();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected void Draw()
         {
             Graphics g = Graphics.FromHwnd(base.Handle);

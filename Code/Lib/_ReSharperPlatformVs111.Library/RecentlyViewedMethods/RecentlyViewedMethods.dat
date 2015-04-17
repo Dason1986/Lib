@@ -1,18 +1,37 @@
 ﻿<RecentlyViewedMethods>
   <RecentlyViewedMethods>
-    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.CodeException.%23ctor" />
-    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetException%28System.Double%2CSystem.String%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Logic.BaseLogic.OnFailure%28System.Exception%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Logic.BaseLogic.OnCompleted%28System.TimeSpan%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Logic.BaseLogic.OnFailure%28System.Exception%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.TypeHelper.%23cctor" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Logic.BaseLogic.OnCompleted%28System.TimeSpan%29" />
+    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Logic.BaseLogic.OnFailure%28System.Exception%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.SheetForm.listBox1_DoubleClick%28System.Object%2CSystem.EventArgs%29" />
+    <RecentMethod id="4612e29a-0f6c-4029-adbc-b8d3ee99d241%28Library.Draw%29-4B197A2A/M%3ALibrary.Draw.Effects.IlluminationImage.ProcessBitmap" />
+    <RecentMethod id="4612e29a-0f6c-4029-adbc-b8d3ee99d241%28Library.Draw%29-4B197A2A/M%3ALibrary.Draw.ImageBuilder.ProcessBitmap%28Library.Draw.IImageBuilder%2CSystem.String%2CSystem.String%29" />
+    <RecentMethod id="4612e29a-0f6c-4029-adbc-b8d3ee99d241%28Library.Draw%29-4B197A2A/M%3ALibrary.Draw.ImageBuilder.Truncate%28System.Int32%29" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.EffectsForm.button2_Click%28System.Object%2CSystem.EventArgs%29" />
+    <RecentMethod id="4612e29a-0f6c-4029-adbc-b8d3ee99d241%28Library.Draw%29-4B197A2A/M%3ALibrary.Draw.Effects.BlindsImage.UnsafeProcessBitmap" />
+    <RecentMethod id="4612e29a-0f6c-4029-adbc-b8d3ee99d241%28Library.Draw%29-4B197A2A/M%3ALibrary.Draw.Effects.FeatherImage.UnsafeProcessBitmap" />
+    <RecentMethod id="aa560131-7590-435d-9d8f-ca0da08bbbc7%28TestWinform%29-8F50E36B/M%3ATestWinform.EffectsForm.button1_Click%28System.Object%2CSystem.EventArgs%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.TypeHelper.SetTypeDefault%28System.Type%2CSystem.Func%7BSystem.Type%2CSystem.Object%7D%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.GetDateTimeddMMyyyy%28System.String%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatddMMyyyy%28System.DateTime%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatHHmm%28System.DateTime%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatPeriod%28System.DateTime%29" />
+    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.StringTest.FindLasdItemByIndex" />
+    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.StringTest.CompareByEquals" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatPeriod%28System.DateTime%29" />
+    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.StringTest.CompareByEquals" />
+    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.StringTest.CompareByEquals" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatPeriod%28System.DateTime%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatyyyyMMdd%28System.Nullable%7BSystem.DateTime%7D%29" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatPeriod%28System.DateTime%29" />
+    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.StringTest.DateFormatText" />
+    <RecentMethod id="7020124f-9ffc-4ac3-8f3d-aab8e0240759%28Miscellaneous%20Files%29-13/" />
+    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.FormatUtility.DateFormatPeriod%28System.DateTime%29" />
+    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.LanguageTest.TestCodeException" />
+    <RecentMethod id="aa7ff516-0c06-4ef3-a446-b7a75bc3174b%28TestPj%29-B8CDDBDF/M%3ATestPj.Test.LanguageTest.TestCultureInfo" />
     <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.getManager%28System.String%29" />
-    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.CodeException.%23ctor%28System.Double%2CSystem.String%29" />
-    <RecentMethod id="fe81d872-05ab-4cb1-8feb-7231d9b7db94%28Library.Core%29-4B18FC85/M%3ALibrary.Att.LanguageResourceManagement.GetString%28System.String%2CSystem.String%2CSystem.Globalization.CultureInfo%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.AnyIsRight%28System.Int32%2CSystem.Int32%5B%5D%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.IsRight%28System.Int32%2CSystem.Int32%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.AllIsRight%28System.Int32%2CSystem.Int32%5B%5D%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.AnyIsRight%28System.Int32%2CSystem.Int32%5B%5D%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.AnyIsRight%28System.Int32%2CSystem.Int32%5B%5D%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.IsRight%28System.Int32%2CSystem.Int32%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.BitLeft4Operation%28System.Int32%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.BitComputing.AndOperation%28System.Int32%2CSystem.Int32%29" />
-    <RecentMethod id="67ead53c-a855-4bc4-91eb-14cf8d812d36%28Library%29-BF9E7948/M%3ALibrary.HelperUtility.EnumHelper.IsRigth%28System.Enum%2CSystem.Enum%29" />
   </RecentlyViewedMethods>
 </RecentlyViewedMethods>

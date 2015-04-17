@@ -20,7 +20,9 @@ namespace Library.Controls
     /// </summary>
     public class QueryLabel : ListControl, IQueryControl
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static IQueryDataProvider DefaultQueryDataProvider { get; set; }
 
 
@@ -60,7 +62,10 @@ namespace Library.Controls
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
 
@@ -98,13 +103,17 @@ namespace Library.Controls
 
         private Font _morefont = new Font("宋体", 9);
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler ChildFormClosed;
 
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected virtual void OnChildFormClosed()
         {
 
@@ -112,7 +121,9 @@ namespace Library.Controls
             if (handler != null) handler(this, EventArgs.Empty);
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public IQueryDataProvider CurrentQueryDataProvider
         {
@@ -126,7 +137,9 @@ namespace Library.Controls
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue("")]
         public override string Text
         {
@@ -155,6 +168,9 @@ namespace Library.Controls
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public new object SelectedValue
         {
             get
@@ -172,6 +188,13 @@ namespace Library.Controls
                 SelectedIndex = index;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="key"></param>
+        /// <param name="keepIndex"></param>
+        /// <returns></returns>
         internal int Find(PropertyDescriptor property, object key, bool keepIndex)
         {
             if (key == null) return -1;
@@ -189,6 +212,9 @@ namespace Library.Controls
             }
             return -1;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(-1)]
         public override int SelectedIndex
         {
@@ -219,10 +245,15 @@ namespace Library.Controls
                 this.OnSelectedIndexChanged(EventArgs.Empty);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(HorizontalAlignment.Left)]
         public HorizontalAlignment TextAlign { get; set; }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         [
         Description("当Text属性为空时编辑框内出现的提示文本"),
         DefaultValue("")
@@ -237,7 +268,11 @@ namespace Library.Controls
                 //  Invalidate();
             }
         }
+        
         // [DefaultValue(typeof(Color))]
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(typeof(Color), "255,169,169,169")]
         [Description("获取或设置EmptyTextTip的颜色")]
         public Color EmptyTextTipColor
@@ -252,7 +287,9 @@ namespace Library.Controls
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public string QueryDataID
         {
@@ -266,31 +303,41 @@ namespace Library.Controls
 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(true)]
         public bool CanChangeValue
         {
             get { return _canChangeValue; }
             set { _canChangeValue = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public string SelectedColumnNames { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public FieldCollection Fields
         {
             get { return _fields; }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public FilterCollection Filters
         {
             get { return _filters; }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public OrderCollection Orders
         {
@@ -318,6 +365,9 @@ namespace Library.Controls
         private IQueryDataProvider _currentQueryDataProvider;
 
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
         public QueryLabel()
         {
             // CanChangeValue = true;
@@ -389,6 +439,9 @@ namespace Library.Controls
         //{
         //    GetDataSource();
         //}
+        /// <summary>
+        /// 
+        /// </summary>
         public bool LoadDataing { get; protected set; }
         private void GetDataSource()
         {
@@ -409,7 +462,10 @@ namespace Library.Controls
 
         #region darw
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {//TextBox是由系统进程绘制，重载OnPaint方法将不起作用
 
@@ -419,7 +475,10 @@ namespace Library.Controls
                 DrawLabel();
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -492,13 +551,20 @@ namespace Library.Controls
                 g.DrawRectangle(highLightPen, drawRect);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
         {
             _state = ControlState.Highlight;
 
             base.OnMouseEnter(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -506,7 +572,10 @@ namespace Library.Controls
             if (CanChangeValue)
                 this.Cursor = _gpRealTime.IsVisible(e.Location) ? Cursors.Arrow : Cursors.IBeam;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
         {
 
@@ -529,7 +598,10 @@ namespace Library.Controls
         #endregion
 
         #region InputCode
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
         {
             _state = ControlState.Normal;
@@ -538,7 +610,10 @@ namespace Library.Controls
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -554,7 +629,9 @@ namespace Library.Controls
 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void InputCode()
         {
             if (!CanChangeValue || DataSource == null) return;
@@ -698,7 +775,7 @@ namespace Library.Controls
             for (int i = 0; i < currencyManager.List.Count; i++)
             {
                 var obj = valuepropery.GetValue(currencyManager.List[i]);
-                if (obj == text) return i;
+                if ((string) obj == text) return i;
             }
             return -1;
         }
@@ -762,6 +839,10 @@ namespace Library.Controls
             }
             return null;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
         protected override void RefreshItem(int index)
         {
 
@@ -778,6 +859,10 @@ namespace Library.Controls
         {
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
         protected override void SetItemsCore(IList items)
         {
 

@@ -10,6 +10,10 @@ namespace Library.Draw.Effects
     [LanguageDescription("绿色"), LanguageDisplayName("绿色")]
     public class GreenImage : ImageBuilder
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -28,7 +32,10 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

@@ -52,14 +52,18 @@ namespace Library.Draw.Effects
         }
 
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new BrightContrastlOption();
         }
         private BrightContrastlOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -88,11 +92,19 @@ namespace Library.Draw.Effects
             [LanguageDescription("对比因子 [-1, 1]"), LanguageDisplayName("对比度"), Category("濾鏡選項")]
             public float ContrastFactor { get; set; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new BrightContrastlOption() { BrightnessFactor = 0.25f, ContrastFactor = 0.25f };
         }
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -151,6 +163,10 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

@@ -77,12 +77,18 @@ Z	持证人报称在香港出生
         /// </summary>
         [Category("證件信息"), DisplayName("證件號碼")]
         public string IDNumber { get; private set; }
-
+         /// <summary>
+         /// 
+         /// </summary>
+         /// <param name="idnumber"></param>
         public HongKongIDCard(string idnumber)
         {
             IDNumber = idnumber;
             Validate();
         }
+         /// <summary>
+         /// 
+         /// </summary>
         public void Validate()
         {
             throw new NotImplementedException();

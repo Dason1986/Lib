@@ -42,14 +42,18 @@ namespace Library.Draw.Effects
             [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
             public AlignmentType Alignment { get; set; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new FlipOption();
         }
         private FlipOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -59,6 +63,10 @@ namespace Library.Draw.Effects
                 _opetion = (FlipOption)value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new FlipOption() { Alignment = AlignmentType.Horizontally | AlignmentType.Vertically };
@@ -67,7 +75,11 @@ namespace Library.Draw.Effects
         #endregion
 
         #region Process
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="flip"></param>
+        /// <returns></returns>
         public Image CreateImage(AlignmentType flip)
         {
 
@@ -122,7 +134,10 @@ namespace Library.Draw.Effects
    
             return flippedImage;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             return CreateImage(Flip);

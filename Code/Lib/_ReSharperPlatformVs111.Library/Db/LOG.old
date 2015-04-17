@@ -1,16 +1,59 @@
-2015/04/01-11:32:28.348 181c Recovering log #725
-2015/04/01-11:32:28.359 181c Level-0 table #727: started
-2015/04/01-11:32:28.477 181c Level-0 table #727: 3063849 bytes OK
-2015/04/01-11:32:28.547 181c Delete type=0 #725
-2015/04/01-11:32:28.547 181c Delete type=3 #723
-2015/04/01-11:32:28.554 1ac0 Compacting 4@0 + 2@1 files
-2015/04/01-11:32:28.712 1ac0 Generated table #729: 300 keys, 1900859 bytes
-2015/04/01-11:32:28.907 1ac0 Generated table #730: 11 keys, 1515337 bytes
-2015/04/01-11:32:28.907 1ac0 Compacted 4@0 + 2@1 files => 3416196 bytes
-2015/04/01-11:32:28.993 1ac0 Delete type=2 #716
-2015/04/01-11:32:28.994 1ac0 Delete type=2 #717
-2015/04/01-11:32:28.995 1ac0 Delete type=2 #719
-2015/04/01-11:32:28.996 1ac0 Delete type=2 #721
-2015/04/01-11:32:28.996 1ac0 Delete type=2 #724
-2015/04/01-11:32:28.997 1ac0 Delete type=2 #727
-2015/04/01-11:32:28.998 1ac0 compacted to: files[ 0 2 11 0 0 0 0 ]
+2015/04/16-09:35:54.499 648 Recovering log #807
+2015/04/16-09:35:54.508 648 Level-0 table #809: started
+2015/04/16-09:35:54.848 648 Level-0 table #809: 3010337 bytes OK
+2015/04/16-09:35:54.975 648 Delete type=0 #807
+2015/04/16-09:35:54.976 648 Delete type=3 #805
+2015/04/16-09:45:10.668 14bc Compacting 2@0 + 1@1 files
+2015/04/16-09:45:10.780 14bc Generated table #811: 296 keys, 234996 bytes
+2015/04/16-09:45:10.904 14bc Generated table #812: 44 keys, 1515568 bytes
+2015/04/16-09:45:10.911 14bc Compacted 2@0 + 1@1 files => 1750564 bytes
+2015/04/16-09:45:10.929 14bc Delete type=2 #798
+2015/04/16-09:45:10.929 14bc Delete type=2 #806
+2015/04/16-09:45:10.930 14bc Delete type=2 #809
+2015/04/16-09:45:10.932 14bc compacted to: files[ 0 2 10 0 0 0 0 ]
+2015/04/16-09:49:05.292 14bc Compacting 1@1 + 6@2 files
+2015/04/16-09:49:05.505 14bc Generated table #813: 1432 keys, 2110146 bytes
+2015/04/16-09:49:05.658 14bc Generated table #814: 215 keys, 2103476 bytes
+2015/04/16-09:49:05.802 14bc Generated table #815: 137 keys, 2154699 bytes
+2015/04/16-09:49:05.945 14bc Generated table #816: 203 keys, 2120626 bytes
+2015/04/16-09:49:06.133 14bc Generated table #817: 278 keys, 2104184 bytes
+2015/04/16-09:49:06.369 14bc Generated table #818: 1031 keys, 3568161 bytes
+2015/04/16-09:49:06.370 14bc Compacted 1@1 + 6@2 files => 14161292 bytes
+2015/04/16-09:49:06.432 14bc Delete type=2 #799
+2015/04/16-09:49:06.433 14bc Delete type=2 #800
+2015/04/16-09:49:06.434 14bc Delete type=2 #801
+2015/04/16-09:49:06.434 14bc Delete type=2 #802
+2015/04/16-09:49:06.434 14bc Delete type=2 #803
+2015/04/16-09:49:06.435 14bc Delete type=2 #804
+2015/04/16-09:49:06.435 14bc Delete type=2 #811
+2015/04/16-09:49:06.435 14bc compacted to: files[ 0 1 10 0 0 0 0 ]
+2015/04/16-15:45:36.800 14bc Level-0 table #820: started
+2015/04/16-15:45:37.133 14bc Level-0 table #820: 4110102 bytes OK
+2015/04/16-15:45:37.191 14bc Delete type=0 #810
+2015/04/16-15:45:43.089 14bc Compacting 1@0 + 1@1 files
+2015/04/16-15:45:43.445 14bc Generated table #821: 198 keys, 208368 bytes
+2015/04/16-15:45:43.647 14bc Generated table #822: 44 keys, 1515966 bytes
+2015/04/16-15:45:43.647 14bc Compacted 1@0 + 1@1 files => 1724334 bytes
+2015/04/16-15:45:43.739 14bc Delete type=2 #812
+2015/04/16-15:45:43.740 14bc Delete type=2 #820
+2015/04/16-15:45:43.741 14bc compacted to: files[ 0 2 10 0 0 0 0 ]
+2015/04/16-15:45:44.766 14bc Compacting 1@1 + 8@2 files
+2015/04/16-15:45:44.931 14bc Generated table #823: 1432 keys, 2116406 bytes
+2015/04/16-15:45:45.177 14bc Generated table #824: 215 keys, 2110254 bytes
+2015/04/16-15:45:45.440 14bc Generated table #825: 136 keys, 2154677 bytes
+2015/04/16-15:45:45.655 14bc Generated table #826: 203 keys, 2125492 bytes
+2015/04/16-15:45:45.855 14bc Generated table #827: 277 keys, 2104155 bytes
+2015/04/16-15:45:46.041 14bc Generated table #828: 1029 keys, 3568585 bytes
+2015/04/16-15:45:46.187 14bc Generated table #829: 2 keys, 3007618 bytes
+2015/04/16-15:45:46.332 14bc Generated table #830: 2 keys, 3007618 bytes
+2015/04/16-15:45:46.332 14bc Compacted 1@1 + 8@2 files => 20194805 bytes
+2015/04/16-15:45:46.372 14bc Delete type=2 #742
+2015/04/16-15:45:46.372 14bc Delete type=2 #743
+2015/04/16-15:45:46.373 14bc Delete type=2 #813
+2015/04/16-15:45:46.374 14bc Delete type=2 #814
+2015/04/16-15:45:46.375 14bc Delete type=2 #815
+2015/04/16-15:45:46.376 14bc Delete type=2 #816
+2015/04/16-15:45:46.376 14bc Delete type=2 #817
+2015/04/16-15:45:46.377 14bc Delete type=2 #818
+2015/04/16-15:45:46.378 14bc Delete type=2 #821
+2015/04/16-15:45:46.379 14bc compacted to: files[ 0 1 10 0 0 0 0 ]

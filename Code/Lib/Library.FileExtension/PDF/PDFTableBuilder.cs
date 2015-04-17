@@ -49,22 +49,26 @@ namespace Library.FileExtension
 
         private void BuilBodyData(PdfPTable pdfPTable)
         {
-            DataManager manager = new DataManager(table.DataSource){NameIgnoreCase = true};
-           
-            int columns = headwidth.Length;
+            DataManager manager = new DataManager(table.DataSource) { NameIgnoreCase = true };
+
+            int columns = table.Heads.Length;
 
 
+            var indexs = new int[columns];
+            for (int i = 0; i < columns; i++)
+            {
+                var col = table.Heads[i];
+                indexs[i] = manager.GetOrdinal(col.BindName);
+            }
 
-            for(int i=0;i<manager.Count;i++)
+            for (int i = 0; i < manager.Count; i++)
             {
                 manager.Position = i;
                 PdfPCell[] rowCells = new PdfPCell[columns];
-                for (int j = 0; j < columns; j++)
+                int j = 0;
+                foreach (var i1 in indexs)
                 {
-                    var col = table.Heads[j];
-
-
-                    var cel = ObjectUtility.Cast<string>(manager.GetValue(col.BindName));
+                    var cel = ObjectUtility.Cast<string>(manager.GetValue(i1));
 
                     rowCells[j] = new PdfPCell((new Phrase(string.IsNullOrEmpty(cel) ? " " : cel, PDFBuilder.DefaultFont)))
                     {
@@ -72,7 +76,9 @@ namespace Library.FileExtension
                         PaddingRight = 4,
                         UseBorderPadding = true
                     };
+                    j++;
                 }
+
                 pdfPTable.Rows.Add(new PdfPRow(rowCells));
                 pdfPTable.CompleteRow();
             }

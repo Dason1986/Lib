@@ -23,7 +23,9 @@ namespace Library.Controls
         #endregion
 
         #region Constructor
-
+        /// <summary>
+        /// 
+        /// </summary>
         public RadioButton()
         {
             SetStyles();
@@ -34,7 +36,9 @@ namespace Library.Controls
         #endregion
 
         #region Properites
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Description("获取QQRadioButton左边正方形的宽度")]
         private int CheckRectWidth
         {
@@ -44,19 +48,28 @@ namespace Library.Controls
         #endregion
 
         #region Override
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
         {
             _state = ControlState.Highlight;
             base.OnMouseEnter(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
         {
             _state = ControlState.Normal;
             base.OnMouseLeave(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             if (mevent.Button == MouseButtons.Left)
@@ -65,7 +78,10 @@ namespace Library.Controls
             }
             base.OnMouseDown(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
             if (mevent.Button == MouseButtons.Left)
@@ -74,13 +90,19 @@ namespace Library.Controls
             }
             base.OnMouseUp(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
         {
             _state = Enabled ? ControlState.Normal : ControlState.Disabled;
             base.OnEnabledChanged(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pevent"></param>
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
@@ -121,7 +143,10 @@ namespace Library.Controls
                 textColor,
                 GetTextFormatFlags(TextAlign, RightToLeft == RightToLeft.Yes));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

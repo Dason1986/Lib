@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using Library.Annotations;
 using Library.HelperUtility;
+using Microsoft.Win32;
 
 namespace Library.Data
 {
     /// <summary>
     /// 
     /// </summary>
-    public class DataManager
+    public class DataManager : System.Data.IDataRecord
     {
 
         /// <summary>
@@ -63,7 +64,10 @@ namespace Library.Data
         /// 
         /// </summary>
         public IList List { get; protected set; }
-        protected Type ObjectType;
+        /// <summary>
+        /// 
+        /// </summary>
+        public Type ObjectType { get;protected set; }
         private int _position = -1;
 
         /// <summary>
@@ -102,23 +106,19 @@ namespace Library.Data
         /// </summary>
         public bool NameIgnoreCase { get; set; }
 
+
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
         /// <returns></returns>
-        public virtual object GetValue(string name)
+        public bool Read()
         {
-            var property = Properties[name];
-            if (property == null && NameIgnoreCase)
-            {
-                property = Properties.OfType<PropertyDescriptor>().FirstOrDefault(n => string.Equals(n.Name, name, StringComparison.OrdinalIgnoreCase));
-            }
-            if (property == null) throw new LibException(string.Format("[{0}] not exist", name));
-            return property.GetValue(Current);
+            var value = Position + 1;
+            if (value < 0 || value > List.Count - 1) return false;
+            Position = value;
+            return true;
         }
-
-
 
         /// <summary>
         /// 
@@ -130,5 +130,247 @@ namespace Library.Data
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int FieldCount
+        {
+            get { return Properties.Count; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public bool GetBoolean(int i)
+        {
+            return ObjectUtility.Cast<bool>(GetValue(i));
+
+        }
+
+        private PropertyDescriptor getDescriptor(int index)
+        {
+            if (index < 0 || index > Properties.Count - 1) throw new LibException("", new IndexOutOfRangeException());
+            return Properties[index];
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public byte GetByte(int i)
+        {
+            return ObjectUtility.Cast<byte>(GetValue(i));
+        }
+
+        long System.Data.IDataRecord.GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public char GetChar(int i)
+        {
+            return ObjectUtility.Cast<char>(GetValue(i));
+        }
+
+        long System.Data.IDataRecord.GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length)
+        {
+            throw new NotImplementedException();
+        }
+
+        System.Data.IDataReader System.Data.IDataRecord.GetData(int i)
+        {
+            throw new NotImplementedException();
+        }
+
+        string System.Data.IDataRecord.GetDataTypeName(int i)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public DateTime GetDateTime(int i)
+        {
+            return ObjectUtility.Cast<DateTime>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public decimal GetDecimal(int i)
+        {
+            return ObjectUtility.Cast<decimal>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public double GetDouble(int i)
+        {
+            return ObjectUtility.Cast<double>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public Type GetFieldType(int i)
+        {
+            return Properties[i].PropertyType;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public float GetFloat(int i)
+        {
+            return ObjectUtility.Cast<float>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public Guid GetGuid(int i)
+        {
+            return ObjectUtility.Cast<Guid>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public short GetInt16(int i)
+        {
+            return ObjectUtility.Cast<short>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public int GetInt32(int i)
+        {
+            return ObjectUtility.Cast<int>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public long GetInt64(int i)
+        {
+            return ObjectUtility.Cast<long>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public string GetName(int i)
+        {
+            return getDescriptor(i).Name;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public int GetOrdinal(string name)
+        {
+            var property = Properties[name];
+            if (property != null) return Properties.IndexOf(property);
+            if (!NameIgnoreCase) throw new LibException(string.Format("[{0}] not exist", name));
+            for (int i = 0; i < Properties.Count; i++)
+            {
+                if (string.Equals(Properties[i].Name, name, StringComparison.OrdinalIgnoreCase)) return i;
+            }
+            throw new LibException(string.Format("[{0}] not exist", name));
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public string GetString(int i)
+        {
+            return ObjectUtility.Cast<string>(GetValue(i));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public object GetValue(int i)
+        {
+            var property = getDescriptor(i);
+            var obj = property.GetValue(Current);
+            return obj;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public int GetValues(object[] values)
+        {
+            if (values == null) throw new ArgumentNullException("values");
+            if (values.Length == 0) return 0;
+            if (Current == null) throw new LibException("item is empty");
+            int count = values.Length;
+            for (int i = 0; i < count; i++)
+            {
+                values[i] = Properties[i].GetValue(Current);
+            }
+            return count;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public bool IsDBNull(int i)
+        {
+            var obj = GetValue(i);
+            return DBNull.Value == obj;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public object this[string name]
+        {
+            get
+            {
+                if (Current == null) throw new LibException("item is empty");
+                var index = GetOrdinal(name);
+                return GetValue(index);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public object this[int i]
+        {
+            get
+            {
+                if (Current == null) throw new LibException("item is empty");
+                return GetValue(i);
+            }
+        }
     }
 }

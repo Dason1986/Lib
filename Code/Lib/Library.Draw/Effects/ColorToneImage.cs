@@ -50,14 +50,18 @@ namespace Library.Draw.Effects
         }
 
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ColorToneOption();
         }
         private ColorToneOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -67,7 +71,10 @@ namespace Library.Draw.Effects
                 _opetion = (ColorToneOption)value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ColorToneOption();
@@ -91,6 +98,10 @@ namespace Library.Draw.Effects
 
 
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             SetColorToneFilter(Tone, Saturation);
@@ -115,7 +126,10 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             SetColorToneFilter(Tone, Saturation);
@@ -153,7 +167,7 @@ namespace Library.Draw.Effects
         double _saturation;
         double[] _lum_tab = new double[256];
 
-        /// @name RGB <--> HLS (Hue, Lightness, Saturation).
+        // @name RGB <--> HLS (Hue, Lightness, Saturation).
         //@{
         /**
             RGB --> HLS \n

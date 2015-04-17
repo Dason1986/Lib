@@ -43,14 +43,18 @@ namespace Library.Draw.Effects
             [LanguageDescription("模糊度"), LanguageDisplayName("模糊度"), Category("濾鏡選項")]
             public float Sigma { get; set; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = CreateOption() as GaussianBlurOption;
         }
         private GaussianBlurOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -60,12 +64,19 @@ namespace Library.Draw.Effects
                 _opetion = value as GaussianBlurOption;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new GaussianBlurOption { Sigma = 0.75f };
         }
 
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
         protected static int Padding = 3;
 
 
@@ -219,6 +230,10 @@ namespace Library.Draw.Effects
             }
             return numArray;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -240,7 +255,10 @@ namespace Library.Draw.Effects
 
             return bmp;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -270,7 +288,13 @@ namespace Library.Draw.Effects
             bmp.UnlockBits(bmpData);
             return bmp;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageIn"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
         protected unsafe float[] UnConvertImageWithPadding(Bitmap imageIn, int width, int height)
         {
             int newheight = height + Padding * 2;

@@ -28,12 +28,17 @@ namespace Library.Controls
 
         /// <summary>Fired when the Collapse Toggle button is pressed</summary>
         public delegate void CollapseBoxClickedEventHandler(object sender);
+        /// <summary>
+        /// 
+        /// </summary>
         public event CollapseBoxClickedEventHandler CollapseBoxClickedEvent;
 
         #endregion
 
         #region Constructor
-
+        /// <summary>
+        /// 
+        /// </summary>
         public GroupBox()
         {
             InitializeComponent();
@@ -42,13 +47,17 @@ namespace Library.Controls
         #endregion
 
         #region Public Properties
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int FullHeight
         {
             get { return m_FullSize.Height; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(false), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsCollapsed
         {
@@ -77,7 +86,9 @@ namespace Library.Controls
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CollapsedHeight
         {
@@ -87,7 +98,10 @@ namespace Library.Controls
         #endregion
 
         #region Overrides
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseUp(MouseEventArgs e)
         {
             if (m_toggleRect.Contains(e.Location))
@@ -95,7 +109,10 @@ namespace Library.Controls
             else
                 base.OnMouseUp(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             HandleResize();
@@ -106,7 +123,10 @@ namespace Library.Controls
         #endregion
 
         #region Implimentation
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="g"></param>
         void DrawGroupBox(Graphics g)
         {
             // Get windows to draw the GroupBox

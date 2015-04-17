@@ -23,8 +23,7 @@ namespace Library.FileExtension.ExcelDataReader.Core
 			var dateChars = new char[] { 'y', 'm', 'd', 's', 'h' };
 			if (FormatString.IndexOfAny(dateChars) >= 0)
 			{
-				var isDate = false;
-				//it is a date candidate
+			    //it is a date candidate
 				foreach (var dateChar in dateChars)
 				{
 					//perform our checks for each occurance of the character

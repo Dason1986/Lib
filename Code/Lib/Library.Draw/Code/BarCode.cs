@@ -2,6 +2,9 @@
 
 namespace Library.Draw.Code
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BarCode
     {
         private const string AlphaBet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%*";
@@ -66,27 +69,41 @@ namespace Library.Draw.Code
         int _thickLength = 2;
         int _narrowLength = 1;
         int _barCodeHeight = 35;
+        /// <summary>
+        /// 
+        /// </summary>
         public int ThickLength
         {
             get { return _thickLength; }
             set { _thickLength = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int NarrowLength
         {
             get { return _narrowLength; }
             set { _narrowLength = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public int TopMargin
         {
             get { return _topMargin; }
             set { _topMargin = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public int LeftMargin
         {
             get { return _leftMargin; }
             set { _leftMargin = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public int BarCodeHeight
         {
             get { return _barCodeHeight; }

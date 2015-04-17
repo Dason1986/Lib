@@ -39,9 +39,13 @@ namespace Library.Data
             Filed = filed;
             Order = order;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Filed { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public OrderType Order { get; set; }
 
         /// <summary>

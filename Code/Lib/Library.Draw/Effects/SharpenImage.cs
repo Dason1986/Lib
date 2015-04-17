@@ -11,7 +11,9 @@ namespace Library.Draw.Effects
     [LanguageDescription("锐化"), LanguageDisplayName("锐化")]
     public class SharpenImage : ImageBuilder
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         public float Value
         {
             get
@@ -27,14 +29,18 @@ namespace Library.Draw.Effects
         }
 
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
         private ValueOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -44,12 +50,19 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption() { Value = 1 };
         }
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -82,7 +95,10 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

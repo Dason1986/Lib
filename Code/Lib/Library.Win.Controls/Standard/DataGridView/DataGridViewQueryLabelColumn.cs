@@ -31,7 +31,9 @@ namespace Library.Controls
         {
             this.CellTemplate = new DataGridViewQueryLabelCell();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override sealed DataGridViewCell CellTemplate
         {
             get { return base.CellTemplate; }
@@ -43,26 +45,40 @@ namespace Library.Controls
         /// </summary>
         [DefaultValue(null)]
         public IQueryDataProvider CurrentQueryDataProvider { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public string QueryDataID { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public FieldCollection Fields
         {
             get { return _fields; }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public OrderCollection Orders
         {
             get { return _orders; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public FilterCollection Filters
         {
             get { return _filters; }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public object DataSource
         {
@@ -74,14 +90,23 @@ namespace Library.Controls
                 else _manager = null;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public string DisplayMember { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public string ValueMember { get; set; }
 
         object IQueryControl.SelectedValue { get { throw new NotSupportedException(); } set { throw new NotSupportedException(); } }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         internal object GetDislpayName(object key)
         {
             if (_manager == null)
@@ -111,7 +136,10 @@ namespace Library.Controls
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override object Clone()
         {
             var obj = (DataGridViewQueryLabelColumn)base.Clone();
@@ -125,7 +153,10 @@ namespace Library.Controls
             obj.Orders.ReSet(Orders);
             return obj;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder(64);
@@ -148,6 +179,10 @@ namespace Library.Controls
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelEditingControl : QueryLabel, IDataGridViewEditingControl
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataGridViewCellStyle"></param>
         public void ApplyCellStyleToEditingControl(DataGridViewCellStyle dataGridViewCellStyle)
         {
 
@@ -156,52 +191,77 @@ namespace Library.Controls
         /// 
         /// </summary>
         public DataGridViewQueryLabelCell OwnerCell { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public DataGridView EditingControlDataGridView
         {
             get;
             set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public object EditingControlFormattedValue
         {
             get;
             set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int EditingControlRowIndex
         {
             get;
             set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool EditingControlValueChanged
         {
             get;
             set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="keyData"></param>
+        /// <param name="dataGridViewWantsInputKey"></param>
+        /// <returns></returns>
         public bool EditingControlWantsInputKey(Keys keyData, bool dataGridViewWantsInputKey)
         {
             return false;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Cursor EditingPanelCursor
         {
             get { return Cursors.Arrow; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public object GetEditingControlFormattedValue(DataGridViewDataErrorContexts context)
         {
             return null;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="selectAll"></param>
         public void PrepareEditingControlForEdit(bool selectAll)
         {
 
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool RepositionEditingControlOnValueChange { get; protected set; }
 
     }
@@ -212,9 +272,13 @@ namespace Library.Controls
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelCell : DataGridViewTextBoxCell
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         private static readonly Type DefaultEditType = typeof(DataGridViewQueryLabelEditingControl);
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override Type EditType
         {
             get
@@ -222,7 +286,10 @@ namespace Library.Controls
                 return DefaultEditType; // the type is DataGridViewNumericUpDownEditingControl
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return "DataGridViewQueryLabelCell { ColumnIndex=" + this.ColumnIndex.ToString(CultureInfo.CurrentCulture) + ", RowIndex=" + this.RowIndex.ToString(CultureInfo.CurrentCulture) + " }";
@@ -254,7 +321,20 @@ namespace Library.Controls
         }
 
 
-        /// <param name="graphics">The <see cref="T:System.Drawing.Graphics"/> used to paint the <see cref="T:System.Windows.Forms.DataGridViewCell"/>.</param><param name="clipBounds">A <see cref="T:System.Drawing.Rectangle"/> that represents the area of the <see cref="T:System.Windows.Forms.DataGridView"/> that needs to be repainted.</param><param name="cellBounds">A <see cref="T:System.Drawing.Rectangle"/> that contains the bounds of the <see cref="T:System.Windows.Forms.DataGridViewCell"/> that is being painted.</param><param name="rowIndex">The row index of the cell that is being painted.</param><param name="cellState">A bitwise combination of <see cref="T:System.Windows.Forms.DataGridViewElementStates"/> values that specifies the state of the cell.</param><param name="value">The data of the <see cref="T:System.Windows.Forms.DataGridViewCell"/> that is being painted.</param><param name="formattedValue">The formatted data of the <see cref="T:System.Windows.Forms.DataGridViewCell"/> that is being painted.</param><param name="errorText">An error message that is associated with the cell.</param><param name="cellStyle">A <see cref="T:System.Windows.Forms.DataGridViewCellStyle"/> that contains formatting and style information about the cell.</param><param name="advancedBorderStyle">A <see cref="T:System.Windows.Forms.DataGridViewAdvancedBorderStyle"/> that contains border styles for the cell that is being painted.</param><param name="paintParts">A bitwise combination of the <see cref="T:System.Windows.Forms.DataGridViewPaintParts"/> values that specifies which parts of the cell need to be painted.</param>
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="graphics"></param>
+       /// <param name="clipBounds"></param>
+       /// <param name="cellBounds"></param>
+       /// <param name="rowIndex"></param>
+       /// <param name="cellState"></param>
+       /// <param name="value"></param>
+       /// <param name="formattedValue"></param>
+       /// <param name="errorText"></param>
+       /// <param name="cellStyle"></param>
+       /// <param name="advancedBorderStyle"></param>
+       /// <param name="paintParts"></param>
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             var column = this.OwningColumn as DataGridViewQueryLabelColumn;
@@ -318,6 +398,14 @@ namespace Library.Controls
             return rectangle1;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellBounds"></param>
+        /// <param name="sizeText"></param>
+        /// <param name="flags"></param>
+        /// <param name="cellStyle"></param>
+        /// <returns></returns>
         internal static Point GetTextLocation(Rectangle cellBounds, Size sizeText, TextFormatFlags flags, DataGridViewCellStyle cellStyle)
         {
             Point point = new Point(0, 0);
@@ -387,6 +475,15 @@ namespace Library.Controls
             }
             return point;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellBounds"></param>
+        /// <param name="text"></param>
+        /// <param name="flags"></param>
+        /// <param name="cellStyle"></param>
+        /// <param name="font"></param>
+        /// <returns></returns>
         internal static Rectangle GetTextBounds(Rectangle cellBounds, string text, TextFormatFlags flags, DataGridViewCellStyle cellStyle, Font font)
         {
             if ((flags & TextFormatFlags.SingleLine) != TextFormatFlags.Default && TextRenderer.MeasureText(text, font, new Size(int.MaxValue, int.MaxValue), flags).Width > cellBounds.Width)
@@ -401,7 +498,13 @@ namespace Library.Controls
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rowIndex"></param>
+        /// <param name="dgvabsEffective"></param>
+        /// <param name="cellState"></param>
+        /// <param name="cellBounds"></param>
         internal void ComputeBorderStyleCellStateAndCellBounds(int rowIndex, out DataGridViewAdvancedBorderStyle dgvabsEffective, out DataGridViewElementStates cellState, out Rectangle cellBounds)
         {
             bool singleVerticalBorderAdded = !this.DataGridView.RowHeadersVisible && this.DataGridView.AdvancedCellBorderStyle.All == DataGridViewAdvancedCellBorderStyle.Single;
@@ -435,6 +538,9 @@ namespace Library.Controls
             dgvabsEffective = null;
             cellState = DataGridViewElementStates.None;
         }
+        /// <summary>
+        /// /
+        /// </summary>
         public override void DetachEditingControl()
         {
             DataGridView dataGridView = this.DataGridView;

@@ -27,6 +27,11 @@ namespace Library.Att
             _resourceName = resourceName;
         }
         private readonly string _resourceName;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         protected override string GetLocalizedString(string value)
         {
             return LanguageResourceManagement.GetString(value, _resourceName ?? "Global");

@@ -25,7 +25,12 @@ namespace Library.Draw
         private double y;
         private double u;
         private double v;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator ==(YUVColor item1, YUVColor item2)
         {
             return (
@@ -34,7 +39,12 @@ namespace Library.Draw
                 && item1.V == item2.V
                 );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator !=(YUVColor item1, YUVColor item2)
         {
             return (
@@ -43,7 +53,9 @@ namespace Library.Draw
                 || item1.V != item2.V
                 );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public double Y
         {
             get
@@ -56,7 +68,9 @@ namespace Library.Draw
                 y = (y > 1) ? 1 : ((y < 0) ? 0 : y);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public double U
         {
             get
@@ -69,7 +83,9 @@ namespace Library.Draw
                 u = (u > 0.436) ? 0.436 : ((u < -0.436) ? -0.436 : u);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public double V
         {
             get
@@ -92,14 +108,21 @@ namespace Library.Draw
             this.u = (u > 0.436) ? 0.436 : ((u < -0.436) ? -0.436 : u);
             this.v = (v > 0.615) ? 0.615 : ((v < -0.615) ? -0.615 : v);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(Object obj)
         {
             if (obj == null || GetType() != obj.GetType()) return false;
 
             return (this == (YUVColor)obj);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return Y.GetHashCode() ^ U.GetHashCode() ^ V.GetHashCode();

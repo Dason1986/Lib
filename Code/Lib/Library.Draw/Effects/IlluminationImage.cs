@@ -54,14 +54,18 @@ namespace Library.Draw.Effects
         }
 
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new IlluminationsOption();
         }
         private IlluminationsOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -87,6 +91,10 @@ namespace Library.Draw.Effects
             [LanguageDescription("光點位置"), LanguageDisplayName("光點位置"), Category("濾鏡選項")]
             public Point Center { get; set; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new IlluminationsOption() { Radii = 10, Center = new Point(50, 20) };
@@ -95,6 +103,10 @@ namespace Library.Draw.Effects
         /*
          按照一定的规则对图像中某范围内像素的亮度进行处理后, 能够产生类似光照的效果...
          */
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override System.Drawing.Image ProcessBitmap()
         {
             Bitmap myBmp = this.Source.Clone() as Bitmap;
@@ -129,7 +141,10 @@ namespace Library.Draw.Effects
             }
             return myBmp;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

@@ -14,6 +14,9 @@ using Library.HelperUtility;
 
 namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class ImageEffectsView : Form, IImageEffectsView
     {
         private Image Source
@@ -27,11 +30,17 @@ namespace Library.Controls
         private IImageBuilder builderobj;
         private ImageOption option;
         readonly IDictionary<Type, IImageBuilder> _dicinObjects = new ConcurrentDictionary<Type, IImageBuilder>();
+        /// <summary>
+        /// 
+        /// </summary>
         public Image ResultImage { get; protected set; }
         private DataTable dt;
         private int index;
         private Image _source;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
         public ImageEffectsView(Image source)
         {
             InitializeComponent();
@@ -99,7 +108,10 @@ namespace Library.Controls
             option = (ImageOption)dt.Rows[index][3];
             grid.SelectedObject = option;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             foreach (var imageBuilder in _dicinObjects.Values)

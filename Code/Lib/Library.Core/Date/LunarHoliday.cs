@@ -6,7 +6,7 @@ namespace Library.Date
     /// <summary>
     /// 
     /// </summary>
-    public struct LunarHoliday : IHoliday, IFormattable, IComparable, IComparable<LunarHoliday>, IEquatable<LunarHoliday>
+    public struct LunarHoliday : IHoliday, IComparable, IComparable<LunarHoliday>, IEquatable<LunarHoliday>
     {
         /// <summary>
         /// 
@@ -56,7 +56,12 @@ namespace Library.Date
             return string.Format(HolidayFormat.FormatProvider, format, this);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="formatProvider"></param>
+        /// <returns></returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
             return HolidayFormat.FormatProvider.Format(format, this, formatProvider);
@@ -129,13 +134,22 @@ namespace Library.Date
         {
             return t1.Month * 100 + t1.Day >= t2.Month * 100 + t2.Day;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (obj == null) return 1;
             if (obj is LunarHoliday == false) throw new ChineseDateTimeException(11002.107);
             return CompareTo((LunarHoliday)obj);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(LunarHoliday other)
         {
             var x = this.Month * 100 + this.Day;
@@ -155,7 +169,7 @@ namespace Library.Date
             if (other is LunarHoliday) return CompareTo((LunarHoliday)other);
             var x = this.ConvertDateTime(year);
             var y = other.ConvertDateTime(year);
-            return y.CompareTo(y);
+            return x.CompareTo(y);
         }
         /// <summary>
         /// 
@@ -167,9 +181,31 @@ namespace Library.Date
         {
             return t1.Equals(t2);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(LunarHoliday other)
         {
             return CompareTo(other) == 0;
+        } 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return base.Equals((LunarHoliday)obj);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         #endregion
     }

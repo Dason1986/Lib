@@ -50,7 +50,9 @@ namespace Library.Map
         /// 
         /// </summary>
         public double Altitude { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DateTime DateStamp { get; set; }
 
         /// <summary>
@@ -110,11 +112,22 @@ namespace Library.Map
             /// 
             /// </summary>
             public static readonly GPSFormat FormatProvider = new GPSFormat();
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="formatType"></param>
+            /// <returns></returns>
             public object GetFormat(Type formatType)
             {
                 return formatType == typeof(ICustomFormatter) ? this : null;
             }
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="format"></param>
+            /// <param name="arg"></param>
+            /// <param name="formatProvider"></param>
+            /// <returns></returns>
             public string Format(string format, object arg, IFormatProvider formatProvider)
             {
                 if (arg is GPSGeo == false) throw new CodeException(11002.106);

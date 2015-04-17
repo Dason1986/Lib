@@ -64,14 +64,18 @@ namespace Library.Draw.Effects
             [LanguageDescription("模糊度"), LanguageDisplayName("模糊度"), Category("濾鏡選項")]
             public int Length { get; set; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = CreateOption() as ZoomBlurOption;
         }
         private ZoomBlurOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -81,6 +85,10 @@ namespace Library.Draw.Effects
                 _opetion = value as ZoomBlurOption;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ZoomBlurOption { Length = 10 };
@@ -93,6 +101,10 @@ namespace Library.Draw.Effects
         double m_offset_y;
         int m_fcx, m_fcy;
         const int RADIUS_LENGTH = 64;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
 
@@ -142,7 +154,10 @@ namespace Library.Draw.Effects
             }
             return clone;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             int width = Source.Width;

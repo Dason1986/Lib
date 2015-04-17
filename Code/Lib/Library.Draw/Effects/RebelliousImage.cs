@@ -13,6 +13,10 @@ namespace Library.Draw.Effects
         /*
          逆反处理的原理很简单，用255减去该像素的RGB作为新的RGB值即可。g(i,j)=255-f(i,j)
          */
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -36,7 +40,10 @@ namespace Library.Draw.Effects
 
         #region IImageProcessable 成员
 
-
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

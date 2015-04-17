@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
 using Library.Annotations;
@@ -10,6 +11,111 @@ using Library.HelperUtility;
 
 namespace Library
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    [Serializable]
+    public class IoCException : LibException
+    {
+        //
+        // For guidelines regarding the creation of new exception types, see
+        //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpgenref/html/cpconerrorraisinghandlingguidelines.asp
+        // and
+        //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
+        //
+        /// <summary>
+        /// 
+        /// </summary>
+        public IoCException()
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="resultCode"></param>
+        protected IoCException(string message, double resultCode)
+            : base(message, resultCode)
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="resultCode"></param>
+        /// <param name="inner"></param>
+        protected IoCException(string message, double resultCode, Exception inner)
+            : base(message, resultCode, inner)
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        public IoCException(string message)
+            : base(message)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="inner"></param>
+        public IoCException(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resultCode"></param>
+        /// <param name="formatages"></param>
+        public IoCException(double resultCode, object[] formatages)
+            : base(resultCode, formatages)
+        {
+            ResultCode = resultCode;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resultCode"></param>
+        /// <param name="resourceName"></param>
+        public IoCException(double resultCode, string resourceName)
+            : base(resultCode, resourceName)
+        {
+            ResultCode = resultCode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resultCode"></param>
+        /// <param name="formatages"></param>
+        /// <param name="resourceName"></param>
+        public IoCException(double resultCode, object[] formatages, string resourceName)
+            : base(resultCode, formatages, resourceName)
+        {
+            ResultCode = resultCode;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        protected IoCException(
+            SerializationInfo info,
+            StreamingContext context)
+            : base(info, context)
+        {
+        }
+
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -24,8 +130,13 @@ namespace Library
         /// 
         /// </summary>
         /// <param name="monitorAssembly"></param>
-        public IoC(bool monitorAssembly)
+        public IoC(bool monitorAssembly = false)
         {
+            var useass = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var assembly in useass)
+            {
+                _assemblyManager.AddAssembly(assembly);
+            }
             if (monitorAssembly)
             {
                 AppDomain.CurrentDomain.AssemblyLoad += (x, y) =>
@@ -44,8 +155,14 @@ namespace Library
         /// 
         /// </summary>
         public AssemblyManager AssemblyManager { get { return _assemblyManager; } }
-        readonly Dictionary<string, object> _objdDictionary = new Dictionary<string, object>();
+        readonly Dictionary<string, TmpIoCItem> _objdDictionary = new Dictionary<string, TmpIoCItem>();
 
+        class TmpIoCItem
+        {
+            public Type OjbType;
+            public object objItem;
+
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -62,6 +179,7 @@ namespace Library
         {
             XmlDocument document = new XmlDocument();
             document.Load(xml);
+            LoadDoc(document);
         }
         /// <summary>
         /// 
@@ -71,6 +189,30 @@ namespace Library
         {
             XmlDocument document = new XmlDocument();
             document.LoadXml(xml);
+            LoadDoc(document);
+        }
+
+        private static readonly char[] spchar = { ',' };
+        void LoadDoc(XmlDocument document)
+        {
+            var nodes = document.SelectNodes(@"//objects/object[@Disabled!='true']");
+            if (!nodes.HasRecord()) return;
+            foreach (XmlNode node in nodes)
+            {
+                //type,name
+                var typeAtr = node.Attributes["type"];
+                var nameAtr = node.Attributes["name"];
+                if (string.IsNullOrEmpty(nameAtr.Value)) throw new IoCException();
+                if (_objdDictionary.ContainsKey(nameAtr.Value)) throw new IoCException();
+                if (string.IsNullOrEmpty(typeAtr.Value)) throw new IoCException();
+                var typeVal = typeAtr.Value.Split(spchar, 2);
+                var ass = _assemblyManager.GetAssembly(typeVal[1]);
+                if (ass == null) throw new IoCException();
+                Type objType = ass.GetType(typeVal[0]);
+                if (objType == null) throw new IoCException();
+                var obj = objType.CreateInstance();
+                SetObject(nameAtr.Value, obj);
+            }
         }
         /// <summary>
         /// 
@@ -82,8 +224,8 @@ namespace Library
         {
             if (name == null) throw new ArgumentNullException("name");
             if (obj == null) throw new ArgumentNullException("obj");
-            if (_objdDictionary.ContainsKey(name)) throw new Exception();
-            _objdDictionary.Add(name, obj);
+            if (_objdDictionary.ContainsKey(name)) throw new IoCException();
+            _objdDictionary.Add(name, new TmpIoCItem() { OjbType = obj.GetType(), objItem = obj });
         }
 
         /// <summary>
@@ -94,7 +236,8 @@ namespace Library
         public object GetObject(string name)
         {
             if (_objdDictionary.ContainsKey(name)) return _objdDictionary[name];
-            throw new Exception();
+            return _objdDictionary[name].objItem;
+
         }
         /// <summary>
         /// 
@@ -103,9 +246,8 @@ namespace Library
         /// <returns></returns>
         public object GetObjectByNew(string name)
         {
-            if (!_objdDictionary.ContainsKey(name)) throw new Exception();
-            var obj = _objdDictionary[name];
-            return obj.GetType().CreateInstance();
+            if (!_objdDictionary.ContainsKey(name)) throw new IoCException();
+            return _objdDictionary[name].OjbType.CreateInstance();
         }
 
         /// <summary>
@@ -118,12 +260,9 @@ namespace Library
         public object Instance(string iocname, string fulltypename, string assemblyname)
         {
             if (iocname == null) throw new ArgumentNullException("iocname");
-            if (_objdDictionary.ContainsKey(iocname))
-            {
-                return GetObject(iocname);
-            }
+            if (_objdDictionary.ContainsKey(iocname)) return GetObject(iocname);
             var assname = _assemblyManager.GetAssembly(assemblyname);
-            if (assname == null) throw new FileNotFoundException("找不對應該的Dll");
+            if (assname == null) throw new IoCException("找不對應該的assemblyname");
             return Instance(iocname, fulltypename, assname);
         }
 
@@ -136,11 +275,8 @@ namespace Library
         public object Instance(string iocname, [NotNull] string fulltypename)
         {
             if (iocname == null) throw new ArgumentNullException("iocname");
-            if (_objdDictionary.ContainsKey(iocname))
-            {
-                return GetObject(iocname);
-            }
-            if (fulltypename == null) throw new ArgumentNullException("fulltypename");
+            if (_objdDictionary.ContainsKey(iocname)) return GetObject(iocname);
+            if (fulltypename == null) throw new IoCException("fulltypename");
             var type = _assemblyManager.GeType(fulltypename);
             return type.CreateInstance();
         }
@@ -155,12 +291,9 @@ namespace Library
         public object Instance([NotNull] string iocname, [NotNull] string fulltypename, [NotNull] Assembly assembly)
         {
             if (iocname == null) throw new ArgumentNullException("iocname");
-            if (_objdDictionary.ContainsKey(iocname))
-            {
-                return GetObject(iocname);
-            }
             if (fulltypename == null) throw new ArgumentNullException("fulltypename");
             if (assembly == null) throw new ArgumentNullException("assembly");
+            if (_objdDictionary.ContainsKey(iocname))  return GetObject(iocname); 
             var type = _assemblyManager.GeType(fulltypename, assembly);
             if (type == null) throw new TypeAccessException();
             return type.CreateInstance();

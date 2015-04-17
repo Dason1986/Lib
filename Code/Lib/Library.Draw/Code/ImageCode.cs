@@ -14,7 +14,11 @@ namespace Library.Draw.Code
         /*
          默認：4位,純數字，寬100，高50的圖片驗證碼
          */
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public ImageCode(int width = 100, int height = 50)
         {
             CodeLength = 4;
@@ -25,11 +29,26 @@ namespace Library.Draw.Code
         private int _codeLength = 4;
         private int _height;
         private int _width;
+        /// <summary>
+        /// 
+        /// </summary>
         public ContentTypeEnum ContentType { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public enum ContentTypeEnum
         {
+            /// <summary>
+            /// 
+            /// </summary>
             Number,
+            /// <summary>
+            /// 
+            /// </summary>
             Char,
+            /// <summary>
+            /// 
+            /// </summary>
             All,
         }
         /// <summary>
@@ -64,7 +83,9 @@ namespace Library.Draw.Code
                 _height = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int CodeLength
         {
             get { return _codeLength; }
@@ -77,9 +98,13 @@ namespace Library.Draw.Code
                 if (tmpwidth > Width) Width = tmpwidth;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public byte[] Image { get; protected set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Create()
         {
 
@@ -190,6 +215,9 @@ namespace Library.Draw.Code
             srcBmp.Dispose();
             return destBmp;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         protected void CreateStringCode()
         {
             var length = _codeLength;

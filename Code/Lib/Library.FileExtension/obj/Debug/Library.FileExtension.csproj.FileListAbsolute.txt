@@ -12,8 +12,6 @@ C:\Dason\Lib\Code\Lib\Library.FileExtension\bin\Debug\Library.xml
 C:\Dason\Lib\Code\Lib\Library.FileExtension\bin\Debug\itextsharp.xml
 C:\Dason\Lib\Code\Lib\Library.FileExtension\bin\Debug\en-US\Library.Core.resources.dll
 C:\Dason\Lib\Code\Lib\Library.FileExtension\bin\Debug\pt-PT\Library.Core.resources.dll
-C:\Dason\Lib\Code\Lib\Library.FileExtension\bin\Debug\en-US\Library.resources.dll
-C:\Dason\Lib\Code\Lib\Library.FileExtension\bin\Debug\zh-TW\Library.resources.dll
 C:\Dason\Lib\Code\Lib\Library.FileExtension\obj\Debug\Library.FileExtension.csprojResolveAssemblyReference.cache
 C:\Dason\Lib\Code\Lib\Library.FileExtension\obj\Debug\Library.FileExtension.dll
 C:\Dason\Lib\Code\Lib\Library.FileExtension\obj\Debug\Library.FileExtension.pdb

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Management;
 using Library.Annotations;
 using Library.HelperUtility;
@@ -112,6 +113,7 @@ namespace Library.Management
             }
             catch (Exception ee)
             {
+                Trace.TraceError(ee.Message);
                 //MessageBox.Show ( "连接" + RomoteIp + "出错，出错信息为：" + ee.Message ,"出现错误！" ) ;
                 return null;
             }

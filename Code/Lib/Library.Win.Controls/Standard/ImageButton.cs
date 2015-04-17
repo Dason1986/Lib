@@ -29,7 +29,9 @@ namespace Library.Controls
         #endregion
 
         #region Constructor
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ImageButton()
         {
             this.BackColor = Color.Transparent;
@@ -39,7 +41,9 @@ namespace Library.Controls
         #endregion
 
         #region IButtonControl Members
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DialogResult DialogResult
         {
             get
@@ -54,7 +58,10 @@ namespace Library.Controls
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
         public void NotifyDefault(bool value)
         {
             if (_isDefault != value)
@@ -62,7 +69,9 @@ namespace Library.Controls
                 _isDefault = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void PerformClick()
         {
             base.OnClick(EventArgs.Empty);
@@ -71,7 +80,9 @@ namespace Library.Controls
         #endregion
 
         #region  Properties
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         [Description("Image to show when the button is hovered over.")]
         public Image HoverImage
@@ -79,7 +90,9 @@ namespace Library.Controls
             get { return _hoverImage; }
             set { _hoverImage = value; if (_hover) Image = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         [Description("Image to show when the button is depressed.")]
         public Image DownImage
@@ -87,7 +100,9 @@ namespace Library.Controls
             get { return _downImage; }
             set { _downImage = value; if (_down) Image = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Category("Appearance")]
         [Description("Image to show when the button is not in any other state.")]
         public Image NormalImage
@@ -95,7 +110,9 @@ namespace Library.Controls
             get { return _normalImage; }
             set { _normalImage = value; if (!(_hover || _down)) Image = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Category("Appearance")]
@@ -111,7 +128,9 @@ namespace Library.Controls
                 base.Text = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Category("Appearance")]
@@ -127,53 +146,76 @@ namespace Library.Controls
                 base.Font = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Description("当鼠标放在控件可见处的提示文本")]
         public string ToolTipText { get; set; }
 
         #endregion
-
+        /// <summary>
+        /// 
+        /// </summary>
         #region Description Changes
         [Description("Controls how the ImageButton will handle image placement and control sizing.")]
         public new PictureBoxSizeMode SizeMode { get { return base.SizeMode; } set { base.SizeMode = value; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Description("Controls what type of border the ImageButton should have.")]
         public new BorderStyle BorderStyle { get { return base.BorderStyle; } set { base.BorderStyle = value; } }
         #endregion
 
         #region Hiding
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Image Image { get { return base.Image; } set { base.Image = value; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new ImageLayout BackgroundImageLayout { get { return base.BackgroundImageLayout; } set { base.BackgroundImageLayout = value; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Image BackgroundImage { get { return base.BackgroundImage; } set { base.BackgroundImage = value; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new String ImageLocation { get { return base.ImageLocation; } set { base.ImageLocation = value; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Image ErrorImage { get { return base.ErrorImage; } set { base.ErrorImage = value; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Image InitialImage { get { return base.InitialImage; } set { base.InitialImage = value; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool WaitOnLoad { get { return base.WaitOnLoad; } set { base.WaitOnLoad = value; } }
         #endregion
 
         #region override
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
         {
             //show tool tip 
@@ -184,7 +226,10 @@ namespace Library.Controls
             }
             base.OnMouseEnter(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseMove(MouseEventArgs e)
         {
             _hover = true;
@@ -200,14 +245,20 @@ namespace Library.Controls
                     Image = _normalImage;
             base.OnMouseMove(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
         {
             _hover = false;
             Image = _normalImage;
             base.OnMouseLeave(e);
         }
-
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.Focus();
@@ -217,7 +268,10 @@ namespace Library.Controls
                 Image = _downImage;
             base.OnMouseDown(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseUp(MouseEventArgs e)
         {
             _down = false;
@@ -230,7 +284,11 @@ namespace Library.Controls
                 Image = _normalImage;
             base.OnMouseUp(e);
         }
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="msg"></param>
+/// <returns></returns>
         public override bool PreProcessMessage(ref Message msg)
         {
             switch (msg.Msg)
@@ -268,14 +326,20 @@ namespace Library.Controls
                     return base.PreProcessMessage(ref msg);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
         {
             _holdingSpace = false;
             OnMouseUp(null);
             base.OnLostFocus(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pe"></param>
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
@@ -299,7 +363,10 @@ namespace Library.Controls
 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -310,7 +377,10 @@ namespace Library.Controls
             _toolTip = null;
             base.Dispose(disposing);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnTextChanged(EventArgs e)
         {
             Refresh();

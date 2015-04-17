@@ -55,32 +55,49 @@ namespace Library.Win.MVP
         /// 
         /// </summary>
         public static ApplicationFacade Instance { get { return _instance; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         public void Notification(string message)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public bool MessageConfirm(string message)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         public void Message(string message)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShowSplash()
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
         public void SetSplashText(string text)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void HideSplash()
         {
             throw new NotImplementedException();

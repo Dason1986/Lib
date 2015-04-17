@@ -10,6 +10,9 @@ namespace Library.Date
     /// </summary>
     public abstract class HolidayBuilder
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected readonly List<IHoliday> Holidays = new List<IHoliday>();
         /// <summary>
         /// 

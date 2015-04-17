@@ -63,16 +63,23 @@ namespace Library.Logic
         }
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class ProgressChangedEventArgs : EventArgs
     {
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="progressPercentage"></param>
         public ProgressChangedEventArgs(int progressPercentage)
         {
             ProgressPercentage = progressPercentage;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int ProgressPercentage { get; protected set; }
 
     }
@@ -191,10 +198,12 @@ namespace Library.Logic
         /// <summary>
         /// 
         /// </summary> 
-        protected virtual void OnFailure(Exception message)
+        protected virtual void OnFailure(Exception ex)
         {
             ExceptionEventHandler handler = Failure;
-            if (handler != null) handler(this, new ExceptionEventArgs(message));
+            var message = string.Format("Date:{2}\r\nMessage:{0}\r\nTarget:{3}\r\nStackTrace:{1}", ex.Message, ex.StackTrace, ex.TargetSite, DateTime.Now);
+            Trace.TraceError(message);
+            if (handler != null) handler(this, new ExceptionEventArgs(ex));
         }
         /// <summary>
         /// 
@@ -213,6 +222,7 @@ namespace Library.Logic
         protected virtual void OnMessge(string message, MessageType messageType = MessageType.Info)
         {
             MessageEventHandler handler = Messge;
+            Trace.WriteLine(string.Format("{0}:{1}", messageType, message));
             if (handler != null) handler(this, new MessageEventArgs(message, messageType));
         }
         /// <summary>
@@ -273,7 +283,10 @@ namespace Library.Logic
         /// 
         /// </summary>
         protected abstract void OnStart();
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="progressPercentage"></param>
         protected virtual void OnProgressChanged(int progressPercentage)
         {
             var handler = ProgressChanged;

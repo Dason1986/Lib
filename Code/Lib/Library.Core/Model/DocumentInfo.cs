@@ -10,9 +10,21 @@ namespace Library.IO
     /// </summary>
     public class DocumentInfo
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string Author { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Keywords { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Subject { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Title { get; set; }
 
     }

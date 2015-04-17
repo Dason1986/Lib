@@ -70,6 +70,11 @@ namespace Library.Date
         /// 
         /// </summary>
         public static readonly HolidayFormat FormatProvider = new HolidayFormat();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="formatType"></param>
+        /// <returns></returns>
         public object GetFormat(Type formatType)
         {
             return formatType == typeof(ICustomFormatter) ? this : null;
@@ -80,6 +85,14 @@ namespace Library.Date
         private static readonly string[] Weeks = { "最後一個", "第一個", "第二個", "第三個", "第四個" };
         private static readonly string[] Weeksshort = { "{0} last {1}", "the first {1} of {0}", "the sec {1} of {0}", "the 3rd {1} of {0}", "the fourth {1} of {0}" };//Tuesday July first
         private static readonly string[] Weekslong = { "the last {1} of {0}", "the first {1} of {0}", "the second {1} of {0}", "the third {1} of {0}", "the fourth  {1} of {0}" };
+    
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="arg"></param>
+        /// <param name="formatProvider"></param>
+        /// <returns></returns>
         public string Format(string format, object arg, IFormatProvider formatProvider)
         {
             if (arg is IHoliday == false) throw new ChineseDateTimeException(11002.106);
@@ -113,14 +126,22 @@ namespace Library.Date
             protected readonly string FormatStr;
             protected readonly IHoliday Holiday;
             protected readonly CultureInfo Cul;
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="format"></param>
+            /// <param name="obj"></param>
+            /// <param name="cul"></param>
             protected HolidayToString(string format, object obj, CultureInfo cul)
             {
                 FormatStr = format;
                 Holiday = obj as IHoliday;
                 Cul = cul;
             }
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public virtual string ToFormat()
             {
                 if (FormatStr.Length != 1) return FormatStr;
@@ -136,21 +157,40 @@ namespace Library.Date
                 return SolarHoliday();
 
             }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public abstract string WeekHoliday();
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public abstract string LunarHoliday();
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public abstract string SolarHoliday();
         }
 
         class Cn : HolidayToString
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="format"></param>
+            /// <param name="obj"></param>
+            /// <param name="cul"></param>
             public Cn(string format, object obj, CultureInfo cul)
                 : base(format, obj, cul)
             {
             }
 
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public override string WeekHoliday()
             {
                 var formatDateTime = Cul.DateTimeFormat;
@@ -190,7 +230,10 @@ namespace Library.Date
                 }
                 return result;
             }
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public override string LunarHoliday()
             {
                 LunarHoliday lunar = (LunarHoliday)Holiday;
@@ -231,7 +274,10 @@ namespace Library.Date
                 }
                 return result;
             }
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public override string SolarHoliday()
             {
                 var result = string.Empty;
@@ -253,7 +299,9 @@ namespace Library.Date
                 return result;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         class En : HolidayToString
         {
             public En(string format, object obj, CultureInfo cul)
@@ -261,7 +309,10 @@ namespace Library.Date
             {
             }
 
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public override string WeekHoliday()
             {
                 string result = string.Empty;
@@ -302,12 +353,18 @@ namespace Library.Date
                 }
                 return result;
             }
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public override string LunarHoliday()
             {
                 return SolarHoliday();
             }
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public override string SolarHoliday()
             {
                 var result = FormatStr;

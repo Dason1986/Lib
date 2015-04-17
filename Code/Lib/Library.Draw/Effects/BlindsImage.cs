@@ -113,14 +113,18 @@ namespace Library.Draw.Effects
             [LanguageDescription("線條顏色"), LanguageDisplayName("線條顏色"), Category("濾鏡選項")]
             public Color BarColor { get; set; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = CreateOption() as BlindsOption;
         }
         private BlindsOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -130,6 +134,10 @@ namespace Library.Draw.Effects
                 _opetion = (BlindsOption) value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new BlindsOption { Count = 5, Pixel = 4, Alignment = AlignmentType.Vertically, BarColor = Color.DodgerBlue };
@@ -138,7 +146,10 @@ namespace Library.Draw.Effects
         #endregion
 
         #region  Process
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var myBitmap = (Bitmap)this.Source.Clone();
@@ -212,7 +223,10 @@ namespace Library.Draw.Effects
 
             return myBitmap;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

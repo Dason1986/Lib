@@ -12,7 +12,9 @@ namespace Library.Draw.Effects
     [LanguageDescription("直方图模式增强"), LanguageDisplayName("直方图模式增强")]
     public class AutoLevelImage : ImageBuilder
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(1f)]
         [LanguageDescription("强度"), LanguageDisplayName("强度"), Category("濾鏡選項")]
         public float Intensity
@@ -29,14 +31,18 @@ namespace Library.Draw.Effects
             }
         }
         #region Option
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new AutoLevelOption();
         }
         private AutoLevelOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -57,6 +63,10 @@ namespace Library.Draw.Effects
             [LanguageDescription("强度"), LanguageDisplayName("强度"), Category("濾鏡選項")]
             public float Intensity { get; set; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new AutoLevelOption() { Intensity = 1f };
@@ -123,7 +133,10 @@ namespace Library.Draw.Effects
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;
@@ -196,7 +209,10 @@ namespace Library.Draw.Effects
             }
             return bmp;//做直方图模式增强
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var bmp = Source.Clone() as Bitmap;

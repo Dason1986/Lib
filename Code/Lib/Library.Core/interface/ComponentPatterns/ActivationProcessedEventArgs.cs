@@ -3,7 +3,7 @@
 namespace Library.ComponentPatterns
 {
     /// <summary>
-    /// Contains details about the success or failure of an item's activation through an <see cref="IConductor"/>.
+    /// Contains details about the success or failure of an item's activation through an 
     /// </summary>
     public class ActivationProcessedEventArgs : EventArgs
     {

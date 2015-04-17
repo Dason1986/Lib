@@ -35,9 +35,17 @@ namespace Library.Data
         {
             IsSelected = true;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsSelected { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string DisplayName { get; set; }
         /// <summary>
         /// 

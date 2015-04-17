@@ -10,13 +10,15 @@ using System.Windows.Forms;
 
 namespace Library.Controls
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class DataGridViewColumnSelector
     {
         // the DataGridView to which the DataGridViewColumnSelector is attached
         private DataGridView mDataGridView = null;
         // a CheckedListBox containing the column header text and checkboxes
-        private CheckedListBox mCheckedListBox;
+ ///       private CheckedListBox mCheckedListBox;
         // a ToolStripDropDown object used to show the popup
         private ToolStripDropDown mPopup;
 
@@ -45,7 +47,9 @@ namespace Library.Controls
                 if (mDataGridView != null) mDataGridView.CellMouseClick += new DataGridViewCellMouseEventHandler(mDataGridView_CellMouseClick);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsLiftButton { get; set; }
         // When user right-clicks the cell origin, it clears and fill the CheckedListBox with
         // columns header text. Then it shows the popup. 
@@ -64,6 +68,9 @@ namespace Library.Controls
         // The constructor creates an instance of CheckedListBox and ToolStripDropDown.
         // the CheckedListBox is hosted by ToolStripControlHost, which in turn is
         // added to ToolStripDropDown.
+        /// <summary>
+        /// /
+        /// </summary>
         public DataGridViewColumnSelector()
         {
             //mCheckedListBox = new CheckedListBox();
@@ -95,7 +102,10 @@ namespace Library.Controls
             mPopup.Close();
             mPopup.AutoClose = true;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dgv"></param>
         public DataGridViewColumnSelector(DataGridView dgv)
             : this()
         {
@@ -123,19 +133,44 @@ namespace Library.Controls
             //private int m_iIndex;
             private bool m_bChecked;
             private bool m_bDone;
+            /// <summary>
+            /// 
+            /// </summary>
             public string Text { get { return m_csText; } }
             //public int Index { get { return m_iIndex; } }
+            /// <summary>
+            /// 
+            /// </summary>
             public bool Done { get { return m_bDone; } }
+            /// <summary>
+            /// 
+            /// </summary>
             public bool Checked { get { return m_bChecked; } set { m_bChecked = value; } }
             //public MenuCommand(string csText, int iIndex, bool bChecked)
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="csText"></param>
+            /// <param name="bChecked"></param>
             public MenuCommand(string csText, bool bChecked)
                 : this(csText, bChecked, false)
             {
+
             }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="csText"></param>
             public MenuCommand(string csText)
                 : this(csText, false, false)
             {
             }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="csText"></param>
+            /// <param name="bChecked"></param>
+            /// <param name="bDone"></param>
             public MenuCommand(string csText, bool bChecked, bool bDone)
             {
                 m_csText = csText;
@@ -150,10 +185,17 @@ namespace Library.Controls
 
         private Bitmap m_pMemBitmap;// = new Bitmap(panel1.Width, panel1.Height, PixelFormat.Format32bppArgb);
         private Graphics m_pMemGraphics;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int Width { get { return m_pMemBitmap.Width; } }
+        /// <summary>
+        /// 
+        /// </summary>
         public int Height { get { return m_pMemBitmap.Height; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool Done
         {
             get
@@ -161,6 +203,9 @@ namespace Library.Controls
                 return m_pTracMenuItem != null && m_pTracMenuItem.Done;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public int HitIndex
         {
             get
@@ -168,19 +213,31 @@ namespace Library.Controls
                 return m_pMenuCommands.IndexOf(m_pTracMenuItem);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iIndex"></param>
+        /// <param name="g"></param>
+        /// <returns></returns>
         public bool ChangeChecked(int iIndex, Graphics g)
         {
             m_pMenuCommands[iIndex].Checked = !m_pMenuCommands[iIndex].Checked;
             Draw(g);
             return m_pMenuCommands[iIndex].Checked;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="csText"></param>
+        /// <param name="bChecked"></param>
         public void Add(string csText, bool bChecked)
         {
             m_pMenuCommands.Add(new MenuCommand(csText, bChecked));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="g"></param>
         public void Prepare(Graphics g)
         {
             m_pMenuCommands.Add(new MenuCommand("-"));
@@ -219,7 +276,12 @@ namespace Library.Controls
             }
             return null;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <returns></returns>
         public bool HitTestMouseMove(int X, int Y)
         {
             MenuCommand pMenuCommand = HitTest(X, Y);
@@ -233,12 +295,21 @@ namespace Library.Controls
                 return false;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <returns></returns>
         public bool HitTestMouseDown(int X, int Y)
         {
             MenuCommand pMenuCommand = HitTest(X, Y);
             return pMenuCommand != null;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="g"></param>
         public void Draw(Graphics g)
         {
             Rectangle area = new Rectangle(0, 0, m_pMemBitmap.Width, m_pMemBitmap.Height);
@@ -471,7 +542,9 @@ namespace Library.Controls
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DataGridViewMenu()
         {
             InitializeComponent();
@@ -481,7 +554,10 @@ namespace Library.Controls
         {
             Parent.Focus();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pDataGridView"></param>
         public void Initialize(DataGridView pDataGridView)
         {
             m_pMenuControl = new MenuControl();

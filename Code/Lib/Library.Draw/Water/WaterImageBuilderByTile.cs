@@ -4,10 +4,15 @@ using Library.Draw.Effects;
 
 namespace Library.Draw.Water
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WaterImageBuilderByTile : WaterImageBuilder
     {
         private WaterImageTileOption _opetion;
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -17,24 +22,39 @@ namespace Library.Draw.Water
                 _opetion = value as WaterImageTileOption;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="space"></param>
         public void SetSpace(Size space)
         {
             InitOption();
             _opetion.Space = space;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="offset"></param>
         public void SetOffset(Point offset)
         {
             InitOption();
             _opetion.Offset = offset;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new WaterImageTileOption();
         }
  
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="waterImg"></param>
+        /// <returns></returns>
         protected override Image CreateFillImage(Rectangle rectangle, Image waterImg)
         {
             Image img = new Bitmap(rectangle.Width, rectangle.Height);

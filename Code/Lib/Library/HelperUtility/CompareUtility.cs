@@ -22,12 +22,21 @@ namespace Library.HelperUtility
             _func = func;
             if (func == null) throw new ArgumentNullException("func");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public bool Equals(T x, T y)
         {
             return _func(x, y);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int GetHashCode(T obj)
         {
             if (obj == null) return -1;

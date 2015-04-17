@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class RenderHelper
     {
         /// <summary>

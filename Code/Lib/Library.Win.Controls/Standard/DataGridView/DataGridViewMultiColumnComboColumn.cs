@@ -9,24 +9,37 @@ using Library.HelperUtility;
 
 namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewMultiColumnComboColumn : DataGridViewComboBoxColumn
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public DataGridViewMultiColumnComboColumn()
         {
             //Set the type used in the DataGridView
             this.CellTemplate = new DataGridViewMultiColumnComboCell();
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string[] DisplayNames { get; set; }
     }
 
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewMultiColumnComboCell : DataGridViewComboBoxCell
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public override Type EditType
         {
             get
@@ -34,6 +47,12 @@ namespace Library.Controls
                 return typeof(DataGridViewMultiColumnComboEditingControl);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rowIndex"></param>
+        /// <param name="initialFormattedValue"></param>
+        /// <param name="dataGridViewCellStyle"></param>
         public override void InitializeEditingControl(int rowIndex, object initialFormattedValue, DataGridViewCellStyle dataGridViewCellStyle)
         {
             base.InitializeEditingControl(rowIndex, initialFormattedValue, dataGridViewCellStyle);
@@ -43,20 +62,34 @@ namespace Library.Controls
 
 
     }
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewMultiColumnComboEditingControl : DataGridViewComboBoxEditingControl
     {
 
         const int FixedAlignColumnSize = 100;
         const int LineWidth = 1;
+        /// <summary>
+        /// 
+        /// </summary>
         public DataGridViewMultiColumnComboCell OwnerCell = null;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DataGridViewMultiColumnComboEditingControl()
         {
             this.DrawMode = DrawMode.OwnerDrawFixed;
             this.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+      
+
         /**************************************************************************************************/
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
             Rectangle rec = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
@@ -104,7 +137,7 @@ namespace Library.Controls
                     itemarrary = new object[column.DisplayNames.Length];
                     for (int i = 0; i < itemarrary.Length; i++)
                     {
-                        if (columns.Contains(column.DisplayNames[i])) ;
+                        if (columns.Contains(column.DisplayNames[i])) 
                         {
                             itemarrary[i] = row[i];
                         }

@@ -8,6 +8,9 @@ using Library.Data;
 
 namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ComboBox : System.Windows.Forms.ComboBox, IQueryControl
     {
         private ControlState _state = ControlState.Normal;
@@ -43,7 +46,9 @@ namespace Library.Controls
 
         #endregion
         #region Constructor
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ComboBox()
         {
             SetStyles();
@@ -53,13 +58,19 @@ namespace Library.Controls
 
         #endregion
         #region Override
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
         {
             _state = ControlState.Highlight;
             base.OnMouseEnter(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
         {
             if (_state == ControlState.Highlight && Focused)
@@ -76,7 +87,10 @@ namespace Library.Controls
             }
             base.OnMouseLeave(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             if (mevent.Button == MouseButtons.Left)
@@ -85,7 +99,10 @@ namespace Library.Controls
             }
             base.OnMouseDown(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
             if (mevent.Button == MouseButtons.Left)
@@ -94,19 +111,28 @@ namespace Library.Controls
             }
             base.OnMouseUp(mevent);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
         {
             _state = ControlState.Normal;
             base.OnLostFocus(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
         {
             _state = Enabled ? ControlState.Normal : ControlState.Disabled;
             base.OnEnabledChanged(e);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {//TextBox是由系统进程绘制，重载OnPaint方法将不起作用
 
@@ -125,7 +151,10 @@ namespace Library.Controls
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -155,7 +184,11 @@ namespace Library.Controls
         }
         private readonly Image _normalImg = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.qqcmb.png");
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="g"></param>
         protected virtual void DrawFlatComboDropDown(ComboBox comboBox, Graphics g)
         {
             var clientRect = comboBox.ClientRectangle;
@@ -289,8 +322,14 @@ namespace Library.Controls
         }
 
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
         public static IQueryDataProvider DefaultQueryDataProvider { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public IQueryDataProvider CurrentQueryDataProvider
         {
@@ -306,7 +345,9 @@ namespace Library.Controls
 
         private string _queryDataID;
         private IQueryDataProvider _currentQueryDataProvider;
-
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public string QueryDataID
         {
@@ -319,7 +360,9 @@ namespace Library.Controls
                 GetDataSource();
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool LoadDataing { get; protected set; }
         private void GetDataSource()
         {

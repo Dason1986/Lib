@@ -9,6 +9,11 @@ namespace Library
     /// </summary>
     public class RevertibleChangeModel : PropertyChangeModel, IRevertibleChangeTracking
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="propetyname"></param>
+        /// <param name="value"></param>
         protected internal void OnSaveBaseValue(string propetyname, object value)
         {
             this.OnPropertyChanged(propetyname);
@@ -21,6 +26,9 @@ namespace Library
 
         private bool _isrejecting;
         IDictionary<string, object> _cacheValue;
+        /// <summary>
+        /// 
+        /// </summary>
         public void RejectChanges()
         {
             if (_cacheValue == null) return;
@@ -35,12 +43,16 @@ namespace Library
             }
             _isrejecting = false;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void AcceptChanges()
         {
             _cacheValue = null;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsChanged
         {
             get { return _cacheValue == null; }

@@ -63,7 +63,12 @@ namespace Library.Draw
                 return (v1 + (v2 - v1) * ((2.0 / 3) - vH) * 6);
             return v1;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator ==(HSLColor item1, HSLColor item2)
         {
             return (
@@ -72,7 +77,12 @@ namespace Library.Draw
                 && item1.Luminance == item2.Luminance
                 );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator !=(HSLColor item1, HSLColor item2)
         {
             return (
@@ -119,14 +129,21 @@ namespace Library.Draw
         {
             return new HSLColor(this.Hue + ((c2.Hue - this.Hue) * amount), this.Saturation + ((c2.Saturation - this.Saturation) * amount), this.Luminance + ((c2.Luminance - this.Luminance) * amount));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(Object obj)
         {
             if (obj == null || GetType() != obj.GetType()) return false;
 
             return (this == (HSLColor)obj);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return Hue.GetHashCode() ^ Saturation.GetHashCode() ^

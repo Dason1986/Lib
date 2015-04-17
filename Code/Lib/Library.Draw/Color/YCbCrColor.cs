@@ -13,6 +13,10 @@ namespace Library.Draw
     [TypeConverter(typeof(YCbCrColorConverter))]
     public struct YCbCrColor : IToRGBColor
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Color ToRGB()
         {
             float r = Math.Max(0.0f, Math.Min(1.0f, (float)(this.Y + 0.0000 * this.Cb + 1.4022 * this.Cr)));

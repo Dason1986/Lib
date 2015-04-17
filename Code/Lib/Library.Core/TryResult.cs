@@ -210,6 +210,10 @@ namespace Library
             get { return _hasError; }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Error == null ? string.Format("[{1}][{0}]", Value, typeof(T).FullName) : string.Format("[{0}][{1}]", Error.GetType().Name, Error.Message);

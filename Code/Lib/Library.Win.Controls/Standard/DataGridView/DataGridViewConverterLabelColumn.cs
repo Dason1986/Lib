@@ -10,27 +10,45 @@ using System.Windows.Forms;
 
 namespace Library.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewConverterLabelColumn : DataGridViewTextBoxColumn
     {
         private const bool _readOnly = true;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DataGridViewConverterLabelColumn()
         {
             this.CellTemplate = new DataGridViewConverterLabelCell();
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(false)]
         public override bool ReadOnly
         {
             get { return _readOnly; }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public IDataCellConverter Converter { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(null)]
         public object Parameter { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override object Clone()
         {
             var obj = (DataGridViewConverterLabelColumn)base.Clone();
@@ -39,7 +57,10 @@ namespace Library.Controls
             obj.Parameter = this.Parameter;
             return obj;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder(64);
@@ -51,7 +72,9 @@ namespace Library.Controls
             return ((object)stringBuilder).ToString();
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IDataCellConverter
     {
         /// <summary>
@@ -65,27 +88,44 @@ namespace Library.Controls
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class DataConverterDelegate : IDataCellConverter
     {
         private readonly Func<object, object, object> _func;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="func"></param>
         public DataConverterDelegate(Func<object, object, object> func)
         {
             _func = func;
             if (func == null) throw new ArgumentNullException("func");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="parameter"></param>
+        /// <param name="cellStyle"></param>
+        /// <returns></returns>
         public object Convert(object value, object parameter, DataGridViewCellStyle cellStyle)
         {
             return _func(value, parameter);
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewConverterLabelCell : DataGridViewTextBoxCell
     {
         private static Type defaultEditType = typeof(DataGridViewTextBoxEditingControl);
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override Type EditType
         {
             get
@@ -93,6 +133,20 @@ namespace Library.Controls
                 return defaultEditType; // the type is DataGridViewNumericUpDownEditingControl
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="graphics"></param>
+        /// <param name="clipBounds"></param>
+        /// <param name="cellBounds"></param>
+        /// <param name="rowIndex"></param>
+        /// <param name="cellState"></param>
+        /// <param name="value"></param>
+        /// <param name="formattedValue"></param>
+        /// <param name="errorText"></param>
+        /// <param name="cellStyle"></param>
+        /// <param name="advancedBorderStyle"></param>
+        /// <param name="paintParts"></param>
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             var column = this.OwningColumn as DataGridViewConverterLabelColumn;
@@ -108,6 +162,7 @@ namespace Library.Controls
             else
                 base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, dis, dis, errorText, cellStyle, advancedBorderStyle, paintParts);
         }
+
 
         private object GetDisplayValue(int rowIndex, DataGridViewCellStyle cellStyle, DataGridViewConverterLabelColumn column, object dis)
         {
@@ -158,7 +213,10 @@ namespace Library.Controls
             height = height - 4;
             return new SizeF(width, height);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return "DataGridViewConverterLabelCell { ColumnIndex=" + this.ColumnIndex.ToString((IFormatProvider)CultureInfo.CurrentCulture) + ", RowIndex=" + this.RowIndex.ToString((IFormatProvider)CultureInfo.CurrentCulture) + " }";

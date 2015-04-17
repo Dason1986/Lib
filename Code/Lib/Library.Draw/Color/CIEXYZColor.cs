@@ -29,7 +29,12 @@ namespace Library.Draw
         private double x;
         private double y;
         private double z;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator ==(CIEXYZColor item1, CIEXYZColor item2)
         {
             return (
@@ -38,7 +43,12 @@ namespace Library.Draw
                 && item1.Z == item2.Z
                 );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
         public static bool operator !=(CIEXYZColor item1, CIEXYZColor item2)
         {
             return (
@@ -80,21 +90,33 @@ namespace Library.Draw
                 return this.z;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
         public CIEXYZColor(double x, double y, double z)
         {
             this.x = (x > 0.9505) ? 0.9505 : ((x < 0) ? 0 : x);
             this.y = (y > 1.0) ? 1.0 : ((y < 0) ? 0 : y);
             this.z = (z > 1.089) ? 1.089 : ((z < 0) ? 0 : z);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(Object obj)
         {
             if (obj == null || GetType() != obj.GetType()) return false;
 
             return (this == (CIEXYZColor)obj);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();

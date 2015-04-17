@@ -14,7 +14,9 @@ namespace Library.Att
     {
         private readonly string _resourceName;
         private bool replaced;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override string Description
         {
             get

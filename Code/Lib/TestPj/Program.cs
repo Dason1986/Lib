@@ -30,17 +30,14 @@ namespace TestPj
 
     class Program
     {
-        const string StrDate = "20101102";
-        static readonly int? Number1 = 5;
-        const string StrGUID = "e56f90f3-4622-4896-b7a3-fd94dafe33cc";
-        const int NumDate = 20101102;
+        public const string StrDate = "20101102";
+        public static readonly int? Number1 = 5;
+        public const string StrGUID = "e56f90f3-4622-4896-b7a3-fd94dafe33cc";
+        public const int NumDate = 20101102;
 
         static void Main(string[] args)
         {
 
-           var table= System.Data.Common.DbProviderFactories.GetFactoryClasses();
-            Console.WriteLine(table);
-            
             Console.ReadKey();
             Console.ReadLine();
         }

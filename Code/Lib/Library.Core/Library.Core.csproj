@@ -62,6 +62,7 @@
     <Compile Include="Att\LanguageDisplayNameAttribute.cs" />
     <Compile Include="Att\LanguageRegisterAttribute.cs" />
     <Compile Include="Att\LanguageResourceManagement.cs" />
+    <Compile Include="Date\DateTimePeriod.cs" />
     <Compile Include="Date\CalendarInfo.cs" />
     <Compile Include="Date\ChineseCalendar.cs" />
     <Compile Include="Date\HolidayFormat.cs" />
@@ -85,7 +86,6 @@
     <Compile Include="Date\LunarHoliday.cs" />
     <Compile Include="Date\SolarHoliday.cs" />
     <Compile Include="Date\WeekHoliday.cs" />
-    <Compile Include="FormatConst.cs" />
     <Compile Include="interface\Data\FieldCollection.cs" />
     <Compile Include="interface\Data\FilterCollection.cs" />
     <Compile Include="interface\Data\IQueryField.cs" />

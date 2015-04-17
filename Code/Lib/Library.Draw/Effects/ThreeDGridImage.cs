@@ -47,14 +47,18 @@ namespace Library.Draw.Effects
                 _opetion.Depth = value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ThreeDGridOption();
         }
         private ThreeDGridOption _opetion;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override ImageOption Opetion
         {
             get { return _opetion; }
@@ -82,11 +86,19 @@ namespace Library.Draw.Effects
             [LanguageDescription("連線深度"), LanguageDisplayName("連線深度"), Category("濾鏡選項")]
             public int Depth { get; set; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ThreeDGridOption() { GridSize = 50,Depth = 10};
         }
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override Image ProcessBitmap()
         {
             var size = GridSize<=0?10:GridSize;
@@ -120,7 +132,10 @@ namespace Library.Draw.Effects
 
             return bmp;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             var size = GridSize <= 0 ? 10 : GridSize;

@@ -62,16 +62,30 @@ namespace Library
             IsReadOnly = isReadOnly;
             Value = value;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Group { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Description { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Key { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsReadOnly { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Value { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
         public void SetValue(string value)
         {
             if (IsReadOnly) throw new ReadOnlyException(Key);

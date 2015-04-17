@@ -5,7 +5,7 @@ namespace Library.Date
     /// <summary>
     /// 
     /// </summary>
-    public struct WeekHoliday : IHoliday, IFormattable, IComparable, IComparable<WeekHoliday>, IEquatable<WeekHoliday>
+    public struct WeekHoliday : IHoliday, IComparable, IComparable<WeekHoliday>, IEquatable<WeekHoliday>
     {
         /// <summary>
         /// ÔÂ·Ý
@@ -87,7 +87,12 @@ namespace Library.Date
             return string.Format(HolidayFormat.FormatProvider, format, this);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="formatProvider"></param>
+        /// <returns></returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
             return HolidayFormat.FormatProvider.Format(format, this, formatProvider);
@@ -161,13 +166,22 @@ namespace Library.Date
         {
             return t1.Month * 100 + t1.WeekAtMonth * 7 + t1.WeekDay >= t2.Month * 100 + t2.WeekAtMonth * 7 + t2.WeekDay;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (obj == null) return 1;
             if (obj is WeekHoliday == false) throw new ChineseDateTimeException(11002.107);
             return CompareTo((WeekHoliday)obj);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(WeekHoliday other)
         {
             var x = this.Month * 100 + this.WeekAtMonth * 7 + this.WeekDay;
@@ -199,9 +213,30 @@ namespace Library.Date
         {
             return t1.Equals(t2);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(WeekHoliday other)
         {
             return CompareTo(other) == 0;
+        }   /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return base.Equals((WeekHoliday)obj);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         #endregion
     }

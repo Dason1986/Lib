@@ -15,16 +15,25 @@ namespace Library.Draw.Print
         // and
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
         //
-
+        /// <summary>
+        /// 
+        /// </summary>
         public PrintException()
         {
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         public PrintException(string message)
             : base(message)
         {
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="inner"></param>
         public PrintException(string message, Exception inner)
             : base(message, inner)
         {
@@ -50,6 +59,11 @@ namespace Library.Draw.Print
         {
           
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
         protected PrintException(
             SerializationInfo info,
             StreamingContext context)
