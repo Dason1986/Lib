@@ -18,7 +18,7 @@ namespace Library.Win
         /// <param name="key"></param>
         /// <typeparam name="TModel"></typeparam>
         /// <returns></returns>
-        public static TModel GetSession<TModel>(string key) where TModel : class,new()
+        public static TModel GetSession<TModel>(string key) 
         {
 
             var obj = Dictionary[key];

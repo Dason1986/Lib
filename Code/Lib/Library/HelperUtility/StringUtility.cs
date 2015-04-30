@@ -94,7 +94,7 @@ namespace Library.HelperUtility
 
             if (typeof(Guid) == tmpType && str.Length == 36) return Guid.Parse(str);
 
-            if (tmpType.IsEnum) return Enum.Parse(tmpType, str);
+            if (tmpType.IsEnum && Enum.IsDefined(tmpType, str)) return Enum.Parse(tmpType, str);
             if (targetType == typeof(bool))
             {
                 if (str == "1" ||

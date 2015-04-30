@@ -11,7 +11,7 @@
         /// <param name="key"></param>
         /// <typeparam name="TModel"></typeparam>
         /// <returns></returns>
-        public static TModel GetSession<TModel>(string key) where TModel : class,new()
+        public static TModel GetSession<TModel>(string key)
         {
             var session = System.Web.HttpContext.Current.Session;
             var obj = session[key];

@@ -1,4 +1,5 @@
 ﻿using System;
+using Library.Date;
 using Library.HelperUtility;
 using Library.Test;
 using NUnit.Framework;
@@ -81,14 +82,29 @@ namespace TestPj.Test
         public void DateFormatText()
         {
 
-            
+
             var now = DateTime.Now;
             var few = now.AddMinutes(-5);
-            Console.WriteLine("{0} {1}", few, FormatUtility.DateFormatChinese(few));
-            for (int i = 0; i < 365; i++)
+            Console.WriteLine("{0} {1} {2}", few, DateTimeUtility.GetPeriod(few), DateTimeUtility.FormatPeriodText(few));
+            for (int i = 1; i <= 365; i++)
             {
                 var time = now.AddDays(-i);
-                Console.WriteLine("{0} {1} {2}", time, FormatUtility.DateFormatPeriod(time), FormatUtility.DateFormatChinese(time));
+                Console.WriteLine("{0} {1} {2}", time, DateTimeUtility.GetPeriod(time), DateTimeUtility.FormatPeriodText(time));
+                time = now.AddDays(+i);
+                Console.WriteLine("{0} {1} {2}", time, DateTimeUtility.GetPeriod(time), DateTimeUtility.FormatPeriodText(time));
+            }
+
+
+        }
+        [Test]
+        public void GetDateFormatText()
+        {
+
+
+            var periods = Enum.GetValues(typeof(DateTimePeriod));
+            foreach (DateTimePeriod period in periods)
+            {
+                Console.WriteLine("{0}:{1}", period, period.GetDateTimeRange());
             }
 
 

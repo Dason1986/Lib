@@ -1,110 +1,22 @@
-2015/04/17-09:04:50.640 190c Recovering log #819
-2015/04/17-09:04:50.650 190c Level-0 table #832: started
-2015/04/17-09:04:50.891 190c Level-0 table #832: 2504786 bytes OK
-2015/04/17-09:04:50.962 190c Delete type=0 #819
-2015/04/17-09:04:50.963 190c Delete type=3 #808
-2015/04/17-09:14:20.114 e78 Compacting 1@0 + 1@1 files
-2015/04/17-09:14:20.150 e78 Generated table #834: 170 keys, 114889 bytes
-2015/04/17-09:14:20.205 e78 Generated table #835: 44 keys, 1515966 bytes
-2015/04/17-09:14:20.205 e78 Compacted 1@0 + 1@1 files => 1630855 bytes
-2015/04/17-09:14:20.222 e78 Delete type=2 #822
-2015/04/17-09:14:20.222 e78 Delete type=2 #832
-2015/04/17-09:14:20.222 e78 compacted to: files[ 0 2 10 0 0 0 0 ]
-2015/04/17-09:14:38.190 e78 Compacting 1@1 + 6@2 files
-2015/04/17-09:14:38.433 e78 Generated table #836: 1418 keys, 2103777 bytes
-2015/04/17-09:14:38.654 e78 Generated table #837: 212 keys, 2104002 bytes
-2015/04/17-09:14:38.819 e78 Generated table #838: 138 keys, 2120885 bytes
-2015/04/17-09:14:38.902 e78 Generated table #839: 202 keys, 2110697 bytes
-2015/04/17-09:14:39.002 e78 Generated table #840: 245 keys, 2105030 bytes
-2015/04/17-09:14:39.146 e78 Generated table #841: 1052 keys, 2147789 bytes
-2015/04/17-09:14:39.204 e78 Generated table #842: 1 keys, 1503841 bytes
-2015/04/17-09:14:39.204 e78 Compacted 1@1 + 6@2 files => 14196021 bytes
-2015/04/17-09:14:39.221 e78 Delete type=2 #823
-2015/04/17-09:14:39.221 e78 Delete type=2 #824
-2015/04/17-09:14:39.221 e78 Delete type=2 #825
-2015/04/17-09:14:39.222 e78 Delete type=2 #826
-2015/04/17-09:14:39.222 e78 Delete type=2 #827
-2015/04/17-09:14:39.223 e78 Delete type=2 #828
-2015/04/17-09:14:39.223 e78 Delete type=2 #834
-2015/04/17-09:14:39.223 e78 compacted to: files[ 0 1 11 0 0 0 0 ]
-2015/04/16-09:29:28.004 e78 Level-0 table #844: started
-2015/04/16-09:29:28.274 e78 Level-0 table #844: 4171648 bytes OK
-2015/04/16-09:29:28.311 e78 Delete type=2 #823
-2015/04/16-09:29:28.312 e78 Delete type=0 #833
-2015/04/16-09:29:28.570 e78 Compacting 1@0 + 1@1 files
-2015/04/16-09:29:28.685 e78 Generated table #845: 43 keys, 88578 bytes
-2015/04/16-09:29:28.745 e78 Generated table #846: 44 keys, 1515966 bytes
-2015/04/16-09:29:28.745 e78 Compacted 1@0 + 1@1 files => 1604544 bytes
-2015/04/16-09:29:28.769 e78 Delete type=2 #835
-2015/04/16-09:29:28.770 e78 Delete type=2 #844
-2015/04/16-09:29:28.771 e78 compacted to: files[ 0 2 11 0 0 0 0 ]
-2015/04/15-09:29:38.242 e78 Compacting 1@1 + 6@2 files
-2015/04/15-09:29:38.457 e78 Generated table #847: 1411 keys, 2104913 bytes
-2015/04/15-09:29:38.657 e78 Generated table #848: 212 keys, 2107080 bytes
-2015/04/15-09:29:38.836 e78 Generated table #849: 138 keys, 2120885 bytes
-2015/04/15-09:29:39.010 e78 Generated table #850: 202 keys, 2112797 bytes
-2015/04/15-09:29:39.140 e78 Generated table #851: 245 keys, 2105030 bytes
-2015/04/15-09:29:39.272 e78 Generated table #852: 1050 keys, 2147111 bytes
-2015/04/15-09:29:39.273 e78 Compacted 1@1 + 6@2 files => 12697816 bytes
-2015/04/15-09:29:39.298 e78 Delete type=2 #836
-2015/04/15-09:29:39.299 e78 Delete type=2 #837
-2015/04/15-09:29:39.300 e78 Delete type=2 #838
-2015/04/15-09:29:39.301 e78 Delete type=2 #839
-2015/04/15-09:29:39.302 e78 Delete type=2 #840
-2015/04/15-09:29:39.302 e78 Delete type=2 #841
-2015/04/15-09:29:39.303 e78 Delete type=2 #845
-2015/04/15-09:29:39.305 e78 compacted to: files[ 0 1 11 0 0 0 0 ]
-2015/04/17-15:38:34.948 e78 Level-0 table #854: started
-2015/04/17-15:38:35.435 e78 Level-0 table #854: 4321538 bytes OK
-2015/04/17-15:38:35.524 e78 Delete type=0 #843
-2015/04/17-15:41:47.993 e78 Compacting 1@0 + 1@1 files
-2015/04/17-15:41:48.178 e78 Generated table #855: 403 keys, 2129262 bytes
-2015/04/17-15:41:48.337 e78 Generated table #856: 364 keys, 470685 bytes
-2015/04/17-15:41:48.452 e78 Generated table #857: 44 keys, 1515966 bytes
-2015/04/17-15:41:48.452 e78 Compacted 1@0 + 1@1 files => 4115913 bytes
-2015/04/17-15:41:48.498 e78 Delete type=2 #846
-2015/04/17-15:41:48.499 e78 Delete type=2 #854
-2015/04/17-15:41:48.500 e78 compacted to: files[ 0 3 11 0 0 0 0 ]
-2015/04/17-15:43:01.130 e78 Compacting 1@1 + 5@2 files
-2015/04/17-15:43:01.402 e78 Generated table #858: 1411 keys, 2121060 bytes
-2015/04/17-15:43:01.860 e78 Generated table #859: 212 keys, 2109992 bytes
-2015/04/17-15:43:02.061 e78 Generated table #860: 133 keys, 2105323 bytes
-2015/04/17-15:43:02.308 e78 Generated table #861: 203 keys, 2122983 bytes
-2015/04/17-15:43:02.635 e78 Generated table #862: 231 keys, 2103553 bytes
-2015/04/17-15:43:02.728 e78 Generated table #863: 23 keys, 108306 bytes
-2015/04/17-15:43:02.728 e78 Compacted 1@1 + 5@2 files => 10671217 bytes
-2015/04/17-15:43:02.752 e78 Delete type=2 #847
-2015/04/17-15:43:02.754 e78 Delete type=2 #848
-2015/04/17-15:43:02.756 e78 Delete type=2 #849
-2015/04/17-15:43:02.760 e78 Delete type=2 #850
-2015/04/17-15:43:02.761 e78 Delete type=2 #851
-2015/04/17-15:43:02.762 e78 Delete type=2 #855
-2015/04/17-15:43:02.762 e78 compacted to: files[ 0 2 12 0 0 0 0 ]
-2015/04/17-16:07:45.681 e78 Compacting 1@1 + 3@2 files
-2015/04/17-16:07:45.964 e78 Generated table #864: 217 keys, 2105786 bytes
-2015/04/17-16:07:46.183 e78 Generated table #865: 1093 keys, 2303373 bytes
-2015/04/17-16:07:46.183 e78 Compacted 1@1 + 3@2 files => 4409159 bytes
-2015/04/17-16:07:46.296 e78 Delete type=2 #852
-2015/04/17-16:07:46.296 e78 Delete type=2 #856
-2015/04/17-16:07:46.297 e78 Delete type=2 #862
-2015/04/17-16:07:46.298 e78 Delete type=2 #863
-2015/04/17-16:07:46.298 e78 compacted to: files[ 0 1 11 0 0 0 0 ]
-2015/04/17-16:13:58.265 e78 Level-0 table #867: started
-2015/04/17-16:13:58.520 e78 Level-0 table #867: 4039731 bytes OK
-2015/04/17-16:13:58.585 e78 Delete type=0 #853
-2015/04/17-16:18:07.943 e78 Compacting 1@1 + 6@2 files
-2015/04/17-16:18:08.440 e78 Generated table #868: 1401 keys, 2110385 bytes
-2015/04/17-16:18:08.658 e78 Generated table #869: 212 keys, 2104139 bytes
-2015/04/17-16:18:09.041 e78 Generated table #870: 129 keys, 2117457 bytes
-2015/04/17-16:18:09.342 e78 Generated table #871: 198 keys, 2108899 bytes
-2015/04/17-16:18:09.580 e78 Generated table #872: 208 keys, 2196632 bytes
-2015/04/17-16:18:09.929 e78 Generated table #873: 1116 keys, 2443257 bytes
-2015/04/17-16:18:09.929 e78 Compacted 1@1 + 6@2 files => 13080769 bytes
-2015/04/17-16:18:10.033 e78 Delete type=2 #858
-2015/04/17-16:18:10.033 e78 Delete type=2 #859
-2015/04/17-16:18:10.034 e78 Delete type=2 #860
-2015/04/17-16:18:10.034 e78 Delete type=2 #861
-2015/04/17-16:18:10.035 e78 Delete type=2 #864
-2015/04/17-16:18:10.035 e78 Delete type=2 #865
-2015/04/17-16:18:10.036 e78 Delete type=2 #867
-2015/04/17-16:18:10.036 e78 compacted to: files[ 0 1 11 0 0 0 0 ]
+2015/04/30-15:40:11.962 1a70 Recovering log #925
+2015/04/30-15:40:11.968 1a70 Level-0 table #939: started
+2015/04/30-15:40:12.055 1a70 Level-0 table #939: 2125164 bytes OK
+2015/04/30-15:40:12.335 1a70 Delete type=0 #925
+2015/04/30-15:40:12.335 1a70 Delete type=3 #911
+2015/04/30-15:52:12.852 16ec Moved #939 to level-1 2125164 bytes OK: files[ 0 2 11 0 0 0 0 ]
+2015/04/30-15:52:20.437 16ec Compacting 1@1 + 6@2 files
+2015/04/30-15:52:20.589 16ec Generated table #941: 1412 keys, 2103768 bytes
+2015/04/30-15:52:20.713 16ec Generated table #942: 195 keys, 2119395 bytes
+2015/04/30-15:52:20.838 16ec Generated table #943: 152 keys, 2133950 bytes
+2015/04/30-15:52:20.938 16ec Generated table #944: 163 keys, 2105907 bytes
+2015/04/30-15:52:21.039 16ec Generated table #945: 206 keys, 2101285 bytes
+2015/04/30-15:52:21.138 16ec Generated table #946: 1177 keys, 2926049 bytes
+2015/04/30-15:52:21.138 16ec Compacted 1@1 + 6@2 files => 13490354 bytes
+2015/04/30-15:52:21.179 16ec Delete type=2 #929
+2015/04/30-15:52:21.180 16ec Delete type=2 #930
+2015/04/30-15:52:21.181 16ec Delete type=2 #931
+2015/04/30-15:52:21.181 16ec Delete type=2 #932
+2015/04/30-15:52:21.182 16ec Delete type=2 #933
+2015/04/30-15:52:21.182 16ec Delete type=2 #934
+2015/04/30-15:52:21.183 16ec Delete type=2 #939
+2015/04/30-15:52:21.184 16ec compacted to: files[ 0 1 11 0 0 0 0 ]

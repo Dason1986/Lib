@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVP\ApplicationMessage.cs" />
+    <Compile Include="MVP\Bootstrapper.cs" />
     <Compile Include="MVP\IApplicationFacade.cs" />
     <Compile Include="MVP\IPresenter.cs" />
     <Compile Include="MVP\IView.cs" />

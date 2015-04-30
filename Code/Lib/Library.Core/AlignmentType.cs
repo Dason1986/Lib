@@ -4,20 +4,20 @@ using Library.Att;
 namespace Library
 {
     /// <summary>
-    /// 方向
+    /// 鏂瑰悜
     /// </summary>
     [Flags]
     public enum AlignmentType
     {
         /// <summary>
-        /// 垂直
+        /// 鍨傜洿
         /// </summary>
-        [LanguageDescription("垂直"), LanguageDisplayName("垂直")]
+        [LanguageDescription("鍨傜洿"), LanguageDisplayName("鍨傜洿")]
         Horizontally = 1,
         /// <summary>
-        /// 橫向
+        /// 姗悜
         /// </summary> 
-        [LanguageDescription("橫向"), LanguageDisplayName("橫向")]
+        [LanguageDescription("姗悜"), LanguageDisplayName("姗悜")]
         Vertically = 2,
 
     }

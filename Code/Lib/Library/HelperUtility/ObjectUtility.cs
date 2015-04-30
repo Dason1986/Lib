@@ -74,7 +74,7 @@ namespace Library.HelperUtility
 
             try
             {
-                return Cast(value, targetType, null);
+                return Cast(value, targetType);
 
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace Library.HelperUtility
             if (tmpType.IsInstanceOfType(value)) return value;
             if (tmpType == typeof(string)) return value.ToString();
 
-            var convertible = value as IConvertible;
+
 
             var code = Convert.GetTypeCode(value);
             switch (code)
@@ -128,12 +128,13 @@ namespace Library.HelperUtility
                     {
                         if (tmpType.IsEnum)
                         {
-                            return Enum.ToObject(tmpType, value);
+                            if (Enum.IsDefined(tmpType, value)) return Enum.ToObject(tmpType, value);
                         }
                         if (tmpType == typeof(bool))
                         {
                             return (decimal)value > 0;
                         }
+                        var convertible = value as IConvertible;
                         if (convertible != null) return Convert.ChangeType(value, tmpType);
                         break;
                     }
@@ -158,7 +159,7 @@ namespace Library.HelperUtility
         {
             int min = Math.Min(a, b);
             int max = Math.Max(a, b);
-           
+
             return random.Next(min, max);
         }
     }

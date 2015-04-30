@@ -75,6 +75,7 @@
     <Compile Include="FastReflection\PropertyAccessorCache.cs" />
     <Compile Include="FastReflection\PropertyAccessorFactory.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="HelperUtility\DateTimeUtility.cs" />
     <Compile Include="HelperUtility\DictionaryHelper.cs" />
     <Compile Include="HelperUtility\ErrorMessageBuilder.cs" />
     <Compile Include="HelperUtility\ExpressionHelper.cs" />
