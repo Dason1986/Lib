@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Library.ComponentModel;
 using Library.HelperUtility;
 
 namespace Library
@@ -55,7 +56,7 @@ namespace Library
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("[{0} , {1}]",Begin,End);
+            return string.Format("[{0} , {1}]", Begin, End);
         }
     }
 
@@ -192,6 +193,10 @@ namespace Library
         /// </summary>
         Same = 64
     }
+}
+namespace Library.HelperUtility
+{
+
     /// <summary>
     /// 
     /// </summary>

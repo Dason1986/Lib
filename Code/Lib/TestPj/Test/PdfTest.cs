@@ -66,7 +66,7 @@ namespace TestPj.Test
     {
 
 
-        [TestFixtureSetUp]
+        [OneTimeSetUpAttribute]
         public void Init()
         {
             dt = new DataTable();

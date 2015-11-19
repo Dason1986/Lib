@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using Library.Draw;
 using Library.Draw.Effects;
+using Library.ComponentModel;
 using Library.HelperUtility;
 
 namespace Library.Controls

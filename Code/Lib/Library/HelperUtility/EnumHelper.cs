@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 
 namespace Library.HelperUtility
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
-    public static class EnumHelper
+public static class EnumHelper
     {
         /// <summary>
         /// 

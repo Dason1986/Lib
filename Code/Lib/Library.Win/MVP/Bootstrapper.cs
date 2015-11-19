@@ -14,7 +14,6 @@ namespace Library.Win.MVP
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         public virtual void Run()
         {
             Context = new ApplicationContext {MainForm = new T()};

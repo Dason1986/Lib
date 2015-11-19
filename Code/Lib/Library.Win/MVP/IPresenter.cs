@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Library.ComponentModel;
+using Library.ComponentModel.ComponentPatterns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Library.ComponentPatterns;
 
 namespace Library.Win.MVP
 {

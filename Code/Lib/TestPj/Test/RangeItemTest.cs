@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using Library;
 using NUnit.Framework;
+using Library.HelperUtility;
 
 namespace TestPj.Test
 {
@@ -34,7 +35,7 @@ namespace TestPj.Test
         readonly List<AppData> _erlist = new List<AppData>();
 
 
-        [TestFixtureSetUp]
+        [OneTimeSetUpAttribute]
         public void Init()
         {
             //無相交

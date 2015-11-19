@@ -30,7 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\VSSDK.DebuggerVisualizers.11.0.4\lib\net20\Microsoft.VisualStudio.DebuggerVisualizers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -63,10 +66,6 @@
       <Project>{4612e29a-0f6c-4029-adbc-b8d3ee99d241}</Project>
       <Name>Library.Draw</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Library.Web\Library.Web.csproj">
-      <Project>{9532f560-e33a-48ac-8933-7d2264b2b29a}</Project>
-      <Name>Library.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Library.Win.Controls\Library.Win.Controls.csproj">
       <Project>{c2b69ebe-b5b0-43f3-b310-534de58e83f7}</Project>
       <Name>Library.Win.Controls</Name>
@@ -79,6 +78,9 @@
       <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
       <Name>Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

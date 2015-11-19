@@ -9,7 +9,7 @@ namespace TestPj.Test
     {
         int? _val1;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUpAttribute]
         public void Init()
         {
             _val1 = 1;

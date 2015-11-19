@@ -2,3 +2,11 @@ C:\Dason\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
 C:\Dason\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
 C:\Dason\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\Dason\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+\\VBOXSVR\Code\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+\\VBOXSVR\Code\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+\\VBOXSVR\Code\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+\\VBOXSVR\Code\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

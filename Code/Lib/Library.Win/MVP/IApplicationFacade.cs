@@ -8,7 +8,7 @@ namespace Library.Win.MVP
     /// <summary>
     /// 
     /// </summary>
-    public sealed class ApplicationFacade
+    public   class ApplicationFacade
     {
         private ApplicationFacade()
         {

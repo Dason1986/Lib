@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Library.Annotations;
+using Library.ComponentModel;
 using Library.HelperUtility;
 
 namespace Library.IDCrad

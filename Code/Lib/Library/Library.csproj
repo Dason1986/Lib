@@ -77,7 +77,6 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="HelperUtility\DateTimeUtility.cs" />
     <Compile Include="HelperUtility\DictionaryHelper.cs" />
-    <Compile Include="HelperUtility\ErrorMessageBuilder.cs" />
     <Compile Include="HelperUtility\ExpressionHelper.cs" />
     <Compile Include="HelperUtility\FastReflectionExtensions.cs" />
     <Compile Include="HelperUtility\FileUtility.cs" />

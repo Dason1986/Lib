@@ -11,12 +11,11 @@ using System.Windows.Forms;
 using Library;
 using Library.Att;
 using Library.Diagnostics;
-using Library.HelperUtility;
+using Library.ComponentModel;
 using Library.IDCrad;
 using Library.Management;
 using Library.Win;
-using Microsoft.VisualStudio.DebuggerVisualizers;
-
+using Library.HelperUtility;
 
 namespace TestWinform
 {

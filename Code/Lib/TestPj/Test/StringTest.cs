@@ -1,8 +1,9 @@
 ﻿using System;
 using Library.Date;
-using Library.HelperUtility;
+using Library.ComponentModel;
 using Library.Test;
 using NUnit.Framework;
+using Library.HelperUtility;
 
 namespace TestPj.Test
 {
@@ -12,7 +13,7 @@ namespace TestPj.Test
         const string Sourcestr = "String String";
         const string Tragestr = "STRING string";
 
-        [TestFixtureSetUp]
+        [OneTimeSetUpAttribute]
         public void Init()
         {
             Console.WriteLine("Char count:{0}", Sourcestr.Length);

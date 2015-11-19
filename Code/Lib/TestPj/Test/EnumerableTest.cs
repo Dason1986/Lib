@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Library.HelperUtility;
+using Library.ComponentModel;
 using Library.Test;
 using NUnit.Framework;
+using Library.HelperUtility;
 
 namespace TestPj.Test
 {
@@ -11,7 +12,7 @@ namespace TestPj.Test
     public class EnumerableTest
     {
         readonly List<ParsonModle> _list = new List<ParsonModle>();
-        [TestFixtureSetUp]
+        [OneTimeSetUpAttribute]
         public void Init()
         {
             for (int i = 0; i < ConstValue.Times99999; i++)
