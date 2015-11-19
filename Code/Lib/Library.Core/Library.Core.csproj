@@ -62,6 +62,7 @@
     <Compile Include="Att\LanguageDisplayNameAttribute.cs" />
     <Compile Include="Att\LanguageRegisterAttribute.cs" />
     <Compile Include="Att\LanguageResourceManagement.cs" />
+    <Compile Include="ComponentModel\ISerialNumberBuilder.cs" />
     <Compile Include="Date\DateTimePeriod.cs" />
     <Compile Include="Date\CalendarInfo.cs" />
     <Compile Include="Date\ChineseCalendar.cs" />
@@ -94,7 +95,7 @@
     <Compile Include="ComponentModel\Data\IQueryOrder.cs" />
     <Compile Include="ComponentModel\Data\OrderCollection.cs" />
     <Compile Include="ComponentModel\Data\QueryHelper.cs" />
-    <Compile Include="ComponentModel\IDataCacheMonitor.cs" />
+    <Compile Include="ComponentModel\Data\IDataCacheMonitor.cs" />
     <Compile Include="ComponentModel\IIDCard.cs" />
     <Compile Include="ComponentModel\IO\IFileBuilder.cs" />
     <Compile Include="ComponentModel\IO\IOMonitor.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Ex\LibException.cs" />
     <Compile Include="Ex\LogicException.cs" />
     <Compile Include="ComponentModel\Model\EditableObjectException.cs" />
+    <Compile Include="IdentityGenerator.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ComponentModel\Model\PropertyChangeModel.cs" />

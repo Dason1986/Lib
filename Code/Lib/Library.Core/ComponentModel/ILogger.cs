@@ -7,38 +7,12 @@ namespace Library
 {
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public enum LogCategory
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        Fatal,
-        /// <summary>
-        /// 
-        /// </summary>
-        Error,
-        /// <summary>
-        /// 
-        /// </summary>
-        Warn,
-        /// <summary>
-        /// 
-        /// </summary>
-        Debug,
-        /// <summary>
-        /// 
-        /// </summary>
-        Info,
 
-    }
 
     /// <summary>
     /// 
     /// </summary>
-    public interface ILog
+    public interface ILogger
     {
 
         /// <summary>
@@ -72,13 +46,6 @@ namespace Library
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        LogCategory Category
-        {
-            get;
-        }
 
 
     }
@@ -88,22 +55,25 @@ namespace Library
     /// </summary>
     public static class LogManager
     {
-        static readonly ILog NullLogInstance = new ConsoleLog(LogCategory.Info);
+        static readonly ILogger NullLogInstance = new ConsoleLog();
 
         /// <summary>
-        /// Creates an <see cref="ILog"/> for the provided type.
+        /// Creates an <see cref="ILogger"/> for the provided type.
         /// </summary>
-        public static Func<Type, ILog> GetLog = type => NullLogInstance;
+        static readonly IDictionary<string, ILogger> loggerdic = new Dictionary<string, ILogger>();
         /// <summary>
         /// 
         /// </summary>
-        public static ILog NullLog { get { return NullLogInstance; } }
-        class ConsoleLog : ILog
+        public static ILogger Logger
         {
-            public ConsoleLog(LogCategory category)
+            get
             {
-                this.Category = category;
+                return NullLogInstance;
             }
+        }
+        class ConsoleLog : ILogger
+        {
+
 
             public string Name
             {
@@ -112,12 +82,40 @@ namespace Library
 
             public void Write(object message)
             {
-                Console.WriteLine(message);
+                try
+                {
+                    Console.WriteLine(message);
+                    foreach (ILogger item in loggerdic.Values)
+                    {
+                        item.Write(message);
+                    }
+                }
+                catch (Exception )
+                {
+
+                   
+                }
+
+                
             }
 
             public void Write(string format, params object[] args)
             {
-                Console.WriteLine(format, args);
+                
+                try
+                {
+                    Console.WriteLine(format, args);
+                    foreach (ILogger item in loggerdic.Values)
+                    {
+                     
+                        item.Write(format, args);
+                    }
+                }
+                catch (Exception)
+                {
+
+
+                }
             }
 
 
@@ -125,11 +123,24 @@ namespace Library
 
             public void Write(object message, Exception exception)
             {
-                Console.WriteLine(message);
-                Console.WriteLine(exception.ToString());
+              
+                try
+                {
+                    Console.WriteLine(message);
+                    Console.WriteLine(exception.ToString());
+                    foreach (ILogger item in loggerdic.Values)
+                    {
+                        item.Write(message, exception);
+                    }
+                }
+                catch (Exception)
+                {
+
+
+                }
             }
 
-            public LogCategory Category { get; protected set; }
+
         }
     }
 }
