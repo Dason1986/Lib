@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
+using Library;
 using Library.Att;
 using Library.ComponentModel;
 using Library.Controls;
@@ -52,9 +53,9 @@ namespace TestWinform
 
         private void Change()
         {
-            button3.Text = LanguageResourceManagement.GetString("English", "Global");
-            button2.Text = LanguageResourceManagement.GetString("Chinese", "Global");
-            button4.Text = LanguageResourceManagement.GetString("Portuguese", "Global");
+            button3.Text = ResourceManagement.GetString(typeof(GlobalResource),"English");
+            button2.Text = ResourceManagement.GetString(typeof(GlobalResource), "Chinese");
+            button4.Text = ResourceManagement.GetString(typeof(GlobalResource), "Portuguese");
         }
 
         private void button2_Click(object sender, EventArgs e)

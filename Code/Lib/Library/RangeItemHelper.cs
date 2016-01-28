@@ -27,6 +27,27 @@ namespace Library
             End = end;
         }
 
+        static RangeItem()
+        {
+
+
+            Empty = new RangeItem<T>(default(T), default(T));
+
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsEmpty()
+        {
+            return Begin.CompareTo(Empty.Begin) == End.CompareTo(Empty.End);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static RangeItem<T> Empty { get; private set; }
         /// <summary>
         /// 開始值
         /// </summary>

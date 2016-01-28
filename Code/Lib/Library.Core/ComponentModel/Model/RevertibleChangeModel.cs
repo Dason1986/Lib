@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Library
+namespace Library.ComponentModel.Model
 {
     /// <summary>
     /// 

@@ -1,13 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
 using Library.Annotations;
 
-
-namespace Library
+namespace Library.ComponentModel.Model
 {
     /// <summary>
     /// 

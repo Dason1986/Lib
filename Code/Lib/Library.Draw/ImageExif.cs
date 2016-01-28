@@ -52,7 +52,7 @@ namespace Library.Draw
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("FileInfo"), LanguageDisplayName(@"Pix", "Draw")]
+        [LanguageCategory("FileInfo"), LanguageDisplayName(@"Pix", typeof(DrawResource))]
         public Size? Pix { get; set; }
         //40091
         /// <summary>
@@ -80,7 +80,7 @@ namespace Library.Draw
         /// 
         /// </summary>
         /// 36864
-        [LanguageCategory("FileInfo"), LanguageDisplayName(@"ExifVersion", "Draw")]
+        [LanguageCategory("FileInfo"), LanguageDisplayName(@"ExifVersion",   typeof(DrawResource))]
         public string ExifVersion { get; set; }
         /// <summary>
         /// 
@@ -123,14 +123,14 @@ namespace Library.Draw
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("EquipmentInfo", "Draw"), LanguageDisplayName(@"EquipmentMake", "Draw")]
+        [LanguageCategory("EquipmentInfo", typeof(DrawResource)), LanguageDisplayName(@"EquipmentMake", typeof(DrawResource))]
         public string EquipmentMake { get; set; }
 
         //272 镜头型号
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("EquipmentInfo", "Draw"), LanguageDisplayName(@"EquipmentModel", "Draw")]
+        [LanguageCategory("EquipmentInfo", typeof(DrawResource)), LanguageDisplayName(@"EquipmentModel", typeof(DrawResource))]
         public string EquipmentModel { get; set; }
 
         #endregion
@@ -144,115 +144,115 @@ namespace Library.Draw
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"ResolutionUnit", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ResolutionUnit", typeof(DrawResource))]
         public int ResolutionUnit { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"YCbCrPositioning", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"YCbCrPositioning", typeof(DrawResource))]
         public int YCbCrPositioning { get; set; }
         //41994 清晰度(一般\柔和\强烈)
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"Sharpness", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Sharpness", typeof(DrawResource))]
         public int Sharpness { get; set; }
         //37384 光源
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"LightSource", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"LightSource", typeof(DrawResource))]
         public int LightSource { get; set; }
         //34850 曝光方式(無\手動\一般\光圈先決\快門先決\景深優先\快門優先\直向模式\橫向模式)
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"ExposureProgram", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ExposureProgram", typeof(DrawResource))]
         public int ExposureProgram { get; set; }
         //41989 35mm胶卷
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"FocalLengthIn35mmFilm", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"FocalLengthIn35mmFilm", typeof(DrawResource))]
         public int FocalLengthIn35mmFilm { get; set; }
         //20625
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"ChrominanceTable", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ChrominanceTable", typeof(DrawResource))]
         public int ChrominanceTable { get; set; }
         //20624
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"LuminanceTable", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"LuminanceTable", typeof(DrawResource))]
         public int LuminanceTable { get; set; }
         //36867
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"DateTimeOriginal", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"DateTimeOriginal", typeof(DrawResource))]
         public DateTime? DateTimeOriginal { get; set; }
         //36868
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"DateTimeDigitized", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"DateTimeDigitized", typeof(DrawResource))]
         public DateTime? DateTimeDigitized { get; set; }
         //34855 光圈
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"ISOSpeedRatings", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ISOSpeedRatings", typeof(DrawResource))]
         public int ISOSpeedRatings { get; set; }
         //37383 测光模式
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"MeteringMode", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"MeteringMode", typeof(DrawResource))]
         public int MeteringMode { get; set; }
 
         //37385 闪光灯模式
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"Flash", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Flash", typeof(DrawResource))]
         public int Flash { get; set; }
         //41987 白平衡(手动\自动)
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"WhiteBalance", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"WhiteBalance", typeof(DrawResource))]
         public int WhiteBalance { get; set; }
         //41992 比对(标准\柔和\强烈)
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"Contrast", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Contrast", typeof(DrawResource))]
         public int Contrast { get; set; }
 
         //41993 饱和度(标准\低饱和\高饱和)
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"Saturation", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Saturation", typeof(DrawResource))]
         public int Saturation { get; set; }
 
         /// <summary>
         /// 282,283
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"Resolution", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Resolution", typeof(DrawResource))]
         public Size? Resolution { get; set; }
 
         /// <summary>
         /// 37377
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"ShutterSpeed", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ShutterSpeed", typeof(DrawResource))]
         public double ShutterSpeed { get; set; }
         /// <summary>
         /// 33434
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"ExposureTime", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ExposureTime", typeof(DrawResource))]
         public double ExposureTime { get; set; }
         #endregion
 
@@ -261,25 +261,25 @@ namespace Library.Draw
         /// <summary>
         /// 20525,20526
         /// </summary>
-        [LanguageCategory("Thumbnail", "Draw"), LanguageDisplayName(@"Resolution", "Draw")]
+        [LanguageCategory("Thumbnail", typeof(DrawResource)), LanguageDisplayName(@"Resolution", typeof(DrawResource))]
         public Size? ThumbnailResolution { get; set; }
 
         /// <summary>
         /// 20528
         /// </summary>
-        [LanguageCategory("Thumbnail", "Draw"), LanguageDisplayName(@"ResolutionUnit", "Draw")]
+        [LanguageCategory("Thumbnail", typeof(DrawResource)), LanguageDisplayName(@"ResolutionUnit", typeof(DrawResource))]
         public int ThumbnailResolutionUnit { get; set; }
 
         /// <summary>
         /// 20515
         /// </summary>
-        [LanguageCategory("Thumbnail", "Draw"), LanguageDisplayName(@"Compression")]
+        [LanguageCategory("Thumbnail", typeof(DrawResource)), LanguageDisplayName(@"Compression")]
         public int ThumbnailCompression { get; set; }
 
         /// <summary>
         /// 20507
         /// </summary>
-        [LanguageCategory("Thumbnail", "Draw"), LanguageDisplayName(@"Thumbnail", "Draw")]
+        [LanguageCategory("Thumbnail", typeof(DrawResource)), LanguageDisplayName(@"Thumbnail", typeof(DrawResource))]
         public byte[] ThumbnailData { get; set; }
 
         #endregion
@@ -288,14 +288,14 @@ namespace Library.Draw
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("GeoInfo", "Draw"), LanguageDisplayName(@"GPS", "Draw")]
+        [LanguageCategory("GeoInfo", typeof(DrawResource)), LanguageDisplayName(@"GPS", typeof(DrawResource))]
         public GPSGeo GPS { get; set; }
         #endregion
 
         /// <summary>
         /// 
         /// </summary>
-        [LanguageCategory("ImageInfo", "Draw"), LanguageDisplayName(@"AllExifs", "Draw")]
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"AllExifs", typeof(DrawResource))]
         public ExifPropertyCollection Properties { get; protected set; }
         /// <summary>
         /// 

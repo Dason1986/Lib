@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 
-namespace Library
+namespace Library.ComponentModel.Model
 {
     /// <summary>
     /// 

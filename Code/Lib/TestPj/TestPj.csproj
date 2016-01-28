@@ -60,12 +60,14 @@
     <Compile Include="testobj\ConstValue.cs" />
     <Compile Include="Test\AdoTset.cs" />
     <Compile Include="Test\EnumerableTest.cs" />
+    <Compile Include="Test\IdentityGeneratorTest.cs" />
     <Compile Include="Test\LanguageTest.cs" />
     <Compile Include="Test\NullableTset.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\PdfTest.cs" />
     <Compile Include="Test\RangeItemTest.cs" />
+    <Compile Include="Test\StatusCodeTest.cs" />
     <Compile Include="Test\StringTest.cs" />
     <Compile Include="testobj\ParsonModle.cs" />
   </ItemGroup>

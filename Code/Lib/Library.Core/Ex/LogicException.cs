@@ -74,28 +74,8 @@ namespace Library
         {
             ResultCode = resultCode;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="resultCode"></param>
-        /// <param name="resourceName"></param>
-        public LogicException(double resultCode, string resourceName)
-            : base(resultCode, resourceName)
-        {
-            ResultCode = resultCode;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="resultCode"></param>
-        /// <param name="formatages"></param>
-        /// <param name="resourceName"></param>
-        public LogicException(double resultCode, object[] formatages, string resourceName)
-            : base(resultCode, formatages, resourceName)
-        {
-            ResultCode = resultCode;
-        }
+      
+ 
         /// <summary>
         /// 
         /// </summary>

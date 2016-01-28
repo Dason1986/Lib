@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Text;
 
 
@@ -14,34 +16,47 @@ namespace Library
     public static class IdentityGenerator
     {
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="gid"></param>
-        /// <returns></returns>
-        public static DateTime GetGuidDateTime(Guid gid)
+        [DllImport("rpcrt4.dll", SetLastError = true)]
+        static extern int UuidCreateSequential(out Guid guid);
+
+        static Guid SequentialGuid()
         {
-            var buffter = gid.ToByteArray();
-            byte[] binDate = new byte[8];
-            binDate[0] = buffter[0];
-            binDate[1] = buffter[1];
-            binDate[2] = buffter[2];
-            binDate[3] = buffter[3];
-            binDate[4] = buffter[4];
-            binDate[5] = buffter[5];
-            binDate[6] = buffter[6];
-            binDate[7] = buffter[7];
-            var longtime = BitConverter.ToInt64(binDate, 0);
-            var time = DateTime.FromBinary(longtime);
-            return time;
+            Guid guid;
+            UuidCreateSequential(out guid);
+            var s = guid.ToByteArray();
+            var t = new byte[16];
+            t[3] = s[0];
+            t[2] = s[1];
+            t[1] = s[2];
+            t[0] = s[3];
+            t[5] = s[4];
+            t[4] = s[5];
+            t[7] = s[6];
+            t[6] = s[7];
+            t[8] = s[8];
+            t[9] = s[9];
+            t[10] = s[10];
+            t[11] = s[11];
+            t[12] = s[12];
+            t[13] = s[13];
+            t[14] = s[14];
+            t[15] = s[15];
+            return new Guid(t);
         }
 
+        static IdentityGenerator()
+        {
+            IsWinOS = (Environment.OSVersion.Platform == PlatformID.Win32S || Environment.OSVersion.Platform == PlatformID.Win32NT || Environment.OSVersion.Platform == PlatformID.Win32Windows);
+        }
+        private static readonly bool IsWinOS;
+ 
         /// <summary>
         /// 該算法生成跨系統邊界secuential的GUID，非常適合數據庫
         /// </summary>
         /// <returns></returns>
-        public static Guid NewSequentialGuid()
+        public static Guid NewGuid()
         {
+            if (IsWinOS) return SequentialGuid();
             var uid = Guid.NewGuid().ToByteArray();
             var binDate = BitConverter.GetBytes(DateTime.Now.Ticks);
             var secuentialGuid = new byte[uid.Length];
@@ -49,20 +64,23 @@ namespace Library
             secuentialGuid[1] = binDate[1];
             secuentialGuid[2] = binDate[2];
             secuentialGuid[3] = binDate[3];
-            secuentialGuid[4] = binDate[4];
-            secuentialGuid[5] = binDate[5];
-            secuentialGuid[6] = binDate[6];
-            secuentialGuid[7] = binDate[7];
+
+            secuentialGuid[4] = uid[0];
+            secuentialGuid[5] = uid[1];
+            secuentialGuid[6] = uid[2];
+            secuentialGuid[7] = uid[3];
+            secuentialGuid[8] = uid[4];
+            secuentialGuid[9] = uid[5];
+            secuentialGuid[10] = uid[6];
+            secuentialGuid[11] = uid[7];
+
+            secuentialGuid[12] = binDate[4];
+            secuentialGuid[13] = binDate[5];
+            secuentialGuid[14] = binDate[6];
+            secuentialGuid[15] = binDate[7];
 
 
-            secuentialGuid[8] = uid[0];
-            secuentialGuid[9] = uid[1];
-            secuentialGuid[10] = uid[2];
-            secuentialGuid[11] = uid[3];
-            secuentialGuid[12] = uid[4];
-            secuentialGuid[13] = uid[5];
-            secuentialGuid[14] = uid[6];
-            secuentialGuid[15] = uid[7];
+
             return new Guid(secuentialGuid);
 
         }

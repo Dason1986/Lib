@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using Library;
+using Library.ComponentModel.Model;
 
 namespace TestPj
 {

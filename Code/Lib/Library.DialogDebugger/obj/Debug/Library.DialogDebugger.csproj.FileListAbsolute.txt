@@ -38,3 +38,10 @@ E:\SVN\Lib\Lib\Code\Lib\Bin\Library.DialogDebugger.pdb
 E:\SVN\Lib\Lib\Code\Lib\Library.DialogDebugger\obj\Debug\Library.DialogDebugger.csprojResolveAssemblyReference.cache
 E:\SVN\Lib\Lib\Code\Lib\Library.DialogDebugger\obj\Debug\Library.DialogDebugger.dll
 E:\SVN\Lib\Lib\Code\Lib\Library.DialogDebugger\obj\Debug\Library.DialogDebugger.pdb
+D:\Code\Lib\Lib\Code\Lib\Bin\GAC.bat
+D:\Code\Lib\Lib\Code\Lib\Bin\GAC_u.bat
+D:\Code\Lib\Lib\Code\Lib\Bin\Library.DialogDebugger.dll
+D:\Code\Lib\Lib\Code\Lib\Bin\Library.DialogDebugger.pdb
+D:\Code\Lib\Lib\Code\Lib\Library.DialogDebugger\obj\Debug\Library.DialogDebugger.csprojResolveAssemblyReference.cache
+D:\Code\Lib\Lib\Code\Lib\Library.DialogDebugger\obj\Debug\Library.DialogDebugger.dll
+D:\Code\Lib\Lib\Code\Lib\Library.DialogDebugger\obj\Debug\Library.DialogDebugger.pdb

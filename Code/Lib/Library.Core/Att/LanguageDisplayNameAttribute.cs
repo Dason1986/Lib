@@ -10,8 +10,8 @@ namespace Library.Att
     [AttributeUsage(AttributeTargets.All)]
     public class LanguageDisplayNameAttribute : DisplayNameAttribute
     {
+        private readonly Type ResourceType;
         private bool replaced;
-        private readonly string _resourceName;
         /// <summary>
         /// 
         /// </summary>
@@ -22,7 +22,8 @@ namespace Library.Att
                 if (!this.replaced)
                 {
                     this.replaced = true;
-                    this.DisplayNameValue = LanguageResourceManagement.GetString(base.DisplayName, _resourceName ?? @"Global");
+                    if (ResourceType != null)
+                        this.DisplayNameValue = ResourceManagement.GetString(ResourceType, base.DisplayName);
 
                 }
                 return base.DisplayName;
@@ -43,11 +44,11 @@ namespace Library.Att
         /// 
         /// </summary>
         /// <param name="description"></param>
-        /// <param name="resourceName"></param>
-        public LanguageDisplayNameAttribute(string description, string resourceName)
+        /// <param name="resourceType"></param>
+        public LanguageDisplayNameAttribute(string description, Type resourceType)
             : base(description)
         {
-            _resourceName = resourceName;
+            ResourceType = resourceType;
         }
     }
 }

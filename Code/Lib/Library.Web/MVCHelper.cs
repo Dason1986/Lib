@@ -8,6 +8,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
+using Library;
 using Library.Att;
 using Library.ComponentModel;
 using Library.Web;
@@ -23,7 +24,7 @@ namespace System.Web
         /// <summary>
         /// 資源名稱
         /// </summary>
-        public static string ResourceName { get; set; }
+        public static Type ResourceType { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -35,7 +36,7 @@ namespace System.Web
 
             TagBuilder tagBuilder = new TagBuilder("label");
             var sessionCultureInfo = SessionManager.GetSession<CultureInfo>("lang");
-            tagBuilder.InnerHtml = LanguageResourceManagement.GetString(key, ResourceName, sessionCultureInfo);
+            tagBuilder.InnerHtml = ResourceManagement.GetString(ResourceType,key);
             tagBuilder.MergeAttribute("for", key);
 
             return tagBuilder.ToString(TagRenderMode.SelfClosing);
@@ -55,7 +56,8 @@ namespace System.Web
             if (member == null) return string.Empty;
             TagBuilder tagBuilder = new TagBuilder("label");
             var sessionCultureInfo = SessionManager.GetSession<CultureInfo>("lang");
-            tagBuilder.InnerHtml = LanguageResourceManagement.GetString(member.Name, ResourceName, sessionCultureInfo);
+            tagBuilder.InnerHtml = ResourceManagement.GetString(ResourceType, member.Name);
+          
             tagBuilder.GenerateId(member.Name);
             tagBuilder.MergeAttribute("for", member.Name);
             tagBuilder.MergeAttributes(new RouteValueDictionary(htmlAttributes));

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Library
+namespace Library.ComponentModel.Model
 {
     /// <summary>
     /// 

@@ -12,7 +12,7 @@ namespace Library.Att
     [AttributeUsage(AttributeTargets.All)]
     public class LanguageDescriptionAttribute : DescriptionAttribute
     {
-        private readonly string _resourceName;
+        private readonly Type _resourceType;
         private bool replaced;
         /// <summary>
         /// 
@@ -24,7 +24,7 @@ namespace Library.Att
                 if (!this.replaced)
                 {
                     this.replaced = true;
-                    this.DescriptionValue = LanguageResourceManagement.GetString(base.Description, _resourceName ?? "Global");
+                    this.DescriptionValue = ResourceManagement.GetString(_resourceType, base.Description);
                 }
                 return base.Description;
             }
@@ -45,11 +45,12 @@ namespace Library.Att
         /// 
         /// </summary>
         /// <param name="description"></param>
-        /// <param name="resourceName"></param>
-        public LanguageDescriptionAttribute(string description, string resourceName)
+        /// <param name="resourceType"></param> 
+        public LanguageDescriptionAttribute(string description, Type resourceType)
             : base(description)
         {
-            _resourceName = resourceName;
+            _resourceType = resourceType;
+
         }
     }
 }

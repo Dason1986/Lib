@@ -10,3 +10,7 @@ E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
 E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
 E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 E:\SVN\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

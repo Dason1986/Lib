@@ -17,18 +17,18 @@ namespace Library.Date
         /// <param name="resultCode"></param>
         /// <param name="formatages"></param>
         public ChineseDateTimeException(double resultCode, params object[] formatages)
-            : base(resultCode, formatages, "Global")
+            : base(resultCode, formatages)
         {
-            ResultCode = resultCode;
+
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="resultCode"></param>
         public ChineseDateTimeException(double resultCode)
-            : base(resultCode, "Global")
+            : base(resultCode)
         {
-            ResultCode = resultCode;
+
         }
 
 
@@ -230,7 +230,7 @@ namespace Library.Date
                 //检查日期是否大于最大天
                 if (cd > GetChineseMonthDays(cy, cm))
                 {
-                    throw new ChineseDateTimeException(11002.103,cd);
+                    throw new ChineseDateTimeException(11002.103, cd);
                 }
                 offset = offset + cd; //加上当月的天数
 
@@ -253,7 +253,7 @@ namespace Library.Date
 
                     if (cd > GetChineseMonthDays(cy, cm))
                     {
-                        throw new ChineseDateTimeException(11002.103,cd);
+                        throw new ChineseDateTimeException(11002.103, cd);
                     }
                     offset = offset + cd;
                 }
@@ -268,7 +268,7 @@ namespace Library.Date
 
                     if (cd > GetChineseLeapMonthDays(cy))
                     {
-                        throw new ChineseDateTimeException(11002.103,cd);
+                        throw new ChineseDateTimeException(11002.103, cd);
                     }
                     offset = offset + cd;
                 }
@@ -993,7 +993,7 @@ namespace Library.Date
                 case 9: //癸
                     ganIndex = 1;
                     break;
-                #endregion
+                    #endregion
             }
             string gan = CalendarInfo.Gan[(ganIndex + this._cMonth - 2) % 10];
 

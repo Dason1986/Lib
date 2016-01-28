@@ -60,9 +60,17 @@
     <Compile Include="Att\LanguageDescriptionAttribute.cs" />
     <Compile Include="AlignmentType.cs" />
     <Compile Include="Att\LanguageDisplayNameAttribute.cs" />
-    <Compile Include="Att\LanguageRegisterAttribute.cs" />
-    <Compile Include="Att\LanguageResourceManagement.cs" />
+    <Compile Include="ResourceManagement.cs" />
+    <Compile Include="ComponentModel\IO\MDS\BaseSystemInfo.cs" />
+    <Compile Include="ComponentModel\IO\MDS\DMSDirectoryInfo.cs" />
+    <Compile Include="ComponentModel\IO\MDS\DMSFileInfo.cs" />
+    <Compile Include="ComponentModel\IO\MDS\DocumentManagementException.cs" />
+    <Compile Include="ComponentModel\IO\MDS\DocumentManagementProvider.cs" />
+    <Compile Include="ComponentModel\IO\MDS\IDocumentManagementAPIProvider.cs" />
+    <Compile Include="ComponentModel\IO\MDS\IFileRepositoriey.cs" />
+    <Compile Include="ComponentModel\IProvider.cs" />
     <Compile Include="ComponentModel\ISerialNumberBuilder.cs" />
+    <Compile Include="ComponentModel\Model\StatusCode.cs" />
     <Compile Include="Date\DateTimePeriod.cs" />
     <Compile Include="Date\CalendarInfo.cs" />
     <Compile Include="Date\ChineseCalendar.cs" />
@@ -106,7 +114,7 @@
     <Compile Include="ComponentModel\IPlugin.cs" />
     <Compile Include="ComponentModel\IRangeItem.cs" />
     <Compile Include="ComponentModel\IUserInfo.cs" />
-    <Compile Include="ComponentModel\Model\DocumentInfo.cs" />
+    <Compile Include="ComponentModel\IO\DocumentInfo.cs" />
     <Compile Include="ComponentModel\Model\EditableModel.cs" />
     <Compile Include="Ex\LibException.cs" />
     <Compile Include="Ex\LogicException.cs" />
@@ -133,7 +141,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GlobalResource.resx">
       <SubType>Designer</SubType>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

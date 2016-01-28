@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 
 namespace Library.Att
@@ -20,13 +21,13 @@ namespace Library.Att
         /// 
         /// </summary>
         /// <param name="description"></param>
-        /// <param name="resourceName"></param>
-        public LanguageCategoryAttribute(string description, string resourceName)
+        /// <param name="resourceType"></param>
+        public LanguageCategoryAttribute(string description, Type resourceType)
             : base(description)
         {
-            _resourceName = resourceName;
+            _resourceType = resourceType;
         }
-        private readonly string _resourceName;
+        private readonly Type _resourceType;
         /// <summary>
         /// 
         /// </summary>
@@ -34,7 +35,7 @@ namespace Library.Att
         /// <returns></returns>
         protected override string GetLocalizedString(string value)
         {
-            return LanguageResourceManagement.GetString(value, _resourceName ?? "Global");
+            return ResourceManagement.GetString(_resourceType,value);
         }
     }
 }

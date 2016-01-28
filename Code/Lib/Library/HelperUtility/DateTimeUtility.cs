@@ -104,6 +104,16 @@ namespace Library.HelperUtility
                     {
                         return new RangeItem<DateTime>(DateTime.Now, SqlDateTime.MaxValue.Value);
                     }
+                case DateTimePeriod.TheDayAfterTomorrow:
+                    {
+                        var tomorrow = DateTime.Today.AddDays(2).Date;
+                        return new RangeItem<DateTime>(tomorrow, new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, 23, 59, 59));
+                    }
+                case DateTimePeriod.Tomorrow:
+                    {
+                        var tomorrow = DateTime.Today.AddDays(1).Date;
+                        return new RangeItem<DateTime>(tomorrow, new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, 23, 59, 59));
+                    }
                 case DateTimePeriod.Today:
                     {
                         var today = DateTime.Today;
@@ -138,8 +148,10 @@ namespace Library.HelperUtility
                     }
                 case DateTimePeriod.LastMonth:
                     {
-                        var today = DateTime.Today;
-                        return new RangeItem<DateTime>(new DateTime(today.Year, today.Month - 1, 1), new DateTime(today.Year, today.Month - 1, DateTime.DaysInMonth(today.Year, today.Month - 1), 23, 59, 59));
+
+                        var lastMonth = DateTime.Today.Date.AddMonths(-1);
+
+                        return new RangeItem<DateTime>(new DateTime(lastMonth.Year, lastMonth.Month, 1), new DateTime(lastMonth.Year, lastMonth.Month, DateTime.DaysInMonth(lastMonth.Year, lastMonth.Month), 23, 59, 59));
 
                     }
                 case DateTimePeriod.ThisYear:
@@ -154,7 +166,9 @@ namespace Library.HelperUtility
                         return new RangeItem<DateTime>(SqlDateTime.MinValue.Value, new DateTime(today.Year - 1, 12, 31, 23, 59, 59));
                     }
             }
-            return new RangeItem<DateTime>(SqlDateTime.Null.Value, SqlDateTime.Null.Value);
+
+
+            return RangeItem<DateTime>.Empty;
         }
 
         /// <summary>
@@ -185,7 +199,7 @@ namespace Library.HelperUtility
                 case 2: return isabs ? DateTimePeriod.TheDayAfterTomorrow : DateTimePeriod.TheDayBeforeYesterday;
                 default:
                     {
-                        var weekstart = now.Day -  now.DayOfWeek.GetHashCode();
+                        var weekstart = now.Day - now.DayOfWeek.GetHashCode();
                         var weekend = weekstart + 7;
                         if (datetime.Day.IsBetween(weekstart, weekend)) return DateTimePeriod.ThisWeek;//in this week
                         if (datetime.Day.IsBetween(weekstart + 7, weekend + 7)) return isabs ? DateTimePeriod.NextWeek : DateTimePeriod.LastWeek;

@@ -17,10 +17,17 @@ namespace Library
         /// <summary>
         /// 
         /// </summary>
-        public LibException()
+        public LibException(double resultCode):base(resultCode)
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public LibException()
+        {
+            
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -72,28 +79,9 @@ namespace Library
         {
             ResultCode = resultCode;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="resultCode"></param>
-        /// <param name="resourceName"></param>
-        public LibException(double resultCode, string resourceName)
-            : base(resultCode, resourceName)
-        {
-            ResultCode = resultCode;
-        }
+     
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="resultCode"></param>
-        /// <param name="formatages"></param>
-        /// <param name="resourceName"></param>
-        public LibException(double resultCode, object[] formatages, string resourceName)
-            : base(resultCode, formatages, resourceName)
-        {
-            ResultCode = resultCode;
-        }
+       
         /// <summary>
         /// 
         /// </summary>
