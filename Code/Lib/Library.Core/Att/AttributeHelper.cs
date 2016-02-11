@@ -23,13 +23,14 @@ namespace Library.ComponentModel
         {
             AttributeCollection attributes = TypeDescriptor.GetAttributes(obj, true);
             return attributes.OfType<T>();
-        }   /// <summary>
+        }
 
-            ///
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <typeparam name="T"></typeparam>
-            /// <returns></returns>
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static T GetAttribute<T>(object obj) where T : Attribute
         {
             AttributeCollection attributes = TypeDescriptor.GetAttributes(obj, true);

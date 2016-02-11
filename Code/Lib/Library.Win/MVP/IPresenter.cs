@@ -1,11 +1,12 @@
-﻿using Library.ComponentModel.ComponentPatterns;
+﻿using Library.ComponentModel;
+using Library.ComponentModel.ComponentPatterns;
 using System;
 
 namespace Library.Win.MVP
 {
     /// <summary>
     /// </summary>
-    public interface IPresenter //: IDisplay, IViewAware, IActivate, IDeactivate, IGuardClose
+    public interface IPresenter : IDisplay, IViewAware, IActivate, IDeactivate, IGuardClose
     {
     }
 

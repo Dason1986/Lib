@@ -12,7 +12,7 @@ namespace TestPj.Test
     {
         private readonly List<ParsonModle> _list = new List<ParsonModle>();
 
-        [OneTimeSetUpAttribute]
+        [TestFixtureSetUp]
         public void Init()
         {
             for (int i = 0; i < ConstValue.Times99999; i++)

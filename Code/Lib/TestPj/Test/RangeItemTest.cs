@@ -35,7 +35,7 @@ namespace TestPj.Test
         private readonly List<AppData> _list = new List<AppData>();
         private readonly List<AppData> _erlist = new List<AppData>();
 
-        [OneTimeSetUpAttribute]
+        [TestFixtureSetUp]
         public void Init()
         {
             //無相交

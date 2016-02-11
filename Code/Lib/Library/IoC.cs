@@ -151,11 +151,12 @@ namespace Library
         {
             var stream = File.OpenRead(xmlpath);
             LoadXmlFile(stream);
-        } /// <summary>
+        }
 
-          ///
-          /// </summary>
-          /// <param name="xml"></param>
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="xml"></param>
         public void LoadXmlFile(Stream xml)
         {
             XmlDocument document = new XmlDocument();

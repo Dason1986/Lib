@@ -12,7 +12,7 @@ namespace TestPj.Test
         private const string Sourcestr = "String String";
         private const string Tragestr = "STRING string";
 
-        [OneTimeSetUpAttribute]
+        [TestFixtureSetUp]
         public void Init()
         {
             Console.WriteLine("Char count:{0}", Sourcestr.Length);

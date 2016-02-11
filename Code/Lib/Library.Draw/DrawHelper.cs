@@ -118,12 +118,13 @@ namespace Library.Draw
             b /= total;
 
             return Color.FromArgb(r, g, b);
-        }   /// <summary>
+        }
 
-            /// 获取拍照日期/时间
-            /// </summary>
-            /// <param name="fileName"></param>
-            /// <returns></returns>
+        /// <summary>
+        /// 获取拍照日期/时间
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static string GetTakePicDateTime(string fileName)
         {
             var items = GetExifProperties(fileName);

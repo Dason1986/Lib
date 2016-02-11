@@ -14,4 +14,3 @@ D:\Code\Lib\Lib\Code\Lib\Bin\Library.Design.dll
 D:\Code\Lib\Lib\Code\Lib\Bin\Library.Design.pdb
 D:\Code\Lib\Lib\Code\Lib\Library.Design\obj\Debug\Library.Design.dll
 D:\Code\Lib\Lib\Code\Lib\Library.Design\obj\Debug\Library.Design.pdb
-D:\Code\Lib\Lib\Code\Lib\Library.Design\obj\Debug\Library.Design.csprojResolveAssemblyReference.cache

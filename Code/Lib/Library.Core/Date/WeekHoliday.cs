@@ -226,12 +226,13 @@ namespace Library.Date
         public bool Equals(WeekHoliday other)
         {
             return CompareTo(other) == 0;
-        }   /// <summary>
+        }
 
-            ///
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <returns></returns>
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             return base.Equals((WeekHoliday)obj);

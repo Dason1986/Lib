@@ -59,6 +59,7 @@ namespace Library
 
             this._errors = null;
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -85,6 +86,7 @@ namespace Library
         {
             get { return _errors; }
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -94,6 +96,7 @@ namespace Library
         {
             return new TryResult(ex);
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -103,6 +106,7 @@ namespace Library
         {
             return new TryResult(flag);
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -122,6 +126,7 @@ namespace Library
         {
             return !x.HasError;
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -158,6 +163,7 @@ namespace Library
             : this(default(T), exception)
         {
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -169,9 +175,11 @@ namespace Library
             _hasError = exception != null;
             this._error = exception;
         }
+
         private readonly T _value;
         private readonly bool _hasError;
         private readonly Exception _error;
+
         /// <summary>
         ///
         /// </summary>
@@ -195,6 +203,7 @@ namespace Library
         {
             get { return _hasError; }
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -203,6 +212,7 @@ namespace Library
         {
             return Error == null ? string.Format("[{1}][{0}]", Value, typeof(T).FullName) : string.Format("[{0}][{1}]", Error.GetType().Name, Error.Message);
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -212,6 +222,7 @@ namespace Library
         {
             return new TryResult<T>(value);
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -231,6 +242,7 @@ namespace Library
         {
             return value.Value;
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -240,6 +252,7 @@ namespace Library
         {
             return !x.HasError;
         }
+
         /// <summary>
         ///
         /// </summary>

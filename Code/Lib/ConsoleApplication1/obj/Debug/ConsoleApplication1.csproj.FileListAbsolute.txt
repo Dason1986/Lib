@@ -14,4 +14,5 @@ D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
 D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
 D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
-D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\nunit.framework.dll
+D:\Code\Lib\Lib\Code\Lib\ConsoleApplication1\bin\Debug\nunit.framework.xml

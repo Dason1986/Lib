@@ -43,6 +43,7 @@ namespace Library
         /// <returns></returns>
         public static string GetString(Type resourceType, string name)
         {
+            if (resourceType == null) return name;
             var manager = GetManager(resourceType);
             if (manager == null) return name;
             var str = manager.GetString(name);

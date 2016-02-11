@@ -58,7 +58,7 @@ namespace TestPj.Test
     [TestFixture]
     public class PdfTest
     {
-        [OneTimeSetUpAttribute]
+        [TestFixtureSetUp]
         public void Init()
         {
             dt = new DataTable();

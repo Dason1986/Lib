@@ -26,10 +26,11 @@ namespace Library.Draw.Effects
             {
                 InitOption(); _opetion.Alignment = value;
             }
-        }  /// <summary>
+        }
 
-           ///
-           /// </summary>
+        /// <summary>
+        ///
+        /// </summary>
         [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
         public float Offset
         {
