@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library.Data;
+﻿using Library.Data;
 using Library.Draw;
 using Library.FileExtension;
 using Library.IO;
 using Library.Management;
 using Library.Test;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+
 namespace TestPj.Test
 {
     [TestFixture]
@@ -28,44 +25,39 @@ namespace TestPj.Test
             var list = new List<MyClass>();
             DataManager manager = new DataManager(dt);
 
-
             Console.WriteLine();
         }
     }
+
     [TestFixture]
     public class DiskTest
     {
         [Test]
         public void DiskDeiverTest()
         {
-            PCInfo info=new PCInfo();
+            PCInfo info = new PCInfo();
             foreach (var drive in info.GetDiskDeivers())
             {
-
                 Console.WriteLine(drive.Model);
             }
 
             foreach (var drive in info.GetNetworkDeivers())
             {
-
                 Console.WriteLine(drive);
             }
-
-
         }
     }
-    class MyClass
+
+    internal class MyClass
     {
         public string str1 { get; set; }
         public string str2 { get; set; }
         public string str3 { get; set; }
-
     }
+
     [TestFixture]
     public class PdfTest
     {
-
-
         [OneTimeSetUpAttribute]
         public void Init()
         {
@@ -94,7 +86,6 @@ namespace TestPj.Test
                 list.Add(new MyClass { str1 = "15", str2 = "25" });
                 list.Add(new MyClass { str1 = "15", str2 = "" });
             }
-
         }
 
         private DataTable dt;
@@ -103,7 +94,6 @@ namespace TestPj.Test
         [Test]
         public void DataTableBuilderTimer999Test()
         {
-
             CodeTimer.Time("ListBuilderTimer999Test", ConstValue.Times999, () =>
             {
                 var fs = new MemoryStream();
@@ -126,10 +116,10 @@ namespace TestPj.Test
             }
         );
         }
+
         [Test]
         public void ListBuilderTimer999Test()
         {
-
             CodeTimer.Time("ListBuilderTimer999Test", ConstValue.Times999, () =>
             {
                 var fs = new MemoryStream();
@@ -151,12 +141,7 @@ namespace TestPj.Test
                 pdfBuilder.Start();
             }
         );
-
-
-
         }
-
-
 
         [Test]
         public void PDFBuilderTest()
@@ -169,7 +154,7 @@ namespace TestPj.Test
             PDFBuilder pdfBuilder = new PDFBuilder(fs);
             pdfBuilder.Failure += (x, y) => { Console.WriteLine(y.Error); };
             pdfBuilder.DocumentInfo = new DocumentInfo() { Author = "dason", Title = "title" };
-            pdfBuilder.SetTemplate(tmppath);
+            if (File.Exists(tmppath)) pdfBuilder.SetTemplate(tmppath);
             pdfBuilder.Add(new LineElement(new ElementPosition(20, 50), 400, 5) { Color = new RGBColor(5, 99, 10) });
             pdfBuilder.Add(new RectangleElement(new ElementPosition(100, 90), new ElementSize(100, 200)) { Border = 10, Color = new RGBColor(205, 199, 100) });
             pdfBuilder.Add(new LineElement(new ElementPosition(103, 90), 100, 2));

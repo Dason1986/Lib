@@ -1,52 +1,52 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewConverterLabelColumn : DataGridViewTextBoxColumn
     {
         private const bool _readOnly = true;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataGridViewConverterLabelColumn()
         {
             this.CellTemplate = new DataGridViewConverterLabelCell();
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(false)]
         public override bool ReadOnly
         {
             get { return _readOnly; }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public IDataCellConverter Converter { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public object Parameter { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override object Clone()
@@ -57,8 +57,9 @@ namespace Library.Controls
             obj.Parameter = this.Parameter;
             return obj;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -72,30 +73,31 @@ namespace Library.Controls
             return ((object)stringBuilder).ToString();
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IDataCellConverter
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        /// <param name="value"></param> 
+        /// <param name="value"></param>
         /// <param name="parameter"></param>
         /// <param name="cellStyle"></param>
         /// <returns></returns>
         object Convert(object value, object parameter, DataGridViewCellStyle cellStyle);
-
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class DataConverterDelegate : IDataCellConverter
     {
         private readonly Func<object, object, object> _func;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="func"></param>
         public DataConverterDelegate(Func<object, object, object> func)
@@ -103,8 +105,9 @@ namespace Library.Controls
             _func = func;
             if (func == null) throw new ArgumentNullException("func");
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <param name="parameter"></param>
@@ -117,14 +120,15 @@ namespace Library.Controls
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewConverterLabelCell : DataGridViewTextBoxCell
     {
         private static Type defaultEditType = typeof(DataGridViewTextBoxEditingControl);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override Type EditType
         {
@@ -133,8 +137,9 @@ namespace Library.Controls
                 return defaultEditType; // the type is DataGridViewNumericUpDownEditingControl
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="graphics"></param>
         /// <param name="clipBounds"></param>
@@ -157,12 +162,10 @@ namespace Library.Controls
                 var img = (Image)dis;
                 SizeF sizef = GetSize(cellBounds, img);
                 graphics.DrawImage(img, new RectangleF(cellBounds.X + 2, cellBounds.Y + 2, sizef.Width, sizef.Height));
-
             }
             else
                 base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, dis, dis, errorText, cellStyle, advancedBorderStyle, paintParts);
         }
-
 
         private object GetDisplayValue(int rowIndex, DataGridViewCellStyle cellStyle, DataGridViewConverterLabelColumn column, object dis)
         {
@@ -213,8 +216,9 @@ namespace Library.Controls
             height = height - 4;
             return new SizeF(width, height);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()

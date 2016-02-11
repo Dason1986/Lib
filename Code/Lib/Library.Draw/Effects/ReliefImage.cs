@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using Library.Att;
+using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -10,18 +10,16 @@ namespace Library.Draw.Effects
     [LanguageDescription("浮雕处理"), LanguageDisplayName("浮雕处理")]
     public class ReliefImage : ImageBuilder
     {
-
         /********************************************************************
-         * 
+         *
          * 浮雕处理原理：通过对图像像素点的像素值与相邻像素点的像素值相减后加上128, 然后作为新的像素点的值...
 
          *  g(i,j)=f(i,i)-f(i+1,j)+128
-         * 
+         *
          * ******************************************************************/
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -40,19 +38,16 @@ namespace Library.Draw.Effects
                     var gg = Truncate(c1.G - c2.G + 128);
                     var bb = Truncate(c1.B - c2.B + 128);
 
-
-
                     bmp.SetPixel(i, j, Color.FromArgb(rr, gg, bb));
                 }
             }
             return bmp;
         }
 
-
         #region IImageProcessable 成员
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public unsafe override Image UnsafeProcessBitmap()
@@ -68,8 +63,6 @@ namespace Library.Draw.Effects
             {
                 for (int j = 0; j < width - 1; j++)
                 {
-
-
                     var rr = Truncate(ptr[2] - ptr[6] + 128);
                     var gg = Truncate(ptr[1] - ptr[5] + 128);
                     var bb = Truncate(ptr[0] - ptr[4] + 128);
@@ -86,6 +79,6 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        #endregion
+        #endregion IImageProcessable 成员
     }
 }

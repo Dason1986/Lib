@@ -1,12 +1,12 @@
 ﻿namespace Library.Web
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class SessionManager
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <typeparam name="TModel"></typeparam>
@@ -20,7 +20,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -31,7 +31,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
@@ -41,8 +41,9 @@
             var session = System.Web.HttpContext.Current.Session;
             session.Add(key, value);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         public static void Remove(string key)
@@ -52,14 +53,11 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void RemoveAll()
         {
             System.Web.HttpContext.Current.Session.RemoveAll();
         }
-
-
-
     }
 }

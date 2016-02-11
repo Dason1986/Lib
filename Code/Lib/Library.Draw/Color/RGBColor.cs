@@ -8,7 +8,7 @@ namespace Library.Draw
     /// RGB structure.
     /// </summary>
     [TypeConverter(typeof(RGBColorConverter))]
-    public struct RGBColor:IToRGBColor
+    public struct RGBColor : IToRGBColor
     {
         /// <summary>
         /// Gets an empty RGB structure;
@@ -18,8 +18,9 @@ namespace Library.Draw
         private int red;
         private int green;
         private int blue;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -32,8 +33,9 @@ namespace Library.Draw
                 && item1.Blue == item2.Blue
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -91,8 +93,9 @@ namespace Library.Draw
                 blue = (value > 255) ? 255 : ((value < 0) ? 0 : value);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="R"></param>
         /// <param name="G"></param>
@@ -103,8 +106,9 @@ namespace Library.Draw
             this.green = (G > 255) ? 255 : ((G < 0) ? 0 : G);
             this.blue = (B > 255) ? 255 : ((B < 0) ? 0 : B);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -114,16 +118,18 @@ namespace Library.Draw
 
             return (this == (RGBColor)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
         {
             return Red.GetHashCode() ^ Green.GetHashCode() ^ Blue.GetHashCode();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public Color ToRGB()
@@ -133,10 +139,9 @@ namespace Library.Draw
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class RGBColorConverter : TypeConverter
     {
-
     }
 }

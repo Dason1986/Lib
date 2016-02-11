@@ -1,7 +1,6 @@
+using Library.ComponentModel.Model;
 using System;
 using System.ComponentModel;
-using Library;
-using Library.ComponentModel.Model;
 
 namespace TestPj
 {
@@ -12,7 +11,6 @@ namespace TestPj
         private int _age;
         private string _proxy;
         private string _pwd;
-
 
         public string UserName
         {
@@ -77,7 +75,6 @@ namespace TestPj
     [Flags]
     public enum ParsonType
     {
-
         None,
         Amdin = 1,
         A1 = 2,

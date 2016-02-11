@@ -1,26 +1,25 @@
-﻿using Microsoft.VisualStudio.DebuggerVisualizers;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using Library;
+﻿using Library;
 using Library.Date;
+using Microsoft.VisualStudio.DebuggerVisualizers;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 [assembly: System.Diagnostics.DebuggerVisualizer(
 typeof(ChineseCalendarVisualizer), typeof(VisualizerObjectSource),
 Target = typeof(ChineseDateTime), Description = "ChineseDateTime Viewer")]
+
 namespace Library
 {
     // TODO: 將下列內容加入至 SomeType 的定義，以便在對 SomeType 的執行個體進行偵錯時看見此視覺化檢視:
-    // 
+    //
     //  [DebuggerVisualizer(typeof(ChineseCalendarVisualizer))]
     //  [Serializable]
     //  public class SomeType
     //  {
     //   ...
     //  }
-    // 
+    //
     /// <summary>
     /// SomeType 的視覺化檢視。
     /// </summary>
@@ -52,9 +51,9 @@ namespace Library
         }
 
         // TODO: 將下列內容加入至您的測試程式碼以測試視覺化檢視:
-        // 
+        //
         //    ChineseCalendarVisualizer.TestShowVisualizer(new SomeType());
-        // 
+        //
         /// <summary>
         /// 在偵錯工具外部裝載視覺化檢視以便進行測試。
         /// </summary>

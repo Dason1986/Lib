@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Configuration.Provider;
-using System.Linq;
-using System.Text;
 
 namespace Library
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class CustomExceptionProvider : ProviderBase
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomExceptionCollection Providers
         {
@@ -27,7 +23,7 @@ namespace Library
 
         private static CustomExceptionCollection _provider;
 
-        static void init()
+        private static void init()
         {
             if (_provider != null) return;
 
@@ -48,59 +44,57 @@ namespace Library
                     throw new Exception();
                 }
                 customException.Provider = (CustomExceptionProvider)Activator.CreateInstance(type);
-
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="error"></param>
         /// <param name="message"></param>
         /// <returns></returns>
         public abstract Exception ProvideFault(Exception error, ref string message);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="error"></param>
         /// <returns></returns>
         public abstract bool HandleError(Exception error);
     }
 
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class CustomExceptionSection : ConfigurationSection
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [ConfigurationProperty("exceptions")]
         public CustomExceptionCollection CustomExceptions
         {
             get { return (CustomExceptionCollection)this["exceptions"]; }
         }
-
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ConfigurationCollection(typeof(CustomExceptionElement))]
     public class CustomExceptionCollection : ConfigurationElementCollection
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         protected override ConfigurationElement CreateNewElement()
         {
             return new CustomExceptionElement();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
@@ -115,8 +109,9 @@ namespace Library
                 BaseAdd(index, value);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
@@ -125,13 +120,14 @@ namespace Library
             return ((CustomExceptionElement)element).Name;
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class CustomExceptionElement : ConfigurationElement
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [ConfigurationProperty("name", DefaultValue = "", IsKey = true, IsRequired = true)]
         public string Name
@@ -139,8 +135,9 @@ namespace Library
             get { return (string)this["name"]; }
             set { this["name"] = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [ConfigurationProperty("type", DefaultValue = "", IsRequired = true)]
         public string Type
@@ -148,8 +145,9 @@ namespace Library
             get { return (string)this["type"]; }
             set { this["type"] = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomExceptionProvider Provider { get; internal set; }
     }

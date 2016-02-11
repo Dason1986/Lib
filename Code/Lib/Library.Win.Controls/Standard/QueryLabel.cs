@@ -1,43 +1,34 @@
-﻿using System;
+﻿using Library.Data;
+using Library.HelperUtility;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Design;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
-using Library.Data;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library.Controls
 {
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class QueryLabel : ListControl, IQueryControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IQueryDataProvider DefaultQueryDataProvider { get; set; }
 
-
         #region Private
 
-
         private static readonly Image NormalImg = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.qqcmb.png");
-
 
         private void DrawImageButton(Graphics graphics)
         {
             //Image image = new Bitmap(19, 22);
             //var g = Graphics.FromImage(image);
-
 
             var rec = new Rectangle(Width - 21, 0, 19, 20);
             graphics.DrawImage(NormalImg, rec, new Rectangle(0, -2, 19, 22), GraphicsUnit.Pixel);
@@ -48,28 +39,20 @@ namespace Library.Controls
 
             Point middle = new Point(Width - 18, NormalImg.Height / 2);
 
-
-
-
             graphics.DrawString("…", _morefont, brush, middle);
             graphics.Save();
             graphics.Dispose();
-
 
             if (_gpRealTime.PathData.Points.Length > 0) return;
             _gpRealTime.AddRectangle(rec);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
-
             if (disposing)
             {
                 if (_morefont != null)
@@ -96,34 +79,30 @@ namespace Library.Controls
             base.Dispose(disposing);
         }
 
+        #endregion Private
 
-        #endregion
         #region Properites
-        private Label _txtContext;
 
+        private Label _txtContext;
 
         private Font _morefont = new Font("宋体", 9);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event EventHandler ChildFormClosed;
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected virtual void OnChildFormClosed()
         {
-
             EventHandler handler = ChildFormClosed;
             if (handler != null) handler(this, EventArgs.Empty);
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public IQueryDataProvider CurrentQueryDataProvider
@@ -139,14 +118,13 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue("")]
         public override string Text
         {
             get
             {
-
                 return base.Text;
             }
             set
@@ -159,24 +137,21 @@ namespace Library.Controls
                 }
                 else
                 {
-
-
                     int stringIgnoreCase = this.GetTextIndex(value);
                     if (stringIgnoreCase == -1)
                         return;
                     this.SelectedIndex = stringIgnoreCase;
-
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public new object SelectedValue
         {
             get
             {
-
                 return base.SelectedValue;
             }
             set
@@ -189,8 +164,9 @@ namespace Library.Controls
                 SelectedIndex = index;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="property"></param>
         /// <param name="key"></param>
@@ -213,8 +189,9 @@ namespace Library.Controls
             }
             return -1;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(-1)]
         public override int SelectedIndex
@@ -225,7 +202,7 @@ namespace Library.Controls
                 if (DataManager == null)
                 {
                     //GetDataSource();
-                    //if (DataManager == null) 
+                    //if (DataManager == null)
                     return;
                 }
                 if (_selectedIndex == value) return;
@@ -246,14 +223,15 @@ namespace Library.Controls
                 this.OnSelectedIndexChanged(EventArgs.Empty);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(HorizontalAlignment.Left)]
         public HorizontalAlignment TextAlign { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [
         Description("当Text属性为空时编辑框内出现的提示文本"),
@@ -269,10 +247,10 @@ namespace Library.Controls
                 //  Invalidate();
             }
         }
-        
+
         // [DefaultValue(typeof(Color))]
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(typeof(Color), "255,169,169,169")]
         [Description("获取或设置EmptyTextTip的颜色")]
@@ -289,7 +267,7 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public string QueryDataID
@@ -301,11 +279,11 @@ namespace Library.Controls
                 _queryDataID = value;
                 DataSource = null;
                 GetDataSource();
-
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(true)]
         public bool CanChangeValue
@@ -313,49 +291,51 @@ namespace Library.Controls
             get { return _canChangeValue; }
             set { _canChangeValue = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public string SelectedColumnNames { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public FieldCollection Fields
         {
             get { return _fields; }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public FilterCollection Filters
         {
             get { return _filters; }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public OrderCollection Orders
         {
             get { return _orders; }
-
         }
 
         private Color _emptyTextTipColor = Color.DarkGray;
         private string _emptyTextTip;
         private ControlState _state;
+
         /// <summary>
         /// 按钮的位置范围
         /// </summary>
-        readonly GraphicsPath _gpRealTime = new GraphicsPath();
+        private readonly GraphicsPath _gpRealTime = new GraphicsPath();
 
         private System.Windows.Forms.TextBox _valueText;
-        readonly ErrorProvider _errorProvider = new ErrorProvider();
+        private readonly ErrorProvider _errorProvider = new ErrorProvider();
         private int _selectedIndex = -1;
         private Container _components;
         private string _queryDataID;
@@ -365,9 +345,10 @@ namespace Library.Controls
         private readonly OrderCollection _orders = new OrderCollection();
         private IQueryDataProvider _currentQueryDataProvider;
 
-        #endregion
+        #endregion Properites
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public QueryLabel()
         {
@@ -375,15 +356,12 @@ namespace Library.Controls
             InitializeComponent();
         }
 
-
-
         private void InitializeComponent()
         {
             this._components = new System.ComponentModel.Container();
             this._txtContext = new Label();
             this._valueText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-
 
             this._txtContext.DataBindings.Add("Text", this, "Text", true, DataSourceUpdateMode.OnPropertyChanged);
             this._txtContext.Text = Text;
@@ -402,48 +380,44 @@ namespace Library.Controls
             this._valueText.BorderStyle = BorderStyle.None;
             this._valueText.LostFocus += InputCode_LostFocus;
             this._valueText.KeyDown += _valueText_KeyDown;
-            // 
+            //
             // QueryTextBox
-            // 
+            //
             //  this.Controls.Add(this._pictureBox1);
             this.Controls.Add(this._txtContext);
             this.Controls.Add(this._valueText);
 
             this.ResumeLayout(false);
-
         }
 
-        void _valueText_KeyDown(object sender, KeyEventArgs e)
+        private void _valueText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 InputCode_LostFocus(sender, EventArgs.Empty);
             }
-
         }
 
-
-
-        void _txtContext_MouseEnter(object sender, EventArgs e)
+        private void _txtContext_MouseEnter(object sender, EventArgs e)
         {
             _state = ControlState.Highlight;
             DrawLabel();
         }
 
-        void _txtContext_Click(object sender, EventArgs e)
+        private void _txtContext_Click(object sender, EventArgs e)
         {
             InputCode();
         }
-
 
         //protected override void OnSelectedValueChanged(EventArgs e)
         //{
         //    GetDataSource();
         //}
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool LoadDataing { get; protected set; }
+
         private void GetDataSource()
         {
             if (string.IsNullOrEmpty(QueryDataID))
@@ -464,27 +438,26 @@ namespace Library.Controls
         #region darw
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {//TextBox是由系统进程绘制，重载OnPaint方法将不起作用
-
             base.WndProc(ref m);
             if (m.Msg == Win32.WM_PAINT || m.Msg == Win32.WM_CTLCOLOREDIT || m.Msg == 49661 || m.Msg == 675 || m.Msg == 49587)
             {
                 DrawLabel();
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             DrawImageButton(e.Graphics);
-
         }
 
         private void DrawLabel()
@@ -497,16 +470,15 @@ namespace Library.Controls
                 case ControlState.Normal:
                     DrawNormalTex(g);
                     break;
+
                 case ControlState.Highlight:
                     DrawHighLightText(g);
                     break;
+
                 case ControlState.Focus:
                     DrawFocusText(g);
                     break;
-
             }
-
-
 
             g.DrawLine(new Pen(Color.DimGray, 1), new PointF(0, this.Height - 2), new PointF(this.Width - 27, this.Height - 2));
 
@@ -517,7 +489,6 @@ namespace Library.Controls
             }
         }
 
-
         private void DrawFocusText(Graphics g)
         {
             using (Pen focusedBorderPen = new Pen(ColorTable.QQHighLightInnerColor))
@@ -525,9 +496,9 @@ namespace Library.Controls
                 g.DrawRectangle(focusedBorderPen, new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1));
             }
         }
+
         private void DrawNormalTex(Graphics g)
         {
-
             using (Pen highLightPen = new Pen(this.BackColor))
             {
                 Rectangle drawRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
@@ -552,8 +523,9 @@ namespace Library.Controls
                 g.DrawRectangle(highLightPen, drawRect);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
@@ -562,8 +534,9 @@ namespace Library.Controls
 
             base.OnMouseEnter(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseMove(MouseEventArgs e)
@@ -573,13 +546,13 @@ namespace Library.Controls
             if (CanChangeValue)
                 this.Cursor = _gpRealTime.IsVisible(e.Location) ? Cursors.Arrow : Cursors.IBeam;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
         {
-
             if (_state == ControlState.Highlight && Focused)
             {
                 _state = ControlState.Focus;
@@ -596,11 +569,13 @@ namespace Library.Controls
 
             base.OnMouseLeave(e);
         }
-        #endregion
+
+        #endregion darw
 
         #region InputCode
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
@@ -610,9 +585,8 @@ namespace Library.Controls
             base.OnLostFocus(e);
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseDown(MouseEventArgs e)
@@ -624,14 +598,12 @@ namespace Library.Controls
             }
             else
             {
-
-
                 InputCode();
-
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void InputCode()
         {
@@ -651,7 +623,7 @@ namespace Library.Controls
             }
         }
 
-        void InputCode_LostFocus(object sender, EventArgs e)
+        private void InputCode_LostFocus(object sender, EventArgs e)
         {
             _state = ControlState.Normal;
             if (!CanChangeValue || DataSource == null) return;
@@ -672,15 +644,13 @@ namespace Library.Controls
                 _errorProvider.SetError(this, null);
                 txtContext.Text = codevalue.Item2;
                 SelectedValue = codevalue.Item1;
-
             }
             SetBindingValue();
         }
 
-        #endregion
+        #endregion InputCode
 
-
-        void ShowForm()
+        private void ShowForm()
         {
             if (this.DataSource == null) return;
             var form = new Form
@@ -703,7 +673,6 @@ namespace Library.Controls
                 MultiSelect = false,
                 Dock = DockStyle.Fill,
                 ReadOnly = true,
-
             };
             if (Fields.HasRecord())
             {
@@ -714,7 +683,6 @@ namespace Library.Controls
                 {
                     //  if (names.Contains(field.Name) || (hasSelect && field.IsSelected) || !hasSelect)
                     dataGrid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = field.Name, HeaderText = field.DisplayName ?? field.Name });
-
                 }
             }
 
@@ -739,9 +707,8 @@ namespace Library.Controls
             form.Dispose();
             OnChildFormClosed();
             //OnBtnClick();
-            //  
+            //
         }
-
 
         private static TextFormatFlags GetTextFormatFlags(HorizontalAlignment alignment, bool rightToleft)
         {
@@ -757,9 +724,11 @@ namespace Library.Controls
                 case HorizontalAlignment.Center:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter;
                     break;
+
                 case HorizontalAlignment.Left:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Left;
                     break;
+
                 case HorizontalAlignment.Right:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Right;
                     break;
@@ -776,7 +745,7 @@ namespace Library.Controls
             for (int i = 0; i < currencyManager.List.Count; i++)
             {
                 var obj = valuepropery.GetValue(currencyManager.List[i]);
-                if ((string) obj == text) return i;
+                if ((string)obj == text) return i;
             }
             return -1;
         }
@@ -819,6 +788,7 @@ namespace Library.Controls
             var values = displaypropery.GetValue(obj);
             return values != null ? values.ToString() : null;
         }
+
         private Tuple<object, string> GetItemByCode(string text)
         {
             if (_selectedIndex == -1) return null;
@@ -840,17 +810,16 @@ namespace Library.Controls
             }
             return null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="index"></param>
         protected override void RefreshItem(int index)
         {
-
             this.DataManager.Position = index;
             SetBindingValue();
         }
-
 
         /// <summary>
         /// 在派生类中重写时，在派生类中设置具有指定索引的对象。
@@ -858,21 +827,19 @@ namespace Library.Controls
         /// <param name="index">对象的数组索引。</param><param name="value">设置的对象。</param>
         protected override void SetItemCore(int index, object value)
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="items"></param>
         protected override void SetItemsCore(IList items)
         {
-
             if (this.DataManager != null)
             {
                 _selectedIndex = -1;
                 base.Text = string.Empty;
             }
-
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace Library.FileExtension
 {
-    abstract class PDFElementBuilder
+    internal abstract class PDFElementBuilder
     {
         public abstract void Builder();
     }

@@ -3,7 +3,7 @@
 namespace Library.Draw.Water
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed class WaterImageTileOption : ImageOption
     {
@@ -11,6 +11,7 @@ namespace Library.Draw.Water
         /// 偏移
         /// </summary>
         public Point? Offset { get; set; }
+
         /// <summary>
         /// 隔多少空間
         /// </summary>

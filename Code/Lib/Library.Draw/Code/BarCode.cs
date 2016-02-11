@@ -3,106 +3,114 @@
 namespace Library.Draw.Code
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class BarCode
     {
         private const string AlphaBet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%*";
 
-        static readonly string[] Code39 = 
+        private static readonly string[] Code39 =
              {
-                 /* 0 */ "000110100",  
-                 /* 1 */ "100100001",  
-                 /* 2 */ "001100001",  
+                 /* 0 */ "000110100",
+                 /* 1 */ "100100001",
+                 /* 2 */ "001100001",
                  /* 3 */ "101100000",
-                 /* 4 */ "000110001",  
-                 /* 5 */ "100110000",  
-                 /* 6 */ "001110000",  
+                 /* 4 */ "000110001",
+                 /* 5 */ "100110000",
+                 /* 6 */ "001110000",
                  /* 7 */ "000100101",
-                 /* 8 */ "100100100",  
-                 /* 9 */ "001100100",  
-                 /* A */ "100001001",  
+                 /* 8 */ "100100100",
+                 /* 9 */ "001100100",
+                 /* A */ "100001001",
                  /* B */ "001001001",
-                 /* C */ "101001000",  
-                 /* D */ "000011001",  
-                 /* E */ "100011000",  
+                 /* C */ "101001000",
+                 /* D */ "000011001",
+                 /* E */ "100011000",
                  /* F */ "001011000",
-                 /* G */ "000001101",  
-                 /* H */ "100001100",  
-                 /* I */ "001001100",  
+                 /* G */ "000001101",
+                 /* H */ "100001100",
+                 /* I */ "001001100",
                  /* J */ "000011100",
-                 /* K */ "100000011",  
-                 /* L */ "001000011",  
-                 /* M */ "101000010",  
+                 /* K */ "100000011",
+                 /* L */ "001000011",
+                 /* M */ "101000010",
                  /* N */ "000010011",
-                 /* O */ "100010010",  
-                 /* P */ "001010010",  
-                 /* Q */ "000000111",  
+                 /* O */ "100010010",
+                 /* P */ "001010010",
+                 /* Q */ "000000111",
                  /* R */ "100000110",
-                 /* S */ "001000110",  
-                 /* T */ "000010110",  
-                 /* U */ "110000001",  
+                 /* S */ "001000110",
+                 /* T */ "000010110",
+                 /* U */ "110000001",
                  /* V */ "011000001",
-                 /* W */ "111000000",  
-                 /* X */ "010010001",  
-                 /* Y */ "110010000",  
+                 /* W */ "111000000",
+                 /* X */ "010010001",
+                 /* Y */ "110010000",
                  /* Z */ "011010000",
-                 /* - */ "010000101",  
-                 /* . */ "110000100",  
+                 /* - */ "010000101",
+                 /* . */ "110000100",
                  /*' '*/ "011000100",
                  /* $ */ "010101000",
-                 /* / */ "010100010",  
-                 /* + */ "010001010",  
-                 /* % */ "000101010",  
-                 /* * */ "010010100"  
+                 /* / */ "010100010",
+                 /* + */ "010001010",
+                 /* % */ "000101010",
+                 /* * */ "010010100"
              };
+
         /// <summary>
         /// 条码文本,最后一次调用时的BarCode
         /// </summary>
         public string BarCodeText { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StringFormat StringFormat { get; set; }
-        int _leftMargin = 5;
-        int _topMargin;
-        int _thickLength = 2;
-        int _narrowLength = 1;
-        int _barCodeHeight = 35;
+
+        private int _leftMargin = 5;
+        private int _topMargin;
+        private int _thickLength = 2;
+        private int _narrowLength = 1;
+        private int _barCodeHeight = 35;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int ThickLength
         {
             get { return _thickLength; }
             set { _thickLength = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int NarrowLength
         {
             get { return _narrowLength; }
             set { _narrowLength = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int TopMargin
         {
             get { return _topMargin; }
             set { _topMargin = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int LeftMargin
         {
             get { return _leftMargin; }
             set { _leftMargin = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int BarCodeHeight
         {
@@ -118,10 +126,8 @@ namespace Library.Draw.Code
         {
             if (BarCodeText == null) throw new ImageException();
 
-
             int intSourceLength = BarCodeText.Length;
             string strEncode = "010010100"; //添加起始码“*”.
-
 
             var sourceCode = BarCodeText.ToUpper();
             Bitmap objBitmap = new Bitmap(((_thickLength * 3 + _narrowLength * 7) * (intSourceLength + 2)) +
@@ -150,7 +156,7 @@ namespace Library.Draw.Code
                     intBarWidth, _barCodeHeight);
                 _leftMargin += intBarWidth;
             }
-            //绘制明码          
+            //绘制明码
             Font barCodeTextFont = new Font("黑体", 10F);
             RectangleF rect = new RectangleF(2, _barCodeHeight - 20, objBitmap.Width - 4, 20);
             objGraphics.FillRectangle(Brushes.White, rect);
@@ -160,7 +166,6 @@ namespace Library.Draw.Code
             else
                 objGraphics.DrawString(BarCodeText, barCodeTextFont, Brushes.Black, rect, StringFormat);
             return objBitmap;
-
         }
     }
 }

@@ -1,35 +1,31 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
 {
-	internal class XlsxNumFmt
-	{
-		public const string N_numFmt = "numFmt";
-		public const string A_numFmtId = "numFmtId";
-		public const string A_formatCode = "formatCode";
+    internal class XlsxNumFmt
+    {
+        public const string N_numFmt = "numFmt";
+        public const string A_numFmtId = "numFmtId";
+        public const string A_formatCode = "formatCode";
 
-		private int _Id;
+        private int _Id;
 
-		public int Id
-		{
-			get { return _Id; }
-			set { _Id = value; }
-		}
+        public int Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
 
-		private string _FormatCode;
+        private string _FormatCode;
 
-		public string FormatCode
-		{
-			get { return _FormatCode; }
-			set { _FormatCode = value; }
-		}
+        public string FormatCode
+        {
+            get { return _FormatCode; }
+            set { _FormatCode = value; }
+        }
 
-		public XlsxNumFmt(int id, string formatCode)
-		{
-			_Id = id;
-			_FormatCode = formatCode;
-		}
-	}
+        public XlsxNumFmt(int id, string formatCode)
+        {
+            _Id = id;
+            _FormatCode = formatCode;
+        }
+    }
 }

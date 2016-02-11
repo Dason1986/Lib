@@ -5,14 +5,14 @@ using System.Drawing;
 namespace Library.Draw
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class YUVColorConverter : TypeConverter
     {
-
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [TypeConverter(typeof(CMYKColorConverter))]
     public struct YUVColor
@@ -25,8 +25,9 @@ namespace Library.Draw
         private double y;
         private double u;
         private double v;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -39,8 +40,9 @@ namespace Library.Draw
                 && item1.V == item2.V
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -53,8 +55,9 @@ namespace Library.Draw
                 || item1.V != item2.V
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double Y
         {
@@ -68,8 +71,9 @@ namespace Library.Draw
                 y = (y > 1) ? 1 : ((y < 0) ? 0 : y);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double U
         {
@@ -83,8 +87,9 @@ namespace Library.Draw
                 u = (u > 0.436) ? 0.436 : ((u < -0.436) ? -0.436 : u);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double V
         {
@@ -108,8 +113,9 @@ namespace Library.Draw
             this.u = (u > 0.436) ? 0.436 : ((u < -0.436) ? -0.436 : u);
             this.v = (v > 0.615) ? 0.615 : ((v < -0.615) ? -0.615 : v);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -119,8 +125,9 @@ namespace Library.Draw
 
             return (this == (YUVColor)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -130,16 +137,15 @@ namespace Library.Draw
 
         /// <summary>
         /// Converts YUV to RGB.
-        /// </summary> 
+        /// </summary>
         public Color ToRGB()
         {
-
-
             return Color.FromArgb(Convert.ToInt32((y + 1.139837398373983740 * v) * 255),
                                   Convert.ToInt32((y - 0.3946517043589703515 * u - 0.5805986066674976801 * v) * 255),
                                   Convert.ToInt32((y + 2.032110091743119266 * u) * 255)
                 );
         }
+
         /// <summary>
         /// Converts RGB to YUV.
         /// </summary>

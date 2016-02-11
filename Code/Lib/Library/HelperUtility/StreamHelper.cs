@@ -5,12 +5,12 @@ using System.Text;
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class StreamHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="bytes"></param>
@@ -19,8 +19,9 @@ namespace Library.HelperUtility
             if (stream == null || !stream.CanWrite || !bytes.HasRecord()) return;
             stream.Write(bytes, 0, bytes.Length);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="source"></param>
         /// <param name="traget"></param>
@@ -47,10 +48,8 @@ namespace Library.HelperUtility
             return true;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="str"></param>
@@ -66,12 +65,10 @@ namespace Library.HelperUtility
             return true;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        /// <param name="stream"></param> 
+        /// <param name="stream"></param>
         /// <param name="encoding"></param>
         public static string ReadString(this Stream stream, Encoding encoding = null)
         {
@@ -80,9 +77,11 @@ namespace Library.HelperUtility
             var useencoding = encoding ?? Encoding.UTF8;
             return useencoding.GetString(buffter, 0, buffter.Length);
         }
-        const int Nchar = 10;
-        const int Rchar = 13;
-        const int Lenght = 2048;
+
+        private const int Nchar = 10;
+        private const int Rchar = 13;
+        private const int Lenght = 2048;
+
         /// <summary>
         /// 大文件时，读取最后一行
         /// </summary>
@@ -131,9 +130,9 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        /// <param name="stream"></param> 
+        /// <param name="stream"></param>
         public static byte[] ToArray(this Stream stream)
         {
             if (stream is MemoryStream) return ((MemoryStream)stream).ToArray();
@@ -161,10 +160,10 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
-        /// <param name="length"> </param> 
+        /// <param name="length"> </param>
         public static byte[] ToArray(this Stream stream, int length)
         {
             if (stream is MemoryStream) return ((MemoryStream)stream).ToArray();
@@ -177,8 +176,9 @@ namespace Library.HelperUtility
             //stream.Seek(0, SeekOrigin.Begin);
             return buffter;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>

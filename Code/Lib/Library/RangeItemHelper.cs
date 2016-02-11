@@ -1,13 +1,9 @@
-﻿using System;
+﻿using Library.HelperUtility;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library
 {
-
     /// <summary>
     /// 區間元素
     /// </summary>
@@ -15,7 +11,7 @@ namespace Library
     public struct RangeItem<T> : IRangeItem<T> where T : IComparable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="begin"></param>
         /// <param name="end"></param>
@@ -29,25 +25,24 @@ namespace Library
 
         static RangeItem()
         {
-
-
             Empty = new RangeItem<T>(default(T), default(T));
-
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public bool IsEmpty()
         {
             return Begin.CompareTo(Empty.Begin) == End.CompareTo(Empty.End);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static RangeItem<T> Empty { get; private set; }
+
         /// <summary>
         /// 開始值
         /// </summary>
@@ -61,18 +56,19 @@ namespace Library
         /// <summary>
         /// Check if the specified value is inside of the range.
         /// </summary>
-        /// 
+        ///
         /// <param name="x">Value to check.</param>
-        /// 
+        ///
         /// <returns><b>True</b> if the specified value is inside of the range or
         /// <b>false</b> otherwise.</returns>
-        /// 
+        ///
         public bool IsInside(T x)
         {
             return x.IsBetween(Begin, End);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -89,10 +85,10 @@ namespace Library
     {
         internal MergeRange()
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="begin"></param>
         /// <param name="end"></param>
@@ -101,8 +97,9 @@ namespace Library
             Begin = begin;
             End = end;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="begin"></param>
         /// <param name="end"></param>
@@ -115,9 +112,10 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IRangeItem<T>[] List { get; internal set; }
+
         /// <summary>
         /// 開始值
         /// </summary>
@@ -131,25 +129,26 @@ namespace Library
         /// <summary>
         /// Check if the specified value is inside of the range.
         /// </summary>
-        /// 
+        ///
         /// <param name="x">Value to check.</param>
-        /// 
+        ///
         /// <returns><b>True</b> if the specified value is inside of the range or
         /// <b>false</b> otherwise.</returns>
-        /// 
+        ///
         public bool IsInside(T x)
         {
             return x.IsBetween(Begin, End);
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [Serializable]
     public class IntersectException : LibException
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exceptionType"></param>
         /// <param name="sourceItem"></param>
@@ -163,18 +162,21 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object SourceItem { get; protected set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object TrageItem { get; protected set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RangeComparable Reslut { get; protected set; }
     }
+
     /// <summary>
     /// 區間比較
     /// </summary>
@@ -185,41 +187,48 @@ namespace Library
         /// 沒相交
         /// </summary>
         None = 0,
+
         /// <summary>
         /// 數值出錯
         /// </summary>
         Own = 1,
+
         /// <summary>
         /// 左邊相交
         /// </summary>
         LeftJoin = 2,
+
         /// <summary>
         /// 右邊相交
         /// </summary>
         RightJoin = 4,
+
         /// <summary>
         /// 包含對方
         /// </summary>
         Include = 8,
+
         /// <summary>
         /// 被對方包含
         /// </summary>
         UnInclude = 16,
+
         /// <summary>
         /// 相交
         /// </summary>
         Intersect = LeftJoin | RightJoin | Include | UnInclude,
+
         /// <summary>
         /// 完全一致
         /// </summary>
         Same = 64
     }
 }
+
 namespace Library.HelperUtility
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class RangeItemHelper
     {
@@ -253,6 +262,7 @@ namespace Library.HelperUtility
                 }
             }
         }
+
         /// <summary>
         /// 判斷兩個區間是否相交
         /// </summary>
@@ -267,6 +277,7 @@ namespace Library.HelperUtility
             if (!tf) tf = y.Begin.IsBetween(x.Begin, x.End) || y.End.IsBetween(x.Begin, x.End);
             return tf;
         }
+
         /// <summary>
         /// 合併相交區間元素項，返回合併過後的新區間
         /// </summary>
@@ -278,7 +289,7 @@ namespace Library.HelperUtility
             where TV : IComparable
             where T : IRangeItem<TV>
         {
-            // 
+            //
             List<MergeRange<TV>> list = new List<MergeRange<TV>>();
             List<T> tmplist = new List<T>();
             tmplist.AddRange(sourceList);
@@ -315,25 +326,28 @@ namespace Library.HelperUtility
                         list.Add(range);
                         includelist.Add(y);
                         break;
+
                     case RangeComparable.Own: throw new IntersectException(compare, x, y);
                     case RangeComparable.Include:
                     case RangeComparable.Same:
                         includelist.Add(y);
                         break;
+
                     case RangeComparable.RightJoin:
                         range.End = y.End;
                         includelist.Add(y);
                         break;
+
                     case RangeComparable.LeftJoin:
                         range.Begin = y.Begin;
                         includelist.Add(y);
                         break;
+
                     case RangeComparable.UnInclude:
                         range.Begin = y.Begin;
                         range.End = y.End;
                         includelist.Add(y);
                         break;
-
                 }
             }
             if (range != null)
@@ -341,8 +355,8 @@ namespace Library.HelperUtility
                 range.List = includelist.ToArray();
             }
             return list;
-
         }
+
         /// <summary>
         /// 取兩個區間的相交情況
         /// </summary>
@@ -364,15 +378,13 @@ namespace Library.HelperUtility
             //     A     B  C     D       C  A      B  D          A C      D B         A  C      B  D       C    A      D   B
             //以X為主
             //          不相交               被對方包含             包含對方              右邊點相交            左邊點相交
-            //x     └──┘                 └───┘            └────┘         └────┘              └────┘  
-            //y             └──┘       └─────┘            └──┘              └────┘      └─────┘  
+            //x     └──┘                 └───┘            └────┘         └────┘              └────┘
+            //y             └──┘       └─────┘            └──┘              └────┘      └─────┘
             if (pointA && pointB) return RangeComparable.UnInclude;
             if (pointC && pointD) return RangeComparable.Include;
             if (pointB && pointC) return RangeComparable.RightJoin;
             if (pointA && pointD) return RangeComparable.LeftJoin;
             return RangeComparable.None;
         }
-
     }
-
 }

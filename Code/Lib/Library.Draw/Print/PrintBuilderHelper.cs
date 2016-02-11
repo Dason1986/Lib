@@ -1,16 +1,14 @@
-﻿
-using Library.ComponentModel;
-using Library.HelperUtility;
+﻿using Library.HelperUtility;
 
 namespace Library.Draw.Print
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class PrintBuilderHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static IPrintBuilder FactoryBuilder(object model)
@@ -23,18 +21,15 @@ namespace Library.Draw.Print
             if (builder == null) throw new PrintException("创建Builder为空", 14001.021);
 
             return builder;
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="path"></param>
-        public static void PrintToImageFile(IPrintBuilder builder,string path)
+        public static void PrintToImageFile(IPrintBuilder builder, string path)
         {
-
         }
-
     }
 }

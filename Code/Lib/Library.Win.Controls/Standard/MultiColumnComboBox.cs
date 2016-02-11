@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class MultiColumnComboBox : ComboBox
     {
@@ -20,8 +20,9 @@ namespace Library.Controls
         private int _ValueMemberColumnIndex = 0;
         private readonly Collection<string> _columnNames = new Collection<string>();
         private readonly Collection<int> _columnWidths = new Collection<int>();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MultiColumnComboBox()
         {
@@ -31,28 +32,34 @@ namespace Library.Controls
 
             ContextMenu = new ContextMenu();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event System.EventHandler OpenSearchForm;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool AutoComplete { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool AutoDropdown { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Color BackColorEven { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Color BackColorOdd { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Collection<string> ColumnNameCollection
         {
@@ -61,8 +68,9 @@ namespace Library.Controls
                 return _columnNames;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string ColumnNames
         {
@@ -73,7 +81,6 @@ namespace Library.Controls
 
             set
             {
-
                 if (!Convert.ToBoolean(value.Trim().Length))
                 {
                     _columnNameString = "";
@@ -88,10 +95,8 @@ namespace Library.Controls
                         _columnNames.Clear();
                     }
 
-
                     foreach (string s in columnNames)
                     {
-
                         if (Convert.ToBoolean(s.Trim().Length))
                         {
                             if (!DesignMode)
@@ -108,8 +113,9 @@ namespace Library.Controls
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Collection<int> ColumnWidthCollection
         {
@@ -118,8 +124,9 @@ namespace Library.Controls
                 return _columnWidths;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int ColumnWidthDefault
         {
@@ -132,9 +139,11 @@ namespace Library.Controls
                 _columnWidthDefault = value;
             }
         }
-        readonly char[] _delimiterChars = { ',', ';', ':' };
+
+        private readonly char[] _delimiterChars = { ',', ';', ':' };
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string ColumnWidths
         {
@@ -158,7 +167,6 @@ namespace Library.Controls
 
                 foreach (string s in columnWidths)
                 {
-
                     if (Convert.ToBoolean(s.Trim().Length))
                     {
                         int intValue;
@@ -178,14 +186,12 @@ namespace Library.Controls
                     }
                 }
 
-
                 if (invalidIndex > -1)
                 {
                     string errMsg = "Invalid column width '" + invalidValue + "' located at column " + invalidIndex;
                     throw new ArgumentOutOfRangeException(errMsg);
                 }
                 _columnWidthString = value;
-
 
                 if (!DesignMode)
                 {
@@ -195,7 +201,6 @@ namespace Library.Controls
                         _columnWidths.Add(Convert.ToBoolean(s.Trim().Length) ? Convert.ToInt32(s) : _columnWidthDefault);
                     }
 
-
                     if (DataManager != null)
                     {
                         InitializeColumns();
@@ -203,8 +208,9 @@ namespace Library.Controls
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public new DrawMode DrawMode
         {
@@ -221,8 +227,9 @@ namespace Library.Controls
                 base.DrawMode = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public new ComboBoxStyle DropDownStyle
         {
@@ -239,8 +246,9 @@ namespace Library.Controls
                 base.DropDownStyle = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int LinkedColumnIndex
         {
@@ -257,8 +265,9 @@ namespace Library.Controls
                 _linkedColumnIndex = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TextBox LinkedTextBox
         {
@@ -275,12 +284,14 @@ namespace Library.Controls
                 _linkedTextBox.TabStop = false;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int TotalWidth { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnDataSourceChanged(EventArgs e)
@@ -289,8 +300,9 @@ namespace Library.Controls
 
             InitializeColumns();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnDrawItem(DrawItemEventArgs e)
@@ -299,8 +311,6 @@ namespace Library.Controls
 
             if (DesignMode)
                 return;
-
-
 
             Rectangle boundsRect = e.Bounds;
             int lastRight = 0;
@@ -314,12 +324,9 @@ namespace Library.Controls
                 {
                     e.Graphics.FillRectangle(brushBackColor, e.Bounds);
                 }
-
-
             }
             else
             {
-
                 using (Pen highLightPen = new Pen(ColorTable.QQHighLightColor))
                 {
                     Rectangle drawRect = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1);
@@ -344,16 +351,13 @@ namespace Library.Controls
                     }
                     else
                     {
-
                         if (RightToLeft.Equals(RightToLeft.Yes))
                         {
-
                             StringFormat rtl = new StringFormat
-                                               {
-                                                   Alignment = StringAlignment.Near,
-                                                   FormatFlags = StringFormatFlags.DirectionRightToLeft
-                                               };
-
+                            {
+                                Alignment = StringAlignment.Near,
+                                FormatFlags = StringFormatFlags.DirectionRightToLeft
+                            };
 
                             for (int colIndex = _columnNames.Count - 1; colIndex >= 0; colIndex--)
                             {
@@ -370,10 +374,8 @@ namespace Library.Controls
                                 }
                             }
                         }
-
                         else
                         {
-
                             for (int colIndex = 0; colIndex < _columnNames.Count; colIndex++)
                             {
                                 if (!Convert.ToBoolean(_columnWidths[colIndex])) continue;
@@ -395,8 +397,9 @@ namespace Library.Controls
 
             e.DrawFocusRectangle();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnDropDown(EventArgs e)
@@ -408,8 +411,9 @@ namespace Library.Controls
                 ? TotalWidth + SystemInformation.VerticalScrollBarWidth
                 : TotalWidth;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnKeyDown(KeyEventArgs e)
@@ -425,6 +429,7 @@ namespace Library.Controls
                         _linkedTextBox.Text = "";
                     }
                     break;
+
                 case Keys.F3:
                     if (OpenSearchForm != null)
                     {
@@ -434,11 +439,11 @@ namespace Library.Controls
             }
         }
 
-        // Some of the code for OnKeyPress was derived from some VB.NET code  
+        // Some of the code for OnKeyPress was derived from some VB.NET code
         // posted by Laurent Muller as a suggested improvement for another control.
         // http://www.codeproject.com/vb/net/autocomplete_combobox.asp?df=100&forumid=3716&select=579095#xx579095xx
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnKeyPress(KeyPressEventArgs e)
@@ -456,12 +461,10 @@ namespace Library.Controls
 
                     if (idx == -1)
                     {
-
                         idx = FindString(toFind);
                     }
                     else
                     {
-
                         DroppedDown = false;
                     }
 
@@ -473,7 +476,6 @@ namespace Library.Controls
                     }
                     else
                     {
-
                         e.KeyChar = (char)0;
                     }
                 }
@@ -488,10 +490,8 @@ namespace Library.Controls
                 }
             }
 
-
             if ((e.KeyChar == (char)(Keys.Back)) && AutoComplete && (Convert.ToBoolean(SelectionStart)))
             {
-
                 toFind = Text.Substring(0, SelectionStart - 1);
                 idx = FindString(toFind);
 
@@ -503,11 +503,11 @@ namespace Library.Controls
                 }
             }
 
-
             e.Handled = true;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnSelectedValueChanged(EventArgs e)
@@ -518,8 +518,9 @@ namespace Library.Controls
             if (_linkedColumnIndex >= _columnNames.Count) return;
             _linkedTextBox.Text = Convert.ToString(FilterItemOnProperty(SelectedItem, _columnNames[_linkedColumnIndex]));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnValueMemberChanged(EventArgs e)
@@ -528,8 +529,9 @@ namespace Library.Controls
 
             InitializeValueMemberColumn();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void InitializeColumns()
         {
@@ -568,7 +570,6 @@ namespace Library.Controls
                 }
             }
 
-
             if (_linkedColumnIndex >= _columnNames.Count)
             {
                 _linkedColumnIndex = 0;
@@ -589,5 +590,4 @@ namespace Library.Controls
             }
         }
     }
-
 }

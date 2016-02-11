@@ -6,24 +6,24 @@ using System.Resources;
 namespace Library
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ResourceManagement
     {
-        static readonly Dictionary<Type, ResourceManager> cache = new Dictionary<Type, ResourceManager>();
+        private static readonly Dictionary<Type, ResourceManager> cache = new Dictionary<Type, ResourceManager>();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resourceType"></param>
         public static void AddRegister(Type resourceType)
         {
             if (cache.ContainsKey(resourceType)) return;
             cache.Add(resourceType, new ResourceManager(resourceType));
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resourceType"></param>
         /// <returns></returns>
@@ -36,7 +36,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resourceType"></param>
         /// <param name="name"></param>
@@ -50,7 +50,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resourceType"></param>
         /// <param name="name"></param>

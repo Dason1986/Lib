@@ -1,7 +1,7 @@
+using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -28,6 +28,7 @@ namespace Library.Draw.Effects
                 _opetion.LeftColor = value;
             }
         }
+
         /// <summary>
         /// 上邊框色
         /// </summary>
@@ -45,6 +46,7 @@ namespace Library.Draw.Effects
                 _opetion.TopColor = value;
             }
         }
+
         /// <summary>
         /// 右邊框色
         /// </summary>
@@ -62,6 +64,7 @@ namespace Library.Draw.Effects
                 _opetion.RightColor = value;
             }
         }
+
         /// <summary>
         /// 下邊框色
         /// </summary>
@@ -79,6 +82,7 @@ namespace Library.Draw.Effects
                 _opetion.BottomColor = value;
             }
         }
+
         /// <summary>
         /// 邊框色透明度
         /// </summary>
@@ -96,6 +100,7 @@ namespace Library.Draw.Effects
                 _opetion.Alpha = value;
             }
         }
+
         /// <summary>
         /// 邊框大小
         /// </summary>
@@ -113,18 +118,21 @@ namespace Library.Draw.Effects
                 _opetion.Border = value;
             }
         }
+
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new RaiseFrameOption();
         }
+
         private RaiseFrameOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -135,8 +143,9 @@ namespace Library.Draw.Effects
                 _opetion = (RaiseFrameOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class RaiseFrameOption : ImageOption
         {
@@ -145,34 +154,40 @@ namespace Library.Draw.Effects
             /// </summary>
             [LanguageDescription(""), LanguageDisplayName("左邊框色"), Category("濾鏡選項")]
             public Color LeftColor { get; set; }
+
             /// <summary>
             /// 上邊框色
             /// </summary>
             [LanguageDescription(""), LanguageDisplayName("上邊框色"), Category("濾鏡選項")]
             public Color TopColor { get; set; }
+
             /// <summary>
             /// 右邊框色
             /// </summary>
             [LanguageDescription(""), LanguageDisplayName("右邊框色"), Category("濾鏡選項")]
             public Color RightColor { get; set; }
+
             /// <summary>
             /// 下邊框色
             /// </summary>
             [LanguageDescription(""), LanguageDisplayName("下邊框色"), Category("濾鏡選項")]
             public Color BottomColor { get; set; }
+
             /// <summary>
             /// 邊框色透明度
             /// </summary>
             [LanguageDescription(""), LanguageDisplayName("邊框色透明度"), Category("濾鏡選項")]
             public byte Alpha { get; set; }
+
             /// <summary>
             /// 邊框大小
             /// </summary>
             [LanguageDescription(""), LanguageDisplayName("邊框大小"), Category("濾鏡選項")]
             public byte Border { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
@@ -187,21 +202,20 @@ namespace Library.Draw.Effects
                 Border = 5
             };
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
         {
-
             var bmp = Source.Clone() as Bitmap;
             int height = bmp.Height;
             int width = bmp.Width;
             int a = this.Alpha;
             var _size = this.Border;
-
-
 
             for (int y = 0; y < height; y++)
             {
@@ -224,16 +238,17 @@ namespace Library.Draw.Effects
                     else
                         continue;
 
-                   var pp= (double)x/width*255;
-                   int t = 0xFF - a + (int)pp;
+                    var pp = (double)x / width * 255;
+                    int t = 0xFF - a + (int)pp;
                     bmp.SetPixel(x, y, Color.FromArgb((cr.R * a + r * t) / 0xFF, (cr.G * a + g * t) / 0xFF, (cr.B * a + b * t) / 0xFF));
                 }
             }
 
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -250,7 +265,6 @@ namespace Library.Draw.Effects
             {
                 for (int x = 0; x < width; x++)
                 {
-
                     int r = 255 - ptr[0];
                     int g = 255 - ptr[1];
                     int b = 255 - ptr[2];
@@ -270,8 +284,6 @@ namespace Library.Draw.Effects
                         continue;
                     }
 
-
-                
                     var pp = (double)x / width * 255;
                     int t = 0xFF - a + (int)pp;
                     ptr[0] = this.Truncate((cr.B * a + b * t) / 0xFF);//B

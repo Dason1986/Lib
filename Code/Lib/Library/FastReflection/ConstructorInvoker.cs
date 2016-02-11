@@ -6,12 +6,12 @@ using System.Reflection;
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IConstructorInvoker
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
@@ -19,19 +19,19 @@ namespace Library.FastReflection
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ConstructorInvoker : IConstructorInvoker
     {
         private readonly Func<object[], object> _mInvoker;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConstructorInfo ConstructorInfo { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="constructorInfo"></param>
         public ConstructorInvoker(ConstructorInfo constructorInfo)
@@ -71,7 +71,7 @@ namespace Library.FastReflection
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
@@ -87,6 +87,6 @@ namespace Library.FastReflection
             return this.Invoke(parameters);
         }
 
-        #endregion
+        #endregion IConstructorInvoker Members
     }
 }

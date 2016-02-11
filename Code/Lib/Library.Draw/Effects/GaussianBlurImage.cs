@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -17,7 +14,7 @@ namespace Library.Draw.Effects
         #region Option
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("模糊度"), LanguageDisplayName("模糊度"), Category("濾鏡選項")]
         public float Sigma
@@ -31,29 +28,31 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Sigma = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class GaussianBlurOption : ImageOption
         {
-
             /// <summary>
-            /// 
-            /// </summary> 
+            ///
+            /// </summary>
             [LanguageDescription("模糊度"), LanguageDisplayName("模糊度"), Category("濾鏡選項")]
             public float Sigma { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = CreateOption() as GaussianBlurOption;
         }
+
         private GaussianBlurOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -64,8 +63,9 @@ namespace Library.Draw.Effects
                 _opetion = value as GaussianBlurOption;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
@@ -73,15 +73,15 @@ namespace Library.Draw.Effects
             return new GaussianBlurOption { Sigma = 0.75f };
         }
 
-        #endregion
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected static int Padding = 3;
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="srcPixels"></param>
         /// <param name="width"></param>
@@ -124,7 +124,7 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pixels"></param>
         /// <param name="width"></param>
@@ -156,9 +156,8 @@ namespace Library.Draw.Effects
             }
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="input"></param>
         /// <param name="output"></param>
@@ -179,9 +178,8 @@ namespace Library.Draw.Effects
             }
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="imageIn"></param>
         /// <param name="width"></param>
@@ -230,8 +228,9 @@ namespace Library.Draw.Effects
             }
             return numArray;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -255,8 +254,9 @@ namespace Library.Draw.Effects
 
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -282,14 +282,14 @@ namespace Library.Draw.Effects
                     ptr[moveindex] = (byte)(imageArray[pos + 2] * 255f);
                     ptr[moveindex + 1] = (byte)(imageArray[pos + 1] * 255f);
                     ptr[moveindex + 2] = (byte)(imageArray[pos] * 255f);
-
                 }
             }
             bmp.UnlockBits(bmpData);
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="imageIn"></param>
         /// <param name="width"></param>

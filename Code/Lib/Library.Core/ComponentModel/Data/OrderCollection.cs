@@ -5,30 +5,32 @@ using System.ComponentModel;
 namespace Library.Data
 {
     /// <summary>
-    ///  
+    ///
     /// </summary>
 #if !SILVERLIGHT
+
     [ListBindable(false)]
 #endif
     public class OrderCollection : Collection<QueryOrder>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="orders"></param>
         public OrderCollection(IEnumerable<QueryOrder> orders)
         {
             ReSet(orders);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public OrderCollection()
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="orders"></param>
         public void ReSet(IEnumerable<QueryOrder> orders)

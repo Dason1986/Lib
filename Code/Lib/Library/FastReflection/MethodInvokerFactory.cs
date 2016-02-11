@@ -3,12 +3,12 @@
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class MethodInvokerFactory : IFastReflectionFactory<MethodInfo, IMethodInvoker>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -24,6 +24,6 @@ namespace Library.FastReflection
             return this.Create(key);
         }
 
-        #endregion
+        #endregion IFastReflectionFactory<MethodInfo,IMethodInvoker> Members
     }
 }

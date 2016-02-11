@@ -3,7 +3,7 @@
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
@@ -13,7 +13,7 @@ namespace Library.FastReflection
         private readonly object _mRwLock = new object();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -23,20 +23,14 @@ namespace Library.FastReflection
 
             lock (_mRwLock)
             {
-
-
                 bool cacheHit = this._mCache.TryGetValue(key, out value);
 
                 if (cacheHit) return value;
 
-
                 if (!this._mCache.TryGetValue(key, out value))
                 {
-
                     value = this.Create(key);
                     this._mCache[key] = value;
-
-
                 }
             }
 
@@ -44,7 +38,7 @@ namespace Library.FastReflection
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>

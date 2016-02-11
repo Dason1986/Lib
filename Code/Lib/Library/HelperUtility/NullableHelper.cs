@@ -1,14 +1,12 @@
 ﻿namespace Library.HelperUtility
 {
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class NullableHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t"></param>
         /// <typeparam name="T"></typeparam>
@@ -17,8 +15,9 @@
         {
             return GetValue(t, default(T));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t"></param>
         /// <param name="defaultValue"></param>

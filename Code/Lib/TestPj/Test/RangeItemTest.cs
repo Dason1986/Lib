@@ -1,16 +1,16 @@
+using Library;
+using Library.HelperUtility;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Library;
-using NUnit.Framework;
-using Library.HelperUtility;
 
 namespace TestPj.Test
 {
     public class RangeItemTest
     {
-        class AppData : IRangeItem<DateTime>
+        private class AppData : IRangeItem<DateTime>
         {
             public DateTime? ItemDate { get; set; }
             public DateTime? StartTime { get; set; }
@@ -31,9 +31,9 @@ namespace TestPj.Test
                 return true;
             }
         }
-        readonly List<AppData> _list = new List<AppData>();
-        readonly List<AppData> _erlist = new List<AppData>();
 
+        private readonly List<AppData> _list = new List<AppData>();
+        private readonly List<AppData> _erlist = new List<AppData>();
 
         [OneTimeSetUpAttribute]
         public void Init()
@@ -53,7 +53,6 @@ namespace TestPj.Test
             _erlist.Add(new AppData { StartTime = new DateTime(2014, 10, 1, 2, 10, 0), EndTime = new DateTime(2014, 10, 3, 10, 10, 0) });
             _erlist.Add(new AppData { StartTime = new DateTime(2014, 10, 3, 1, 10, 0), EndTime = new DateTime(2014, 10, 3, 3, 10, 0) });
             _erlist.Add(new AppData { StartTime = new DateTime(2014, 10, 4, 1, 10, 0), EndTime = new DateTime(2014, 10, 4, 3, 10, 0) });
-
         }
 
         [Test]
@@ -87,14 +86,13 @@ namespace TestPj.Test
                         Assert.AreEqual(mergeRange.End, mergeRange.List.Max(n => n.End), "合併失敗，結束值不為數組中的最大值");
                     }
 
-                
                     Assert.AreEqual(none.Length, items.Sum(n => n.List.Length), "合併失敗，合併後的數據不齊全");
                 }
-
             }
             wacth.Stop();
             Console.WriteLine(" Use Time:{0}  run count:{1}", wacth.Elapsed, count);
         }
+
         private void TestNone(List<AppData> list, bool flag)
         {
             var wacth = Stopwatch.StartNew();
@@ -129,8 +127,5 @@ namespace TestPj.Test
             if (flag) Assert.AreEqual(0, total);
             Console.WriteLine("{3} Use Time:{0},組合+排列數：{1},出現錯誤數：{2}", wacth.Elapsed, arraycount, total, flag ? "無相交" : "有相交");
         }
-
-
-
     }
 }

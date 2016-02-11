@@ -8,13 +8,13 @@ namespace Library.Management
     source: http://www.cfdan.com/posts/Retrieving_Non-Volatile_USB_Serial_Number_Using_C_Sharp.cfm
      */
 
-
     public class USBDeiver
     {
         public string SerialNumber { get; protected set; }
         public string Model { get; protected set; }
 
         public string DriveLetter { get; protected set; }
+
         private USBDeiver(string drive)
         {
             var driveLetter = drive.ToUpper();
@@ -25,6 +25,7 @@ namespace Library.Management
             }
             DriveLetter = driveLetter;
         }
+
         public static USBDeiver GetInfo(string drive)
         {
             if (drive == null) throw new ArgumentNullException("drive");
@@ -34,7 +35,6 @@ namespace Library.Management
             usb.GetInfo();
             return usb;
         }
-
 
         private void GetInfo()
         {
@@ -64,8 +64,6 @@ namespace Library.Management
             }
         }
 
-
-
         private static string parseSerialFromDeviceID(string deviceId)
         {
             string[] splitDeviceId = deviceId.Split('\\');
@@ -88,6 +86,5 @@ namespace Library.Management
 
             return parsedValue;
         }
-
     }
 }

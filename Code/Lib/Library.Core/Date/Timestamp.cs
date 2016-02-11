@@ -8,12 +8,13 @@ namespace Library.Date
     public struct Timestamp
     {
 #if !SILVERLIGHT
-        static readonly DateTime UnixTpStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+        private static readonly DateTime UnixTpStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
 #else
           static readonly DateTime UnixTpStart = new DateTime(1970, 1, 1) ;
 #endif
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -22,8 +23,9 @@ namespace Library.Date
             TimeSpan toNow = dt - UnixTpStart;
             return (long)Math.Round(toNow.TotalSeconds);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>
@@ -33,8 +35,9 @@ namespace Library.Date
         {
             return ToUtp(new DateTime(year, month, day));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>
@@ -47,8 +50,9 @@ namespace Library.Date
         {
             return ToUtp(new DateTime(year, month, day, hour, minute, second));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="tp"></param>
         /// <returns></returns>
@@ -56,11 +60,10 @@ namespace Library.Date
         {
             return UnixTpStart + (new TimeSpan(tp * 10000000));
         }
+
         /// <summary>
         /// 当前时间
         /// </summary>
         public static long Now { get { return ToUtp(DateTime.Now); } }
-
-
     }
 }

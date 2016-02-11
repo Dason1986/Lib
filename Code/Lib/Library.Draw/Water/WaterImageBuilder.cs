@@ -1,44 +1,38 @@
+using Library.Annotations;
 using System;
 using System.Drawing;
 using System.IO;
-using Library.Annotations;
 
 namespace Library.Draw.Water
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class WaterImageBuilder : ImageBuilder
     {
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected string WaterImgPath { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected byte[] WaterImgBuffter { get; private set; }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="waterImgPath"></param>
         public void SetWaterImage([NotNull] string waterImgPath)
         {
-
-
             if (!File.Exists(waterImgPath)) throw new FileNotFoundException("文件不存在", waterImgPath);
             WaterImgPath = waterImgPath;
             WaterImgBuffter = File.ReadAllBytes(waterImgPath);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="buffter"></param>
         public void SetWaterImage([NotNull] byte[] buffter)
@@ -46,8 +40,9 @@ namespace Library.Draw.Water
             if (buffter == null) throw new ArgumentNullException("buffter");
             WaterImgBuffter = buffter;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sourceImg"></param>
         /// <param name="waterImg"></param>
@@ -56,8 +51,9 @@ namespace Library.Draw.Water
         {
             return new Rectangle(0, 0, sourceImg.Width, sourceImg.Height);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -87,10 +83,10 @@ namespace Library.Draw.Water
                 sourceImg.Dispose();
                 waterImg.Dispose();
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="tmpimg"></param>
         /// <param name="sourceImg"></param>
@@ -110,20 +106,13 @@ namespace Library.Draw.Water
             }
             return gType;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rectangle"></param>
         /// <param name="waterImg"></param>
         /// <returns></returns>
         protected abstract Image CreateFillImage(Rectangle rectangle, Image waterImg);
-
-
-
-
-
-       
-
-
     }
 }

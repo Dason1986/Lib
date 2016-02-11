@@ -6,7 +6,7 @@ using System.Threading;
 namespace Library.Test
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class CodeTimer
     {
@@ -14,7 +14,8 @@ namespace Library.Test
         {
             Initialize();
         }
-        static void Initialize()
+
+        private static void Initialize()
         {
             Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
             Thread.CurrentThread.Priority = ThreadPriority.Highest;
@@ -22,7 +23,7 @@ namespace Library.Test
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <param name="iteration"></param>
@@ -76,9 +77,9 @@ namespace Library.Test
 
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool QueryThreadCycleTime(IntPtr threadHandle, ref ulong cycleTime);
+        private static extern bool QueryThreadCycleTime(IntPtr threadHandle, ref ulong cycleTime);
 
         [DllImport("kernel32.dll")]
-        static extern IntPtr GetCurrentThread();
+        private static extern IntPtr GetCurrentThread();
     }
 }

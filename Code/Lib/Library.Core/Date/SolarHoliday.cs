@@ -3,24 +3,27 @@ using System;
 namespace Library.Date
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public struct SolarHoliday : IHoliday, IComparable, IComparable<SolarHoliday>, IEquatable<SolarHoliday>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Month { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Day { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string HolidayName { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="month"></param>
         /// <param name="day"></param>
@@ -32,6 +35,7 @@ namespace Library.Date
             Day = day;
             HolidayName = name;
         }
+
         /// <summary>
         /// 轉換成公曆日期
         /// </summary>
@@ -41,8 +45,9 @@ namespace Library.Date
         {
             return new DateTime(year, Month, Day);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
@@ -52,7 +57,7 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="format"></param>
         /// <param name="formatProvider"></param>
@@ -60,28 +65,23 @@ namespace Library.Date
         public string ToString(string format, IFormatProvider formatProvider)
         {
             return HolidayFormat.FormatProvider.Format(format, this, formatProvider);
-
         }
-
 
         #region Compare
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
         /// <returns></returns>
         public static bool operator <(SolarHoliday t1, SolarHoliday t2)
         {
-
             return t1.Month * 100 + t1.Day < t2.Month * 100 + t2.Day;
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
@@ -92,7 +92,7 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
@@ -103,7 +103,7 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
@@ -112,8 +112,9 @@ namespace Library.Date
         {
             return t1.Day != t2.Day || t1.Month != t2.Month;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
@@ -124,7 +125,7 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
@@ -135,7 +136,7 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -145,8 +146,9 @@ namespace Library.Date
             if (obj is SolarHoliday == false) throw new ChineseDateTimeException(11002.107);
             return CompareTo((SolarHoliday)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -160,7 +162,7 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="other"></param>
         /// <param name="year"></param>
@@ -172,9 +174,9 @@ namespace Library.Date
             var y = other.ConvertDateTime(year);
             return x.CompareTo(y);
         }
-    
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
@@ -183,17 +185,19 @@ namespace Library.Date
         {
             return t1.Equals(t2);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
         public bool Equals(SolarHoliday other)
         {
             return CompareTo(other) == 0;
-        } 
+        }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -201,14 +205,16 @@ namespace Library.Date
         {
             return base.Equals((SolarHoliday)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
-        #endregion
+
+        #endregion Compare
     }
 }

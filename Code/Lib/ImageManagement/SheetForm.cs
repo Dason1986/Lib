@@ -1,16 +1,11 @@
-﻿using System;
+﻿using Library;
+using Library.Diagnostics;
+using Library.HelperUtility;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
-using Library;
-using Library.Att;
-using Library.ComponentModel;
-using Library.Controls;
-using Library.Diagnostics;
-using Library.Management;
-using Library.Win;
-using Library.HelperUtility;
 
 namespace TestWinform
 {
@@ -25,7 +20,6 @@ namespace TestWinform
             listBox1.Items.Add("TestWinform.DateForm");
             listBox1.Items.Add("TestWinform.IDCardForm");
             sheet = this;
-
         }
 
         private static SheetForm sheet;
@@ -53,7 +47,7 @@ namespace TestWinform
 
         private void Change()
         {
-            button3.Text = ResourceManagement.GetString(typeof(GlobalResource),"English");
+            button3.Text = ResourceManagement.GetString(typeof(GlobalResource), "English");
             button2.Text = ResourceManagement.GetString(typeof(GlobalResource), "Chinese");
             button4.Text = ResourceManagement.GetString(typeof(GlobalResource), "Portuguese");
         }
@@ -94,7 +88,6 @@ namespace TestWinform
                 file.Close();
                 file.Dispose();
             }
-
         }
     }
 }

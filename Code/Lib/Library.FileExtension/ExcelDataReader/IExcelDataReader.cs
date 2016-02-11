@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using System.IO;
 
@@ -28,10 +25,11 @@ namespace Library.FileExtension.ExcelDataReader
         DataSet AsDataSet(bool convertOADateTime);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         DataSet GetSchema();
+
         /// <summary>
         /// Gets a value indicating whether file stream is valid.
         /// </summary>
@@ -43,8 +41,11 @@ namespace Library.FileExtension.ExcelDataReader
         /// </summary>
         /// <value>The exception message.</value>
         string ExceptionMessage { get; }
-        int TotalRow { get;   }
+
+        int TotalRow { get; }
+
         bool GoToResult(int index);
+
         bool GoToResult(string name);
 
         /// <summary>
@@ -66,15 +67,17 @@ namespace Library.FileExtension.ExcelDataReader
         /// 	<c>true</c> if the first row contains column names; otherwise, <c>false</c>.
         /// </value>
         bool IsFirstRowAsColumnNames { get; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <param name="top"></param>
         /// <returns></returns>
         DataTable AsTable(string name, int top);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="index"></param>
         /// <param name="top"></param>

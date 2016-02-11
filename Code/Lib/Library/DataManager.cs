@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using Library.Annotations;
-using Library.ComponentModel;
-using Microsoft.Win32;
+﻿using Library.Annotations;
 using Library.HelperUtility;
+using System;
+using System.Collections;
+using System.ComponentModel;
 
 namespace Library.Data
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class DataManager : System.Data.IDataRecord
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datasource"></param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -30,7 +24,7 @@ namespace Library.Data
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datasource"></param>
         protected virtual void GetList(object datasource)
@@ -56,39 +50,41 @@ namespace Library.Data
         // 傳回:
         //     清單的 System.ComponentModel.PropertyDescriptorCollection。
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotSupportedException"></exception>
         public PropertyDescriptorCollection Properties { get; protected set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IList List { get; protected set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public Type ObjectType { get;protected set; }
+        public Type ObjectType { get; protected set; }
+
         private int _position = -1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event EventHandler PositionChanged;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual int Count { get { return List.Count; } }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual object Current { get; protected set; }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Position
         {
@@ -103,14 +99,12 @@ namespace Library.Data
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool NameIgnoreCase { get; set; }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public bool Read()
@@ -122,7 +116,7 @@ namespace Library.Data
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected virtual void OnPositionChanged()
         {
@@ -130,23 +124,22 @@ namespace Library.Data
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int FieldCount
         {
             get { return Properties.Count; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
         public bool GetBoolean(int i)
         {
             return ObjectUtility.Cast<bool>(GetValue(i));
-
         }
 
         private PropertyDescriptor getDescriptor(int index)
@@ -154,8 +147,9 @@ namespace Library.Data
             if (index < 0 || index > Properties.Count - 1) throw new LibException("", new IndexOutOfRangeException());
             return Properties[index];
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -168,8 +162,9 @@ namespace Library.Data
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -192,8 +187,9 @@ namespace Library.Data
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -201,8 +197,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<DateTime>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -210,8 +207,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<decimal>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -219,8 +217,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<double>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -228,8 +227,9 @@ namespace Library.Data
         {
             return Properties[i].PropertyType;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -237,8 +237,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<float>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -246,8 +247,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<Guid>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -255,8 +257,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<short>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -264,8 +267,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<int>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -273,8 +277,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<long>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -282,8 +287,9 @@ namespace Library.Data
         {
             return getDescriptor(i).Name;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -297,10 +303,10 @@ namespace Library.Data
                 if (string.Equals(Properties[i].Name, name, StringComparison.OrdinalIgnoreCase)) return i;
             }
             throw new LibException(string.Format("[{0}] not exist", name));
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -308,8 +314,9 @@ namespace Library.Data
         {
             return ObjectUtility.Cast<string>(GetValue(i));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -319,8 +326,9 @@ namespace Library.Data
             var obj = property.GetValue(Current);
             return obj;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
@@ -336,8 +344,9 @@ namespace Library.Data
             }
             return count;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
@@ -346,8 +355,9 @@ namespace Library.Data
             var obj = GetValue(i);
             return DBNull.Value == obj;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -360,8 +370,9 @@ namespace Library.Data
                 return GetValue(index);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>

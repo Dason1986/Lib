@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Library.HelperUtility;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
 using System.Web;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library.Web
 {
@@ -14,14 +13,12 @@ namespace Library.Web
     /// </summary>
     public static class HttpContextHelper
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <returns></returns>
-        public static TryResult<TModel> TryGetModelWithGet<TModel>() where TModel : class  ,new()
+        public static TryResult<TModel> TryGetModelWithGet<TModel>() where TModel : class, new()
         {
             var model = new TModel();
             var flag = SetProperty(HttpContext.Current.Request.QueryString, model);
@@ -43,7 +40,6 @@ namespace Library.Web
                     var obj = StringUtility.TryCast(collection[name], property.PropertyType);
                     if (!obj.HasError)
                         property.FastSetValue(model, obj);
-
                 }
                 catch (Exception ex)
                 {
@@ -51,33 +47,28 @@ namespace Library.Web
                 }
             }
             return elist.HasRecord() ? new TryResult(elist) : new TryResult(true);
-
         }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <returns></returns>
-        public static TryResult<TModel> TryGetModelWithPost<TModel>() where TModel : class  ,new()
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <returns></returns>
+        public static TryResult<TModel> TryGetModelWithPost<TModel>() where TModel : class, new()
         {
             var model = new TModel();
             var flag = SetProperty(HttpContext.Current.Request.Form, model);
             return flag == true ? new TryResult<TModel>(model) : new TryResult<TModel>(flag.Error);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="response"> </param>
         /// <param name="displayFileName"></param>
         /// <param name="buffer"></param>
         public static void DownloadFile(this HttpResponse response, string displayFileName, byte[] buffer)
         {
-
             response.Clear();
             response.ClearContent();
             response.ClearHeaders();
@@ -89,15 +80,15 @@ namespace Library.Web
             response.Flush();
             response.End();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="response"> </param>
         /// <param name="displayFileName"></param>
         /// <param name="buffer"></param>
         public static void DownloadFile(this HttpResponseBase response, string displayFileName, byte[] buffer)
         {
-
             response.Clear();
             response.ClearContent();
             response.ClearHeaders();

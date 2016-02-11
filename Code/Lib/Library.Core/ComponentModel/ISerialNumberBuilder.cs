@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Library
@@ -15,10 +14,12 @@ namespace Library
         /// 當前號碼
         /// </summary>
         int CurrentNumber { get; }
+
         /// <summary>
         /// 序號格式
         /// </summary>
         string SerialNumberFormat { get; }
+
         /// <summary>
         /// 生成一批序號
         /// </summary>
@@ -34,16 +35,10 @@ namespace Library
         /// </summary>
         /// <returns></returns>
         string Dequeue();
-        
-
     }
 
-
-
- 
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class SerialNumberBuilder : ISerialNumberBuilder
     {
@@ -58,7 +53,7 @@ namespace Library
         public string SerialNumberFormat { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Buildrecord { get; private set; }
 
@@ -74,43 +69,38 @@ namespace Library
             SerialNumberFormat = format;
             CurrentNumber = currentNumber;
             Buildrecord = buildrecord;
-
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected internal static readonly Regex VariableRegex = new Regex(@"({(?<Key>[^=]*?):(?<Param>[^=]*?)})|({(?<Key>[^=]*?)})");
 
-        static readonly object Lockobj = new object();
+        private static readonly object Lockobj = new object();
 
-        readonly Queue<string> _numberQueue = new Queue<string>();
+        private readonly Queue<string> _numberQueue = new Queue<string>();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
 
         protected internal static IEnumerable<GroupCollection> GetEnumerateVariables(string s)
         {
-
             var matchCollection = VariableRegex.Matches(s);
 
             for (int i = 0; i < matchCollection.Count; i++)
             {
                 yield return matchCollection[i].Groups;
-                            }
-
+            }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void CreateSerialNumber()
         {
-
             lock (Lockobj)
             {
                 if (SerialNumberFormat == null) throw new ArgumentException("SerialNumberFormat");
@@ -122,19 +112,17 @@ namespace Library
                     String numberstr = SerialNumberFormat;
                     foreach (var variable in groupCollections)
                     {
-
                         var param = variable["Param"].Value;
 
                         switch (variable["Key"].Value)
                         {
-
                             case "Date":
                                 if (string.IsNullOrEmpty(param))
                                 {
                                     param = "ddMMyyyy";
                                 }
 
-                                numberstr = numberstr.Replace(variable[0].Value,  DateTime.Now.ToString(param));
+                                numberstr = numberstr.Replace(variable[0].Value, DateTime.Now.ToString(param));
 
                                 break;
 
@@ -149,39 +137,28 @@ namespace Library
 
                                 break;
                         }
-                        
                     }
                     _numberQueue.Enqueue(numberstr);
-
                 }
-                
             }
-            
-
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Count
         {
             get { return _numberQueue.Count; }
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public string Dequeue()
         {
-
             lock (Lockobj)
             {
-
                 if (Count == 0)
                 {
                     this.CreateSerialNumber();
@@ -191,9 +168,6 @@ namespace Library
                 CurrentNumber++;
                 return sn;
             }
-            
         }
-
     }
-
 }

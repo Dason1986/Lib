@@ -1,10 +1,10 @@
+using Library.FileExtension.ExcelDataReader.Core;
+using Library.FileExtension.ExcelDataReader.Core.BinaryFormat;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Text;
-using Library.FileExtension.ExcelDataReader.Core;
-using Library.FileExtension.ExcelDataReader.Core.BinaryFormat;
 
 namespace Library.FileExtension.ExcelDataReader
 {
@@ -47,7 +47,7 @@ namespace Library.FileExtension.ExcelDataReader
         public int TotalRow { get; private set; }
         private bool disposed;
 
-        #endregion
+        #endregion Members
 
         internal ExcelBinaryReader(bool isFirstRowAsColumnNames)
         {
@@ -96,7 +96,7 @@ namespace Library.FileExtension.ExcelDataReader
             Dispose(false);
         }
 
-        #endregion
+        #endregion IDisposable Members
 
         #region Private methods
 
@@ -113,7 +113,6 @@ namespace Library.FileExtension.ExcelDataReader
                 if (row == null) break;
 
                 offs += row.Size;
-
             } while (null != row);
 
             return offs;
@@ -179,6 +178,7 @@ namespace Library.FileExtension.ExcelDataReader
                     case BIFFRECORDTYPE.INTERFACEHDR:
                         m_globals.InterfaceHdr = (XlsBiffInterfaceHdr)rec;
                         break;
+
                     case BIFFRECORDTYPE.BOUNDSHEET:
                         XlsBiffBoundSheet sheet = (XlsBiffBoundSheet)rec;
 
@@ -191,12 +191,15 @@ namespace Library.FileExtension.ExcelDataReader
                         m_globals.Sheets.Add(sheet);
 
                         break;
+
                     case BIFFRECORDTYPE.MMS:
                         m_globals.MMS = rec;
                         break;
+
                     case BIFFRECORDTYPE.COUNTRY:
                         m_globals.Country = rec;
                         break;
+
                     case BIFFRECORDTYPE.CODEPAGE:
 
                         m_globals.CodePage = (XlsBiffSimpleValueRecord)rec;
@@ -212,10 +215,12 @@ namespace Library.FileExtension.ExcelDataReader
                         }
 
                         break;
+
                     case BIFFRECORDTYPE.FONT:
                     case BIFFRECORDTYPE.FONT_V34:
                         m_globals.Fonts.Add(rec);
                         break;
+
                     case BIFFRECORDTYPE.FORMAT_V23:
                         {
                             var fmt = (XlsBiffFormatString)rec;
@@ -223,36 +228,43 @@ namespace Library.FileExtension.ExcelDataReader
                             m_globals.Formats.Add((ushort)m_globals.Formats.Count, fmt);
                         }
                         break;
+
                     case BIFFRECORDTYPE.FORMAT:
                         {
                             var fmt = (XlsBiffFormatString)rec;
                             m_globals.Formats.Add(fmt.Index, fmt);
                         }
                         break;
+
                     case BIFFRECORDTYPE.XF:
                     case BIFFRECORDTYPE.XF_V4:
                     case BIFFRECORDTYPE.XF_V3:
                     case BIFFRECORDTYPE.XF_V2:
                         m_globals.ExtendedFormats.Add(rec);
                         break;
+
                     case BIFFRECORDTYPE.SST:
                         m_globals.SST = (XlsBiffSST)rec;
                         sst = true;
                         break;
+
                     case BIFFRECORDTYPE.CONTINUE:
                         if (!sst) break;
                         XlsBiffContinue contSST = (XlsBiffContinue)rec;
                         m_globals.SST.Append(contSST);
                         break;
+
                     case BIFFRECORDTYPE.EXTSST:
                         m_globals.ExtSST = rec;
                         sst = false;
                         break;
+
                     case BIFFRECORDTYPE.PROTECT:
                     case BIFFRECORDTYPE.PASSWORD:
                     case BIFFRECORDTYPE.PROT4REVPASSWORD:
                         //IsProtected
                         break;
+
                     case BIFFRECORDTYPE.EOF:
                         if (m_globals.SST != null)
                             m_globals.SST.ReadStrings();
@@ -306,7 +318,6 @@ namespace Library.FileExtension.ExcelDataReader
                     dims = (XlsBiffDimensions)trec;
                     break;
                 }
-
             } while (trec != null && trec.ID != BIFFRECORDTYPE.ROW);
 
             m_maxCol = 256;
@@ -316,8 +327,6 @@ namespace Library.FileExtension.ExcelDataReader
             dims.IsV8 = isV8();
             m_maxCol = dims.LastColumn - 1;
             sheet.Dimensions = dims;
-
-
 
             m_maxRow = (int)idx.LastExistingRow;
             if (IsFirstRowAsColumnNames) TotalRow = m_maxRow - 1;
@@ -444,14 +453,17 @@ namespace Library.FileExtension.ExcelDataReader
                     if (cell.ReadByte(7) == 0)
                         m_cellsValues[cell.ColumnIndex] = cell.ReadByte(6) != 0;
                     break;
+
                 case BIFFRECORDTYPE.BOOLERR_OLD:
                     if (cell.ReadByte(8) == 0)
                         m_cellsValues[cell.ColumnIndex] = cell.ReadByte(7) != 0;
                     break;
+
                 case BIFFRECORDTYPE.INTEGER:
                 case BIFFRECORDTYPE.INTEGER_OLD:
                     m_cellsValues[cell.ColumnIndex] = ((XlsBiffIntegerCell)cell).Value;
                     break;
+
                 case BIFFRECORDTYPE.NUMBER:
                 case BIFFRECORDTYPE.NUMBER_OLD:
 
@@ -462,15 +474,18 @@ namespace Library.FileExtension.ExcelDataReader
                         : tryConvertOADateTime(_dValue, cell.XFormat);
 
                     break;
+
                 case BIFFRECORDTYPE.LABEL:
                 case BIFFRECORDTYPE.LABEL_OLD:
                 case BIFFRECORDTYPE.RSTRING:
                     m_cellsValues[cell.ColumnIndex] = ((XlsBiffLabelCell)cell).Value;
                     break;
+
                 case BIFFRECORDTYPE.LABELSST:
                     string tmp = m_globals.SST.GetString(((XlsBiffLabelSSTCell)cell).SSTIndex);
                     m_cellsValues[cell.ColumnIndex] = tmp;
                     break;
+
                 case BIFFRECORDTYPE.RK:
 
                     _dValue = ((XlsBiffRKCell)cell).Value;
@@ -480,6 +495,7 @@ namespace Library.FileExtension.ExcelDataReader
                         : tryConvertOADateTime(_dValue, cell.XFormat);
 
                     break;
+
                 case BIFFRECORDTYPE.MULRK:
 
                     XlsBiffMulRKCell _rkCell = (XlsBiffMulRKCell)cell;
@@ -490,12 +506,14 @@ namespace Library.FileExtension.ExcelDataReader
                     }
 
                     break;
+
                 case BIFFRECORDTYPE.BLANK:
                 case BIFFRECORDTYPE.BLANK_OLD:
                 case BIFFRECORDTYPE.MULBLANK:
                     // Skip blank cells
 
                     break;
+
                 case BIFFRECORDTYPE.FORMULA:
                 case BIFFRECORDTYPE.FORMULA_OLD:
 
@@ -513,6 +531,7 @@ namespace Library.FileExtension.ExcelDataReader
                     }
 
                     break;
+
                 default:
                     break;
             }
@@ -560,7 +579,6 @@ namespace Library.FileExtension.ExcelDataReader
                 return;
             }
 
-
             m_dbCellAddrs = idx.DbCellAddresses;
             m_dbCellAddrsIndex = 0;
             //m_depht = IsFirstRowAsColumnNames?1:0;
@@ -591,7 +609,7 @@ namespace Library.FileExtension.ExcelDataReader
             m_exceptionMessage = message;
             m_isValid = false;
 
-           // m_file.Close();
+            // m_file.Close();
             m_isClosed = true;
 
             m_workbookData = null;
@@ -613,11 +631,13 @@ namespace Library.FileExtension.ExcelDataReader
                     case BIFFRECORDTYPE.XF_V2:
                         format = (ushort)(rec.ReadByte(2) & 0x3F);
                         break;
+
                     case BIFFRECORDTYPE.XF_V3:
                         if ((rec.ReadByte(3) & 4) == 0)
                             return value.ToString();
                         format = rec.ReadByte(1);
                         break;
+
                     case BIFFRECORDTYPE.XF_V4:
                         if ((rec.ReadByte(5) & 4) == 0)
                             return value.ToString();
@@ -636,7 +656,6 @@ namespace Library.FileExtension.ExcelDataReader
             {
                 format = XFormat;
             }
-
 
             switch (format)
             {
@@ -682,6 +701,7 @@ namespace Library.FileExtension.ExcelDataReader
                 case 0x2e: // "[h]:mm:ss";
                 case 0x2f: // "mm:ss.0";
                     return Helpers.ConvertFromOATime(value);
+
                 case 0x31: // "@";
                     return value.ToString();
 
@@ -693,27 +713,19 @@ namespace Library.FileExtension.ExcelDataReader
                         var formatReader = new FormatReader() { FormatString = fmt };
                         if (formatReader.IsDateFormatString())
                             return Helpers.ConvertFromOATime(value);
-
                     }
                     return value;
-
-
-
             }
-
-
         }
 
         private object tryConvertOADateTime(object value, ushort XFormat)
         {
             double _dValue;
 
-
             if (double.TryParse(value.ToString(), out _dValue))
                 return tryConvertOADateTime(_dValue, XFormat);
 
             return value;
-
         }
 
         private bool isV8()
@@ -721,7 +733,7 @@ namespace Library.FileExtension.ExcelDataReader
             return m_version >= 0x600;
         }
 
-        #endregion
+        #endregion Private methods
 
         #region IExcelDataReader Members
 
@@ -731,7 +743,6 @@ namespace Library.FileExtension.ExcelDataReader
 
             readWorkBookGlobals();
             initializeSheetRead();
-
         }
 
         public DataSet AsDataSet()
@@ -747,7 +758,6 @@ namespace Library.FileExtension.ExcelDataReader
 
             m_ConvertOADate = convertOADateTime;
             m_workbookData = new DataSet();
-
 
             for (int index = 0; index < ResultsCount; index++)
             {
@@ -904,9 +914,6 @@ namespace Library.FileExtension.ExcelDataReader
             return long.Parse(m_cellsValues[i].ToString());
         }
 
-
-
-
         public string GetString(int i)
         {
             if (IsDBNull(i)) return null;
@@ -929,10 +936,9 @@ namespace Library.FileExtension.ExcelDataReader
             get { return m_cellsValues[i]; }
         }
 
-        #endregion
+        #endregion IExcelDataReader Members
 
-        #region  Not Supported IDataReader Members
-
+        #region Not Supported IDataReader Members
 
         public DataTable GetSchemaTable()
         {
@@ -944,10 +950,9 @@ namespace Library.FileExtension.ExcelDataReader
             get { throw new NotSupportedException(); }
         }
 
-        #endregion
+        #endregion Not Supported IDataReader Members
 
         #region Not Supported IDataRecord Members
-
 
         public byte GetByte(int i)
         {
@@ -1023,16 +1028,14 @@ namespace Library.FileExtension.ExcelDataReader
             return -1;
         }
 
-
         public object this[string name]
         {
             get { return this[GetOrdinal(name)]; }
         }
 
-        #endregion
+        #endregion Not Supported IDataRecord Members
 
         #region IExcelDataReader Members
-
 
         public bool IsFirstRowAsColumnNames
         {
@@ -1042,8 +1045,7 @@ namespace Library.FileExtension.ExcelDataReader
             }
         }
 
-        #endregion
-
+        #endregion IExcelDataReader Members
 
         public DataSet GetSchema()
         {
@@ -1107,7 +1109,6 @@ namespace Library.FileExtension.ExcelDataReader
                         }
                         else
                         {
-
                             for (int k = 0; k < m_maxCol; k++)
                             {
                                 var Column_Name = string.Format("Column{0}", k);
@@ -1125,16 +1126,11 @@ namespace Library.FileExtension.ExcelDataReader
                         }
 
                         triggerCreateColumns = false;
-
-
                     }
-
-
                 }
-
-            } return excelSchemaDs;
+            }
+            return excelSchemaDs;
         }
-
 
         public bool GoToResult(int index)
         {
@@ -1149,11 +1145,9 @@ namespace Library.FileExtension.ExcelDataReader
 
         public bool GoToResult(string name)
         {
-
             var sheetindex = m_sheets.FindIndex(n => string.Equals(n.Name, name, StringComparison.CurrentCultureIgnoreCase));
             return GoToResult(sheetindex);
         }
-
 
         public DataTable AsTable(string name, int top)
         {
@@ -1167,9 +1161,7 @@ namespace Library.FileExtension.ExcelDataReader
             if (top < 0) throw new Exception("记录数不能少于0");
             var tb = readWholeWorkSheet(m_sheets[index], top);
 
-
             return tb;
-
         }
     }
 }

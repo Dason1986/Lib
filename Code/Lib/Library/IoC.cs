@@ -1,19 +1,17 @@
-﻿using System;
+﻿using Library.Annotations;
+using Library.HelperUtility;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Xml;
-using Library.Annotations;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [Serializable]
     public class IoCException : LibException
@@ -25,25 +23,24 @@ namespace Library
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
         //
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IoCException()
         {
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="resultCode"></param>
         protected IoCException(string message, double resultCode)
             : base(message, resultCode)
         {
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="resultCode"></param>
@@ -51,11 +48,10 @@ namespace Library
         protected IoCException(string message, double resultCode, Exception inner)
             : base(message, resultCode, inner)
         {
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         public IoCException(string message)
@@ -64,7 +60,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="inner"></param>
@@ -72,8 +68,9 @@ namespace Library
             : base(message, inner)
         {
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resultCode"></param>
         /// <param name="formatages"></param>
@@ -82,11 +79,9 @@ namespace Library
         {
             ResultCode = resultCode;
         }
-     
 
-      
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
@@ -96,10 +91,10 @@ namespace Library
             : base(info, context)
         {
         }
-
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed class IoC
     {
@@ -109,7 +104,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="monitorAssembly"></param>
         public IoC(bool monitorAssembly = false)
@@ -127,26 +122,29 @@ namespace Library
                 };
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IoC Current { get; private set; }
 
-        readonly AssemblyManager _assemblyManager = new AssemblyManager();
+        private readonly AssemblyManager _assemblyManager = new AssemblyManager();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AssemblyManager AssemblyManager { get { return _assemblyManager; } }
-        readonly Dictionary<string, TmpIoCItem> _objdDictionary = new Dictionary<string, TmpIoCItem>();
 
-        class TmpIoCItem
+        private readonly Dictionary<string, TmpIoCItem> _objdDictionary = new Dictionary<string, TmpIoCItem>();
+
+        private class TmpIoCItem
         {
             public Type OjbType;
             public object objItem;
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="xmlpath"></param>
         public void LoadXmlFile(string xmlpath)
@@ -154,17 +152,19 @@ namespace Library
             var stream = File.OpenRead(xmlpath);
             LoadXmlFile(stream);
         } /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="xml"></param>
+
+          ///
+          /// </summary>
+          /// <param name="xml"></param>
         public void LoadXmlFile(Stream xml)
         {
             XmlDocument document = new XmlDocument();
             document.Load(xml);
             LoadDoc(document);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="xml"></param>
         public void LoadXml(string xml)
@@ -175,7 +175,8 @@ namespace Library
         }
 
         private static readonly char[] spchar = { ',' };
-        void LoadDoc(XmlDocument document)
+
+        private void LoadDoc(XmlDocument document)
         {
             var nodes = document.SelectNodes(@"//objects/object[@Disabled!='true']");
             if (!nodes.HasRecord()) return;
@@ -196,8 +197,9 @@ namespace Library
                 SetObject(nameAtr.Value, obj);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <param name="obj"></param>
@@ -211,7 +213,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -219,10 +221,10 @@ namespace Library
         {
             if (_objdDictionary.ContainsKey(name)) return _objdDictionary[name];
             return _objdDictionary[name].objItem;
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -233,7 +235,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="iocname"></param>
         /// <param name="fulltypename"></param>
@@ -249,7 +251,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="iocname"></param>
         /// <param name="fulltypename"></param>
@@ -264,7 +266,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="iocname"></param>
         /// <param name="fulltypename"></param>
@@ -275,19 +277,20 @@ namespace Library
             if (iocname == null) throw new ArgumentNullException("iocname");
             if (fulltypename == null) throw new ArgumentNullException("fulltypename");
             if (assembly == null) throw new ArgumentNullException("assembly");
-            if (_objdDictionary.ContainsKey(iocname))  return GetObject(iocname); 
+            if (_objdDictionary.ContainsKey(iocname)) return GetObject(iocname);
             var type = _assemblyManager.GeType(fulltypename, assembly);
             if (type == null) throw new TypeAccessException();
             return type.CreateInstance();
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class AssemblyManager
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fullname"></param>
         /// <param name="assembly"></param>
@@ -299,9 +302,10 @@ namespace Library
             return assemblies.Values.Select(value => value.GetType(fullname)).FirstOrDefault(type => type != null);
         }
 
-        readonly Dictionary<string, Assembly> assemblies = new Dictionary<string, Assembly>();
+        private readonly Dictionary<string, Assembly> assemblies = new Dictionary<string, Assembly>();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="assemblyname"></param>
         /// <returns></returns>
@@ -312,8 +316,9 @@ namespace Library
             var name = assemblies.Keys.FirstOrDefault(n => string.Equals(n, assemblyname, StringComparison.OrdinalIgnoreCase));
             return name == null ? null : assemblies[name];
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="assembly"></param>
         public void AddAssembly(Assembly assembly)

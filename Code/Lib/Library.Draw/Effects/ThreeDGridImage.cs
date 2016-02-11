@@ -1,7 +1,7 @@
+using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -14,7 +14,7 @@ namespace Library.Draw.Effects
         #region Option
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("格子大小，值越大码越格越大"), LanguageDisplayName("格子大小"), Category("濾鏡選項")]
         public int GridSize
@@ -30,8 +30,9 @@ namespace Library.Draw.Effects
                 _opetion.GridSize = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("連線深度"), LanguageDisplayName("連線深度"), Category("濾鏡選項")]
         public int Depth
@@ -47,17 +48,19 @@ namespace Library.Draw.Effects
                 _opetion.Depth = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ThreeDGridOption();
         }
+
         private ThreeDGridOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -68,8 +71,9 @@ namespace Library.Draw.Effects
                 _opetion = (ThreeDGridOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class ThreeDGridOption : ImageOption
         {
@@ -79,6 +83,7 @@ namespace Library.Draw.Effects
             /// <remarks>效果粒度，值越大码越严重</remarks>
             [LanguageDescription("格子大小，值越大码越格越大"), LanguageDisplayName("格子大小"), Category("濾鏡選項")]
             public int GridSize { get; set; }
+
             /// <summary>
             /// 粒度
             /// </summary>
@@ -86,22 +91,25 @@ namespace Library.Draw.Effects
             [LanguageDescription("連線深度"), LanguageDisplayName("連線深度"), Category("濾鏡選項")]
             public int Depth { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
-            return new ThreeDGridOption() { GridSize = 50,Depth = 10};
+            return new ThreeDGridOption() { GridSize = 50, Depth = 10 };
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
         {
-            var size = GridSize<=0?10:GridSize;
+            var size = GridSize <= 0 ? 10 : GridSize;
             var depth = Depth <= 0 ? 2 : Depth;
             var bmp = Source.Clone() as Bitmap;
             int height = bmp.Height;
@@ -132,8 +140,9 @@ namespace Library.Draw.Effects
 
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()

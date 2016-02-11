@@ -1,21 +1,19 @@
-﻿using System;
+﻿using Library.Annotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using Library.Annotations;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class ADONetHepler
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="row"></param>
         /// <param name="name"></param>
@@ -27,25 +25,24 @@ namespace Library.HelperUtility
             if (row == null || !row.Table.Columns.Contains(name)) return defaultValue;
             var value = row[name];
             return ObjectUtility.TryCast(value, defaultValue);
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="table"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         [NotNull]
-        public static IList<T> GetList<T>([NotNull] this System.Data.DataTable table) where T : class,new()
+        public static IList<T> GetList<T>([NotNull] this System.Data.DataTable table) where T : class, new()
         {
             if (table == null) throw new ArgumentNullException("table");
             return GetList<T>(table.CreateDataReader());
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dataReader"></param>
         /// <typeparam name="T"></typeparam>
@@ -53,7 +50,7 @@ namespace Library.HelperUtility
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="DataException"></exception>
         [NotNull]
-        public static IList<T> GetList<T>([NotNull] this System.Data.IDataReader dataReader) where T : class,new()
+        public static IList<T> GetList<T>([NotNull] this System.Data.IDataReader dataReader) where T : class, new()
         {
             if (dataReader == null) throw new ArgumentNullException("dataReader");
             if (dataReader.IsClosed) throw new DataException("dataReader is close");
@@ -71,8 +68,9 @@ namespace Library.HelperUtility
 
             return list;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dataReader"></param>
         /// <param name="type"></param>
@@ -104,7 +102,6 @@ namespace Library.HelperUtility
             }
             return reInfos;
         }
-
 
         private static void GetValue(IDataReader dataReader, [NotNull] ref object item,
             [NotNull] Dictionary<int, PropertyInfo> reInfos)

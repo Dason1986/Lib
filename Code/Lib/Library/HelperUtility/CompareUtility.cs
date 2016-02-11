@@ -1,19 +1,19 @@
+using Library.Annotations;
 using System;
 using System.Collections.Generic;
-using Library.Annotations;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class DelegateEqualityComparer<T> : IEqualityComparer<T>
     {
         private readonly Func<T, T, bool> _func;
-         
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="func"></param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -22,8 +22,9 @@ namespace Library.HelperUtility
             _func = func;
             if (func == null) throw new ArgumentNullException("func");
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -32,8 +33,9 @@ namespace Library.HelperUtility
         {
             return _func(x, y);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -45,7 +47,7 @@ namespace Library.HelperUtility
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class CompareUtility
     {
@@ -53,8 +55,9 @@ namespace Library.HelperUtility
         {
             StringEqualityComparer = new DelegateEqualityComparer<string>((x, y) => string.Equals(x, y, StringComparison.OrdinalIgnoreCase));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <param name="min"></param>
@@ -69,12 +72,12 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static readonly IEqualityComparer<string> StringEqualityComparer;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <param name="min"></param>
@@ -82,13 +85,14 @@ namespace Library.HelperUtility
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool IsBetween<T>(this T? x, T min, T max) where T : struct,IComparable
+        public static bool IsBetween<T>(this T? x, T min, T max) where T : struct, IComparable
         {
             if (x == null) return false;
             if (min.CompareTo(max) > 0) throw new Exception("區間最小值不能大於區間最大值");
             var val = x.Value;
             return (val.CompareTo(min) >= 0 && val.CompareTo(max) <= 0);
         }
+
         #region
 
         private static bool Compare(decimal x, decimal y)
@@ -128,7 +132,6 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y, digth);
             return Compare(tmpx, tmpy);
         }
-
 
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
@@ -177,7 +180,6 @@ namespace Library.HelperUtility
         }
 
         #endregion
-
 
         #region double
 
@@ -244,6 +246,7 @@ namespace Library.HelperUtility
         #endregion
 
         #region double&decimal
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -257,6 +260,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y, digth);
             return tmpx.CompareTo(tmpy) == 0;
         }
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -271,6 +275,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y, digth);
             return Compare(tmpx, tmpy);
         }
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -285,6 +290,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y.Value, digth);
             return Compare(tmpx, tmpy);
         }
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -300,6 +306,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y.Value, digth);
             return Compare(tmpx, tmpy);
         }
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -313,6 +320,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y, digth);
             return tmpx.CompareTo(tmpy) == 0;
         }
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -327,6 +335,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y, digth);
             return Compare(tmpx, tmpy);
         }
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -341,6 +350,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y.Value, digth);
             return Compare(tmpx, tmpy);
         }
+
         /// <summary>
         /// 兩個值比較，忽略指定位後的小數
         /// </summary>
@@ -356,6 +366,7 @@ namespace Library.HelperUtility
             var tmpy = Math.Round(y.Value, digth);
             return Compare(tmpx, tmpy);
         }
+
         #endregion
     }
 }

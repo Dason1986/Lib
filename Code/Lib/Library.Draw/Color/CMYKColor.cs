@@ -1,13 +1,13 @@
+using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using Library.Att;
 
 namespace Library.Draw
 {
     /// <summary>
     /// 颜色空间应用于印刷工业
-    /// </summary>  
+    /// </summary>
     /// [Editor("Library.Draw.Design.CMYKColorEditor, Library.Draw.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
     [TypeConverter(typeof(CMYKColorConverter))]
     public struct CMYKColor : IToRGBColor
@@ -16,28 +16,33 @@ namespace Library.Draw
         /// Gets an empty RGB structure;
         /// </summary>
         public static readonly CMYKColor Empty = new CMYKColor();
+
         /// <summary>
         /// 青
         /// </summary>
         [LanguageDescription("C - Cyan 青 〈互补色〉 R - Red 红 "), LanguageDisplayName("青")]
         public int Cyan { get; private set; }
+
         /// <summary>
         /// 品红
         /// </summary>
         [LanguageDescription("M - Magenta 品红 〈互补色〉 G - Green 绿 "), LanguageDisplayName("品红")]
         public int Magenta { get; private set; }
+
         /// <summary>
         /// 黄
         /// </summary>
         [LanguageDescription("Y - Yellow 黄 〈互补色〉 B - Blue 蓝"), LanguageDisplayName("黄")]
         public int Yellow { get; private set; }
+
         /// <summary>
         /// 黑
         /// </summary>
         [LanguageDescription(""), LanguageDisplayName("黑")]
         public int Black { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public Color ToRGB()
@@ -62,14 +67,13 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rr"></param>
         /// <param name="gg"></param>
         /// <param name="bb"></param>
         public static CMYKColor FromRGB(int rr, int gg, int bb)
         {
-
             CMYKColor cmyk = new CMYKColor();
 
             cmyk.Black = (int)(Math.Min(Math.Min(255 - rr, 255 - gg), 255 - bb) / 2.55);//cmykK
@@ -83,8 +87,9 @@ namespace Library.Draw
             cmyk.Yellow = ((100 - myB - cmyk.Black) / div) * 100;
             return cmyk;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -98,8 +103,9 @@ namespace Library.Draw
                 && item1.Black == item2.Black
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -113,8 +119,9 @@ namespace Library.Draw
                 || item1.Black != item2.Black
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -124,8 +131,9 @@ namespace Library.Draw
 
             return (this == (CMYKColor)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -136,10 +144,9 @@ namespace Library.Draw
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class CMYKColorConverter : TypeConverter
     {
-
     }
 }

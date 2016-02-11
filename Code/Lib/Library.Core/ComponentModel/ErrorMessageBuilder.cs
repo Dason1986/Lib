@@ -1,42 +1,47 @@
-using System;
 using Library.Annotations;
+using System;
 
 namespace Library.ComponentModel
-{ 
+{
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IErrorMessageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Type ErrorType { get; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exception"></param>
         /// <returns></returns>
         string GetMessage(Exception exception);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exception"></param>
         /// <returns></returns>
         bool CanExcute(Exception exception);
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ErrorMessageBuilder : IErrorMessageBuilder
     {
         private readonly Func<Exception, string> _fun;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Type ErrorType { get; protected set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="errorType"></param>
         /// <param name="fun"></param>
@@ -49,7 +54,7 @@ namespace Library.ComponentModel
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exception"></param>
         /// <returns></returns>
@@ -59,7 +64,7 @@ namespace Library.ComponentModel
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exception"></param>
         /// <returns></returns>

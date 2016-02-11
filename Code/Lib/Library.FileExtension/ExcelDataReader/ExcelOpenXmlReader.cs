@@ -1,21 +1,16 @@
 #define DEBUGREADERS
 
+using Library.FileExtension.ExcelDataReader.Core;
+using Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat;
+using Library.HelperUtility;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat;
-using System.IO;
-using Library.FileExtension.ExcelDataReader.Core;
 using System.Data;
+using System.IO;
 using System.Xml;
-using System.Globalization;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library.FileExtension.ExcelDataReader
 {
-
     public class ExcelOpenXmlReader : IExcelDataReader
     {
         #region Members
@@ -38,17 +33,19 @@ namespace Library.FileExtension.ExcelDataReader
         private bool _isFirstRowAsColumnNames = false;
         private const string COLUMN = "Column";
         private string instanceId = Guid.NewGuid().ToString();
+
         public int TotalRow
         {
             get
             {
-
                 if (_workbook == null || _resultIndex < 0 || _resultIndex > _workbook.Sheets.Count) return 0;
                 return _workbook.Sheets[_resultIndex].RowsCount;
             }
         }
+
         private List<int> _defaultDateTimeStyles;
-        #endregion
+
+        #endregion Members
 
         internal ExcelOpenXmlReader(bool isFirstRowAsColumnNames)
         {
@@ -56,11 +53,10 @@ namespace Library.FileExtension.ExcelDataReader
             _isValid = true;
             _isFirstRead = true;
 
-            _defaultDateTimeStyles = new List<int>(new int[] 
-			{
-				14, 15, 16, 17, 18, 19, 20, 21, 22, 45, 46, 47
-			});
-
+            _defaultDateTimeStyles = new List<int>(new int[]
+            {
+                14, 15, 16, 17, 18, 19, 20, 21, 22, 45, 46, 47
+            });
         }
 
         private void ReadGlobals()
@@ -72,7 +68,6 @@ namespace Library.FileExtension.ExcelDataReader
                 _zipWorker.GetStylesStream());
 
             CheckDateTimeNumFmts(_workbook.Styles.NumFmts);
-
         }
 
         private void CheckDateTimeNumFmts(List<XlsxNumFmt> list)
@@ -224,8 +219,6 @@ namespace Library.FileExtension.ExcelDataReader
                                 o = o.ToString();
                         }
 
-
-
                         if (col - 1 < _cellsValues.Length)
                             _cellsValues[col - 1] = o;
                     }
@@ -255,8 +248,6 @@ namespace Library.FileExtension.ExcelDataReader
 
             if (_workbook.Sheets[_resultIndex].Dimension == null) return false;
 
-
-
             _depth = 0;
             if (IsFirstRowAsColumnNames)
             {
@@ -284,7 +275,6 @@ namespace Library.FileExtension.ExcelDataReader
         {
             return _defaultDateTimeStyles.Contains(styleId);
         }
-
 
         #region IExcelDataReader Members
 
@@ -319,9 +309,8 @@ namespace Library.FileExtension.ExcelDataReader
 
             for (int ind = 0; ind < _workbook.Sheets.Count; ind++)
             {
-               
-                DataTable table=CreateTable(ind) ;
-                if (table!=null)
+                DataTable table = CreateTable(ind);
+                if (table != null)
                     dataset.Tables.Add(table);
             }
             dataset.AcceptChanges();
@@ -329,13 +318,11 @@ namespace Library.FileExtension.ExcelDataReader
             return dataset;
         }
 
-        private DataTable CreateTable(int sheetindex, int top=0)
+        private DataTable CreateTable(int sheetindex, int top = 0)
         {
             ReadSheetGlobals(_workbook.Sheets[sheetindex]);
             if (_workbook.Sheets[sheetindex].Dimension == null) return null;
             DataTable table = new DataTable(_workbook.Sheets[sheetindex].Name);
-
-
 
             _depth = 0;
             _emptyRowCount = 0;
@@ -363,7 +350,7 @@ namespace Library.FileExtension.ExcelDataReader
             table.BeginLoadData();
             int rows = 0;
             bool canread = true;
-            while (canread&&ReadSheetRow(_workbook.Sheets[sheetindex]))
+            while (canread && ReadSheetRow(_workbook.Sheets[sheetindex]))
             {
                 rows++;
                 if (rows == top)
@@ -474,7 +461,6 @@ namespace Library.FileExtension.ExcelDataReader
             {
                 return DateTime.MinValue;
             }
-
         }
 
         public decimal GetDecimal(int i)
@@ -541,7 +527,7 @@ namespace Library.FileExtension.ExcelDataReader
             get { return _cellsValues[i]; }
         }
 
-        #endregion
+        #endregion IExcelDataReader Members
 
         #region IDisposable Members
 
@@ -582,10 +568,9 @@ namespace Library.FileExtension.ExcelDataReader
             Dispose(false);
         }
 
-        #endregion
+        #endregion IDisposable Members
 
-        #region  Not Supported IDataReader Members
-
+        #region Not Supported IDataReader Members
 
         public DataTable GetSchemaTable()
         {
@@ -597,10 +582,9 @@ namespace Library.FileExtension.ExcelDataReader
             get { throw new NotSupportedException(); }
         }
 
-        #endregion
+        #endregion Not Supported IDataReader Members
 
         #region Not Supported IDataRecord Members
-
 
         public byte GetByte(int i)
         {
@@ -652,6 +636,7 @@ namespace Library.FileExtension.ExcelDataReader
         }
 
         private string[] currentCNames;
+
         public int GetOrdinal(string name)
         {
             for (int i = 0; i < currentCNames.Length; i++)
@@ -679,10 +664,7 @@ namespace Library.FileExtension.ExcelDataReader
             get { return this[GetOrdinal(name)]; }
         }
 
-        #endregion
-
-
-
+        #endregion Not Supported IDataRecord Members
 
         public DataSet GetSchema()
         {
@@ -696,11 +678,8 @@ namespace Library.FileExtension.ExcelDataReader
             excelSchemaDs.Tables.Add(excelSchemaTable);
             excelSchemaDs.Tables.Add(excelSchemaColumn);
 
-
             for (int ind = 0; ind < _workbook.Sheets.Count; ind++)
             {
-
-
                 ReadSheetGlobals(_workbook.Sheets[ind]);
                 var sheet = _workbook.Sheets[ind];
                 DataRow drRowTable = excelSchemaTable.NewRow();
@@ -718,7 +697,6 @@ namespace Library.FileExtension.ExcelDataReader
                 //DataTable columns
                 if (!_isFirstRowAsColumnNames)
                 {
-
                     for (int i = 0; i < _workbook.Sheets[ind].ColumnsCount; i++)
                     {
                         var Column_Name = string.Format("Column{0}", i);
@@ -755,11 +733,9 @@ namespace Library.FileExtension.ExcelDataReader
                         itemtebledr[1] = typeof(string).FullName;
                     }
                 }
-
-
-            } return excelSchemaDs;
+            }
+            return excelSchemaDs;
         }
-
 
         public bool GoToResult(int index)
         {
@@ -778,7 +754,6 @@ namespace Library.FileExtension.ExcelDataReader
             return GoToResult(sheetindex);
         }
 
-
         public DataTable AsTable(string name, int top)
         {
             if (top < 0) throw new Exception("记录数不能少于0");
@@ -788,7 +763,7 @@ namespace Library.FileExtension.ExcelDataReader
 
         public DataTable AsTable(int index, int top)
         {
-            if (top<0)throw new Exception("记录数不能少于0");
+            if (top < 0) throw new Exception("记录数不能少于0");
             return CreateTable(index, top);
         }
     }

@@ -5,15 +5,16 @@ using System.Runtime;
 namespace Library.Att
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
     public class LanguageDisplayNameAttribute : DisplayNameAttribute
     {
         private readonly Type ResourceType;
         private bool replaced;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string DisplayName
         {
@@ -24,14 +25,13 @@ namespace Library.Att
                     this.replaced = true;
                     if (ResourceType != null)
                         this.DisplayNameValue = ResourceManagement.GetString(ResourceType, base.DisplayName);
-
                 }
                 return base.DisplayName;
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="displayName"></param>
         [TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")]
@@ -41,7 +41,7 @@ namespace Library.Att
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="description"></param>
         /// <param name="resourceType"></param>

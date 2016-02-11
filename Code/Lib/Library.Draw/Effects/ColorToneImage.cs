@@ -1,22 +1,21 @@
-﻿using System;
+﻿using Library.Att;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 調色/飽和
-    /// </summary> 
+    /// </summary>
     [LanguageDescription("調色/飽和"), LanguageDisplayName("調色/飽和")]
     public class ColorToneImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("調色"), LanguageDisplayName("調色"), Category("濾鏡選項")]
-
         public Color Tone
         {
             get
@@ -30,11 +29,11 @@ namespace Library.Draw.Effects
                 _opetion.Tone = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("飽和"), LanguageDisplayName("飽和"), Category("濾鏡選項")]
-
         public int Saturation
         {
             get
@@ -50,17 +49,19 @@ namespace Library.Draw.Effects
         }
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ColorToneOption();
         }
+
         private ColorToneOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -71,8 +72,9 @@ namespace Library.Draw.Effects
                 _opetion = (ColorToneOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
@@ -81,25 +83,26 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class ColorToneOption : ImageOption
         { /// <summary>
-            /// 
-            /// </summary>
+          ///
+          /// </summary>
             [LanguageDescription("調色"), LanguageDisplayName("調色"), Category("濾鏡選項")]
             public Color Tone { get; set; }
+
             /// <summary>
-            /// 
-            /// </summary> 
+            ///
+            /// </summary>
             [LanguageDescription("飽和"), LanguageDisplayName("飽和"), Category("濾鏡選項")]
             public int Saturation { get; set; }
         }
 
+        #endregion Option
 
-        #endregion
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -126,8 +129,9 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -163,9 +167,9 @@ namespace Library.Draw.Effects
 
         #region MyRegion
 
-        double _hue;
-        double _saturation;
-        double[] _lum_tab = new double[256];
+        private double _hue;
+        private double _saturation;
+        private double[] _lum_tab = new double[256];
 
         // @name RGB <--> HLS (Hue, Lightness, Saturation).
         //@{
@@ -173,7 +177,8 @@ namespace Library.Draw.Effects
             RGB --> HLS \n
             prgb - address of 24bpp or 32bpp pixel.
         */
-        static double[] RGBtoHLS(Color rgb, double H, double L, double S)
+
+        private static double[] RGBtoHLS(Color rgb, double H, double L, double S)
         {
             int colorR = rgb.R;
             int colorG = rgb.G;
@@ -217,12 +222,12 @@ namespace Library.Draw.Effects
             return new double[] { H, L, S };
         }
 
-        static Color DoubleRGB_to_RGB(double r, double g, double b)
+        private static Color DoubleRGB_to_RGB(double r, double g, double b)
         {
             return Color.FromArgb(((int)(r * 255)), ((int)(g * 255)), ((int)(b * 255)));
         }
 
-        static double HLS_Value(double n1, double n2, double h)
+        private static double HLS_Value(double n1, double n2, double h)
         {
             if (h > 6.0)
                 h -= 6.0;
@@ -239,7 +244,7 @@ namespace Library.Draw.Effects
         }
 
         /// HLS --> RGB.
-        static Color HLStoRGB(double H, double L, double S)
+        private static Color HLStoRGB(double H, double L, double S)
         {
             if ((!(S > 0)) && (!(S < 0))) // == 0
                 return DoubleRGB_to_RGB(L, L, L);
@@ -257,17 +262,17 @@ namespace Library.Draw.Effects
             return DoubleRGB_to_RGB(r, g, b);
         }
 
-
         /**
            Calculate grayscale value of pixel \n
            prgb - address of 24bpp or 32bpp pixel.
        */
-        static int GetGrayscale(int r, int g, int b)
+
+        private static int GetGrayscale(int r, int g, int b)
         {
             return (int)((30 * r + 59 * g + 11 * g) / 100);
         }
 
-        void SetColorToneFilter(Color tone, int saturation)
+        private void SetColorToneFilter(Color tone, int saturation)
         {
             double l = 0.0f;
             double[] result = RGBtoHLS(tone, _hue, l, _saturation);
@@ -290,7 +295,6 @@ namespace Library.Draw.Effects
             }
         }
 
-
-        #endregion
+        #endregion MyRegion
     }
 }

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Library.Data;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
-using Library.Data;
-
 
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelColumn : DataGridViewTextBoxColumn, IQueryControl
@@ -20,19 +19,19 @@ namespace Library.Controls
         private readonly OrderCollection _orders = new OrderCollection();
         private object _dataSource;
 
-        readonly BindingContext _context = new BindingContext();
+        private readonly BindingContext _context = new BindingContext();
         private CurrencyManager _manager;
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataGridViewQueryLabelColumn()
         {
             this.CellTemplate = new DataGridViewQueryLabelCell();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override sealed DataGridViewCell CellTemplate
         {
@@ -41,43 +40,46 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public IQueryDataProvider CurrentQueryDataProvider { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public string QueryDataID { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public FieldCollection Fields
         {
             get { return _fields; }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public OrderCollection Orders
         {
             get { return _orders; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public FilterCollection Filters
         {
             get { return _filters; }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public object DataSource
@@ -90,20 +92,23 @@ namespace Library.Controls
                 else _manager = null;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public string DisplayMember { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public string ValueMember { get; set; }
 
         object IQueryControl.SelectedValue { get { throw new NotSupportedException(); } set { throw new NotSupportedException(); } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -117,7 +122,6 @@ namespace Library.Controls
                 if (_dataSource != null) _manager = (CurrencyManager)_context[_dataSource];
             }
             if (_manager == null || key == null) return null;
-
 
             var properies = _manager.GetItemProperties();
             var displaypropery = properies[this.DisplayMember];
@@ -135,9 +139,8 @@ namespace Library.Controls
             return null;
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override object Clone()
@@ -153,8 +156,9 @@ namespace Library.Controls
             obj.Orders.ReSet(Orders);
             return obj;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -167,64 +171,65 @@ namespace Library.Controls
             stringBuilder.Append(" }");
             return stringBuilder.ToString();
         }
-
-
-
     }
 
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelEditingControl : QueryLabel, IDataGridViewEditingControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dataGridViewCellStyle"></param>
         public void ApplyCellStyleToEditingControl(DataGridViewCellStyle dataGridViewCellStyle)
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataGridViewQueryLabelCell OwnerCell { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataGridView EditingControlDataGridView
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object EditingControlFormattedValue
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int EditingControlRowIndex
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool EditingControlValueChanged
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="keyData"></param>
         /// <param name="dataGridViewWantsInputKey"></param>
@@ -233,15 +238,17 @@ namespace Library.Controls
         {
             return false;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Cursor EditingPanelCursor
         {
             get { return Cursors.Arrow; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -249,35 +256,34 @@ namespace Library.Controls
         {
             return null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="selectAll"></param>
         public void PrepareEditingControlForEdit(bool selectAll)
         {
-
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool RepositionEditingControlOnValueChange { get; protected set; }
-
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewQueryLabelCell : DataGridViewTextBoxCell
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static readonly Type DefaultEditType = typeof(DataGridViewQueryLabelEditingControl);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override Type EditType
         {
@@ -286,14 +292,16 @@ namespace Library.Controls
                 return DefaultEditType; // the type is DataGridViewNumericUpDownEditingControl
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
             return "DataGridViewQueryLabelCell { ColumnIndex=" + this.ColumnIndex.ToString(CultureInfo.CurrentCulture) + ", RowIndex=" + this.RowIndex.ToString(CultureInfo.CurrentCulture) + " }";
         }
+
         /// <summary>
         /// 附加并初始化寄宿的编辑控件。
         /// </summary>
@@ -310,7 +318,7 @@ namespace Library.Controls
             queryLabel.Fields.ReSet(column.Fields);
             queryLabel.Orders.ReSet(column.Orders);
             queryLabel.Filters.ReSet(column.Filters);
-           
+
             object value = column.GetDislpayName(GetValue(rowIndex));
             queryLabel.DataSource = column.DataSource;
             queryLabel.QueryDataID = column.QueryDataID;
@@ -320,21 +328,20 @@ namespace Library.Controls
             queryLabel.Text = value == null ? string.Empty : value.ToString();
         }
 
-
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="graphics"></param>
-       /// <param name="clipBounds"></param>
-       /// <param name="cellBounds"></param>
-       /// <param name="rowIndex"></param>
-       /// <param name="cellState"></param>
-       /// <param name="value"></param>
-       /// <param name="formattedValue"></param>
-       /// <param name="errorText"></param>
-       /// <param name="cellStyle"></param>
-       /// <param name="advancedBorderStyle"></param>
-       /// <param name="paintParts"></param>
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="graphics"></param>
+        /// <param name="clipBounds"></param>
+        /// <param name="cellBounds"></param>
+        /// <param name="rowIndex"></param>
+        /// <param name="cellState"></param>
+        /// <param name="value"></param>
+        /// <param name="formattedValue"></param>
+        /// <param name="errorText"></param>
+        /// <param name="cellStyle"></param>
+        /// <param name="advancedBorderStyle"></param>
+        /// <param name="paintParts"></param>
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             var column = this.OwningColumn as DataGridViewQueryLabelColumn;
@@ -351,7 +358,6 @@ namespace Library.Controls
         {
             Rectangle rectangle1 = Rectangle.Empty;
 
-
             Rectangle rectangle2 = this.BorderWidths(advancedBorderStyle);
             Rectangle rectangle3 = cellBounds;
             rectangle3.Offset(rectangle2.X, rectangle2.Y);
@@ -365,7 +371,6 @@ namespace Library.Controls
             graphics.FillRectangle((Brush)solidBrush, rectangle3);
             if (cellStyle.Padding != Padding.Empty)
             {
-
                 rectangle3.Offset(cellStyle.Padding.Left, cellStyle.Padding.Top);
                 rectangle3.Width -= cellStyle.Padding.Horizontal;
                 rectangle3.Height -= cellStyle.Padding.Vertical;
@@ -396,10 +401,10 @@ namespace Library.Controls
             }
 
             return rectangle1;
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="cellBounds"></param>
         /// <param name="sizeText"></param>
@@ -417,18 +422,23 @@ namespace Library.Controls
                     case DataGridViewContentAlignment.MiddleRight:
                         contentAlignment = DataGridViewContentAlignment.MiddleLeft;
                         break;
+
                     case DataGridViewContentAlignment.BottomLeft:
                         contentAlignment = DataGridViewContentAlignment.BottomRight;
                         break;
+
                     case DataGridViewContentAlignment.BottomRight:
                         contentAlignment = DataGridViewContentAlignment.BottomLeft;
                         break;
+
                     case DataGridViewContentAlignment.TopLeft:
                         contentAlignment = DataGridViewContentAlignment.TopRight;
                         break;
+
                     case DataGridViewContentAlignment.TopRight:
                         contentAlignment = DataGridViewContentAlignment.TopLeft;
                         break;
+
                     case DataGridViewContentAlignment.MiddleLeft:
                         contentAlignment = DataGridViewContentAlignment.MiddleRight;
                         break;
@@ -440,34 +450,42 @@ namespace Library.Controls
                     point.X = cellBounds.X + (cellBounds.Width - sizeText.Width) / 2;
                     point.Y = cellBounds.Bottom - sizeText.Height;
                     break;
+
                 case DataGridViewContentAlignment.BottomRight:
                     point.X = cellBounds.Right - sizeText.Width;
                     point.Y = cellBounds.Bottom - sizeText.Height;
                     break;
+
                 case DataGridViewContentAlignment.MiddleRight:
                     point.X = cellBounds.Right - sizeText.Width;
                     point.Y = cellBounds.Y + (cellBounds.Height - sizeText.Height) / 2;
                     break;
+
                 case DataGridViewContentAlignment.BottomLeft:
                     point.X = cellBounds.X;
                     point.Y = cellBounds.Bottom - sizeText.Height;
                     break;
+
                 case DataGridViewContentAlignment.TopLeft:
                     point.X = cellBounds.X;
                     point.Y = cellBounds.Y;
                     break;
+
                 case DataGridViewContentAlignment.TopCenter:
                     point.X = cellBounds.X + (cellBounds.Width - sizeText.Width) / 2;
                     point.Y = cellBounds.Y;
                     break;
+
                 case DataGridViewContentAlignment.TopRight:
                     point.X = cellBounds.Right - sizeText.Width;
                     point.Y = cellBounds.Y;
                     break;
+
                 case DataGridViewContentAlignment.MiddleLeft:
                     point.X = cellBounds.X;
                     point.Y = cellBounds.Y + (cellBounds.Height - sizeText.Height) / 2;
                     break;
+
                 case DataGridViewContentAlignment.MiddleCenter:
                     point.X = cellBounds.X + (cellBounds.Width - sizeText.Width) / 2;
                     point.Y = cellBounds.Y + (cellBounds.Height - sizeText.Height) / 2;
@@ -475,8 +493,9 @@ namespace Library.Controls
             }
             return point;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="cellBounds"></param>
         /// <param name="text"></param>
@@ -497,9 +516,8 @@ namespace Library.Controls
             return size == proposedSize ? cellBounds : new Rectangle(GetTextLocation(cellBounds, size, flags, cellStyle), size);
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rowIndex"></param>
         /// <param name="dgvabsEffective"></param>
@@ -538,6 +556,7 @@ namespace Library.Controls
             dgvabsEffective = null;
             cellState = DataGridViewElementStates.None;
         }
+
         /// <summary>
         /// /
         /// </summary>
@@ -550,18 +569,16 @@ namespace Library.Controls
             }
 
             var queryLabel = dataGridView.EditingControl as DataGridViewQueryLabelEditingControl;
-            if (queryLabel != null )
+            if (queryLabel != null)
             {
-              
-                this.SetValue(queryLabel.EditingControlRowIndex, queryLabel.SelectedValue); 
+                this.SetValue(queryLabel.EditingControlRowIndex, queryLabel.SelectedValue);
                 queryLabel.Fields.Clear();
                 queryLabel.Orders.Clear();
                 queryLabel.Filters.Clear();
                 queryLabel.DataSource = null;
             }
-            
+
             base.DetachEditingControl();
         }
     }
-
 }

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class Button : System.Windows.Forms.Button
     {
@@ -20,11 +20,12 @@ namespace Library.Controls
         private ControlState _state = ControlState.Normal;
         private Font _defaultFont = new Font("微软雅黑", 9);
 
-        #endregion
+        #endregion Field
 
         #region Constructor
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Button()
         {
@@ -33,7 +34,7 @@ namespace Library.Controls
             this.Size = new Size(68, 23);
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Properites
 
@@ -45,11 +46,12 @@ namespace Library.Controls
             }
         }
 
-        #endregion
+        #endregion Properites
 
         #region Override
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
@@ -57,8 +59,9 @@ namespace Library.Controls
             _state = ControlState.Highlight;
             base.OnMouseEnter(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
@@ -77,8 +80,9 @@ namespace Library.Controls
             }
             base.OnMouseLeave(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
@@ -89,8 +93,9 @@ namespace Library.Controls
             }
             base.OnMouseDown(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
@@ -101,8 +106,9 @@ namespace Library.Controls
             }
             base.OnMouseUp(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
@@ -110,8 +116,9 @@ namespace Library.Controls
             _state = ControlState.Normal;
             base.OnLostFocus(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
@@ -119,8 +126,9 @@ namespace Library.Controls
             _state = Enabled ? ControlState.Normal : ControlState.Disabled;
             base.OnEnabledChanged(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pevent"></param>
         protected override void OnPaint(PaintEventArgs pevent)
@@ -143,33 +151,35 @@ namespace Library.Controls
 
                     RenderHelper.DrawImageWithNineRect(g, _normalImg, ClientRectangle, new Rectangle(0, 0, _normalImg.Width, _normalImg.Height - 1));
                     break;
+
                 case ControlState.Highlight:
 
                     RenderHelper.DrawImageWithNineRect(g, _highlightImg, ClientRectangle, new Rectangle(0, 0, _highlightImg.Width, _highlightImg.Height - 1));
                     break;
+
                 case ControlState.Focus:
 
                     RenderHelper.DrawImageWithNineRect(g, _focusImg, ClientRectangle, new Rectangle(0, 0, _focusImg.Width, _focusImg.Height - 1));
                     break;
+
                 case ControlState.Down:
                     RenderHelper.DrawImageWithNineRect(g, _downImg, ClientRectangle, new Rectangle(0, 0, _downImg.Width, _downImg.Height - 1));
                     break;
+
                 case ControlState.Disabled:
                     DrawDisabledButton(g);
                     break;
             }
-   Color textColor = Enabled ? ForeColor : SystemColors.GrayText;
+            Color textColor = Enabled ? ForeColor : SystemColors.GrayText;
             if (Image != null)
             {
                 var point = GetPoint(Image);
                 imageRect.X = point.X;
                 imageRect.Y = point.Y;
-                g.DrawImage(Image, imageRect,0, 0,  Image.Width, Image.Height, GraphicsUnit.Pixel);
+                g.DrawImage(Image, imageRect, 0, 0, Image.Width, Image.Height, GraphicsUnit.Pixel);
             }
 
-         
             TextRenderer.DrawText(g, Text, Font, textRect, textColor, GetTextFormatFlags(TextAlign, RightToLeft == RightToLeft.Yes));
-
         }
 
         private Point GetPoint(Image currImg)
@@ -247,10 +257,11 @@ namespace Library.Controls
                     y = Height - h;
                     break;
             }
-            return new Point(x,y);
+            return new Point(x, y);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -272,7 +283,7 @@ namespace Library.Controls
             base.Dispose(disposing);
         }
 
-        #endregion
+        #endregion Override
 
         #region Private
 
@@ -301,18 +312,22 @@ namespace Library.Controls
                     imageRect = new Rectangle(3, (Height - ImageWidth) / 2, ImageWidth, ImageWidth);
                     textRect = new Rectangle(3, 0, Width - 6, Height);
                     break;
+
                 case TextImageRelation.ImageAboveText:
                     imageRect = new Rectangle((Width - ImageWidth) / 2, 3, ImageWidth, ImageWidth);
                     textRect = new Rectangle(3, imageRect.Bottom, Width - 6, Height - imageRect.Bottom - 2);
                     break;
+
                 case TextImageRelation.ImageBeforeText:
                     imageRect = new Rectangle(3, (Height - ImageWidth) / 2, ImageWidth, ImageWidth);
                     textRect = new Rectangle(imageRect.Right + 3, 0, Width - imageRect.Right - 6, Height);
                     break;
+
                 case TextImageRelation.TextAboveImage:
                     imageRect = new Rectangle((Width - ImageWidth) / 2, Height - ImageWidth - 3, ImageWidth, ImageWidth);
                     textRect = new Rectangle(0, 3, Width, Height - imageRect.Y - 3);
                     break;
+
                 case TextImageRelation.TextBeforeImage:
                     imageRect = new Rectangle(Width - ImageWidth - 6, (Height - ImageWidth) / 2, ImageWidth, ImageWidth);
                     textRect = new Rectangle(3, 0, imageRect.X - 3, Height);
@@ -361,28 +376,36 @@ namespace Library.Controls
                 case ContentAlignment.BottomCenter:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.HorizontalCenter;
                     break;
+
                 case ContentAlignment.BottomLeft:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.BottomRight:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.Right;
                     break;
+
                 case ContentAlignment.MiddleCenter:
                     flags |= TextFormatFlags.HorizontalCenter |
                              TextFormatFlags.VerticalCenter;
                     break;
+
                 case ContentAlignment.MiddleLeft:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.MiddleRight:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Right;
                     break;
+
                 case ContentAlignment.TopCenter:
                     flags |= TextFormatFlags.Top | TextFormatFlags.HorizontalCenter;
                     break;
+
                 case ContentAlignment.TopLeft:
                     flags |= TextFormatFlags.Top | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.TopRight:
                     flags |= TextFormatFlags.Top | TextFormatFlags.Right;
                     break;
@@ -390,6 +413,6 @@ namespace Library.Controls
             return flags;
         }
 
-        #endregion
+        #endregion Private
     }
 }

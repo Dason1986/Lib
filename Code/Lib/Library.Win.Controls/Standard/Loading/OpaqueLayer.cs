@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Threading;
-using Library.Controls;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Library.Controls
 {
     /// <summary>
     /// 自定义控件:半透明控件
     /// </summary>
-    /* 
+    /*
      * [ToolboxBitmap(typeof(MyOpaqueLayer))]
      * 用于指定当把你做好的自定义控件添加到工具栏时，工具栏显示的图标。
      * 正确写法应该是
      * [ToolboxBitmap(typeof(XXXXControl),"xxx.bmp")]
      * 其中XXXXControl是你的自定义控件，"xxx.bmp"是你要用的图标名称。
     */
+
     [ToolboxBitmap(typeof(OpaqueLayer))]
     public class OpaqueLayer : System.Windows.Forms.Control
     {
         internal readonly static IDictionary<object, OpaqueCommand> ControList = new Dictionary<object, OpaqueCommand>();
+
         /// <summary>
         /// 显示遮罩层
         /// </summary>
@@ -45,7 +45,6 @@ namespace Library.Controls
             return command;
         }
 
-
         private bool _transparentBG = true;//是否使用透明
         private int _alpha = 125;//设置透明度
 
@@ -55,9 +54,11 @@ namespace Library.Controls
             : this(125, true)
         {
         }
-        static readonly Image Imageloading = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.loading.gif");
+
+        private static readonly Image Imageloading = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.loading.gif");
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="alpha"></param>
         /// <param name="isShowLoadingImage"></param>
@@ -81,7 +82,7 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -124,9 +125,9 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        protected override CreateParams CreateParams//v1.10 
+        protected override CreateParams CreateParams//v1.10
         {
             get
             {
@@ -141,8 +142,9 @@ namespace Library.Controls
          * 一般用于说明你自定义控件的属性（Property）。
          * Category用于说明该属性属于哪个分类，Description自然就是该属性的含义解释。
          */
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("OpaqueLayer"), Description("是否使用透明,默认为True")]
         public bool TransparentBG
@@ -159,7 +161,7 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("OpaqueLayer"), Description("设置透明度")]
         public int Alpha
@@ -176,14 +178,14 @@ namespace Library.Controls
         }
     }
 
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class OpaqueCommand
     {
         private OpaqueLayer m_OpaqueLayer = null;//半透明蒙板层
         private Control _control;
+
         /// <summary>
         /// 显示遮罩层
         /// </summary>
@@ -215,7 +217,6 @@ namespace Library.Controls
         {
             try
             {
-              
                 if (this.m_OpaqueLayer != null)
                 {
                     this.m_OpaqueLayer.Visible = false;
@@ -229,6 +230,5 @@ namespace Library.Controls
                 //MessageBox.Show(ex.Message);
             }
         }
-
     }
 }

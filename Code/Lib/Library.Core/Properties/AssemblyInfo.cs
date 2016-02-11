@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Resources;
+using System.Runtime.InteropServices;
 
 // 組件的一般資訊是由下列的屬性集控制。
 // 變更這些屬性的值即可修改組件的相關
 // 資訊。
- 
+
 [assembly: AssemblyTitle("Library.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -26,7 +25,7 @@ using System.Resources;
 // 組件的版本資訊是由下列四項值構成:
 //
 //      主要版本
-//      次要版本 
+//      次要版本
 //      組建編號
 //      修訂編號
 //
@@ -35,4 +34,4 @@ using System.Resources;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: NeutralResourcesLanguageAttribute("zh-CN")] 
+[assembly: NeutralResourcesLanguageAttribute("zh-CN")]

@@ -1,20 +1,18 @@
-﻿using System;
+﻿using Library.Annotations;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Text;
 using System.Windows.Forms;
-using Library.Annotations;
 
 namespace Library.Diagnostics
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class RichTextBoxTraceListener : TraceListener
     {
@@ -22,7 +20,7 @@ namespace Library.Diagnostics
         private readonly StringSendDelegate _invokeWrite;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="target"></param>
         /// <param name="name"></param>
@@ -36,13 +34,14 @@ namespace Library.Diagnostics
             _invokeWrite = new StringSendDelegate(SendString);
         }
 
-        void _target_Disposed(object sender, EventArgs e)
+        private void _target_Disposed(object sender, EventArgs e)
         {
             if (_target != null) _target.Disposed -= _target_Disposed;
             Trace.Listeners.Remove(this);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         public override void Write(string message)
@@ -53,13 +52,12 @@ namespace Library.Diagnostics
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex);
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         public override void WriteLine(string message)
@@ -70,16 +68,15 @@ namespace Library.Diagnostics
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex);
             }
-
         }
 
         private delegate void StringSendDelegate(string message, bool isnewline);
+
         private void SendString(string message, bool isnewline)
         {
-            // No need to lock text box as this function will only 
+            // No need to lock text box as this function will only
             // ever be executed from the UI thread
 
             _target.AppendText(message);
@@ -88,18 +85,17 @@ namespace Library.Diagnostics
                 _target.Select(_target.TextLength - message.Length, message.Length);
                 var old = _target.SelectionColor;
                 _target.SelectionColor = color;
-               // _target.SelectionBackColor = Color.Silver;
+                // _target.SelectionBackColor = Color.Silver;
                 _target.Select(_target.TextLength, 0);
                 //_target.SelectionBackColor = Color.White;
                 _target.SelectionColor = old;
             }
             if (isnewline)
                 _target.AppendText(Environment.NewLine);
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void BindTrace()
         {
@@ -107,7 +103,7 @@ namespace Library.Diagnostics
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eventCache"></param>
         /// <param name="source"></param>
@@ -130,7 +126,7 @@ namespace Library.Diagnostics
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eventCache"></param>
         /// <param name="source"></param>
@@ -161,8 +157,9 @@ namespace Library.Diagnostics
 
             WriteFooter(eventCache);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eventCache"></param>
         /// <param name="source"></param>
@@ -175,7 +172,7 @@ namespace Library.Diagnostics
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eventCache"></param>
         /// <param name="source"></param>
@@ -193,8 +190,9 @@ namespace Library.Diagnostics
 
             WriteFooter(eventCache);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eventCache"></param>
         /// <param name="source"></param>
@@ -216,8 +214,9 @@ namespace Library.Diagnostics
 
             WriteFooter(eventCache);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eventCache"></param>
         /// <param name="source"></param>
@@ -229,10 +228,11 @@ namespace Library.Diagnostics
         {
             TraceEvent(eventCache, source, TraceEventType.Transfer, id, message + ", relatedActivityId=" + relatedActivityId.ToString());
         }
-        Color color = Color.Black;
+
+        private Color color = Color.Black;
+
         private void WriteHeader(String source, TraceEventType eventType, int id)
         {
-
             switch (eventType)
             {
                 case TraceEventType.Critical: color = Color.Maroon; break;
@@ -245,17 +245,14 @@ namespace Library.Diagnostics
                 case TraceEventType.Warning: color = Color.GreenYellow; break;
             }
 
-
-
             var str = String.Format(CultureInfo.InvariantCulture, "{0} {1}: {2} : ", source, eventType.ToString(),
                 id.ToString(CultureInfo.InvariantCulture));
             Write(str);
             color = Color.Black;
-
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eventCache"></param>
         [ResourceExposure(ResourceScope.None)]
@@ -299,8 +296,9 @@ namespace Library.Diagnostics
                 WriteLine("Callstack=" + eventCache.Callstack);
             IndentLevel--;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="opts"></param>
         /// <returns></returns>

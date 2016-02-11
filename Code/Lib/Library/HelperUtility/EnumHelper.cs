@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Library.HelperUtility
-{ 
+{
     /// <summary>
-    /// 
+    ///
     /// </summary>
-public static class EnumHelper
+    public static class EnumHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -20,6 +18,7 @@ public static class EnumHelper
         {
             return (x.HasFlag(y));
         }
+
         /// <summary>
         /// x是否包含其中一個記錄
         /// </summary>
@@ -31,6 +30,7 @@ public static class EnumHelper
             if (!y.HasRecord()) return false;
             return y.Any(y1 => (x.GetHashCode() & y1.GetHashCode()) == y1.GetHashCode());
         }
+
         /// <summary>
         /// x所有包含記錄
         /// </summary>
@@ -42,6 +42,5 @@ public static class EnumHelper
             if (!y.HasRecord()) return false;
             return y.All(y1 => (x.GetHashCode() & y1.GetHashCode()) == y1.GetHashCode());
         }
-
     }
 }

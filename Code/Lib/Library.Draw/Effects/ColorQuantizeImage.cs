@@ -1,13 +1,12 @@
-using System;
+using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [LanguageDescription("色像"), LanguageDisplayName("色像")]
     public class ColorQuantizeImage : ImageBuilder
@@ -16,7 +15,6 @@ namespace Library.Draw.Effects
         /// 等級
         /// </summary>
         [LanguageDescription("等級"), LanguageDisplayName("等級"), Category("濾鏡選項")]
-
         public float Levels
         {
             get
@@ -30,18 +28,21 @@ namespace Library.Draw.Effects
                 _opetion.Value = value;
             }
         }
+
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
+
         private ValueOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -52,17 +53,20 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption() { Value = 5 };
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -71,7 +75,6 @@ namespace Library.Draw.Effects
             int height = bmp.Height;
             int width = bmp.Width;
             float levels = Levels;
-
 
             for (int row = 0; row < height; row++)
             {
@@ -92,13 +95,13 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
-
             var bmp = Source.Clone() as Bitmap;
             int height = bmp.Height;
             int width = bmp.Width;
@@ -110,7 +113,6 @@ namespace Library.Draw.Effects
             {
                 for (int column = 0; column < width; column++)
                 {
-
                     int r = ptr[2];
                     int g = ptr[1];
                     int b = ptr[0];

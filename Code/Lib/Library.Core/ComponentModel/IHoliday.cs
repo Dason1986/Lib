@@ -3,7 +3,7 @@ using System;
 namespace Library.Date
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IHoliday : IFormattable
     {
@@ -11,6 +11,7 @@ namespace Library.Date
         /// ÔÂ
         /// </summary>
         int Month { get; }
+
         /// <summary>
         /// ÈÕ
         /// </summary>

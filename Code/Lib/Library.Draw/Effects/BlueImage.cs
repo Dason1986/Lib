@@ -1,6 +1,6 @@
+using Library.Att;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -11,7 +11,7 @@ namespace Library.Draw.Effects
     public class BlueImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -32,7 +32,7 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()

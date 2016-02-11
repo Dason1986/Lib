@@ -1,31 +1,29 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
 {
-	internal class XlsxStyles
-	{
-		public XlsxStyles()
-		{
-			_cellXfs = new List<XlsxXf>();
-			_NumFmts = new List<XlsxNumFmt>();
-		}
+    internal class XlsxStyles
+    {
+        public XlsxStyles()
+        {
+            _cellXfs = new List<XlsxXf>();
+            _NumFmts = new List<XlsxNumFmt>();
+        }
 
-		private List<XlsxXf> _cellXfs;
+        private List<XlsxXf> _cellXfs;
 
-		public List<XlsxXf> CellXfs
-		{
-			get { return _cellXfs; }
-			set { _cellXfs = value; }
-		}
+        public List<XlsxXf> CellXfs
+        {
+            get { return _cellXfs; }
+            set { _cellXfs = value; }
+        }
 
-		private List<XlsxNumFmt> _NumFmts;
+        private List<XlsxNumFmt> _NumFmts;
 
-		public List<XlsxNumFmt> NumFmts
-		{
-			get { return _NumFmts; }
-			set { _NumFmts = value; }
-		}
-	}
+        public List<XlsxNumFmt> NumFmts
+        {
+            get { return _NumFmts; }
+            set { _NumFmts = value; }
+        }
+    }
 }

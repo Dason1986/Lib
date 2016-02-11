@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Library.Annotations;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using Library.Annotations;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class FileUtility
     {
@@ -42,11 +40,10 @@ namespace Library.HelperUtility
             stream.TrySeek();
 
             return BitConverter.ToString(bs).Replace("-", "");
-
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="buffter"></param>
         /// <returns></returns>
@@ -55,8 +52,9 @@ namespace Library.HelperUtility
             var md5B = MD5.Create().ComputeHash(buffter);
             return BitConverter.ToString(md5B).Replace("-", "");
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -73,7 +71,7 @@ namespace Library.HelperUtility
                         continue;
 #if !SILVERLIGHT
                     var arr = readLine.Split(new[] { '=' }, 2);
-#else  
+#else
                     var arr = readLine.Split(new[] { '=' });
 #endif
                     if (arr.Length == 2)
@@ -100,19 +98,19 @@ namespace Library.HelperUtility
                               {"208207", new[] {"xls", "doc", "msi", "ppt"}},
                               {"000001", new[] {"mdb"}},
                           };
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
         public static string[] MaybeExtension(string code)
         {
             return CodeDic.GetValue(code, EmptyUtility<string>.EmptyArray);
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static string GetFileExtensionCode([NotNull] string path)
@@ -141,17 +139,13 @@ namespace Library.HelperUtility
         {
             if (!stream.TrySeek()) return string.Empty;
             var r = new BinaryReader(stream);
-            
 
             byte buffer = r.ReadByte();
             string bx = buffer.ToString("D3");
             buffer = r.ReadByte();
             bx += buffer.ToString("D3");
 
-
             stream.TrySeek();
-
-
 
             return bx;
         }
@@ -176,8 +170,9 @@ namespace Library.HelperUtility
             fs.Dispose();
             return code;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static string GetFileCode(byte[] buffter)

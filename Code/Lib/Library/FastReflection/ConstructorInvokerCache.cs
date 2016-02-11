@@ -3,12 +3,12 @@
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ConstructorInvokerCache : FastReflectionCache<ConstructorInfo, IConstructorInvoker>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>

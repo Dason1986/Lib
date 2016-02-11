@@ -7,15 +7,16 @@ using System.Text;
 namespace Library.Diagnostics
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class UDPTraceListener : TraceListener
     {
         private readonly Socket utpSocket;
 
-        readonly IPEndPoint iep1;//255.255.255.255
+        private readonly IPEndPoint iep1;//255.255.255.255
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="port"></param>
         /// <param name="name"></param>
@@ -28,8 +29,9 @@ namespace Library.Diagnostics
             utpSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
             Trace.Listeners.Add(this);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -45,27 +47,25 @@ namespace Library.Diagnostics
             }
             base.Dispose(disposing);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         public override void Write(string message)
         {
             byte[] data = Encoding.UTF8.GetBytes(message);
             utpSocket.SendTo(data, iep1);
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         public override void WriteLine(string message)
         {
             byte[] data = Encoding.ASCII.GetBytes(message + Environment.NewLine);
             utpSocket.SendTo(data, iep1);
-
         }
-
     }
 }

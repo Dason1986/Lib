@@ -14,8 +14,9 @@ namespace Library.Draw.Code
         /*
          默認：4位,純數字，寬100，高50的圖片驗證碼
          */
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
@@ -26,105 +27,115 @@ namespace Library.Draw.Code
             Width = width;
             ContentType = ContentTypeEnum.Number;
         }
+
         private int _codeLength = 4;
         private int _height;
         private int _width;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ContentTypeEnum ContentType { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public enum ContentTypeEnum
         {
             /// <summary>
-            /// 
+            ///
             /// </summary>
             Number,
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             Char,
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             All,
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Code { get; protected set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Width
         {
             get { return _width; }
             protected set
             {
-                if (value < 100|value > 800) throw new ImageException();
-          
+                if (value < 100 | value > 800) throw new ImageException();
+
                 _width = value;
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Height
         {
             get { return _height; }
             protected set
             {
-                if (value < 50||value > 400) throw new ImageException();
-          
+                if (value < 50 || value > 400) throw new ImageException();
+
                 _height = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int CodeLength
         {
             get { return _codeLength; }
             set
             {
-                if (value < 4||value > 10) throw new ImageException("");
-              
+                if (value < 4 || value > 10) throw new ImageException("");
+
                 _codeLength = value;
                 var tmpwidth = (int)Math.Ceiling(_codeLength * 25.0);
                 if (tmpwidth > Width) Width = tmpwidth;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public byte[] Image { get; protected set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Create()
         {
-
             CreateStringCode();
             BuildingImage();
         }
-
 
         private static readonly string[] ConstCodes = {   "1", "2", "3", "3", "4", "5", "6", "7", "8", "9",
                                                  "a","b","c","d","e","f","g","h", "j","k","l","m","n" ,"p","q","r","s","t","u","v","w","x","y","z",
                                                  "A","B","C","D","E","F","G","H", "J","K","L","M","N", "P","Q","R","S","T","U","V","W","X","Y","Z",
                                                  };
-        static readonly Color[] ConstColors = { Color.Black, Color.Red, Color.Blue, Color.Green, Color.Orange, Color.Brown, Color.Brown, Color.DarkBlue };
-        private Font[] ConstFonts = 
+
+        private static readonly Color[] ConstColors = { Color.Black, Color.Red, Color.Blue, Color.Green, Color.Orange, Color.Brown, Color.Brown, Color.DarkBlue };
+
+        private Font[] ConstFonts =
     {
        new Font(new FontFamily("Times New Roman"),21,FontStyle.Regular),
        new Font(new FontFamily("Georgia"), 21,FontStyle.Regular),
        new Font(new FontFamily("Arial"),21,FontStyle.Regular),
        new Font(new FontFamily("Comic Sans MS"), 21,FontStyle.Regular)
     };
+
         private void BuildingImage()
         {
             Bitmap image = new Bitmap(Width, Height);
@@ -158,7 +169,6 @@ namespace Library.Draw.Code
                 g.ResetTransform();
             }
 
-
             //画图片的前景噪音点
             for (int i = 0; i < 100; i++)
             {
@@ -175,8 +185,8 @@ namespace Library.Draw.Code
             Image = memory.ToArray();
             image.Dispose();
             memory.Dispose();
-
         }
+
         /// <summary>
         /// 正弦曲线Wave扭曲图片
         /// </summary>
@@ -215,8 +225,9 @@ namespace Library.Draw.Code
             srcBmp.Dispose();
             return destBmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected void CreateStringCode()
         {
@@ -231,9 +242,6 @@ namespace Library.Draw.Code
             //抽取随机数字
             for (int i = 0; i < length; i++)
             {
-
-
-
                 switch (ContentType)
                 {
                     case ContentTypeEnum.All: validateNums[i] = ConstCodes[seekRand.Next(0, ConstCodes.Length)]; break;

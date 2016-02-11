@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Library.Att;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -15,7 +15,7 @@ namespace Library.Draw.Effects
     {
         /// <summary>
         /// 判斷值的侵害點
-        /// </summary>  
+        /// </summary>
         [LanguageDescription("侵害點, 0-255"), LanguageDisplayName("判斷值的侵害點"), Category("濾鏡選項")]
         public int Pointcut
         {
@@ -30,24 +30,27 @@ namespace Library.Draw.Effects
                 _opetion.Pointcut = value;
             }
         }
+
         /*
          二值处理，顾名思义，将图片处理后就剩下二值了，0、255就是RGB取值的极限值，
          * 图片只剩下黑白二色，从上一篇C#图片处理常见方法性能比较 可知，二值处理为图像灰度彩色变黑白灰度处理的一个子集，
-         * 只不过值就剩下0和255了，因此处理方法有些类似。进行加权或取平均值后进行极端化，若平均值大于等于128则255，否则0. 
+         * 只不过值就剩下0和255了，因此处理方法有些类似。进行加权或取平均值后进行极端化，若平均值大于等于128则255，否则0.
          */
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new TwoValueOption();
         }
+
         private TwoValueOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -60,14 +63,14 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class TwoValueOption : ImageOption
         {
             private int _pointcut;
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <exception cref="ImageException"></exception>
             [LanguageDescription("侵害點 , 0-255"), LanguageDisplayName("侵害點"), Category("濾鏡選項")]
@@ -81,19 +84,22 @@ namespace Library.Draw.Effects
                 }
             }
         }
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new TwoValueOption() { Pointcut = 128 };
         }
-        #endregion
+
+        #endregion Option
+
         #region IImageProcessable 成员
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -110,14 +116,13 @@ namespace Library.Draw.Effects
                     int iPixel = iAvg >= Pointcut ? 255 : 0;
 
                     bmp.SetPixel(i, j, Color.FromArgb(iPixel, iPixel, iPixel));
-
-
                 }
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public unsafe override Image UnsafeProcessBitmap()
@@ -128,7 +133,6 @@ namespace Library.Draw.Effects
             int height = bmp.Height;
             Rectangle rect = new Rectangle(0, 0, width, height);
             BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
-
 
             int byteCounts = bmpData.Stride * height;
             byte[] arr = new byte[byteCounts];
@@ -145,6 +149,6 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        #endregion
+        #endregion IImageProcessable 成员
     }
 }

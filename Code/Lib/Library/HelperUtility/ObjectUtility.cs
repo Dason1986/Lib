@@ -1,17 +1,15 @@
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using Library.Annotations;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ObjectUtility
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <typeparam name="T"></typeparam>
@@ -24,26 +22,23 @@ namespace Library.HelperUtility
             }
             catch (Exception ex)
             {
-
                 return new TryResult<T>(default(T), ex);
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static T Cast<T>(object value)
         {
-
             return (T)Cast(value, typeof(T), default(T));
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <param name="defaultvalue"></param>
@@ -57,13 +52,12 @@ namespace Library.HelperUtility
             }
             catch (Exception ex)
             {
-
                 return new TryResult<T>(default(T), ex);
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -71,21 +65,18 @@ namespace Library.HelperUtility
         /// <returns></returns>
         public static TryResult<object> TryCast(object value, Type targetType, object defaultvalue)
         {
-
             try
             {
                 return Cast(value, targetType);
-
             }
             catch (Exception ex)
             {
-
                 return new TryResult<object>(defaultvalue, ex);
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -102,8 +93,6 @@ namespace Library.HelperUtility
 
             if (tmpType.IsInstanceOfType(value)) return value;
             if (tmpType == typeof(string)) return value.ToString();
-
-
 
             var code = Convert.GetTypeCode(value);
             switch (code)
@@ -148,9 +137,10 @@ namespace Library.HelperUtility
             throw new NotSupportedException();
         }
 
-        static readonly Random random = new Random();
+        private static readonly Random random = new Random();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>

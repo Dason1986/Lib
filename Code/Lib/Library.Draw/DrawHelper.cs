@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -16,8 +14,10 @@ namespace Library.Draw
     public static class DrawHelper
     {
 #if !MONO
+
         [DllImport("gdi32.dll")]
         private static extern bool DeleteObject(IntPtr hObject);
+
         /// <summary>
         ///  Image转换为Icon
         /// </summary>
@@ -32,6 +32,7 @@ namespace Library.Draw
             DeleteObject(h);
             return icon;
         }
+
 #endif
 
         /// <summary>
@@ -46,6 +47,7 @@ namespace Library.Draw
             ms.Dispose();
             return returnImage;
         }
+
         /// <summary>
         ///  Image 转化为 字节流
         /// </summary>
@@ -58,6 +60,7 @@ namespace Library.Draw
             image.Save(ms, format);
             return ms.ToArray();
         }
+
         /// <summary>
         /// 創建黑白雜點圖
         /// </summary>
@@ -116,17 +119,19 @@ namespace Library.Draw
 
             return Color.FromArgb(r, g, b);
         }   /// <summary>
-        /// 获取拍照日期/时间
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
+
+            /// 获取拍照日期/时间
+            /// </summary>
+            /// <param name="fileName"></param>
+            /// <returns></returns>
         public static string GetTakePicDateTime(string fileName)
         {
             var items = GetExifProperties(fileName);
             return GetTakePicDateTime(items);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
@@ -142,6 +147,7 @@ namespace Library.Draw
             image.Dispose();
             return items;
         }
+
         //遍历所有元数据，获取拍照日期/时间
 
         private static string GetTakePicDateTime(IEnumerable<PropertyItem> parr)
@@ -161,9 +167,10 @@ namespace Library.Draw
 
             return "N/A";
         }
+
         /*
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
@@ -176,7 +183,7 @@ namespace Library.Draw
             return Color.FromArgb(a, r, g, b);
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
@@ -192,7 +199,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="hexColor"></param>
         /// <returns></returns>
@@ -208,7 +215,6 @@ namespace Library.Draw
                     {
                         int argb = Int32.Parse(hexColor, NumberStyles.HexNumber);
                         return Color.FromArgb(argb);
-
                     }
                 case 3:
                     {
@@ -219,8 +225,6 @@ namespace Library.Draw
                     }
                 default: throw new NotSupportedException();
             }
-          
-
         }
 
         public static bool IsValidHex(string hexColor)

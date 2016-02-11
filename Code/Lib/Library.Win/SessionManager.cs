@@ -1,33 +1,30 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
 
 namespace Library.Win
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class SessionManager
     {
-        readonly static IDictionary<string, object> Dictionary = new ConcurrentDictionary<string, object>();
+        private static readonly IDictionary<string, object> Dictionary = new ConcurrentDictionary<string, object>();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <typeparam name="TModel"></typeparam>
         /// <returns></returns>
-        public static TModel GetSession<TModel>(string key) 
+        public static TModel GetSession<TModel>(string key)
         {
-
             var obj = Dictionary[key];
             if (obj != null && obj is TModel) return (TModel)obj;
             return default(TModel);
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -37,7 +34,7 @@ namespace Library.Win
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
@@ -52,8 +49,9 @@ namespace Library.Win
                 Dictionary.Add(key, value);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         public static void Remove(string key)
@@ -62,14 +60,11 @@ namespace Library.Win
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void RemoveAll()
         {
             Dictionary.Clear();
         }
-
-
-
     }
 }

@@ -3,29 +3,45 @@ using System.Windows.Forms;
 namespace Library.Win.MVP
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
-    public abstract class Bootstrapper<T> where T : Form, new()
+    public abstract class Bootstrapper<T> where T : IPresenter, new()
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public  ApplicationContext Context { get; protected set; }
+        public ApplicationContext Context { get; protected set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public virtual void Run()
+        public ApplicationFacade Facade { get; protected set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public void Run()
         {
-            Context = new ApplicationContext {MainForm = new T()};
-
-
-
+            OnInitiation();
+            OnConfig();
+            IPresenter pre = new T();
+            Context = new ApplicationContext { MainForm = pre.GetView() as Form };
             Application.Run(Context);
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        protected abstract void OnConfig();
+        protected virtual void OnInitiation()
+        {
+            Facade = ApplicationFacade.Instance;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        protected virtual void OnConfig()
+        {
+        }
     }
 }

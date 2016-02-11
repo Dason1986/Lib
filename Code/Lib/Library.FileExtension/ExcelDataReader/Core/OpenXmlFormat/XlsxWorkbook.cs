@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using System.IO;
-
+using System.Xml;
 
 namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
 {
@@ -23,7 +21,9 @@ namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
         private const string A_id = "Id";
         private const string A_target = "Target";
 
-        private XlsxWorkbook() { }
+        private XlsxWorkbook()
+        {
+        }
 
         public XlsxWorkbook(Stream workbookStream, Stream relsStream, Stream sharedStringsStream, Stream stylesStream)
         {
@@ -59,7 +59,6 @@ namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
         {
             get { return _Styles; }
         }
-
 
         private void ReadStyles(Stream xmlFileStream)
         {
@@ -167,7 +166,6 @@ namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
             }
         }
 
-
         private void ReadWorkbook(Stream xmlFileStream)
         {
             sheets = new List<XlsxWorksheet>();
@@ -182,12 +180,10 @@ namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
                                                reader.GetAttribute(A_name),
                                                int.Parse(reader.GetAttribute(A_sheetId)), reader.GetAttribute(A_rid)));
                     }
-
                 }
 
                 xmlFileStream.Close();
             }
-
         }
 
         private void ReadWorkbookRels(Stream xmlFileStream)
@@ -212,12 +208,10 @@ namespace Library.FileExtension.ExcelDataReader.Core.OpenXmlFormat
                             }
                         }
                     }
-
                 }
 
                 xmlFileStream.Close();
             }
         }
-
     }
 }

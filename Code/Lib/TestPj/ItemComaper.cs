@@ -4,33 +4,27 @@ using System.Linq;
 
 namespace TestPj
 {
-
-    class MyClass
+    internal class MyClass
     {
         public Status0? Statue { get; set; }
         public DateTime? ApplyDate { get; set; }
-
-
     }
-    enum Status0 : int
-    {
 
+    internal enum Status0 : int
+    {
         None = 0,
 
         Invalid = 1,
 
-
         Saved = 2,
-
 
         Submited = 4,
 
-
         EndWithPass = 8,
-
 
         EndWithReject = 16,
     }
+
     internal class ItemComaper : IComparer<MyClass>
     {
         public static void CompareTset()
@@ -55,7 +49,8 @@ namespace TestPj
             {
                 if (myClass != null) Console.WriteLine("Staue:{0}\tdate:{1}", myClass.Statue, myClass.ApplyDate);
                 else Console.WriteLine("Staue:null\tdate:null");
-            } Console.WriteLine(array);
+            }
+            Console.WriteLine(array);
         }
 
         public readonly static IComparer<MyClass> Comparer = new ItemComaper();
@@ -64,7 +59,6 @@ namespace TestPj
         {
             if (x.Statue != y.Statue) return -1;
             return Nullable.Compare(x.ApplyDate, y.ApplyDate);
-
         }
 
         public int Compare(MyClass x, MyClass y)
@@ -78,7 +72,6 @@ namespace TestPj
                 if (x.Statue != y.Statue && y.Statue == Status0.Saved) return 1;
                 if (x.Statue == y.Statue && y.Statue == Status0.Saved) return SameStateTimeAsc(x, y);
                 return -1;
-
             }
             int xflag = (int)x.Statue.GetValueOrDefault();
             int yflag = (int)y.Statue.GetValueOrDefault();
@@ -90,8 +83,6 @@ namespace TestPj
             if (x.Statue == Status0.Submited && yflag > 2) return -1;
             if (y.Statue == Status0.Submited && xflag > 2) return 1;
             return Nullable.Compare(x.ApplyDate, y.ApplyDate);
-
-
         }
     }
 }

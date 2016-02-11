@@ -3,12 +3,12 @@
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class PropertyAccessorCache : FastReflectionCache<PropertyInfo, IPropertyAccessor>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>

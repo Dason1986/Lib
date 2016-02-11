@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 
 namespace Library
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IParameter
     {
@@ -20,6 +17,7 @@ namespace Library
         /// 說明
         /// </summary>
         string Description { get; }
+
         /// <summary>
         /// 鍵
         /// </summary>
@@ -34,6 +32,7 @@ namespace Library
         /// 值
         /// </summary>
         string Value { get; }
+
         /// <summary>
         /// 付值
         /// </summary>
@@ -42,12 +41,12 @@ namespace Library
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed class ParameterItem : IParameter
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="group"></param>
         /// <param name="key"></param>
@@ -62,28 +61,34 @@ namespace Library
             IsReadOnly = isReadOnly;
             Value = value;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Group { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Description { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Key { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsReadOnly { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Value { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         public void SetValue(string value)
@@ -98,39 +103,38 @@ namespace Library
     /// </summary>
     public interface IParameterProvider
     {
-
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class ParameterAttribute : Attribute
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParameterAttribute()
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Type Provider { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Key { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Group { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Description { get; set; }
     }

@@ -4,12 +4,12 @@ using System.Drawing;
 
 namespace Library.Draw
 {  /// <summary>
-    /// 
-    /// </summary>
+   ///
+   /// </summary>
     public class CIEXYZColorrConverter : TypeConverter
     {
-
     }
+
     /// <summary>
     /// Structure to define CIE XYZ.
     /// </summary>
@@ -20,17 +20,18 @@ namespace Library.Draw
         /// Gets an empty CIEXYZ structure.
         /// </summary>
         public static readonly CIEXYZColor Empty = new CIEXYZColor();
+
         /// <summary>
         /// Gets the CIE D65 (white) structure.
         /// </summary>
         public static readonly CIEXYZColor D65 = new CIEXYZColor(0.9505, 1.0, 1.0890);
 
-
         private double x;
         private double y;
         private double z;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -43,8 +44,9 @@ namespace Library.Draw
                 && item1.Z == item2.Z
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -90,8 +92,9 @@ namespace Library.Draw
                 return this.z;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -102,8 +105,9 @@ namespace Library.Draw
             this.y = (y > 1.0) ? 1.0 : ((y < 0) ? 0 : y);
             this.z = (z > 1.089) ? 1.089 : ((z < 0) ? 0 : z);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -113,14 +117,16 @@ namespace Library.Draw
 
             return (this == (CIEXYZColor)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
         {
             return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
         }
+
         /// <summary>
         /// Converts RGB to CIE XYZ (CIE 1931 color space)
         /// </summary>
@@ -152,7 +158,6 @@ namespace Library.Draw
         /// </summary>
         public Color ToRGB()
         {
-
             double[] Clinear = new double[3];
             Clinear[0] = x * 3.2410 - y * 1.5374 - z * 0.4986; // red
             Clinear[1] = -x * 0.9692 + y * 1.8760 - z * 0.0416; // green

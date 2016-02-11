@@ -1,7 +1,7 @@
 ﻿namespace Library.ComponentModel
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IDisplay
     {

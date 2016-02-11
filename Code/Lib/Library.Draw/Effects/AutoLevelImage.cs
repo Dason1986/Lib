@@ -1,19 +1,19 @@
+using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [LanguageDescription("直方图模式增强"), LanguageDisplayName("直方图模式增强")]
     public class AutoLevelImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(1f)]
         [LanguageDescription("强度"), LanguageDisplayName("强度"), Category("濾鏡選項")]
@@ -30,18 +30,21 @@ namespace Library.Draw.Effects
                 _opetion.Intensity = value;
             }
         }
+
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new AutoLevelOption();
         }
+
         private AutoLevelOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -52,26 +55,30 @@ namespace Library.Draw.Effects
                 _opetion = (AutoLevelOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class AutoLevelOption : ImageOption
         {
             /// <summary>
-            /// 
+            ///
             /// </summary>
             [LanguageDescription("强度"), LanguageDisplayName("强度"), Category("濾鏡選項")]
             public float Intensity { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new AutoLevelOption() { Intensity = 1f };
         }
-        #endregion
+
+        #endregion Option
+
         private static float[] ComputeGamma(int[] lo, int[] md, int[] hi)
         {
             float[] array = new float[3];
@@ -90,7 +97,7 @@ namespace Library.Draw.Effects
             return array;
         }
 
-        int[] GetMeanColor(int[,] h)
+        private int[] GetMeanColor(int[,] h)
         {
             float[] array = new float[3];
             for (int i = 0; i < 3; i++)
@@ -107,7 +114,7 @@ namespace Library.Draw.Effects
             return new int[] { (((int)(array[0] + 0.5f)) & 255), (((int)(array[1] + 0.5f)) & 255), (((int)(array[2] + 0.5f)) & 255) };
         }
 
-        int[] GetPercentileColor(int[,] h, float fraction)
+        private int[] GetPercentileColor(int[,] h, float fraction)
         {
             int[] array = new int[3];
             for (int i = 0; i < 3; i++)
@@ -131,10 +138,8 @@ namespace Library.Draw.Effects
             return array;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -209,8 +214,9 @@ namespace Library.Draw.Effects
             }
             return bmp;//做直方图模式增强
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -235,7 +241,6 @@ namespace Library.Draw.Effects
             {
                 for (int y = 0; y < height - 1; y++)
                 {
-
                     h[0, ptr[2]]++;
                     h[1, ptr[1]]++;
                     h[2, ptr[0]]++;

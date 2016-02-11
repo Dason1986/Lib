@@ -1,17 +1,17 @@
+using Library.HelperUtility;
+using Library.Test;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Library.ComponentModel;
-using Library.Test;
-using NUnit.Framework;
-using Library.HelperUtility;
 
 namespace TestPj.Test
 {
     [TestFixture]
     public class EnumerableTest
     {
-        readonly List<ParsonModle> _list = new List<ParsonModle>();
+        private readonly List<ParsonModle> _list = new List<ParsonModle>();
+
         [OneTimeSetUpAttribute]
         public void Init()
         {
@@ -19,68 +19,52 @@ namespace TestPj.Test
             {
                 _list.Add(new ParsonModle() { Account = "a" + i, Age = 10, UserName = "us" + i, Proxy = "Y" });
             }
-           
         }
 
         [Test]
         public void IsEmpty()
         {
-
             CodeTimer.Time("IsEmpty .net linq", ConstValue.Times99999, () =>
             {
-
                 var flg = _list != null && _list.Any();
-
             });
             CodeTimer.Time("IsEmpty .net count", ConstValue.Times99999, () =>
             {
-
                 var flg = _list.IsEmpty();
-
-
             });
             var enumerable = _list.ToArray();
             CodeTimer.Time("IsEmpty .net IEnumerable", ConstValue.Times99999, () =>
             {
-
                 var flg = enumerable.IsEmpty();
-
-
             });
 
             CodeTimer.Time(" HasRecord", ConstValue.Times99999, () =>
             {
-
-                var flg = enumerable.HasRecord(10)  ;
-
-
+                var flg = enumerable.HasRecord(10);
             });
 
             CodeTimer.Time("linq count ", ConstValue.Times99999, () =>
             {
-
-                var flg = enumerable.Count()>10;
-
-
+                var flg = enumerable.Count() > 10;
             });
         }
+
         [Test]
         public void FilterByGlobal()
         {
             var loginusername = GetLoginUserName();
             CodeTimer.Time("Global Filter", ConstValue.Times99999, () =>
             {
-
                 var data = from ea in _list
                            where string.Equals(ea.UserName, loginusername, StringComparison.OrdinalIgnoreCase)
                                  && ea.Proxy == "Y"
                            select ea;
             });
         }
+
         [Test]
         public void FilterByLocality()
         {
-
             CodeTimer.Time("Locality Filter", ConstValue.Times99999, () =>
             {
                 var data = from ea in _list
@@ -96,13 +80,13 @@ namespace TestPj.Test
                 //}
             });
         }
+
         [Test]
         public void FilterByNotLinq()
         {
             var loginusername = GetLoginUserName();
             CodeTimer.Time("NotLinq Filter", 10, () =>
             {
-
                 foreach (var ea in _list)
                 {
                     if (string.Equals(ea.UserName, loginusername, StringComparison.OrdinalIgnoreCase) &&
@@ -113,11 +97,9 @@ namespace TestPj.Test
                         //    ea.UserName = ea.Account;
                         //}
                         //    continue;
-
                     }
                     //todo
                 }
-
             });
         }
 

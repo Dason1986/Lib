@@ -8,33 +8,36 @@ using System.Windows.Forms;
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewDateTimeColumn : DataGridViewTextBoxColumn
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataGridViewDateTimeColumn()
         {
             this.CellTemplate = new DataGridViewDateTimeCell();
             Format = DateTimePickerFormat.Short;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(DateTimePickerFormat.Short)]
         public DateTimePickerFormat Format { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue("")]
         [Localizable(true)]
         [RefreshProperties(RefreshProperties.Repaint)]
         public string CustomFormat { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override object Clone()
@@ -45,8 +48,9 @@ namespace Library.Controls
             tmp.Format = this.Format;
             return tmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -60,55 +64,59 @@ namespace Library.Controls
             return ((object)stringBuilder).ToString();
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewDateTimeEditingControl : DateTimePicker, IDataGridViewEditingControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dataGridViewCellStyle"></param>
         public void ApplyCellStyleToEditingControl(DataGridViewCellStyle dataGridViewCellStyle)
         {
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataGridView EditingControlDataGridView
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object EditingControlFormattedValue
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int EditingControlRowIndex
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool EditingControlValueChanged
         {
             get;
             set;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="keyData"></param>
         /// <param name="dataGridViewWantsInputKey"></param>
@@ -117,15 +125,17 @@ namespace Library.Controls
         {
             return false;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Cursor EditingPanelCursor
         {
             get { return Cursors.Arrow; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -133,33 +143,36 @@ namespace Library.Controls
         {
             return null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="selectAll"></param>
         public void PrepareEditingControlForEdit(bool selectAll)
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool RepositionEditingControlOnValueChange { get; private set; }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [ToolboxItem(false)]
     public class DataGridViewDateTimeCell : DataGridViewTextBoxCell
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static Type defaultEditType = typeof(DataGridViewDateTimeEditingControl);
+
         private static Type defaultValueType = typeof(DateTime);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override Type EditType
         {
@@ -168,24 +181,26 @@ namespace Library.Controls
                 return defaultEditType; // the type is DataGridViewNumericUpDownEditingControl
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override Type ValueType
         {
             get { return defaultValueType; }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
             return "DataGridViewDateTimeCell { ColumnIndex=" + this.ColumnIndex.ToString((IFormatProvider)CultureInfo.CurrentCulture) + ", RowIndex=" + this.RowIndex.ToString((IFormatProvider)CultureInfo.CurrentCulture) + " }";
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rowIndex"></param>
         /// <param name="initialFormattedValue"></param>
@@ -200,10 +215,10 @@ namespace Library.Controls
             cont.CustomFormat = column.CustomFormat;
             var value = GetValue(rowIndex);
             if (value is DateTime) cont.Value = (DateTime)value;
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="graphics"></param>
         /// <param name="clipBounds"></param>
@@ -228,12 +243,15 @@ namespace Library.Controls
                         if (string.IsNullOrEmpty(column.CustomFormat)) goto default;
                         dis = string.Format("{0:" + column.CustomFormat + "}", value);
                         break;
+
                     case DateTimePickerFormat.Short:
                         dis = string.Format("{0:yyyy-MM-dd}", value);
                         break;
+
                     case DateTimePickerFormat.Time:
                         dis = string.Format("{0:HH:mm:ss}", value);
                         break;
+
                     default:
                         dis = string.Format("{0:yyyy-MM-dd HH:mm:ss}", value);
                         break;
@@ -241,8 +259,9 @@ namespace Library.Controls
             }
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, dis, dis, errorText, cellStyle, advancedBorderStyle, paintParts);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override void DetachEditingControl()
         {
@@ -261,8 +280,4 @@ namespace Library.Controls
             base.DetachEditingControl();
         }
     }
-
-
-
-
 }

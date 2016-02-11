@@ -1,139 +1,150 @@
+using Library.Annotations;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using Library.Annotations;
 
 namespace Library.Draw
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ImageEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Exception Error { get; protected set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Image Image { get; protected set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="image"></param>
         protected internal ImageEventArgs(Image image)
         {
             Image = image;
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="error"></param>
         protected internal ImageEventArgs(Exception error)
         {
             Error = error;
-
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void ImageCompletedEventHandler(object sender, ImageEventArgs e);
+
     /// <summary>
     /// 图像处理功能
     /// </summary>
     public interface IImageBuilder
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         event ImageCompletedEventHandler ProcessCompleted;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sourceImgPath"></param>
         void SetSourceImage([NotNull] string sourceImgPath);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="source"></param>
         void SetSourceImage([NotNull]Image source);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="buffter"></param>
         void SetSourceImage([NotNull] byte[] buffter);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="opetion"></param>
         void SetOpetion([NotNull] ImageOption opetion);
+
         /// <summary>
         /// .net自带处理方法
         /// </summary>
         Image ProcessBitmap();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         void ProcessBitmapAsync();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         unsafe void UnsafeProcessBitmapAsync();
+
         /// <summary>
         /// 不安全代码处理方法
         /// </summary>
         unsafe Image UnsafeProcessBitmap();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="opacity"></param>
         void SetOpacity(float opacity);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="size"></param>
         void SetTrageSize(Size size);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         ImageOption CreateOption();
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class ImageBuilder : IImageBuilder
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event ImageCompletedEventHandler ProcessCompleted;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected string SourceImgPath { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected byte[] SourceImgBuffter { get; private set; }
+
         private Image _source;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected Image Source
         {
@@ -152,11 +163,11 @@ namespace Library.Draw
                     return _source;
                 }
                 return null;
-
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public virtual ImageOption CreateOption()
@@ -165,7 +176,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="source"></param>
         public void SetSourceImage([NotNull] Image source)
@@ -175,18 +186,18 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sourceImgPath"></param>
         public void SetSourceImage(string sourceImgPath)
         {
-
             if (!File.Exists(sourceImgPath)) throw new FileNotFoundException("文件不存在", sourceImgPath);
             SourceImgPath = sourceImgPath;
             SourceImgBuffter = File.ReadAllBytes(sourceImgPath);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="buffter"></param>
         public void SetSourceImage(byte[] buffter)
@@ -194,8 +205,9 @@ namespace Library.Draw
             if (buffter == null) throw new ArgumentNullException("buffter");
             SourceImgBuffter = buffter;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="opetion"></param>
         /// <returns></returns>
@@ -204,8 +216,9 @@ namespace Library.Draw
             SetOpetion(opetion);
             return ProcessBitmap();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public unsafe void UnsafeProcessBitmapAsync()
         {
@@ -223,8 +236,9 @@ namespace Library.Draw
 
             background.RunWorkerAsync();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public virtual unsafe Image UnsafeProcessBitmap()
@@ -233,11 +247,12 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected virtual ImageOption Opetion { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="opetion"></param>
         public virtual void SetOpetion([NotNull] ImageOption opetion)
@@ -245,8 +260,9 @@ namespace Library.Draw
             if (opetion == null) throw new ArgumentNullException("opetion");
             Opetion = opetion;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="opacity"></param>
         public virtual void SetOpacity(float opacity)
@@ -254,8 +270,9 @@ namespace Library.Draw
             InitOption();
             Opetion.Opacity = opacity;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="size"></param>
         public virtual void SetTrageSize(Size size)
@@ -265,19 +282,21 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected virtual void InitOption()
         {
             if (Opetion == null) Opetion = new ImageOption();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public abstract Image ProcessBitmap();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void ProcessBitmapAsync()
         {
@@ -295,7 +314,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="opacity"></param>
         /// <returns></returns>
@@ -316,7 +335,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="processable"></param>
         /// <param name="sourcePath"></param>
@@ -332,16 +351,15 @@ namespace Library.Draw
                 processable.SetSourceImage(sourcePath);
                 var image = processable.ProcessBitmap();
                 image.Save(savePath);
-
             }
             catch (Exception ex)
             {
                 return ex;
-
             }
 
             return true;
         }
+
         /// <summary>
         /// 色彩值漏出處理
         /// </summary>
@@ -369,8 +387,9 @@ namespace Library.Draw
                 return 255;
             return (byte)a;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected virtual void OnProcessBitmapCompleted(ImageEventArgs e)
@@ -378,7 +397,5 @@ namespace Library.Draw
             var handler = ProcessCompleted;
             if (handler != null) handler(this, e);
         }
-
-
     }
 }

@@ -2,7 +2,7 @@ namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
 {
     /// <summary>
     /// If present the Calculate Message was in the status bar when Library.FileExtension.ExcelDataReader saved the file.
-    /// This occurs if the sheet changed, the Manual calculation option was on, and the Recalculate Before Save option was off.    
+    /// This occurs if the sheet changed, the Manual calculation option was on, and the Recalculate Before Save option was off.
     /// </summary>
     internal class XlsBiffUncalced : XlsBiffRecord
     {

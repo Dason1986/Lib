@@ -1,12 +1,11 @@
 using System;
 using System.Globalization;
 using System.Runtime.Serialization;
-using Library.Att;
 
 namespace Library
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [Serializable]
     public class CodeException : Exception
@@ -31,14 +30,15 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double ResultCode { get; protected set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object[] Args { get; protected set; }
+
         //
         // For guidelines regarding the creation of new exception types, see
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpgenref/html/cpconerrorraisinghandlingguidelines.asp
@@ -46,16 +46,15 @@ namespace Library
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
         //
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CodeException()
-           
-        {
 
+        {
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="code"></param>
         /// <param name="inner"></param>
@@ -66,16 +65,16 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         protected CodeException(string message)
             : base(message)
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resultCode"></param>
         public CodeException(double resultCode)
@@ -83,8 +82,9 @@ namespace Library
         {
             ResultCode = resultCode;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="resultCode"></param>
@@ -93,8 +93,9 @@ namespace Library
         {
             ResultCode = resultCode;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="resultCode"></param>
@@ -104,8 +105,9 @@ namespace Library
         {
             ResultCode = resultCode;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mesage"></param>
         /// <param name="code"></param>
@@ -116,8 +118,9 @@ namespace Library
             ResultCode = code;
             Args = args;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resultCode"></param>
         /// <param name="args"></param>
@@ -128,11 +131,8 @@ namespace Library
             Args = args;
         }
 
-      
-
-    
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="inner"></param>
@@ -142,7 +142,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>

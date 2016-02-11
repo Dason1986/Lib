@@ -1,45 +1,46 @@
-﻿using System;
+﻿using Library.Draw;
+using Library.HelperUtility;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
-using Library.Draw;
-using Library.Draw.Effects;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public partial class ImageEffectsView : Form, IImageEffectsView
     {
         private Image Source
         {
             get { return _source; }
-            set { _source = value;
-                SetImageInfo(); }
+            set
+            {
+                _source = value;
+                SetImageInfo();
+            }
         }
 
         private Assembly effectsAssembly;
         private IImageBuilder builderobj;
         private ImageOption option;
-        readonly IDictionary<Type, IImageBuilder> _dicinObjects = new ConcurrentDictionary<Type, IImageBuilder>();
+        private readonly IDictionary<Type, IImageBuilder> _dicinObjects = new ConcurrentDictionary<Type, IImageBuilder>();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Image ResultImage { get; protected set; }
+
         private DataTable dt;
         private int index;
         private Image _source;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="source"></param>
         public ImageEffectsView(Image source)
@@ -52,7 +53,6 @@ namespace Library.Controls
 
         private void Init()
         {
-
             string[] sourceImageEffects =
             {
                 "BlueImage", "GreenImage", "RedImage", "FogImage", "GaussianBlurImage"
@@ -92,12 +92,10 @@ namespace Library.Controls
             this.propertyGrid1.SelectedObject = ImageExif.GetExifInfo(Source);
         }
 
-
         private void LBEffects_SelectedIndexChanged(object sender, EventArgs e)
         {
             CreateBuilder();
         }
-
 
         private void CreateBuilder()
         {
@@ -109,8 +107,9 @@ namespace Library.Controls
             option = (ImageOption)dt.Rows[index][3];
             grid.SelectedObject = option;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
@@ -123,21 +122,16 @@ namespace Library.Controls
             base.OnClosed(e);
         }
 
-        void builderobj_ProcessCompleted(object sender, ImageEventArgs e)
+        private void builderobj_ProcessCompleted(object sender, ImageEventArgs e)
         {
             this.pictureBox1.Image = e.Image;
             if (e.Error != null) MessageBox.Show(e.Error.Message);
-
-
-
         }
 
         private void BtnBuilder_Click(object sender, EventArgs e)
         {
             try
             {
-
-
                 builderobj.SetOpetion(option);
                 builderobj.SetSourceImage(Source);
                 ResultImage = this.pictureBox1.Image = checkBox1.Checked
@@ -148,9 +142,7 @@ namespace Library.Controls
             {
                 ResultImage = this.pictureBox1.Image = null;
                 MessageBox.Show(ex.Message);
-
             }
-
         }
 
         private void BtnOK_Click(object sender, EventArgs e)
@@ -165,7 +157,6 @@ namespace Library.Controls
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Source = Image.FromFile(dialog.FileName);
-
             }
         }
     }

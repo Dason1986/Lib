@@ -8,7 +8,7 @@ namespace Library.ComponentModel.ComponentPatterns
     public class DeactivationEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="wasClosed"></param>
         public DeactivationEventArgs(bool wasClosed)

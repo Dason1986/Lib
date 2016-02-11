@@ -1,15 +1,13 @@
+using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
-
-
     /// <summary>
     /// 对比度/亮度
-    /// </summary> 
+    /// </summary>
     [LanguageDescription("对比度/亮度"), LanguageDisplayName("对比度/亮度")]
     public class BrightContrastImage : ImageBuilder
     {
@@ -52,17 +50,19 @@ namespace Library.Draw.Effects
         }
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new BrightContrastlOption();
         }
+
         private BrightContrastlOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -73,8 +73,9 @@ namespace Library.Draw.Effects
                 _opetion = (BrightContrastlOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class BrightContrastlOption : ImageOption
         {
@@ -92,17 +93,20 @@ namespace Library.Draw.Effects
             [LanguageDescription("对比因子 [-1, 1]"), LanguageDisplayName("对比度"), Category("濾鏡選項")]
             public float ContrastFactor { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new BrightContrastlOption() { BrightnessFactor = 0.25f, ContrastFactor = 0.25f };
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -163,8 +167,9 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -231,7 +236,6 @@ namespace Library.Draw.Effects
                 ptr += bmpData.Stride - width * 4;
             }
 
-           
             bmp.UnlockBits(bmpData);
             return bmp;
         }

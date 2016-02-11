@@ -1,23 +1,22 @@
+using Library.Date;
 using System;
 using System.Data.SqlTypes;
 using System.Threading;
-using Library.Date;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class DateTimeUtility
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datestr"></param>
         /// <returns></returns>
         public static TryResult<DateTime> GetDateddMMyyyy(string datestr)
         {
-
             try
             {
                 return DateTime.ParseExact(datestr, "dd/MM/yyyy", null);
@@ -27,16 +26,15 @@ namespace Library.HelperUtility
                 System.Diagnostics.Trace.TraceError(e.GetAllExceptionInfo());
                 return e;
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datestr"></param>
         /// <returns></returns>
         public static TryResult<DateTime> GetDateyyyyMMdd(string datestr)
         {
-
             try
             {
                 return DateTime.ParseExact(datestr, "yyyyMMdd", null);
@@ -46,10 +44,10 @@ namespace Library.HelperUtility
                 System.Diagnostics.Trace.TraceError(e.GetAllExceptionInfo());
                 return e;
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -59,7 +57,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static string FormatddMMyyyyhhmmssttFull(this DateTime datetime)
         {
@@ -67,7 +65,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -75,8 +73,9 @@ namespace Library.HelperUtility
         {
             return string.Format("{0:yyyy-MM-dd}", datetime);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -86,7 +85,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="period"></param>
         /// <returns></returns>
@@ -138,27 +137,22 @@ namespace Library.HelperUtility
                         var endday = today.AddDays(-(int)today.DayOfWeek).AddSeconds(-1);
                         var startday = endday.AddDays(-6);
                         return new RangeItem<DateTime>(startday.Date, endday);
-
                     }
                 case DateTimePeriod.ThisMonth:
                     {
                         var today = DateTime.Today;
                         return new RangeItem<DateTime>(new DateTime(today.Year, today.Month, 1), new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month), 23, 59, 59));
-
                     }
                 case DateTimePeriod.LastMonth:
                     {
-
                         var lastMonth = DateTime.Today.Date.AddMonths(-1);
 
                         return new RangeItem<DateTime>(new DateTime(lastMonth.Year, lastMonth.Month, 1), new DateTime(lastMonth.Year, lastMonth.Month, DateTime.DaysInMonth(lastMonth.Year, lastMonth.Month), 23, 59, 59));
-
                     }
                 case DateTimePeriod.ThisYear:
                     {
                         var today = DateTime.Today;
                         return new RangeItem<DateTime>(new DateTime(today.Year, 1, 1), new DateTime(today.Year, 12, 31, 23, 59, 59));
-
                     }
                 case DateTimePeriod.Earlier:
                     {
@@ -166,7 +160,6 @@ namespace Library.HelperUtility
                         return new RangeItem<DateTime>(SqlDateTime.MinValue.Value, new DateTime(today.Year - 1, 12, 31, 23, 59, 59));
                     }
             }
-
 
             return RangeItem<DateTime>.Empty;
         }
@@ -189,8 +182,6 @@ namespace Library.HelperUtility
                 d = Math.Abs((int)Math.Ceiling(ts.TotalDays));
                 d++;
                 isabs = true;
-
-
             }
             switch (d)
             {
@@ -226,17 +217,16 @@ namespace Library.HelperUtility
 
             TimeSpan ts = now - datetime;
 
-
             if (ts.TotalMinutes.IsBetween(0, 5)) return "Ž×·ÖçŠÇ°";//"A few minutes ago";
 
             int d = ts.Days;
             if ((int)Math.Ceiling(ts.TotalDays) == 1) return string.Format("{0:HH:mm}", datetime);
             if (now.Year == datetime.Year) return string.Format("{0:MM-dd}({1}){0:HH:mm}", datetime, Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetDayName(datetime.DayOfWeek));
             return string.Format("{0:yyyy-MM-dd}({1}){0:HH:mm}", datetime, Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetDayName(datetime.DayOfWeek));
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -246,7 +236,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static string FormatddMMyyyyhhmmssttFull(this DateTime? datetime)
         {
@@ -254,7 +244,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -264,7 +254,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -272,7 +262,5 @@ namespace Library.HelperUtility
         {
             return datetime == null ? string.Empty : FormatHHmm(datetime.Value);
         }
-
-
     }
 }

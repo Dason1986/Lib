@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Library.ComponentModel.Model
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [Serializable]
     public class EditableObjectException : LibException
@@ -17,24 +17,24 @@ namespace Library.ComponentModel.Model
         //
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EditableObjectException()
         {
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="resultCode"></param>
         protected EditableObjectException(string message, double resultCode)
             : base(message, resultCode)
         {
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="resultCode"></param>
@@ -42,10 +42,10 @@ namespace Library.ComponentModel.Model
         protected EditableObjectException(string message, double resultCode, Exception inner)
             : base(message, resultCode, inner)
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         public EditableObjectException(string message)
@@ -54,7 +54,7 @@ namespace Library.ComponentModel.Model
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="inner"></param>
@@ -64,7 +64,7 @@ namespace Library.ComponentModel.Model
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>

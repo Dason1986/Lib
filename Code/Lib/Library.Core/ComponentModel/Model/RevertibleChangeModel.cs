@@ -5,12 +5,12 @@ using System.ComponentModel;
 namespace Library.ComponentModel.Model
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class RevertibleChangeModel : PropertyChangeModel, IRevertibleChangeTracking
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="propetyname"></param>
         /// <param name="value"></param>
@@ -21,13 +21,13 @@ namespace Library.ComponentModel.Model
             if (_cacheValue == null) _cacheValue = new Dictionary<string, object>();
             if (_cacheValue.ContainsKey(propetyname)) return;
             _cacheValue.Add(propetyname, value);
-
         }
 
         private bool _isrejecting;
-        IDictionary<string, object> _cacheValue;
+        private IDictionary<string, object> _cacheValue;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void RejectChanges()
         {
@@ -43,15 +43,17 @@ namespace Library.ComponentModel.Model
             }
             _isrejecting = false;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void AcceptChanges()
         {
             _cacheValue = null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsChanged
         {

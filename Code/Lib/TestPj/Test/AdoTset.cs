@@ -1,7 +1,6 @@
-﻿using System.Data;
-using Library.ComponentModel;
+﻿using Library.HelperUtility;
 using NUnit.Framework;
-using Library.HelperUtility;
+using System.Data;
 
 namespace TestPj.Test
 {
@@ -26,7 +25,6 @@ namespace TestPj.Test
             {
                 Assert.AreEqual("Name" + i, list[i].Account);
             }
-
         }
     }
 }

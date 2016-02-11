@@ -3,12 +3,12 @@ using System.Drawing;
 namespace Library.Draw.Water
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class WaterImageBuilderByFill : WaterImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rectangle"></param>
         /// <param name="waterImg"></param>
@@ -21,9 +21,6 @@ namespace Library.Draw.Water
             gType.DrawImage(waterImg, rectangle, 0, 0, waterImg.Width, waterImg.Height, GraphicsUnit.Pixel);
 
             return img;
-
         }
-
-
     }
 }

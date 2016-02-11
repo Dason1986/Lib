@@ -1,28 +1,24 @@
+using Library.Annotations;
+using Library.ComponentModel;
 using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Text;
-using Library.Annotations;
-using Library.ComponentModel;
 
 namespace Library.HelperUtility
 {
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class TypeHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
@@ -46,7 +42,7 @@ namespace Library.HelperUtility
         private static readonly IList<IErrorMessageBuilder> ErrorFuncs = new List<IErrorMessageBuilder>();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="builder"></param>
         public static void AddMessageBuilder([NotNull] IErrorMessageBuilder builder)
@@ -76,7 +72,6 @@ namespace Library.HelperUtility
                     builder.WriteLine("=================SQL Error {0}=================================", index);
                     foreach (SqlError sqlError in sql.Errors)
                     {
-
                         builder.WriteLine("LineNumber:{0}", sqlError.LineNumber);
                         builder.WriteLine("Number:{0}", sqlError.Number);
                         builder.WriteLine("Procedure:{0}", sqlError.Procedure);
@@ -100,7 +95,6 @@ namespace Library.HelperUtility
                     builder.WriteLine("=================SQL Error {0}=================================", index);
                     foreach (OdbcError sqlError in sql.Errors)
                     {
-
                         builder.WriteLine("Message:{0}", sqlError.Message);
                         builder.WriteLine("NativeError:{0}", sqlError.NativeError);
                         builder.WriteLine("SQLState:{0}", sqlError.SQLState);
@@ -131,7 +125,6 @@ namespace Library.HelperUtility
                 }
                 return builder.ToString();
             }));
-
         }
 
         private static string GetExceptionInfo(Exception ex, int count)
@@ -144,7 +137,6 @@ namespace Library.HelperUtility
             sbexception.AppendLine(string.Format(" Error Message : {0} ", ex.Message));
             foreach (var dicitem in ErrorFuncs)
             {
-
                 if (dicitem != null && dicitem.CanExcute(ex))
                 {
                     sbexception.AppendLine(dicitem.GetMessage(ex));
@@ -157,7 +149,6 @@ namespace Library.HelperUtility
                 {
                     if (ex.Data.Keys.Count > 0)
                     {
-
                         sbexception.AppendLine("==================================================");
                         foreach (object key in ex.Data.Keys)
                         {
@@ -190,7 +181,6 @@ namespace Library.HelperUtility
                 }
             }
 
-
             sbexception.AppendLine(string.Format(" Source : {0} ", ex.Source));
             sbexception.AppendLine(string.Format(" StackTrace : {0} ", ex.StackTrace));
             sbexception.AppendLine(string.Format(" TargetSite : {0} ", ex.TargetSite));
@@ -199,13 +189,12 @@ namespace Library.HelperUtility
             sbexception.AppendLine();
 
             return sbexception.ToString();
-
         }
 
         private static readonly Dictionary<Type, Func<Type, object>> TypeDefaultdictionary = new Dictionary<Type, Func<Type, object>>();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="type"></param>
         /// <param name="funk"></param>
@@ -223,7 +212,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -235,7 +224,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -246,11 +235,10 @@ namespace Library.HelperUtility
             var type = obj;
 
             return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(type) : type;
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -279,9 +267,8 @@ namespace Library.HelperUtility
             return false;
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <param name="listAccessors"></param>
@@ -290,9 +277,7 @@ namespace Library.HelperUtility
         {
             PropertyDescriptorCollection pdc = null;
 
-
             object target = list;
-
 
             if (target is ITypedList)
             {
@@ -301,21 +286,16 @@ namespace Library.HelperUtility
             var type = target.GetType();
             if (IsListBasedType(type))
             {
-
                 var basetype = GetListGenericType(type);
 
                 pdc = TypeDescriptor.GetProperties(basetype);
-
             }
-
-
-
 
             return pdc;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -352,15 +332,14 @@ namespace Library.HelperUtility
 
             return false;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
         public static Type GetListGenericType(Type type)
         {
-
-
             // check for IList<>:
             if (type.IsGenericType && !type.IsGenericTypeDefinition)
             {

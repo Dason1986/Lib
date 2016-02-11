@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Library.Annotations;
+using Library.HelperUtility;
+using System;
 using System.Data;
 using System.Linq;
-using System.Reflection;
-using Library.Annotations;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library.DBProvider
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class SimpleDBExecute : IDBExecute
     {
         private readonly IDbConnection _connection;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="connection"></param>
         public SimpleDBExecute([NotNull] IDbConnection connection)
@@ -28,7 +24,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
@@ -49,7 +45,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
@@ -62,7 +58,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
@@ -76,7 +72,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
@@ -89,7 +85,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
@@ -122,7 +118,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
@@ -141,7 +137,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
@@ -156,7 +152,7 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="type"></param>
         /// <param name="commandText"></param>
@@ -172,21 +168,18 @@ namespace Library.DBProvider
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="commandText"></param>
         /// <param name="dataParameters"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public System.Collections.Generic.IList<T> GetList<T>(string commandText, params IDbDataParameter[] dataParameters) where T : class,new()
+        public System.Collections.Generic.IList<T> GetList<T>(string commandText, params IDbDataParameter[] dataParameters) where T : class, new()
         {
             var cmd = CreateCommand(commandText, dataParameters);
             var dr = cmd.ExecuteReader();
             return dr.GetList<T>();
         }
-
-
-
     }
 }

@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using Library.Annotations;
+using System;
+using System.ComponentModel;
 
 namespace Library.HelperUtility
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class StringUtility
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="str"></param>
         /// <typeparam name="T"></typeparam>
@@ -26,13 +23,12 @@ namespace Library.HelperUtility
             }
             catch (Exception ex)
             {
-
                 return new TryResult<T>(default(T), ex);
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="str"></param>
         /// <param name="defaultvalue"></param>
@@ -48,11 +44,10 @@ namespace Library.HelperUtility
             {
                 return new TryResult<T>(defaultvalue, ex);
             }
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="arr"></param>
         /// <param name="ch"></param>
@@ -77,9 +72,8 @@ namespace Library.HelperUtility
             return newarr;
         }
 
-      
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="str"></param>
         /// <param name="targetType"></param>

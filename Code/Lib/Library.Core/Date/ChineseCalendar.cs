@@ -1,41 +1,36 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Runtime.Serialization;
 
 namespace Library.Date
 {
     #region ChineseCalendarException
+
     /// <summary>
     /// 中国日历异常处理
     /// </summary>
     public sealed class ChineseDateTimeException : LibException
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resultCode"></param>
         /// <param name="formatages"></param>
         public ChineseDateTimeException(double resultCode, params object[] formatages)
             : base(resultCode, formatages)
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="resultCode"></param>
         public ChineseDateTimeException(double resultCode)
             : base(resultCode)
         {
-
         }
-
-
-
     }
 
-    #endregion
+    #endregion ChineseCalendarException
 
     /// <summary>
     /// 中国農曆类 版本V1.0 支持 1900.1.31日起至 2049.12.31日止的数据
@@ -46,8 +41,6 @@ namespace Library.Date
     [System.Serializable]
     public class ChineseDateTime
     {
-
-
         #region 内部变量
 
         private readonly int _cYear;
@@ -56,7 +49,7 @@ namespace Library.Date
         private readonly bool _cIsLeapMonth; //当月是否闰月
         private readonly bool _cIsLeapYear; //当年是否有闰月
 
-        #endregion
+        #endregion 内部变量
 
         #region 基础数据
 
@@ -72,7 +65,7 @@ namespace Library.Date
         private const int AnimalStartYear = 1900; //1900年为鼠年
         private static readonly DateTime ChineseConstellationReferDay = new DateTime(2007, 9, 13); //28星宿参考值,本日为角
 
-        #endregion
+        #endregion 基本常量
 
         #region 阴历数据
 
@@ -105,20 +98,16 @@ namespace Library.Date
             0x14B63
         };
 
-        #endregion
-
-
+        #endregion 阴历数据
 
         #region 農曆相关数据
 
         private const string NStr1 = "日一二三四五六七八九";
         private const string NStr2 = "初十廿卅";
 
-        #endregion
+        #endregion 農曆相关数据
 
-
-
-        #endregion
+        #endregion 基础数据
 
         #region 构造函数
 
@@ -135,7 +124,6 @@ namespace Library.Date
             ValidateDateLimit(dt);
 
             Date = dt.Date;
-
 
             //農曆日期计算部分
             int temp = 0;
@@ -181,7 +169,7 @@ namespace Library.Date
             SetDay();
         }
 
-        #endregion
+        #endregion ChinaCalendar <公历日期初始化>
 
         #region ChinaCalendar <農曆日期初始化>
 
@@ -215,9 +203,8 @@ namespace Library.Date
 
             _cIsLeapMonth = cm == leap && leapMonthFlag;
 
-
             if ((_cIsLeapYear == false) || //当年没有闰月
-                (cm < leap)) //计算月份小于闰月     
+                (cm < leap)) //计算月份小于闰月
             {
                 #region ...
 
@@ -234,7 +221,7 @@ namespace Library.Date
                 }
                 offset = offset + cd; //加上当月的天数
 
-                #endregion
+                #endregion ...
             }
             else //是闰年，且计算月份大于或等于闰月
             {
@@ -273,17 +260,16 @@ namespace Library.Date
                     offset = offset + cd;
                 }
 
-                #endregion
+                #endregion ...
             }
-
 
             Date = MinDay.AddDays(offset);
             SetDay();
         }
 
-        #endregion
+        #endregion ChinaCalendar <農曆日期初始化>
 
-        #endregion
+        #endregion 构造函数
 
         #region 私有函数
 
@@ -301,7 +287,7 @@ namespace Library.Date
             return BitTest32((LunarDateArray[year - MinYear] & 0x0000FFFF), (16 - month)) ? 30 : 29;
         }
 
-        #endregion
+        #endregion GetChineseMonthDays
 
         #region GetChineseLeapMonth
 
@@ -314,10 +300,9 @@ namespace Library.Date
         {
             //最后4位，即8，代表这一年的润月月份，为0则不润。首4位要与末4位搭配使用
             return LunarDateArray[year - MinYear] & 0xF;
-
         }
 
-        #endregion
+        #endregion GetChineseLeapMonth
 
         #region GetChineseLeapMonthDays
 
@@ -336,7 +321,7 @@ namespace Library.Date
             return 0;
         }
 
-        #endregion
+        #endregion GetChineseLeapMonthDays
 
         #region GetChineseYearDays
 
@@ -364,7 +349,7 @@ namespace Library.Date
             return sumDay + GetChineseLeapMonthDays(year);
         }
 
-        #endregion
+        #endregion GetChineseYearDays
 
         #region GetChineseHour
 
@@ -373,7 +358,7 @@ namespace Library.Date
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        /// 
+        ///
         private string GetChineseHour(DateTime dt)
         {
             //string ganHour, zhiHour;
@@ -396,10 +381,9 @@ namespace Library.Date
             //ganHour = ganStr[((i % 10 + 1) * 2 - 1) % 10 - 1].ToString();
             // string tmpGan = GanStr.Substring(indexGan) + GanStr.Substring(0, indexGan + 2);
             return string.Format("{0}{1}時", tmpGan[offset], CalendarInfo.Zhi[offset]);
-
         }
 
-        #endregion
+        #endregion GetChineseHour
 
         #region CheckDateLimit
 
@@ -412,7 +396,7 @@ namespace Library.Date
             if ((dt < MinDay) || (dt > MaxDay)) throw new ChineseDateTimeException(11002.1);
         }
 
-        #endregion
+        #endregion CheckDateLimit
 
         #region CheckChineseDateLimit
 
@@ -431,17 +415,11 @@ namespace Library.Date
             //中国的月最多30天
             if ((day < 1) || (day > 30)) throw new ChineseDateTimeException(11002.103, day);
 
-
             int leap = GetChineseLeapMonth(year); // 计算该年应该闰哪个月
             if (leapMonth && (month != leap)) throw new ChineseDateTimeException(11002.104, month);
-
-
-
         }
 
-        #endregion
-
-
+        #endregion CheckChineseDateLimit
 
         #region BitTest32
 
@@ -453,7 +431,6 @@ namespace Library.Date
         /// <returns></returns>
         private static bool BitTest32(int num, int bitpostion)
         {
-
             if ((bitpostion > 31) || (bitpostion < 0))
                 throw new ChineseDateTimeException(11002.105, bitpostion);
 
@@ -462,9 +439,7 @@ namespace Library.Date
             return (num & bit) != 0;
         }
 
-        #endregion
-
-
+        #endregion BitTest32
 
         #region CompareWeekDayHoliday
 
@@ -478,8 +453,6 @@ namespace Library.Date
         /// <returns></returns>
         private static bool CompareWeekDayHoliday(DateTime date, int month, int week, DayOfWeek day)
         {
-
-
             if (date.Month != month) return false;
             if (date.DayOfWeek != day) return false;
             DateTime firstDay = new DateTime(date.Year, date.Month, 1); //生成当月第一天
@@ -492,7 +465,6 @@ namespace Library.Date
             if (week == 0)
             {
                 weekAtMonth = (int)Math.Ceiling((DateTime.DaysInMonth(date.Year, date.Month) + firstweekday) / 7.0);
-
             }
             if (firstweekday > weekday)
             {
@@ -512,11 +484,11 @@ namespace Library.Date
             return ret;
         }
 
-        #endregion
+        #endregion CompareWeekDayHoliday
 
-        #endregion
+        #endregion 私有函数
 
-        #region  属性
+        #region 属性
 
         #region 節日
 
@@ -533,8 +505,6 @@ namespace Library.Date
             SetChineseTwentyFourNextDay();
             SetGanZhiMonth();
         }
-
-
 
         #region ChineseCalendarHoliday
 
@@ -562,7 +532,7 @@ namespace Library.Date
             }
         }
 
-        #endregion
+        #endregion ChineseCalendarHoliday
 
         #region WeekDayHoliday
 
@@ -574,17 +544,15 @@ namespace Library.Date
 
         private void SetWeekDayHoliday()
         {
-
             foreach (WeekHoliday wh in CalendarInfo.WeekHolidays)
             {
                 if (!CompareWeekDayHoliday(Date, wh.Month, wh.WeekAtMonth, wh.WeekDay)) continue;
                 WeekDayHoliday = wh.HolidayName;
                 break;
             }
-
         }
 
-        #endregion
+        #endregion WeekDayHoliday
 
         #region DateHoliday
 
@@ -596,22 +564,22 @@ namespace Library.Date
 
         private void SetDateHoliday()
         {
-
-
             foreach (SolarHoliday sh in CalendarInfo.SolarHolidays)
             {
                 if ((sh.Month != Date.Month) || (sh.Day != Date.Day)) continue;
                 DateHoliday = sh.HolidayName;
                 break;
             }
-
         }
 
-        #endregion
-        #endregion
+        #endregion DateHoliday
+
+        #endregion 節日
 
         #region 公历日期
+
         #region Date
+
         /// <summary>
         /// 取对应的公历日期
         /// </summary>
@@ -625,11 +593,12 @@ namespace Library.Date
         public DayOfWeek WeekDay
         {
             get { return Date.DayOfWeek; }
-
         }
+
         #region Constellation
+
         /// <summary>
-        /// 计算指定日期的星座序号 
+        /// 计算指定日期的星座序号
         /// </summary>
         /// <returns></returns>
         [Category("公曆"), DisplayName(@"星座")]
@@ -659,29 +628,25 @@ namespace Library.Date
                 return CalendarInfo.ConstellationName[index];
             }
         }
-        #endregion
-        #endregion
 
+        #endregion Constellation
 
-
-
-
-
-
-
-
+        #endregion Date
 
         #region ChineseConstellation
+
         /// <summary>
         /// 28星宿
         /// </summary>
         [Category("天干地支"), DisplayName(@"廿八星宿")]
         public string ChineseConstellation { get; private set; }
+
         /// <summary>
         /// 28星宿動物
         /// </summary>
         [Category("天干地支"), DisplayName(@"廿八星宿動物")]
         public string ChineseConstellationAnimal { get; private set; }
+
         private void SetChineseConstellation()
         {
             TimeSpan ts = this.Date - ChineseConstellationReferDay;
@@ -698,17 +663,20 @@ namespace Library.Date
                 ChineseConstellationAnimal = CalendarInfo.ChineseConstellationAnimalName[modStarDay];
             }
         }
-        #endregion
+
+        #endregion ChineseConstellation
 
         #region ChineseHour
+
         /// <summary>
         /// 时辰
-        /// </summary>   
+        /// </summary>
         [Category("天干地支"), DisplayName(@"天干地支时辰")]
         public virtual string ChineseHour { get; private set; }
-        #endregion
 
-        #endregion
+        #endregion ChineseHour
+
+        #endregion 公历日期
 
         #region 農曆日期
 
@@ -720,7 +688,9 @@ namespace Library.Date
         {
             get { return new ChineseDateTime(DateTime.Now); }
         }
+
         #region IsChineseLeapMonth
+
         /// <summary>
         /// 是否闰月
         /// </summary>
@@ -729,9 +699,11 @@ namespace Library.Date
         {
             get { return this._cIsLeapMonth; }
         }
-        #endregion
+
+        #endregion IsChineseLeapMonth
 
         #region IsChineseLeapYear
+
         /// <summary>
         /// 当年是否有闰月
         /// </summary>
@@ -743,9 +715,11 @@ namespace Library.Date
                 return this._cIsLeapYear;
             }
         }
-        #endregion
+
+        #endregion IsChineseLeapYear
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("農曆"), DisplayName(@"農曆")]
         public virtual string ChineseDate
@@ -754,6 +728,7 @@ namespace Library.Date
         }
 
         #region ChineseDayString
+
         /// <summary>
         /// 農曆日中文表示
         /// </summary>
@@ -766,23 +741,26 @@ namespace Library.Date
                 {
                     case 0:
                         return "";
+
                     case 10:
                         return "初十";
+
                     case 20:
                         return "二十";
+
                     case 30:
                         return "三十";
+
                     default:
                         return string.Format("{0}{1}", NStr2[_cDay / 10], NStr1[_cDay % 10]);
-
                 }
             }
         }
-        #endregion
 
-
+        #endregion ChineseDayString
 
         #region ChineseMonthString
+
         /// <summary>
         /// 農曆月份字符串
         /// </summary>
@@ -795,16 +773,10 @@ namespace Library.Date
                 return CalendarInfo.ChineseMonths[this._cMonth - 1];
             }
         }
-        #endregion
 
-
-
-
-
-
+        #endregion ChineseMonthString
 
         #region ChineseTwentyFourDay
-
 
         /// <summary>
         /// 定气法计算二十四節氣,二十四節氣是按地球公转来计算的，并非是阴历计算的
@@ -820,10 +792,10 @@ namespace Library.Date
         [Category("二十四節氣"), DisplayName(@"當前節氣")]
         public virtual string TheSolarTerms { get; private set; }
 
-        static readonly DateTime BaseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
+        private static readonly DateTime BaseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
+
         private void SetTheSolarTerms()
         {
-
             string tempStr = string.Empty;
 
             double y = 525948.76 * (this.Date.Year - 1900);
@@ -835,17 +807,14 @@ namespace Library.Date
                 DateTime newDate = BaseDateAndTime.AddMinutes(num);
                 if (newDate.DayOfYear != Date.DayOfYear) continue;
 
-
                 tempStr = CalendarInfo.TheSolarTermsHolidays[i - 1].HolidayName;
                 break;
             }
             TheSolarTerms = tempStr;
-
         }
 
         private void SetChineseTwentyFourPrevDay()
         {
-
             string tempStr = string.Empty;
 
             double y = 525948.76 * (this.Date.Year - 1900);
@@ -871,7 +840,6 @@ namespace Library.Date
 
         private void SetChineseTwentyFourNextDay()
         {
-
             string tempStr = string.Empty;
 
             double y = 525948.76 * (this.Date.Year - 1900);
@@ -894,18 +862,18 @@ namespace Library.Date
         /// </summary>
         [Category("二十四節氣"), DisplayName(@"后一个節氣")]
         public string ChineseTwentyFourNextDay { get; private set; }
-        #endregion
-        #endregion
 
+        #endregion ChineseTwentyFourDay
 
+        #endregion 農曆日期
 
         #region 属相
 
-
         #region AnimalString
+
         /// <summary>
         /// 取属相字符串
-        /// </summary> 
+        /// </summary>
         [Category("農曆"), DisplayName(@"十二生肖")]
         public virtual string ChineseZodiac
         {
@@ -916,11 +884,15 @@ namespace Library.Date
                 return CalendarInfo.ChineseZodiac[offset % 12];
             }
         }
-        #endregion
-        #endregion
+
+        #endregion AnimalString
+
+        #endregion 属相
 
         #region 天干地支
+
         #region Chinese era
+
         /// <summary>
         /// 取農曆年的干支表示法如 乙丑年
         /// </summary>
@@ -931,12 +903,13 @@ namespace Library.Date
             {
                 int i = (this._cYear - GanZhiStartYear) % 60; //计算干支
                 return string.Format("{0}{1}年", CalendarInfo.Gan[i % 10], CalendarInfo.Zhi[i % 12]);
-
             }
         }
-        #endregion
+
+        #endregion Chinese era
 
         #region GanZhiMonthString
+
         /// <summary>
         /// 取干支的月表示字符串，注意農曆的闰月不记干支
         /// </summary>
@@ -963,46 +936,58 @@ namespace Library.Date
             switch (i % 10)
             {
                 #region ...
+
                 case 0: //甲
                     ganIndex = 3;
                     break;
+
                 case 1: //乙
                     ganIndex = 5;
                     break;
+
                 case 2: //丙
                     ganIndex = 7;
                     break;
+
                 case 3: //丁
                     ganIndex = 9;
                     break;
+
                 case 4: //戊
                     ganIndex = 1;
                     break;
+
                 case 5: //己
                     ganIndex = 3;
                     break;
+
                 case 6: //庚
                     ganIndex = 5;
                     break;
+
                 case 7: //辛
                     ganIndex = 7;
                     break;
+
                 case 8: //壬
                     ganIndex = 9;
                     break;
+
                 case 9: //癸
                     ganIndex = 1;
                     break;
-                    #endregion
+
+                    #endregion ...
             }
             string gan = CalendarInfo.Gan[(ganIndex + this._cMonth - 2) % 10];
 
             ChineseEraMonth = gan + zhi + "月";
         }
 
-        #endregion
+        #endregion GanZhiMonthString
 
         #region GanZhiDayString
+
         /// <summary>
         /// 取干支日表示法
         /// </summary>
@@ -1017,9 +1002,11 @@ namespace Library.Date
                 return CalendarInfo.Gan[i % 10] + CalendarInfo.Zhi[i % 12] + "日";
             }
         }
-        #endregion
+
+        #endregion GanZhiDayString
 
         #region GanZhiDateString
+
         /// <summary>
         /// 取当前日期的干支表示法如 甲子年乙丑月丙庚日
         /// </summary>
@@ -1031,10 +1018,11 @@ namespace Library.Date
                 return string.Format("{0} {1} {2} {3}", ChineseEraYear, ChineseEraMonth, ChineseEraDay, ChineseHour);
             }
         }
-        #endregion
-        #endregion
-        #endregion
 
+        #endregion GanZhiDateString
 
+        #endregion 天干地支
+
+        #endregion 属性
     }
 }

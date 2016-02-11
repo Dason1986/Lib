@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Library.Data;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using Library.Data;
-
 
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ComboBox : System.Windows.Forms.ComboBox, IQueryControl
     {
@@ -44,22 +43,25 @@ namespace Library.Controls
         //    }
         //}
 
-        #endregion
+        #endregion Properites
+
         #region Constructor
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ComboBox()
         {
             SetStyles();
             this.Font = _defaultFont;
-
         }
 
-        #endregion
+        #endregion Constructor
+
         #region Override
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
@@ -67,8 +69,9 @@ namespace Library.Controls
             _state = ControlState.Highlight;
             base.OnMouseEnter(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
@@ -87,8 +90,9 @@ namespace Library.Controls
             }
             base.OnMouseLeave(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
@@ -99,8 +103,9 @@ namespace Library.Controls
             }
             base.OnMouseDown(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
@@ -111,8 +116,9 @@ namespace Library.Controls
             }
             base.OnMouseUp(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
@@ -120,8 +126,9 @@ namespace Library.Controls
             _state = ControlState.Normal;
             base.OnLostFocus(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
@@ -129,13 +136,13 @@ namespace Library.Controls
             _state = Enabled ? ControlState.Normal : ControlState.Disabled;
             base.OnEnabledChanged(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {//TextBox是由系统进程绘制，重载OnPaint方法将不起作用
-
             switch (m.Msg)
             {
                 case Win32.WM_CTLCOLOREDIT:
@@ -144,15 +151,15 @@ namespace Library.Controls
                     base.WndProc(ref m);
                     WmPaint(ref m);
                     break;
+
                 default:
                     base.WndProc(ref m);
                     break;
-
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -169,7 +176,7 @@ namespace Library.Controls
             base.Dispose(disposing);
         }
 
-        #endregion
+        #endregion Override
 
         #region Private
 
@@ -182,10 +189,11 @@ namespace Library.Controls
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             UpdateStyles();
         }
+
         private readonly Image _normalImg = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.qqcmb.png");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="comboBox"></param>
         /// <param name="g"></param>
@@ -204,24 +212,21 @@ namespace Library.Controls
 
             middle.X += (dropDownRect.Width % 2);
 
-
             g.FillPolygon(brush, new[] {
                      new Point(middle.X - 3, middle.Y - 1),
                      new Point(middle.X + 4, middle.Y - 1),
                      new Point(middle.X, middle.Y + 3)
                  });
         }
+
         private void WmPaint(ref Message m)
         {
-
             Graphics g = Graphics.FromHwnd(base.Handle);
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             if (GetStyle(ControlStyles.UserPaint) == false)
             {
-
                 this.DrawFlatComboDropDown(this, g);
-
             }
 
             if (!Enabled)
@@ -229,22 +234,23 @@ namespace Library.Controls
                 _state = ControlState.Disabled;
             }
 
-
             switch (_state)
             {
                 case ControlState.Normal:
                     DrawNormalTextBox(g);
                     break;
+
                 case ControlState.Highlight:
                     DrawHighLightTextBox(g);
                     break;
+
                 case ControlState.Focus:
                     DrawFocusTextBox(g);
                     break;
+
                 case ControlState.Disabled:
                     DrawDisabledTextBox(g);
                     break;
-
             }
             //if (Text.Length == 0 && !string.IsNullOrEmpty(EmptyTextTip) && !Focused)
             //{
@@ -294,7 +300,7 @@ namespace Library.Controls
         }
 
         private static TextFormatFlags GetTextFormatFlags(
-            //  HorizontalAlignment alignment, 
+            //  HorizontalAlignment alignment,
             bool rightToleft
             )
         {
@@ -321,14 +327,15 @@ namespace Library.Controls
             return flags;
         }
 
-        #endregion
+        #endregion Private
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IQueryDataProvider DefaultQueryDataProvider { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public IQueryDataProvider CurrentQueryDataProvider
@@ -345,8 +352,9 @@ namespace Library.Controls
 
         private string _queryDataID;
         private IQueryDataProvider _currentQueryDataProvider;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(null)]
         public string QueryDataID
@@ -360,10 +368,12 @@ namespace Library.Controls
                 GetDataSource();
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool LoadDataing { get; protected set; }
+
         private void GetDataSource()
         {
             if (string.IsNullOrEmpty(QueryDataID))
@@ -380,6 +390,7 @@ namespace Library.Controls
             LoadDataing = false;
             this.DataSource = dt;
         }
+
         FieldCollection IQueryControl.Fields
         {
             get { return null; }

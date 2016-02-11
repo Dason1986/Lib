@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using Library.Att;
+using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -13,8 +13,9 @@ namespace Library.Draw.Effects
         /*
          逆反处理的原理很简单，用255减去该像素的RGB作为新的RGB值即可。g(i,j)=255-f(i,j)
          */
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -32,7 +33,6 @@ namespace Library.Draw.Effects
                     int b = 255 - c.B;
 
                     bmp.SetPixel(i, j, Color.FromArgb(r, g, b));
-
                 }
             }
             return bmp;
@@ -67,6 +67,6 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        #endregion
+        #endregion IImageProcessable 成员
     }
 }

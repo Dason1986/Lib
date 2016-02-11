@@ -5,12 +5,12 @@ using System.Linq;
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class DictionaryHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
@@ -29,8 +29,9 @@ namespace Library.HelperUtility
                 dictionary.Add(key, value);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
@@ -42,10 +43,10 @@ namespace Library.HelperUtility
         {
             if (dictionary.IsEmpty() || !dictionary.ContainsKey(key)) return defaultvalue;
             return dictionary[key];
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="TValue"></typeparam>
         /// <param name="dictionary"></param>
@@ -59,8 +60,9 @@ namespace Library.HelperUtility
             var tmpkey = dictionary.Keys.FirstOrDefault(n => string.Equals(n, key, StringComparison.OrdinalIgnoreCase));
             return tmpkey == null ? defaultValue : dictionary[tmpkey];
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
@@ -77,9 +79,8 @@ namespace Library.HelperUtility
             }
         }
 
-      
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dict"></param>
         /// <param name="key"></param>
@@ -101,8 +102,9 @@ namespace Library.HelperUtility
             dict[key] = value;
             return value;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dict"></param>
         /// <param name="key"></param>
@@ -124,6 +126,5 @@ namespace Library.HelperUtility
             dict[key] = value;
             return value;
         }
-
     }
 }

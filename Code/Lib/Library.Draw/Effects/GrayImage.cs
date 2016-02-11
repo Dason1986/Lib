@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Library.Att;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -11,12 +11,10 @@ namespace Library.Draw.Effects
     [LanguageDescription("黑白效果"), LanguageDisplayName("黑白效果")]
     public class GrayImage : ImageBuilder
     {
-
         /// <summary>
-        /// 
-        /// </summary> 
+        ///
+        /// </summary>
         [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法"), Category("濾鏡選項")]
-       
         public GrayType Pixel
         {
             get
@@ -30,52 +28,58 @@ namespace Library.Draw.Effects
                 _opetion.Pixel = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法")]
         public enum GrayType
         {
             /// <summary>
             /// 加權
-            /// </summary> 
+            /// </summary>
             [LanguageDescription("加權"), LanguageDisplayName("加權")]
             Weighted,
+
             /// <summary>
             /// 平均
-            /// </summary> 
+            /// </summary>
             [LanguageDescription("平均"), LanguageDisplayName("平均")]
             Average,
+
             /// <summary>
             /// 最大值
-            /// </summary> 
+            /// </summary>
             [LanguageDescription("最大值"), LanguageDisplayName("最大值")]
             Max,
+
             /// <summary>
             /// 位移
-            /// </summary> 
+            /// </summary>
             [LanguageDescription("位移"), LanguageDisplayName("位移")]
             Shift,
+
             /// <summary>
             /// 整數
-            /// </summary> 
+            /// </summary>
             [LanguageDescription("整數"), LanguageDisplayName("整數")]
             Integer,
-
         }
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new GrayOption();
         }
+
         private GrayOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -86,29 +90,34 @@ namespace Library.Draw.Effects
                 _opetion = (GrayOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class GrayOption : ImageOption
         {
             /// <summary>
             /// 黑白算法
             /// </summary>
-           [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法"), Category("濾鏡選項")]
+            [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法"), Category("濾鏡選項")]
             public GrayType Pixel { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new GrayOption();
         }
-        #endregion
+
+        #endregion Option
+
         #region Process
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -127,15 +136,19 @@ namespace Library.Draw.Effects
                         case GrayType.Average://（R+G+B）/3; 　
                             ret = (curColor.R + curColor.G + curColor.B) / 3;
                             break;
+
                         case GrayType.Weighted:
                             ret = (int)(curColor.R * 0.299 + curColor.G * 0.587 + curColor.B * 0.114);
                             break;
+
                         case GrayType.Shift://(R*28+G*151+B*77)>>8
                             ret = ((int)(curColor.R * 28 + curColor.G * 151 + curColor.B * 77)) >> 8;
                             break;
+
                         case GrayType.Integer://(R*30+G*59+B*11)/100 　
                             ret = ((int)(curColor.R * 30 + curColor.G * 59 + curColor.B * 11) / 100);
                             break;
+
                         case GrayType.Max:
                             ret = curColor.R > curColor.G ? curColor.R : curColor.G;
                             ret = ret > curColor.B ? ret : curColor.B;
@@ -146,8 +159,9 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -169,15 +183,19 @@ namespace Library.Draw.Effects
                         case GrayType.Average:
                             temp = (byte)((ptr[2] + ptr[1] + ptr[0]) / 3);
                             break;
+
                         case GrayType.Weighted:
                             temp = (byte)(0.299 * ptr[2] + 0.587 * ptr[1] + 0.114 * ptr[0]);
                             break;
+
                         case GrayType.Shift:
                             temp = (byte)((int)(28 * ptr[2] + 151 * ptr[1] + 77 * ptr[0]) >> 8);
                             break;
+
                         case GrayType.Integer:
                             temp = (byte)((30 * ptr[2] + 59 * ptr[1] + 11 * ptr[0]) / 100);
                             break;
+
                         case GrayType.Max:
                             temp = ptr[2] > ptr[1] ? ptr[2] : ptr[1];
                             temp = temp > ptr[0] ? temp : ptr[0];
@@ -191,6 +209,7 @@ namespace Library.Draw.Effects
             bmp.UnlockBits(bmpData);
             return bmp;
         }
-        #endregion
+
+        #endregion Process
     }
 }

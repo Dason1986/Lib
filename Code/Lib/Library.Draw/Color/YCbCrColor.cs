@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Library.Draw
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [TypeConverter(typeof(YCbCrColorConverter))]
     public struct YCbCrColor : IToRGBColor
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public Color ToRGB()
@@ -23,18 +20,16 @@ namespace Library.Draw
             float g = Math.Max(0.0f, Math.Min(1.0f, (float)(this.Y - 0.3456 * this.Cb - 0.7145 * this.Cr)));
             float b = Math.Max(0.0f, Math.Min(1.0f, (float)(this.Y + 1.7710 * this.Cb + 0.0000 * this.Cr)));
             return Color.FromArgb((byte)(r * 255), (byte)(g * 255), (byte)(b * 255));
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rr"></param>
         /// <param name="gg"></param>
         /// <param name="bb"></param>
         public static YCbCrColor FromRGB(int rr, int gg, int bb)
         {
-
             float r = (float)rr / 255;
             float g = (float)gg / 255;
             float b = (float)bb / 255;
@@ -44,25 +39,27 @@ namespace Library.Draw
             yCbCr.Cr = (float)(0.5000 * r - 0.4184 * g - 0.0816 * b);
             return yCbCr;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public float Cr { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public float Cb { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public float Y { get; set; }
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class YCbCrColorConverter : TypeConverter
     {
-
     }
 }

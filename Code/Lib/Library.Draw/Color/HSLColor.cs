@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Library.Att;
+using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using Library.Att;
 
 namespace Library.Draw
 {
     /// <summary>
     /// 用六角形锥体表示自己的颜色模型
-    /// </summary> 
+    /// </summary>
     /// [Editor("Library.Draw.Design.HSLColorEditor, Library.Draw.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
     [TypeConverter(typeof(HSLColorConverter))]
     public struct HSLColor : IToRGBColor
@@ -19,23 +16,27 @@ namespace Library.Draw
         /// Gets an empty RGB structure;
         /// </summary>
         public static readonly HSLColor Empty = new HSLColor();
+
         /// <summary>
         /// 色相
         /// </summary>
         [LanguageDescription("是色彩的基本属性，就是平常所说的颜色名称，如红色、黄色等,360°"), LanguageDisplayName("色相")]
         public float Hue { get; private set; }
+
         /// <summary>
         /// 饱和度
         /// </summary>
         [LanguageDescription("亮度，取0-100%"), LanguageDisplayName("亮度")]
         public float Luminance { get; private set; }
+
         /// <summary>
         /// 亮度
         /// </summary>
         [LanguageDescription("是指色彩的纯度，越高色彩越纯，低则逐渐变灰，取0-100%的数值"), LanguageDisplayName("饱和度")]
         public float Saturation { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="h"></param>
         /// <param name="s"></param>
@@ -63,8 +64,9 @@ namespace Library.Draw
                 return (v1 + (v2 - v1) * ((2.0 / 3) - vH) * 6);
             return v1;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -77,8 +79,9 @@ namespace Library.Draw
                 && item1.Luminance == item2.Luminance
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -91,8 +94,9 @@ namespace Library.Draw
                 || item1.Luminance != item2.Luminance
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public int ToRGBValue()
@@ -120,7 +124,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="c2"></param>
         /// <param name="amount"></param>
@@ -129,8 +133,9 @@ namespace Library.Draw
         {
             return new HSLColor(this.Hue + ((c2.Hue - this.Hue) * amount), this.Saturation + ((c2.Saturation - this.Saturation) * amount), this.Luminance + ((c2.Luminance - this.Luminance) * amount));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -140,8 +145,9 @@ namespace Library.Draw
 
             return (this == (HSLColor)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -149,8 +155,9 @@ namespace Library.Draw
             return Hue.GetHashCode() ^ Saturation.GetHashCode() ^
                 Luminance.GetHashCode();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public Color ToRGB()
@@ -177,8 +184,9 @@ namespace Library.Draw
 
             return Color.FromArgb(r, g, b);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="hue"></param>
         /// <param name="saturation"></param>
@@ -190,7 +198,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rr"></param>
         /// <param name="gg"></param>
@@ -245,10 +253,9 @@ namespace Library.Draw
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class HSLColorConverter : TypeConverter
     {
-
     }
 }

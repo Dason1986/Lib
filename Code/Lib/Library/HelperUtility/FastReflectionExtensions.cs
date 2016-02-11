@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Library.FastReflection;
+using System;
 using System.Reflection;
-using Library.FastReflection;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class FastReflectionExtensions
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="methodInfo"></param>
         /// <param name="instance"></param>
@@ -22,7 +22,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="propertyInfo"></param>
         /// <param name="instance"></param>
@@ -33,7 +33,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="propertyInfo"></param>
         /// <param name="instance"></param>
@@ -43,9 +43,8 @@ namespace Library.HelperUtility
             return FastReflectionCaches.PropertyAccessorCache.Get(propertyInfo).GetValue(instance);
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="propertyInfo"></param>
         /// <param name="instance"></param>
@@ -55,8 +54,9 @@ namespace Library.HelperUtility
             var obj = propertyInfo.FastGetValue(instance);
             return ObjectUtility.Cast<T>(obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fieldInfo"></param>
         /// <param name="instance"></param>
@@ -66,9 +66,8 @@ namespace Library.HelperUtility
             return FastReflectionCaches.FieldAccessorCache.Get(fieldInfo).GetValue(instance);
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fieldInfo"></param>
         /// <param name="instance"></param>
@@ -80,7 +79,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="constructorInfo"></param>
         /// <param name="parameters"></param>
@@ -89,8 +88,9 @@ namespace Library.HelperUtility
         {
             return FastReflectionCaches.ConstructorInvokerCache.Get(constructorInfo).Invoke(parameters);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="constructorInfo"></param>
         /// <param name="parameters"></param>
@@ -131,9 +131,10 @@ namespace Library.HelperUtility
             var obj = iConstructor.FastInvoke();
             return obj;
         }
+
         /// <summary>
         ///  创建对象
-        /// </summary> 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static T CreateInstance<T>()
@@ -141,9 +142,8 @@ namespace Library.HelperUtility
             return CreateInstance<T>(typeof(T));
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="type"></param>
         /// <param name="parmTypes"></param>

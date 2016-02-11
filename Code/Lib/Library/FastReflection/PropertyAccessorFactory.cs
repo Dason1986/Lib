@@ -3,12 +3,12 @@
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class PropertyAccessorFactory : IFastReflectionFactory<PropertyInfo, IPropertyAccessor>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -24,6 +24,6 @@ namespace Library.FastReflection
             return this.Create(key);
         }
 
-        #endregion
+        #endregion IFastReflectionFactory<PropertyInfo,IPropertyAccessor> Members
     }
 }

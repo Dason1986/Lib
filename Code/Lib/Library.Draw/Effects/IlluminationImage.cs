@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Library.Att;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -15,11 +12,10 @@ namespace Library.Draw.Effects
     public class IlluminationImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(50)]
         [LanguageDescription("光點大小"), LanguageDisplayName("光點大小"), Category("濾鏡選項")]
-
         public int Radii
         {
             get
@@ -33,12 +29,12 @@ namespace Library.Draw.Effects
                 _opetion.Radii = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(typeof(Point), "10,50")]
         [LanguageDescription("光點位置"), LanguageDisplayName("光點位置"), Category("濾鏡選項")]
-
         public Point Center
         {
             get
@@ -54,17 +50,19 @@ namespace Library.Draw.Effects
         }
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new IlluminationsOption();
         }
+
         private IlluminationsOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -75,8 +73,9 @@ namespace Library.Draw.Effects
                 _opetion = (IlluminationsOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class IlluminationsOption : ImageOption
         {
@@ -85,26 +84,31 @@ namespace Library.Draw.Effects
             /// </summary>
             [LanguageDescription("光點大小"), LanguageDisplayName("光點大小"), Category("濾鏡選項")]
             public int Radii { get; set; }
+
             /// <summary>
             /// 光點位置
-            /// </summary> 
+            /// </summary>
             [LanguageDescription("光點位置"), LanguageDisplayName("光點位置"), Category("濾鏡選項")]
             public Point Center { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new IlluminationsOption() { Radii = 10, Center = new Point(50, 20) };
         }
-        #endregion
+
+        #endregion Option
+
         /*
          按照一定的规则对图像中某范围内像素的亮度进行处理后, 能够产生类似光照的效果...
          */
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override System.Drawing.Image ProcessBitmap()
@@ -141,8 +145,9 @@ namespace Library.Draw.Effects
             }
             return myBmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -178,7 +183,6 @@ namespace Library.Draw.Effects
                     ptr[2] = this.Truncate(r);
                     ptr[1] = this.Truncate(g);
                     ptr[0] = this.Truncate(b);
-
 
                     ptr += 4;
                 }

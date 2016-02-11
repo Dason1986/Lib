@@ -3,12 +3,12 @@ using System.Drawing;
 namespace Library.Draw
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ColorHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
@@ -18,7 +18,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public int ToRGBValue(Color color)

@@ -1,30 +1,29 @@
-﻿using System;
-using Library.Date;
-using Library.ComponentModel;
+﻿using Library.Date;
+using Library.HelperUtility;
 using Library.Test;
 using NUnit.Framework;
-using Library.HelperUtility;
+using System;
 
 namespace TestPj.Test
 {
     [TestFixture]
     public class StringTest
     {
-        const string Sourcestr = "String String";
-        const string Tragestr = "STRING string";
+        private const string Sourcestr = "String String";
+        private const string Tragestr = "STRING string";
 
         [OneTimeSetUpAttribute]
         public void Init()
         {
             Console.WriteLine("Char count:{0}", Sourcestr.Length);
         }
+
         [Test]
         public void FindLasdItemByIndex()
         {
             string uName = string.Empty;
             CodeTimer.Time("Index Find", ConstValue.Times99999, () =>
             {
-
                 var index = Sourcestr.LastIndexOf(' ');
                 if (index != -1)
                 {
@@ -33,6 +32,7 @@ namespace TestPj.Test
             });
             Console.WriteLine(uName);
         }
+
         [Test]
         public void FindLasdItemBySpilt()
         {
@@ -46,13 +46,13 @@ namespace TestPj.Test
             });
             Console.WriteLine(uName);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Test]
         public void CompareByUpper()
         {
-
             Console.Write("Sourcestr.ToUpper() == Tragestr.ToUpper()  ");
             Console.WriteLine(Sourcestr.ToUpper() == Tragestr.ToUpper());
 
@@ -60,30 +60,25 @@ namespace TestPj.Test
             {
                 var flag = Sourcestr.ToUpper() == Tragestr.ToUpper();
             });
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Test]
         public void CompareByEquals()
         {
-
             Console.Write("string.Equals(Sourcestr, Tragestr, StringComparison.OrdinalIgnoreCase))  ");
             Console.WriteLine(string.Equals(Sourcestr, Tragestr, StringComparison.OrdinalIgnoreCase));
             CodeTimer.Time("Equals Compare", ConstValue.Times99999, () =>
                   {
                       var flag = string.Equals(Sourcestr, Tragestr, StringComparison.OrdinalIgnoreCase);
-
                   });
-
         }
 
         [Test]
         public void DateFormatText()
         {
-
-
             var now = DateTime.Now;
             var few = now.AddMinutes(-5);
             Console.WriteLine("{0} {1} {2}", few, DateTimeUtility.GetPeriod(few), DateTimeUtility.FormatPeriodText(few));
@@ -94,21 +89,16 @@ namespace TestPj.Test
                 time = now.AddDays(+i);
                 Console.WriteLine("{0} {1} {2}", time, DateTimeUtility.GetPeriod(time), DateTimeUtility.FormatPeriodText(time));
             }
-
-
         }
+
         [Test]
         public void GetDateFormatText()
         {
-
-
             var periods = Enum.GetValues(typeof(DateTimePeriod));
             foreach (DateTimePeriod period in periods)
             {
                 Console.WriteLine("{0}:{1}", period, period.GetDateTimeRange());
             }
-
-
         }
     }
 }

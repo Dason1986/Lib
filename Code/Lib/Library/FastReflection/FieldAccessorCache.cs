@@ -3,12 +3,12 @@
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class FieldAccessorCache : FastReflectionCache<FieldInfo, IFieldAccessor>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Reflection;
-using iTextSharp.text;
-using iTextSharp.text.html.simpleparser;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Library.Draw;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using IPageSize = iTextSharp.text.PageSize;
 
 namespace Library.FileExtension
 {
-
     public class PDFBuilder : FileBuilder
     {
         static PDFBuilder()
@@ -23,30 +17,27 @@ namespace Library.FileExtension
             DefaultFont = new iTextSharp.text.Font(defaultBaseFont, 18);
         }
 
-        internal readonly static iTextSharp.text.Font DefaultFont;
+        internal static readonly iTextSharp.text.Font DefaultFont;
         protected internal Document document { get; private set; }
         private PdfReader readerFileTemplate;
         protected internal PdfWriter writer { get; private set; }
         protected internal float Height { get; private set; }
         protected internal float Width { get; private set; }
 
-        
         protected PdfTemplate Template;
+
         protected override void BuildFile()
         {
-            if (TemplateStream!=null)
+            if (TemplateStream != null)
             {
                 readerFileTemplate = new PdfReader(TemplateStream);
                 document = new Document(readerFileTemplate.GetPageSize(1));
                 writer = PdfWriter.GetInstance(document, BufferStream);
                 document.Open();
 
-
                 var page = writer.GetImportedPage(readerFileTemplate, 1);
                 Template = page;
                 writer.DirectContent.AddTemplate(page, 0, 0);
-
-
             }
             else
             {
@@ -61,16 +52,16 @@ namespace Library.FileExtension
 
             Height = document.PageSize.Height;
             Width = document.PageSize.Width;
-
-
-
         }
-        readonly IList<DataElement> elements = new List<DataElement>();
+
+        private readonly IList<DataElement> elements = new List<DataElement>();
+
         private void AddEmpty()
         {
             Paragraph paragraph = new Paragraph(" ");
             document.Add(paragraph);
         }
+
         public void Add(DataElement element)
         {
             elements.Add(element);
@@ -105,30 +96,29 @@ namespace Library.FileExtension
                     case "ImageElement":
                         Drawimage(element as ImageElement);
                         break;
+
                     case "LineElement":
                         DrawLine(element as LineElement);
                         break;
-                    case "RectangleElement": DrawRectangle(element as RectangleElement);
-                        break;
-                    case "TableElement": DrawTable(element as TableElement);
+
+                    case "RectangleElement":
+                        DrawRectangle(element as RectangleElement);
                         break;
 
+                    case "TableElement":
+                        DrawTable(element as TableElement);
+                        break;
                 }
             }
         }
 
         private void Drawimage(ImageElement image)
         {
-
         }
 
         private void DrawTable(TableElement table)
         {
-
             new PDFTableBuilder(this, table).Builder();
-
-
-
         }
 
         protected internal void NewPage()
@@ -139,7 +129,6 @@ namespace Library.FileExtension
                 writer.DirectContent.AddTemplate(Template, 0, 0);
             }
         }
-
 
         private void DrawRectangle(RectangleElement box)
         {
@@ -178,7 +167,6 @@ namespace Library.FileExtension
 
         protected override void BuildFileTemplate()
         {
-
         }
 
         protected override void Save()
@@ -190,8 +178,6 @@ namespace Library.FileExtension
             if (readerFileTemplate != null) readerFileTemplate.Close();
             if (TemplateStream != null) TemplateStream.Close();
         }
-
-
 
         public PDFBuilder(Stream BufferStream)
             : base(BufferStream)

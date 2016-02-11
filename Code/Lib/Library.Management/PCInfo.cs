@@ -1,15 +1,14 @@
+using Library.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management;
-using Library.Annotations;
-using Library.ComponentModel;
 
 namespace Library.Management
 {
     public class PCInfo
     {
-        enum Win32Hardware
+        private enum Win32Hardware
         {
             Win32_BaseBoard,//主板
             Win32_Battery,//电池
@@ -47,7 +46,6 @@ namespace Library.Management
             Win32_USBHub,//通用串行总线，一种可以将一个USB接口扩展为多个
             Win32_VideoController,//视频控制器
             Win32_VoltageProbe//电压探测器
-
         }
 
         public PCInfo([NotNull] string romoteIp, [NotNull] string adminName, [NotNull] string password)
@@ -62,17 +60,14 @@ namespace Library.Management
 
         public PCInfo()
         {
-
         }
+
         public DiskDeiver[] GetDiskDeivers()
         {
             ManagementObjectSearcher disks = new ManagementObjectSearcher(Connection(), new ObjectQuery("SELECT * FROM Win32_DiskDrive"));
             List<DiskDeiver> list = new List<DiskDeiver>();
             foreach (ManagementObject disk in disks.Get())
             {
-
-
-
                 var diskdev = new DiskDeiver();
                 list.Add(diskdev);
 
@@ -84,8 +79,6 @@ namespace Library.Management
                 if (!string.IsNullOrEmpty(diskdev.SerialNumber)) diskdev.SerialNumber = diskdev.SerialNumber.Trim();
                 if (!string.IsNullOrEmpty(diskdev.Model)) diskdev.Model = diskdev.Model.Trim();
                 if (!string.IsNullOrEmpty(diskdev.InterfaceType)) diskdev.InterfaceType = diskdev.InterfaceType.Trim();
-
-
             }
             return list.ToArray();
         }
@@ -93,12 +86,12 @@ namespace Library.Management
         public string AdminName { get; protected set; }
         protected string Password { get; set; }
         public string RomoteIp { get; protected set; }
+
         private ManagementScope Connection()
         {
             if (string.IsNullOrEmpty(AdminName) && string.IsNullOrEmpty(Password) && string.IsNullOrEmpty(RomoteIp)) return null;
             try
             {
-
                 ConnectionOptions Conn = new ConnectionOptions
                 {
                     Username = AdminName,
@@ -126,7 +119,6 @@ namespace Library.Management
 
             foreach (ManagementObject mo in objectSearcher.Get())
             {
-
                 var item = new NetworkDeiver();
                 mak.Add(item);
                 item.MacAddress = mo["MacAddress"] as string;
@@ -137,7 +129,6 @@ namespace Library.Management
                 item.Description = mo["Description"] as string;
                 item.ServiceName = mo["ServiceName"] as string;
                 item.Caption = mo["Caption"] as string;
-
             }
             return mak.ToArray();
         }
@@ -152,6 +143,5 @@ namespace Library.Management
 
             return serial;
         }
-
     }
 }

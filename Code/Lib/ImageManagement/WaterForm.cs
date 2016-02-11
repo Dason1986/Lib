@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Library.Draw;
+using Library.Draw.Water;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Library.Draw;
-using Library.Draw.Water;
 
 namespace TestWinform
 {
@@ -15,7 +15,6 @@ namespace TestWinform
             this.PicTarget.ContextMenu = new ContextMenu();
             this.PicTarget.ContextMenu.MenuItems.Add("asdf");
         }
-
 
         private void BtnWaterPic_Click(object sender, EventArgs e)
         {
@@ -49,7 +48,8 @@ namespace TestWinform
             if (ChkPreview.Checked) Builder(path, TxtWaterPic.Text);
         }
 
-        readonly WaterImageBuilder _builder = WaterImageFactory.CreateBuilder(WaterImageType.Text);
+        private readonly WaterImageBuilder _builder = WaterImageFactory.CreateBuilder(WaterImageType.Text);
+
         public void Builder(string sourceImg, string waterImg)
         {
             _builder.SetSourceImage(sourceImg);
@@ -57,19 +57,17 @@ namespace TestWinform
                 _builder.SetWaterImage(waterImg);
 
             var opetion = new WaterImageTileOption
-             {
-                 Offset = new Point((int)NumOffsetX.Value, (int)NumOffsetY.Value),
-                 Space = new Size((int)NumspaceX.Value, (int)NumspaceY.Value),
-                 Opacity = (float)NumOpacity.Value / 100
-             };
+            {
+                Offset = new Point((int)NumOffsetX.Value, (int)NumOffsetY.Value),
+                Space = new Size((int)NumspaceX.Value, (int)NumspaceY.Value),
+                Opacity = (float)NumOpacity.Value / 100
+            };
             _builder.SetOpetion(opetion);
             PicTarget.Image = _builder.ProcessBitmap();
-
         }
 
         private void BtnBuilder_Click(object sender, EventArgs e)
         {
-
         }
 
         private void BtnSelectFolder_Click(object sender, EventArgs e)
@@ -83,6 +81,4 @@ namespace TestWinform
             }
         }
     }
-
-
 }

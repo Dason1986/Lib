@@ -1,21 +1,19 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-
 
 namespace Library.Att
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
     public class LanguageDescriptionAttribute : DescriptionAttribute
     {
         private readonly Type _resourceType;
         private bool replaced;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string Description
         {
@@ -30,9 +28,8 @@ namespace Library.Att
             }
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="description"></param>
 
@@ -42,15 +39,14 @@ namespace Library.Att
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="description"></param>
-        /// <param name="resourceType"></param> 
+        /// <param name="resourceType"></param>
         public LanguageDescriptionAttribute(string description, Type resourceType)
             : base(description)
         {
             _resourceType = resourceType;
-
         }
     }
 }

@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 
 namespace Library.Data
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum OrderType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
     }
-
-
-
-
 
     /// <summary>
     /// 条件过滤器接口（用于生成查询条件过滤的抽象）
@@ -30,46 +24,44 @@ namespace Library.Data
     public interface IQueryFilter
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         string Filed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         string DisplayName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         object Value { get; set; }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Condition Condition { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Relation Relation { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         object Value2 { get; set; }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QueryFiledType FiledType { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         string FunctionName { get; set; }
-
     }
 
 #if !SILVERLIGHT
@@ -82,97 +74,106 @@ namespace Library.Data
     public enum QueryFiledType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Filter,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Functon,
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class QueryFilter : IQueryFilter
     {
         private Condition _condition = Condition.Equal;
         private readonly FilterCollection _filters = new FilterCollection();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string DisplayName { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Filed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object Value { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object Value2 { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Condition Condition
         {
             get { return _condition; }
             set { _condition = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Relation Relation { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public QueryFiledType FiledType { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string FunctionName { get; set; }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FilterCollection Filters
         {
             get { return _filters; }
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public QueryFilter Clone()
         {
             return (QueryFilter)this.MemberwiseClone();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static QueryFilter Begin()
         {
             return new QueryFilter { Relation = Relation.Begin };
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static QueryFilter End()
         {
             return new QueryFilter { Relation = Relation.End };
         }
-
     }
 
 #if !SILVERLIGHT
+
     /// <summary>
     /// 关系
     /// </summary>
@@ -181,32 +182,30 @@ namespace Library.Data
     [Flags]
     public enum Relation
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         And = 0,
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         Or = 1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         Begin = 2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         End = 4,
-
     }
 
-
 #if !SILVERLIGHT
+
     /// <summary>
     ///  条件
     /// </summary>
@@ -215,7 +214,6 @@ namespace Library.Data
     [Flags]
     public enum Condition
     {
-
         /// <summary>
         /// 等于
         /// </summary>
@@ -309,8 +307,5 @@ namespace Library.Data
         /// </summary>
 
         IsEmpty = 32768,
-
     }
-
-
 }

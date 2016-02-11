@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace Library
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class PermutationAndCombination<T>
@@ -19,7 +19,6 @@ namespace Library
             a = b;
             b = temp;
         }
-
 
         /// <summary>
         /// 递归算法求排列(私有成员)
@@ -102,7 +101,6 @@ namespace Library
             return list;
         }
 
-
         /// <summary>
         /// 求数组中n个元素的组合
         /// </summary>
@@ -120,7 +118,6 @@ namespace Library
             GetCombination(ref list, t, t.Length, n, temp, n);
             return list;
         }
-
 
         /// <summary>
         /// 递归算法求数组的组合(私有成员)

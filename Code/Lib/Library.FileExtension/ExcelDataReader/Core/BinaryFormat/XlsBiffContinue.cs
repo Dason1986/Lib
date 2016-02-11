@@ -1,18 +1,18 @@
 namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
 {
-	/// <summary>
-	/// Represents additional space for very large records
-	/// </summary>
-	internal class XlsBiffContinue : XlsBiffRecord
-	{
-		internal XlsBiffContinue(byte[] bytes, uint offset)
-			: base(bytes, offset)
-		{
-		}
+    /// <summary>
+    /// Represents additional space for very large records
+    /// </summary>
+    internal class XlsBiffContinue : XlsBiffRecord
+    {
+        internal XlsBiffContinue(byte[] bytes, uint offset)
+            : base(bytes, offset)
+        {
+        }
 
-		internal XlsBiffContinue(byte[] bytes)
-			: this(bytes, 0)
-		{
-		}
-	}
+        internal XlsBiffContinue(byte[] bytes)
+            : this(bytes, 0)
+        {
+        }
+    }
 }

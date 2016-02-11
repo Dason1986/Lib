@@ -1,17 +1,16 @@
-using System;
 using System.Drawing;
-using Library.Draw.Effects;
 
 namespace Library.Draw.Water
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class WaterImageBuilderByTile : WaterImageBuilder
     {
         private WaterImageTileOption _opetion;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -22,8 +21,9 @@ namespace Library.Draw.Water
                 _opetion = value as WaterImageTileOption;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="space"></param>
         public void SetSpace(Size space)
@@ -31,8 +31,9 @@ namespace Library.Draw.Water
             InitOption();
             _opetion.Space = space;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="offset"></param>
         public void SetOffset(Point offset)
@@ -40,17 +41,17 @@ namespace Library.Draw.Water
             InitOption();
             _opetion.Offset = offset;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new WaterImageTileOption();
         }
- 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rectangle"></param>
         /// <param name="waterImg"></param>
@@ -60,12 +61,10 @@ namespace Library.Draw.Water
             Image img = new Bitmap(rectangle.Width, rectangle.Height);
             Graphics gType = Graphics.FromImage(img);
 
-
             int spacey = _opetion.Space != null ? _opetion.Space.Value.Height : waterImg.Height;
             int spaceX = _opetion.Space != null ? _opetion.Space.Value.Width : waterImg.Width;
             int offsetY = _opetion.Offset.GetValueOrDefault().Y;
             int offsetX = _opetion.Offset.GetValueOrDefault().X;
-
 
             var clo = rectangle.Width / (waterImg.Width + spaceX);
             var row = rectangle.Height / (waterImg.Height + spacey);

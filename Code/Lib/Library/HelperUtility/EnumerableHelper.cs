@@ -1,19 +1,17 @@
-﻿using System;
+﻿using Library.Annotations;
+using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Data;
-using System.Runtime.Remoting.Messaging;
-using Library.Annotations;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class EnumerableHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
@@ -29,7 +27,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
@@ -47,7 +45,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <param name="count"></param>
@@ -56,10 +54,11 @@ namespace Library.HelperUtility
         {
             if (list == null) return false;
             var tmplist = list.GetList();
-            return tmplist.HasRecord(count); 
+            return tmplist.HasRecord(count);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <param name="count"></param>
@@ -68,8 +67,9 @@ namespace Library.HelperUtility
         {
             return list != null && list.Count >= count;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <param name="count"></param>
@@ -78,8 +78,9 @@ namespace Library.HelperUtility
         {
             return list != null && list.Count >= count;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <param name="count"></param>
@@ -88,8 +89,9 @@ namespace Library.HelperUtility
         {
             return list != null && list.Length >= count;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <param name="count"></param>

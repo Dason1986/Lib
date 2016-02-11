@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class DataGridViewColumnSelector
     {
         // the DataGridView to which the DataGridViewColumnSelector is attached
         private DataGridView mDataGridView = null;
+
         // a CheckedListBox containing the column header text and checkboxes
- ///       private CheckedListBox mCheckedListBox;
+        ///       private CheckedListBox mCheckedListBox;
         // a ToolStripDropDown object used to show the popup
         private ToolStripDropDown mPopup;
 
@@ -26,6 +24,7 @@ namespace Library.Controls
         /// The max height of the popup
         /// </summary>
         public int MaxHeight = 300;
+
         /// <summary>
         /// The width of the popup
         /// </summary>
@@ -39,7 +38,7 @@ namespace Library.Controls
             get { return mDataGridView; }
             set
             {
-                // If any, remove handler from current DataGridView 
+                // If any, remove handler from current DataGridView
                 if (mDataGridView != null) mDataGridView.CellMouseClick -= new DataGridViewCellMouseEventHandler(mDataGridView_CellMouseClick);
                 // Set the new DataGridView
                 mDataGridView = value;
@@ -47,15 +46,17 @@ namespace Library.Controls
                 if (mDataGridView != null) mDataGridView.CellMouseClick += new DataGridViewCellMouseEventHandler(mDataGridView_CellMouseClick);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsLiftButton { get; set; }
+
         // When user right-clicks the cell origin, it clears and fill the CheckedListBox with
-        // columns header text. Then it shows the popup. 
-        // In this way the CheckedListBox items are always refreshed to reflect changes occurred in 
+        // columns header text. Then it shows the popup.
+        // In this way the CheckedListBox items are always refreshed to reflect changes occurred in
         // DataGridView columns (column additions or name changes and so on).
-        void mDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void mDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if ((IsLiftButton || e.Button != MouseButtons.Right) && (!IsLiftButton || e.Button != MouseButtons.Left))
                 return;
@@ -64,7 +65,8 @@ namespace Library.Controls
             mPopup.Show(mDataGridView.PointToScreen(new Point(e.X, e.Y)));
         }
 
-        DataGridViewMenu pUserControl1 = new DataGridViewMenu();
+        private DataGridViewMenu pUserControl1 = new DataGridViewMenu();
+
         // The constructor creates an instance of CheckedListBox and ToolStripDropDown.
         // the CheckedListBox is hosted by ToolStripControlHost, which in turn is
         // added to ToolStripDropDown.
@@ -91,7 +93,7 @@ namespace Library.Controls
             mPopup.Items.Add(mControlHost);
         }
 
-        void CheckedChangedEnent(int iIndex, bool bChecked)
+        private void CheckedChangedEnent(int iIndex, bool bChecked)
         {
             mDataGridView.Columns[iIndex].Visible = bChecked;
         }
@@ -102,8 +104,9 @@ namespace Library.Controls
             mPopup.Close();
             mPopup.AutoClose = true;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dgv"></param>
         public DataGridViewColumnSelector(DataGridView dgv)
@@ -112,61 +115,69 @@ namespace Library.Controls
             this.DataGridView = dgv;
         }
 
-        // When user checks / unchecks a checkbox, the related column visibility is 
+        // When user checks / unchecks a checkbox, the related column visibility is
         // switched.
-        void mCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void mCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             mDataGridView.Columns[e.Index].Visible = (e.NewValue == CheckState.Checked);
         }
     }
 
-    class MenuControl
+    internal class MenuControl
     {
         private static int m_iImageColumnWidth = 24;
         private static int m_iExtraWidth = 15;
+
         private class MenuCommand
         {
             public int Height { get { return Separator ? 5 : 21; } }
             public bool Separator { get { return m_csText == "-"; } }
 
             private string m_csText;
+
             //private int m_iIndex;
             private bool m_bChecked;
+
             private bool m_bDone;
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             public string Text { get { return m_csText; } }
+
             //public int Index { get { return m_iIndex; } }
             /// <summary>
-            /// 
+            ///
             /// </summary>
             public bool Done { get { return m_bDone; } }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             public bool Checked { get { return m_bChecked; } set { m_bChecked = value; } }
+
             //public MenuCommand(string csText, int iIndex, bool bChecked)
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="csText"></param>
             /// <param name="bChecked"></param>
             public MenuCommand(string csText, bool bChecked)
                 : this(csText, bChecked, false)
             {
-
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="csText"></param>
             public MenuCommand(string csText)
                 : this(csText, false, false)
             {
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="csText"></param>
             /// <param name="bChecked"></param>
@@ -185,16 +196,19 @@ namespace Library.Controls
 
         private Bitmap m_pMemBitmap;// = new Bitmap(panel1.Width, panel1.Height, PixelFormat.Format32bppArgb);
         private Graphics m_pMemGraphics;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Width { get { return m_pMemBitmap.Width; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Height { get { return m_pMemBitmap.Height; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Done
         {
@@ -203,8 +217,9 @@ namespace Library.Controls
                 return m_pTracMenuItem != null && m_pTracMenuItem.Done;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int HitIndex
         {
@@ -213,8 +228,9 @@ namespace Library.Controls
                 return m_pMenuCommands.IndexOf(m_pTracMenuItem);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="iIndex"></param>
         /// <param name="g"></param>
@@ -225,8 +241,9 @@ namespace Library.Controls
             Draw(g);
             return m_pMenuCommands[iIndex].Checked;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="csText"></param>
         /// <param name="bChecked"></param>
@@ -234,8 +251,9 @@ namespace Library.Controls
         {
             m_pMenuCommands.Add(new MenuCommand(csText, bChecked));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="g"></param>
         public void Prepare(Graphics g)
@@ -276,8 +294,9 @@ namespace Library.Controls
             }
             return null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
@@ -295,8 +314,9 @@ namespace Library.Controls
                 return false;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
@@ -306,8 +326,9 @@ namespace Library.Controls
             MenuCommand pMenuCommand = HitTest(X, Y);
             return pMenuCommand != null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="g"></param>
         public void Draw(Graphics g)
@@ -328,7 +349,6 @@ namespace Library.Controls
         private void DrawBackground(Graphics g, Rectangle rectWin)
         {
             Rectangle main = new Rectangle(0, 0, rectWin.Width, rectWin.Height);
-
 
             int xStart = 1;
             int yStart = 2;
@@ -471,33 +491,37 @@ namespace Library.Controls
                     boxBrush.Dispose();
 
                     g.DrawImage(_checkImg, boxRect, 0, 0, _checkImg.Width, _checkImg.Height, GraphicsUnit.Pixel);
-
                 }
             }
         }
+
         private Image _checkImg = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.check.png");
     }
 
-    class DataGridViewMenu : UserControl
+    internal class DataGridViewMenu : UserControl
     {
         public EventHandler DoneEvent;
+
         public delegate void CheckedChanged(int iIndex, bool bChecked);
+
         public event CheckedChanged CheckedChangedEnent;
+
         public virtual void OnCheckedChanged(int iIndex, bool bChecked)
         {
             if (CheckedChangedEnent != null)
                 CheckedChangedEnent(iIndex, bChecked);
         }
+
         public virtual void OnDone()
         {
             if (DoneEvent != null)
                 DoneEvent(this, EventArgs.Empty);
         }
 
-        MenuControl m_pMenuControl = new MenuControl();
+        private MenuControl m_pMenuControl = new MenuControl();
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -512,8 +536,8 @@ namespace Library.Controls
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -521,13 +545,13 @@ namespace Library.Controls
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
+            //
             // timer1
-            // 
+            //
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
+            //
             // UserControlMenu
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "UserControlMenu";
@@ -536,14 +560,14 @@ namespace Library.Controls
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.UserControlMenu_MouseMove);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UserControlMenu_MouseDown);
             this.ResumeLayout(false);
-
         }
 
-        #endregion
+        #endregion Component Designer generated code
 
         private System.Windows.Forms.Timer timer1;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataGridViewMenu()
         {
@@ -554,8 +578,9 @@ namespace Library.Controls
         {
             Parent.Focus();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pDataGridView"></param>
         public void Initialize(DataGridView pDataGridView)
@@ -573,7 +598,6 @@ namespace Library.Controls
             Height = m_pMenuControl.Height;
 
             timer1.Enabled = true;
-
         }
 
         private void UserControlMenu_Paint(object sender, PaintEventArgs e)

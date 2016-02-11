@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Library.Controls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class RenderHelper
     {
@@ -155,7 +155,7 @@ namespace Library.Controls
         internal static Image GetImageFormResourceStream(string imagePath)
         {
             var path = imagePath;
-            var f =Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+            var f = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
             return f != null ? Image.FromStream(f) : null;
         }
 
@@ -203,9 +203,7 @@ namespace Library.Controls
             }
 
             return bitmap;
-
         }
-
 
         /// <summary>
         /// 建立带有圆角样式的路径。
@@ -272,7 +270,7 @@ namespace Library.Controls
         /// <param name="g"></param>
         public static void DrawFromAlphaMainPart(Form form, Graphics g)
         {
-            Color[] colors = 
+            Color[] colors =
             {
                 Color.FromArgb(5, Color.White),
                 Color.FromArgb(30, Color.White),
@@ -282,14 +280,14 @@ namespace Library.Controls
                 Color.FromArgb(5, Color.White)
             };
 
-            float[] pos = 
+            float[] pos =
             {
                 0.0f,
                 0.04f,
                 0.10f,
                 0.90f,
                 0.97f,
-                1.0f      
+                1.0f
             };
 
             ColorBlend colorBlend = new ColorBlend(6);

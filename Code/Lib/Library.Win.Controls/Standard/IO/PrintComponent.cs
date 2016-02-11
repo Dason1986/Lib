@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Library.Draw.Print;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Library.Draw.Print;
 
 namespace Library.Win
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public partial class PrintComponent : Component
     {
@@ -20,8 +15,9 @@ namespace Library.Win
         private IPrintBuilder _pintbuilder;
         private PrintDialog _dialog;
         private PrintDocument _document;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PrintComponent()
         {
@@ -29,7 +25,7 @@ namespace Library.Win
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="container"></param>
         public PrintComponent(IContainer container)
@@ -53,13 +49,15 @@ namespace Library.Win
                 _pintObj = value;
             }
         }
+
         /// <summary>
         /// 打印設置
         /// </summary>
         [DefaultValue(null), DisplayName("打印設置"), Category("打印相關")]
         public PrintOption Option { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void ShowPrintDialog()
         {
@@ -71,7 +69,6 @@ namespace Library.Win
             {
                 _document.Print();
             }
-
         }
 
         private void CreateDocument()
@@ -81,33 +78,31 @@ namespace Library.Win
             _document.EndPrint += Document_EndPrint;
             _document.PrintPage += document_PrintPage;
             _document.QueryPageSettings += document_QueryPageSettings;
-
         }
 
-        void document_QueryPageSettings(object sender, QueryPageSettingsEventArgs e)
+        private void document_QueryPageSettings(object sender, QueryPageSettingsEventArgs e)
         {
             //  throw new NotImplementedException();
         }
 
-
-        void document_PrintPage(object sender, PrintPageEventArgs e)
+        private void document_PrintPage(object sender, PrintPageEventArgs e)
         {
-
             var image = _pintbuilder.CreateCurrentBitmap();
             e.Graphics.DrawImage(image, new Point(0, 0));
             //throw new NotImplementedException();
         }
 
-        void Document_EndPrint(object sender, PrintEventArgs e)
+        private void Document_EndPrint(object sender, PrintEventArgs e)
         {
             //    throw new NotImplementedException();
         }
 
-        void Document_BeginPrint(object sender, PrintEventArgs e)
+        private void Document_BeginPrint(object sender, PrintEventArgs e)
         {
             //     throw new NotImplementedException();
         }
-        /// <summary> 
+
+        /// <summary>
         /// 清除任何使用中的資源。
         /// </summary>
         /// <param name="disposing">如果應該處置 Managed 資源則為 true，否則為 false。</param>
@@ -128,7 +123,6 @@ namespace Library.Win
                     _dialog.Dispose();
                 }
                 components.Dispose();
-
             }
             base.Dispose(disposing);
         }

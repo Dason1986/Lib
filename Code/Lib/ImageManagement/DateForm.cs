@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Library.Date;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using Library.Date;
 
 namespace TestWinform
 {
@@ -27,10 +27,7 @@ namespace TestWinform
             listBox1.ValueMember = "Value";
             comboBox1.SelectedIndex = 0;
             listBox1.SelectedIndex = 1;
-          
         }
-
-
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {

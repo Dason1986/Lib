@@ -7,8 +7,6 @@ namespace Library.ComponentModel.ComponentPatterns
     /// </summary>
     public interface IDeactivate
     {
-     
-
         /// <summary>
         /// Deactivates this instance.
         /// </summary>

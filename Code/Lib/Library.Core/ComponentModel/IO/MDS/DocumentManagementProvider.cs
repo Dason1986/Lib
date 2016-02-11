@@ -4,13 +4,12 @@ using System.Collections.Specialized;
 namespace Library.ComponentModel.IO.MDS
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class DocumentManagementProvider : IProvider
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ~DocumentManagementProvider()
         {
@@ -18,7 +17,7 @@ namespace Library.ComponentModel.IO.MDS
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="apiProvider"></param>
         /// <param name="fileRepositoriey"></param>
@@ -30,16 +29,19 @@ namespace Library.ComponentModel.IO.MDS
             APIProvider = apiProvider;
             FileRepositoriey = fileRepositoriey;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected IDocumentManagementAPIProvider APIProvider { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected IFileRepositoriey FileRepositoriey { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual void Initialize()
         {
@@ -51,16 +53,17 @@ namespace Library.ComponentModel.IO.MDS
         {
             this.Initialize();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual void Connection()
         {
-
             APIProvider.Connection();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
@@ -70,8 +73,9 @@ namespace Library.ComponentModel.IO.MDS
             if (file == null) throw new DocumentManagementException("file not exist");
             return APIProvider.GetFileInfo(file.APIFullName);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dirPath"></param>
         /// <returns></returns>
@@ -79,16 +83,18 @@ namespace Library.ComponentModel.IO.MDS
         {
             return FileRepositoriey.GetFiles(dirPath);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public virtual DMSFileInfo[] GetFilesOnRoot()
         {
             return APIProvider.GetFilesOnRoot();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public virtual DMSDirectoryInfo[] GetDirectoriesOnRoot()
@@ -97,7 +103,7 @@ namespace Library.ComponentModel.IO.MDS
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <exception cref="DocumentManagementException"></exception>
@@ -109,10 +115,8 @@ namespace Library.ComponentModel.IO.MDS
             FileRepositoriey.DeleteFile(id);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filePath"></param>
         /// <exception cref="DocumentManagementException"></exception>
@@ -126,15 +130,16 @@ namespace Library.ComponentModel.IO.MDS
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dirPath"></param>
         public virtual void DeleteDirectory(string dirPath)
         {
             APIProvider.DeleteDirectory(dirPath);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dirPath"></param>
         /// <returns></returns>
@@ -142,8 +147,9 @@ namespace Library.ComponentModel.IO.MDS
         {
             return APIProvider.GetDirectories(dirPath);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fileid"></param>
         /// <returns></returns>
@@ -151,11 +157,10 @@ namespace Library.ComponentModel.IO.MDS
         {
             var file = FileRepositoriey.GetFile(fileid);
             return APIProvider.GetFileBuffer(file.APIFullName);
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fileid"></param>
         /// <returns></returns>
@@ -167,7 +172,7 @@ namespace Library.ComponentModel.IO.MDS
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="fileBuffer"></param>
@@ -176,7 +181,6 @@ namespace Library.ComponentModel.IO.MDS
         /// <exception cref="DocumentManagementException"></exception>
         public virtual void UpdateFile(object id, byte[] fileBuffer, string fileName, NameValueCollection metas)
         {
-
             if (fileBuffer == null) throw new DocumentManagementException("");
             if (string.IsNullOrEmpty(fileName)) throw new DocumentManagementException("");
             var file = FileRepositoriey.GetFile(id);
@@ -187,7 +191,7 @@ namespace Library.ComponentModel.IO.MDS
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fileBuffer"></param>
         /// <param name="fileName"></param>
@@ -204,16 +208,14 @@ namespace Library.ComponentModel.IO.MDS
             return apiFileinfo;
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual void Close()
         {
             APIProvider.Close();
         }
+
         private bool _isDispose;
 
         private void Dispose(bool isDispose)
@@ -222,15 +224,14 @@ namespace Library.ComponentModel.IO.MDS
             if (!isDispose) return;
             Close();
             _isDispose = true;
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual void Dispose()
         {
             Dispose(true);
-
         }
     }
 }

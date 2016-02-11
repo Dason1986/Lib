@@ -3,17 +3,17 @@
 namespace Library.Data
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IQueryOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         string Filed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OrderType Order { get; set; }
     }
@@ -27,9 +27,8 @@ namespace Library.Data
 #endif
     public struct QueryOrder : IQueryOrder
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filed"></param>
         /// <param name="order"></param>
@@ -39,17 +38,19 @@ namespace Library.Data
             Filed = filed;
             Order = order;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Filed { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public OrderType Order { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filed"></param>
         /// <returns></returns>
@@ -57,8 +58,9 @@ namespace Library.Data
         {
             return new QueryOrder(filed, OrderType.Desc);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filed"></param>
         /// <returns></returns>

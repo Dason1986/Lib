@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Library.Att;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -20,8 +20,9 @@ b = 2 * sqrt( (b1 - b2)^2 + (b1 - b3)^2 )
 
 f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
          */
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("濾鏡選項")]
         [LanguageDescription("顏色RGB:紅"), LanguageDisplayName("紅")]
@@ -38,8 +39,9 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                 _opetion.Red = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("濾鏡選項")]
         [LanguageDescription("顏色RGB:綠"), LanguageDisplayName("綠")]
@@ -56,8 +58,9 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                 _opetion.Green = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("濾鏡選項")]
         [LanguageDescription("顏色RGB:藍"), LanguageDisplayName("藍")]
@@ -74,18 +77,21 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                 _opetion.Blue = value;
             }
         }
+
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ColorOption();
         }
+
         private ColorOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -96,17 +102,20 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                 _opetion = (ColorOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ColorOption();
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -131,17 +140,15 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
                     bb = Truncate(bb + Blue);
 
                     bmp.SetPixel(i, j, Color.FromArgb(rr, gg, bb));
-
                 }
             }
             return bmp;
         }
 
-
         #region IImageProcessable 成员
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -157,7 +164,6 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
             {
                 for (int j = 0; j < width - 1; j++)
                 {
-
                     byte bb = (byte)(2 * Math.Sqrt((ptr[4] - ptr[0]) * (ptr[4] - ptr[0])) + (ptr[bmpData.Stride] - ptr[0]) * (ptr[bmpData.Stride] - ptr[0]));//b;
                     byte gg = (byte)(2 * Math.Sqrt((ptr[5] - ptr[1]) * (ptr[5] - ptr[1])) + (ptr[bmpData.Stride + 1] - ptr[1]) * (ptr[bmpData.Stride + 1] - ptr[1]));//g
                     byte rr = (byte)(2 * Math.Sqrt((ptr[6] - ptr[2]) * (ptr[6] - ptr[2])) + (ptr[bmpData.Stride + 2] - ptr[2]) * (ptr[bmpData.Stride + 2] - ptr[2]));//r
@@ -175,6 +181,6 @@ f(i,j)=2*sqrt[(f(i,j)-f(i+1,j))^2+(f(i,j)-f(,j+1))^2]
             return bmp;
         }
 
-        #endregion
+        #endregion IImageProcessable 成员
     }
 }

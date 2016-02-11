@@ -20,11 +20,12 @@ namespace Library.Controls
         private const ContentAlignment RightAlignment = (ContentAlignment)1092;//ContentAlignment.TopRight | ContentAlignment.BottomRight | ContentAlignment.MiddleRight
         private const ContentAlignment LeftAlignment = (ContentAlignment)273;//ContentAlignment.TopLeft | ContentAlignment.BottomLeft | ContentAlignment.MiddleLeft
 
-        #endregion
+        #endregion Field
 
         #region Constructor
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CheckBox()
         {
@@ -33,11 +34,12 @@ namespace Library.Controls
             this.Font = _defaultFont;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Properites
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Description("获取QQCheckBox左边正方形的宽度"),]
         private int CheckRectWidth
@@ -45,11 +47,12 @@ namespace Library.Controls
             get { return 13; }
         }
 
-        #endregion
+        #endregion Properites
 
         #region Override
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
@@ -57,8 +60,9 @@ namespace Library.Controls
             _state = ControlState.Highlight;
             base.OnMouseEnter(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
@@ -66,8 +70,9 @@ namespace Library.Controls
             _state = ControlState.Normal;
             base.OnMouseLeave(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
@@ -78,8 +83,9 @@ namespace Library.Controls
             }
             base.OnMouseDown(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
@@ -90,8 +96,9 @@ namespace Library.Controls
             }
             base.OnMouseUp(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
@@ -99,8 +106,9 @@ namespace Library.Controls
             _state = Enabled ? ControlState.Normal : ControlState.Disabled;
             base.OnEnabledChanged(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pevent"></param>
         protected override void OnPaint(PaintEventArgs pevent)
@@ -126,19 +134,22 @@ namespace Library.Controls
                 case ControlState.Down:
                     DrawHighLightCheckRect(g, checkRect);
                     break;
+
                 case ControlState.Disabled:
                     DrawDisabledCheckRect(g, checkRect);
                     break;
+
                 default:
                     DrawNormalCheckRect(g, checkRect);
                     break;
             }
 
             Color textColor = Enabled ? ForeColor : SystemColors.GrayText;
-            TextRenderer.DrawText(g,Text,Font,textRect,textColor,GetTextFormatFlags(TextAlign, RightToLeft == RightToLeft.Yes));
+            TextRenderer.DrawText(g, Text, Font, textRect, textColor, GetTextFormatFlags(TextAlign, RightToLeft == RightToLeft.Yes));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -160,7 +171,7 @@ namespace Library.Controls
             base.Dispose(disposing);
         }
 
-        #endregion
+        #endregion Override
 
         #region Private
 
@@ -174,7 +185,6 @@ namespace Library.Controls
             if (Checked)
             {
                 g.DrawImage(_checkImg, checkRect, 0, 0, _checkImg.Width, _checkImg.Height, GraphicsUnit.Pixel);
-              
             }
         }
 
@@ -190,8 +200,6 @@ namespace Library.Controls
 
                 g.DrawRectangle(p, checkRect);
             }
-
-
         }
 
         private void DrawDisabledCheckRect(Graphics g, Rectangle checkRect)
@@ -231,10 +239,12 @@ namespace Library.Controls
                     case ContentAlignment.TopLeft:
                         checkRect.Y = 2;
                         break;
+
                     case ContentAlignment.MiddleRight:
                     case ContentAlignment.MiddleLeft:
                         checkRect.Y = (Height - CheckRectWidth) / 2;
                         break;
+
                     case ContentAlignment.BottomRight:
                     case ContentAlignment.BottomLeft:
                         checkRect.Y = Height - CheckRectWidth - 2;
@@ -249,7 +259,7 @@ namespace Library.Controls
                     Width - checkRect.Right - 4,
                     Height);
             }
-            else if (bCheckAlignRight|| bCheckAlignLeft)
+            else if (bCheckAlignRight || bCheckAlignLeft)
             {
                 switch (CheckAlign)
                 {
@@ -257,10 +267,12 @@ namespace Library.Controls
                     case ContentAlignment.TopRight:
                         checkRect.Y = 2;
                         break;
+
                     case ContentAlignment.MiddleLeft:
                     case ContentAlignment.MiddleRight:
                         checkRect.Y = (Height - CheckRectWidth) / 2;
                         break;
+
                     case ContentAlignment.BottomLeft:
                     case ContentAlignment.BottomRight:
                         checkRect.Y = Height - CheckRectWidth - 2;
@@ -281,11 +293,13 @@ namespace Library.Controls
                         textRect.Y = checkRect.Bottom + 2;
                         textRect.Height = Height - CheckRectWidth - 6;
                         break;
+
                     case ContentAlignment.MiddleCenter:
                         checkRect.Y = (Height - CheckRectWidth) / 2;
                         textRect.Y = 0;
                         textRect.Height = Height;
                         break;
+
                     case ContentAlignment.BottomCenter:
                         checkRect.Y = Height - CheckRectWidth - 2;
                         textRect.Y = 0;
@@ -314,28 +328,36 @@ namespace Library.Controls
                 case ContentAlignment.BottomCenter:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.HorizontalCenter;
                     break;
+
                 case ContentAlignment.BottomLeft:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.BottomRight:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.Right;
                     break;
+
                 case ContentAlignment.MiddleCenter:
                     flags |= TextFormatFlags.HorizontalCenter |
                              TextFormatFlags.VerticalCenter;
                     break;
+
                 case ContentAlignment.MiddleLeft:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.MiddleRight:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Right;
                     break;
+
                 case ContentAlignment.TopCenter:
                     flags |= TextFormatFlags.Top | TextFormatFlags.HorizontalCenter;
                     break;
+
                 case ContentAlignment.TopLeft:
                     flags |= TextFormatFlags.Top | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.TopRight:
                     flags |= TextFormatFlags.Top | TextFormatFlags.Right;
                     break;
@@ -343,7 +365,6 @@ namespace Library.Controls
             return flags;
         }
 
-
-        #endregion
+        #endregion Private
     }
 }

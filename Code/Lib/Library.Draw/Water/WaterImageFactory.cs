@@ -3,12 +3,12 @@ using System.Drawing;
 namespace Library.Draw.Water
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class WaterImageFactory
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="waterImageType"></param>
         /// <returns></returns>
@@ -21,12 +21,12 @@ namespace Library.Draw.Water
                 case WaterImageType.Pixel: builder = new WaterImageBuilderByPixel(); break;
                 case WaterImageType.Tile: builder = new WaterImageBuilderByTile(); break;
                 case WaterImageType.Text: builder = new WaterImageBuilderByText(); break;
-
             }
             return builder;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="waterImageType"></param>
         /// <param name="sourceImgPath"></param>

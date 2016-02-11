@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Library.Att;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -12,7 +11,7 @@ namespace Library.Draw.Effects
     public class SharpenImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public float Value
         {
@@ -29,17 +28,19 @@ namespace Library.Draw.Effects
         }
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
+
         private ValueOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -50,17 +51,20 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption() { Value = 1 };
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -95,8 +99,9 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -118,7 +123,6 @@ namespace Library.Draw.Effects
                     {
                         for (int row = -1; row <= 1; row++)
                         {
-
                             int moveindex = (y + col) * bmpData.Stride + (x + row) * 4;
                             int rr = ptr[moveindex + 2];
                             int gg = ptr[moveindex + 1];
@@ -134,7 +138,6 @@ namespace Library.Draw.Effects
                     ptr[index + 2] = Truncate(r);
                     ptr[index + 1] = Truncate(g);
                     ptr[index] = Truncate(b);
-
                 }
             }
             bmp.UnlockBits(bmpData);

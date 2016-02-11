@@ -16,7 +16,6 @@ namespace Library.Win
         /// <returns></returns>
         public static string InputCodeText(string caption, Image codeImage)
         {
-
             Form inputForm = new Form
             {
                 MinimizeBox = false,
@@ -26,10 +25,6 @@ namespace Library.Win
                 Height = 170,
                 Text = caption
             };
-
-
-
-
 
             PictureBox imgBox = new PictureBox
             {
@@ -66,7 +61,6 @@ namespace Library.Win
             {
                 inputForm.Dispose();
             }
-
         }
 
         /// <summary>
@@ -78,7 +72,6 @@ namespace Library.Win
         /// <returns></returns>
         public static string InputBox(string caption, string hint, string Default)
         {
-
             Form inputForm = new Form
             {
                 MinimizeBox = false,
@@ -88,7 +81,6 @@ namespace Library.Win
                 Height = 150,
                 Text = caption
             };
-
 
             Label lbl = new Label { Text = hint, Left = 10, Top = 20, Parent = inputForm, AutoSize = true };
             TextBox tb = new TextBox { Left = 30, Top = 45, Width = 160, Parent = inputForm, Text = Default };
@@ -113,7 +105,6 @@ namespace Library.Win
             {
                 inputForm.Dispose();
             }
-
         }
     }
 }

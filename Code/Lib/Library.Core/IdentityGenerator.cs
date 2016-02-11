@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Principal;
-using System.Text;
-
-
 
 namespace Library
 {
-
     /// <summary>
     ///
     /// </summary>
     public static class IdentityGenerator
     {
-
         [DllImport("rpcrt4.dll", SetLastError = true)]
-        static extern int UuidCreateSequential(out Guid guid);
+        private static extern int UuidCreateSequential(out Guid guid);
 
-        static Guid SequentialGuid()
+        private static Guid SequentialGuid()
         {
             Guid guid;
             UuidCreateSequential(out guid);
@@ -44,12 +36,48 @@ namespace Library
             return new Guid(t);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Guid Next(Guid id)
+        {
+            var arry = id.ToByteArray();
+            const byte sub = 1;
+            var b = arry[3];
+            if (b != byte.MaxValue)
+            {
+                arry[3] = (byte)(b + sub);
+                return new Guid(arry);
+            }
+            arry[3] = 0;
+            b = arry[2];
+            if (b != byte.MaxValue)
+            {
+                arry[2] = (byte)(b + sub);
+                return new Guid(arry);
+            }
+            arry[2] = 0;
+            b = arry[1];
+            if (b != byte.MaxValue)
+            {
+                arry[1] = (byte)(b + sub);
+                return new Guid(arry);
+            }
+            arry[1] = 0;
+            b = arry[0];
+            arry[0] = (byte)(b + sub);
+            return new Guid(arry);
+        }
+
         static IdentityGenerator()
         {
             IsWinOS = (Environment.OSVersion.Platform == PlatformID.Win32S || Environment.OSVersion.Platform == PlatformID.Win32NT || Environment.OSVersion.Platform == PlatformID.Win32Windows);
         }
+
         private static readonly bool IsWinOS;
- 
+
         /// <summary>
         /// 該算法生成跨系統邊界secuential的GUID，非常適合數據庫
         /// </summary>
@@ -79,13 +107,7 @@ namespace Library
             secuentialGuid[14] = binDate[6];
             secuentialGuid[15] = binDate[7];
 
-
-
             return new Guid(secuentialGuid);
-
         }
-
     }
-
 }
-

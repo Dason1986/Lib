@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Library;
+using Library.HelperUtility;
+using Library.Web;
 using System.Globalization;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 using System.Web.Mvc;
-using System.Web.Mvc.Html;
 using System.Web.Routing;
-using Library;
-using Library.Att;
-using Library.ComponentModel;
-using Library.Web;
-using Library.HelperUtility;
 
 namespace System.Web
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class MVCExtensions
     {
@@ -25,26 +18,25 @@ namespace System.Web
         /// 資源名稱
         /// </summary>
         public static Type ResourceType { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="htmlHelper"></param>
         /// <param name="key"></param>
         /// <returns></returns>
         public static string Label(this HtmlHelper htmlHelper, string key)
         {
-
             TagBuilder tagBuilder = new TagBuilder("label");
             var sessionCultureInfo = SessionManager.GetSession<CultureInfo>("lang");
-            tagBuilder.InnerHtml = ResourceManagement.GetString(ResourceType,key);
+            tagBuilder.InnerHtml = ResourceManagement.GetString(ResourceType, key);
             tagBuilder.MergeAttribute("for", key);
 
             return tagBuilder.ToString(TagRenderMode.SelfClosing);
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="html"></param>
         /// <param name="expression"></param>
@@ -57,16 +49,15 @@ namespace System.Web
             TagBuilder tagBuilder = new TagBuilder("label");
             var sessionCultureInfo = SessionManager.GetSession<CultureInfo>("lang");
             tagBuilder.InnerHtml = ResourceManagement.GetString(ResourceType, member.Name);
-          
+
             tagBuilder.GenerateId(member.Name);
             tagBuilder.MergeAttribute("for", member.Name);
             tagBuilder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
             return tagBuilder.ToString(TagRenderMode.SelfClosing);
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="html"></param>
         /// <param name="expression"></param>
@@ -74,7 +65,6 @@ namespace System.Web
         /// <returns></returns>
         public static string EditFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes)
         {
-         
             var member = expression.GetMemberInfo() as PropertyInfo;
             if (member == null) return string.Empty;
             TagBuilder tagBuilder = new TagBuilder("input");
@@ -83,7 +73,6 @@ namespace System.Web
             tagBuilder.MergeAttribute("for", member.Name);
             tagBuilder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
             return tagBuilder.ToString(TagRenderMode.SelfClosing);
-
         }
     }
 }

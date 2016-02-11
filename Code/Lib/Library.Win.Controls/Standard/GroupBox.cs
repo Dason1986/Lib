@@ -7,7 +7,7 @@ using System.Windows.Forms.VisualStyles;
 namespace Library.Controls
 {
     /// <summary>
-    /// GroupBox control that provides functionality to 
+    /// GroupBox control that provides functionality to
     /// allow it to be collapsed.
     /// </summary>
     [ToolboxBitmap(typeof(GroupBox))]
@@ -22,41 +22,45 @@ namespace Library.Controls
         private const int m_collapsedHeight = 20;
         private Size m_FullSize = Size.Empty;
 
-        #endregion
+        #endregion Fields
 
         #region Events & Delegates
 
         /// <summary>Fired when the Collapse Toggle button is pressed</summary>
         public delegate void CollapseBoxClickedEventHandler(object sender);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event CollapseBoxClickedEventHandler CollapseBoxClickedEvent;
 
-        #endregion
+        #endregion Events & Delegates
 
         #region Constructor
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GroupBox()
         {
             InitializeComponent();
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Public Properties
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int FullHeight
         {
             get { return m_FullSize.Height; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(false), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsCollapsed
@@ -86,8 +90,9 @@ namespace Library.Controls
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CollapsedHeight
@@ -95,11 +100,12 @@ namespace Library.Controls
             get { return m_collapsedHeight; }
         }
 
-        #endregion
+        #endregion Public Properties
 
         #region Overrides
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseUp(MouseEventArgs e)
@@ -109,8 +115,9 @@ namespace Library.Controls
             else
                 base.OnMouseUp(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
@@ -120,14 +127,15 @@ namespace Library.Controls
             DrawToggleButton(e.Graphics);
         }
 
-        #endregion
+        #endregion Overrides
 
         #region Implimentation
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="g"></param>
-        void DrawGroupBox(Graphics g)
+        private void DrawGroupBox(Graphics g)
         {
             // Get windows to draw the GroupBox
             Rectangle bounds = new Rectangle(ClientRectangle.X, ClientRectangle.Y + 6, ClientRectangle.Width, ClientRectangle.Height - 6);
@@ -147,17 +155,19 @@ namespace Library.Controls
             using (SolidBrush drawBrush = new SolidBrush(Color.FromArgb(0, 70, 213)))
                 g.DrawString(Text, this.Font, drawBrush, i_textPos, 0);
         }
+
         private Image plus = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.plus.png");
         private Image minus = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.minus.png");
-        void DrawToggleButton(Graphics g)
+
+        private void DrawToggleButton(Graphics g)
         {
-            if(IsCollapsed)
+            if (IsCollapsed)
                 g.DrawImage(plus, m_toggleRect);
             else
                 g.DrawImage(minus, m_toggleRect);
         }
 
-        void ToggleCollapsed()
+        private void ToggleCollapsed()
         {
             IsCollapsed = !IsCollapsed;
 
@@ -165,12 +175,12 @@ namespace Library.Controls
                 CollapseBoxClickedEvent(this);
         }
 
-        void HandleResize()
+        private void HandleResize()
         {
             if (!m_bResizingFromCollapse && !m_collapsed)
                 m_FullSize = this.Size;
         }
 
-        #endregion
+        #endregion Implimentation
     }
 }

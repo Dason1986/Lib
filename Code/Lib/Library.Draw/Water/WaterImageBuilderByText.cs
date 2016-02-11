@@ -4,30 +4,33 @@ using System.IO;
 namespace Library.Draw.Water
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class WaterImageBuilderByText : WaterImageBuilder
     {
         private Localization _localization = Localization.BottomRight;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Localization Localization
         {
             get { return _localization; }
             set { _localization = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Text { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Font TextFont { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -53,23 +56,20 @@ namespace Library.Draw.Water
             }
             finally
             {
-
                 sourcestream.Dispose();
                 tmpwatrer.Dispose();
                 sourceImg.Dispose();
-
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sourceImg"></param>
         /// <param name="waterImg"></param>
         /// <returns></returns>
         protected override Rectangle GetWaterRectangle(Image sourceImg, Image waterImg)
         {
-
             Rectangle waterRectangle;
             var subtractx = sourceImg.Width - waterImg.Width;
             var subtracty = sourceImg.Height - waterImg.Height;
@@ -78,24 +78,31 @@ namespace Library.Draw.Water
                 case Localization.Top:
                     waterRectangle = new Rectangle(subtractx / 2, 0, waterImg.Width, waterImg.Height);
                     break;
+
                 case Localization.TopLeft:
                     waterRectangle = new Rectangle(0, 0, waterImg.Width, waterImg.Height);
                     break;
+
                 case Localization.TopRight:
                     waterRectangle = new Rectangle(subtractx, 0, waterImg.Width, waterImg.Height);
                     break;
+
                 case Localization.Centre:
                     waterRectangle = new Rectangle(subtractx / 2, subtracty / 2, waterImg.Width, waterImg.Height);
                     break;
+
                 case Localization.CentreLeft:
                     waterRectangle = new Rectangle(0, subtracty / 2, waterImg.Width, waterImg.Height);
                     break;
+
                 case Localization.CentreRight:
                     waterRectangle = new Rectangle(subtractx, subtracty / 2, waterImg.Width, waterImg.Height);
                     break;
+
                 case Localization.Bottom:
                     waterRectangle = new Rectangle(subtractx / 2, subtracty, waterImg.Width, waterImg.Height);
                     break;
+
                 case Localization.BottomLeft:
                     waterRectangle = new Rectangle(0, subtracty, waterImg.Width, waterImg.Height);
                     break;
@@ -106,8 +113,9 @@ namespace Library.Draw.Water
             }
             return waterRectangle;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="waterImg"></param>
         /// <returns></returns>
@@ -118,8 +126,9 @@ namespace Library.Draw.Water
             gType.DrawString(Text, TextFont, new SolidBrush(Color.White), 0, 0);
             return waterImg;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rectangle"></param>
         /// <param name="waterImg"></param>

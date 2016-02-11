@@ -1,11 +1,8 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
+﻿using Library.HelperUtility;
+using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.InteropServices;
-using Library.Annotations;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library.IDCrad
 {
@@ -71,9 +68,10 @@ n1\times 1+n2\times 9+n3\times 8 +n4\times 7+n5\times 6 +n6\times 5+n7\times 4 +
 然后再除以10
 \frac{120}{10}
 如果整除，该组号码有效
-120 \equiv 0 \pmod{10}         
+120 \equiv 0 \pmod{10}
 
          */
+
         private static readonly string[,] Citycodes =
         {
             {"A","10","台北市"},{"B","11","台中市"},{"C","12","基隆市"},{"D","13","台南市"},{"E","14","高雄市"},
@@ -82,53 +80,56 @@ n1\times 1+n2\times 9+n3\times 8 +n4\times 7+n5\times 6 +n6\times 5+n7\times 4 +
             {"Q","24","嘉义县"},{"T","27","屏东县"},{"U","28","花莲县"},{"V","29","台东县"},{"W","32","金门县"},
             {"X","30","澎湖县"},{"Z","33","连江县"},{"L","20","台中县"},{"R","25","台南县"},{"S","26","高雄县"},{"Y","31","阳明山管理局"}
         };
+
         private static readonly Guid Cardtype = Guid.Parse("385F62C2-2255-4886-A81E-01A5C4355DAB");
         private const string Cardname = "中華人民共和國臺灣居民身份證";
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("證件"), DisplayName("證件類型Guid")]
         public Guid CardTypeID { get { return Cardtype; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("證件"), DisplayName("證件類型名稱")]
         public string CardTypeName { get { return Cardname; } }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("證件"), DisplayName("證件版本")]
         public int Version { get { return 6; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("證件信息"), DisplayName("證件號碼")]
         public string IDNumber { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="idnumber"></param>
         public TaiwanIDCard(string idnumber)
         {
             IDNumber = idnumber;
             Validate();
-
         }
 
         private readonly int[] _coefficientCodes = { 0x9, 0x8, 0x7, 0x6, 0x5, 0x4, 0x3, 0x2, 0x1, 0x1 };
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <exception cref="IDCardException"></exception>
         public void Validate()
         {
-
             if (IDNumber == null || IDNumber.Length != 15) throw new IDCardException("證件號碼格式不符合");
             CityCode = IDNumber[0].ToString(CultureInfo.InvariantCulture).ToUpper();
             var number = 0;
-            ChecksumDigitCode = IDNumber.Substring(12,2);
+            ChecksumDigitCode = IDNumber.Substring(12, 2);
             for (int i = 0; i < Citycodes.Length; i++)
             {
                 if (Citycodes[i, 0] != CityCode) continue;
@@ -141,7 +142,7 @@ n1\times 1+n2\times 9+n3\times 8 +n4\times 7+n5\times 6 +n6\times 5+n7\times 4 +
             {
                 number += number + (Convert.ToInt32(IDNumber[i].ToString(CultureInfo.InvariantCulture)) * _coefficientCodes[i]);
             }
-            if(number%10!=0)  throw new IDCardException("證件號碼驗證不通過");
+            if (number % 10 != 0) throw new IDCardException("證件號碼驗證不通過");
             if (number.ToString(CultureInfo.InvariantCulture).Substring(1, 2) != ChecksumDigitCode) throw new IDCardException("證件號碼检验码不通過");
         }
 

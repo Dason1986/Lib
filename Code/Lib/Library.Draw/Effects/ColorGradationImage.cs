@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Library.Att;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -12,10 +12,9 @@ namespace Library.Draw.Effects
     public class ColorGradationImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("RGB:紅"), LanguageDisplayName("紅"), Category("濾鏡選項")]
-
         public int Red
         {
             get
@@ -29,11 +28,11 @@ namespace Library.Draw.Effects
                 _opetion.Red = value;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary> 
-        [LanguageDescription("RGB:綠"), LanguageDisplayName("綠"), Category("濾鏡選項")]
 
+        /// <summary>
+        ///
+        /// </summary>
+        [LanguageDescription("RGB:綠"), LanguageDisplayName("綠"), Category("濾鏡選項")]
         public int Green
         {
             get
@@ -47,11 +46,11 @@ namespace Library.Draw.Effects
                 _opetion.Green = value;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary> 
-        [LanguageDescription("RGB:藍"), LanguageDisplayName("藍"), Category("濾鏡選項")]
 
+        /// <summary>
+        ///
+        /// </summary>
+        [LanguageDescription("RGB:藍"), LanguageDisplayName("藍"), Category("濾鏡選項")]
         public int Blue
         {
             get
@@ -65,18 +64,21 @@ namespace Library.Draw.Effects
                 _opetion.Blue = value;
             }
         }
+
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ColorOption();
         }
+
         private ColorOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -87,17 +89,20 @@ namespace Library.Draw.Effects
                 _opetion = (ColorOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ColorOption();
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -115,14 +120,14 @@ namespace Library.Draw.Effects
                     int gg = Truncate(pixelValue.G + Green);
                     int bb = Truncate(pixelValue.B + Blue);
 
-
                     bmp.SetPixel(column, row, Color.FromArgb(pixelValue.A, rr, gg, bb));
                 }
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -137,7 +142,6 @@ namespace Library.Draw.Effects
             {
                 for (int j = 0; j < width; j++)
                 {
-
                     int rr = Truncate(ptr[2] + Red);
                     int gg = Truncate(ptr[1] + Green);
                     int bb = Truncate(ptr[0] + Blue);

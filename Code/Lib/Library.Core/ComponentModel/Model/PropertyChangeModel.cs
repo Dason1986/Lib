@@ -1,20 +1,20 @@
-﻿using System;
+﻿using Library.Annotations;
+using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
-using Library.Annotations;
 
 namespace Library.ComponentModel.Model
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class PropertyChangeModel : INotifyPropertyChanged
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         ///   Notifies subscribers of the property change.
         /// </summary>
@@ -40,9 +40,8 @@ namespace Library.ComponentModel.Model
             OnPropertyChanged(member.Name);
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="propertyName"></param>
         [NotifyPropertyChangedInvocator]
@@ -52,5 +51,4 @@ namespace Library.ComponentModel.Model
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
 }

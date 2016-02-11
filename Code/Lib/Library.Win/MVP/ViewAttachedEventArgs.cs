@@ -8,7 +8,7 @@ namespace Library.Win.MVP
     public class ViewAttachedEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="view"></param>
         /// <param name="context"></param>
@@ -21,7 +21,7 @@ namespace Library.Win.MVP
         /// <summary>
         /// The view.
         /// </summary>
-        public object View { get;protected set; }
+        public object View { get; protected set; }
 
         /// <summary>
         /// The context.

@@ -5,12 +5,12 @@ using System.Reflection;
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IFieldAccessor
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="instance"></param>
         /// <returns></returns>
@@ -18,19 +18,19 @@ namespace Library.FastReflection
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class FieldAccessor : IFieldAccessor
     {
         private readonly Func<object, object> _mGetter;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FieldInfo FieldInfo { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fieldInfo"></param>
         public FieldAccessor(FieldInfo fieldInfo)
@@ -63,7 +63,7 @@ namespace Library.FastReflection
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="instance"></param>
         /// <returns></returns>
@@ -79,6 +79,6 @@ namespace Library.FastReflection
             return this.GetValue(instance);
         }
 
-        #endregion
+        #endregion IFieldAccessor Members
     }
 }

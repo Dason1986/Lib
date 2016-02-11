@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Library;
+using NUnit.Framework;
+using System;
 using System.Globalization;
 using System.Threading;
-using Library;
-using Library.Att;
-using Library.Date;
-using NUnit.Framework;
 
 namespace TestPj.Test
 {
@@ -15,16 +13,14 @@ namespace TestPj.Test
         public void TestCodeException()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
-            var ex = new CodeException(GlobalResource._Code11001_1,11001.1);
+            var ex = new CodeException(GlobalResource._Code11001_1, 11001.1);
             Console.WriteLine(ex);
             NUnit.Framework.StringAssert.AreEqualIgnoringCase("IDCard number format wong", ex.Message);
 
- 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-pt");
             ex = new CodeException(GlobalResource._Code11001_1, 11001.1);
             Console.WriteLine(ex);
             NUnit.Framework.StringAssert.AreEqualIgnoringCase("IDcard formato de número wong", ex.Message);
-
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-cn");
             ex = new CodeException(GlobalResource._Code11001_1, 11001.1);
@@ -35,28 +31,25 @@ namespace TestPj.Test
             Console.WriteLine(ex);
             NUnit.Framework.StringAssert.AreEqualIgnoringCase("不支持類型轉換", ex.Message);
 
-             
-            ex = new CodeException(GlobalResource._Code11002_104, 11002.104,  10);
+            ex = new CodeException(GlobalResource._Code11002_104, 11002.104, 10);
             Console.WriteLine(ex);
             NUnit.Framework.StringAssert.AreEqualIgnoringCase("不合法的農曆日期,[10月]不為闰月。", ex.Message);
         }
+
         [Test]
         public void TestCultureInfo()
         {
-            string msg = ResourceManagement.GetString(typeof(GlobalResource),"Test",   new CultureInfo("en-us"));
+            string msg = ResourceManagement.GetString(typeof(GlobalResource), "Test", new CultureInfo("en-us"));
             Console.WriteLine(msg);
             StringAssert.AreEqualIgnoringCase("Test", msg, "en語言不正確");
 
-
-            msg = ResourceManagement.GetString(typeof(GlobalResource), "Test",new CultureInfo("zh-cn"));
+            msg = ResourceManagement.GetString(typeof(GlobalResource), "Test", new CultureInfo("zh-cn"));
             Console.WriteLine(msg);
             StringAssert.AreEqualIgnoringCase("測試", msg, "zh語言不正確");
-
 
             msg = ResourceManagement.GetString(typeof(GlobalResource), "Test", new CultureInfo("pt-pt"));
             Console.WriteLine(msg);
             StringAssert.AreEqualIgnoringCase("teste", msg, "pt語言不正確");
-
         }
     }
 }

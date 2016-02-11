@@ -1,7 +1,7 @@
+using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -12,7 +12,7 @@ namespace Library.Draw.Effects
     public class FeatherImage : ImageBuilder
     {
         /// <summary>
-        ///  
+        ///
         /// </summary>
         [LanguageDescription("∑…“›÷µ"), LanguageDisplayName("∑…“›÷µ"), Category("ûVÁRﬂxÌó")]
         public float FeatherValue
@@ -30,17 +30,19 @@ namespace Library.Draw.Effects
         }
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
+
         private ValueOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -51,15 +53,18 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <returns></returns>
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption() { Value = 0.5f };
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
         /// /
         /// </summary>
@@ -112,8 +117,9 @@ namespace Library.Draw.Effects
             }
             return clone;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()

@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Library
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
 
     public struct TryResult
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exceptions"></param>
         public TryResult(IEnumerable<Exception> exceptions)
@@ -26,58 +24,54 @@ namespace Library
             else
             {
                 _hasError = false;
-        
+
                 this._errors = null;
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exceptions"></param>
         public TryResult(params Exception[] exceptions)
         {
-
             if (exceptions != null && exceptions.Length > 0)
             {
-
-
                 _hasError = true;
-               
+
                 this._errors = exceptions;
             }
             else
             {
                 _hasError = false;
-           
+
                 this._errors = null;
             }
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="flag"></param>
         public TryResult(bool flag)
         {
             _hasError = !flag;
-  
+
             this._errors = null;
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool HasError
         {
             get { return _hasError; }
-
         }
 
         private readonly bool _hasError;
         private readonly Exception[] _errors;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Exception Error
         {
@@ -85,15 +79,14 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Exception[] Errors
         {
             get { return _errors; }
-
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
@@ -102,7 +95,7 @@ namespace Library
             return new TryResult(ex);
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="flag"></param>
         /// <returns></returns>
@@ -111,7 +104,7 @@ namespace Library
             return new TryResult(flag);
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -121,17 +114,16 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
         public static bool operator true(TryResult x)
         {
-
             return !x.HasError;
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
@@ -142,14 +134,13 @@ namespace Library
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public struct TryResult<T>
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         public TryResult(T value)
@@ -160,20 +151,19 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exception"></param>
         public TryResult(Exception exception)
-            : this( default(T),exception)
+            : this(default(T), exception)
         {
-
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exception"></param>
         /// <param name="defaultValue"></param>
-        public TryResult(T defaultValue,Exception exception)
+        public TryResult(T defaultValue, Exception exception)
         {
             _value = defaultValue;
             _hasError = exception != null;
@@ -183,35 +173,30 @@ namespace Library
         private readonly bool _hasError;
         private readonly Exception _error;
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Exception Error
         {
             get { return _error; }
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public T Value
         {
             get { return _value; }
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool HasError
         {
             get { return _hasError; }
-
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -219,7 +204,7 @@ namespace Library
             return Error == null ? string.Format("[{1}][{0}]", Value, typeof(T).FullName) : string.Format("[{0}][{1}]", Error.GetType().Name, Error.Message);
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -228,7 +213,7 @@ namespace Library
             return new TryResult<T>(value);
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
@@ -238,7 +223,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -247,7 +232,7 @@ namespace Library
             return value.Value;
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
@@ -256,7 +241,7 @@ namespace Library
             return !x.HasError;
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
@@ -266,7 +251,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <typeparam name="TModel"></typeparam>
@@ -280,7 +265,7 @@ namespace Library
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <typeparam name="TModel"></typeparam>

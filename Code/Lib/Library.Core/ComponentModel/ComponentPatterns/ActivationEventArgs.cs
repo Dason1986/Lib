@@ -8,7 +8,7 @@ namespace Library.ComponentModel.ComponentPatterns
     public class ActivationEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="wasInitialized"></param>
         public ActivationEventArgs(bool wasInitialized)

@@ -1,18 +1,18 @@
-﻿using System.ComponentModel;
+﻿using Library.Att;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [LanguageDescription("该方法从图象的灰度概率域入手，将概率谱分为两个等面积的集群，通过判定群间距离检测图象的边缘。"), LanguageDisplayName("灰度概率域")]
     public class HistogramEqualImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [DefaultValue(1f)]
         [LanguageDescription("强度对比"), LanguageDisplayName("强度对比"), Category("濾鏡選項")]
@@ -29,18 +29,21 @@ namespace Library.Draw.Effects
                 _opetion.Value = value;
             }
         }
+
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
+
         private ValueOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -51,17 +54,20 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <returns></returns>
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption() { Value = 1f };
         }
-        #endregion
+
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -122,8 +128,9 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -143,8 +150,6 @@ namespace Library.Draw.Effects
             {
                 for (int column = 0; column < width; column++)
                 {
-
-
                     r = ptr[2];
                     g = ptr[1];
                     b = ptr[0];

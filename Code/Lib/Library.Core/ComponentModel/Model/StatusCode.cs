@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Library.ComponentModel.Model
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [Flags]
     public enum StatusCode
     {
-
         /// <summary>
         /// 邏輯刪除，不能返回去前端
         /// </summary>
         Delete = 0,
+
         /// <summary>
         /// 無效
         /// </summary>

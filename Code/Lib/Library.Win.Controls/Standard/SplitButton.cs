@@ -20,24 +20,25 @@ namespace Library.Controls
     {
         #region Fields
 
-
-
         private bool _calculateSplitRect = true;
         private bool _fillSplitHeight = true;
         private int _splitHeight;
         private int _splitWidth;
         private bool _persistDropDownName;
+
         /// <summary>
-        /// Store the 4 possible image names (5 image states).  _HoverImage and 
+        /// Store the 4 possible image names (5 image states).  _HoverImage and
         /// _FocusedImage share the same image state.
         /// </summary>
         private string _normalImage;
+
         private string _hoverImage;
         private string _clickedImage;
         private string _disabledImage;
         private string _focusedImage;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool PersistDropDownName
         {
@@ -58,12 +59,12 @@ namespace Library.Controls
 
         /// <summary>
         /// A dictionary allowing the events to be tied to the drop down list.
-        /// 
-        /// The first generic type, string, is the identifier of the event the key 
-        /// and we will make it the text display of the drop down item.  The second 
+        ///
+        /// The first generic type, string, is the identifier of the event the key
+        /// and we will make it the text display of the drop down item.  The second
         /// generic type, EventHandler is the EventHandler for the event.
-        /// 
-        /// This is the mechanism through which we keep the control's interface to 
+        ///
+        /// This is the mechanism through which we keep the control's interface to
         /// its client without exposing the ContextMenuStrip itself.
         /// </summary>
         private Dictionary<string, EventHandler> _dropDownsEventHandlers = new Dictionary<string, EventHandler>();
@@ -73,34 +74,36 @@ namespace Library.Controls
         /// drop-down menu.
         /// </summary>
         static private readonly DateTime ZeroTime = new DateTime(0);
+
         private DateTime _closedTime = ZeroTime;
 
-        #endregion
+        #endregion Fields
 
         #region Events
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(true)]
         [Category("Action")]
         [Description("Occurs when the button part of the SplitButton is clicked.")]
         public event EventHandler ButtonClick;
 
-        #endregion
+        #endregion Events
 
         #region Construction
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SplitButton()
         {
             InitializeComponent();
         }
 
-        #endregion
+        #endregion Construction
 
         #region Helper Methods
-
 
         private void InitDefaultSplitImages()
         {
@@ -115,7 +118,6 @@ namespace Library.Controls
 
         private void InitDefaultSplitImages(bool refresh)
         {
-
             if (string.IsNullOrEmpty(_normalImage)) _normalImage = "Normal";
             if (string.IsNullOrEmpty(_hoverImage)) _hoverImage = "Hover";
             if (string.IsNullOrEmpty(_clickedImage)) _clickedImage = "Clicked";
@@ -360,40 +362,34 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// Notice the NoInlining decoration of the method as a mechanism for 
+        /// Notice the NoInlining decoration of the method as a mechanism for
         /// preventing the optimized compiler from optimizing this call away.
         /// See article for further discussion.
-        /// </summary> 
+        /// </summary>
         /// <param name="evntHndlr"></param>
         /// <param name="ea"></param>
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void EventFire(EventHandler evntHndlr, EventArgs ea)
         {
-
             if (evntHndlr == null)
                 return;
-
 
             int i = 0;
             foreach (Delegate del in evntHndlr.GetInvocationList())
             {
                 try
                 {
-
                     ISynchronizeInvoke syncr = del.Target as ISynchronizeInvoke;
                     if (syncr == null)
                     {
-
                         evntHndlr.DynamicInvoke(new object[] { this, ea });
                     }
                     else if (syncr.InvokeRequired)
                     {
-
                         syncr.Invoke(evntHndlr, new object[] { this, ea });
                     }
                     else
                     {
-
                         evntHndlr.DynamicInvoke(new object[] { this, ea });
                     }
                 }
@@ -408,7 +404,6 @@ namespace Library.Controls
                 ++i;
             }
         }
-
 
         private bool IsTooSoonAfterCloseMenuDropDown()
         {
@@ -430,11 +425,12 @@ namespace Library.Controls
             return false;
         }
 
-        #endregion
+        #endregion Helper Methods
 
         #region Properties Exposing States
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button")]
         [Description("Indicates whether the split rectangle must be calculated (basing on Split image size)")]
@@ -469,8 +465,9 @@ namespace Library.Controls
             get { return _fillSplitHeight; }
             set { _fillSplitHeight = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button")]
         [Description("The split height (ignored if CalculateSplitRect is setted to true).")]
@@ -491,8 +488,9 @@ namespace Library.Controls
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button")]
         [Description("The split width (ignored if CalculateSplitRect is setted to true).")]
@@ -513,8 +511,9 @@ namespace Library.Controls
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button Images")]
         [Description("The Normal status image name in the ImageList, corresponding to the image name.")]
@@ -528,8 +527,9 @@ namespace Library.Controls
             get { return _normalImage; }
             set { _normalImage = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button Images")]
         [Description("The Hover status image name in the ImageList.")]
@@ -543,8 +543,9 @@ namespace Library.Controls
             get { return _hoverImage; }
             set { _hoverImage = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button Images")]
         [Description("The Clicked status image name in the ImageList.")]
@@ -558,8 +559,9 @@ namespace Library.Controls
             get { return _clickedImage; }
             set { _clickedImage = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button Images")]
         [Description("The Disabled status image name in the ImageList.")]
@@ -573,8 +575,9 @@ namespace Library.Controls
             get { return _disabledImage; }
             set { _disabledImage = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Category("Split Button Images")]
         [Description("The Focused status image name in the ImageList.")]
@@ -589,11 +592,12 @@ namespace Library.Controls
             set { _focusedImage = value; }
         }
 
-        #endregion
+        #endregion Properties Exposing States
 
         #region Overridable Methods
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void OnCreateControl()
         {
@@ -606,8 +610,9 @@ namespace Library.Controls
 
             base.OnCreateControl();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseMove(MouseEventArgs mevent)
@@ -619,8 +624,9 @@ namespace Library.Controls
 
             base.OnMouseMove(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
@@ -630,8 +636,9 @@ namespace Library.Controls
 
             base.OnMouseLeave(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
@@ -643,8 +650,9 @@ namespace Library.Controls
 
             base.OnMouseDown(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
@@ -669,8 +677,9 @@ namespace Library.Controls
 
             base.OnMouseUp(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
@@ -686,8 +695,9 @@ namespace Library.Controls
 
             base.OnEnabledChanged(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnGotFocus(EventArgs e)
@@ -697,8 +707,9 @@ namespace Library.Controls
 
             base.OnGotFocus(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
@@ -708,28 +719,27 @@ namespace Library.Controls
 
             base.OnLostFocus(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnClick(EventArgs e)
         {
-
             base.OnClick(e);
 
             if (!IsMouseInSplit())
             {
-
                 EventFire(ButtonClick, e);
             }
         }
 
-        #endregion
+        #endregion Overridable Methods
 
         #region Additional Interface Methods
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void ClearDropDownItems()
         {
@@ -738,26 +748,24 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="text"></param>
         /// <param name="handler"></param>
         public void AddDropDownItemAndHandle(string text, EventHandler handler)
         {
-
             SplitButtonDropDown.Items.Add(text);
-
 
             if (!_dropDownsEventHandlers.ContainsKey(text))
                 _dropDownsEventHandlers.Add(text, handler);
         }
 
-        #endregion
+        #endregion Additional Interface Methods
 
         #region Internal Events Handling
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="index"></param>
         public void SetClickItem(int index)
@@ -774,7 +782,7 @@ namespace Library.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="text"></param>
         public void SetClickItem(string text)
@@ -789,11 +797,10 @@ namespace Library.Controls
             ButtonClick = adaptorEvent;
             Text = textDisplay;
         }
+
         private void SplitButtonDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
             SplitButtonDropDown.Close();
-
 
             string textDisplay = e.ClickedItem.Text;
             EventHandler adaptorEvent = _dropDownsEventHandlers[textDisplay];
@@ -805,7 +812,6 @@ namespace Library.Controls
                 Text = textDisplay;
                 ButtonClick = adaptorEvent;
             }
-
         }
 
         /// <summary>
@@ -828,13 +834,11 @@ namespace Library.Controls
         {
             if (IsTooSoonAfterCloseMenuDropDown())
             {
-
             }
-
 
             _closedTime = ZeroTime;
         }
 
-        #endregion
+        #endregion Internal Events Handling
     }
 }

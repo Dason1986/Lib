@@ -1,54 +1,31 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
+﻿using Library.Draw.Code;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Runtime.CompilerServices;
-using System.ServiceModel;
-using System.ServiceModel.Configuration;
-using System.Text;
-using System.Threading;
-using Library;
-using Library.Draw;
-using Library.Draw.Code;
-using Library.ComponentModel;
-using Library.IDCrad;
-using TestPj.Gbt;
 
 namespace TestPj
 {
-
-    class Program
+    internal class Program
     {
         public const string StrDate = "20101102";
         public static readonly int? Number1 = 5;
         public const string StrGUID = "e56f90f3-4622-4896-b7a3-fd94dafe33cc";
         public const int NumDate = 20101102;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             Console.ReadKey();
             Console.ReadLine();
         }
 
-
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var ex = e.ExceptionObject as Exception;
 
             //logic message
-            //lib 
+            //lib
         }
 
         public static void TestWmf()
@@ -101,7 +78,7 @@ namespace TestPj
             File.WriteAllBytes(String.Format(@"C:\ss\{0}.png", code.Code), code.Image);
         }
 
-        static void OddEvenSort(int[] list)
+        private static void OddEvenSort(int[] list)
         {
             var isSorted = false;
 
@@ -141,8 +118,6 @@ namespace TestPj
                     }
                 }
             }
-
-
         }
 
         /// <summary>
@@ -150,7 +125,7 @@ namespace TestPj
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        static void CockTailSort(int[] list)
+        private static void CockTailSort(int[] list)
         {
             //判断是否已经排序了
             var isSorted = false;
@@ -198,10 +173,6 @@ namespace TestPj
 
                 //  Console.WriteLine("反向排序 => {0}", string.Join(",", list));
             }
-
-
         }
     }
 }
-
-

@@ -2,26 +2,23 @@ using System.Text;
 
 namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
 {
-	/// <summary>
-	/// Represents a string value of formula
-	/// </summary>
-	internal class XlsBiffFormatString : XlsBiffRecord
-	{
+    /// <summary>
+    /// Represents a string value of formula
+    /// </summary>
+    internal class XlsBiffFormatString : XlsBiffRecord
+    {
+        private Encoding m_UseEncoding = Encoding.Default;
+        private string m_value = null;
 
-        private Encoding m_UseEncoding =  Encoding.Default;
-		private string m_value = null;
-		
-
-		internal XlsBiffFormatString(byte[] bytes)
-			: this(bytes, 0)
-		{
-		}
+        internal XlsBiffFormatString(byte[] bytes)
+            : this(bytes, 0)
+        {
+        }
 
         internal XlsBiffFormatString(byte[] bytes, uint offset)
-			: base(bytes, offset)
-		{
-		}
-
+            : base(bytes, offset)
+        {
+        }
 
         /// <summary>
         /// Encoding used to deal with strings
@@ -32,26 +29,27 @@ namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
             set { m_UseEncoding = value; }
         }
 
-		/// <summary>
-		/// Length of the string
-		/// </summary>
-		public ushort Length
-		{
-			get
-			{
-			     switch (ID)
-			     {
-			         case BIFFRECORDTYPE.FORMAT_V23:
-			             return base.ReadByte(0x0);
-			         default:
-			             return base.ReadUInt16(2);
-			     }
-			}
-		}
+        /// <summary>
+        /// Length of the string
+        /// </summary>
+        public ushort Length
+        {
+            get
+            {
+                switch (ID)
+                {
+                    case BIFFRECORDTYPE.FORMAT_V23:
+                        return base.ReadByte(0x0);
 
-		/// <summary>
-		/// String text
-		/// </summary>
+                    default:
+                        return base.ReadUInt16(2);
+                }
+            }
+        }
+
+        /// <summary>
+        /// String text
+        /// </summary>
         public string Value
         {
             get
@@ -63,6 +61,7 @@ namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
                         case BIFFRECORDTYPE.FORMAT_V23:
                             m_value = m_UseEncoding.GetString(m_bytes, m_readoffset + 1, Length);
                             break;
+
                         case BIFFRECORDTYPE.FORMAT:
                             var offset = m_readoffset + 5;
                             var flags = ReadByte(3);
@@ -71,14 +70,10 @@ namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
                                 offset += 4;
                             if ((flags & 0x08) == 0x01) // number of rtf blocks
                                 offset += 2;
-                            m_value = m_UseEncoding.IsSingleByte ? m_UseEncoding.GetString(m_bytes, offset, Length) : m_UseEncoding.GetString(m_bytes, offset, Length*2);
+                            m_value = m_UseEncoding.IsSingleByte ? m_UseEncoding.GetString(m_bytes, offset, Length) : m_UseEncoding.GetString(m_bytes, offset, Length * 2);
 
                             break;
-
-
                     }
-                   
-
                 }
                 return m_value;
             }
@@ -92,11 +87,11 @@ namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
                 {
                     case BIFFRECORDTYPE.FORMAT_V23:
                         return 0;
+
                     default:
                         return ReadUInt16(0);
-
                 }
             }
         }
-	}
+    }
 }

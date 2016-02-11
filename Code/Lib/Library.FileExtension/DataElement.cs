@@ -1,15 +1,14 @@
+using Library.Draw;
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Data;
-using Library.Draw;
 
 namespace Library.FileExtension
 {
     public abstract class DataElement
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Name { get; set; }
 
@@ -20,7 +19,6 @@ namespace Library.FileExtension
 
     public enum Alignment
     {
-
     }
 
     public struct ElementPosition
@@ -35,6 +33,7 @@ namespace Library.FileExtension
         public float X { get; set; }
         public float Y { get; set; }
     }
+
     public struct ElementSize
     {
         public ElementSize(float width, float height)
@@ -47,6 +46,7 @@ namespace Library.FileExtension
         public float Width { get; set; }
         public float Height { get; set; }
     }
+
     public interface IConvertTo
     {
         object Converter(object source, object arg, Type targetType);
@@ -54,24 +54,27 @@ namespace Library.FileExtension
 
     public class TextElement : DataElement
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string FontName { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double? FontSize { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Margin? Margin { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IConvertTo Convert { get; set; }
     }
+
     public class ImageElement : DataElement
     {
         public byte[] Image { get; set; }
@@ -110,21 +113,23 @@ namespace Library.FileExtension
         /// 不夠指定行數時填充空白行記錄
         /// </summary>
         public bool FillRows { get; set; }
+
         /// <summary>
         /// 數據表必須有多少行記錄
         /// </summary>
         public int FillRowCounts { get; set; }
+
         public TableHeadElement[] Heads { get; set; }
         public bool FillPage { get; set; }
+
         /// <summary>
         /// 下一頁時採用間距定位
         /// </summary>
         public bool NextPageMarginPosition { get; set; }
     }
+
     public class RectangleElement : DataElement
     {
-
-
         public RectangleElement(ElementPosition position, ElementSize size)
         {
             Position = position;
@@ -135,18 +140,16 @@ namespace Library.FileExtension
         public float Border { get; set; }
     }
 
-
-
     public class LineElement : DataElement
     {
         private readonly float _lineWidth = 1;
-
 
         public LineElement(ElementPosition position, ElementSize size)
         {
             Size = size;
             Position = position;
         }
+
         public LineElement(ElementPosition position, float width)
         {
             Size = new ElementSize(width, position.Y);
@@ -165,14 +168,15 @@ namespace Library.FileExtension
         public float LineWidth
         {
             get { return _lineWidth; }
-
         }
     }
+
     public class TableHeadElement
     {
         private float _width = TableElement.DefalutWidth;
         public string DisplayName { get; set; }
         public string BindName { get; set; }
+
         public float Width
         {
             get { return _width; }
@@ -185,8 +189,8 @@ namespace Library.FileExtension
         public int HorizontalAlignment { get; set; }
         public TableCellElement CellElement { get; set; }
     }
+
     public class TableCellElement
     {
-
     }
 }

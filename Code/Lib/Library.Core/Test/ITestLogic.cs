@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
 
 namespace Library.Logic
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed class ExceptionEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Exception Error { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="error"></param>
         internal ExceptionEventArgs(Exception error)
@@ -27,34 +23,35 @@ namespace Library.Logic
             Error = error;
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum MessageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Info,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OKAction,
-
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed class CompletedEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TimeSpan UseTime { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="useTime"></param>
         public CompletedEventArgs(TimeSpan useTime)
@@ -64,47 +61,47 @@ namespace Library.Logic
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ProgressChangedEventArgs : EventArgs
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="progressPercentage"></param>
         public ProgressChangedEventArgs(int progressPercentage)
         {
             ProgressPercentage = progressPercentage;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int ProgressPercentage { get; protected set; }
-
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed class MessageEventArgs : EventArgs
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Message { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MessageType MessageInfo { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime Time { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="messageType"></param>
@@ -115,89 +112,99 @@ namespace Library.Logic
             Time = DateTime.Now;
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void ProgressChangedEventHandler(object sender, ProgressChangedEventArgs e);
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void CompletedEventHandler(object sender, CompletedEventArgs e);
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void ExceptionEventHandler(object sender, ExceptionEventArgs e);
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void MessageEventHandler(object sender, MessageEventArgs e);
 
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface ILogic
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         event MessageEventHandler Messge;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         event ExceptionEventHandler Failure;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         event CompletedEventHandler Completed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         event ProgressChangedEventHandler ProgressChanged;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         void Start();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         void StartAsync();
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class BaseLogic : ILogic
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event MessageEventHandler Messge;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event ExceptionEventHandler Failure;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event CompletedEventHandler Completed;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event ProgressChangedEventHandler ProgressChanged;
+
         /// <summary>
-        /// 
-        /// </summary> 
+        ///
+        /// </summary>
         protected virtual void OnFailure(Exception ex)
         {
             ExceptionEventHandler handler = Failure;
@@ -205,8 +212,9 @@ namespace Library.Logic
             Trace.TraceError(message);
             if (handler != null) handler(this, new ExceptionEventArgs(ex));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected virtual void OnCompleted(TimeSpan useTime)
         {
@@ -215,7 +223,7 @@ namespace Library.Logic
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="messageType"></param>
@@ -225,8 +233,9 @@ namespace Library.Logic
             Trace.WriteLine(string.Format("{0}:{1}", messageType, message));
             if (handler != null) handler(this, new MessageEventArgs(message, messageType));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void StartAsync()
         {
@@ -242,7 +251,6 @@ namespace Library.Logic
             background.ProgressChanged += (x, y) =>
             {
                 OnProgressChanged(y.ProgressPercentage);
-
             };
             background.RunWorkerCompleted += (x, y) =>
             {
@@ -254,17 +262,16 @@ namespace Library.Logic
                 {
                     OnFailure(y.Error);
                 }
-
             };
 
             background.RunWorkerAsync();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Start()
         {
-
             try
             {
                 Stopwatch watch = new Stopwatch();
@@ -277,14 +284,15 @@ namespace Library.Logic
             {
                 OnFailure(ex);
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected abstract void OnStart();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="progressPercentage"></param>
         protected virtual void OnProgressChanged(int progressPercentage)

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace Library.Controls
@@ -11,7 +10,7 @@ namespace Library.Controls
     /// </summary>
     public sealed class GlassButton : PictureBox, IButtonControl
     {
-        #region  Fileds
+        #region Fileds
 
         private DialogResult _dialogResult;
         private bool _isDefault;
@@ -25,15 +24,14 @@ namespace Library.Controls
         private Image _totalImg = RenderHelper.GetImageFormResourceStream("Library.Win.Controls.Standard.Image.total.png");
 
         private ToolTip _toolTip = new ToolTip();
-        private ContentAlignment _textAlign= ContentAlignment.MiddleRight;
+        private ContentAlignment _textAlign = ContentAlignment.MiddleRight;
 
-        #endregion
-
-
+        #endregion Fileds
 
         #region Constructor
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GlassButton()
         {
@@ -43,11 +41,12 @@ namespace Library.Controls
             this.Font = _defaultFont;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region IButtonControl Members
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DialogResult DialogResult
         {
@@ -63,8 +62,9 @@ namespace Library.Controls
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         public void NotifyDefault(bool value)
@@ -74,17 +74,19 @@ namespace Library.Controls
                 _isDefault = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void PerformClick()
         {
             base.OnClick(EventArgs.Empty);
         }
 
-        #endregion
+        #endregion IButtonControl Members
 
-        #region  Properties
+        #region Properties
+
         /// <summary>
         /// 数量
         /// </summary>
@@ -94,8 +96,9 @@ namespace Library.Controls
         Description("The text associated with the control."),
         DefaultValue(null)]
         public short? Total { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(true),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Visible),
@@ -112,8 +115,9 @@ namespace Library.Controls
                 base.Text = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(true),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Visible),
@@ -130,14 +134,15 @@ namespace Library.Controls
                 base.Font = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Description("当鼠标放在控件可见处的提示文本")]
         public string ToolTipText { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Description("当鼠标放在控件可见处的提示文本"), DefaultValue(ContentAlignment.MiddleRight)]
         public ContentAlignment TextAlign
@@ -146,68 +151,79 @@ namespace Library.Controls
             set { _textAlign = value; }
         }
 
-        #endregion
+        #endregion Properties
 
         #region Description Changes
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Description("Controls how the ImageButton will handle image placement and control sizing.")]
         public new PictureBoxSizeMode SizeMode { get { return base.SizeMode; } set { base.SizeMode = value; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Description("Controls what type of border the ImageButton should have.")]
         public new BorderStyle BorderStyle { get { return base.BorderStyle; } set { base.BorderStyle = value; } }
-        #endregion
+
+        #endregion Description Changes
 
         #region Hiding
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new ImageLayout BackgroundImageLayout { get { return base.BackgroundImageLayout; } set { base.BackgroundImageLayout = value; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Image BackgroundImage { get { return base.BackgroundImage; } set { base.BackgroundImage = value; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new String ImageLocation { get { return base.ImageLocation; } set { base.ImageLocation = value; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Image ErrorImage { get { return base.ErrorImage; } set { base.ErrorImage = value; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Image InitialImage { get { return base.InitialImage; } set { base.InitialImage = value; } }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool WaitOnLoad { get { return base.WaitOnLoad; } set { base.WaitOnLoad = value; } }
-        #endregion
+
+        #endregion Hiding
 
         #region override
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
         {
-            //show tool tip 
+            //show tool tip
             if (ToolTipText != string.Empty)
             {
                 HideToolTip();
@@ -218,8 +234,9 @@ namespace Library.Controls
             Invalidate();
             base.OnMouseEnter(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
@@ -228,8 +245,9 @@ namespace Library.Controls
             Invalidate();
             base.OnMouseLeave(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseDown(MouseEventArgs e)
@@ -239,8 +257,9 @@ namespace Library.Controls
             Invalidate();
             base.OnMouseDown(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseUp(MouseEventArgs e)
@@ -252,20 +271,21 @@ namespace Library.Controls
             Invalidate();
             base.OnMouseUp(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
         {
-
             _state = ControlState.Normal;
             Invalidate();
             _holdingSpace = false;
             base.OnLostFocus(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pe"></param>
         protected override void OnPaint(PaintEventArgs pe)
@@ -278,6 +298,7 @@ namespace Library.Controls
                 case ControlState.Highlight:
                     RenderHelper.DrawImageWithNineRect(g, _glassHotImg, ClientRectangle, new Rectangle(0, 0, _glassDownImg.Width, _glassDownImg.Height));
                     break;
+
                 case ControlState.Down:
                     RenderHelper.DrawImageWithNineRect(g, _glassDownImg, ClientRectangle, new Rectangle(0, 0, _glassDownImg.Width, _glassDownImg.Height));
                     break;
@@ -302,8 +323,9 @@ namespace Library.Controls
                 TextRenderer.DrawText(pe.Graphics, Text, Font, textRect, SystemColors.ControlText);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="msg"></param>
         /// <returns></returns>
@@ -320,6 +342,7 @@ namespace Library.Controls
                                 OnMouseUp(null);
                                 PerformClick();
                                 break;
+
                             case Keys.Tab:
                             case Keys.Escape:
                                 _holdingSpace = false;
@@ -328,6 +351,7 @@ namespace Library.Controls
                         }
                     }
                     return true;
+
                 case Win32.WM_KEYDOWN:
                     switch ((Keys)msg.WParam)
                     {
@@ -335,17 +359,20 @@ namespace Library.Controls
                             _holdingSpace = true;
                             OnMouseDown(null);
                             break;
+
                         case Keys.Enter:
                             PerformClick();
                             break;
                     }
                     return true;
+
                 default:
                     return base.PreProcessMessage(ref msg);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -367,8 +394,9 @@ namespace Library.Controls
             _toolTip = null;
             base.Dispose(disposing);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnTextChanged(EventArgs e)
@@ -377,7 +405,7 @@ namespace Library.Controls
             base.OnTextChanged(e);
         }
 
-        #endregion
+        #endregion override
 
         #region Private
 
@@ -404,39 +432,42 @@ namespace Library.Controls
                             textRect = new Rectangle(3, Height - Font.Height - 4, Width - 6, Font.Height);
                         }
                         break;
+
                     case ContentAlignment.MiddleCenter:
                         {
                             imageRect = new Rectangle((Width - Image.Width) / 2, (Height - Image.Height) / 2, Image.Width, Image.Height);
                             textRect = new Rectangle(3, Height / 2 - Font.Height, Width - 6, Height / 2);
                         }
                         break;
+
                     case ContentAlignment.TopCenter:
                         {
-                            imageRect = new Rectangle((Width - Image.Width) / 2,   Font.Height+3, Image.Width, Image.Height);
+                            imageRect = new Rectangle((Width - Image.Width) / 2, Font.Height + 3, Image.Width, Image.Height);
                             textRect = new Rectangle(3, 0, Width - 6, Font.Height);
                         }
                         break;
+
                     case ContentAlignment.MiddleLeft:
                         {
                             textRect = new Rectangle(3, Height - Font.Height - 4, Width - 6, Font.Height);
                             imageRect = new Rectangle(textRect.Right + (Width - Image.Width) / 2, (Height - Image.Height) / 2, Image.Width, Image.Height);
-                         
                         }
                         break;
+
                     case ContentAlignment.BottomLeft:
                         {
                             textRect = new Rectangle(3, 0, Width - 6, Height);
                             imageRect = new Rectangle(textRect.Right + (Width - Image.Width) / 2, (Height - Image.Height), Image.Width, Image.Height);
-
                         }
                         break;
+
                     case ContentAlignment.TopLeft:
                         {
                             textRect = new Rectangle(3, 0, Width - 6, Height);
                             imageRect = new Rectangle(textRect.Right + (Width - Image.Width) / 2, (Height - Image.Height), Image.Width, Image.Height);
-
                         }
                         break;
+
                     default:
                         {
                             imageRect = new Rectangle(4, (Height - Image.Height) / 2, Image.Width, Image.Height);
@@ -458,6 +489,6 @@ namespace Library.Controls
             _toolTip.Active = false;
         }
 
-        #endregion
+        #endregion Private
     }
 }

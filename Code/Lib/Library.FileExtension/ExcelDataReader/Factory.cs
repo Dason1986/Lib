@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using Library.ComponentModel;
 using Library.HelperUtility;
+using System.IO;
 
 namespace Library.FileExtension.ExcelDataReader
 {
@@ -40,10 +36,8 @@ namespace Library.FileExtension.ExcelDataReader
             return reader;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fileStream"></param>
         /// <param name="isFirstRowAsColumnNames"></param>
@@ -54,22 +48,18 @@ namespace Library.FileExtension.ExcelDataReader
             var code = FileUtility.GetFileCode(fileStream);
             switch (code)
             {
-                case "080075": reader = new ExcelOpenXmlReader(isFirstRowAsColumnNames);
+                case "080075":
+                    reader = new ExcelOpenXmlReader(isFirstRowAsColumnNames);
                     reader.Initialize(fileStream); break;
                 case "208207":
                     {
-
-
                         reader = new ExcelBinaryReader(isFirstRowAsColumnNames);
                         reader.Initialize(fileStream);
-
 
                         break;
                     }
             }
             return reader;
         }
-
-
     }
 }

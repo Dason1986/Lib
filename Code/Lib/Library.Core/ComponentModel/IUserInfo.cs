@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
@@ -30,8 +29,9 @@ namespace Library
         /// </summary>
         DateTime Birthday { get; set; }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IAccountInfo
     {
@@ -46,49 +46,49 @@ namespace Library
         [Browsable(false)]
         string AccountPWD { get; set; }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IUserName
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         string LastName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         string FirstName { get; set; }
-
-
-
-
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class UserName : IUserName
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string LastName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string FirstName { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
             return ToString(null, null);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="format"></param>
         /// <param name="formatProvider"></param>
@@ -97,26 +97,27 @@ namespace Library
         {
             return UserNameFormat.FormatProvider.Format(format, this, formatProvider);
         }
-
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class UserNameFormat : ICustomFormatter, IFormatProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected UserNameFormat()
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static readonly UserNameFormat FormatProvider = new UserNameFormat();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="formatType"></param>
         /// <returns></returns>
@@ -124,8 +125,9 @@ namespace Library
         {
             return formatType == typeof(ICustomFormatter) ? this : null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="format"></param>
         /// <param name="arg"></param>
@@ -137,8 +139,6 @@ namespace Library
             var user = arg as IUserName;
             CultureInfo cul = formatProvider as CultureInfo ?? CultureInfo.CurrentCulture;
 
-
-
             switch (cul.Name.Substring(0, 2))
             {
                 case "en":
@@ -147,14 +147,8 @@ namespace Library
                 default:
                     {
                         return string.Format("{0}{1}", user.FirstName, user.LastName);
-
                     }
-
-
             }
-
-
-
         }
     }
 }

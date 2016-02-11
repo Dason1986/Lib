@@ -4,47 +4,43 @@ using System.Globalization;
 namespace Library.Date
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class HolidayFormat : ICustomFormatter, IFormatProvider
     {
-        /*  
+        /*
      Customized format patterns:
      P.S. Format in the table below is the internal number format used to display the pattern.
- 
+
      Patterns   Format      Description                           Example
      =========  ==========  ===================================== ========
-     
- 
+
         "d"     "0"         day w/o leading zero                  1
         "dd"    "00"        day with leading zero                 01
         "ddd"               short weekday name (abbreviation)     Mon
         "dddd"              full weekday name                     Monday
         "dddd*"             full weekday name                     Monday
-        
- 
+
         "M"     "0"         month w/o leading zero                2
         "MM"    "00"        month with leading zero               02
         "MMM"               short month name (abbreviation)       Feb
         "MMMM"              full month name                       Febuary
         "MMMM*"             full month name                       Febuary
-     
-  
- 
+
         "g*"                the current era name                  A.D.
- 
+
         ":"                 time separator                        : -- DEPRECATED - Insert separator directly into pattern (eg: "H.mm.ss")
         "/"                 date separator                        /-- DEPRECATED - Insert separator directly into pattern (eg: "M-dd-yyyy")
         "'"                 quoted string                         'ABC' will insert ABC into the formatted string.
         '"'                 quoted string                         "ABC" will insert ABC into the formatted string.
         "%"                 used to quote a single pattern characters      E.g.The format character "%y" is to print two digit year.
         "\"                 escaped character                     E.g. '\d' insert the character 'd' into the format string.
-        other characters    insert the character into the format string. 
- 
-    Pre-defined format characters: 
+        other characters    insert the character into the format string.
+
+    Pre-defined format characters:
         (U) to indicate Universal time is used.
         (G) to indicate Gregorian calendar is used.
-    
+
         Format              Description                             Real format                             Example
         =========           =================================       ======================                  =======================
         "d"                 short date                              culture-specific                        10/31/1999
@@ -55,23 +51,23 @@ namespace Library.Date
         "G"                 general date (short date + long time)   culture-specific                        10/31/1999 2:00:00 AM
         "m"/"M"             Month/Day date                          culture-specific                        October 31
         "y"/"Y"             Year/Month day                          culture-specific                        October, 1999
- 
+
     */
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected HolidayFormat()
         {
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static readonly HolidayFormat FormatProvider = new HolidayFormat();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="formatType"></param>
         /// <returns></returns>
@@ -85,9 +81,9 @@ namespace Library.Date
         private static readonly string[] Weeks = { "最後一個", "第一個", "第二個", "第三個", "第四個" };
         private static readonly string[] Weeksshort = { "{0} last {1}", "the first {1} of {0}", "the sec {1} of {0}", "the 3rd {1} of {0}", "the fourth {1} of {0}" };//Tuesday July first
         private static readonly string[] Weekslong = { "the last {1} of {0}", "the first {1} of {0}", "the second {1} of {0}", "the third {1} of {0}", "the fourth  {1} of {0}" };
-    
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="format"></param>
         /// <param name="arg"></param>
@@ -99,24 +95,23 @@ namespace Library.Date
             IHoliday holiday = arg as IHoliday;
             CultureInfo cul = formatProvider as CultureInfo ?? CultureInfo.CurrentCulture;
 
-
             HolidayToString holidayToString;
             switch (cul.Name.Substring(0, 2))
             {
                 case "en":
                     holidayToString = new En(format, holiday, cul);
                     break;
+
                 case "zh":
                     {
                         holidayToString = new Cn(format, holiday, cul);
-
                     }
                     break;
+
                 default:
                     holidayToString = new En(format, holiday, cul);
                     break;
             }
-
 
             return holidayToString.ToFormat();
         }
@@ -126,8 +121,9 @@ namespace Library.Date
             protected readonly string FormatStr;
             protected readonly IHoliday Holiday;
             protected readonly CultureInfo Cul;
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="format"></param>
             /// <param name="obj"></param>
@@ -138,8 +134,9 @@ namespace Library.Date
                 Holiday = obj as IHoliday;
                 Cul = cul;
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public virtual string ToFormat()
@@ -155,29 +152,31 @@ namespace Library.Date
                     return LunarHoliday();
                 }
                 return SolarHoliday();
-
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public abstract string WeekHoliday();
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public abstract string LunarHoliday();
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public abstract string SolarHoliday();
         }
 
-        class Cn : HolidayToString
+        private class Cn : HolidayToString
         {
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="format"></param>
             /// <param name="obj"></param>
@@ -188,7 +187,7 @@ namespace Library.Date
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override string WeekHoliday()
@@ -230,8 +229,9 @@ namespace Library.Date
                 }
                 return result;
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override string LunarHoliday()
@@ -243,15 +243,19 @@ namespace Library.Date
                     case 0:
                         daystr = "";
                         break;
+
                     case 10:
                         daystr = "初十";
                         break;
+
                     case 20:
                         daystr = "二十";
                         break;
+
                     case 30:
                         daystr = "三十";
                         break;
+
                     default:
                         daystr = string.Format("{0}{1}", NStr2[lunar.Day / 10], NStr1[lunar.Day % 10]);
                         break;
@@ -261,12 +265,15 @@ namespace Library.Date
                     case 'd':
                         result = string.Format("{0:d2}/{1:d2}", Holiday.Month, Holiday.Day);
                         break;
+
                     case 'D':
                         result = string.Format("{0}{1}", CalendarInfo.ChineseMonths[Holiday.Month - 1], daystr);
                         break;
+
                     case 'f':
                         result = string.Format("{0:d2}/{1:d2},{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
                         break;
+
                     case 'F':
                         result = string.Format("{0}{1},{2}", CalendarInfo.ChineseMonths[Holiday.Month - 1], daystr,
                             Holiday.HolidayName);
@@ -274,8 +281,9 @@ namespace Library.Date
                 }
                 return result;
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override string SolarHoliday()
@@ -286,12 +294,15 @@ namespace Library.Date
                     case 'd':
                         result = string.Format("{0:d2}-{1:d2}", Holiday.Month, Holiday.Day);
                         break;
+
                     case 'D':
                         result = string.Format("{0}月{1}日", Holiday.Month, Holiday.Day);
                         break;
+
                     case 'f':
                         result = string.Format("{0:d2}-{1:d2},{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
                         break;
+
                     case 'F':
                         result = string.Format("{0}月{1}日,{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
                         break;
@@ -299,10 +310,11 @@ namespace Library.Date
                 return result;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        class En : HolidayToString
+        private class En : HolidayToString
         {
             public En(string format, object obj, CultureInfo cul)
                 : base(format, obj, cul)
@@ -310,7 +322,7 @@ namespace Library.Date
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override string WeekHoliday()
@@ -332,7 +344,6 @@ namespace Library.Date
                             result = string.Format(Weekslong[week.WeekAtMonth], formatDateTime.MonthNames[week.Month - 1],
                                 formatDateTime.DayNames[(int)week.WeekDay]);
                             break;
-
                         }
                     case 'f':
                         {
@@ -349,20 +360,22 @@ namespace Library.Date
                             result = string.Format("{0},{1}", result, week.HolidayName);
                             break;
                         }
-                    //
+                        //
                 }
                 return result;
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override string LunarHoliday()
             {
                 return SolarHoliday();
             }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override string SolarHoliday()
@@ -374,12 +387,15 @@ namespace Library.Date
                     case 'd':
                         result = string.Format("{0:d2}/{1:d2}", Holiday.Month, Holiday.Day);
                         break;
+
                     case 'D':
                         result = string.Format("{0} {1}", formatDateTime.AbbreviatedMonthNames[Holiday.Month - 1], Holiday.Day);
                         break;
+
                     case 'f':
                         result = string.Format("{0:d2}/{1:d2},{2}", Holiday.Month, Holiday.Day, Holiday.HolidayName);
                         break;
+
                     case 'F':
                         result = string.Format("{0} {1},{2}", formatDateTime.MonthNames[Holiday.Month - 1], Holiday.Day,
                             Holiday.HolidayName);
@@ -388,8 +404,5 @@ namespace Library.Date
                 return result;
             }
         }
-
-
-
     }
 }

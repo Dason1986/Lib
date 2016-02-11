@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Library;
+using Library.Controls;
+using Library.Draw;
+using Library.HelperUtility;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using Library;
-using Library.Draw;
-using Library.ComponentModel;
-using Library.Controls;
-using Library.HelperUtility;
 
 namespace TestWinform
 {
@@ -19,7 +17,7 @@ namespace TestWinform
         public EffectsForm()
         {
             InitializeComponent();
-      
+
             List<string> source = new List<string>()
             {
                 "BlueImage", "GreenImage", "RedImage",  "FogImage","GaussianBlurImage"
@@ -33,7 +31,7 @@ namespace TestWinform
             effectsAssembly = typeof(ImageBuilder).Assembly;
 
             if (Program.Original == null) return;
-            Image image = new Bitmap(new MemoryStream(Program.Original));  
+            Image image = new Bitmap(new MemoryStream(Program.Original));
             ImageEffectsVisualizer.TestShowVisualizer(image);
             this.pictureBox1.Image = image;
             fileBytes = Program.Original;
@@ -42,9 +40,9 @@ namespace TestWinform
 
         private readonly Assembly effectsAssembly;
         private byte[] fileBytes;
+
         private void button1_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "所支持图片|*.png;*.jpg;*.gif";
             var result = fileDialog.ShowDialog();
@@ -55,18 +53,15 @@ namespace TestWinform
                 this.pictureBox1.Image = new Bitmap(stream);
                 CreateBuilder();
             }
-
         }
 
         private IImageBuilder builderobj;
         private ImageOption option;
+
         private void button2_Click(object sender, EventArgs e)
         {
-
-
             try
             {
-
                 panel1.Enabled = false;
                 builderobj.SetOpetion(option);
 
@@ -78,15 +73,15 @@ namespace TestWinform
             {
                 this.pictureBox2.Image = null;
                 MessageBox.Show(ex.Message);
-
             }
             finally
             {
                 panel1.Enabled = true;
-
             }
         }
-        readonly IDictionary<Type, IImageBuilder> _dicinObjects = new ConcurrentDictionary<Type, IImageBuilder>();
+
+        private readonly IDictionary<Type, IImageBuilder> _dicinObjects = new ConcurrentDictionary<Type, IImageBuilder>();
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             CreateBuilder();
@@ -127,7 +122,7 @@ namespace TestWinform
             base.OnClosed(e);
         }
 
-        void builderobj_ProcessCompleted(object sender, ImageEventArgs e)
+        private void builderobj_ProcessCompleted(object sender, ImageEventArgs e)
         {
             this.pictureBox2.Image = e.Image;
             if (e.Error != null) MessageBox.Show(e.Error.Message);
@@ -137,9 +132,9 @@ namespace TestWinform
         }
 
         private OpaqueCommand cmd;
+
         private void button3_Click(object sender, EventArgs e)
         {
-
             panel1.Enabled = false;
             cmd = OpaqueLayer.Show(this, 125, true);
             builderobj.SetOpetion(option);
@@ -152,7 +147,6 @@ namespace TestWinform
             {
                 builderobj.ProcessBitmapAsync();
             }
-
         }
     }
 }

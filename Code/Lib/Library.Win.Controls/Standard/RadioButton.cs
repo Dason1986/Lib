@@ -20,11 +20,12 @@ namespace Library.Controls
         private const ContentAlignment RightAlignment = (ContentAlignment)1092;//ContentAlignment.TopRight | ContentAlignment.BottomRight | ContentAlignment.MiddleRight
         private const ContentAlignment LeftAlignment = (ContentAlignment)273;//ContentAlignment.TopLeft | ContentAlignment.BottomLeft | ContentAlignment.MiddleLeft
 
-        #endregion
+        #endregion Field
 
         #region Constructor
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RadioButton()
         {
@@ -33,11 +34,12 @@ namespace Library.Controls
             this.Font = _defaultFont;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Properites
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Description("获取QQRadioButton左边正方形的宽度")]
         private int CheckRectWidth
@@ -45,11 +47,12 @@ namespace Library.Controls
             get { return 12; }
         }
 
-        #endregion
+        #endregion Properites
 
         #region Override
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseEnter(EventArgs e)
@@ -57,8 +60,9 @@ namespace Library.Controls
             _state = ControlState.Highlight;
             base.OnMouseEnter(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnMouseLeave(EventArgs e)
@@ -66,8 +70,9 @@ namespace Library.Controls
             _state = ControlState.Normal;
             base.OnMouseLeave(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseDown(MouseEventArgs mevent)
@@ -78,8 +83,9 @@ namespace Library.Controls
             }
             base.OnMouseDown(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mevent"></param>
         protected override void OnMouseUp(MouseEventArgs mevent)
@@ -90,8 +96,9 @@ namespace Library.Controls
             }
             base.OnMouseUp(mevent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnEnabledChanged(EventArgs e)
@@ -99,8 +106,9 @@ namespace Library.Controls
             _state = Enabled ? ControlState.Normal : ControlState.Disabled;
             base.OnEnabledChanged(e);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pevent"></param>
         protected override void OnPaint(PaintEventArgs pevent)
@@ -126,9 +134,11 @@ namespace Library.Controls
                 case ControlState.Down:
                     DrawHighLightCircle(g, circleRect);
                     break;
+
                 case ControlState.Disabled:
                     DrawDisabledCircle(g, circleRect);
                     break;
+
                 default:
                     DrawNormalCircle(g, circleRect);
                     break;
@@ -143,8 +153,9 @@ namespace Library.Controls
                 textColor,
                 GetTextFormatFlags(TextAlign, RightToLeft == RightToLeft.Yes));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -166,7 +177,7 @@ namespace Library.Controls
             base.Dispose(disposing);
         }
 
-        #endregion
+        #endregion Override
 
         #region Private
 
@@ -195,8 +206,6 @@ namespace Library.Controls
 
                 g.DrawEllipse(p, circleRect);
             }
-
-
         }
 
         private void DrawDisabledCircle(Graphics g, Rectangle circleRect)
@@ -236,10 +245,12 @@ namespace Library.Controls
                     case ContentAlignment.TopLeft:
                         circleRect.Y = 2;
                         break;
+
                     case ContentAlignment.MiddleRight:
                     case ContentAlignment.MiddleLeft:
                         circleRect.Y = (Height - CheckRectWidth) / 2;
                         break;
+
                     case ContentAlignment.BottomRight:
                     case ContentAlignment.BottomLeft:
                         circleRect.Y = Height - CheckRectWidth - 2;
@@ -248,7 +259,7 @@ namespace Library.Controls
 
                 circleRect.X = 1;
 
-                textRect = new Rectangle(circleRect.Right + 2,0,Width - circleRect.Right - 4,Height);
+                textRect = new Rectangle(circleRect.Right + 2, 0, Width - circleRect.Right - 4, Height);
             }
             else if (bCheckAlignRight || bCheckAlignLeft)
             {
@@ -258,10 +269,12 @@ namespace Library.Controls
                     case ContentAlignment.TopRight:
                         circleRect.Y = 2;
                         break;
+
                     case ContentAlignment.MiddleLeft:
                     case ContentAlignment.MiddleRight:
                         circleRect.Y = (Height - CheckRectWidth) / 2;
                         break;
+
                     case ContentAlignment.BottomLeft:
                     case ContentAlignment.BottomRight:
                         circleRect.Y = Height - CheckRectWidth - 2;
@@ -281,11 +294,13 @@ namespace Library.Controls
                         textRect.Y = circleRect.Bottom + 2;
                         textRect.Height = Height - CheckRectWidth - 6;
                         break;
+
                     case ContentAlignment.MiddleCenter:
                         circleRect.Y = (Height - CheckRectWidth) / 2;
                         textRect.Y = 0;
                         textRect.Height = Height;
                         break;
+
                     case ContentAlignment.BottomCenter:
                         circleRect.Y = Height - CheckRectWidth - 2;
                         textRect.Y = 0;
@@ -302,7 +317,7 @@ namespace Library.Controls
 
         private static TextFormatFlags GetTextFormatFlags(ContentAlignment alignment, bool rightToleft)
         {
-            TextFormatFlags flags = TextFormatFlags.WordBreak |TextFormatFlags.SingleLine;
+            TextFormatFlags flags = TextFormatFlags.WordBreak | TextFormatFlags.SingleLine;
             if (rightToleft)
             {
                 flags |= TextFormatFlags.RightToLeft | TextFormatFlags.Right;
@@ -313,28 +328,36 @@ namespace Library.Controls
                 case ContentAlignment.BottomCenter:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.HorizontalCenter;
                     break;
+
                 case ContentAlignment.BottomLeft:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.BottomRight:
                     flags |= TextFormatFlags.Bottom | TextFormatFlags.Right;
                     break;
+
                 case ContentAlignment.MiddleCenter:
                     flags |= TextFormatFlags.HorizontalCenter |
                              TextFormatFlags.VerticalCenter;
                     break;
+
                 case ContentAlignment.MiddleLeft:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.MiddleRight:
                     flags |= TextFormatFlags.VerticalCenter | TextFormatFlags.Right;
                     break;
+
                 case ContentAlignment.TopCenter:
                     flags |= TextFormatFlags.Top | TextFormatFlags.HorizontalCenter;
                     break;
+
                 case ContentAlignment.TopLeft:
                     flags |= TextFormatFlags.Top | TextFormatFlags.Left;
                     break;
+
                 case ContentAlignment.TopRight:
                     flags |= TextFormatFlags.Top | TextFormatFlags.Right;
                     break;
@@ -342,7 +365,6 @@ namespace Library.Controls
             return flags;
         }
 
-
-        #endregion
+        #endregion Private
     }
 }

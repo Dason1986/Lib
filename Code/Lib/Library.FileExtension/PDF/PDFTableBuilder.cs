@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.ComponentModel;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Library.Data;
-using Library.ComponentModel;
 using Library.HelperUtility;
+using System;
 
 namespace Library.FileExtension
 {
-    class PDFTableBuilder : PDFElementBuilder
+    internal class PDFTableBuilder : PDFElementBuilder
     {
         private readonly PDFBuilder _pdfBuilder;
         private readonly TableElement table;
@@ -21,6 +18,7 @@ namespace Library.FileExtension
         }
 
         private float[] headwidth;
+
         public override void Builder()
         {
             if (table.Heads == null) throw new Exception();
@@ -53,7 +51,6 @@ namespace Library.FileExtension
             DataManager manager = new DataManager(table.DataSource) { NameIgnoreCase = true };
 
             int columns = table.Heads.Length;
-
 
             var indexs = new int[columns];
             for (int i = 0; i < columns; i++)
@@ -149,7 +146,6 @@ namespace Library.FileExtension
                     pdfPTable.Rows.RemoveRange(1, pdfPTable.Rows.Count - 1);
                 }
                 if (pdfPTable.Rows.Count <= 1) break;
-
 
                 _pdfBuilder.NewPage();
             }

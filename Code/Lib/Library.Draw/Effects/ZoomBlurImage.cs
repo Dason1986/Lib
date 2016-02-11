@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -16,11 +12,11 @@ namespace Library.Draw.Effects
     public class ZoomBlurImage : ImageBuilder
     {
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("偏移"), LanguageDisplayName("偏移"), Category("濾鏡選項")]
-
         public PointF Offset
         {
             get
@@ -32,11 +28,11 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Offset = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [LanguageDescription("模糊度"), LanguageDisplayName("模糊度"), Category("濾鏡選項")]
-
         public int Length
         {
             get
@@ -48,33 +44,37 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Length = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class ZoomBlurOption : ImageOption
         {
             /// <summary>
-            /// 
-            /// </summary> 
+            ///
+            /// </summary>
             [LanguageDescription("偏移"), LanguageDisplayName("偏移"), Category("濾鏡選項")]
             public PointF Offset { get; set; }
+
             /// <summary>
-            /// 
-            /// </summary> 
+            ///
+            /// </summary>
             [LanguageDescription("模糊度"), LanguageDisplayName("模糊度"), Category("濾鏡選項")]
             public int Length { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = CreateOption() as ZoomBlurOption;
         }
+
         private ZoomBlurOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -85,8 +85,9 @@ namespace Library.Draw.Effects
                 _opetion = value as ZoomBlurOption;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
@@ -94,20 +95,20 @@ namespace Library.Draw.Effects
             return new ZoomBlurOption { Length = 10 };
         }
 
-        #endregion
+        #endregion Option
 
-        int m_length;
-        double m_offset_x;
-        double m_offset_y;
-        int m_fcx, m_fcy;
-        const int RADIUS_LENGTH = 64;
+        private int m_length;
+        private double m_offset_x;
+        private double m_offset_y;
+        private int m_fcx, m_fcy;
+        private const int RADIUS_LENGTH = 64;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
         {
-
             int width = Source.Width;
             int height = Source.Height;
             var clone = (Bitmap)this.Source.Clone();
@@ -154,8 +155,9 @@ namespace Library.Draw.Effects
             }
             return clone;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -178,13 +180,12 @@ namespace Library.Draw.Effects
             {
                 for (int x = 0; x < width; x++)
                 {
-
                     int sr = 0, sg = 0, sb = 0, sa = 0;
                     //var point = clone.GetPixel(x, y);
                     int index = y * bmpData.Stride + x * 4;
                     sr = ptr[index + 2] * ta;
                     sg = ptr[index + 1] * ta;
-                    sb = ptr[index ] * ta;
+                    sb = ptr[index] * ta;
                     sa += ta;
                     int fx = (x * 65536) - m_fcx;
                     int fy = (y * 65536) - m_fcy;
@@ -203,13 +204,12 @@ namespace Library.Draw.Effects
                         sb += ptr[moveindex] * ta;
                         sa += ta;
                     }
-                  
 
                     int r = sr / sa;
                     int g = sg / sa;
                     int b = sb / sa;
-                    ptr[index+2] =this.Truncate(r) ;
-                    ptr[index+1] = this.Truncate(g);
+                    ptr[index + 2] = this.Truncate(r);
+                    ptr[index + 1] = this.Truncate(g);
                     ptr[index] = this.Truncate(b);
                     // clone.SetPixel(x, y, Color.FromArgb(r, g, b));
                 }

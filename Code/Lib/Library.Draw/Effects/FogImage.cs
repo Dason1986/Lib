@@ -1,14 +1,14 @@
+using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 雾化效果
-    /// 图像的雾化处理不是基于图像中像素点之间的计算,而是给图像像素的颜色值引入一定的随机值, 
+    /// 图像的雾化处理不是基于图像中像素点之间的计算,而是给图像像素的颜色值引入一定的随机值,
     /// 使图像具有毛玻璃带水雾般的效果..
     /// </summary>
     [LanguageDescription("对比度"), LanguageDisplayName("雾化效果")]
@@ -17,11 +17,11 @@ namespace Library.Draw.Effects
         /*
          * 对每个像素A(i,j)进行处理，用其周围一定范围内随机点A(i+d,j+d),(-k<d<k)的像素替代。显然，以该点为圆心的圆半径越大，则雾化效果越明显。
          */
+
         /// <summary>
         /// 圆半徑
-        /// </summary> 
+        /// </summary>
         [LanguageDescription("圆半徑"), LanguageDisplayName("圆半徑"), Category("濾鏡選項")]
-
         public float Fog
         {
             get
@@ -35,18 +35,21 @@ namespace Library.Draw.Effects
                 _opetion.Value = value;
             }
         }
+
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
+
         private ValueOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -57,19 +60,24 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption();
         }
-        #endregion
+
+        #endregion Option
+
         #region Process
+
         #region IImageProcessable 成员
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -103,11 +111,12 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        #endregion
+        #endregion IImageProcessable 成员
 
         #region IImageProcessable 成员
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -148,11 +157,8 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
+        #endregion IImageProcessable 成员
 
-
-
-        #endregion
-
-        #endregion
+        #endregion Process
     }
 }

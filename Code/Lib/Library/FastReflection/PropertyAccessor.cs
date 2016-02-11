@@ -5,19 +5,19 @@ using System.Reflection;
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IPropertyAccessor
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="instance"></param>
         /// <returns></returns>
         object GetValue(object instance);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="value"></param>
@@ -25,7 +25,7 @@ namespace Library.FastReflection
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class PropertyAccessor : IPropertyAccessor
     {
@@ -33,12 +33,12 @@ namespace Library.FastReflection
         private MethodInvoker _mSetMethodInvoker;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PropertyInfo PropertyInfo { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="propertyInfo"></param>
         public PropertyAccessor(PropertyInfo propertyInfo)
@@ -78,8 +78,9 @@ namespace Library.FastReflection
             if (!propertyInfo.CanWrite) return;
             this._mSetMethodInvoker = new MethodInvoker(propertyInfo.GetSetMethod(true));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
@@ -92,8 +93,9 @@ namespace Library.FastReflection
 
             return this._mGetter(o);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="o"></param>
         /// <param name="value"></param>
@@ -119,6 +121,6 @@ namespace Library.FastReflection
             this.SetValue(instance, value);
         }
 
-        #endregion
+        #endregion IPropertyAccessor Members
     }
 }

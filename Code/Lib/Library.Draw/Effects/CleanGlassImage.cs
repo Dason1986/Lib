@@ -1,21 +1,19 @@
-using System;
+using Library.Att;
+using Library.HelperUtility;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
-using Library.ComponentModel;
-using Library.HelperUtility;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// 
-    /// </summary> 
+    ///
+    /// </summary>
     [LanguageDescription("对比度/亮度"), LanguageDisplayName("对比度/亮度")]
     public class CleanGlassImage : ImageBuilder
     {  /// <summary>
-        /// Should be in the range [0, 1].
-        /// </summary>
+       /// Should be in the range [0, 1].
+       /// </summary>
         [LanguageDescription("尺寸 [0, 1]"), LanguageDisplayName("尺寸"), Category("濾鏡選項")]
         public float Size
         {
@@ -32,17 +30,19 @@ namespace Library.Draw.Effects
         }
 
         #region Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ValueOption();
         }
+
         private ValueOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -53,18 +53,20 @@ namespace Library.Draw.Effects
                 _opetion = (ValueOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
             return new ValueOption() { Value = 0.5f };
         }
-        #endregion
+
+        #endregion Option
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -120,8 +122,9 @@ namespace Library.Draw.Effects
             }
             return bmp;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()

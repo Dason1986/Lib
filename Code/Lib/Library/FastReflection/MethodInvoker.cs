@@ -6,12 +6,12 @@ using System.Reflection;
 namespace Library.FastReflection
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IMethodInvoker
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="parameters"></param>
@@ -20,19 +20,19 @@ namespace Library.FastReflection
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class MethodInvoker : IMethodInvoker
     {
         private readonly Func<object, object[], object> _mInvoker;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MethodInfo MethodInfo { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="methodInfo"></param>
         public MethodInvoker(MethodInfo methodInfo)
@@ -42,7 +42,7 @@ namespace Library.FastReflection
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="parameters"></param>
@@ -97,7 +97,7 @@ namespace Library.FastReflection
             else
             {
                 var castMethodCall = Expression.Convert(methodCall, typeof(object));
-                var lambda =Expression.Lambda<Func<object, object[], object>>(
+                var lambda = Expression.Lambda<Func<object, object[], object>>(
                     castMethodCall, instanceParameter, parametersParameter);
 
                 return lambda.Compile();
@@ -111,6 +111,6 @@ namespace Library.FastReflection
             return this.Invoke(instance, parameters);
         }
 
-        #endregion
+        #endregion IMethodInvoker Members
     }
 }

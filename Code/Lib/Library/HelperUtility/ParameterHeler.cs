@@ -1,12 +1,12 @@
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class ParameterHeler
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="parameter"></param>
         /// <param name="defaultValue"></param>
@@ -20,7 +20,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="parameter"></param>
         /// <typeparam name="T"></typeparam>

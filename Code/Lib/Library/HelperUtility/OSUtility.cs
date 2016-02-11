@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class OSUtility
     {
@@ -17,25 +14,26 @@ namespace Library.HelperUtility
             ProcessStartTime = Process.GetCurrentProcess().StartTime;
             OSStartTime = DateTime.Now - GetOSUpTime();
         }
+
         /// <summary>
         /// 系統運行時間
         /// </summary>
         public static TimeSpan GetOSUpTime()
         {
-
             using (var uptime = new PerformanceCounter("System", "System Up Time"))
             {
                 uptime.NextValue();       //Call this an extra time before reading its value
                 return TimeSpan.FromSeconds(uptime.NextValue());
             }
-
         }
+
         /// <summary>
         /// 系統啟動時間
         /// </summary>
         public static DateTime OSStartTime { get; private set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static string OSName { get; private set; }
 
@@ -44,7 +42,6 @@ namespace Library.HelperUtility
         /// </summary>
         public static string GetOSName(string userAgent)
         {
-
             //http://zh.wikipedia.org/wiki/Windows_NT
             string osVersion = "unkown";
 
@@ -115,10 +112,10 @@ namespace Library.HelperUtility
             return osVersion;
         }
 
-        /// <summary>  
-        /// 程序 CPU时间  
-        /// </summary>  
-        /// <returns></returns> 
+        /// <summary>
+        /// 程序 CPU时间
+        /// </summary>
+        /// <returns></returns>
         public static string GetProcessN()
         {
             string temp;
@@ -133,10 +130,10 @@ namespace Library.HelperUtility
             return temp;
         }
 
-        /// <summary>  
-        /// 服務 CPU时间  
-        /// </summary>  
-        /// <returns></returns> 
+        /// <summary>
+        /// 服務 CPU时间
+        /// </summary>
+        /// <returns></returns>
         public static string GetServesN()
         {
             string temp;
@@ -149,12 +146,12 @@ namespace Library.HelperUtility
                 temp = "unkown";
             }
             return temp;
-
         }
-        /// <summary>  
-        /// 进程开始时间   
-        /// </summary>  
-        /// <returns></returns>  
+
+        /// <summary>
+        /// 进程开始时间
+        /// </summary>
+        /// <returns></returns>
         public static DateTime ProcessStartTime { get; private set; }
     }
 }

@@ -1,9 +1,7 @@
+using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.IO;
-using Library.Att;
-using Library.Date;
 
 namespace Library.Draw.Effects
 {
@@ -13,10 +11,9 @@ namespace Library.Draw.Effects
     public class FlipImage : ImageBuilder
     {
         /// <summary>
-        /// 
-        /// </summary> 
+        ///
+        /// </summary>
         [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
-   
         public AlignmentType Flip
         {
             get
@@ -28,31 +25,33 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Alignment = value;
             }
         }
+
         #region Option
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class FlipOption : ImageOption
         {
             /// <summary>
-            /// 
+            ///
             /// </summary>
             [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
             public AlignmentType Alignment { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new FlipOption();
         }
+
         private FlipOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -63,8 +62,9 @@ namespace Library.Draw.Effects
                 _opetion = (FlipOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
@@ -72,18 +72,17 @@ namespace Library.Draw.Effects
             return new FlipOption() { Alignment = AlignmentType.Horizontally | AlignmentType.Vertically };
         }
 
-        #endregion
+        #endregion Option
 
         #region Process
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="flip"></param>
         /// <returns></returns>
         public Image CreateImage(AlignmentType flip)
         {
-
-
             Image image = Source;
             Bitmap flippedImage = Opetion != null && Opetion.TragetSize != null
                 ? new Bitmap(Opetion.TragetSize.Value.Width, Opetion.TragetSize.Value.Height)
@@ -115,7 +114,6 @@ namespace Library.Draw.Effects
                     default: throw new ImageException("Not support");
                 }
 
-
                 //Draw
                 g.Transform = m;
                 if (Opetion != null)
@@ -131,17 +129,19 @@ namespace Library.Draw.Effects
                 //clean up
                 m.Dispose();
             }
-   
+
             return flippedImage;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
         {
             return CreateImage(Flip);
         }
-        #endregion
+
+        #endregion Process
     }
 }

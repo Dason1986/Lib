@@ -1,23 +1,20 @@
+using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
-using Library.Date;
 
 namespace Library.Draw.Effects
 {
-   
     /// <summary>
     /// 投影
     /// </summary>
     [LanguageDescription("投影"), LanguageDisplayName("投影")]
     public class ReflectionImage : ImageBuilder
     {
-
         /// <summary>
-        /// 
-        /// </summary> 
+        ///
+        /// </summary>
         [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
         public AlignmentType Alignment
         {
@@ -30,10 +27,10 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Alignment = value;
             }
         }  /// <summary>
-        /// 
-        /// </summary> 
-        [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
 
+           ///
+           /// </summary>
+        [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
         public float Offset
         {
             get
@@ -45,36 +42,39 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Offset = value;
             }
         }
+
         #region Option
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class ReflectionOption : ImageOption
         {
             /// <summary>
-            /// 
+            ///
             /// </summary>
             [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
             public AlignmentType Alignment { get; set; }
+
             /// <summary>
-            /// 
+            ///
             /// </summary>
             [LanguageDescription("偏移"), LanguageDisplayName("偏移"), Category("濾鏡選項")]
             public float Offset { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = new ReflectionOption();
         }
+
         private ReflectionOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -85,8 +85,9 @@ namespace Library.Draw.Effects
                 _opetion = (ReflectionOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
@@ -94,16 +95,15 @@ namespace Library.Draw.Effects
             return new ReflectionOption() { Alignment = AlignmentType.Horizontally, Offset = 0.5f };
         }
 
-        #endregion
+        #endregion Option
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
         {
-
             int r, g, b;
-
 
             switch (Alignment)
             {
@@ -143,7 +143,8 @@ namespace Library.Draw.Effects
 
                                 bmp.SetPixel(x, y_pos, Color.FromArgb(r, g, b));
                             }
-                        } return bmp;
+                        }
+                        return bmp;
                     }
 
                 case AlignmentType.Vertically:
@@ -181,19 +182,20 @@ namespace Library.Draw.Effects
                                 b = c.B;
                                 bmp.SetPixel(x_pos, y, Color.FromArgb(r, g, b));
                             }
-                        } return bmp;
+                        }
+                        return bmp;
                     }
                 default: throw new NotImplementedException();
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
         {
             byte r, g, b;
-
 
             switch (Alignment)
             {
@@ -293,15 +295,12 @@ namespace Library.Draw.Effects
                                 ptr[newindex + 1] = g;
                                 ptr[newindex] = b;
                             }
-
                         }
                         bmp.UnlockBits(bmpData);
                         return bmp;
                     }
                 default: throw new NotImplementedException();
             }
-
-
         }
     }
 }

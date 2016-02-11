@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
+﻿namespace Library.FileExtension.ExcelDataReader.Core.BinaryFormat
 {
     internal class XlsBiffBoolErr : XlsBiffBlankCell
     {
         internal XlsBiffBoolErr(byte[] bytes)
-			: this(bytes, 0)
-		{
-
-		}
+            : this(bytes, 0)
+        {
+        }
 
         internal XlsBiffBoolErr(byte[] bytes, uint offset)
-			: base(bytes, offset)
-		{
-
-		}
+            : base(bytes, offset)
+        {
+        }
 
         public bool BoolValue
         {

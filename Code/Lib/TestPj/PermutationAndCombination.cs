@@ -16,7 +16,6 @@ namespace TestPj
             b = temp;
         }
 
-
         /// <summary>
         /// 递归算法求排列(私有成员)
         /// </summary>
@@ -98,7 +97,6 @@ namespace TestPj
             return list;
         }
 
-
         /// <summary>
         /// 求数组中n个元素的组合
         /// </summary>
@@ -116,7 +114,6 @@ namespace TestPj
             GetCombination(ref list, t, t.Length, n, temp, n);
             return list;
         }
-
 
         /// <summary>
         /// 递归算法求数组的组合(私有成员)

@@ -3,7 +3,7 @@
 namespace Library.Draw.Print
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IPrintBuilder : System.Collections.IEnumerator
     {
@@ -26,6 +26,7 @@ namespace Library.Draw.Print
         /// 能否下一页
         /// </summary>
         bool CanNextPange();
+
         /// <summary>
         /// 总页数
         /// </summary>
@@ -35,10 +36,12 @@ namespace Library.Draw.Print
         /// 页面区域
         /// </summary>
         Rectangle PageRectangle { get; set; }
+
         /// <summary>
         /// 预览模式下的底图
         /// </summary>
         Image PreviewBackgroundImage { get; }
+
         /// <summary>
         /// 超始页
         /// </summary>
@@ -60,6 +63,7 @@ namespace Library.Draw.Print
         /// </summary>
         /// <returns></returns>
         Image CreateNextBitmap();
+
         /// <summary>
         /// 验证数据
         /// </summary>
@@ -77,36 +81,39 @@ namespace Library.Draw.Print
         /// <param name="toPage">结束页</param>
         void SetPageRange(int formPage, int toPage);
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IPrintBuilder<T> : IPrintBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         new T Model { get; set; }
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class PrintBuilder : IPrintBuilder
     {
-      
         /// <summary>
         /// 页面区域
         /// </summary>
         public Rectangle PageRectangle { get; set; }
+
         /// <summary>
         /// 预览模式下的底图
         /// </summary>
-        public Image PreviewBackgroundImage{get;protected set;}
+        public Image PreviewBackgroundImage { get; protected set; }
+
         /// <summary>
         /// 验证数据
         /// </summary>
         public abstract void Validate();
+
         /// <summary>
         /// 能否下一页
         /// </summary>
@@ -115,11 +122,11 @@ namespace Library.Draw.Print
             var tmpend = (ToPage == TotalPages) ? TotalPages : ToPage;
             return CurrentPageIndex + 1 < tmpend;
         }
+
         /// <summary>
         /// 是否多页
         /// </summary>
         public bool HasMorePages { get { return TotalPages > 1; } }
-
 
         /// <summary>
         /// 当前页索引
@@ -138,10 +145,12 @@ namespace Library.Draw.Print
             get { return _totalPages; }
             protected set { _totalPages = value; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual object Model { get; set; }
+
         /// <summary>
         /// 生成当前打印内容
         /// </summary>
@@ -199,13 +208,11 @@ namespace Library.Draw.Print
             ToPage = (uint)toPage;
         }
 
-
-
         private object _current;
-        private int _currentPageIndex=-1;
-        private uint _fromPage=1;
-        private uint _toPage=1;
-        private uint _totalPages=1;
+        private int _currentPageIndex = -1;
+        private uint _fromPage = 1;
+        private uint _toPage = 1;
+        private uint _totalPages = 1;
 
         object System.Collections.IEnumerator.Current
         {
@@ -225,15 +232,15 @@ namespace Library.Draw.Print
             ResetIndex();
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class PrintBuilder<T> : PrintBuilder, IPrintBuilder<T>
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public new T Model
         {

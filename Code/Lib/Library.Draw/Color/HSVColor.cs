@@ -1,31 +1,34 @@
+using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using Library.Att;
 
 namespace Library.Draw
 {
     /// <summary>
-    /// HSV颜色空间 
+    /// HSV颜色空间
     /// HSV(hue,saturation,value)颜色空间的模型对应于圆柱坐标系中的一个圆锥形子集，圆锥的顶面对应于V=1. 它包含RGB模型中的R=1，G=1，B=1 三个面，所代表的颜色较亮。色彩H由绕V轴的旋转角给定。红色对应于 角度0° ，绿色对应于角度120°，蓝色对应于角度240°。在HSV颜色模型中，每一种颜色和它的补色相差180° 。 饱和度S取值从0到1，所以圆锥顶面的半径为１。HSV颜色模型所代表的颜色域是CIE色度图的一个子集，这个 模型中饱和度为百分之百的颜色，其纯度一般小于百分之百。在圆锥的顶点(即原点)处，V=0,H和S无定义， 代表黑色。圆锥的顶面中心处S=0，V=1,H无定义，代表白色。从该点到原点代表亮度渐暗的灰色，即具有不同 灰度的灰色。对于这些点，S=0,H的值无定义。可以说，HSV模型中的V轴对应于RGB颜色空间中的主对角线。 在圆锥顶面的圆周上的颜色，V=1，S=1,这种颜色是纯色。HSV模型对应于画家配色的方法。画家用改变色浓和 色深的方法从某种纯色获得不同色调的颜色，在一种纯色中加入白色以改变色浓，加入黑色以改变色深，同时 加入不同比例的白色，黑色即可获得各种不同的色调。
-    /// </summary> 
+    /// </summary>
     /// [Editor("Library.Draw.Design.HSVColorEditor, Library.Draw.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
     [TypeConverter(typeof(HSVColorConverter))]
     public struct HSVColor : IToRGBColor
     {  /// <summary>
-        /// Gets an empty RGB structure;
-        /// </summary>
+       /// Gets an empty RGB structure;
+       /// </summary>
         public static readonly HSVColor Empty = new HSVColor();
+
         /// <summary>
         /// 色相
         /// </summary>
         [LanguageDescription("是色彩的基本属性，就是平常所说的颜色名称，如红色、黄色等,360°"), LanguageDisplayName("色相")]
         public float Hue { get; private set; }
+
         /// <summary>
         /// 饱和度
         /// </summary>
         [LanguageDescription("是指色彩的纯度，越高色彩越纯，低则逐渐变灰，取0-100%的数值"), LanguageDisplayName("饱和度")]
         public float Saturation { get; private set; }
+
         /// <summary>
         /// 明度
         /// </summary>
@@ -33,7 +36,7 @@ namespace Library.Draw
         public float Value { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="hue"></param>
         /// <param name="saturation"></param>
@@ -45,8 +48,9 @@ namespace Library.Draw
             this.Value = value;
             this.Saturation = saturation;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public Color ToRGB()
@@ -83,6 +87,7 @@ namespace Library.Draw
                         G = Value;
                         B = pv;
                         break;
+
                     case 2:
                         R = pv;
                         G = Value;
@@ -94,6 +99,7 @@ namespace Library.Draw
                         G = qv;
                         B = Value;
                         break;
+
                     case 4:
                         R = tv;
                         G = pv;
@@ -111,6 +117,7 @@ namespace Library.Draw
                         G = tv;
                         B = pv;
                         break;
+
                     case -1:
                         R = Value;
                         G = pv;
@@ -132,14 +139,15 @@ namespace Library.Draw
         /// <summary>
         /// Clamp a value to 0-255
         /// </summary>
-        int Clamp(int i)
+        private int Clamp(int i)
         {
             if (i < 0) return 0;
             if (i > 255) return 255;
             return i;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -149,8 +157,9 @@ namespace Library.Draw
 
             return (this == (HSVColor)obj);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -158,8 +167,9 @@ namespace Library.Draw
             return Hue.GetHashCode() ^ Saturation.GetHashCode() ^
                 Value.GetHashCode();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -172,8 +182,9 @@ namespace Library.Draw
                 && item1.Value == item2.Value
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="item2"></param>
@@ -186,8 +197,9 @@ namespace Library.Draw
                 || item1.Value != item2.Value
                 );
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rr"></param>
         /// <param name="gg"></param>
@@ -237,11 +249,9 @@ namespace Library.Draw
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class HSVColorConverter : TypeConverter
     {
-
     }
-
 }

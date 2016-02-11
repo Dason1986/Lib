@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using Library.Att;
+using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
 
 namespace Library.Draw.Effects
 {
@@ -11,7 +11,7 @@ namespace Library.Draw.Effects
     public class GreenImage : ImageBuilder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -24,16 +24,15 @@ namespace Library.Draw.Effects
             {
                 for (int column = 0; column < widht; column++)
                 {
-
-                    var pixelValue = bmp.GetPixel(column,row);
-                    bmp.SetPixel(column,row,  Color.FromArgb(pixelValue.A, 0, pixelValue.G, 0));
+                    var pixelValue = bmp.GetPixel(column, row);
+                    bmp.SetPixel(column, row, Color.FromArgb(pixelValue.A, 0, pixelValue.G, 0));
                 }
             }
             return bmp;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()

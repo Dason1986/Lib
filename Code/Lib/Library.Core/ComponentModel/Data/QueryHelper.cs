@@ -1,7 +1,7 @@
 ﻿namespace Library.Data
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class QueryHelper
     {
@@ -15,7 +15,6 @@
         public static IQueryFilter AddGreaterThanFilter(this IQueryFilter filter, string filed, object value)
         {
             return filter.TryAddFilter(filed, value, Condition.GreaterThan);
-
         }
 
         /// <summary>
@@ -27,7 +26,6 @@
         /// <returns></returns>
         public static IQueryFilter AddInFilter(this IQueryFilter filter, string filed, params object[] values)
         {
-
             return filter.TryAddFilter(filed, values, Condition.In);
         }
 
@@ -140,7 +138,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filter"></param>
         /// <param name="filed">字段名</param>
@@ -158,6 +156,5 @@
             }
             return filter;
         }
-
     }
 }

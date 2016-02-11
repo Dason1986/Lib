@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Library
 {
@@ -16,10 +13,9 @@ namespace Library
         int Version { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Guid CardTypeID { get; }
-
 
         /// <summary>
         /// 身份證類型名稱
@@ -40,18 +36,19 @@ namespace Library
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IIDCardProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         IIDCard CreateNew();
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SexEnum
     {
@@ -59,11 +56,10 @@ namespace Library
         /// 女
         /// </summary>
         Woman,
+
         /// <summary>
         /// 男
         /// </summary>
         Man,
     }
-
-
 }

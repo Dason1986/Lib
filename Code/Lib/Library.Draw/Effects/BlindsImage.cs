@@ -1,27 +1,27 @@
-﻿using System.ComponentModel;
+﻿using Library.Att;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Library.Att;
-using Library.Date;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
     /// 以百叶效果显示图像
-    /// </summary> 
+    /// </summary>
     [LanguageDescription("百叶效果"), LanguageDisplayName("百叶效果")]
     public class BlindsImage : ImageBuilder
     {
         /*
           根据图像的高度或宽度和定制的百叶窗显示条宽度计算百叶窗显示的条目数量
          */
+
         #region Option
+
         /// <summary>
         /// 方向
         /// </summary>
 
         [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
-      
         public AlignmentType Alignment
         {
             get
@@ -33,12 +33,12 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Alignment = value;
             }
         }
+
         /// <summary>
         /// 線條數量
         /// </summary>
 
         [LanguageDescription("線條數量"), LanguageDisplayName("線條數量"), Category("濾鏡選項")]
-     
         public int BarCount
         {
             get
@@ -50,12 +50,12 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Count = value;
             }
         }
+
         /// <summary>
         /// 線條大小
         /// </summary>
 
         [LanguageDescription("線條大小"), LanguageDisplayName("線條大小"), Category("濾鏡選項")]
-        
         public int BarPixel
         {
             get
@@ -67,12 +67,12 @@ namespace Library.Draw.Effects
                 InitOption(); _opetion.Pixel = value;
             }
         }
+
         /// <summary>
         /// 線條顏色
         /// </summary>
 
         [LanguageDescription("線條顏色"), LanguageDisplayName("線條顏色"), Category("濾鏡選項")]
- 
         public Color BarColor
         {
             get
@@ -85,45 +85,48 @@ namespace Library.Draw.Effects
             }
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class BlindsOption : ImageOption
         {
             /// <summary>
-            /// 
+            ///
             /// </summary>
             [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
             public AlignmentType Alignment { get; set; }
+
             /// <summary>
-            /// 
-            /// </summary> 
+            ///
+            /// </summary>
             [LanguageDescription("線條數量"), LanguageDisplayName("線條數量"), Category("濾鏡選項")]
             public int Count { get; set; }
+
             /// <summary>
-            /// 
-            /// </summary> 
+            ///
+            /// </summary>
             [LanguageDescription("線條大小"), LanguageDisplayName("線條大小"), Category("濾鏡選項")]
             public int Pixel { get; set; }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             [LanguageDescription("線條顏色"), LanguageDisplayName("線條顏色"), Category("濾鏡選項")]
             public Color BarColor { get; set; }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void InitOption()
         {
             if (_opetion == null) _opetion = CreateOption() as BlindsOption;
         }
+
         private BlindsOption _opetion;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override ImageOption Opetion
         {
@@ -131,11 +134,12 @@ namespace Library.Draw.Effects
             set
             {
                 if (value is BlindsOption == false) throw new ImageException("Opetion is not BlindsOption");
-                _opetion = (BlindsOption) value;
+                _opetion = (BlindsOption)value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override ImageOption CreateOption()
@@ -143,11 +147,12 @@ namespace Library.Draw.Effects
             return new BlindsOption { Count = 5, Pixel = 4, Alignment = AlignmentType.Vertically, BarColor = Color.DodgerBlue };
         }
 
-        #endregion
+        #endregion Option
 
-        #region  Process
+        #region Process
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override Image ProcessBitmap()
@@ -169,12 +174,8 @@ namespace Library.Draw.Effects
                             myPoint[y].X = 0;
                         }
 
-
-
-
                         foreach (Point t in myPoint)
                         {
-
                             for (int k = 0; k < dw; k++)
                             {
                                 for (int i = 0; i < pixel; i++)
@@ -198,17 +199,13 @@ namespace Library.Draw.Effects
                             myPoint[x].X = (x + 1) * dw;
                         }
 
-
-
                         foreach (Point t in myPoint)
                         {
-
                             for (int k = 0; k < dh; k++)
                             {
                                 for (int i = 0; i < pixel; i++)
                                 {
                                     myBitmap.SetPixel(t.X + i, t.Y + k, BarColor);
-
                                 }
                             }
                         }
@@ -217,14 +214,11 @@ namespace Library.Draw.Effects
                 default: throw new ImageException("Not support");
             }
 
-
-
-
-
             return myBitmap;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override unsafe Image UnsafeProcessBitmap()
@@ -290,8 +284,6 @@ namespace Library.Draw.Effects
                             ptr += spaceFirst;
                             foreach (Point t in myPoint)
                             {
-
-
                                 for (int i = 0; i < pixel; i++)
                                 {
                                     ptr[0] = bb;
@@ -300,7 +292,6 @@ namespace Library.Draw.Effects
                                     ptr += 4;
                                 }
                                 ptr += spaceRec;
-
                             }
                             ptr += spaceend;
                         }
@@ -313,7 +304,6 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        #endregion
-
+        #endregion Process
     }
 }

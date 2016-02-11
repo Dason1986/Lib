@@ -7,12 +7,12 @@ using System.Data;
 namespace Library.HelperUtility
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class EmptyUtility
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dictionary"></param>
         /// <returns></returns>
@@ -20,8 +20,9 @@ namespace Library.HelperUtility
         {
             return dictionary == null || dictionary.Count == 0;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
@@ -29,8 +30,9 @@ namespace Library.HelperUtility
         {
             return list == null || list.Count == 0;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
@@ -38,8 +40,9 @@ namespace Library.HelperUtility
         {
             return list == null || list.Count == 0;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="enumerable"></param>
         /// <returns></returns>
@@ -47,8 +50,9 @@ namespace Library.HelperUtility
         {
             return enumerable == null || !enumerable.GetEnumerator().MoveNext();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
@@ -56,8 +60,9 @@ namespace Library.HelperUtility
         {
             return array == null || array.Length == 0;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
@@ -65,8 +70,9 @@ namespace Library.HelperUtility
         {
             return array == null || array.Length == 0;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -74,8 +80,9 @@ namespace Library.HelperUtility
         {
             return dt == null || dt.Rows.Count == 0;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dv"></param>
         /// <returns></returns>
@@ -85,7 +92,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ds"></param>
         /// <returns></returns>
@@ -96,23 +103,19 @@ namespace Library.HelperUtility
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public static class EmptyUtility<T>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static readonly T[] EmptyArray = new T[0];
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static readonly IList<T> EmptyList = new ReadOnlyCollection<T>(EmptyArray);
-
-
-
     }
 }

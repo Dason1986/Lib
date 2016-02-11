@@ -3,12 +3,12 @@
 namespace Library.ComponentModel.ComponentPatterns
 {
     /// <summary>
-    /// Contains details about the success or failure of an item's activation through an 
+    /// Contains details about the success or failure of an item's activation through an
     /// </summary>
     public class ActivationProcessedEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item"></param>
         /// <param name="success"></param>
