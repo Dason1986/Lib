@@ -8,32 +8,30 @@ namespace Library.HelperUtility
     public static class AssemblyUtility
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string GetCallingAssemblyAllText(string path)
+        public static string GetResourcesFileAllTextByCallingAssembly(string path)
         {
-            return GetAllText(Assembly.GetCallingAssembly(), path);
+            return GetResourcesFileAllText(Assembly.GetCallingAssembly(), path);
         }
-
         /// <summary>
-        ///
+        /// 
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string GetExecutingAssemblyAllText(string path)
+        public static string GetResourcesFileAllTextByExecutingAssembly(string path)
         {
-            return GetAllText(Assembly.GetExecutingAssembly(), path);
+            return GetResourcesFileAllText(Assembly.GetExecutingAssembly(), path);
         }
-
         /// <summary>
-        ///
+        /// 
         /// </summary>
         /// <param name="assembly"></param>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string GetAllText(this Assembly assembly, string path)
+        public static string GetResourcesFileAllText(this Assembly assembly, string path)
         {
             if (assembly == null) return null;
             var stream = assembly.GetManifestResourceStream(path);

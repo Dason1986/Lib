@@ -14,17 +14,15 @@ namespace Library.Win.MVP
     ///
     /// </summary>
     /// <typeparam name="TView"></typeparam>
-    public interface IPresenter<out TView> : IPresenter
-       where TView : class, IView
+    public interface IPresenter<TView> : IPresenter
+       where TView : IView 
     {
-        /// <summary>
-        ///
-        /// </summary>
+        
 
         /// <summary>
         ///
         /// </summary>
-        new TView View { get; }
+        TView GetView();
     }
 
     /// <summary>
@@ -152,6 +150,22 @@ namespace Library.Win.MVP
         {
             var handler = ViewAttached;
             if (handler != null) handler(this, e);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TView"></typeparam>
+    public abstract class Presenter<TView> : Presenter, IPresenter<TView> where TView : IView 
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public  virtual TView GetView()
+        {
+            throw new Exception();
         }
     }
 }

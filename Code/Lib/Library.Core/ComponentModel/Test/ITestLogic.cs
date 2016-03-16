@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace Library.Logic
+namespace Library.ComponentModel.Logic
 {
     /// <summary>
     ///

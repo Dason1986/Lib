@@ -97,55 +97,25 @@ namespace Library.Win.MVP
         /// </summary>
         public IViewEngine ViewEngine { get; private set; }
     }
-
+  
     /// <summary>
     ///
     /// </summary>
-    public class ApplicationFacade
+    public class ApplicationFacade : IApplicationFacade
     {
         private ApplicationFacade()
         {
             Message = new ApplicationMessage(this);
             Writer = Console.Out;
-
-            Notify = CreateNotify();
+         
             // UnhandledException();
-            Application.ThreadExit += (x, y) =>
-            {
-                if (Notify != null) Notify.Visible = false;
-            };
-            Notify.Visible = true;
-        }
 
-        internal NotifyIcon Notify { get; private set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="iconPath"></param>
-        public void SetNotifyIcon([NotNull] string iconPath)
-        {
-            if (iconPath == null) throw new ArgumentNullException("iconPath");
-            Notify.Icon = new Icon(iconPath);
         }
+    
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="menu"></param>
-        public void AddNotifyMenuItem(MenuItem menu)
-        {
-            Notify.ContextMenu.MenuItems.Add(menu);
-        }
 
-        private NotifyIcon CreateNotify()
-        {
-            Notify = new NotifyIcon
-            {
-                ContextMenu = new ContextMenu(new MenuItem[] { new MenuItem("Exit", (x, y) => { Application.Exit(); }), }),
-            };
-            return Notify;
-        }
+
 
         /// <summary>
         /// Ωÿ»°∆¡ƒªÉ»»›
@@ -178,8 +148,9 @@ namespace Library.Win.MVP
         /// <summary>
         ///
         /// </summary>
-        public IApplicationMessage Message { get; protected internal set; }
+        public ApplicationMessage Message { get; protected internal set; }
 
+        IApplicationMessage IApplicationFacade.Message { get { return Message; } }
         /// <summary>
         ///
         /// </summary>

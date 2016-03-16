@@ -234,7 +234,7 @@ namespace Library.IDCrad
             var code = StringUtility.TryCast<int>(IDNumber.Substring(16, 1));
             if (code.HasError) throw new IDCardException("轉換值出錯,不為數字", 11001.105, code.Error);
             SixCode = code.Value;
-            Sex = SixCode % 2 == 1 ? SexEnum.Man : SexEnum.Woman;
+            Sex = SixCode % 2 == 1 ? SexEnum.Male : SexEnum.Female;
         }
 
         private void ValidateByChecksumDigit()

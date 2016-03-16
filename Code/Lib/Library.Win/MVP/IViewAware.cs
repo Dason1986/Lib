@@ -26,12 +26,6 @@ namespace Library.Win.MVP
         /// </summary>
         event EventHandler<ViewAttachedEventArgs> ViewAttached;
 
-        /// <summary>
-        /// Gets the view.
-        /// </summary>
-        /// <value>
-        /// The view.
-        /// </value>
-        object View { get; }
+       
     }
 }

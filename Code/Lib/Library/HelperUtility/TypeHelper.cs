@@ -18,6 +18,17 @@ namespace Library.HelperUtility
     public static class TypeHelper
     {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="classType"></param>
+        /// <returns></returns>
+        public static string GetFullName(this Type classType)
+        {
+
+            return string.Format("{0},{1}", classType.FullName, classType.Assembly.GetName().Name);
+        }
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="ex"></param>

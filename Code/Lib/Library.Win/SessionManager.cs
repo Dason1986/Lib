@@ -1,5 +1,7 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Timers;
 
 namespace Library.Win
 {
@@ -8,8 +10,37 @@ namespace Library.Win
     /// </summary>
     public static class SessionManager
     {
-        private static readonly IDictionary<string, object> Dictionary = new ConcurrentDictionary<string, object>();
+        static uint _TimeOut;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static uint TimeOut
+        {
+            get { return _TimeOut; }
+            set
+            {
+                _TimeOut = value;
+            }
+        }
 
+        private static readonly IDictionary<string, SessionItem> Dictionary = new ConcurrentDictionary<string, SessionItem>();
+        class SessionItem
+        {
+            public SessionItem()
+            {
+
+            }
+            public SessionItem(object value)
+            {
+                Value = value;
+            }
+            DateTime _LastTime;
+            object _Value;
+            public DateTime LastTime { get { return _LastTime; } }
+
+            public object Value { get { return _Value; } set { _Value = value; _LastTime = DateTime.Now; } }
+        }
+     
         /// <summary>
         ///
         /// </summary>
@@ -18,8 +49,10 @@ namespace Library.Win
         /// <returns></returns>
         public static TModel GetSession<TModel>(string key)
         {
+            if (!Dictionary.ContainsKey(key)) return default(TModel);
             var obj = Dictionary[key];
-            if (obj != null && obj is TModel) return (TModel)obj;
+
+            if (obj.Value != null && obj.Value is TModel) return (TModel)obj.Value;
             return default(TModel);
         }
 
@@ -30,7 +63,15 @@ namespace Library.Win
         /// <returns></returns>
         public static object GetSession(string key)
         {
-            return Dictionary[key]; ;
+            if (!Dictionary.ContainsKey(key)) return null;
+            var item = Dictionary[key];
+            if ((DateTime.Now - item.LastTime).TotalMinutes > 20)
+            {
+                Remove(key);
+                return null;
+            }
+
+            return item.Value;
         }
 
         /// <summary>
@@ -42,11 +83,12 @@ namespace Library.Win
         {
             if (Dictionary.ContainsKey(key))
             {
-                Dictionary[key] = value;
+                var item = Dictionary[key];
+                item.Value = value;
             }
             else
             {
-                Dictionary.Add(key, value);
+                Dictionary.Add(key, new SessionItem(value));
             }
         }
 

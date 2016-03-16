@@ -26,6 +26,30 @@ namespace Library.HelperUtility
             fs.Dispose();
             return BitConverter.ToString(bs).Replace("-", "");
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filesize"></param>
+        /// <returns></returns>
+        public static string GetFileSizeDisplay(long filesize)
+        {
+            if (filesize < 1024) return string.Format("{0}b", filesize);
+            string[] unit = { "KB","MB" ,"GB","TB","PB"};
+            const int filter = 1024;
+            long unitsize = 1;
+            var flag = true;
+            decimal size= filesize;
+            int index = -1;
+            while (flag)
+            {
+                size = size / filter;
+                unitsize = unitsize * filter;
+                flag = size > filter;
+                index++;
+                if (index >= unit.Length - 1) flag = false;
+            }
+            return string.Format("{0:f2}{1}",size,unit[index]);
+        }
 
         /// <summary>
         /// 取文件MD5值

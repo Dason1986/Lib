@@ -1,7 +1,7 @@
-using Library.Annotations;
+锘縰sing Library.Annotations;
+using Library.ComponentModel.Logic;
 using Library.Draw;
-using Library.IO;
-using Library.Logic;
+using Library.IO; 
 using System;
 using System.IO;
 using PageSize = Library.Draw.PageSize;
@@ -72,13 +72,13 @@ namespace Library.FileExtension
         {
             if (BufferStream == null) throw new Exception();
 
-            OnMessge("生成文件");
+            OnMessge("鐢熸垚鏂囦欢");
             BuildFile();
-            OnMessge("生成文件信息");
+            OnMessge("鐢熸垚鏂囦欢淇℃伅");
             BuilderFileInfo();
-            OnMessge("生成文件模版");
+            OnMessge("鐢熸垚鏂囦欢妯＄増");
             BuildFileTemplate();
-            OnMessge("生成數據");
+            OnMessge("鐢熸垚鏁告摎");
             BuildFileData();
             Save();
         }

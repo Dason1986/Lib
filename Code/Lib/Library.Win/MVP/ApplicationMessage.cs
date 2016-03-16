@@ -1,10 +1,13 @@
+﻿using Library.Annotations;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Library.Win.MVP
-{ /// <summary>
-  ///
-  /// </summary>
+{
+    /// <summary>
+    ///
+    /// </summary>
     public interface IApplicationMessage
     {
         /// <summary>
@@ -55,10 +58,13 @@ namespace Library.Win.MVP
     public sealed class ApplicationMessage : IApplicationMessage
     {
         private readonly ApplicationFacade _facade;
+        private NotifyManagement _notify;
 
         internal ApplicationMessage(ApplicationFacade facade)
         {
             _facade = facade;
+            _notify = new NotifyManagement();
+            _notify.CreateNotify();
         }
 
         /// <summary>
@@ -89,7 +95,7 @@ namespace Library.Win.MVP
         /// <param name="timeout"></param>
         public void Notification(string title, string message, int timeout)
         {
-            _facade.Notify.ShowBalloonTip(timeout, title, message, ToolTipIcon.Info);
+            _notify.ShowTip(timeout, title, message);
         }
 
         /// <summary>
@@ -143,6 +149,57 @@ namespace Library.Win.MVP
         public void SetStatusBarText(string message)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        class NotifyManagement
+        {
+            internal NotifyIcon Notify { get; private set; }
+
+            internal NotifyIcon CreateNotify()
+            {
+                Notify = new NotifyIcon
+                {
+                    ContextMenu = new ContextMenu(new MenuItem[] { new MenuItem("Exit", (x, y) => { Application.Exit(); }), }),
+                };
+                Notify.Visible = true;
+                Application.ThreadExit += (x, y) =>
+                {
+                    if (Notify != null) Notify.Visible = false;
+                };
+                return Notify;
+            }
+
+            /// <summary>
+            ///
+            /// </summary>
+            /// <param name="iconPath"></param>
+            public void SetIcon([NotNull] string iconPath)
+            {
+                if (iconPath == null) throw new ArgumentNullException("iconPath");
+                Notify.Icon = new Icon(iconPath);
+            }
+
+            /// <summary>
+            ///
+            /// </summary>
+            /// <param name="menu"></param>
+            public void AddMenuItem(MenuItem menu)
+            {
+                Notify.ContextMenu.MenuItems.Add(menu);
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="timeout"></param>
+            /// <param name="title"></param>
+            /// <param name="message"></param>
+            public void ShowTip(int timeout, string title, string message)
+            {
+                Notify.ShowBalloonTip(timeout, title, message, ToolTipIcon.Info);
+            }
         }
     }
 }

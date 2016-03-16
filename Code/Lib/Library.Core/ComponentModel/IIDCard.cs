@@ -55,11 +55,11 @@ namespace Library
         /// <summary>
         /// 女
         /// </summary>
-        Woman,
+        Female,
 
         /// <summary>
         /// 男
         /// </summary>
-        Man,
+        Male,
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="testobj\ConstValue.cs" />
     <Compile Include="Test\AdoTset.cs" />
     <Compile Include="Test\EnumerableTest.cs" />
+    <Compile Include="Test\FileSizeTest.cs" />
     <Compile Include="Test\IdentityGeneratorTest.cs" />
     <Compile Include="Test\LanguageTest.cs" />
     <Compile Include="Test\NullableTset.cs" />

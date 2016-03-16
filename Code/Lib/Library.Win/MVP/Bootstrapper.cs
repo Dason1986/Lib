@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Library.Win.MVP
 {
@@ -7,6 +8,7 @@ namespace Library.Win.MVP
     /// </summary>
     public abstract class Bootstrapper<T> where T : IPresenter, new()
     {
+       
         /// <summary>
         ///
         /// </summary>
@@ -16,7 +18,14 @@ namespace Library.Win.MVP
         ///
         /// </summary>
         public ApplicationFacade Facade { get; protected set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime StartedTime { get; protected set; }
+        /// <summary>
+        /// 已經運行時間
+        /// </summary>
+        public TimeSpan RunTime { get { return DateTime.Now - StartedTime; } }
         /// <summary>
         ///
         /// </summary>
@@ -27,6 +36,9 @@ namespace Library.Win.MVP
             IPresenter pre = new T();
             Context = new ApplicationContext { MainForm = pre.GetView() as Form };
             Application.Run(Context);
+
+
+
         }
 
         /// <summary>
@@ -35,6 +47,8 @@ namespace Library.Win.MVP
         protected virtual void OnInitiation()
         {
             Facade = ApplicationFacade.Instance;
+            System.Diagnostics.Process current = System.Diagnostics.Process.GetCurrentProcess();
+            StartedTime = current.StartTime;
         }
 
         /// <summary>
