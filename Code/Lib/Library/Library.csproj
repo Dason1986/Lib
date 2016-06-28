@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitComputing.cs" />
+    <Compile Include="ComponentModel\BaseLogic.cs" />
     <Compile Include="CustomExceptionProvider.cs" />
     <Compile Include="Date\HolidayBuilder.cs" />
     <Compile Include="FastReflection\ConstructorInvoker.cs" />
@@ -93,7 +94,6 @@
     <Compile Include="IDCrad\IDCardException.cs" />
     <Compile Include="IDCrad\MacauIDCard.cs" />
     <Compile Include="IDCrad\TaiwanIDCard.cs" />
-    <Compile Include="IoC.cs" />
     <Compile Include="PermutationAndCombination.cs" />
     <Compile Include="HelperUtility\ADONetHepler.cs" />
     <Compile Include="HelperUtility\CompareUtility.cs" />
@@ -105,7 +105,6 @@
     <Compile Include="HelperUtility\ParameterHeler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RangeItemHelper.cs" />
-    <Compile Include="UDPTraceListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.Core\Library.Core.csproj">

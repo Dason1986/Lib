@@ -24,9 +24,9 @@ namespace Library.ComponentModel.Model
         /// 
         /// </summary>
         int Total { get; }
-     
+
     }
-   
+
     /// <summary>
     /// 
     /// </summary>
@@ -52,9 +52,9 @@ namespace Library.ComponentModel.Model
             PageSize = pageSize;
             PageIndex = pageIndex;
             int inndexBegin = pageIndex * pageSize;
-          
-        }  
-       
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,12 +64,12 @@ namespace Library.ComponentModel.Model
         /// </summary>
         public int PageSize { get; protected set; }
 
-        
+
         /// <summary>
         /// 
         /// </summary>
         public int Total { get; protected set; }
-     
+
     }
     /// <summary>
     ///
@@ -79,52 +79,25 @@ namespace Library.ComponentModel.Model
         /// <summary>
         /// 
         /// </summary>
-        object ID { get; set; }
+        Guid ID { get; set; }
         /// <summary>
         /// 
         /// </summary>
         StatusCode StatusCode { get; set; }
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    public class Entity : IEntity
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public Guid ID { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public StatusCode StatusCode { get; set; }
 
-        object IEntity.ID
-        {
-            get
-            {
-                return ID;
-            }
-
-            set
-            {
-                if (value is Guid)
-                    ID = (Guid)value;
-            }
-        }
-    }
     /// <summary>
     /// 
     /// </summary>
     public interface ICreatedInfo
     {
         /// <summary>
-        /// „“½¨ÈÕÆÚ
+        /// å‰µå»ºæ—¥æœŸ
         /// </summary>
         DateTime Created { get; set; }
 
         /// <summary>
-        /// „“½¨Õß
+        /// å‰µå»ºè€…
         /// </summary>
         string CreatedBy { get; set; }
     }
@@ -134,12 +107,12 @@ namespace Library.ComponentModel.Model
     public interface IModifiedInfo
     {
         /// <summary>
-        /// ÐÞ¸ÄÈÕÆÚ
+        /// ä¿®æ”¹æ—¥æœŸ
         /// </summary>
         DateTime Modified { get; set; }
 
         /// <summary>
-        /// ÐÞ¸ÄÕß
+        /// ä¿®æ”¹è€…
         /// </summary>
         string ModifiedBy { get; set; }
     }

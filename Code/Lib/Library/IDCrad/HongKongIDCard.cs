@@ -7,7 +7,7 @@ namespace Library.IDCrad
     /// <summary>
     /// 中華人民共和國香港特別行政區居民身份證
     /// </summary>
-    [Guid("BE8FEC7D-7DE9-46F1-A1FF-A2B257CAEDBC")]
+    [Guid("01FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865")]
     public class HongKongIDCard : IIDCard
     {
         /*
@@ -54,7 +54,7 @@ Z	持证人报称在香港出生
 
          */
 
-        private static readonly Guid Cardtype = Guid.Parse("BE8FEC7D-7DE9-46F1-A1FF-A2B257CAEDBC");
+        private static readonly Guid Cardtype = Guid.Parse("01FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865");
         private const string Cardname = "中華人民共和國香港特別行政區居民身份證";
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace TestWinform
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            UDPTraceListener listener = new UDPTraceListener(9090);
+        //    UDPTraceListener listener = new UDPTraceListener(9090);
 
             var file = typeof(SheetForm).Assembly.GetManifestResourceStream("TestWinform.original.jpg");
             if (file != null)

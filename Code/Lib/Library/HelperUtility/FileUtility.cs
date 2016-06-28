@@ -26,6 +26,36 @@ namespace Library.HelperUtility
             fs.Dispose();
             return BitConverter.ToString(bs).Replace("-", "");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static Guid GetFileGuid(string path)
+        {
+            if (!File.Exists(path)) return Guid.Empty;
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            byte[] bs = MD5.Create().ComputeHash(fs);
+            fs.Close();
+            fs.Dispose();
+            return new Guid(bs);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static Guid GetFileGuid(Stream stream)
+        {
+            if (stream.Position != 0)
+                stream.Seek(0, SeekOrigin.Begin);
+
+
+            byte[] bs = MD5.Create().ComputeHash(stream);
+            stream.Seek(0, SeekOrigin.Begin);
+            return new Guid(bs);
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -34,11 +64,11 @@ namespace Library.HelperUtility
         public static string GetFileSizeDisplay(long filesize)
         {
             if (filesize < 1024) return string.Format("{0}b", filesize);
-            string[] unit = { "KB","MB" ,"GB","TB","PB"};
+            string[] unit = { "KB", "MB", "GB", "TB", "PB" };
             const int filter = 1024;
             long unitsize = 1;
             var flag = true;
-            decimal size= filesize;
+            decimal size = filesize;
             int index = -1;
             while (flag)
             {
@@ -48,7 +78,7 @@ namespace Library.HelperUtility
                 index++;
                 if (index >= unit.Length - 1) flag = false;
             }
-            return string.Format("{0:f2}{1}",size,unit[index]);
+            return string.Format("{0:f2}{1}", size, unit[index]);
         }
 
         /// <summary>

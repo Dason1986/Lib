@@ -63,6 +63,7 @@
     <Compile Include="ComponentModel\IO\BytesSize.cs" />
     <Compile Include="ComponentModel\IValueCalculator.cs" />
     <Compile Include="ComponentModel\Model\IEntity.cs" />
+    <Compile Include="ComponentModel\Test\IStart.cs" />
     <Compile Include="ResourceManagement.cs" />
     <Compile Include="ComponentModel\IO\MDS\BaseSystemInfo.cs" />
     <Compile Include="ComponentModel\IO\MDS\DMSDirectoryInfo.cs" />
@@ -94,7 +95,6 @@
     <Compile Include="ComponentModel\IDisplay.cs" />
     <Compile Include="ComponentModel\ComponentPatterns\IGuardClose.cs" />
     <Compile Include="ComponentModel\ErrorMessageBuilder.cs" />
-    <Compile Include="ComponentModel\ILogger.cs" />
     <Compile Include="ComponentModel\IHoliday.cs" />
     <Compile Include="Date\LunarHoliday.cs" />
     <Compile Include="Date\SolarHoliday.cs" />
@@ -116,7 +116,6 @@
     <Compile Include="ComponentModel\Control\IQueryDataProvider.cs" />
     <Compile Include="ComponentModel\IPlugin.cs" />
     <Compile Include="ComponentModel\IRangeItem.cs" />
-    <Compile Include="ComponentModel\IUserInfo.cs" />
     <Compile Include="ComponentModel\IO\DocumentInfo.cs" />
     <Compile Include="ComponentModel\Model\EditableModel.cs" />
     <Compile Include="Ex\LibException.cs" />

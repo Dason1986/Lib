@@ -9,7 +9,7 @@ namespace Library.IDCrad
     /// <summary>
     /// 中華人民共和國臺灣居民身份證
     /// </summary>
-    [Guid("385F62C2-2255-4886-A81E-01A5C4355DAB")]
+    [Guid("03FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865")]
     public class TaiwanIDCard : IIDCard
     {
         /*
@@ -81,7 +81,7 @@ n1\times 1+n2\times 9+n3\times 8 +n4\times 7+n5\times 6 +n6\times 5+n7\times 4 +
             {"X","30","澎湖县"},{"Z","33","连江县"},{"L","20","台中县"},{"R","25","台南县"},{"S","26","高雄县"},{"Y","31","阳明山管理局"}
         };
 
-        private static readonly Guid Cardtype = Guid.Parse("385F62C2-2255-4886-A81E-01A5C4355DAB");
+        private static readonly Guid Cardtype = Guid.Parse("03FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865");
         private const string Cardname = "中華人民共和國臺灣居民身份證";
 
         /// <summary>

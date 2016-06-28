@@ -15,7 +15,7 @@ namespace Library.IDCrad
     /// <summary>
     /// 中華人民共和國大陆居民身份證
     /// </summary>
-    [Guid("98FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865")]
+    [Guid("00FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865")]
     public class ChineseIDCard : IIDCard
     {
         /*
@@ -80,7 +80,7 @@ namespace Library.IDCrad
             {7121,"台湾省"},{81,"香港特别行政区"},{82,"澳门特别行政区"},
         };
 
-        private static readonly Guid Cardtype = Guid.Parse("98FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865");
+        private static readonly Guid Cardtype = Guid.Parse("00FBE5BE-1030-4AB6-A9D1-F0D3E7CF3865");
         private const string Cardname = "中華人民共和國大陆居民身份證";
 
         /// <summary>
