@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Win.Controls" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Win" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Management" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Core" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Draw" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.DBProvider" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.DialogDebugger" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Design" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Domain" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.AD" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Domain.Data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../ClassLibrary1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.Web" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Library.FileExtension" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../TestPj" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../ImageManagement" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../ConsoleApplication1" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../ConsoleApplication1/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../ConsoleApplication1/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../ImageManagement/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.AD/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.AD/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Core/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.DBProvider/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Design/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.DialogDebugger/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Domain.Data/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Domain.Data/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Domain/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Domain/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Draw/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.FileExtension/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.FileExtension/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Management/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Management/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Web/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Win.Controls/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library.Win/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Library/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TestPj/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

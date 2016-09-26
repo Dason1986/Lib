@@ -64,6 +64,7 @@
     <Compile Include="ComponentModel\IValueCalculator.cs" />
     <Compile Include="ComponentModel\Model\IEntity.cs" />
     <Compile Include="ComponentModel\Test\IStart.cs" />
+    <Compile Include="IIoc.cs" />
     <Compile Include="ResourceManagement.cs" />
     <Compile Include="ComponentModel\IO\MDS\BaseSystemInfo.cs" />
     <Compile Include="ComponentModel\IO\MDS\DMSDirectoryInfo.cs" />

@@ -110,12 +110,12 @@ namespace Library.FileExtension
         }
 
         /// <summary>
-        /// ²»‰òÖ¸¶¨ĞĞ”µ•rÌî³ä¿Õ°×ĞĞÓ›ä›
+        /// ç¥¥ï°ç¡Œéš…ä¿´îœ’îæ²“å–ƒè«¾å•ä¿´??
         /// </summary>
         public bool FillRows { get; set; }
 
         /// <summary>
-        /// ”µ“ş±í±ØíšÓĞ¶àÉÙĞĞÓ›ä›
+        /// îœ’îš¾æ¡¶æ–›?è¡„å—£å±¾ä¿´??
         /// </summary>
         public int FillRowCounts { get; set; }
 
@@ -123,7 +123,7 @@ namespace Library.FileExtension
         public bool FillPage { get; set; }
 
         /// <summary>
-        /// ÏÂÒ»í“•r’ñÓÃég¾à¶¨Î»
+        /// ç‹Ÿç¨?îî˜”èššå¶²æ“’éš…å¼‡
         /// </summary>
         public bool NextPageMarginPosition { get; set; }
     }

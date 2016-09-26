@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Reflection;
 
 namespace Library.HelperUtility
@@ -131,6 +132,40 @@ namespace Library.HelperUtility
                 itemEditableObject.EndEdit();
             }
             //  return item;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        public static DbConnection Clone(this DbConnection connection)
+        {
+            if (connection == null) return null;
+            if (connection is ICloneable)
+            {
+                return ((ICloneable)connection).Clone() as DbConnection;
+            }
+            var factory = GetDbProviderFactory(connection);
+            var newconnection = factory.CreateConnection();
+            if (newconnection != null)
+            {
+                newconnection.ConnectionString = connection.ConnectionString;
+                return newconnection;
+            }
+            return null;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        public static DbProviderFactory GetDbProviderFactory(DbConnection connection)
+        {
+            var propertyinfo = connection.GetType().GetProperty("DbProviderFactory", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (propertyinfo == null) return null;
+            var obj = propertyinfo.GetValue(connection, null);
+            if (obj is DbProviderFactory) return (DbProviderFactory)obj;
+            return null;
         }
     }
 }

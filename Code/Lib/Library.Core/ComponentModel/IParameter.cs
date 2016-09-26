@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Library
@@ -39,7 +40,23 @@ namespace Library
         /// <param name="value"></param>
         void SetValue(string value);
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface ISetting
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
+        void Form(IEnumerable<IParameter> parameters);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<IParameter> To();
+    }
     /// <summary>
     ///
     /// </summary>
