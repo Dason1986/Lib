@@ -94,12 +94,12 @@ namespace Library.ComponentModel.Model
         /// <summary>
         /// 創建日期
         /// </summary>
-        DateTime Created { get; set; }
+        DateTime Created { get;  }
 
         /// <summary>
         /// 創建者
         /// </summary>
-        string CreatedBy { get; set; }
+        string CreatedBy { get;  }
     }
     /// <summary>
     /// 
@@ -109,11 +109,11 @@ namespace Library.ComponentModel.Model
         /// <summary>
         /// 修改日期
         /// </summary>
-        DateTime Modified { get; set; }
+        DateTime Modified { get;  }
 
         /// <summary>
         /// 修改者
         /// </summary>
-        string ModifiedBy { get; set; }
+        string ModifiedBy { get; }
     }
 }

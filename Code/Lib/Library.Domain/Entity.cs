@@ -1,5 +1,6 @@
 ﻿using System;
 using Library.ComponentModel.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace Library.Domain
 {
@@ -8,9 +9,8 @@ namespace Library.Domain
     /// </summary>
     public abstract class Entity : IEntity
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        [Required]
+        [Key]
         public Guid ID { get; set; }
         /// <summary>
         /// 
