@@ -1734,19 +1734,19 @@ namespace Library.Draw
                     case 282:
                     case 283:
                         {
-                            if (exif.Resolution == null)
+                            if (exif.Resolution == null && image.PropertyIdList.Contains(282) && image.PropertyIdList.Contains(283))
                                 exif.Resolution = new Size(GetInt(image, 282), GetInt(image, 283)); break;
                         }
                     case 20525:
                     case 20526:
                         {
-                            if (exif.Pix == null)
+                            if (exif.Pix == null && image.PropertyIdList.Contains(20525) && image.PropertyIdList.Contains(20526))
                                 exif.ThumbnailResolution = new Size(GetInt(image, 20525), GetInt(image, 20526)); break;
                         }
                     case 40962:
                     case 40963:
                         {
-                            if (exif.Pix == null)
+                            if (exif.Pix == null && image.PropertyIdList.Contains(40962) && image.PropertyIdList.Contains(40963))
                                 exif.Pix = new Size(GetInt(image, 40962), GetInt(image, 40963)); break;
                         }
 
@@ -1878,12 +1878,25 @@ namespace Library.Draw
 
         private static short GetShort(Image getImage, int hex)
         {
-            return BitConverter.ToInt16(getImage.GetPropertyItem(hex).Value, 0);
+            var propety = getImage.GetPropertyItem(hex);
+            //     if (propety.Type != 5) return 0;
+            var value = propety.Value;
+            if (propety.Value.Length == 2)
+                return BitConverter.ToInt16(value, 0);
+            return 0;
         }
 
         private static int GetInt(Image getImage, int hex)
         {
-            return BitConverter.ToInt32(getImage.GetPropertyItem(hex).Value, 0);
+            var propety = getImage.GetPropertyItem(hex);
+            //     if (propety.Type != 5) return 0;
+            var value = propety.Value;
+            if (propety.Value.Length == 2)
+                return BitConverter.ToInt16(value, 0);
+          
+            if (propety.Value.Length == 4)
+                return BitConverter.ToInt32(value, 0);
+            return 0;
         }
 
         private static double GetDouble(Image getImage, int hex)
@@ -1893,6 +1906,8 @@ namespace Library.Draw
             var value = propety.Value;
             switch (propety.Value.Length)
             {
+                case 2:
+                    return BitConverter.ToInt16(value, 0);
                 case 4:
                     return BitConverter.ToUInt32(value, 0);
 
