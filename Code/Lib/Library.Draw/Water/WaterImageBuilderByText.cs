@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.IO;
 
 namespace Library.Draw.Water
@@ -36,7 +36,7 @@ namespace Library.Draw.Water
         public override Image ProcessBitmap()
         {
             if (Opetion == null) throw new ImageException("Opetion is null");
-            if (TextFont == null) TextFont = new Font("ºÚÌå", 20);
+            if (TextFont == null) TextFont = new Font("SimSun", 20);
             MemoryStream sourcestream = new MemoryStream(SourceImgBuffter);
 
             var sourceImg = Image.FromStream(sourcestream);

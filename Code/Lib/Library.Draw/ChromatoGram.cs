@@ -1,555 +1,555 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 
 namespace Library.Draw
 {
     namespace ChromatoGram
     {
         /*
-        É«×VíÔ´£º http://baike.baidu.com/view/48715.htm
+        è‰²è­œä¾†æºï¼š http://baike.baidu.com/view/48715.htm
          */
 
         /// <summary>
-        /// ¼tÉ«
+        /// ç´…è‰²
         /// </summary>
         public static class RedColor
         {
             /// <summary>
-            /// Æ·ºì¡¢ÑóºìMagenta£¨ÈÈÇé£©
+            /// å“çº¢ã€æ´‹çº¢Magentaï¼ˆçƒ­æƒ…ï¼‰
             /// </summary>
             public static readonly Color Magenta = Color.FromArgb(207, 0, 112);
 
             /// <summary>
-            /// ëÙÖ¬ºìCarmine£¨´óµ¨£©
+            /// èƒ­è„‚çº¢Carmineï¼ˆå¤§èƒ†ï¼‰
             /// </summary>
             public static readonly Color Carmine = Color.FromArgb(215, 0, 64);
 
             /// <summary>
-            /// ±¦Ê¯ºìRuby£¨¸»¹ó£©
+            /// å®çŸ³çº¢Rubyï¼ˆå¯Œè´µï¼‰
             /// </summary>
             public static readonly Color Ruby = Color.FromArgb(200, 8, 82);
 
             /// <summary>
-            /// Ãµ¹åºìRose-red£¨µäÑÅ£©
+            /// ç«ç‘°çº¢Rose-redï¼ˆå…¸é›…ï¼‰
             /// </summary>
             public static readonly Color RoseRed = Color.FromArgb(230, 27, 100);
 
             /// <summary>
-            /// É½²èºìCamellia£¨Î¢Ğ¦£©
+            /// å±±èŒ¶çº¢Camelliaï¼ˆå¾®ç¬‘ï¼‰
             /// </summary>
             public static readonly Color Camellia = Color.FromArgb(220, 90, 111);
 
             /// <summary>
-            /// Ãµ¹å·ÛRose-pink£¨Å®ÈËÎ¶£©
+            /// ç«ç‘°ç²‰Rose-pinkï¼ˆå¥³äººå‘³ï¼‰
             /// </summary>
             public static readonly Color RosePink = Color.FromArgb(238, 134, 145);
 
             /// <summary>
-            /// ×ÏºìÉ«Opera-mauve£¨ÓÅÃÀ£©
+            /// ç´«çº¢è‰²Opera-mauveï¼ˆä¼˜ç¾ï¼‰
             /// </summary>
             public static readonly Color OperaMauve = Color.FromArgb(225, 152, 192);
 
             /// <summary>
-            /// Éºº÷·ÛCoral-pink£¨ÎÂË³£©
+            /// çŠç‘šç²‰Coral-pinkï¼ˆæ¸©é¡ºï¼‰
             /// </summary>
             public static readonly Color CoralPink = Color.FromArgb(241, 156, 159);
 
             /// <summary>
-            /// »ğÁÒÄñFlamingo£¨¿É°®£©
+            /// ç«çƒˆé¸ŸFlamingoï¼ˆå¯çˆ±ï¼‰
             /// </summary>
             public static readonly Color Flamingo = Color.FromArgb(245, 178, 178);
 
             /// <summary>
-            /// µ­·ÛPale-pink£¨ÑÅÖÂ£©
+            /// æ·¡ç²‰Pale-pinkï¼ˆé›…è‡´ï¼‰
             /// </summary>
             public static readonly Color PalePink = Color.FromArgb(247, 200, 207);
 
             /// <summary>
-            /// ±´¿Ç·ÛShell-pink£¨´¿Õæ£©
+            /// è´å£³ç²‰Shell-pinkï¼ˆçº¯çœŸï¼‰
             /// </summary>
             public static readonly Color ShellPink = Color.FromArgb(248, 198, 181);
 
             /// <summary>
-            /// µ­·Û£¬Ó¤¶ù·ÛBaby-pink£¨ÃÀÀö¶¯ÈË£©
+            /// æ·¡ç²‰ï¼Œå©´å„¿ç²‰Baby-pinkï¼ˆç¾ä¸½åŠ¨äººï¼‰
             /// </summary>
             public static readonly Color BabyPink = Color.FromArgb(252, 229, 223);
 
             /// <summary>
-            /// öÙÓã·ÛSalmon-pink£¨ÓĞÈ¤£©
+            /// é²‘é±¼ç²‰Salmon-pinkï¼ˆæœ‰è¶£ï¼‰
             /// </summary>
             public static readonly Color SalmonPink = Color.FromArgb(242, 155, 135);
 
             /// <summary>
-            /// ÖìºìVermilion£¨»ı¼«£©
+            /// æœ±çº¢Vermilionï¼ˆç§¯æï¼‰
             /// </summary>
             public static readonly Color Vermilion = Color.FromArgb(233, 71, 41);
 
             /// <summary>
-            /// ç­ºìscarlet£¨ÉúÃüÁ¦£©
+            /// ç»›çº¢scarletï¼ˆç”Ÿå‘½åŠ›ï¼‰
             /// </summary>
             public static readonly Color Scarlet = Color.FromArgb(230, 0, 18);
 
             /// <summary>
-            /// ÉîºìStrong-red£¨»ªÀö£©
+            /// æ·±çº¢Strong-redï¼ˆåä¸½ï¼‰
             /// </summary>
             public static readonly Color StrongRed = Color.FromArgb(216, 0, 15);
 
             /// <summary>
-            /// ç³ºìCardinal-red£¨ÍşÑÏ£©
+            /// ç»¯çº¢Cardinal-redï¼ˆå¨ä¸¥ï¼‰
             /// </summary>
             public static readonly Color CardinalRed = Color.FromArgb(164, 0, 39);
 
             /// <summary>
-            /// ¾ÆºìBuraunby£¨³äÊµ£©
+            /// é…’çº¢Buraunbyï¼ˆå……å®ï¼‰
             /// </summary>
             public static readonly Color Buraunby = Color.FromArgb(102, 25, 45);
 
             /// <summary>
-            /// ÍÁºìOld-rose£¨ÈáÈí£©
+            /// åœŸçº¢Old-roseï¼ˆæŸ”è½¯ï¼‰
             /// </summary>
             public static readonly Color OldRose = Color.FromArgb(194, 115, 127);
         }
 
         /// <summary>
-        /// ³ÈÉ«
+        /// æ©™è‰²
         /// </summary>
         public static class OrangeColor
         {
             /// <summary>
-            /// ³ÈÉ«Tangerine£¨ÉúÆø²ª²ª£©
+            /// æ©™è‰²Tangerineï¼ˆç”Ÿæ°”å‹ƒå‹ƒï¼‰
             /// </summary>
             public static readonly Color Tangerine = Color.FromArgb(234, 85, 32);
 
             /// <summary>
-            /// ÊÁ×ÓÉ«Persimmom£¨¿ªÀÊ£©
+            /// æŸ¿å­è‰²Persimmomï¼ˆå¼€æœ—ï¼‰
             /// </summary>
             public static readonly Color Persimmom = Color.FromArgb(237, 110, 61);
 
             /// <summary>
-            /// éÙ»ÆÉ«Orange£¨ÃÀºÃ£©
+            /// æ©˜é»„è‰²Orangeï¼ˆç¾å¥½ï¼‰
             /// </summary>
             public static readonly Color Orange = Color.FromArgb(237, 110, 61);
 
             /// <summary>
-            /// Ì«Ñô³ÈSun-orange£¨·áÊÕ£©
+            /// å¤ªé˜³æ©™Sun-orangeï¼ˆä¸°æ”¶ï¼‰
             /// </summary>
             public static readonly Color SunOrange = Color.FromArgb(241, 141, 0);
 
             /// <summary>
-            /// ÈÈ´ø³ÈTropical-orange£¨»ÃÏë£©
+            /// çƒ­å¸¦æ©™Tropical-orangeï¼ˆå¹»æƒ³ï¼‰
             /// </summary>
             public static readonly Color TropicalOrange = Color.FromArgb(243, 152, 57);
 
             /// <summary>
-            /// ·äÃÛÉ«Honey-orange£¨Çá¿ì£©
+            /// èœ‚èœœè‰²Honey-orangeï¼ˆè½»å¿«ï¼‰
             /// </summary>
             public static readonly Color HoneyOrange = Color.FromArgb(249, 194, 112);
 
             /// <summary>
-            /// ĞÓ»ÆÉ«Apricot£¨ÎŞĞ°£©
+            /// æé»„è‰²Apricotï¼ˆæ— é‚ªï¼‰
             /// </summary>
             public static readonly Color Apricot = Color.FromArgb(229, 169, 107);
 
             /// <summary>
-            ///Î±×°É³Sandbeige£¨ÌìÕæ£©
+            ///ä¼ªè£…æ²™Sandbeigeï¼ˆå¤©çœŸï¼‰
             /// </summary>
             public static readonly Color Sandbeige = Color.FromArgb(236, 214, 202);
 
             /// <summary>
-            /// Ç³²èÉ«¡¢Ã×É«Beige£¨´¿ÆÓ£©
+            /// æµ…èŒ¶è‰²ã€ç±³è‰²Beigeï¼ˆçº¯æœ´ï¼‰
             /// </summary>
             public static readonly Color Beige = Color.FromArgb(227, 204, 169);
 
             /// <summary>
-            /// Ç³ÍÁÉ«Pale-ocre£¨ÎÂºÍ£©
+            /// æµ…åœŸè‰²Pale-ocreï¼ˆæ¸©å’Œï¼‰
             /// </summary>
             public static readonly Color PaleOcre = Color.FromArgb(211, 181, 148);
 
             /// <summary>
-            /// ÍÕÉ«Camel£¨ÖÊÆÓ£©
+            /// é©¼è‰²Camelï¼ˆè´¨æœ´ï¼‰
             /// </summary>
             public static readonly Color Camel = Color.FromArgb(181, 134, 84);
 
             /// <summary>
-            /// Ò¬×ØÉ«Coconets-brown£¨¹Åµä£©
+            /// æ¤°æ£•è‰²Coconets-brownï¼ˆå¤å…¸ï¼‰
             /// </summary>
             public static readonly Color CoconetsBrown = Color.FromArgb(106, 51, 21);
 
             /// <summary>
-            /// ×ØÉ«¡¢²èÉ«Brown£¨°²¶¨£©
+            /// æ£•è‰²ã€èŒ¶è‰²Brownï¼ˆå®‰å®šï¼‰
             /// </summary>
             public static readonly Color Brown = Color.FromArgb(113, 59, 18);
 
             /// <summary>
-            /// ¿§·ÈCoffee£¨¼áÊµ£©
+            /// å’–å•¡Coffeeï¼ˆåšå®ï¼‰
             /// </summary>
             public static readonly Color Coffee = Color.FromArgb(106, 75, 35);
         }
 
         /// <summary>
-        /// üSÉ«
+        /// é»ƒè‰²
         /// </summary>
         public static class YellowColor
         {
             /// <summary>
-            /// ½ğÕµ»¨Marigold£¨»ªÀö£©
+            /// é‡‘ç›èŠ±Marigoldï¼ˆåä¸½ï¼‰
             /// </summary>
             public static readonly Color Marigold = Color.FromArgb(247, 171, 0);
 
             /// <summary>
-            /// ¸õ»ÆChrome-yellow£¨Éú¶¯£©
+            /// é“¬é»„Chrome-yellowï¼ˆç”ŸåŠ¨ï¼‰
             /// </summary>
             public static readonly Color ChromeYellow = Color.FromArgb(253, 208, 0);
 
             /// <summary>
-            /// ÜÔÀòJasmine£¨ÈáºÍ£©
+            /// èŒ‰è‰Jasmineï¼ˆæŸ”å’Œï¼‰
             /// </summary>
             public static readonly Color Jasmine = Color.FromArgb(254, 221, 120);
 
             /// <summary>
-            /// ÏóÑÀÉ«Ivory£¨¼òÆÓ£©
+            /// è±¡ç‰™è‰²Ivoryï¼ˆç®€æœ´ï¼‰
             /// </summary>
             public static readonly Color Ivory = Color.FromArgb(235, 229, 209);
 
             /// <summary>
-            /// ÏãéÄ»ÆChampagne-yellow£¨ÉÁÒ«£©
+            /// é¦™æ§Ÿé»„Champagne-yellowï¼ˆé—ªè€€ï¼‰
             /// </summary>
             public static readonly Color ChampagneYellow = Color.FromArgb(255, 249, 117);
 
             /// <summary>
-            /// ÔÂÁÁ»ÆMoon-yellow£¨ÖÇ»Û£©
+            /// æœˆäº®é»„Moon-yellowï¼ˆæ™ºæ…§ï¼‰
             /// </summary>
             public static readonly Color MoonYellow = Color.FromArgb(255, 244, 99);
 
             /// <summary>
-            /// ÏÊ»ÆÉ«Canaria-yellow£¨¿ª·Å£©
+            /// é²œé»„è‰²Canaria-yellowï¼ˆå¼€æ”¾ï¼‰
             /// </summary>
             public static readonly Color CanariaYellow = Color.FromArgb(255, 241, 0);
 
             /// <summary>
-            /// º¬Ğß²İ¡¢°ÍÀè½ğºÏ»¶Mimosa£¨ĞÒ¸££©
+            /// å«ç¾è‰ã€å·´é»é‡‘åˆæ¬¢Mimosaï¼ˆå¹¸ç¦ï¼‰
             /// </summary>
             public static readonly Color Mimosa = Color.FromArgb(237, 212, 67);
 
             /// <summary>
-            /// ½æ×ÓMustard£¨ÏçÍÁ£©
+            /// èŠ¥å­Mustardï¼ˆä¹¡åœŸï¼‰
             /// </summary>
             public static readonly Color Mustard = Color.FromArgb(214, 197, 96);
 
             /// <summary>
-            /// »ÆÍÁÉ«Ochre£¨ÎÂºñ£©
+            /// é»„åœŸè‰²Ochreï¼ˆæ¸©åšï¼‰
             /// </summary>
             public static readonly Color Ochre = Color.FromArgb(196, 143, 0);
 
             /// <summary>
-            /// ¿¨»úÉ«Khaki£¨ÌïÔ°£©
+            /// å¡æœºè‰²Khakiï¼ˆç”°å›­ï¼‰
             /// </summary>
             public static readonly Color Khaki = Color.FromArgb(176, 136, 39);
         }
 
         /// <summary>
-        /// ¾GÉ«
+        /// ç¶ è‰²
         /// </summary>
         public static class GreenColor
         {
             /// <summary>
-            /// »ÆÂÌÉ«Yellow-green£¨×ÔÓÉ£©
+            /// é»„ç»¿è‰²Yellow-greenï¼ˆè‡ªç”±ï¼‰
             /// </summary>
             public static readonly Color YellowGreen = Color.FromArgb(196, 215, 0);
 
             /// <summary>
-            /// Æ»¹ûÂÌApple-green£¨ĞÂÏÊ£©
+            /// è‹¹æœç»¿Apple-greenï¼ˆæ–°é²œï¼‰
             /// </summary>
             public static readonly Color AppleGreen = Color.FromArgb(158, 189, 25);
 
             /// <summary>
-            /// ÄÛÂÌFresh-leaves£¨¿ì»î£©
+            /// å«©ç»¿Fresh-leavesï¼ˆå¿«æ´»ï¼‰
             /// </summary>
             public static readonly Color FreshLeaves = Color.FromArgb(169, 208, 107);
 
             /// <summary>
-            /// Ò¶ÂÌÉ«Foliage-green£¨×ÔÈ»£©
+            /// å¶ç»¿è‰²Foliage-greenï¼ˆè‡ªç„¶ï¼‰
             /// </summary>
             public static readonly Color FoliageGreen = Color.FromArgb(135, 162, 86);
 
             /// <summary>
-            ///²İÂÌÉ«Grass-green£¨³É³¤£©
+            ///è‰ç»¿è‰²Grass-greenï¼ˆæˆé•¿ï¼‰
             /// </summary>
             public static readonly Color GrassGreen = Color.FromArgb(170, 196, 104);
 
             /// <summary>
-            ///Ì¦ÂÌÉ«Moss-green£¨ÈáºÍ£©
+            ///è‹”ç»¿è‰²Moss-greenï¼ˆæŸ”å’Œï¼‰
             /// </summary>
             public static readonly Color MossGreen = Color.FromArgb(136, 134, 55);
 
             /// <summary>
-            ///éÏé­ÂÌOlive£¨³ÏÒâ£©
+            ///æ©„æ¦„ç»¿Oliveï¼ˆè¯šæ„ï¼‰
             /// </summary>
             public static readonly Color Olive = Color.FromArgb(98, 90, 5);
 
             /// <summary>
-            ///³£ÇàÌÙIvy-green£¨°²ĞÄ£©
+            ///å¸¸é’è—¤Ivy-greenï¼ˆå®‰å¿ƒï¼‰
             /// </summary>
             public static readonly Color IvyGreen = Color.FromArgb(61, 125, 83);
 
             /// <summary>
-            ///îÜÂÌCobalt-green£¨×ÔÈ»£©
+            ///é’´ç»¿Cobalt-greenï¼ˆè‡ªç„¶ï¼‰
             /// </summary>
             public static readonly Color CobaltGreen = Color.FromArgb(106, 189, 120);
 
             /// <summary>
-            ///ôä´äÂÌEmerald-green£¨Ï£Íû£©
+            ///ç¿¡ç¿ ç»¿Emerald-greenï¼ˆå¸Œæœ›ï¼‰
             /// </summary>
             public static readonly Color EmeraldGreen = Color.FromArgb(21, 174, 103);
 
             /// <summary>
-            ///±ÌÂÌTurquoise-green£¨Ğ­µ÷£©
+            ///ç¢§ç»¿Turquoise-greenï¼ˆåè°ƒï¼‰
             /// </summary>
             public static readonly Color TurquoiseGreen = Color.FromArgb(66, 171, 145);
 
             /// <summary>
-            ///»ÒÂÌÉ«¡¢Çà´ÉÉ«Celadon-green£¨äìÈ÷£©
+            ///ç°ç»¿è‰²ã€é’ç“·è‰²Celadon-greenï¼ˆæ½‡æ´’ï¼‰
             /// </summary>
             public static readonly Color CeladonGreen = Color.FromArgb(66, 171, 145);
 
             /// <summary>
-            ///¿×È¸Ê¯ÂÌMalachite-green£¨ºÍÆ½£©
+            ///å­”é›€çŸ³ç»¿Malachite-greenï¼ˆå’Œå¹³ï¼‰
             /// </summary>
             public static readonly Color MalachiteGreen = Color.FromArgb(0, 142, 87);
 
             /// <summary>
-            ///±¡ºÉMint£¨Í´¿ì£©
+            ///è–„è·Mintï¼ˆç—›å¿«ï¼‰
             /// </summary>
             public static readonly Color Mint = Color.FromArgb(0, 120, 80);
 
             /// <summary>
-            ///±ÌÉ«Viridian£¨ÎÂÇé£©
+            ///ç¢§è‰²Viridianï¼ˆæ¸©æƒ…ï¼‰
             /// </summary>
             public static readonly Color Viridian = Color.FromArgb(0, 101, 80);
 
             /// <summary>
-            ///¿×È¸ÂÌPeacock-green£¨Æ·¸ñ£©
+            ///å­”é›€ç»¿Peacock-greenï¼ˆå“æ ¼ï¼‰
             /// </summary>
             public static readonly Color PeacockGreen = Color.FromArgb(0, 128, 119);
         }
 
         /// <summary>
-        /// Ë{É«
+        /// è—è‰²
         /// </summary>
         public static class BlueColor
         {
             /// <summary>
-            /// µØÆ½ÏßHorizon-blue£¨ÆæÈ¤£©
+            /// åœ°å¹³çº¿Horizon-blueï¼ˆå¥‡è¶£ï¼‰
             /// </summary>
             public static readonly Color HorizonBlue = Color.FromArgb(176, 220, 213);
 
             /// <summary>
-            /// Ç³ÌìÀ¶É«Light sky-blue£¨³Î³º£©
+            /// æµ…å¤©è“è‰²Light sky-blueï¼ˆæ¾„æ¾ˆï¼‰
             /// </summary>
             public static readonly Color LightSkyBlue = Color.FromArgb(161, 216, 230);
 
             /// <summary>
-            /// Ë®À¶Aqua-blue£¨ÕıÒå£©
+            /// æ°´è“Aqua-blueï¼ˆæ­£ä¹‰ï¼‰
             /// </summary>
             public static readonly Color AquaBlue = Color.FromArgb(89, 195, 226);
 
             /// <summary>
-            /// ÎµÀ¶Azure-blue£¨Ë¬¿ì£©
+            /// è”šè“Azure-blueï¼ˆçˆ½å¿«ï¼‰
             /// </summary>
             public static readonly Color AzureBlue = Color.FromArgb(34, 174, 230);
 
             /// <summary>
-            /// Ç³ÌìÀ¶É«Light sky-blue£¨³Î³º£©
+            /// æµ…å¤©è“è‰²Light sky-blueï¼ˆæ¾„æ¾ˆï¼‰
             /// </summary>
             public static readonly Color SkyBlue = Color.FromArgb(148, 198, 221);
 
             /// <summary>
-            /// µ­À¶Baby-blue£¨»ÃÏë£©
+            /// æ·¡è“Baby-blueï¼ˆå¹»æƒ³ï¼‰
             /// </summary>
             public static readonly Color BabyBlue = Color.FromArgb(117, 212, 219);
 
             /// <summary>
-            /// Ç³À¶Pale-blue£¨ÎÂºÍ£©
+            /// æµ…è“Pale-blueï¼ˆæ¸©å’Œï¼‰
             /// </summary>
             public static readonly Color PaleBlue = Color.FromArgb(139, 174, 205);
 
             /// <summary>
-            /// Ë®À¶¡¢Ç³À¶Saxe-blue£¨¿íÈİ£©
+            /// æ°´è“ã€æµ…è“Saxe-blueï¼ˆå®½å®¹ï¼‰
             /// </summary>
             public static readonly Color SaxeBlue = Color.FromArgb(82, 129, 172);
 
             /// <summary>
-            /// À¶ÂÌÉ«¡¢Ë®À¶±¦Ê¯Aquamarine£¨´¿´â£©
+            /// è“ç»¿è‰²ã€æ°´è“å®çŸ³Aquamarineï¼ˆçº¯ç²¹ï¼‰
             /// </summary>
             public static readonly Color Aquamarine = Color.FromArgb(41, 131, 177);
 
             /// <summary>
-            /// ´äÀ¶¡¢ÍÁ¶úÆäÓñÉ«Turquoise-blue£¨Æ½ºâ£©
+            /// ç¿ è“ã€åœŸè€³å…¶ç‰è‰²Turquoise-blueï¼ˆå¹³è¡¡ï¼‰
             /// </summary>
             public static readonly Color TurquoiseBlue = Color.FromArgb(0, 164, 197);
 
             /// <summary>
-            ///À¶ÂÌCyan-blue£¨Çå³ş£©
+            ///è“ç»¿Cyan-blueï¼ˆæ¸…æ¥šï¼‰
             /// </summary>
             public static readonly Color CyanBlue = Color.FromArgb(0, 136, 144);
 
             /// <summary>
-            ///¿×È¸À¶Peacock-blue£¨¹óÖØ£©
+            ///å­”é›€è“Peacock-blueï¼ˆè´µé‡ï¼‰
             /// </summary>
             public static readonly Color PeacockBlue = Color.FromArgb(0, 105, 128);
 
             /// <summary>
-            ///ÌìÀ¶Cerulean-blue£¨Àä¾²£©
+            ///å¤©è“Cerulean-blueï¼ˆå†·é™ï¼‰
             /// </summary>
             public static readonly Color CeruleanBlue = Color.FromArgb(0, 123, 187);
 
             /// <summary>
-            /// îÜÀ¶Cobalt-blue£¨Õò¾²£©
+            /// é’´è“Cobalt-blueï¼ˆé•‡é™ï¼‰
             /// </summary>
             public static readonly Color CobaltBlue = Color.FromArgb(0, 93, 172);
 
             /// <summary>
-            /// ÉîÀ¶Ultramarine£¨ÉîÔ¶£©
+            /// æ·±è“Ultramarineï¼ˆæ·±è¿œï¼‰
             /// </summary>
             public static readonly Color Ultramarine = Color.FromArgb(0, 64, 152);
 
             /// <summary>
-            /// Æ·À¶¡¢±¦À¶Royal-blue£¨¸ñµ÷£©
+            /// å“è“ã€å®è“Royal-blueï¼ˆæ ¼è°ƒï¼‰
             /// </summary>
             public static readonly Color RoyalBlue = Color.FromArgb(30, 80, 162);
 
             /// <summary>
-            /// Çà½ğÊ¯¡¢µåÉ«Lapis lazuli£¨î£ÖÇ£©
+            /// é’é‡‘çŸ³ã€é›è‰²Lapis lazuliï¼ˆç¿æ™ºï¼‰
             /// </summary>
             public static readonly Color LapisLazuli = Color.FromArgb(19, 64, 152);
 
             /// <summary>
-            /// ÊóÎ²²İSalvia-blue£¨Ï´Á·£©
+            /// é¼ å°¾è‰Salvia-blueï¼ˆæ´—ç»ƒï¼‰
             /// </summary>
             public static readonly Color SalviaBlue = Color.FromArgb(91, 119, 175);
 
             /// <summary>
-            /// Î¤ÆæÎéµÂÀ¶Wedgwood-blue£¨¸ß¹ó£©
+            /// éŸ¦å¥‡ä¼å¾·è“Wedgwood-blueï¼ˆé«˜è´µï¼‰
             /// </summary>
             public static readonly Color WedgwoodBlue = Color.FromArgb(102, 132, 176);
 
             /// <summary>
-            /// ÇàÀ¶Slate-blue£¨¾²¼Å£©
+            /// é’è“Slate-blueï¼ˆé™å¯‚ï¼‰
             /// </summary>
             public static readonly Color SlateBlue = Color.FromArgb(100, 121, 151);
 
             /// <summary>
-            /// ÌìÀ¶¡¢±¦À¶Sapphire-blue£¨ÖÇ»Û£©
+            /// å¤©è“ã€å®è“Sapphire-blueï¼ˆæ™ºæ…§ï¼‰
             /// </summary>
             public static readonly Color SapphireBlue = Color.FromArgb(0, 87, 137);
 
             /// <summary>
-            /// Ê¯ÇàMineral-blue£¨ÈÏÕæ£©
+            /// çŸ³é’Mineral-blueï¼ˆè®¤çœŸï¼‰
             /// </summary>
             public static readonly Color MineralBlue = Color.FromArgb(0, 81, 120);
 
             /// <summary>
-            ///ÁÁÀ¶Strong-blue£¨Àñ½Ú£©
+            ///äº®è“Strong-blueï¼ˆç¤¼èŠ‚ï¼‰
             /// </summary>
             public static readonly Color StrongBlue = Color.FromArgb(0, 89, 120);
 
             /// <summary>
-            /// º£À¶Marine-blue£¨Ê±÷Ö£©
+            /// æµ·è“Marine-blueï¼ˆæ—¶é«¦ï¼‰
             /// </summary>
             public static readonly Color MarineBlue = Color.FromArgb(0, 69, 107);
 
             /// <summary>
-            /// º£¾üÀ¶¡¢ÉîÀ¶Navy-blue£¨¼ÍÂÉ£©
+            /// æµ·å†›è“ã€æ·±è“Navy-blueï¼ˆçºªå¾‹ï¼‰
             /// </summary>
             public static readonly Color NavyBlue = Color.FromArgb(0, 28, 84);
 
             /// <summary>
-            /// µåÇàIndigo£¨×¯ÑÏ£©
+            /// é›é’Indigoï¼ˆåº„ä¸¥ï¼‰
             /// </summary>
             public static readonly Color Indigo = Color.FromArgb(0, 46, 90);
 
             /// <summary>
-            /// ÉîÊ¯ÇàDark mineral-blue£¨ÀíÖÇ£©
+            /// æ·±çŸ³é’Dark mineral-blueï¼ˆç†æ™ºï¼‰
             /// </summary>
             public static readonly Color DarkMineralBlue = Color.FromArgb(56, 66, 106);
 
             /// <summary>
-            /// ÉîÀ¶Midnight-blue£¨´«Í³£©
+            /// æ·±è“Midnight-blueï¼ˆä¼ ç»Ÿï¼‰
             /// </summary>
             public static readonly Color MidnightBlue = Color.FromArgb(4, 22, 58);
         }
 
         /// <summary>
-        /// ×ÏÉ«
+        /// ç´«è‰²
         /// </summary>
         public static class PurpleColor
         {
             /// <summary>
-            /// ×ÏÌÙWisteria£¨·çÑÅ£©
+            /// ç´«è—¤Wisteriaï¼ˆé£é›…ï¼‰
             /// </summary>
             public static readonly Color Wisteria = Color.FromArgb(115, 91, 159);
 
             /// <summary>
-            /// µ­×ÏÉ«Mauve£¨ÉñÃØ£©
+            /// æ·¡ç´«è‰²Mauveï¼ˆç¥ç§˜ï¼‰
             /// </summary>
             public static readonly Color Mauve = Color.FromArgb(124, 80, 157);
 
             /// <summary>
-            /// ÌúÏßÁ«Clematis£¨ÔŞÃÀ£©
+            /// é“çº¿è²Clematisï¼ˆèµç¾ï¼‰
             /// </summary>
             public static readonly Color Clematis = Color.FromArgb(216, 191, 203);
 
             /// <summary>
-            /// ¶¡ÏãLilac£¨ÇåÏã£©
+            /// ä¸é¦™Lilacï¼ˆæ¸…é¦™ï¼‰
             /// </summary>
             public static readonly Color Lilac = Color.FromArgb(187, 161, 203);
 
             /// <summary>
-            /// Ş¹ÒÂ²İLavender£¨Æ·¸ñ£©
+            /// è–°è¡£è‰Lavenderï¼ˆå“æ ¼ï¼‰
             /// </summary>
             public static readonly Color Lavender = Color.FromArgb(166, 136, 177);
 
             /// <summary>
-            /// ×ÏË®¾§Amethyst£¨Ö±¾õ£©
+            /// ç´«æ°´æ™¶Amethystï¼ˆç›´è§‰ï¼‰
             /// </summary>
             public static readonly Color Amethyst = Color.FromArgb(126, 73, 133);
 
             /// <summary>
-            /// ×ÏÉ«Purple£¨ÉñÊ¥£©
+            /// ç´«è‰²Purpleï¼ˆç¥åœ£ï¼‰
             /// </summary>
             public static readonly Color Purple = Color.FromArgb(146, 61, 146);
 
             /// <summary>
-            /// ÏãË®²İHeliotrope£¨¸ßÉĞ£©
+            /// é¦™æ°´è‰Heliotropeï¼ˆé«˜å°šï¼‰
             /// </summary>
             public static readonly Color Heliotrope = Color.FromArgb(111, 25, 111);
 
             /// <summary>
-            /// ×ÏÂŞÀ¼Mineral violet£¨»³¾É£©
+            /// ç´«ç½—å…°Mineral violetï¼ˆæ€€æ—§ï¼‰
             /// </summary>
             public static readonly Color MineralViolet = Color.FromArgb(197, 175, 192);
 
             /// <summary>
-            /// ÈıÉ«İÀ¡¢ºûµû»¨Pansy£¨Ë¼ÂÇ£©
+            /// ä¸‰è‰²å ‡ã€è´è¶èŠ±Pansyï¼ˆæ€è™‘ï¼‰
             /// </summary>
             public static readonly Color Pansy = Color.FromArgb(139, 0, 98);
 
             /// <summary>
-            /// ½õ¿ûMallow£¨Ñı¾«£©
+            /// é”¦è‘µMallowï¼ˆå¦–ç²¾ï¼‰
             /// </summary>
             public static readonly Color Mallow = Color.FromArgb(211, 105, 164);
 
             /// <summary>
-            /// À¼»¨Orchid£¨ÎÂºÍ£©
+            /// å…°èŠ±Orchidï¼ˆæ¸©å’Œï¼‰
             /// </summary>
             public static readonly Color Orchid = Color.FromArgb(209, 136, 168);
 
             /// <summary>
-            /// Ç³Á«»ÒPale-lilac£¨ÃÈÑ¿£©
+            /// æµ…è²ç°Pale-lilacï¼ˆèŒèŠ½ï¼‰
             /// </summary>
             public static readonly Color PaleLilac = Color.FromArgb(237, 224, 230);
 
             /// <summary>
-            /// »Ò×ÏGray-purple£¨ÉñÃØ£©
+            /// ç°ç´«Gray-purpleï¼ˆç¥ç§˜ï¼‰
             /// </summary>
             public static readonly Color GrayPurple = Color.FromArgb(157, 137, 157);
         }

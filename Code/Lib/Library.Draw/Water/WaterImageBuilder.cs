@@ -26,7 +26,7 @@ namespace Library.Draw.Water
         /// <param name="waterImgPath"></param>
         public void SetWaterImage([NotNull] string waterImgPath)
         {
-            if (!File.Exists(waterImgPath)) throw new FileNotFoundException("文件不存在", waterImgPath);
+            if (!File.Exists(waterImgPath)) throw new FileNotFoundException("File Not Found", waterImgPath);
             WaterImgPath = waterImgPath;
             WaterImgBuffter = File.ReadAllBytes(waterImgPath);
         }

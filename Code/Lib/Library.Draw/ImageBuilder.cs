@@ -1,4 +1,4 @@
-using Library.Annotations;
+ï»¿using Library.Annotations;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -49,7 +49,7 @@ namespace Library.Draw
     public delegate void ImageCompletedEventHandler(object sender, ImageEventArgs e);
 
     /// <summary>
-    /// Í¼Ïñ´¦Àí¹¦ÄÜ
+    /// å›¾åƒå¤„ç†åŠŸèƒ½
     /// </summary>
     public interface IImageBuilder
     {
@@ -83,7 +83,7 @@ namespace Library.Draw
         void SetOpetion([NotNull] ImageOption opetion);
 
         /// <summary>
-        /// .net×Ô´ø´¦Àí·½·¨
+        /// .netè‡ªå¸¦å¤„ç†æ–¹æ³•
         /// </summary>
         Image ProcessBitmap();
 
@@ -98,7 +98,7 @@ namespace Library.Draw
         unsafe void UnsafeProcessBitmapAsync();
 
         /// <summary>
-        /// ²»°²È«´úÂë´¦Àí·½·¨
+        /// ä¸å®‰å…¨ä»£ç å¤„ç†æ–¹æ³•
         /// </summary>
         unsafe Image UnsafeProcessBitmap();
 
@@ -191,7 +191,7 @@ namespace Library.Draw
         /// <param name="sourceImgPath"></param>
         public void SetSourceImage(string sourceImgPath)
         {
-            if (!File.Exists(sourceImgPath)) throw new FileNotFoundException("ÎÄ¼ş²»´æÔÚ", sourceImgPath);
+            if (!File.Exists(sourceImgPath)) throw new FileNotFoundException("æ–‡ä»¶ä¸å­˜åœ¨", sourceImgPath);
             SourceImgPath = sourceImgPath;
             SourceImgBuffter = File.ReadAllBytes(sourceImgPath);
         }
@@ -361,7 +361,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// É«²ÊÖµÂ©³öÌÀí
+        /// è‰²å½©å€¼æ¼å‡ºè™•ç†
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
@@ -375,7 +375,7 @@ namespace Library.Draw
         }
 
         /// <summary>
-        /// É«²ÊÖµÂ©³öÌÀí
+        /// è‰²å½©å€¼æ¼å‡ºè™•ç†
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>

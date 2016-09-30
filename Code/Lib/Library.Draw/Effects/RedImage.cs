@@ -1,13 +1,13 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.Drawing;
 using System.Drawing.Imaging;
 
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// ÂÌÉ«
+    /// èŸ¯ä¼
     /// </summary>
-    [LanguageDescription("ÂÌÉ«"), LanguageDisplayName("ÂÌÉ«")]
+    [LanguageDescription("ç´…"), LanguageDisplayName("ç´…")]
     public class RedImage : ImageBuilder
     {
         /// <summary>

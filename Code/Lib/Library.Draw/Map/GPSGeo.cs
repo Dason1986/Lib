@@ -1,23 +1,23 @@
-using System;
+ï»¿using System;
 
 namespace Library.Map
 {
     /// <summary>
-    /// ±±¶·ÎÀĞÇµ¼º½ÏµÍ³
+    /// åŒ—æ–—å«æ˜Ÿå¯¼èˆªç³»ç»Ÿ
     /// </summary>
     public class BDSGeo
     {
     }
 
     /// <summary>
-    /// Ù¤ÀûÂÔ¶¨Î»ÏµÍ³
+    /// ä¼½åˆ©ç•¥å®šä½ç³»ç»Ÿ
     /// </summary>
     public class GalileGeo
     {
     }
 
     /// <summary>
-    /// È«ÇòÎÀĞÇ¶¨Î»ÏµÍ³
+    /// å…¨çƒå«æ˜Ÿå®šä½ç³»ç»Ÿ
     /// </summary>
     public class GPSGeo
     {
@@ -97,12 +97,11 @@ namespace Library.Map
         public class GPSFormat : ICustomFormatter, IFormatProvider
         {
             /*
-
             Format              Description                             Real format                             Example
             =========           =================================       ======================                  =======================
             "g"                 google map
             "f"
- 49¡ã30'00" S 12¡ã30'00" E
+ 49Â°30'00" S 12Â°30'00" E
         */
 
             /// <summary>

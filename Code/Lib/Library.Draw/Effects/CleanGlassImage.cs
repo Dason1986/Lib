@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using Library.HelperUtility;
 using System.ComponentModel;
 using System.Drawing;
@@ -9,12 +9,12 @@ namespace Library.Draw.Effects
     /// <summary>
     ///
     /// </summary>
-    [LanguageDescription("¶Ô±È¶È/ÁÁ¶È"), LanguageDisplayName("¶Ô±È¶È/ÁÁ¶È")]
+    [LanguageDescription("å¯¹æ¯”åº¦/äº®åº¦"), LanguageDisplayName("å¯¹æ¯”åº¦/äº®åº¦")]
     public class CleanGlassImage : ImageBuilder
     {  /// <summary>
        /// Should be in the range [0, 1].
        /// </summary>
-        [LanguageDescription("³ß´ç [0, 1]"), LanguageDisplayName("³ß´ç"), Category("VçRßxí—")]
+        [LanguageDescription("å°ºå¯¸ [0, 1]"), LanguageDisplayName("å°ºå¯¸"), Category("æ¿¾é¡é¸é …")]
         public float Size
         {
             get
@@ -102,7 +102,7 @@ namespace Library.Draw.Effects
 
                     if (distSq <= min) continue;
                     int k = ObjectUtility.GetRandomInt(1, 123456);
-                    //ÏñËØ¿é´óĞ¡
+                    //åƒç´ å—å¤§å°
                     int pixeldx = column + k % 19;
                     int pixeldy = height + k % 19;
                     if (pixeldx >= width)
@@ -163,7 +163,7 @@ namespace Library.Draw.Effects
 
                     if (distSq <= min) continue;
                     int k = ObjectUtility.GetRandomInt(1, 123456);
-                    //ÏñËØ¿é´óĞ¡
+                    //åƒç´ å—å¤§å°
                     int pixeldx = column + k % 19;
                     int pixeldy = height + k % 19;
                     if (pixeldx >= width)

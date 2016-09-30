@@ -1,4 +1,4 @@
-using Library.Att;
+锘縰sing Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,15 +7,15 @@ using System.Drawing.Imaging;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// 投影
+    /// 鎶曞奖
     /// </summary>
-    [LanguageDescription("投影"), LanguageDisplayName("投影")]
+    [LanguageDescription("鎶曞奖"), LanguageDisplayName("鎶曞奖")]
     public class ReflectionImage : ImageBuilder
     {
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
+        [LanguageDescription("鏂瑰悜"), LanguageDisplayName("鏂瑰悜"), Category("婵鹃彙閬搁爡")]
         public AlignmentType Alignment
         {
             get
@@ -31,7 +31,7 @@ namespace Library.Draw.Effects
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
+        [LanguageDescription("鏂瑰悜"), LanguageDisplayName("鏂瑰悜"), Category("婵鹃彙閬搁爡")]
         public float Offset
         {
             get
@@ -54,13 +54,13 @@ namespace Library.Draw.Effects
             /// <summary>
             ///
             /// </summary>
-            [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
+            [LanguageDescription("鏂瑰悜"), LanguageDisplayName("鏂瑰悜"), Category("婵鹃彙閬搁爡")]
             public AlignmentType Alignment { get; set; }
 
             /// <summary>
             ///
             /// </summary>
-            [LanguageDescription("偏移"), LanguageDisplayName("偏移"), Category("濾鏡選項")]
+            [LanguageDescription("鍋忕Щ"), LanguageDisplayName("鍋忕Щ"), Category("婵鹃彙閬搁爡")]
             public float Offset { get; set; }
         }
 

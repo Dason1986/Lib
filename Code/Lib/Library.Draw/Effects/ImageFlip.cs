@@ -1,4 +1,4 @@
-using Library.Att;
+锘縰sing Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -6,14 +6,14 @@ using System.Drawing.Drawing2D;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// 倒象
+    /// 鍊掕薄
     /// </summary>
     public class FlipImage : ImageBuilder
     {
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
+        [LanguageDescription("鏂瑰悜"), LanguageDisplayName("鏂瑰悜"), Category("婵鹃彙閬搁爡")]
         public AlignmentType Flip
         {
             get
@@ -36,7 +36,7 @@ namespace Library.Draw.Effects
             /// <summary>
             ///
             /// </summary>
-            [LanguageDescription("方向"), LanguageDisplayName("方向"), Category("濾鏡選項")]
+            [LanguageDescription("鏂瑰悜"), LanguageDisplayName("鏂瑰悜"), Category("婵鹃彙閬搁爡")]
             public AlignmentType Alignment { get; set; }
         }
 

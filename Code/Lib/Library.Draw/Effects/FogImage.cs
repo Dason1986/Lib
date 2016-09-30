@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,21 +7,21 @@ using System.Drawing.Imaging;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// Îí»¯Ğ§¹û
-    /// Í¼ÏñµÄÎí»¯´¦Àí²»ÊÇ»ùÓÚÍ¼ÏñÖĞÏñËØµãÖ®¼äµÄ¼ÆËã,¶øÊÇ¸øÍ¼ÏñÏñËØµÄÑÕÉ«ÖµÒıÈëÒ»¶¨µÄËæ»úÖµ,
-    /// Ê¹Í¼Ïñ¾ßÓĞÃ«²£Á§´øË®Îí°ãµÄĞ§¹û..
+    /// é›¾åŒ–æ•ˆæœ
+    /// å›¾åƒçš„é›¾åŒ–å¤„ç†ä¸æ˜¯åŸºäºå›¾åƒä¸­åƒç´ ç‚¹ä¹‹é—´çš„è®¡ç®—,è€Œæ˜¯ç»™å›¾åƒåƒç´ çš„é¢œè‰²å€¼å¼•å…¥ä¸€å®šçš„éšæœºå€¼,
+    /// ä½¿å›¾åƒå…·æœ‰æ¯›ç»ç’ƒå¸¦æ°´é›¾èˆ¬çš„æ•ˆæœ..
     /// </summary>
-    [LanguageDescription("¶Ô±È¶È"), LanguageDisplayName("Îí»¯Ğ§¹û")]
+    [LanguageDescription("å¯¹æ¯”åº¦"), LanguageDisplayName("é›¾åŒ–æ•ˆæœ")]
     public class FogImage : ImageBuilder
     {
         /*
-         * ¶ÔÃ¿¸öÏñËØA(i,j)½øĞĞ´¦Àí£¬ÓÃÆäÖÜÎ§Ò»¶¨·¶Î§ÄÚËæ»úµãA(i+d,j+d),(-k<d<k)µÄÏñËØÌæ´ú¡£ÏÔÈ»£¬ÒÔ¸ÃµãÎªÔ²ĞÄµÄÔ²°ë¾¶Ô½´ó£¬ÔòÎí»¯Ğ§¹ûÔ½Ã÷ÏÔ¡£
+         * å¯¹æ¯ä¸ªåƒç´ A(i,j)è¿›è¡Œå¤„ç†ï¼Œç”¨å…¶å‘¨å›´ä¸€å®šèŒƒå›´å†…éšæœºç‚¹A(i+d,j+d),(-k<d<k)çš„åƒç´ æ›¿ä»£ã€‚æ˜¾ç„¶ï¼Œä»¥è¯¥ç‚¹ä¸ºåœ†å¿ƒçš„åœ†åŠå¾„è¶Šå¤§ï¼Œåˆ™é›¾åŒ–æ•ˆæœè¶Šæ˜æ˜¾ã€‚
          */
 
         /// <summary>
-        /// Ô²°ë½
+        /// åœ†åŠå¾‘
         /// </summary>
-        [LanguageDescription("Ô²°ë½"), LanguageDisplayName("Ô²°ë½"), Category("VçRßxí—")]
+        [LanguageDescription("åœ†åŠå¾‘"), LanguageDisplayName("åœ†åŠå¾‘"), Category("æ¿¾é¡é¸é …")]
         public float Fog
         {
             get
@@ -74,7 +74,7 @@ namespace Library.Draw.Effects
 
         #region Process
 
-        #region IImageProcessable ³ÉÔ±
+        #region IImageProcessable æˆå‘˜
 
         /// <summary>
         ///
@@ -91,10 +91,10 @@ namespace Library.Draw.Effects
                 for (int y = 0; y < height - 1; y++)
                 {
                     int k = rnd.Next(-12345, 12345);
-                    //ÏñËØ¿é´óĞ¡
+                    //åƒç´ å—å¤§å°
                     int dx = x + k % 7;
                     int dy = y + k % 7;
-                    //´¦ÀíÒç³ö
+                    //å¤„ç†æº¢å‡º
                     if (dx >= width)
                         dx = width - 1;
                     if (dy >= height)
@@ -111,9 +111,9 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        #endregion IImageProcessable ³ÉÔ±
+        #endregion IImageProcessable æˆå‘˜
 
-        #region IImageProcessable ³ÉÔ±
+        #region IImageProcessable æˆå‘˜
 
         /// <summary>
         ///
@@ -135,21 +135,21 @@ namespace Library.Draw.Effects
                 for (int j = 0; j < width - 1; j++)
                 {
                     int k = rnd.Next(-12345, 12345);
-                    //ÏñËØ¿é´óĞ¡ ³£Á¿NµÄ´óĞ¡¾ö¶¨Îí»¯Ä£ºı¶È
-                    int dj = j + (int)(k % n); //Ë®Æ½ÏòÓÒ·½ÏòÏñËØÆ«ÒÆºó
-                    int di = i + (int)(k % n); //´¹Ö±ÏòÏÂ·½ÏòÏñËØÆ«ÒÆºó
+                    //åƒç´ å—å¤§å° å¸¸é‡Nçš„å¤§å°å†³å®šé›¾åŒ–æ¨¡ç³Šåº¦
+                    int dj = j + (int)(k % n); //æ°´å¹³å‘å³æ–¹å‘åƒç´ åç§»å
+                    int di = i + (int)(k % n); //å‚ç›´å‘ä¸‹æ–¹å‘åƒç´ åç§»å
                     if (dj >= width) dj = width - 1;
                     if (di >= height) di = height - 1;
                     if (di < 0)
                         di = 0;
                     if (dj < 0)
                         dj = 0;
-                    //Õë¶ÔFormat32bppArgb¸ñÊ½ÏñËØ£¬Ö¸ÕëÆ«ÒÆÁ¿Îª4µÄ±¶Êı 4*dj  4*di
+                    //é’ˆå¯¹Format32bppArgbæ ¼å¼åƒç´ ï¼ŒæŒ‡é’ˆåç§»é‡ä¸º4çš„å€æ•° 4*dj  4*di
                     //g(i,j)=f(di,dj)
                     ptr[bmpData.Stride * i + j * 4 + 0] = ptr[bmpData.Stride * di + dj * 4 + 0]; //B
                     ptr[bmpData.Stride * i + j * 4 + 1] = ptr[bmpData.Stride * di + dj * 4 + 1]; //G
                     ptr[bmpData.Stride * i + j * 4 + 2] = ptr[bmpData.Stride * di + dj * 4 + 2]; //R
-                    // ptr += 4;  ×¢Òâ´Ë´¦Ö¸ÕëÃ»ÒÆ¶¯£¬Ê¼ÖÕÒÔbmpData.Scan0¿ªÊ¼
+                    // ptr += 4;  æ³¨æ„æ­¤å¤„æŒ‡é’ˆæ²¡ç§»åŠ¨ï¼Œå§‹ç»ˆä»¥bmpData.Scan0å¼€å§‹
                 }
                 //  ptr += bmpData.Stride - width * 4;
             }
@@ -157,7 +157,7 @@ namespace Library.Draw.Effects
             return bmp;
         }
 
-        #endregion IImageProcessable ³ÉÔ±
+        #endregion IImageProcessable æˆå‘˜
 
         #endregion Process
     }

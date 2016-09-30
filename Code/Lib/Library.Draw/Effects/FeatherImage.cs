@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -6,15 +6,15 @@ using System.Drawing.Imaging;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// ·ÉÒİ
+    /// æ»„ç ¯
     /// </summary>
-    [LanguageDescription("·ÉÒİ"), LanguageDisplayName("·ÉÒİ")]
+    [LanguageDescription("ç¾½åŒ–"), LanguageDisplayName("ç¾½åŒ–")]
     public class FeatherImage : ImageBuilder
     {
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("·ÉÒİÖµ"), LanguageDisplayName("·ÉÒİÖµ"), Category("VçRßxí—")]
+        [LanguageDescription("ç¾½åŒ–å€¼"), LanguageDisplayName("ç¾½åŒ–å€¼"), Category("æ¿¾é¡é¸é …")]
         public float FeatherValue
         {
             get

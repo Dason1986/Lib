@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -6,15 +6,15 @@ using System.Drawing.Imaging;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// ß…¿ò
+    /// é‚Šæ¡†
     /// </summary>
-    [LanguageDescription(""), LanguageDisplayName("ß…¿ò")]
+    [LanguageDescription(""), LanguageDisplayName("é‚Šæ¡†")]
     public class RaiseFrameImage : ImageBuilder
     {
         /// <summary>
-        /// ×óß…¿òÉ«
+        /// å·¦é‚Šæ¡†è‰²
         /// </summary>
-        [LanguageDescription(""), LanguageDisplayName("×óß…¿òÉ«"), Category("VçRßxí—")]
+        [LanguageDescription(""), LanguageDisplayName("å·¦é‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
         public Color LeftColor
         {
             get
@@ -30,9 +30,9 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// ÉÏß…¿òÉ«
+        /// ä¸Šé‚Šæ¡†è‰²
         /// </summary>
-        [LanguageDescription(""), LanguageDisplayName("ÉÏß…¿òÉ«"), Category("VçRßxí—")]
+        [LanguageDescription(""), LanguageDisplayName("ä¸Šé‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
         public Color TopColor
         {
             get
@@ -48,9 +48,9 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// ÓÒß…¿òÉ«
+        /// å³é‚Šæ¡†è‰²
         /// </summary>
-        [LanguageDescription(""), LanguageDisplayName("ÓÒß…¿òÉ«"), Category("VçRßxí—")]
+        [LanguageDescription(""), LanguageDisplayName("å³é‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
         public Color RightColor
         {
             get
@@ -66,9 +66,9 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// ÏÂß…¿òÉ«
+        /// ä¸‹é‚Šæ¡†è‰²
         /// </summary>
-        [LanguageDescription(""), LanguageDisplayName("ÏÂß…¿òÉ«"), Category("VçRßxí—")]
+        [LanguageDescription(""), LanguageDisplayName("ä¸‹é‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
         public Color BottomColor
         {
             get
@@ -84,9 +84,9 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// ß…¿òÉ«Í¸Ã÷¶È
+        /// é‚Šæ¡†è‰²é€æ˜åº¦
         /// </summary>
-        [LanguageDescription(""), LanguageDisplayName("ß…¿òÉ«Í¸Ã÷¶È"), Category("VçRßxí—")]
+        [LanguageDescription(""), LanguageDisplayName("é‚Šæ¡†è‰²é€æ˜åº¦"), Category("æ¿¾é¡é¸é …")]
         public byte Alpha
         {
             get
@@ -102,9 +102,9 @@ namespace Library.Draw.Effects
         }
 
         /// <summary>
-        /// ß…¿ò´óĞ¡
+        /// é‚Šæ¡†å¤§å°
         /// </summary>
-        [LanguageDescription(""), LanguageDisplayName("ß…¿ò´óĞ¡"), Category("VçRßxí—")]
+        [LanguageDescription(""), LanguageDisplayName("é‚Šæ¡†å¤§å°"), Category("æ¿¾é¡é¸é …")]
         public byte Border
         {
             get
@@ -150,39 +150,39 @@ namespace Library.Draw.Effects
         public class RaiseFrameOption : ImageOption
         {
             /// <summary>
-            /// ×óß…¿òÉ«
+            /// å·¦é‚Šæ¡†è‰²
             /// </summary>
-            [LanguageDescription(""), LanguageDisplayName("×óß…¿òÉ«"), Category("VçRßxí—")]
+            [LanguageDescription(""), LanguageDisplayName("å·¦é‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
             public Color LeftColor { get; set; }
 
             /// <summary>
-            /// ÉÏß…¿òÉ«
+            /// ä¸Šé‚Šæ¡†è‰²
             /// </summary>
-            [LanguageDescription(""), LanguageDisplayName("ÉÏß…¿òÉ«"), Category("VçRßxí—")]
+            [LanguageDescription(""), LanguageDisplayName("ä¸Šé‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
             public Color TopColor { get; set; }
 
             /// <summary>
-            /// ÓÒß…¿òÉ«
+            /// å³é‚Šæ¡†è‰²
             /// </summary>
-            [LanguageDescription(""), LanguageDisplayName("ÓÒß…¿òÉ«"), Category("VçRßxí—")]
+            [LanguageDescription(""), LanguageDisplayName("å³é‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
             public Color RightColor { get; set; }
 
             /// <summary>
-            /// ÏÂß…¿òÉ«
+            /// ä¸‹é‚Šæ¡†è‰²
             /// </summary>
-            [LanguageDescription(""), LanguageDisplayName("ÏÂß…¿òÉ«"), Category("VçRßxí—")]
+            [LanguageDescription(""), LanguageDisplayName("ä¸‹é‚Šæ¡†è‰²"), Category("æ¿¾é¡é¸é …")]
             public Color BottomColor { get; set; }
 
             /// <summary>
-            /// ß…¿òÉ«Í¸Ã÷¶È
+            /// é‚Šæ¡†è‰²é€æ˜åº¦
             /// </summary>
-            [LanguageDescription(""), LanguageDisplayName("ß…¿òÉ«Í¸Ã÷¶È"), Category("VçRßxí—")]
+            [LanguageDescription(""), LanguageDisplayName("é‚Šæ¡†è‰²é€æ˜åº¦"), Category("æ¿¾é¡é¸é …")]
             public byte Alpha { get; set; }
 
             /// <summary>
-            /// ß…¿ò´óĞ¡
+            /// é‚Šæ¡†å¤§å°
             /// </summary>
-            [LanguageDescription(""), LanguageDisplayName("ß…¿ò´óĞ¡"), Category("VçRßxí—")]
+            [LanguageDescription(""), LanguageDisplayName("é‚Šæ¡†å¤§å°"), Category("æ¿¾é¡é¸é …")]
             public byte Border { get; set; }
         }
 

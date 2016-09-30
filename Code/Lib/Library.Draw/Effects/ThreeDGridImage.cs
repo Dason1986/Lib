@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -6,9 +6,9 @@ using System.Drawing.Imaging;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// ÂÌÉ«
+    /// ç»¿è‰²
     /// </summary>
-    [LanguageDescription("¸ñ×Ó"), LanguageDisplayName("¸ñ×Ó")]
+    [LanguageDescription("æ ¼å­"), LanguageDisplayName("æ ¼å­")]
     public class ThreeDGridImage : ImageBuilder
     {
         #region Option
@@ -16,7 +16,7 @@ namespace Library.Draw.Effects
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("¸ñ×Ó´óĞ¡£¬ÖµÔ½´óÂëÔ½¸ñÔ½´ó"), LanguageDisplayName("¸ñ×Ó´óĞ¡"), Category("VçRßxí—")]
+        [LanguageDescription("æ ¼å­å¤§å°ï¼Œå€¼è¶Šå¤§ç è¶Šæ ¼è¶Šå¤§"), LanguageDisplayName("æ ¼å­å¤§å°"), Category("æ¿¾é¡é¸é …")]
         public int GridSize
         {
             get
@@ -34,7 +34,7 @@ namespace Library.Draw.Effects
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("ßB¾€Éî¶È"), LanguageDisplayName("ßB¾€Éî¶È"), Category("VçRßxí—")]
+        [LanguageDescription("é€£ç·šæ·±åº¦"), LanguageDisplayName("é€£ç·šæ·±åº¦"), Category("æ¿¾é¡é¸é …")]
         public int Depth
         {
             get
@@ -78,17 +78,17 @@ namespace Library.Draw.Effects
         public class ThreeDGridOption : ImageOption
         {
             /// <summary>
-            /// Á£¶È
+            /// ç²’åº¦
             /// </summary>
-            /// <remarks>Ğ§¹ûÁ£¶È£¬ÖµÔ½´óÂëÔ½ÑÏÖØ</remarks>
-            [LanguageDescription("¸ñ×Ó´óĞ¡£¬ÖµÔ½´óÂëÔ½¸ñÔ½´ó"), LanguageDisplayName("¸ñ×Ó´óĞ¡"), Category("VçRßxí—")]
+            /// <remarks>æ•ˆæœç²’åº¦ï¼Œå€¼è¶Šå¤§ç è¶Šä¸¥é‡</remarks>
+            [LanguageDescription("æ ¼å­å¤§å°ï¼Œå€¼è¶Šå¤§ç è¶Šæ ¼è¶Šå¤§"), LanguageDisplayName("æ ¼å­å¤§å°"), Category("æ¿¾é¡é¸é …")]
             public int GridSize { get; set; }
 
             /// <summary>
-            /// Á£¶È
+            /// ç²’åº¦
             /// </summary>
-            /// <remarks>Ğ§¹ûÁ£¶È£¬ÖµÔ½´óÂëÔ½ÑÏÖØ</remarks>
-            [LanguageDescription("ßB¾€Éî¶È"), LanguageDisplayName("ßB¾€Éî¶È"), Category("VçRßxí—")]
+            /// <remarks>æ•ˆæœç²’åº¦ï¼Œå€¼è¶Šå¤§ç è¶Šä¸¥é‡</remarks>
+            [LanguageDescription("é€£ç·šæ·±åº¦"), LanguageDisplayName("é€£ç·šæ·±åº¦"), Category("æ¿¾é¡é¸é …")]
             public int Depth { get; set; }
         }
 

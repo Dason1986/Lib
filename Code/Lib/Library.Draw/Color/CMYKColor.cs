@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.Drawing;
 namespace Library.Draw
 {
     /// <summary>
-    /// ÑÕÉ«¿Õ¼äÓ¦ÓÃÓÚÓ¡Ë¢¹¤Òµ
+    /// é¢œè‰²ç©ºé—´åº”ç”¨äºå°åˆ·å·¥ä¸š
     /// </summary>
     /// [Editor("Library.Draw.Design.CMYKColorEditor, Library.Draw.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
     [TypeConverter(typeof(CMYKColorConverter))]
@@ -18,27 +18,27 @@ namespace Library.Draw
         public static readonly CMYKColor Empty = new CMYKColor();
 
         /// <summary>
-        /// Çà
+        /// é’
         /// </summary>
-        [LanguageDescription("C - Cyan Çà ¡´»¥²¹É«¡µ R - Red ºì "), LanguageDisplayName("Çà")]
+        [LanguageDescription("C - Cyan é’ ã€ˆäº’è¡¥è‰²ã€‰ R - Red çº¢ "), LanguageDisplayName("é’")]
         public int Cyan { get; private set; }
 
         /// <summary>
-        /// Æ·ºì
+        /// å“çº¢
         /// </summary>
-        [LanguageDescription("M - Magenta Æ·ºì ¡´»¥²¹É«¡µ G - Green ÂÌ "), LanguageDisplayName("Æ·ºì")]
+        [LanguageDescription("M - Magenta å“çº¢ ã€ˆäº’è¡¥è‰²ã€‰ G - Green ç»¿ "), LanguageDisplayName("å“çº¢")]
         public int Magenta { get; private set; }
 
         /// <summary>
-        /// »Æ
+        /// é»„
         /// </summary>
-        [LanguageDescription("Y - Yellow »Æ ¡´»¥²¹É«¡µ B - Blue À¶"), LanguageDisplayName("»Æ")]
+        [LanguageDescription("Y - Yellow é»„ ã€ˆäº’è¡¥è‰²ã€‰ B - Blue è“"), LanguageDisplayName("é»„")]
         public int Yellow { get; private set; }
 
         /// <summary>
-        /// ºÚ
+        /// é»‘
         /// </summary>
-        [LanguageDescription(""), LanguageDisplayName("ºÚ")]
+        [LanguageDescription(""), LanguageDisplayName("é»‘")]
         public int Black { get; private set; }
 
         /// <summary>

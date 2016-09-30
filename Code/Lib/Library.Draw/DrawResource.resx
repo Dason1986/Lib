@@ -204,4 +204,127 @@
   <data name="YCbCrPositioning" xml:space="preserve">
     <value>YCbCr定位</value>
   </data>
+  <data name="LightSource_D55" xml:space="preserve">
+    <value>D55</value>
+  </data>
+  <data name="LightSource_D65" xml:space="preserve">
+    <value>D65</value>
+  </data>
+  <data name="LightSource_D75" xml:space="preserve">
+    <value>D75</value>
+  </data>
+  <data name="LightSource_Daylight" xml:space="preserve">
+    <value>日光</value>
+  </data>
+  <data name="LightSource_Flash" xml:space="preserve">
+    <value>閃光</value>
+  </data>
+  <data name="LightSource_Fluorescent" xml:space="preserve">
+    <value>螢光燈</value>
+  </data>
+  <data name="LightSource_StandardLightA" xml:space="preserve">
+    <value>標準照度A</value>
+  </data>
+  <data name="LightSource_StandardLightB" xml:space="preserve">
+    <value>標準照度B</value>
+  </data>
+  <data name="LightSource_StandardLightC" xml:space="preserve">
+    <value>標準照度C</value>
+  </data>
+  <data name="LightSource_Tungsten" xml:space="preserve">
+    <value>鵝絲類</value>
+  </data>
+  <data name="Metering_CenterWeightedAverage" xml:space="preserve">
+    <value>中央偏重平均測光</value>
+  </data>
+  <data name="Metering_ModeAverage" xml:space="preserve">
+    <value>平均測光</value>
+  </data>
+  <data name="Metering_MultiSegment" xml:space="preserve">
+    <value>分區測光</value>
+  </data>
+  <data name="Metering_MultiSpot" xml:space="preserve">
+    <value>多点測光</value>
+  </data>
+  <data name="Metering_Partial" xml:space="preserve">
+    <value>局部測光</value>
+  </data>
+  <data name="Metering_Spot" xml:space="preserve">
+    <value>測光</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="RawFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Flash_Name0" xml:space="preserve">
+    <value>無閃光燈</value>
+  </data>
+  <data name="Flash_Name1" xml:space="preserve">
+    <value>閃光燈</value>
+  </data>
+  <data name="Flash_Name13" xml:space="preserve">
+    <value>閃光燈,强制,無回應閃光</value>
+  </data>
+  <data name="Flash_Name15" xml:space="preserve">
+    <value>閃光燈,强制,回應閃光</value>
+  </data>
+  <data name="Flash_Name16" xml:space="preserve">
+    <value>無光灯,强制</value>
+  </data>
+  <data name="Flash_Name24" xml:space="preserve">
+    <value>無光灯,自动</value>
+  </data>
+  <data name="Flash_Name25" xml:space="preserve">
+    <value>閃光燈,自动</value>
+  </data>
+  <data name="Flash_Name29" xml:space="preserve">
+    <value>閃光燈,自动,無回應閃光</value>
+  </data>
+  <data name="Flash_Name31" xml:space="preserve">
+    <value>閃光燈,自动,回應閃光</value>
+  </data>
+  <data name="Flash_Name32" xml:space="preserve">
+    <value>無閃光燈功能</value>
+  </data>
+  <data name="Flash_Name5" xml:space="preserve">
+    <value>閃光燈,無回應閃光</value>
+  </data>
+  <data name="Flash_Name65" xml:space="preserve">
+    <value>閃光燈,紅眼</value>
+  </data>
+  <data name="Flash_Name69" xml:space="preserve">
+    <value>閃光燈,紅眼,無回應閃光</value>
+  </data>
+  <data name="Flash_Name7" xml:space="preserve">
+    <value>閃光燈,回應閃光</value>
+  </data>
+  <data name="Flash_Name71" xml:space="preserve">
+    <value>閃光燈,紅眼,回應閃光</value>
+  </data>
+  <data name="Flash_Name73" xml:space="preserve">
+    <value>閃光燈,强制,紅眼</value>
+  </data>
+  <data name="Flash_Name77" xml:space="preserve">
+    <value>閃光燈,强制,紅眼,無回應閃光</value>
+  </data>
+  <data name="Flash_Name79" xml:space="preserve">
+    <value>閃光燈,强制,紅眼,回應閃光</value>
+  </data>
+  <data name="Flash_Name83" xml:space="preserve">
+    <value>閃光燈,自动,紅眼</value>
+  </data>
+  <data name="Flash_Name9" xml:space="preserve">
+    <value>閃光燈,强制</value>
+  </data>
+  <data name="Flash_Name93" xml:space="preserve">
+    <value>閃光燈,自动,紅眼,無回應閃光</value>
+  </data>
+  <data name="Flash_Name95" xml:space="preserve">
+    <value>閃光燈,自动,紅眼,回應閃光</value>
+  </data>
 </root>

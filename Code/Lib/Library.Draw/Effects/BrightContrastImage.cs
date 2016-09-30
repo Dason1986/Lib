@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -6,16 +6,16 @@ using System.Drawing.Imaging;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// ¶Ô±È¶È/ÁÁ¶È
+    /// å¯¹æ¯”åº¦/äº®åº¦
     /// </summary>
-    [LanguageDescription("¶Ô±È¶È/ÁÁ¶È"), LanguageDisplayName("¶Ô±È¶È/ÁÁ¶È")]
+    [LanguageDescription("å¯¹æ¯”åº¦/äº®åº¦"), LanguageDisplayName("å¯¹æ¯”åº¦/äº®åº¦")]
     public class BrightContrastImage : ImageBuilder
     {
         /// <summary>
         /// The brightness factor.
         /// Should be in the range [-1, 1].
         /// </summary>
-        [LanguageDescription("ÁÁ¶È [-1, 1]"), LanguageDisplayName("ÁÁ¶È"), Category("VçRßxí—")]
+        [LanguageDescription("äº®åº¦ [-1, 1]"), LanguageDisplayName("äº®åº¦"), Category("æ¿¾é¡é¸é …")]
         public float BrightnessFactor
         {
             get
@@ -34,7 +34,7 @@ namespace Library.Draw.Effects
         /// The contrast factor.
         /// Should be in the range [-1, 1].
         /// </summary>
-        [LanguageDescription("¶Ô±ÈÒò×Ó [-1, 1]"), LanguageDisplayName("¶Ô±È¶È"), Category("VçRßxí—")]
+        [LanguageDescription("å¯¹æ¯”å› å­ [-1, 1]"), LanguageDisplayName("å¯¹æ¯”åº¦"), Category("æ¿¾é¡é¸é …")]
         public float ContrastFactor
         {
             get
@@ -83,14 +83,14 @@ namespace Library.Draw.Effects
             /// The brightness factor.
             /// Should be in the range [-1, 1].
             /// </summary>
-            [LanguageDescription("ÁÁ¶È [-1, 1]"), LanguageDisplayName("ÁÁ¶È"), Category("VçRßxí—")]
+            [LanguageDescription("äº®åº¦ [-1, 1]"), LanguageDisplayName("äº®åº¦"), Category("æ¿¾é¡é¸é …")]
             public float BrightnessFactor { get; set; }
 
             /// <summary>
             /// The contrast factor.
             /// Should be in the range [-1, 1].
             /// </summary>
-            [LanguageDescription("¶Ô±ÈÒò×Ó [-1, 1]"), LanguageDisplayName("¶Ô±È¶È"), Category("VçRßxí—")]
+            [LanguageDescription("å¯¹æ¯”å› å­ [-1, 1]"), LanguageDisplayName("å¯¹æ¯”åº¦"), Category("æ¿¾é¡é¸é …")]
             public float ContrastFactor { get; set; }
         }
 

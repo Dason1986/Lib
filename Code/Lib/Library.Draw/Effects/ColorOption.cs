@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.ComponentModel;
 
 namespace Library.Draw.Effects
@@ -6,25 +6,25 @@ namespace Library.Draw.Effects
     /// <summary>
     ///
     /// </summary>
-    [LanguageDescription("îÉ«"), LanguageDisplayName("îÉ«")]
+    [LanguageDescription("é¡è‰²é¸é …"), LanguageDisplayName("é¡è‰²é¸é …")]
     public class ColorOption : ImageOption
     {
         /// <summary>
-        /// ¼t
+        /// å» 
         /// </summary>
-        [LanguageDescription("îÉ«RGB:¼t"), LanguageDisplayName("¼t"), Category("VçRßxí—")]
+        [LanguageDescription("RGB:ç´…"), LanguageDisplayName("ç´…"), Category("æ¿¾é¡é¸é …")]
         public int Red { get; set; }
 
         /// <summary>
-        /// ¾G
+        /// é„­
         /// </summary>
-        [LanguageDescription("îÉ«RGB:¾G"), LanguageDisplayName("¾G"), Category("VçRßxí—")]
+        [LanguageDescription("RGB:ç¶ "), LanguageDisplayName("ç¶ "), Category("æ¿¾é¡é¸é …")]
         public int Green { get; set; }
 
         /// <summary>
-        /// Ë{
+        /// èŠ…
         /// </summary>
-        [LanguageDescription("îÉ«RGB:Ë{"), LanguageDisplayName("Ë{"), Category("VçRßxí—")]
+        [LanguageDescription("RGB:è—"), LanguageDisplayName("è—"), Category("æ¿¾é¡é¸é …")]
         public int Blue { get; set; }
     }
 }

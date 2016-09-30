@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -8,13 +8,13 @@ namespace Library.Draw.Effects
     /// <summary>
     ///
     /// </summary>
-    [LanguageDescription("É«Ïñ"), LanguageDisplayName("É«Ïñ")]
+    [LanguageDescription("é¢œè‰²é‡åŒ–"), LanguageDisplayName("é¢œè‰²é‡åŒ–")]
     public class ColorQuantizeImage : ImageBuilder
     {
         /// <summary>
-        /// µÈ¼‰
+        /// è„¹?
         /// </summary>
-        [LanguageDescription("µÈ¼‰"), LanguageDisplayName("µÈ¼‰"), Category("VçRßxí—")]
+        [LanguageDescription("ç­‰ç´š"), LanguageDisplayName("ç­‰ç´š"), Category("æ¿¾é¡é¸é …")]
         public float Levels
         {
             get

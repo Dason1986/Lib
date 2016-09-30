@@ -68,7 +68,7 @@ namespace Library.Draw
 
         //315
         //     public string Artist { get; set; }
-        //18246 ĞÇ¼¶
+        //18246 æ˜Ÿçº§
         /// <summary>
         ///
         /// </summary>
@@ -120,23 +120,23 @@ namespace Library.Draw
 
         #endregion FileInfo
 
-        #region Ïà™CĞÅÏ¢
+        #region ç›¸æ©Ÿä¿¡æ¯
 
-        //271 ¾µÍ·¹«Ë¾
+        //271 é•œå¤´å…¬å¸
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("EquipmentInfo", typeof(DrawResource)), LanguageDisplayName(@"EquipmentMake", typeof(DrawResource))]
         public string EquipmentMake { get; set; }
 
-        //272 ¾µÍ·ĞÍºÅ
+        //272 é•œå¤´å‹å·
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("EquipmentInfo", typeof(DrawResource)), LanguageDisplayName(@"EquipmentModel", typeof(DrawResource))]
         public string EquipmentModel { get; set; }
 
-        #endregion Ïà™CĞÅÏ¢
+        #endregion ç›¸æ©Ÿä¿¡æ¯
 
         #region base
 
@@ -152,28 +152,28 @@ namespace Library.Draw
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"YCbCrPositioning", typeof(DrawResource))]
         public int YCbCrPositioning { get; set; }
 
-        //41994 ÇåÎú¶È(Ò»°ã\ÈáºÍ\Ç¿ÁÒ)
+        //41994 æ¸…æ™°åº¦(ä¸€èˆ¬\æŸ”å’Œ\å¼ºçƒˆ)
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Sharpness", typeof(DrawResource))]
         public int Sharpness { get; set; }
 
-        //37384 ¹âÔ´
+        //37384 å…‰æº
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"LightSource", typeof(DrawResource))]
         public int LightSource { get; set; }
 
-        //34850 ÆØ¹â·½Ê½(Ÿo\ÊÖ„Ó\Ò»°ã\¹âÈ¦ÏÈ›Q\¿ìéTÏÈ›Q\¾°ÉîƒÏÈ\¿ìéTƒÏÈ\Ö±ÏòÄ£Ê½\™MÏòÄ£Ê½)
+        //34850 æ›å…‰æ–¹å¼(ç„¡\æ‰‹å‹•\ä¸€èˆ¬\å…‰åœˆå…ˆæ±º\å¿«é–€å…ˆæ±º\æ™¯æ·±å„ªå…ˆ\å¿«é–€å„ªå…ˆ\ç›´å‘æ¨¡å¼\æ©«å‘æ¨¡å¼)
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ExposureProgram", typeof(DrawResource))]
         public int ExposureProgram { get; set; }
 
-        //41989 35mm½º¾í
+        //41989 35mmèƒ¶å·
         /// <summary>
         ///
         /// </summary>
@@ -208,42 +208,42 @@ namespace Library.Draw
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"DateTimeDigitized", typeof(DrawResource))]
         public DateTime? DateTimeDigitized { get; set; }
 
-        //34855 ¹âÈ¦
+        //34855 å…‰åœˆ
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ISOSpeedRatings", typeof(DrawResource))]
         public int ISOSpeedRatings { get; set; }
 
-        //37383 ²â¹âÄ£Ê½
+        //37383 æµ‹å…‰æ¨¡å¼
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"MeteringMode", typeof(DrawResource))]
         public int MeteringMode { get; set; }
 
-        //37385 ÉÁ¹âµÆÄ£Ê½
+        //37385 é—ªå…‰ç¯æ¨¡å¼
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Flash", typeof(DrawResource))]
         public int Flash { get; set; }
 
-        //41987 °×Æ½ºâ(ÊÖ¶¯\×Ô¶¯)
+        //41987 ç™½å¹³è¡¡(æ‰‹åŠ¨\è‡ªåŠ¨)
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"WhiteBalance", typeof(DrawResource))]
         public int WhiteBalance { get; set; }
 
-        //41992 ±È¶Ô(±ê×¼\ÈáºÍ\Ç¿ÁÒ)
+        //41992 æ¯”å¯¹(æ ‡å‡†\æŸ”å’Œ\å¼ºçƒˆ)
         /// <summary>
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Contrast", typeof(DrawResource))]
         public int Contrast { get; set; }
 
-        //41993 ±¥ºÍ¶È(±ê×¼\µÍ±¥ºÍ\¸ß±¥ºÍ)
+        //41993 é¥±å’Œåº¦(æ ‡å‡†\ä½é¥±å’Œ\é«˜é¥±å’Œ)
         /// <summary>
         ///
         /// </summary>
@@ -313,6 +313,8 @@ namespace Library.Draw
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"AllExifs", typeof(DrawResource))]
         public ExifPropertyCollection Properties { get; protected set; }
+
+
 
         /// <summary>
         ///
@@ -577,7 +579,15 @@ namespace Library.Draw
             /// <summary>
             ///
             /// </summary>
-            SRational = 10
+            SRational = 10,
+            /// <summary>
+            /// 
+            /// </summary>
+            SingleFloat = 11,
+            /// <summary>
+            /// 
+            /// </summary>
+            DoubleFloat = 12
         }
 
         /// <summary>
@@ -1780,36 +1790,40 @@ namespace Library.Draw
         {
             switch (meteringMode)
             {
-                case 0: return "Ÿo";
-                case 1: return "Æ½¾ùœy¹â";
-                case 2: return "ÖĞÑëÆ«ÖØÆ½¾ùœy¹â";
-                case 3: return "²â¹â";
-                case 4: return "¶àµãœy¹â";
-                case 5: return "·Ö…^œy¹â";
-                case 6: return "¾Ö²¿œy¹â";
+                case 0: return DrawResource.Unknown;
+                case 1: return DrawResource.Metering_ModeAverage;
+                case 2: return DrawResource.Metering_CenterWeightedAverage;
+                case 3: return DrawResource.Metering_Spot;
+                case 4: return DrawResource.Metering_MultiSpot;
+                case 5: return DrawResource.Metering_MultiSegment;
+                case 6: return DrawResource.Metering_Partial;
+                case 255: return DrawResource.Other;
             }
+
             return string.Empty;
         }
 
         /// <summary>
         ///
         /// </summary>
-        /// <param name="LightSource"></param>
+        /// <param name="lightSource"></param>
         /// <returns></returns>
-        public static string GetLightSourceName(int LightSource)
+        public static string GetLightSourceName(int lightSource)
         {
-            switch (LightSource)
+            switch (lightSource)
             {
-                case 0: return "ÎŞ";
-                case 1: return "ÈÕ¹â";
-                case 2: return "Î¹âŸô";
-                case 3: return "ùZ½zî";
-                case 17: return "˜ËœÊÕÕ¶ÈA";
-                case 18: return "˜ËœÊÕÕ¶ÈB";
-                case 19: return "˜ËœÊÕÕ¶ÈC";
-                case 20: return "D55";
-                case 21: return "D65";
-                case 22: return "D75";
+                case 0: return DrawResource.Unknown;
+                case 1: return DrawResource.LightSource_Daylight;
+                case 2: return DrawResource.LightSource_Fluorescent;
+                case 3: return DrawResource.LightSource_Tungsten;
+                case 10: return DrawResource.LightSource_Flash;
+                case 17: return DrawResource.LightSource_StandardLightA;
+                case 18: return DrawResource.LightSource_StandardLightB;
+                case 19: return DrawResource.LightSource_StandardLightC;
+                case 20: return DrawResource.LightSource_D55;
+                case 21: return DrawResource.LightSource_D65;
+                case 22: return DrawResource.LightSource_D75;
+                case 255: return DrawResource.Other;
             }
             return string.Empty;
         }
@@ -1823,28 +1837,28 @@ namespace Library.Draw
         {
             switch (flash)
             {
-                case 0: return "ŸoéW¹âŸô";
-                case 1: return "éW¹âŸô";
-                case 5: return "éW¹âŸô,Ÿo»Ø‘ªéW¹â";
-                case 7: return "éW¹âŸô,»Ø‘ªéW¹â";
-                case 9: return "éW¹âŸô,Ç¿ÖÆ";
-                case 13: return "éW¹âŸô,Ç¿ÖÆ,Ÿo»Ø‘ªéW¹â";
-                case 15: return "éW¹âŸô,Ç¿ÖÆ,»Ø‘ªéW¹â";
-                case 16: return "Ÿo¹âµÆ,Ç¿ÖÆ";
-                case 24: return "Ÿo¹âµÆ,×Ô¶¯";
-                case 25: return "éW¹âŸô,×Ô¶¯";
-                case 29: return "éW¹âŸô,×Ô¶¯,Ÿo»Ø‘ªéW¹â";
-                case 31: return "éW¹âŸô,×Ô¶¯,»Ø‘ªéW¹â";
-                case 32: return "ŸoéW¹âŸô¹¦ÄÜ";
-                case 65: return "éW¹âŸô,¼tÑÛ";
-                case 69: return "éW¹âŸô,¼tÑÛ,Ÿo»Ø‘ªéW¹â";
-                case 71: return "éW¹âŸô,¼tÑÛ,»Ø‘ªéW¹â";
-                case 73: return "éW¹âŸô,Ç¿ÖÆ,¼tÑÛ";
-                case 77: return "éW¹âŸô,Ç¿ÖÆ,¼tÑÛ,Ÿo»Ø‘ªéW¹â";
-                case 79: return "éW¹âŸô,Ç¿ÖÆ,¼tÑÛ,»Ø‘ªéW¹â";
-                case 83: return "éW¹âŸô,×Ô¶¯,¼tÑÛ";
-                case 93: return "éW¹âŸô,×Ô¶¯,¼tÑÛ,Ÿo»Ø‘ªéW¹â";
-                case 95: return "éW¹âŸô,×Ô¶¯,¼tÑÛ,»Ø‘ªéW¹â";
+                case 0: return DrawResource.Flash_Name0;
+                case 1: return DrawResource.Flash_Name1;
+                case 5: return DrawResource.Flash_Name5;
+                case 7: return DrawResource.Flash_Name7;
+                case 9: return DrawResource.Flash_Name9;
+                case 13: return DrawResource.Flash_Name13;
+                case 15: return DrawResource.Flash_Name15;
+                case 16: return DrawResource.Flash_Name16;
+                case 24: return DrawResource.Flash_Name24;
+                case 25: return DrawResource.Flash_Name25;
+                case 29: return DrawResource.Flash_Name29;
+                case 31: return DrawResource.Flash_Name31;
+                case 32: return DrawResource.Flash_Name32;
+                case 65: return DrawResource.Flash_Name65;
+                case 69: return DrawResource.Flash_Name69;
+                case 71: return DrawResource.Flash_Name71;
+                case 73: return DrawResource.Flash_Name73;
+                case 77: return DrawResource.Flash_Name77;
+                case 79: return DrawResource.Flash_Name79;
+                case 83: return DrawResource.Flash_Name83;
+                case 93: return DrawResource.Flash_Name93;
+                case 95: return DrawResource.Flash_Name95;
             }
             return string.Empty;
         }

@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -9,14 +9,14 @@ namespace Library.Draw.Effects
     /// <summary>
     ///
     /// </summary>
-    [LanguageDescription("Ö±·½Í¼Ä£Ê½ÔöÇ¿"), LanguageDisplayName("Ö±·½Í¼Ä£Ê½ÔöÇ¿")]
+    [LanguageDescription("ç›´æ–¹å›¾æ¨¡å¼å¢å¼º"), LanguageDisplayName("ç›´æ–¹å›¾æ¨¡å¼å¢å¼º")]
     public class AutoLevelImage : ImageBuilder
     {
         /// <summary>
         ///
         /// </summary>
         [DefaultValue(1f)]
-        [LanguageDescription("Ç¿¶È"), LanguageDisplayName("Ç¿¶È"), Category("VçRßxí—")]
+        [LanguageDescription("å¼ºåº¦"), LanguageDisplayName("å¼ºåº¦"), Category("æ¿¾é¡é¸é …")]
         public float Intensity
         {
             get
@@ -64,7 +64,7 @@ namespace Library.Draw.Effects
             /// <summary>
             ///
             /// </summary>
-            [LanguageDescription("Ç¿¶È"), LanguageDisplayName("Ç¿¶È"), Category("VçRßxí—")]
+            [LanguageDescription("å¼ºåº¦"), LanguageDisplayName("å¼ºåº¦"), Category("æ¿¾é¡é¸é …")]
             public float Intensity { get; set; }
         }
 
@@ -212,7 +212,7 @@ namespace Library.Draw.Effects
                     bmp.SetPixel(x, y, Color.FromArgb(r, g, b));
                 }
             }
-            return bmp;//×öÖ±·½Í¼Ä£Ê½ÔöÇ¿
+            return bmp;//åšç›´æ–¹å›¾æ¨¡å¼å¢å¼º
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Library.Draw.Effects
                 ptr += bmpData.Stride - width * 4;
             }
             bmp.UnlockBits(bmpData);
-            return bmp;//×öÖ±·½Í¼Ä£Ê½ÔöÇ¿
+            return bmp;//åšç›´æ–¹å›¾æ¨¡å¼å¢å¼º
         }
     }
 }

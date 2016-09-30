@@ -1,4 +1,4 @@
-using Library.Att;
+ï»¿using Library.Att;
 using System.ComponentModel;
 
 namespace Library.Draw.Effects
@@ -6,13 +6,13 @@ namespace Library.Draw.Effects
     /// <summary>
     ///
     /// </summary>
-    [LanguageDescription("Öµ"), LanguageDisplayName("ÅäÖÃßxí—")]
+    [LanguageDescription("å€¼é¸æ“‡"), LanguageDisplayName("å€¼é¸æ“‡")]
     public class ValueOption : ImageOption
     {
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("Öµ"), LanguageDisplayName("Öµ"), Category("VçRßxí—")]
+        [LanguageDescription("å€¼"), LanguageDisplayName("å€¼"), Category("æ¿¾é¡é¸é …")]
         public float Value { get; set; }
     }
 }
