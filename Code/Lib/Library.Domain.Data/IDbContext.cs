@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public interface IDbContext
+    public interface IDbContext : System.IDisposable
     {
         //  IQueryable<TEntity> CreateSet<TEntity>() where TEntity : class;
         IUnitOfWork CreateUnitOfWork();

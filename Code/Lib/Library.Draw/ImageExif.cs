@@ -11,6 +11,17 @@ using System.Text;
 
 namespace Library.Draw
 {
+    public enum Orientation:ushort
+    {
+        Horizontal = 1,
+        MirrorHorizontal = 2,
+        Rotate180 = 3,
+        MirrorVertical = 4,
+        MirrorHorizontalAndRotate270CW = 5,
+        Rotate90CW = 6,
+        MirrorHorizontalAndRotate90CW = 7,
+        Rotate270CW = 8,
+    }
     /// <summary>
     ///
     /// </summary>
@@ -139,7 +150,11 @@ namespace Library.Draw
         #endregion 相機信息
 
         #region base
-
+        /// <summary>
+        ///
+        /// </summary>
+        [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Orientation", typeof(DrawResource))]
+        public Orientation Orientation { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -456,6 +471,8 @@ namespace Library.Draw
                             {
                                 switch (Len)
                                 {
+                                    case 2:
+                                        _displayValue = BitConverter.ToInt16(Value, 0); break;
                                     case 4:
                                         _displayValue = BitConverter.ToInt32(Value, 0); break;
                                     case 24:
@@ -474,6 +491,26 @@ namespace Library.Draw
                                             _displayValue = BitConverter.ToInt32(Value, 0) / (float)BitConverter.ToInt32(Value, 4);
                                             break;
                                         }
+                                    case 16:
+                                        {
+                                            float degrees = BitConverter.ToInt32(Value, 0) / (float)BitConverter.ToInt32(Value, 4);
+                                            float minutes = BitConverter.ToInt32(Value, 8) / (float)BitConverter.ToInt32(Value, 12);
+                                            float coorditate = degrees + (minutes / 60f);
+                                            _displayValue = coorditate;
+                                            break;
+                                        }
+                                    case 48:
+                                        {
+                                            // red[x], red[y], green[x], green[y], blue[x], and blue[y]
+                                            float redx = BitConverter.ToInt32(Value, 0) / (float)BitConverter.ToInt32(Value, 4);
+                                            float redy = BitConverter.ToInt32(Value, 8) / (float)BitConverter.ToInt32(Value, 12);
+                                            float greenx = BitConverter.ToInt32(Value, 16) / (float)BitConverter.ToInt32(Value, 20);
+                                            float greeny = BitConverter.ToInt32(Value, 24) / (float)BitConverter.ToInt32(Value, 28);
+                                            float bluex = BitConverter.ToInt32(Value, 32) / (float)BitConverter.ToInt32(Value, 36);
+                                            float bluey = BitConverter.ToInt32(Value, 40) / (float)BitConverter.ToInt32(Value, 44);
+                                            _displayValue = string.Format("red[x]{0} ,red[y]{1} ,green[x]{2}, green[y]{3},blue[x]{4},blue[y]{5}", redx, redy, greenx, greeny, bluex, bluey);
+                                            break;
+                                        }
                                 }
                                 break;
                             }
@@ -482,6 +519,8 @@ namespace Library.Draw
                             {
                                 switch (Len)
                                 {
+                                    case 2:
+                                        _displayValue = BitConverter.ToInt16(Value, 0); break;
                                     case 4:
                                         _displayValue = BitConverter.ToUInt32(Value, 0); break;
                                     case 24:
@@ -498,6 +537,26 @@ namespace Library.Draw
                                     case 8:
                                         {
                                             _displayValue = BitConverter.ToUInt32(Value, 0) / (float)BitConverter.ToUInt32(Value, 4);
+                                            break;
+                                        }
+                                    case 16:
+                                        {
+                                            float degrees = BitConverter.ToUInt32(Value, 0) / (float)BitConverter.ToUInt32(Value, 4);
+                                            float minutes = BitConverter.ToUInt32(Value, 8) / (float)BitConverter.ToUInt32(Value, 12);
+                                            float coorditate = degrees + (minutes / 60f);
+                                            _displayValue = coorditate;
+                                            break;
+                                        }
+                                    case 48:
+                                        {
+                                            // red[x], red[y], green[x], green[y], blue[x], and blue[y]
+                                            float redx = BitConverter.ToUInt32(Value, 0) / (float)BitConverter.ToUInt32(Value, 4);
+                                            float redy = BitConverter.ToUInt32(Value, 8) / (float)BitConverter.ToUInt32(Value, 12);
+                                            float greenx = BitConverter.ToUInt32(Value, 16) / (float)BitConverter.ToUInt32(Value, 20);
+                                            float greeny = BitConverter.ToUInt32(Value, 24) / (float)BitConverter.ToUInt32(Value, 28);
+                                            float bluex = BitConverter.ToUInt32(Value, 32) / (float)BitConverter.ToUInt32(Value, 36);
+                                            float bluey = BitConverter.ToUInt32(Value, 40) / (float)BitConverter.ToUInt32(Value, 44);
+                                            _displayValue = string.Format("red[x]{0} ,red[y]{1} ,green[x]{2}, green[y]{3},blue[x]{4},blue[y]{5}", redx, redy, greenx, greeny, bluex, bluey);
                                             break;
                                         }
                                 }
@@ -534,7 +593,7 @@ namespace Library.Draw
         /// <summary>
         ///
         /// </summary>
-        public enum PropertyTagType
+        public enum PropertyTagType : short
         {
             /// <summary>
             ///
@@ -1697,8 +1756,15 @@ namespace Library.Draw
             {
                 var exit = new ExifProperty(image.GetPropertyItem(hex));
                 properties.Add(exit);
-                switch (hex)
+                switch ((int)hex)
                 {
+
+                    case 274:
+                        {
+                            var value = Convert.ToUInt16(exit.DisplayValue);
+                            exif.Orientation = ObjectUtility.Cast<Orientation>(value);
+                            break;
+                        }
                     case 40091: exif.Title = ObjectUtility.Cast<string>(exit.DisplayValue); break;
                     case 40092: exif.Comment = GetStringUnicode(image, hex); break;
                     case 40093: exif.Author = ObjectUtility.Cast<string>(exit.DisplayValue); break;
@@ -1893,7 +1959,7 @@ namespace Library.Draw
             var value = propety.Value;
             if (propety.Value.Length == 2)
                 return BitConverter.ToInt16(value, 0);
-          
+
             if (propety.Value.Length == 4)
                 return BitConverter.ToInt32(value, 0);
             return 0;

@@ -98,6 +98,12 @@
     <Compile Include="Map\GPSGeo.cs" />
     <Compile Include="ImageExif.cs" />
     <Compile Include="Margin.cs" />
+    <Compile Include="SimilarImages\aHash.cs" />
+    <Compile Include="SimilarImages\GrayHistogram.cs" />
+    <Compile Include="SimilarImages\ISimilarAlgorithm.cs" />
+    <Compile Include="SimilarImages\LiveEnum.cs" />
+    <Compile Include="SimilarImages\SimilarAlgorithm.cs" />
+    <Compile Include="SimilarImages\SimilarityResult.cs" />
     <Compile Include="Water\WaterImageBuilder.cs" />
     <Compile Include="Water\WaterImageBuilderByText.cs" />
     <Compile Include="Water\WaterImageFactory.cs" />

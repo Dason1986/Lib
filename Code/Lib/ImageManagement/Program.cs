@@ -21,7 +21,7 @@ namespace TestWinform
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-        //    UDPTraceListener listener = new UDPTraceListener(9090);
+            //    UDPTraceListener listener = new UDPTraceListener(9090);
 
             var file = typeof(SheetForm).Assembly.GetManifestResourceStream("TestWinform.original.jpg");
             if (file != null)
@@ -29,6 +29,11 @@ namespace TestWinform
                 Original = file.ToArray();
             }
             Gbitmap = new Bitmap(new MemoryStream(Original));
+            var has = new Library.Draw.SimilarImages.PerceptualHash();
+            has.Live = Library.Draw.SimilarImages.LiveEnum.Pixels32;
+            has.SetIamge(Bitmap.FromFile(@"C:\Users\gdx00\Desktop\IMG_2993.jpg"), Bitmap.FromFile(@"C:\Users\gdx00\Desktop\IMG_2993 - 副本.jpg"));
+            var intf = has.Compare();
+            Console.WriteLine(intf);
             // ImageEffectsVisualizer.TestShowVisualizer(Gbitmap);
             Application.Run(new SheetForm());
         }
