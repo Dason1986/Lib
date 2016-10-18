@@ -16,6 +16,7 @@ namespace TestPj
 
         private static void Main(string[] args)
         {
+            new Test.ThumbnailTest().Test();
             Console.ReadKey();
             Console.ReadLine();
         }

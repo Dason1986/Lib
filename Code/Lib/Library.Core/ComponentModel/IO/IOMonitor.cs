@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 
 namespace Library.IO
 {
@@ -8,27 +8,27 @@ namespace Library.IO
     public interface IOMonitor : System.IDisposable
     {
         /// <summary>
-        /// ¿ªÊ¼Ê±¼ä
+        /// ç¾²å®å¥€æ½”
         /// </summary>
         DateTime? BeginTime { get; }
 
         /// <summary>
-        /// ÊÇ·ñÔËĞĞ
+        /// å²†ç˜å ä¿´
         /// </summary>
         bool IsRunning { get; }
 
         /// <summary>
-        /// Æô¶¯
+        /// ïœ„é›„
         /// </summary>
         void Start();
 
         /// <summary>
-        /// Í£Ö¹
+        /// ç¤¿ç ¦
         /// </summary>
         void Stop();
 
         /// <summary>
-        /// ¹Ø±Õ
+        /// å£½æ••
         /// </summary>
         void Close();
     }

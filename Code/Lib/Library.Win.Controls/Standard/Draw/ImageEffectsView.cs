@@ -159,5 +159,42 @@ namespace Library.Controls
                 Source = Image.FromFile(dialog.FileName);
             }
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            
+            SaveFileDialog dialog = new SaveFileDialog() { Filter = ".jpeg|*.jpeg" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var fs = dialog.OpenFile();
+                var ThumbnailWidth = 0;
+                var ThumbnailHeight = 0;
+                var image = ResultImage??Source;
+                if (image.Width < 120 && image.Height < 120)
+                {
+                    ThumbnailWidth = image.Width;
+                    ThumbnailHeight = image.Height;
+                }
+                else if (image.Width > image.Height)
+                {
+                    var per = (decimal)120 / image.Width;
+                    ThumbnailWidth = 120;
+
+                    ThumbnailHeight = (int)(image.Height * per);
+                }
+                else
+                {
+                    var per = (decimal)120 / image.Height;
+                    ThumbnailHeight = 120;
+
+                    ThumbnailWidth = (int)(image.Width * per);
+                }
+                Bitmap thumbnailImage = new Bitmap(image, new Size(ThumbnailWidth, ThumbnailHeight));
+
+                thumbnailImage.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                thumbnailImage.Dispose();
+                fs.Dispose();
+            }
+        }
     }
 }

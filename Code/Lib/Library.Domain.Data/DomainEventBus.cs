@@ -10,39 +10,56 @@ namespace Library.Domain.Data
 {
     public class DomainEventBus : IDomainEventBus
     {
-        public DomainEventBus(IIoc ioc)
+        public DomainEventBus()
         {
         }
-        IIoc _ioc;
-        public void Publish<TEvent>(TEvent @event)
-            where TEvent : IDomainEvent
+
+        public void Publish<TService>(IDomainEventArgs args)
+
+            where TService : IDomainService
         {
-            Thread thread = MyMethod(@event);
+            Thread thread = MyMethod<TService, IDomainEventArgs>(args);
             thread.Start();
 
         }
 
-        private Thread MyMethod<TEvent>(TEvent @event) where TEvent : IDomainEvent
+        private Thread MyMethod<TService, TEvent>(TEvent args) where TService : IDomainService where TEvent : IDomainEventArgs
         {
             Thread thread = new Thread(n =>
             {
-                var eventHandler = _ioc.GetService<IEventHandler<TEvent>>();
-                eventHandler.Handle(@event);
+                var service = Bootstrap.Currnet.GetService<TService>();
+                service.Handle(args);
             });
 
             return thread;
         }
 
-        public void PublishAwait<TEvent>(TEvent @event) where TEvent : IDomainEvent
+        public void PublishAwait<TService>(IDomainEventArgs args)
+
+            where TService : IDomainService
         {
-            Thread thread = MyMethod(@event);
+            Thread thread = MyMethod<TService, IDomainEventArgs>(args);
             thread.Start();
             thread.Join();
         }
-        static readonly DomainEventBus _domainEventBus;//= new DomainEventBus();
-        public static DomainEventBus Instance()
+        IList<IDomainEventHandler> handers = new List<IDomainEventHandler>();
+        public void AddEvent(IDomainEventHandler eventHandler)
         {
-            return _domainEventBus;
+            handers.Add(eventHandler);
+        }
+
+        public void Publish()
+        {
+            Thread thread = new Thread(n =>
+           {
+               foreach (var item in handers)
+               {
+                   var service = item.CreateService();
+                   service.Handle(item.Args);
+               }
+               handers.Clear();
+           });
+            thread.Start();
         }
     }
 }

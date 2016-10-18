@@ -43,6 +43,7 @@ namespace Library.Controls
             this.BtnBuilder = new Library.Controls.Button();
             this.BtnOK = new Library.Controls.Button();
             this.checkBox1 = new Library.Controls.CheckBox();
+            this.btnSave = new Library.Controls.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -88,7 +89,7 @@ namespace Library.Controls
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(259, 518);
+            this.tabPage1.Size = new System.Drawing.Size(252, 518);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "圖像信息";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -98,7 +99,7 @@ namespace Library.Controls
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(253, 512);
+            this.propertyGrid1.Size = new System.Drawing.Size(246, 512);
             this.propertyGrid1.TabIndex = 8;
             // 
             // tabPage2
@@ -134,6 +135,7 @@ namespace Library.Controls
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.BtnSelectImage);
             this.panel2.Controls.Add(this.BtnBuilder);
             this.panel2.Controls.Add(this.BtnOK);
@@ -191,6 +193,17 @@ namespace Library.Controls
             this.checkBox1.Text = "指針算法";
             this.checkBox1.UseVisualStyleBackColor = false;
             // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnSave.Location = new System.Drawing.Point(179, 6);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(68, 23);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "保存圖像";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // ImageEffectsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -228,5 +241,6 @@ namespace Library.Controls
         private ListBox LBEffects;
         private PropertyGrid grid;
         private Button BtnSelectImage;
+        private Button btnSave;
     }
 }

@@ -24,10 +24,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Bin\Library.Domain.Data.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -59,12 +60,6 @@
     <Compile Include="EF\ModuleProvider.cs" />
     <Compile Include="EF\Repository.cs" />
     <Compile Include="EF\UnitOfWork.cs" />
-    <Compile Include="IDbContext.cs" />
-    <Compile Include="IModuleProvider.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Linq\LikeExpressionExtension.cs" />
-    <Compile Include="Linq\SpecExprExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

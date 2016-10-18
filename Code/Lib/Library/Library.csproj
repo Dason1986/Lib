@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitComputing.cs" />
-    <Compile Include="ComponentModel\BaseLogic.cs" />
     <Compile Include="CustomExceptionProvider.cs" />
     <Compile Include="Date\HolidayBuilder.cs" />
     <Compile Include="FastReflection\ConstructorInvoker.cs" />
@@ -123,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="IDCrad\gbt2260.Db.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ComponentModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

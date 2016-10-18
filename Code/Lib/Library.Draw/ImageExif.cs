@@ -11,15 +11,42 @@ using System.Text;
 
 namespace Library.Draw
 {
-    public enum Orientation:ushort
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum Orientation : ushort
     {
+        /// <summary>
+        /// 
+        /// </summary>
         Horizontal = 1,
+        /// <summary>
+        /// 
+        /// </summary>
         MirrorHorizontal = 2,
+        /// <summary>
+        /// 
+        /// </summary>
         Rotate180 = 3,
+        /// <summary>
+        /// 
+        /// </summary>
         MirrorVertical = 4,
+        /// <summary>
+        /// 
+        /// </summary>
         MirrorHorizontalAndRotate270CW = 5,
+        /// <summary>
+        /// 
+        /// </summary>
         Rotate90CW = 6,
+        /// <summary>
+        /// 
+        /// </summary>
         MirrorHorizontalAndRotate90CW = 7,
+        /// <summary>
+        /// 
+        /// </summary>
         Rotate270CW = 8,
     }
     /// <summary>
@@ -1762,7 +1789,8 @@ namespace Library.Draw
                     case 274:
                         {
                             var value = Convert.ToUInt16(exit.DisplayValue);
-                            exif.Orientation = ObjectUtility.Cast<Orientation>(value);
+                            if (value != 0)
+                                exif.Orientation = ObjectUtility.Cast<Orientation>(value);
                             break;
                         }
                     case 40091: exif.Title = ObjectUtility.Cast<string>(exit.DisplayValue); break;
@@ -1778,7 +1806,7 @@ namespace Library.Draw
                     case 34855: exif.ISOSpeedRatings = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 37384: exif.Flash = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 37385: exif.LightSource = ObjectUtility.Cast<short>(exit.DisplayValue); break;
-                    case 37383: exif.MeteringMode = ObjectUtility.Cast<short>(exit.DisplayValue); break;
+                    case 37383: exif.MeteringMode = ObjectUtility.Cast<int>(exit.DisplayValue); break;
                     case 18246: exif.Rating = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 41987: exif.WhiteBalance = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 41992: exif.Contrast = ObjectUtility.Cast<short>(exit.DisplayValue); break;
@@ -1824,19 +1852,78 @@ namespace Library.Draw
                     case 6:
                     case 29:
                         {
-                            if (exif.GPS == null && image.PropertyIdList.Contains(1) && image.PropertyIdList.Contains(2) && image.PropertyIdList.Contains(3) && image.PropertyIdList.Contains(4) && image.PropertyIdList.Contains(5) && image.PropertyIdList.Contains(6))
+                            if (image.PropertyIdList.Contains(1) && image.PropertyIdList.Contains(2))
                             {
-                                var Gps = new GPSGeo()
+                                if (exif.GPS == null)
                                 {
-                                    LatitudeRef = GetStringAsc(image, 1),
-                                    LongitudeRef = GetStringAsc(image, 3),
-                                    AltitudeRef = GetStringAsc(image, 5),
-                                    Latitude = GetDouble(image, 2),
-                                    Longitude = GetDouble(image, 4),
-                                    Altitude = GetDouble(image, 6),
-                                };
-                                if (image.PropertyIdList.Contains(29)) Gps.DateStamp = DateTime.ParseExact(GetStringAsc(image, 29), "yyyy:MM:dd", null);
-                                exif.GPS = Gps;
+                                    exif.GPS = new GPSGeo()
+                                    {
+                                        LatitudeRef = GetStringAsc(image, 1),
+                                        Latitude = GetDouble(image, 2),
+                                    };
+                                }
+
+                                else
+                                {
+                                    exif.GPS.LatitudeRef = GetStringAsc(image, 1);
+                                    exif.GPS.Latitude = GetDouble(image, 2);
+
+                                }
+
+                            }
+                            if (image.PropertyIdList.Contains(3) && image.PropertyIdList.Contains(4))
+                            {
+
+                                if (exif.GPS == null)
+                                {
+                                    exif.GPS = new GPSGeo()
+                                    {
+                                        LongitudeRef = GetStringAsc(image, 3),
+                                        Longitude = GetDouble(image, 4),
+                                    };
+                                }
+
+                                else
+                                {
+                                    exif.GPS.LongitudeRef = GetStringAsc(image, 3);
+                                    exif.GPS.Longitude = GetDouble(image, 4);
+
+                                }
+                            }
+
+                            if (image.PropertyIdList.Contains(5) && image.PropertyIdList.Contains(6))
+                            {
+
+                                if (exif.GPS == null)
+                                {
+                                    exif.GPS = new GPSGeo()
+                                    {
+                                        AltitudeRef = GetStringAsc(image, 5),
+                                        Altitude = GetDouble(image, 6),
+                                    };
+                                }
+
+                                else
+                                {
+                                    exif.GPS.AltitudeRef = GetStringAsc(image, 5);
+                                    exif.GPS.Altitude = GetDouble(image, 6);
+
+                                }
+                            }
+                            if (image.PropertyIdList.Contains(29))
+                            {
+                                if (exif.GPS == null)
+                                {
+                                    exif.GPS = new GPSGeo()
+                                    {
+                                        DateStamp = DateTime.ParseExact(GetStringAsc(image, 29), "yyyy:MM:dd", null)
+                                    };
+                                }
+                                else
+                                {
+
+                                    exif.GPS.DateStamp = DateTime.ParseExact(GetStringAsc(image, 29), "yyyy:MM:dd", null);
+                                }
                             }
 
                             break;
@@ -1932,6 +2019,7 @@ namespace Library.Draw
         private static DateTime? GetDateTime(Image getImage, int hex)
         {
             string dateTakenTag = Encoding.ASCII.GetString(getImage.GetPropertyItem(hex).Value);
+            if (dateTakenTag == null || dateTakenTag.Contains("0000:00:00 00:00:00")) return null;
             string[] parts = dateTakenTag.Split(':', ' ');
             int year = int.Parse(parts[0]);
             int month = int.Parse(parts[1]);
@@ -1939,6 +2027,7 @@ namespace Library.Draw
             int hour = int.Parse(parts[3]);
             int minute = int.Parse(parts[4]);
             int second = int.Parse(parts[5]);
+            if (year == 0 || month == 0 || day == 0) return null;
             return new DateTime(year, month, day, hour, minute, second);
         }
 

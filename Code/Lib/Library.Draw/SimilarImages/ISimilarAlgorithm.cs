@@ -7,12 +7,7 @@ namespace Library.Draw.SimilarImages
     /// </summary>
     public interface ISimilarAlgorithm
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="imageX"></param>
-        /// <param name="imageY"></param>
-        void SetIamge(Image imageX, Image imageY);
+        double Similarity { get; set; }
 
         /// <summary>
         /// 

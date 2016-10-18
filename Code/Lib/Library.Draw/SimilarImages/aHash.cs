@@ -9,22 +9,56 @@ namespace Library.Draw.SimilarImages
     /// </summary>
     public class PerceptualHash : SimilarAlgorithm
     {
-        public override byte[] BuildFingerprint(Image image)
+        /// <summary>
+        /// 
+        /// </summary>
+        public PerceptualHash()
         {
-            byte[] x = GetHisogram(GetThumbnailImage(ImageX));
-            return x;
+            this.Similarity = 5;
         }
 
+        double _similarity;
+        /// <summary>
+        /// 
+        /// </summary>
+        public override double Similarity
+        {
+            get { return _similarity; }
+            set
+            {
+                if (value < 0 || value > 100) throw new Exception();
+                _similarity = value;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public override byte[] BuildFingerprint(Image image)
+        {
+            byte[] x = GetHisogram(GetThumbnailImage(image));
+            return x;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override SimilarityResult Compare()
         {
             byte[] x = BuildFingerprint(ImageX);
             byte[] y = BuildFingerprint(ImageY);
             return Compare(x, y);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hisogramX"></param>
+        /// <param name="hisogramY"></param>
+        /// <returns></returns>
         public override SimilarityResult Compare(byte[] hisogramX, byte[] hisogramY)
         {
-            if (hisogramX.Length != hisogramX.Length)
+            if (hisogramX.Length != hisogramY.Length)
                 return new SimilarityResult();
             double count = 0;
             for (int i = 0; i < hisogramX.Length; i++)
@@ -33,9 +67,9 @@ namespace Library.Draw.SimilarImages
                     count++;
             }
 
-            var result = Math.Round(count * 100 / hisogramX.Length, 2);
+            //   var result = Math.Round(count * 100 / hisogramX.Length, 2);
 
-            return new SimilarityResult() { Similarity = result, IsSame = result > Similarity };
+            return new SimilarityResult() { Similarity = count, IsSame = count < this.Similarity };
         }
 
 

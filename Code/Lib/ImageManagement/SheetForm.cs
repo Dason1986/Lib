@@ -1,5 +1,4 @@
 ﻿using Library;
-using Library.Diagnostics;
 using Library.HelperUtility;
 using System;
 using System.Diagnostics;
@@ -71,9 +70,7 @@ namespace TestWinform
 
         private void SheetForm_Load(object sender, EventArgs e)
         {
-            RichTextBoxTraceListener listener = new RichTextBoxTraceListener(RtxInfo);
-            listener.BindTrace();
-            Trace.TraceWarning("trace iii");
+       
         }
 
         private void BtnSave_Click(object sender, EventArgs e)

@@ -60,11 +60,11 @@
     <Compile Include="Att\LanguageDescriptionAttribute.cs" />
     <Compile Include="AlignmentType.cs" />
     <Compile Include="Att\LanguageDisplayNameAttribute.cs" />
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="ComponentModel\ILogicService.cs" />
     <Compile Include="ComponentModel\IO\BytesSize.cs" />
     <Compile Include="ComponentModel\IValueCalculator.cs" />
     <Compile Include="ComponentModel\Model\IEntity.cs" />
-    <Compile Include="ComponentModel\Test\IStart.cs" />
-    <Compile Include="IIoc.cs" />
     <Compile Include="ResourceManagement.cs" />
     <Compile Include="ComponentModel\IO\MDS\BaseSystemInfo.cs" />
     <Compile Include="ComponentModel\IO\MDS\DMSDirectoryInfo.cs" />

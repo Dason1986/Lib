@@ -33,7 +33,7 @@ namespace Library.Draw.SimilarImages
         /// <summary>
         /// 
         /// </summary>
-        public double Similarity
+        public virtual double Similarity
         {
             get { return _similarity; }
             set

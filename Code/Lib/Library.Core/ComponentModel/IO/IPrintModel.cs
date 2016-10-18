@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 
 namespace Library.IO
 {
@@ -8,7 +8,7 @@ namespace Library.IO
     public interface IPrintModel
     {
         /// <summary>
-        /// È¡´òÓ¡Œ¦Ïó
+        /// ïŸ«æ¹–è‚ï–»ç “
         /// </summary>
         /// <returns></returns>
         Dictionary<string, object> GetPrintObjects();

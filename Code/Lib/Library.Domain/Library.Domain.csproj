@@ -25,10 +25,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Bin\Library.Domain.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -51,6 +52,12 @@
     <Compile Include="AggregateRoot.cs" />
     <Compile Include="DomainEvents\IEvent.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="IDbContext.cs" />
+    <Compile Include="IModuleProvider.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Linq\LikeExpressionExtension.cs" />
+    <Compile Include="Linq\SpecExprExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
