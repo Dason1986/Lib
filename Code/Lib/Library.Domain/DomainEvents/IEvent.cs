@@ -11,7 +11,7 @@ namespace Library.Domain.DomainEvents
     /// <summary>
     /// 
     /// </summary>
-    public interface IDomainService
+    public interface IDomainService : IDisposable
     {
         /// <summary>
         /// 

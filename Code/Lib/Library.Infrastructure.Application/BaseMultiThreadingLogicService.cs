@@ -13,7 +13,6 @@ namespace Library.Infrastructure.Application
 
         }
         #region property
-        public bool ThrowError { get; set; }
 
         int _threadCount = 3;
         int _batSize = 20;
@@ -90,9 +89,9 @@ namespace Library.Infrastructure.Application
                 }
                 catch (Exception ex)
                 {
-
+                    Logger.Error(ex, string.Format("{0} - {1}:處理失敗", index, endindex));
                     OnFailure(ex, index, endindex);
-                    if (ThrowError) throw new Exception(string.Format("{0} - {1}:處理失敗", index, endindex), ex);
+
                 }
 
 

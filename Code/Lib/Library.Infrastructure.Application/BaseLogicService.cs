@@ -32,7 +32,7 @@ namespace Library.Infrastructure.Application
         protected void OnCompleted(TimeSpan usetime)
         {
 
-            Logger.Trace("完成執行");
+            Logger.Trace(string.Format("完成執行，用時：{0}", usetime));
             var handler = Completed;
             if (handler == null) return;
             SynchronizationContext.Current.Post(n =>

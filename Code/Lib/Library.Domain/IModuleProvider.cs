@@ -5,7 +5,7 @@ namespace Library.Domain.Data
     /// <summary>
     /// 
     /// </summary>
-    public interface IModuleProvider
+    public interface IModuleProvider : System.IDisposable
     {
         /// <summary>
         /// 
@@ -18,5 +18,7 @@ namespace Library.Domain.Data
         /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>
         IRepository<TEntity> CreateRepository<TEntity>() where TEntity : Entity;
+
+
     }
 }
