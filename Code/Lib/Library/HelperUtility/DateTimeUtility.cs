@@ -1,3 +1,4 @@
+ï»¿using Library.Comparable;
 using Library.Date;
 using System;
 using System.Data.SqlTypes;
@@ -165,7 +166,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// •rég¶Î
+        /// îå¶²åƒ‡
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -207,7 +208,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// •rég¶Î
+        /// îå¶²åƒ‡
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -217,7 +218,7 @@ namespace Library.HelperUtility
 
             TimeSpan ts = now - datetime;
 
-            if (ts.TotalMinutes.IsBetween(0, 5)) return "×·ÖçŠÇ°";//"A few minutes ago";
+            if (ts.TotalMinutes.IsBetween(0, 5)) return "î†ç…¦?ï";//"A few minutes ago";
 
             int d = ts.Days;
             if ((int)Math.Ceiling(ts.TotalDays) == 1) return string.Format("{0:HH:mm}", datetime);

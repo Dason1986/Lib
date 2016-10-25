@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Library
+namespace Library.IDCrad
 {
     /// <summary>
     /// 身份證
@@ -47,19 +47,5 @@ namespace Library
         IIDCard CreateNew();
     }
 
-    /// <summary>
-    ///
-    /// </summary>
-    public enum SexEnum
-    {
-        /// <summary>
-        /// 女
-        /// </summary>
-        Female,
-
-        /// <summary>
-        /// 男
-        /// </summary>
-        Male,
-    }
+  
 }

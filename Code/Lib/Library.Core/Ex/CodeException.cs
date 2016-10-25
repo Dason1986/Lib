@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 
@@ -11,10 +11,10 @@ namespace Library
     public class CodeException : Exception
     {
         /// <summary>
-        /// »ñÈ¡ÃèÊöµ±Ç°Òì³£µÄÏûÏ¢¡£
+        /// è·å–æè¿°å½“å‰å¼‚å¸¸çš„æ¶ˆæ¯ã€‚
         /// </summary>
         /// <returns>
-        /// ½âÊÍÒì³£Ô­ÒòµÄ´íÎóÏûÏ¢»ò¿Õ×Ö·û´® ("")¡£
+        /// è§£é‡Šå¼‚å¸¸åŸå› çš„é”™è¯¯æ¶ˆæ¯æˆ–ç©ºå­—ç¬¦ä¸² ("")ã€‚
         /// </returns>
         /// <filterpriority>1</filterpriority>
         public override string Message

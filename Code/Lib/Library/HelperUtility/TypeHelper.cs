@@ -49,7 +49,7 @@ namespace Library.HelperUtility
 
             return sbexception.ToString();
         }
-
+        /*
         private static readonly IList<IErrorMessageBuilder> ErrorFuncs = new List<IErrorMessageBuilder>();
 
         /// <summary>
@@ -138,6 +138,40 @@ namespace Library.HelperUtility
             }));
         }
 
+        
+
+        private static readonly Dictionary<Type, Func<Type, object>> TypeDefaultdictionary = new Dictionary<Type, Func<Type, object>>();
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="funk"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void SetTypeDefault([NotNull] Type type, [NotNull] Func<Type, object> funk)
+        {
+            if (type == null) throw new ArgumentNullException("type");
+            if (funk == null) throw new ArgumentNullException("funk");
+            if (TypeDefaultdictionary.ContainsKey(type))
+            {
+                TypeDefaultdictionary[type] = funk;
+                return;
+            }
+            TypeDefaultdictionary.Add(type, funk);
+        }
+      
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static object GetDefaultValue([NotNull] this Type obj)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            if (TypeDefaultdictionary.ContainsKey(obj)) return TypeDefaultdictionary[obj](obj);
+            return obj.IsClass ? null : obj.CreateInstance();
+        }
+  */
         private static string GetExceptionInfo(Exception ex, int count)
         {
             StringBuilder sbexception = new StringBuilder();
@@ -146,13 +180,13 @@ namespace Library.HelperUtility
             sbexception.AppendLine(string.Format("************************************************"));
             sbexception.AppendLine(string.Format(" Inner Exception : No.{0} ", count));
             sbexception.AppendLine(string.Format(" Error Message : {0} ", ex.Message));
-            foreach (var dicitem in ErrorFuncs)
-            {
-                if (dicitem != null && dicitem.CanExcute(ex))
-                {
-                    sbexception.AppendLine(dicitem.GetMessage(ex));
-                }
-            }
+            //foreach (var dicitem in ErrorFuncs)
+            //{
+            //    if (dicitem != null && dicitem.CanExcute(ex))
+            //    {
+            //        sbexception.AppendLine(dicitem.GetMessage(ex));
+            //    }
+            //}
             if (ex.Data.HasRecord())
             {
                 sbexception.AppendLine(string.Format(" Data parameters Count at Source :{0}", ex.Data.Count));
@@ -201,39 +235,6 @@ namespace Library.HelperUtility
 
             return sbexception.ToString();
         }
-
-        private static readonly Dictionary<Type, Func<Type, object>> TypeDefaultdictionary = new Dictionary<Type, Func<Type, object>>();
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="funk"></param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public static void SetTypeDefault([NotNull] Type type, [NotNull] Func<Type, object> funk)
-        {
-            if (type == null) throw new ArgumentNullException("type");
-            if (funk == null) throw new ArgumentNullException("funk");
-            if (TypeDefaultdictionary.ContainsKey(type))
-            {
-                TypeDefaultdictionary[type] = funk;
-                return;
-            }
-            TypeDefaultdictionary.Add(type, funk);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static object GetDefaultValue([NotNull] this Type obj)
-        {
-            if (obj == null) throw new ArgumentNullException("obj");
-            if (TypeDefaultdictionary.ContainsKey(obj)) return TypeDefaultdictionary[obj](obj);
-            return obj.IsClass ? null : obj.CreateInstance();
-        }
-
         /// <summary>
         ///
         /// </summary>

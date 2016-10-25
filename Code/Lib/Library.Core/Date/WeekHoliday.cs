@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 
 namespace Library.Date
 {
@@ -8,22 +8,22 @@ namespace Library.Date
     public struct WeekHoliday : IHoliday, IComparable, IComparable<WeekHoliday>, IEquatable<WeekHoliday>
     {
         /// <summary>
-        /// ÔÂ·İ
+        /// æœˆä»½
         /// </summary>
         public int Month { get; private set; }
 
         /// <summary>
-        /// µÚ×‚€ĞÇÆÚ
+        /// ç¬¬å¹¾å€‹æ˜ŸæœŸ
         /// </summary>
         public int WeekAtMonth { get; private set; }
 
         /// <summary>
-        /// ĞÇÆÚ
+        /// æ˜ŸæœŸ
         /// </summary>
         public DayOfWeek WeekDay { get; private set; }
 
         /// <summary>
-        /// ¹ÈÕÃû·Q
+        /// ç¯€æ—¥åç¨±
         /// </summary>
         public string HolidayName { get; private set; }
 
@@ -31,7 +31,7 @@ namespace Library.Date
         ///
         /// </summary>
         /// <param name="month"></param>
-        /// <param name="weekAtMonth">0é×îááµÄÒ»‚€ĞÇÆÚ</param>
+        /// <param name="weekAtMonth">0ç‚ºæœ€å¾Œçš„ä¸€å€‹æ˜ŸæœŸ</param>
         /// <param name="weekDay"></param>
         /// <param name="name"></param>
         public WeekHoliday(int month, int weekAtMonth, DayOfWeek weekDay, string name)
@@ -44,7 +44,7 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// ŞD“Q³É¹«•ÑÈÕÆÚ
+        /// è½‰æ›æˆå…¬æ›†æ—¥æœŸ
         /// </summary>
         /// <param name="year"></param>
         /// <returns></returns>
@@ -60,7 +60,7 @@ namespace Library.Date
             {
                 week = (DateTime.DaysInMonth(year, Month) + firstweekday) / 7;
             }
-            int firWeekDays = 8 - firstweekday; //¼ÆËãµÚÒ»ÖÜÊ£ÓàÌìÊı
+            int firWeekDays = 8 - firstweekday; //è®¡ç®—ç¬¬ä¸€å‘¨å‰©ä½™å¤©æ•°
             int day;
             if (firstweekday > weekday)
             {

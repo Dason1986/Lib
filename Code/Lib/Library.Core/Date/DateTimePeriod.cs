@@ -1,77 +1,74 @@
 namespace Library.Date
 {
-    /// <summary>
-    ///
-    /// </summary>
     public enum DateTimePeriod
     {
         /// <summary>
-        /// ¸üßtÒÔáá
+        /// æ›´é²ä»¥å¾Œ
         /// </summary>
         After = 8,
 
         /// <summary>
-        /// ß@Ò»Äê
+        /// é€™ä¸€å¹´
         /// </summary>
         ThisYear = 7,
 
         /// <summary>
-        /// ß@‚€ÔÂ
+        /// é€™å€‹æœˆ
         /// </summary>
         ThisMonth = 6,
 
         /// <summary>
-        /// ÏÂĞÇÆÚ
+        /// ä¸‹æ˜ŸæœŸ
         /// </summary>
         NextMonth = 5,
 
         /// <summary>
-        /// ÏÂĞÇÆÚ
+        /// ä¸‹æ˜ŸæœŸ
         /// </summary>
         NextWeek = 4,
 
         /// <summary>
-        /// ß@‚€ĞÇÆÚ
+        /// é€™å€‹æ˜ŸæœŸ
         /// </summary>
         ThisWeek = 3,
 
         /// <summary>
-        /// ááÌì
+        /// å¾Œå¤©
         /// </summary>
         TheDayAfterTomorrow = 2,
 
         /// <summary>
-        /// Ã÷Ìì
+        /// æ˜å¤©
         /// </summary>
         Tomorrow = 1,
 
         /// <summary>
-        /// ½ñÌì
+        /// ä»Šå¤©
         /// </summary>
         Today = 0,
 
         /// <summary>
-        /// ×òÌì
+        /// æ˜¨å¤©
         /// </summary>
         Yesterday = -1,
 
         /// <summary>
-        /// Ç°Ìì
+        /// å‰å¤©
         /// </summary>
         TheDayBeforeYesterday = -2,
 
         /// <summary>
-        /// ÉÏ‚€ĞÇÆÚ
+        /// ä¸Šå€‹æ˜ŸæœŸ
         /// </summary>
         LastWeek = -3,
 
         /// <summary>
-        /// ÉÏ‚€ÔÂ
+        /// ä¸Šå€‹æœˆ
         /// </summary>
         LastMonth = -4,
 
         /// <summary>
-        /// ¸üÔçÖ®Ç°
+        /// æ›´æ—©ä¹‹å‰
         /// </summary>
         Earlier = -5,
     }

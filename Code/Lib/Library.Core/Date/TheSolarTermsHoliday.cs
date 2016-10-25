@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 
 namespace Library.Date
 {
     /// <summary>
-    /// ¶şÊ®ËÄ¹šâ
+    /// äºŒåå››ç¯€æ°£
     /// </summary>
-    /// <remarks>½ÚÆøÖ¸¶şÊ®ËÄÊ±½ÚºÍÆøºò£¬ÊÇÖĞ¹ú¹Å´ú¶©Á¢µÄÒ»ÖÖÓÃÀ´Ö¸µ¼Å©ÊÂµÄ²¹³äÀú·¨¡£</remarks>
+    /// <remarks>èŠ‚æ°”æŒ‡äºŒåå››æ—¶èŠ‚å’Œæ°”å€™ï¼Œæ˜¯ä¸­å›½å¤ä»£è®¢ç«‹çš„ä¸€ç§ç”¨æ¥æŒ‡å¯¼å†œäº‹çš„è¡¥å……å†æ³•ã€‚</remarks>
     public struct TheSolarTermsHoliday : IHoliday
     {
         int IHoliday.Month
@@ -19,21 +19,21 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// Ãû·Q
+        /// åç¨±
         /// </summary>
         public string HolidayName { get; private set; }
 
         /// <summary>
-        /// ¹šâ”µ“ş
+        /// ç¯€æ°£æ•¸æ“š
         /// </summary>
         public int TheSolarTermsData { get; private set; }
 
         /// <summary>
         ///
         /// </summary>
-        /// <param name="name">Ãû·Q</param>
-        /// <param name="data">¹šâ”µ“ş</param>
-        /// <param name="flag">tureé•r¹£¬·ñ„téšâºò</param>
+        /// <param name="name">åç¨±</param>
+        /// <param name="data">ç¯€æ°£æ•¸æ“š</param>
+        /// <param name="flag">tureç‚ºæ™‚ç¯€ï¼Œå¦å‰‡ç‚ºæ°£å€™</param>
         private TheSolarTermsHoliday(string name, int data, bool flag) : this()
         {
             HolidayName = name;
@@ -43,12 +43,12 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// Ê±½Ú
+        /// æ—¶èŠ‚
         /// </summary>
         public bool IsSeason { get; private set; }
 
         /// <summary>
-        /// Æøºò
+        /// æ°”å€™
         /// </summary>
         public bool IsClimate { get; private set; }
 
@@ -73,123 +73,123 @@ namespace Library.Date
         }
 
         /// <summary>
-        /// Ğ¡º® Slight Cold
+        /// å°å¯’ Slight Cold
         /// </summary>
-        public static readonly TheSolarTermsHoliday SlightCold = new TheSolarTermsHoliday("Ğ¡º®", 0, true);
+        public static readonly TheSolarTermsHoliday SlightCold = new TheSolarTermsHoliday("å°å¯’", 0, true);
 
         /// <summary>
-        /// ´óº® Great Cold
+        /// å¤§å¯’ Great Cold
         /// </summary>
-        public static readonly TheSolarTermsHoliday GreatCold = new TheSolarTermsHoliday("´óº®", 21208, false);
+        public static readonly TheSolarTermsHoliday GreatCold = new TheSolarTermsHoliday("å¤§å¯’", 21208, false);
 
         /// <summary>
-        /// Á¢´º the Beginning of Spring
+        /// ç«‹æ˜¥ the Beginning of Spring
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheBeginningOfSpring = new TheSolarTermsHoliday("Á¢´º", 42467, true);
+        public static readonly TheSolarTermsHoliday TheBeginningOfSpring = new TheSolarTermsHoliday("ç«‹æ˜¥", 42467, true);
 
         /// <summary>
-        /// ÓêË® Rain Water
+        /// é›¨æ°´ Rain Water
         /// </summary>
-        public static readonly TheSolarTermsHoliday RainWater = new TheSolarTermsHoliday("ÓêË®", 63836, false);
+        public static readonly TheSolarTermsHoliday RainWater = new TheSolarTermsHoliday("é›¨æ°´", 63836, false);
 
         /// <summary>
-        /// ¾ªÕİ the Waking of Insects
+        /// æƒŠè›° the Waking of Insects
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheWakingOfInsects = new TheSolarTermsHoliday("¾ªÕİ", 85337, true);
+        public static readonly TheSolarTermsHoliday TheWakingOfInsects = new TheSolarTermsHoliday("æƒŠè›°", 85337, true);
 
         /// <summary>
-        /// ´º·Ö the Spring Equinox
+        /// æ˜¥åˆ† the Spring Equinox
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheSpringEquinox = new TheSolarTermsHoliday("´º·Ö", 107014, false);
+        public static readonly TheSolarTermsHoliday TheSpringEquinox = new TheSolarTermsHoliday("æ˜¥åˆ†", 107014, false);
 
         /// <summary>
-        /// ÇåÃ÷ Pure Brightness
+        /// æ¸…æ˜ Pure Brightness
         /// </summary>
-        public static readonly TheSolarTermsHoliday PureBrightness = new TheSolarTermsHoliday("ÇåÃ÷", 128867, true);
+        public static readonly TheSolarTermsHoliday PureBrightness = new TheSolarTermsHoliday("æ¸…æ˜", 128867, true);
 
         /// <summary>
-        /// ¹ÈÓê Grain Rain
+        /// è°·é›¨ Grain Rain
         /// </summary>
-        public static readonly TheSolarTermsHoliday GrainRain = new TheSolarTermsHoliday("¹ÈÓê", 150921, false);
+        public static readonly TheSolarTermsHoliday GrainRain = new TheSolarTermsHoliday("è°·é›¨", 150921, false);
 
         /// <summary>
-        /// Á¢ÏÄ the Beginning of Summer
+        /// ç«‹å¤ the Beginning of Summer
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheBeginningOfSummer = new TheSolarTermsHoliday("Á¢ÏÄ", 173149, true);
+        public static readonly TheSolarTermsHoliday TheBeginningOfSummer = new TheSolarTermsHoliday("ç«‹å¤", 173149, true);
 
         /// <summary>
-        /// Ğ¡Âú Grain Full
+        /// å°æ»¡ Grain Full
         /// </summary>
-        public static readonly TheSolarTermsHoliday GrainFull = new TheSolarTermsHoliday("Ğ¡Âú", 195551, false);
+        public static readonly TheSolarTermsHoliday GrainFull = new TheSolarTermsHoliday("å°æ»¡", 195551, false);
 
         /// <summary>
-        /// Ã¢ÖÖ Grain in Ear
+        /// èŠ’ç§ Grain in Ear
         /// </summary>
-        public static readonly TheSolarTermsHoliday GraininEar = new TheSolarTermsHoliday("Ã¢ÖÖ", 218072, true);
+        public static readonly TheSolarTermsHoliday GraininEar = new TheSolarTermsHoliday("èŠ’ç§", 218072, true);
 
         /// <summary>
-        /// ÏÄÖÁ the Summer Solstice
+        /// å¤è‡³ the Summer Solstice
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheSummerSolstice = new TheSolarTermsHoliday("ÏÄÖÁ", 240693, false);
+        public static readonly TheSolarTermsHoliday TheSummerSolstice = new TheSolarTermsHoliday("å¤è‡³", 240693, false);
 
         /// <summary>
-        /// Ğ¡Êî Slight Heat
+        /// å°æš‘ Slight Heat
         /// </summary>
-        public static readonly TheSolarTermsHoliday SlightHeat = new TheSolarTermsHoliday("Ğ¡Êî", 263343, true);
+        public static readonly TheSolarTermsHoliday SlightHeat = new TheSolarTermsHoliday("å°æš‘", 263343, true);
 
         /// <summary>
-        /// ´óÊî Great Heat
+        /// å¤§æš‘ Great Heat
         /// </summary>
-        public static readonly TheSolarTermsHoliday GreatHeat = new TheSolarTermsHoliday("´óÊî", 285989, false);
+        public static readonly TheSolarTermsHoliday GreatHeat = new TheSolarTermsHoliday("å¤§æš‘", 285989, false);
 
         /// <summary>
-        /// Á¢Çï the Beginning of Autumn
+        /// ç«‹ç§‹ the Beginning of Autumn
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheBeginningOfAutumn = new TheSolarTermsHoliday("Á¢Çï", 308563, true);
+        public static readonly TheSolarTermsHoliday TheBeginningOfAutumn = new TheSolarTermsHoliday("ç«‹ç§‹", 308563, true);
 
         /// <summary>
-        /// ´¦Êî the Limit of Heat
+        /// å¤„æš‘ the Limit of Heat
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheLimitOfHeat = new TheSolarTermsHoliday("´¦Êî", 331033, false);
+        public static readonly TheSolarTermsHoliday TheLimitOfHeat = new TheSolarTermsHoliday("å¤„æš‘", 331033, false);
 
         /// <summary>
-        /// °×Â¶ White Dew
+        /// ç™½éœ² White Dew
         /// </summary>
-        public static readonly TheSolarTermsHoliday WhiteDew = new TheSolarTermsHoliday("°×Â¶", 353350, true);
+        public static readonly TheSolarTermsHoliday WhiteDew = new TheSolarTermsHoliday("ç™½éœ²", 353350, true);
 
         /// <summary>
-        /// Çï·Ö the Autumnal Equinox
+        /// ç§‹åˆ† the Autumnal Equinox
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheAutumnalEquinox = new TheSolarTermsHoliday("Çï·Ö", 375494, false);
+        public static readonly TheSolarTermsHoliday TheAutumnalEquinox = new TheSolarTermsHoliday("ç§‹åˆ†", 375494, false);
 
         /// <summary>
-        /// º®Â¶ Cold Dew
+        /// å¯’éœ² Cold Dew
         /// </summary>
-        public static readonly TheSolarTermsHoliday ColdDew = new TheSolarTermsHoliday("º®Â¶", 397447, true);
+        public static readonly TheSolarTermsHoliday ColdDew = new TheSolarTermsHoliday("å¯’éœ²", 397447, true);
 
         /// <summary>
-        /// Ëª½µ Frost's Descent
+        /// éœœé™ Frost's Descent
         /// </summary>
-        public static readonly TheSolarTermsHoliday FrostsDescent = new TheSolarTermsHoliday("Ëª½µ", 419210, false);
+        public static readonly TheSolarTermsHoliday FrostsDescent = new TheSolarTermsHoliday("éœœé™", 419210, false);
 
         /// <summary>
-        /// Á¢¶¬ the Beginning of Winter
+        /// ç«‹å†¬ the Beginning of Winter
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheBeginningOfWinter = new TheSolarTermsHoliday("Á¢¶¬", 440795, true);
+        public static readonly TheSolarTermsHoliday TheBeginningOfWinter = new TheSolarTermsHoliday("ç«‹å†¬", 440795, true);
 
         /// <summary>
-        /// Ğ¡Ñ© Slight Snow
+        /// å°é›ª Slight Snow
         /// </summary>
-        public static readonly TheSolarTermsHoliday SlightSnow = new TheSolarTermsHoliday("Ğ¡Ñ©", 462224, false);
+        public static readonly TheSolarTermsHoliday SlightSnow = new TheSolarTermsHoliday("å°é›ª", 462224, false);
 
         /// <summary>
-        /// ´óÑ© Great Snow
+        /// å¤§é›ª Great Snow
         /// </summary>
-        public static readonly TheSolarTermsHoliday GreatSnow = new TheSolarTermsHoliday("´óÑ©", 483532, true);
+        public static readonly TheSolarTermsHoliday GreatSnow = new TheSolarTermsHoliday("å¤§é›ª", 483532, true);
 
         /// <summary>
-        /// ¶¬ÖÁ the Winter Solstice
+        /// å†¬è‡³ the Winter Solstice
         /// </summary>
-        public static readonly TheSolarTermsHoliday TheWinterSolstice = new TheSolarTermsHoliday("¶¬ÖÁ", 504758, false);
+        public static readonly TheSolarTermsHoliday TheWinterSolstice = new TheSolarTermsHoliday("å†¬è‡³", 504758, false);
     }
 }

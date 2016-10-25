@@ -114,7 +114,7 @@ namespace Library
             Value = value;
         }
     }
-
+    /*
     /// <summary>
     /// 參數讀取供應器
     /// </summary>
@@ -154,5 +154,5 @@ namespace Library
         ///
         /// </summary>
         public string Description { get; set; }
-    }
+    }*/
 }

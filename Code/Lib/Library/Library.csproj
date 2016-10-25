@@ -59,6 +59,7 @@
     <Compile Include="BitComputing.cs" />
     <Compile Include="CustomExceptionProvider.cs" />
     <Compile Include="Date\HolidayBuilder.cs" />
+    <Compile Include="Date\SafeDateTime.cs" />
     <Compile Include="FastReflection\ConstructorInvoker.cs" />
     <Compile Include="FastReflection\ConstructorInvokerCache.cs" />
     <Compile Include="FastReflection\ConstructorInvokerFactory.cs" />
@@ -87,12 +88,14 @@
     <Compile Include="HelperUtility\EmptyUtility.cs" />
     <Compile Include="HelperUtility\EnumHelper.cs" />
     <Compile Include="HelperUtility\OSUtility.cs" />
+    <Compile Include="HelperUtility\RangeItemHelper.cs" />
     <Compile Include="HelperUtility\StreamHelper.cs" />
     <Compile Include="IDCrad\ChineseIDCard.cs" />
     <Compile Include="IDCrad\HongKongIDCard.cs" />
     <Compile Include="IDCrad\IDCardException.cs" />
     <Compile Include="IDCrad\MacauIDCard.cs" />
     <Compile Include="IDCrad\TaiwanIDCard.cs" />
+    <Compile Include="Net\DnsProxy.cs" />
     <Compile Include="PermutationAndCombination.cs" />
     <Compile Include="HelperUtility\ADONetHepler.cs" />
     <Compile Include="HelperUtility\CompareUtility.cs" />
@@ -103,7 +106,7 @@
     <Compile Include="HelperUtility\TypeHelper.cs" />
     <Compile Include="HelperUtility\ParameterHeler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RangeItemHelper.cs" />
+    <Compile Include="Comparable\RangeItemHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.Core\Library.Core.csproj">

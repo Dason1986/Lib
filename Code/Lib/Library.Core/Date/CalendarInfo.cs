@@ -1,10 +1,7 @@
-using System;
+ï»¿using System;
 
 namespace Library.Date
 {
-    /// <summary>
-    ///
-    /// </summary>
     public static class CalendarInfo
     {
         /// <summary>
@@ -12,195 +9,195 @@ namespace Library.Date
         /// </summary>
         public static readonly string[] ChineseMonths =
         {
-            "ÕıÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "º®ÔÂ", "À°ÔÂ"
+            "æ­£æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "å¯’æœˆ", "è…Šæœˆ"
         };
 
         /// <summary>
-        /// ÌìÖ
+        /// å¤©å¹¹
         /// </summary>
-        public static readonly string[] Gan = { "¼×", "ÒÒ", "±û", "¶¡", "Îì", "¼º", "¸ı", "ĞÁ", "ÈÉ", "¹ï" };
+        public static readonly string[] Gan = { "ç”²", "ä¹™", "ä¸™", "ä¸", "æˆŠ", "å·±", "åºš", "è¾›", "å£¬", "ç™¸" };
 
         /// <summary>
-        /// µØÖ§
+        /// åœ°æ”¯
         /// </summary>
-        public static readonly string[] Zhi = { "×Ó", "³ó", "Òú", "Ã®", "³½", "ËÈ", "Îç", "Î´", "Éê", "ÓÏ", "Ğç", "º¥" };
+        public static readonly string[] Zhi = { "å­", "ä¸‘", "å¯…", "å¯", "è¾°", "å·³", "åˆ", "æœª", "ç”³", "é…‰", "æˆŒ", "äº¥" };
 
         /// <summary>
-        /// ÉúĞ¤
+        /// ç”Ÿè‚–
         /// </summary>
-        public static readonly string[] ChineseZodiac = { "Êó", "Å£", "»¢", "ÍÃ", "Áú", "Éß", "Âí", "Ñò", "ºï", "¼¦", "¹·", "Öí" };
+        public static readonly string[] ChineseZodiac = { "é¼ ", "ç‰›", "è™", "å…”", "é¾™", "è›‡", "é©¬", "ç¾Š", "çŒ´", "é¸¡", "ç‹—", "çŒª" };
 
-        #region ĞÇ×ùÃû³Æ
+        #region æ˜Ÿåº§åç§°
 
         /// <summary>
-        /// ĞÇ×ùÃû³Æ
+        /// æ˜Ÿåº§åç§°
         /// </summary>
         public static readonly string[] ConstellationName = {
-            "°×Ñò×ù", "½ğÅ£×ù", "Ë«×Ó×ù",
-            "¾ŞĞ·×ù", "Ê¨×Ó×ù", "´¦Å®×ù",
-            "Ìì³Ó×ù", "ÌìĞ«×ù", "ÉäÊÖ×ù",
-            "Ä¦ôÉ×ù", "Ë®Æ¿×ù", "Ë«Óã×ù"
+            "ç™½ç¾Šåº§", "é‡‘ç‰›åº§", "åŒå­åº§",
+            "å·¨èŸ¹åº§", "ç‹®å­åº§", "å¤„å¥³åº§",
+            "å¤©ç§¤åº§", "å¤©èåº§", "å°„æ‰‹åº§",
+            "æ‘©ç¾¯åº§", "æ°´ç“¶åº§", "åŒé±¼åº§"
         };
 
-        #endregion ĞÇ×ùÃû³Æ
+        #endregion æ˜Ÿåº§åç§°
 
-        #region ¶şÊ®ËÄ¹šâ
+        #region äºŒåå››ç¯€æ°£
 
         /// <summary>
-        /// ¶şÊ®ËÄ¹šâ
+        /// äºŒåå››ç¯€æ°£
         /// </summary>
         public static readonly TheSolarTermsHoliday[] TheSolarTermsHolidays =
-        {    //(½Ú) (Æø)    (½Ú)    (Æø)
-            //"Ğ¡º®", "´óº®", "Á¢´º", "ÓêË®",
+        {    //(èŠ‚) (æ°”)    (èŠ‚)    (æ°”)
+            //"å°å¯’", "å¤§å¯’", "ç«‹æ˜¥", "é›¨æ°´",
             TheSolarTermsHoliday.SlightCold,             TheSolarTermsHoliday.GreatCold,          TheSolarTermsHoliday.TheBeginningOfSpring, TheSolarTermsHoliday.RainWater,
-            //"¾ªÕİ", "´º·Ö", "ÇåÃ÷", "¹ÈÓê",
+            //"æƒŠè›°", "æ˜¥åˆ†", "æ¸…æ˜", "è°·é›¨",
             TheSolarTermsHoliday.TheWakingOfInsects,     TheSolarTermsHoliday.TheSpringEquinox,   TheSolarTermsHoliday.PureBrightness,       TheSolarTermsHoliday.GrainRain,
-            //"Á¢ÏÄ", "Ğ¡Âú", "Ã¢ÖÖ", "ÏÄÖÁ",
+            //"ç«‹å¤", "å°æ»¡", "èŠ’ç§", "å¤è‡³",
              TheSolarTermsHoliday.TheBeginningOfSummer,  TheSolarTermsHoliday.GrainFull,          TheSolarTermsHoliday.GraininEar,           TheSolarTermsHoliday.TheSummerSolstice,
-            //"Ğ¡Êî", "´óÊî", "Á¢Çï", "´¦Êî",
+            //"å°æš‘", "å¤§æš‘", "ç«‹ç§‹", "å¤„æš‘",
             TheSolarTermsHoliday.SlightHeat,             TheSolarTermsHoliday.GreatHeat,          TheSolarTermsHoliday.TheBeginningOfAutumn, TheSolarTermsHoliday.TheLimitOfHeat,
-            //"°×Â¶", "Çï·Ö", "º®Â¶", "Ëª½µ",
+            //"ç™½éœ²", "ç§‹åˆ†", "å¯’éœ²", "éœœé™",
             TheSolarTermsHoliday.WhiteDew,               TheSolarTermsHoliday.TheAutumnalEquinox, TheSolarTermsHoliday.ColdDew,              TheSolarTermsHoliday.FrostsDescent,
-            //"Á¢¶¬", "Ğ¡Ñ©", "´óÑ©", "¶¬ÖÁ"
+            //"ç«‹å†¬", "å°é›ª", "å¤§é›ª", "å†¬è‡³"
             TheSolarTermsHoliday.TheBeginningOfWinter,   TheSolarTermsHoliday.SlightSnow,         TheSolarTermsHoliday.GreatSnow,            TheSolarTermsHoliday.TheWinterSolstice
         };
 
-        #endregion ¶şÊ®ËÄ¹šâ
+        #endregion äºŒåå››ç¯€æ°£
 
-        #region ¶şÊ®°ËĞÇËŞ
+        #region äºŒåå…«æ˜Ÿå®¿
 
         /// <summary>
-        /// ¶şÊ®°ËĞÇËŞ
+        /// äºŒåå…«æ˜Ÿå®¿
         /// </summary>
         public readonly static string[] ChineseConstellationName =
         {
-            //ËÄ   Îå    Áù      ÈÕ    Ò»      ¶ş      Èı
-            "½ÇËŞ","¿ºËŞ","ØµËŞ","·¿ËŞ","ĞÄËŞ","Î²ËŞ","»şËŞ",
-            "¶·ËŞ","Å£ËŞ","Å®ËŞ","ĞéËŞ","Î£ËŞ","ÊÒËŞ","±ÚËŞ",
-            "¿üËŞ","Â¦ËŞ","Î¸ËŞ","êÄËŞ","±ÏËŞ","õşËŞ","²ÎËŞ",
-            "¾®ËŞ","¹íËŞ","ÁøËŞ","ĞÇËŞ","ÕÅËŞ","ÒíËŞ","éôËŞ"
+            //å››   äº”    å…­      æ—¥    ä¸€      äºŒ      ä¸‰
+            "è§’å®¿","äº¢å®¿","æ°å®¿","æˆ¿å®¿","å¿ƒå®¿","å°¾å®¿","ç®•å®¿",
+            "æ–—å®¿","ç‰›å®¿","å¥³å®¿","è™šå®¿","å±å®¿","å®¤å®¿","å£å®¿",
+            "å¥å®¿","å¨„å®¿","èƒƒå®¿","æ˜´å®¿","æ¯•å®¿","è§œå®¿","å‚å®¿",
+            "äº•å®¿","é¬¼å®¿","æŸ³å®¿","æ˜Ÿå®¿","å¼ å®¿","ç¿¼å®¿","è½¸å®¿"
         };
 
         /// <summary>
-        /// ¶şÊ®°ËĞÇËŞ
+        /// äºŒåå…«æ˜Ÿå®¿
         /// </summary>
         public readonly static string[] ChineseConstellationAnimalName =
         {
-            //ËÄ        Îå      Áù         ÈÕ        Ò»      ¶ş      Èı
-            "½ÇÄ¾òÔ","¿º½ğÁú","ØµÍÁºÑ","·¿ÈÕÍÃ","ĞÄÔÂºü","Î²»ğ»¢","»şË®±ª",
-            "¶·Ä¾â³","Å£½ğÅ£","Å®ÍÁòğ","ĞéÈÕÊó","Î£ÔÂÑà","ÊÒ»ğÖí","±ÚË®ª",
-            "¿üÄ¾ÀÇ","Â¦½ğ¹·","Î¸ÍÁåé","êÄÈÕ¼¦","±ÏÔÂÎÚ","õş»ğºï","²ÎË®Ô³",
-            "¾®Ä¾áí","¹í½ğÑò","ÁøÍÁâ¯","ĞÇÈÕÂí","ÕÅÔÂÂ¹","Òí»ğÉß","éôË®ò¾"
+            //å››        äº”      å…­         æ—¥        ä¸€      äºŒ      ä¸‰
+            "è§’æœ¨è›Ÿ","äº¢é‡‘é¾™","æ°åœŸè²‰","æˆ¿æ—¥å…”","å¿ƒæœˆç‹","å°¾ç«è™","ç®•æ°´è±¹",
+            "æ–—æœ¨ç¬","ç‰›é‡‘ç‰›","å¥³åœŸè ","è™šæ—¥é¼ ","å±æœˆç‡•","å®¤ç«çŒª","å£æ°´ç",
+            "å¥æœ¨ç‹¼","å¨„é‡‘ç‹—","èƒƒåœŸå½˜","æ˜´æ—¥é¸¡","æ¯•æœˆä¹Œ","è§œç«çŒ´","å‚æ°´çŒ¿",
+            "äº•æœ¨çŠ´","é¬¼é‡‘ç¾Š","æŸ³åœŸç","æ˜Ÿæ—¥é©¬","å¼ æœˆé¹¿","ç¿¼ç«è›‡","è½¸æ°´èš“"
         };
 
-        #endregion ¶şÊ®°ËĞÇËŞ
+        #endregion äºŒåå…«æ˜Ÿå®¿
 
-        #region ¹šâÊı¾İ
+        #region ç¯€æ°£æ•°æ®
 
         /// <summary>
-        /// ¹šâÊı¾İ
+        /// ç¯€æ°£æ•°æ®
         /// </summary>
 
         internal static readonly int[] STermInfo = new int[] { 0, 21208, 42467, 63836, 85337, 107014, 128867, 150921, 173149, 195551, 218072, 240693, 263343, 285989, 308563, 331033, 353350, 375494, 397447, 419210, 440795, 462224, 483532, 504758 };
 
-        #endregion ¹šâÊı¾İ
+        #endregion ç¯€æ°£æ•°æ®
 
-        #region °´¹«Àú¼ÆËãµÄ¹ÈÕ
+        #region æŒ‰å…¬å†è®¡ç®—çš„ç¯€æ—¥
 
         /// <summary>
-        /// °´¹«Àú¼ÆËãµÄ¹ÈÕ
+        /// æŒ‰å…¬å†è®¡ç®—çš„ç¯€æ—¥
         /// </summary>
         public static readonly SolarHoliday[] SolarHolidays = new SolarHoliday[]{
-            new SolarHoliday(1, 1, "Ôªµ©"),
-            new SolarHoliday(2, 2,  "ÊÀ½çÊªµØÈÕ"),
-            new SolarHoliday(2, 10,  "¹ú¼ÊÆøÏó½Ú"),
-            new SolarHoliday(2, 14,  "ÇéÈË½Ú"),
-            new SolarHoliday(3, 1,  "¹ú¼Êº£±ªÈÕ"),
-            new SolarHoliday(3, 8,  "¸¾Å®½Ú"),
-            new SolarHoliday(3, 12,  "Ö²Ê÷½Ú"),
-            new SolarHoliday(3, 14,  "¹ú¼Ê¾¯²ìÈÕ"),
-            new SolarHoliday(3, 15,  "Ïû·ÑÕßÈ¨ÒæÈÕ"),
-            new SolarHoliday(3, 17,  "ÖĞ¹ú¹úÒ½½Ú"),
-            new SolarHoliday(3, 17,  "¹ú¼Êº½º£ÈÕ"),
-            new SolarHoliday(3, 21,  "ÊÀ½çÉ­ÁÖÈÕ"),
-            new SolarHoliday(3, 21,  "Ïû³ıÖÖ×åÆçÊÓ¹ú¼ÊÈÕ"),
-            new SolarHoliday(3, 21,  "ÊÀ½ç¶ù¸èÈÕ"),
-            new SolarHoliday(3, 22,  "ÊÀ½çË®ÈÕ"),
-            new SolarHoliday(3, 24,  "ÊÀ½ç·ÀÖÎ½áºË²¡ÈÕ"),
-            new SolarHoliday(4, 1,  "ÓŞÈË½Ú"),
-            new SolarHoliday(4, 7,  "ÊÀ½çÎÀÉúÈÕ"),
-            new SolarHoliday(4, 22,  "ÊÀ½çµØÇòÈÕ"),
-            new SolarHoliday(5, 1,  "ÀÍ¶¯½Ú"),
-            new SolarHoliday(5, 4,  "ÇàÄê½Ú"),
-            new SolarHoliday(5, 8,  "ÊÀ½çºìÊ®×ÖÈÕ"),
-            new SolarHoliday(5, 12,  "¹ú¼Ê»¤Ê¿½Ú"),
-            new SolarHoliday(5, 31,  "ÊÀ½çÎŞÑÌÈÕ"),
-            new SolarHoliday(6, 1,  "¹ú¼Ê¶ùÍ¯½Ú"),
-            new SolarHoliday(6, 5,  "ÊÀ½ç»·¾³±£»¤ÈÕ"),
-            new SolarHoliday(6, 26,  "¹ú¼Ê½û¶¾ÈÕ"),
-            new SolarHoliday(7, 1,  "½¨µ³½Ú"),
-            new SolarHoliday(7, 1,  "Ïã¸Û»Ø¹é¼ÍÄî"),
-            new SolarHoliday(7, 1,  " ÊÀ½ç½¨ÖşÈÕ"),
-            new SolarHoliday(7, 11,  "ÊÀ½çÈË¿ÚÈÕ"),
-            new SolarHoliday(8, 1,  "½¨¾ü½Ú"),
-            //  new SolarHoliday(8, 8,  "ÖĞ¹úÄĞ×Ó½Ú ¸¸Ç×½Ú"),
-            new SolarHoliday(8, 15,  "¿¹ÈÕÕ½ÕùÊ¤Àû¼ÍÄî"),
+            new SolarHoliday(1, 1, "å…ƒæ—¦"),
+            new SolarHoliday(2, 2,  "ä¸–ç•Œæ¹¿åœ°æ—¥"),
+            new SolarHoliday(2, 10,  "å›½é™…æ°”è±¡èŠ‚"),
+            new SolarHoliday(2, 14,  "æƒ…äººèŠ‚"),
+            new SolarHoliday(3, 1,  "å›½é™…æµ·è±¹æ—¥"),
+            new SolarHoliday(3, 8,  "å¦‡å¥³èŠ‚"),
+            new SolarHoliday(3, 12,  "æ¤æ ‘èŠ‚"),
+            new SolarHoliday(3, 14,  "å›½é™…è­¦å¯Ÿæ—¥"),
+            new SolarHoliday(3, 15,  "æ¶ˆè´¹è€…æƒç›Šæ—¥"),
+            new SolarHoliday(3, 17,  "ä¸­å›½å›½åŒ»èŠ‚"),
+            new SolarHoliday(3, 17,  "å›½é™…èˆªæµ·æ—¥"),
+            new SolarHoliday(3, 21,  "ä¸–ç•Œæ£®æ—æ—¥"),
+            new SolarHoliday(3, 21,  "æ¶ˆé™¤ç§æ—æ­§è§†å›½é™…æ—¥"),
+            new SolarHoliday(3, 21,  "ä¸–ç•Œå„¿æ­Œæ—¥"),
+            new SolarHoliday(3, 22,  "ä¸–ç•Œæ°´æ—¥"),
+            new SolarHoliday(3, 24,  "ä¸–ç•Œé˜²æ²»ç»“æ ¸ç—…æ—¥"),
+            new SolarHoliday(4, 1,  "æ„šäººèŠ‚"),
+            new SolarHoliday(4, 7,  "ä¸–ç•Œå«ç”Ÿæ—¥"),
+            new SolarHoliday(4, 22,  "ä¸–ç•Œåœ°çƒæ—¥"),
+            new SolarHoliday(5, 1,  "åŠ³åŠ¨èŠ‚"),
+            new SolarHoliday(5, 4,  "é’å¹´èŠ‚"),
+            new SolarHoliday(5, 8,  "ä¸–ç•Œçº¢åå­—æ—¥"),
+            new SolarHoliday(5, 12,  "å›½é™…æŠ¤å£«èŠ‚"),
+            new SolarHoliday(5, 31,  "ä¸–ç•Œæ— çƒŸæ—¥"),
+            new SolarHoliday(6, 1,  "å›½é™…å„¿ç«¥èŠ‚"),
+            new SolarHoliday(6, 5,  "ä¸–ç•Œç¯å¢ƒä¿æŠ¤æ—¥"),
+            new SolarHoliday(6, 26,  "å›½é™…ç¦æ¯’æ—¥"),
+            new SolarHoliday(7, 1,  "å»ºå…šèŠ‚"),
+            new SolarHoliday(7, 1,  "é¦™æ¸¯å›å½’çºªå¿µ"),
+            new SolarHoliday(7, 1,  " ä¸–ç•Œå»ºç­‘æ—¥"),
+            new SolarHoliday(7, 11,  "ä¸–ç•Œäººå£æ—¥"),
+            new SolarHoliday(8, 1,  "å»ºå†›èŠ‚"),
+            //  new SolarHoliday(8, 8,  "ä¸­å›½ç”·å­èŠ‚ çˆ¶äº²èŠ‚"),
+            new SolarHoliday(8, 15,  "æŠ—æ—¥æˆ˜äº‰èƒœåˆ©çºªå¿µ"),
 
-            new SolarHoliday(9, 10,  "½ÌÊ¦½Ú"),
-            //   new SolarHoliday(9, 18,  "¾Å¡¤Ò»°ËÊÂ±ä¼ÍÄîÈÕ"),
-            new SolarHoliday(9, 20,  "¹ú¼Ê°®ÑÀÈÕ"),
-            new SolarHoliday(9, 27,  "ÊÀ½çÂÃÓÎÈÕ"),
-            //    new SolarHoliday(9, 28,  "¿××Óµ®³½"),
-            new SolarHoliday(10, 1,  "¹úÇì½Ú"),
-            //    new SolarHoliday(10, 6,  "ÀÏÈË½Ú"),
-            new SolarHoliday(10, 24,  "ÁªºÏ¹úÈÕ"),
-            new SolarHoliday(11, 10,  "ÊÀ½çÇàÄê½Ú"),
-            //    new SolarHoliday(11, 12,  "ËïÖĞÉ½µ®³½¼ÍÄî"),
-            new SolarHoliday(12, 1,  "ÊÀ½ç°¬×Ì²¡ÈÕ"),
-            new SolarHoliday(12, 3,  "ÊÀ½ç²Ğ¼²ÈËÈÕ"),
-            new SolarHoliday(12, 20,  "°ÄÃÅ»Ø¹é¼ÍÄî"),
-            new SolarHoliday(12, 24,  "Æ½°²Ò¹"),
-            new SolarHoliday(12, 25,  "Ê¥µ®½Ú")
+            new SolarHoliday(9, 10,  "æ•™å¸ˆèŠ‚"),
+            //   new SolarHoliday(9, 18,  "ä¹Â·ä¸€å…«äº‹å˜çºªå¿µæ—¥"),
+            new SolarHoliday(9, 20,  "å›½é™…çˆ±ç‰™æ—¥"),
+            new SolarHoliday(9, 27,  "ä¸–ç•Œæ—…æ¸¸æ—¥"),
+            //    new SolarHoliday(9, 28,  "å­”å­è¯è¾°"),
+            new SolarHoliday(10, 1,  "å›½åº†èŠ‚"),
+            //    new SolarHoliday(10, 6,  "è€äººèŠ‚"),
+            new SolarHoliday(10, 24,  "è”åˆå›½æ—¥"),
+            new SolarHoliday(11, 10,  "ä¸–ç•Œé’å¹´èŠ‚"),
+            //    new SolarHoliday(11, 12,  "å­™ä¸­å±±è¯è¾°çºªå¿µ"),
+            new SolarHoliday(12, 1,  "ä¸–ç•Œè‰¾æ»‹ç—…æ—¥"),
+            new SolarHoliday(12, 3,  "ä¸–ç•Œæ®‹ç–¾äººæ—¥"),
+            new SolarHoliday(12, 20,  "æ¾³é—¨å›å½’çºªå¿µ"),
+            new SolarHoliday(12, 24,  "å¹³å®‰å¤œ"),
+            new SolarHoliday(12, 25,  "åœ£è¯èŠ‚")
         };
 
-        #endregion °´¹«Àú¼ÆËãµÄ¹ÈÕ
+        #endregion æŒ‰å…¬å†è®¡ç®—çš„ç¯€æ—¥
 
-        #region °´Şr•Ñ¼ÆËãµÄ¹ÈÕ
+        #region æŒ‰è¾²æ›†è®¡ç®—çš„ç¯€æ—¥
 
         /// <summary>
-        /// °´Şr•Ñ¼ÆËãµÄ¹ÈÕ
+        /// æŒ‰è¾²æ›†è®¡ç®—çš„ç¯€æ—¥
         /// </summary>
         public static readonly LunarHoliday[] LunarHolidays =
         {
-            new LunarHoliday(1, 1,  "´º½Ú"),
-            new LunarHoliday(1, 15,  "ÔªÏü½Ú"),
-            new LunarHoliday(5, 5,  "¶ËÎç½Ú"),
-            new LunarHoliday(7, 7,  "ÆßÏ¦ÇéÈË½Ú"),
-            new LunarHoliday(7, 15,  "ÖĞÔª½Ú"),
-            new LunarHoliday(8, 15,  "ÖĞÇï½Ú"),
-            new LunarHoliday(9, 9, "ÖØÑô½Ú"),
-            new LunarHoliday(12, 8,  "À°°Ë½Ú"),
-            new LunarHoliday(12, 30,  "³ıÏ¦")  //×¢Òâ³ıÏ¦ĞèÒªÆäËü·½·¨½øĞĞ¼ÆËã
+            new LunarHoliday(1, 1,  "æ˜¥èŠ‚"),
+            new LunarHoliday(1, 15,  "å…ƒå®µèŠ‚"),
+            new LunarHoliday(5, 5,  "ç«¯åˆèŠ‚"),
+            new LunarHoliday(7, 7,  "ä¸ƒå¤•æƒ…äººèŠ‚"),
+            new LunarHoliday(7, 15,  "ä¸­å…ƒèŠ‚"),
+            new LunarHoliday(8, 15,  "ä¸­ç§‹èŠ‚"),
+            new LunarHoliday(9, 9, "é‡é˜³èŠ‚"),
+            new LunarHoliday(12, 8,  "è…Šå…«èŠ‚"),
+            new LunarHoliday(12, 30,  "é™¤å¤•")  //æ³¨æ„é™¤å¤•éœ€è¦å…¶å®ƒæ–¹æ³•è¿›è¡Œè®¡ç®—
         };
 
-        #endregion °´Şr•Ñ¼ÆËãµÄ¹ÈÕ
+        #endregion æŒ‰è¾²æ›†è®¡ç®—çš„ç¯€æ—¥
 
-        #region °´Ä³ÔÂµÚ¼¸¸öĞÇÆÚ¼¸
+        #region æŒ‰æŸæœˆç¬¬å‡ ä¸ªæ˜ŸæœŸå‡ 
 
         /// <summary>
-        /// °´Ä³ÔÂµÚ¼¸¸öĞÇÆÚ¼¸
+        /// æŒ‰æŸæœˆç¬¬å‡ ä¸ªæ˜ŸæœŸå‡ 
         /// </summary>
         public static readonly WeekHoliday[] WeekHolidays = new WeekHoliday[]{
-            new WeekHoliday(5, 2,  DayOfWeek.Sunday, "Ä¸Ç×½Ú"),
-            new WeekHoliday(5, 3,  DayOfWeek.Sunday, "È«¹úÖú²ĞÈÕ"),
-            new WeekHoliday(6, 3,  DayOfWeek.Sunday, "¸¸Ç×½Ú"),
-            new WeekHoliday(3, 0,  DayOfWeek.Saturday, "µØÇòÒ»Ğ¡Ê±"),
-            new WeekHoliday(9, 4,  DayOfWeek.Thursday, "¹ú¼ÊÁûÈË½Ú"),
-            new WeekHoliday(10, 1,  DayOfWeek.Monday, "¹ú¼Ê×¡·¿ÈÕ"),
-            new WeekHoliday(10, 2, DayOfWeek.Wednesday, "¹ú¼Ê¼õÇá×ÔÈ»ÔÖº¦ÈÕ"),
-            new WeekHoliday(11, 0, DayOfWeek.Thursday, "¸Ğ¶÷½Ú")
+            new WeekHoliday(5, 2,  DayOfWeek.Sunday, "æ¯äº²èŠ‚"),
+            new WeekHoliday(5, 3,  DayOfWeek.Sunday, "å…¨å›½åŠ©æ®‹æ—¥"),
+            new WeekHoliday(6, 3,  DayOfWeek.Sunday, "çˆ¶äº²èŠ‚"),
+            new WeekHoliday(3, 0,  DayOfWeek.Saturday, "åœ°çƒä¸€å°æ—¶"),
+            new WeekHoliday(9, 4,  DayOfWeek.Thursday, "å›½é™…è‹äººèŠ‚"),
+            new WeekHoliday(10, 1,  DayOfWeek.Monday, "å›½é™…ä½æˆ¿æ—¥"),
+            new WeekHoliday(10, 2, DayOfWeek.Wednesday, "å›½é™…å‡è½»è‡ªç„¶ç¾å®³æ—¥"),
+            new WeekHoliday(11, 0, DayOfWeek.Thursday, "æ„Ÿæ©èŠ‚")
         };
 
-        #endregion °´Ä³ÔÂµÚ¼¸¸öĞÇÆÚ¼¸
+        #endregion æŒ‰æŸæœˆç¬¬å‡ ä¸ªæ˜ŸæœŸå‡ 
     }
 }

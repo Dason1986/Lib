@@ -185,7 +185,7 @@ namespace Library.IDCrad
         ///
         /// </summary>
         [Category("證件信息"), DisplayName("性")]
-        public SexEnum Sex { get; private set; }
+        public Sex Sex { get; private set; }
 
         private void ValidateProvince()
         {
@@ -234,7 +234,7 @@ namespace Library.IDCrad
             var code = StringUtility.TryCast<int>(IDNumber.Substring(16, 1));
             if (code.HasError) throw new IDCardException("轉換值出錯,不為數字", 11001.105, code.Error);
             SixCode = code.Value;
-            Sex = SixCode % 2 == 1 ? SexEnum.Male : SexEnum.Female;
+            Sex = SixCode % 2 == 1 ? Sex.Male : Sex.Female;
         }
 
         private void ValidateByChecksumDigit()
@@ -298,7 +298,7 @@ namespace Library.IDCrad
         /// <summary>
         ///
         /// </summary>
-        public SexEnum Sex { get; set; }
+        public Sex Sex { get; set; }
 
         private const string XmlPath = "Library.IDCrad.gbt2260.Db.xml";
 
@@ -346,7 +346,7 @@ namespace Library.IDCrad
         /// <param name="order">領證順序</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static ChineseIDCard CreateNew([NotNull] string districtFullCode, DateTime birthday, SexEnum sex, int codeRange, int order)
+        public static ChineseIDCard CreateNew([NotNull] string districtFullCode, DateTime birthday, Sex sex, int codeRange, int order)
         {
             return new ChineseIDCardProvider
             {
