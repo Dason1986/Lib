@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace NLog.Revicer
 {
     class Program
     {

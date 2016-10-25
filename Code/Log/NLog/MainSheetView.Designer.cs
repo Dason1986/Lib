@@ -1,4 +1,4 @@
-﻿namespace ConsoleApplication1
+﻿namespace NLog.Revicer
 {
     partial class MainSheetView
     {
