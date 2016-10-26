@@ -116,4 +116,16 @@ namespace Library.ComponentModel.Model
         /// </summary>
         string ModifiedBy { get; }
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IAuditedEntity: ICreatedInfo,IModifiedInfo
+    {
+     
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="modifiedBy"></param>
+        void SetChangedInfo(string modifiedBy);
+    }
 }

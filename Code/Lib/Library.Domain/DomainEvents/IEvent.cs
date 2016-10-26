@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using Library.Domain.Data;
 
 namespace Library.Domain.DomainEvents
 {
@@ -13,6 +12,8 @@ namespace Library.Domain.DomainEvents
     /// </summary>
     public interface IDomainService : IDisposable
     {
+        IModuleProvider ModuleProvider { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,9 +65,13 @@ namespace Library.Domain.DomainEvents
     /// <summary>
     /// 
     /// </summary>
-    /// <typeparam name="TService"></typeparam>
-    public class DomainEventHandler<TService> : IDomainEventHandler<TService> where TService : IDomainService
+    public abstract class DomainEventHandler : IDomainEventHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+     //   protected internal DomainEventBus Bus { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -82,17 +87,48 @@ namespace Library.Domain.DomainEvents
         {
             get; protected set;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        protected abstract IDomainService OnCreateService();
+        IDomainService IDomainEventHandler.CreateService()
+        {
+            return OnCreateService();
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TService"></typeparam>
+    public class DomainEventHandler<TService> : DomainEventHandler, IDomainEventHandler<TService> where TService : IDomainService
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        public DomainEventHandler(IDomainEventArgs args) : base(args)
+        {
+
+        }
+
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public TService CreateService()
+        public virtual TService CreateService()
         {
             return Library.Bootstrap.Currnet.GetService<TService>();
         }
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        protected override IDomainService OnCreateService()
+        {
+            return CreateService();
+        }
 
         IDomainService IDomainEventHandler.CreateService()
         {
@@ -104,6 +140,7 @@ namespace Library.Domain.DomainEvents
     /// </summary>
     public interface IDomainEventArgs
     {
+
     }
 
     /// <summary>

@@ -14,7 +14,7 @@ namespace NLog.Revicer
         static void Main(string[] args)
         {
             UDP();
-           // HttpWeb(args);
+            // HttpWeb(args);
 
             Console.Read();
         }
@@ -30,17 +30,26 @@ namespace NLog.Revicer
                 byte[] data = new byte[9000];
                 IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
                 EndPoint Remote = (EndPoint)(sender);
-              
+
 
                 //发送信息
-              
+
                 while (true)
                 {
-                    data = new byte[1024];
-                    //发送接受信息
-                    recv = newsock.ReceiveFrom(data, ref Remote);
-                    ShowLog(data);
-                  
+                    try
+                    {
+
+
+                        data = new byte[1024];
+                        //发送接受信息
+                        recv = newsock.ReceiveFrom(data, ref Remote);
+                        ShowLog(data);
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
                 }
 
             }
@@ -94,7 +103,7 @@ namespace NLog.Revicer
 
         private static void ShowLog(byte[] buff)
         {
-            var log = System.Text.UTF8Encoding.UTF8.GetString(buff).Trim().Replace("\0",string.Empty);
+            var log = System.Text.UTF8Encoding.UTF8.GetString(buff).Trim().Replace("\0", string.Empty);
             if (log.Contains("|ERROR|"))
             {
                 Console.ForegroundColor = ConsoleColor.Red;

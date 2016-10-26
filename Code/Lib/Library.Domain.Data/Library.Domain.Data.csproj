@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainEventBus.cs" />
     <Compile Include="EF\Repository~.cs" />
     <Compile Include="EF\EFContext.cs" />
     <Compile Include="EF\ModuleProvider.cs" />

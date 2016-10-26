@@ -89,5 +89,23 @@ namespace Library
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public abstract T GetService<T>(string name);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public abstract T GetService<T>(Type[] type, object[] obj);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="constantNames"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public abstract T GetService<T>(string[] constantNames, object[] obj);
+
     }
 }
+

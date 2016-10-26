@@ -12,6 +12,10 @@ namespace Library.Domain.Data.EF
     /// <typeparam name="TEntity"></typeparam>
     public class Repository<TEntity> : Repository, IRepository<TEntity> where TEntity : Entity
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public Repository(EFContext context) : base(context)
         {
             Set = CreateSet();
@@ -70,7 +74,9 @@ namespace Library.Domain.Data.EF
         /// <returns></returns>
         public virtual TEntity Get(Guid id)
         {
-            return Set.FirstOrDefault(n => n.ID == id);
+            if (typeof(Library.ComponentModel.Model.IModifiedInfo).IsAssignableFrom(  typeof(TEntity) ))
+               return Set.FirstOrDefault(n => n.ID == id);
+            return Set.AsNoTracking().FirstOrDefault(n => n.ID == id);
         }
 
         /// <summary>

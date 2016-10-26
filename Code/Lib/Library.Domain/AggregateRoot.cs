@@ -18,10 +18,7 @@ namespace Library.Domain
         /// 
         /// </summary>
         Guid ID { get; }
-        /// <summary>
-        /// 
-        /// </summary>
-        void Modify();
+  
         /// <summary>
         /// 
         /// </summary>
