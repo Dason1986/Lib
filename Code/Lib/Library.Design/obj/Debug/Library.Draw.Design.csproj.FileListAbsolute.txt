@@ -1,5 +1,0 @@
-C:\Dason\Lib\Code\Lib\Bin\Library.Draw.Design.XML
-C:\Dason\Lib\Code\Lib\Bin\Library.Draw.Design.dll
-C:\Dason\Lib\Code\Lib\Bin\Library.Draw.Design.pdb
-C:\Dason\Lib\Code\Lib\Library.Draw.Design\obj\Debug\Library.Draw.Design.dll
-C:\Dason\Lib\Code\Lib\Library.Draw.Design\obj\Debug\Library.Draw.Design.pdb
