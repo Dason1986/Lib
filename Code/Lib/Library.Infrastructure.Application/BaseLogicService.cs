@@ -32,7 +32,7 @@ namespace Library.Infrastructure.Application
         protected void OnCompleted(TimeSpan usetime)
         {
 
-            Logger.Trace(string.Format("完成執行，用時：{0}", usetime));
+            Logger.Info(string.Format("Completed|use time：{0}", usetime));
             var handler = Completed;
             if (handler == null) return;
             SynchronizationContext.Current.Post(n =>
@@ -46,14 +46,14 @@ namespace Library.Infrastructure.Application
         {
             if (!OnVerification())
             {
-                Logger.Warn("驗證失敗");
+                Logger.Warn("Verification ");
 
                 return;
             }
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            Logger.Trace("開始執行");
+            Logger.Info("Start");
 
             OnDowrok();
             watch.Stop();
