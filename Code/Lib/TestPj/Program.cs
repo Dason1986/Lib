@@ -16,7 +16,8 @@ namespace TestPj
 
         private static void Main(string[] args)
         {
-            new Test.ThumbnailTest().Test();
+            ParsonModle modle = new ParsonModle();
+            modle.Account = "111";
             Console.ReadKey();
             Console.ReadLine();
         }

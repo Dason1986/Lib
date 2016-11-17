@@ -1,4 +1,4 @@
-using Library.Annotations;
+﻿using Library.Annotations;
 using Library.ComponentModel;
 using System;
 using System.Collections;
@@ -8,6 +8,8 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Library.HelperUtility
@@ -27,7 +29,59 @@ namespace Library.HelperUtility
 
             return string.Format("{0},{1}", classType.FullName, classType.Assembly.GetName().Name);
         }
+        #region 类型搜索
+        /// <summary>
+        /// 获取子类型
+        /// </summary>
+        /// <param name="type">父类型</param>
+        /// <returns></returns>
+        public static IEnumerable<Type> GetSubTypes(Type type)
+        {
+            var assemblies =AppDomain.CurrentDomain.GetAssemblies().Where(a =>
+            {
+                Assembly assembly = type.GetType().Assembly;
+                //基类所在程序集或依赖于基类的其他程序集
+                return a.FullName == assembly.FullName || a.GetReferencedAssemblies().Any(ra => ra.FullName == assembly.FullName);
+            });
 
+            var typeInfo = type;
+
+            return assemblies.SelectMany(a =>
+            {
+                return a.GetTypes().Where(t =>
+                {
+                    if (type == t)
+                    {
+                        return false;
+                    }
+
+                    var tInfo = t;
+
+                    if (tInfo.IsAbstract || !tInfo.IsClass || !tInfo.IsPublic)
+                    {
+                        return false;
+                    }
+
+                    //if (typeInfo.IsGenericTypeDefinition)
+                    //{
+                    //    return type.ge(t);
+                    //}
+
+                    return type.IsAssignableFrom(t);
+                });
+            });
+        }
+
+        /// <summary>
+        /// 获取子类型
+        /// </summary>
+        /// <typeparam name="T">父类型</typeparam>
+        /// <returns></returns>
+        public static IEnumerable<Type> GetSubTypes<T>()
+        {
+            return GetSubTypes(typeof(T));
+        }
+        #endregion
         /// <summary>
         ///
         /// </summary>

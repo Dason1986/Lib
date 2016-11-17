@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="BaseLogicService.cs" />
     <Compile Include="BaseMultiThreadingLogicService.cs" />
+    <Compile Include="CustomJsonLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

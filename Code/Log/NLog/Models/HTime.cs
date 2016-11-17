@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NLog.Revicer
+namespace NLog.Revicer.Models
 {
     public sealed class HTime: PropertyChangeModel
     {

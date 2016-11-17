@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace NLog.Revicer
+namespace NLog.Revicer.Models
 {
 
     public abstract class PropertyChangeModel : INotifyPropertyChanged

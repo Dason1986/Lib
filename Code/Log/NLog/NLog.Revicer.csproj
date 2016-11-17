@@ -39,9 +39,13 @@
     <ApplicationIcon>Log.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.2-beta1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Windows.Forms" />
@@ -52,10 +56,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\LogListener.cs" />
-    <Compile Include="Logic\SourceLog.cs" />
-    <Compile Include="Model\HTime.cs" />
-    <Compile Include="Model\LogViewConfig.cs" />
+    <Compile Include="Core\ICustomLogProvider.cs" />
+    <Compile Include="Core\Listeners\DirectoryLogFilesAnalysis.cs" />
+    <Compile Include="Core\Listeners\HTTPLogListener.cs" />
+    <Compile Include="Core\Listeners\ILogAnalysis.cs" />
+    <Compile Include="Core\Listeners\LogAnalysis.cs" />
+    <Compile Include="Core\Listeners\LogListener.cs" />
+    <Compile Include="Core\Listeners\NewLogEventArgs.cs" />
+    <Compile Include="Core\ILogProvider.cs" />
+    <Compile Include="Core\Listeners\TCPLogListener.cs" />
+    <Compile Include="Core\LogSourceType.cs" />
+    <Compile Include="Core\NLogJsonProvider.cs" />
+    <Compile Include="Core\NLogProvider.cs" />
+    <Compile Include="Core\SourceStringType.cs" />
+    <Compile Include="Models\SourceLog.cs" />
+    <Compile Include="Core\Listeners\UDPLogListener.cs" />
+    <Compile Include="Models\HTime.cs" />
+    <Compile Include="Models\LogViewConfig.cs" />
     <Compile Include="MainSheetView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,10 +86,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Model\PropertyChangeModel.cs" />
-    <Compile Include="Model\ReportLog.cs" />
-    <Compile Include="Model\ReportLogContent.cs" />
+    <Compile Include="Models\PropertyChangeModel.cs" />
+    <Compile Include="Models\ReportLog.cs" />
+    <Compile Include="Models\ReportLogContent.cs" />
     <Compile Include="Logic\ReprotLogLogic.cs" />
+    <Compile Include="Views\ILogViwer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainSheetView.resx">
@@ -106,10 +124,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Views\" />
+    <Folder Include="Models" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Log.ico" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

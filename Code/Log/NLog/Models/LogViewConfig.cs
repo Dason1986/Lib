@@ -1,4 +1,4 @@
-﻿namespace NLog.Revicer
+﻿namespace NLog.Revicer.Models
 {
 
     public class LogViewConfig : PropertyChangeModel

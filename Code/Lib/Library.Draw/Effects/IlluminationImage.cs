@@ -9,6 +9,7 @@ namespace Library.Draw.Effects
     /// <summary>
     /// 光照效果
     /// </summary>
+    [LanguageDescription("照明图像"), LanguageDisplayName("照明图像")]
     public class IlluminationImage : ImageBuilder
     {
         /// <summary>

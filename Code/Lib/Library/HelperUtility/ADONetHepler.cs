@@ -1,4 +1,5 @@
 ﻿using Library.Annotations;
+using Library.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,57 @@ namespace Library.HelperUtility
     /// </summary>
     public static class ADONetHepler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static MicroDataTable FillDataTable(this IDataReader reader, int pageIndex, int pageSize)
+        {
+            bool defined = false;
+
+            MicroDataTable table = new MicroDataTable();
+
+            int index = 0;
+            int beginIndex = pageSize * pageIndex;
+            int endIndex = pageSize * (pageIndex + 1) - 1;
+
+            while (reader.Read())
+            {
+                object[] values = new object[reader.FieldCount];
+
+                if (!defined)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        MicroDataColumn column = new MicroDataColumn()
+                        {
+                            ColumnName = reader.GetName(i),
+                            ColumnType = reader.GetFieldType(i)
+                        };
+
+                        table.Columns.Add(column);
+                    }
+
+                    defined = true;
+                }
+
+                if (index >= beginIndex && index <= endIndex)
+                {
+                    reader.GetValues(values);
+
+                    table.Rows.Add(new MicroDataRow(table.Columns, values));
+                }
+
+                index++;
+            }
+
+            table.TotalCount = index;
+
+            return table;
+        }
         /// <summary>
         ///
         /// </summary>

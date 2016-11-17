@@ -5,14 +5,22 @@ using System.Threading;
 
 namespace Library.Infrastructure.Application
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BaseLogicService : ILogicService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public BaseLogicService()
         {
             Logger = NLog.LogManager.GetLogger(this.GetType().FullName);
             //   logerName = this.GetType().FullName;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected NLog.ILogger Logger { get; set; }
         IOption ILogicService.Option
         {
@@ -26,13 +34,22 @@ namespace Library.Infrastructure.Application
                 ServiceOption = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         protected abstract IOption ServiceOption { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler Completed;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usetime"></param>
         protected void OnCompleted(TimeSpan usetime)
         {
 
-            Logger.Info(string.Format("Completed|use time：{0}", usetime));
+            Logger.InfoByContent("Completed", usetime);
             var handler = Completed;
             if (handler == null) return;
             SynchronizationContext.Current.Post(n =>
@@ -42,6 +59,9 @@ namespace Library.Infrastructure.Application
             }, null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Start()
         {
             if (!OnVerification())
@@ -60,6 +80,9 @@ namespace Library.Infrastructure.Application
             OnCompleted(watch.Elapsed);
         }
         Thread threadPool;
+        /// <summary>
+        /// 
+        /// </summary>
         public void StartAsyn()
         {
             if (threadPool != null) return;
@@ -69,12 +92,21 @@ namespace Library.Infrastructure.Application
             });
             threadPool.Start();
         }
+        /// <summary>
+        /// 
+        /// </summary>
         protected abstract void OnDowrok();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected virtual bool OnVerification()
         {
             return true;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void StopAsyn()
         {
             if (threadPool != null)

@@ -8,6 +8,7 @@ namespace Library.Draw.Effects
     /// <summary>
     /// 倒象
     /// </summary>
+    [LanguageDescription("翻转图像"), LanguageDisplayName("翻转图像")]
     public class FlipImage : ImageBuilder
     {
         /// <summary>

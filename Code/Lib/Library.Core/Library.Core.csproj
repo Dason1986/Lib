@@ -58,6 +58,7 @@
     <Compile Include="Att\AttributeHelper.cs" />
     <Compile Include="Att\LanguageCategoryAttribute.cs" />
     <Compile Include="Att\LanguageDescriptionAttribute.cs" />
+    <Compile Include="Data\MicroDataTable.cs" />
     <Compile Include="enum\AlignmentType.cs" />
     <Compile Include="Att\LanguageDisplayNameAttribute.cs" />
     <Compile Include="Bootstrap.cs" />

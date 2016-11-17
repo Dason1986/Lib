@@ -10,7 +10,7 @@ namespace Library.Draw.Effects
     /// <summary>
     /// 二值处理
     /// </summary>
-    [LanguageDescription("二值处理"), LanguageDisplayName("二值处理")]
+    [LanguageDescription("二值处理"),  LanguageDisplayName("黑白處理")]
     public class TwoValueImage : ImageBuilder
     {
         /// <summary>
@@ -91,7 +91,7 @@ namespace Library.Draw.Effects
         /// <returns></returns>
         public override ImageOption CreateOption()
         {
-            return new TwoValueOption() { Pointcut = 128 };
+            return new TwoValueOption() { Pointcut = 100 };
         }
 
         #endregion Option
@@ -113,7 +113,7 @@ namespace Library.Draw.Effects
                 {
                     Color c = bmp.GetPixel(i, j);
                     int iAvg = (c.R + c.G + c.B) / 3;
-                    int iPixel = iAvg >= Pointcut ? 255 : 0;
+                    int iPixel = iAvg >= Pointcut ? byte.MaxValue : 0;
 
                     bmp.SetPixel(i, j, Color.FromArgb(iPixel, iPixel, iPixel));
                 }
@@ -141,7 +141,7 @@ namespace Library.Draw.Effects
             for (int i = 0; i < byteCounts; i += 4)
             {
                 int avg = (arr[i] + arr[i + 1] + arr[i + 2]) / 3;
-                avg = avg >= Pointcut ? 255 : 0;
+                avg = avg >= Pointcut ? byte.MaxValue : 0;
                 arr[i] = arr[i + 1] = arr[i + 2] = (byte)avg;
             }
             Marshal.Copy(arr, 0, p, byteCounts);

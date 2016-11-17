@@ -1,4 +1,5 @@
-﻿using Library.Domain.DomainEvents;
+﻿using Library.Domain.Data;
+using Library.Domain.DomainEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,43 @@ namespace Library.Domain
     /// <summary>
     /// 
     /// </summary>
+    /// <typeparam name="TService"></typeparam>
+    public class DomainEventPublish<TService>
+        where TService : IDomainService
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="moduleProvider"></param>
+        public DomainEventPublish(IModuleProvider moduleProvider)
+        {
+            if (moduleProvider == null) throw new Exception("ModuleProvider 爲空");
+            ModuleProvider = moduleProvider;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual IModuleProvider ModuleProvider { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        public void Publish(IDomainEventArgs args)
+        {
+
+            Thread thread = new Thread(n =>
+            {
+                var service = Bootstrap.Currnet.GetService<TService>();
+                service.ModuleProvider = ModuleProvider;
+                service.Handle(args);
+                ModuleProvider.UnitOfWork.Commit();
+            });
+            thread.Start();
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
     public class DomainEventBus : IDomainEventBus
     {
         /// <summary>
@@ -19,49 +57,12 @@ namespace Library.Domain
         public DomainEventBus()
         {
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="TService"></typeparam>
-        /// <param name="args"></param>
-        public void Publish<TService>(IDomainEventArgs args)
+        public virtual IModuleProvider ModuleProvider { get; set; }
 
-            where TService : IDomainService
-        {
-            Thread thread = MyMethod<TService, IDomainEventArgs>(args);
-            thread.Start();
-
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual Library.Domain.Data.IModuleProvider ModuleProvider { get; set; }
-        private Thread MyMethod<TService, TEvent>(TEvent args) where TService : IDomainService where TEvent : IDomainEventArgs
-        {
-            if (ModuleProvider == null) throw new Exception("ModuleProvider 爲空");
-            Thread thread = new Thread(n =>
-            {
-                var service = Bootstrap.Currnet.GetService<TService>();
-                service.ModuleProvider = ModuleProvider;
-                service.Handle(args);
-                ModuleProvider.UnitOfWork.Commit();
-            });
-
-            return thread;
-        }
-        /// <summary>
-        /// /
-        /// </summary>
-        /// <typeparam name="TService"></typeparam>
-        /// <param name="args"></param>
-        public void PublishAwait<TService>(IDomainEventArgs args)
-
-            where TService : IDomainService
-        {
-            Thread thread = MyMethod<TService, IDomainEventArgs>(args);
-            thread.Start();
-            thread.Join();
-        }
         IList<IDomainEventHandler> handers = new List<IDomainEventHandler>();
         /// <summary>
         /// 

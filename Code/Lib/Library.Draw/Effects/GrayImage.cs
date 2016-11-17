@@ -6,15 +6,15 @@ using System.Drawing.Imaging;
 namespace Library.Draw.Effects
 {
     /// <summary>
-    /// 黑白效果
+    /// 灰度效果
     /// </summary>
-    [LanguageDescription("黑白效果"), LanguageDisplayName("黑白效果")]
+    [LanguageDescription("灰度效果"), LanguageDisplayName("灰度效果")]
     public class GrayImage : ImageBuilder
     {
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法"), Category("濾鏡選項")]
+        [LanguageDescription("灰度算法"), LanguageDisplayName("灰度算法"), Category("濾鏡選項")]
         public GrayType Pixel
         {
             get
@@ -32,7 +32,7 @@ namespace Library.Draw.Effects
         /// <summary>
         ///
         /// </summary>
-        [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法")]
+        [LanguageDescription("灰度算法"), LanguageDisplayName("灰度算法")]
         public enum GrayType
         {
             /// <summary>
@@ -97,9 +97,9 @@ namespace Library.Draw.Effects
         public class GrayOption : ImageOption
         {
             /// <summary>
-            /// 黑白算法
+            /// 灰度算法
             /// </summary>
-            [LanguageDescription("黑白算法"), LanguageDisplayName("黑白算法"), Category("濾鏡選項")]
+            [LanguageDescription("灰度算法"), LanguageDisplayName("灰度算法"), Category("濾鏡選項")]
             public GrayType Pixel { get; set; }
         }
 

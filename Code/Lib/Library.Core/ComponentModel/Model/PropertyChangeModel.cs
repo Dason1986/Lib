@@ -47,6 +47,8 @@ namespace Library.ComponentModel.Model
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged(string propertyName)
         {
+            var method = System.Reflection.MethodBase.GetCurrentMethod();
+            Console.WriteLine(method);
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }

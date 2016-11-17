@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace NLog.Revicer
+namespace NLog.Revicer.Models
 {
   //  [TypeDescriptionProvider(typeof(MyTypeDescriptionProvider<HTime>))]
     public class ReportLog : PropertyChangeModel

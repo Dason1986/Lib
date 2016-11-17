@@ -1,12 +1,18 @@
 ﻿using Library.ComponentModel.Logic;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Library.Infrastructure.Application
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BaseMultiThreadingLogicService : BaseLogicService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public BaseMultiThreadingLogicService()
         {
 
@@ -16,6 +22,9 @@ namespace Library.Infrastructure.Application
 
         int _threadCount = 3;
         int _batSize = 20;
+        /// <summary>
+        /// 
+        /// </summary>
         public int ThreadCount
         {
             get
@@ -28,9 +37,18 @@ namespace Library.Infrastructure.Application
                 if (_threadCount != value) _threadCount = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         protected long TotalRecord { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         protected long CompletedRecord { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int BatchSize
         {
             get
@@ -46,12 +64,22 @@ namespace Library.Infrastructure.Application
         #endregion
         #region event
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<LogicServiceProgress> Progress;
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<LogicServiceFailure> Failure;
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="error"></param>
+        /// <param name="beginIndex"></param>
+        /// <param name="endIndex"></param>
         protected void OnFailure(Exception error, long beginIndex, long endIndex)
         {
             var handler = Failure;
@@ -62,6 +90,11 @@ namespace Library.Infrastructure.Application
                 handler.Invoke(this, new LogicServiceFailure(error, beginIndex, endIndex));
             }, null);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="beginIndex"></param>
+        /// <param name="endIndex"></param>
         protected void OnProgress(long beginIndex, long endIndex)
         {
             var handler = Progress;
@@ -73,6 +106,11 @@ namespace Library.Infrastructure.Application
             }, null);
         }
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="begin"></param>
+        /// <param name="end"></param>
         protected virtual void ThreadPross(long begin, long end)
         {
             int size = BatchSize;
@@ -89,7 +127,7 @@ namespace Library.Infrastructure.Application
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, string.Format("{0} - {1}:處理失敗", index, endindex));
+                    Logger.ErrorByContent(ex, "處理失敗",new Dictionary<string, object>() { { "begin", index}, { "end", endindex} });
                     OnFailure(ex, index, endindex);
 
                 }
@@ -98,7 +136,9 @@ namespace Library.Infrastructure.Application
 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected sealed override void OnDowrok()
         {
 
@@ -115,7 +155,14 @@ namespace Library.Infrastructure.Application
 
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected abstract int GetTotalRecord();
+        /// <summary>
+        /// 
+        /// </summary>
         protected virtual void ThreadPross()
         {
 
@@ -158,6 +205,11 @@ namespace Library.Infrastructure.Application
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="beginindex"></param>
+        /// <param name="endindex"></param>
         protected abstract void ThreadProssSize(int beginindex, int endindex);
     }
 }

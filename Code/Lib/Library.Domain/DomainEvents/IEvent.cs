@@ -157,13 +157,7 @@ namespace Library.Domain.DomainEvents
         /// 
         /// </summary>
         void Publish();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TService"></typeparam>
-        /// <param name="args"></param>
-        void Publish<TService>(IDomainEventArgs args)
-            where TService : IDomainService;
+   
     }
 
 
