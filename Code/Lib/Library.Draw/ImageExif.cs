@@ -491,7 +491,11 @@ namespace Library.Draw
                     if (_displayValue != null) return _displayValue;
                     switch (Type)
                     {
-                        case PropertyTagType.ASCII: _displayValue = Encoding.ASCII.GetString(Value); break;
+                        case PropertyTagType.ASCII:
+                            {
+                                var str = Encoding.ASCII.GetString(Value);
+                                _displayValue = str != null ? str.Trim() : null; break;
+                            }
                         case PropertyTagType.Short: _displayValue = BitConverter.ToUInt16(Value, 0); break;
                         case PropertyTagType.Long:
                         case PropertyTagType.Rational:

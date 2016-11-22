@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Library.HelperUtility
 {
@@ -239,5 +240,110 @@ namespace Library.HelperUtility
 
             return fileclass;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fs"></param>
+        /// <returns></returns>
+        public static System.Text.Encoding GetType(Stream fs)
+        {
+            /*
+                                Unicode    
+                                ------------------
+                                255    254
+
+                                ======================
+                                UnicodeBigEndian
+                                -------------------
+                                254    255
+
+                                ======================
+                                UTF8
+                                -------------------
+                                34 228
+                                34 229
+                                34 230
+                                34 231
+                                34 232
+                                34 233
+                                239    187
+             
+                                ======================
+                                ANSI
+                                -------------------
+                                34 176
+                                34 177
+                                34 179
+                                34 180
+                                34 182
+                                34 185
+                                34 191
+                                34 194
+                                34 196
+                                34 198
+                                34 201
+                                34 202
+                                34 205
+                                34 206
+                                34 208
+                                34 209
+                                34 210
+                                34 211
+                                34 213
+                                196 167
+                                202 213
+                                206 228
+            */
+            BinaryReader r = new BinaryReader(fs, System.Text.Encoding.Default);
+            byte[] ss = r.ReadBytes(3);
+            int lef = ss[0];
+            int mid = ss[1];
+            int rig = ss[2];
+            r.Close();
+            /*  文件头两个字节是255 254，为Unicode编码；
+                文件头三个字节  254 255 0，为UTF-16BE编码；
+                文件头三个字节  239 187 191，为UTF-8编码；*/
+            if (lef == 255 && mid == 254)
+            {
+                return Encoding.Unicode;
+            }
+            else if (lef == 254 && mid == 255 && rig == 0)
+            {
+                return Encoding.BigEndianUnicode;
+            }
+            else if (lef == 254 && mid == 255)
+            {
+                return Encoding.BigEndianUnicode;
+            }
+            else if (lef == 239 && mid == 187 && rig == 191)
+            {
+                return Encoding.UTF8;
+            }
+            else if (lef == 239 && mid == 187)
+            {
+                return Encoding.UTF8;
+            }
+            else if (lef == 196 && mid == 167
+                || lef == 206 && mid == 228
+                || lef == 202 && mid == 213)
+            {
+                return Encoding.Default;
+            }
+            else
+            {
+                if (lef == 34)
+                {
+                    if (mid < 220) return Encoding.Default;
+                    else return Encoding.UTF8;
+                }
+                else
+                {
+                    if (lef < 220) return Encoding.Default;
+                    else return Encoding.UTF8;
+                }
+            }
+        }
+
     }
 }
