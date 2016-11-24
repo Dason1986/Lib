@@ -1,10 +1,13 @@
 ﻿using Library.Draw;
+using Library.Draw.Effects;
 using Library.HelperUtility;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -25,7 +28,7 @@ namespace Library.Controls
             }
         }
 
-        private Assembly effectsAssembly;
+        
         private IImageBuilder builderobj;
         private ImageOption option;
         private readonly IDictionary<Type, IImageBuilder> _dicinObjects = new ConcurrentDictionary<Type, IImageBuilder>();
@@ -36,7 +39,7 @@ namespace Library.Controls
         public Image ResultImage { get; protected set; }
 
         private DataTable dt;
-        private int index;
+        private int index=-1;
         private Image _source;
 
         /// <summary>
@@ -53,34 +56,7 @@ namespace Library.Controls
 
         private void Init()
         {
-            string[] sourceImageEffects =
-            {
-                "BlueImage", "GreenImage", "RedImage", "FogImage", "GaussianBlurImage"
-                , "FlipImage", "MosaicImage", "NeonImage", "GrayImage", "RebelliousImage"
-                , "ReliefImage", "SharpenImage", "TwoValueImage", "ColorGradationImage", "BlindsImage", "IlluminationImage"
-                , "ZoomBlurImage", "ColorQuantizeImage", "ColorToneImage", "AutoLevelImage", "HistogramEqualImage"
-                , "BrightContrastImage", "CleanGlassImage", "FeatherImage", "RaiseFrameImage", "ReflectionImage"
-                , "ThreeDGridImage"
-            };
-            effectsAssembly = typeof(ImageBuilder).Assembly;
-            dt = new DataTable();
-            dt.Columns.Add("name");
-            dt.Columns.Add("DisplayName");
-            dt.Columns.Add("ImageBuilder", typeof(IImageBuilder));
-            dt.Columns.Add("option", typeof(ImageOption));
-            for (int i = 0; i < sourceImageEffects.Length; i++)
-            {
-                var name = sourceImageEffects[i];
-                var dr = dt.NewRow();
-                string classname = string.Format("Library.Draw.Effects.{0}", name);
-                var typeobj = effectsAssembly.GetType(classname);
-                builderobj = typeobj.CreateInstance<IImageBuilder>();
-                dr[0] = name;
-                dr[1] = name;
-                dr[2] = builderobj;
-                dr[3] = builderobj.CreateOption();
-                dt.Rows.Add(dr);
-            }
+            dt = EffectsHelper.GetEffects();
             LBEffects.DataSource = dt;
             LBEffects.DisplayMember = "DisplayName";
             CreateBuilder();
@@ -162,14 +138,14 @@ namespace Library.Controls
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+
             SaveFileDialog dialog = new SaveFileDialog() { Filter = ".jpeg|*.jpeg" };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var fs = dialog.OpenFile();
                 var ThumbnailWidth = 0;
                 var ThumbnailHeight = 0;
-                var image = ResultImage??Source;
+                var image = ResultImage ?? Source;
                 if (image.Width < 120 && image.Height < 120)
                 {
                     ThumbnailWidth = image.Width;

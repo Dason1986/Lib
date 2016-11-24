@@ -1,10 +1,12 @@
 ﻿using Library;
 using Library.Controls;
 using Library.Draw;
+using Library.Draw.Effects;
 using Library.HelperUtility;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -14,33 +16,28 @@ namespace TestWinform
 {
     public partial class EffectsForm : Form
     {
+
         public EffectsForm()
         {
             InitializeComponent();
+            dt = EffectsHelper.GetEffects();
+            comboBox1.DisplayMember = "DisplayName";
+            comboBox1.ValueMember = "ImageBuilder";
+            comboBox1.DataSource = dt;
 
-            List<string> source = new List<string>()
-            {
-                "BlueImage", "GreenImage", "RedImage",  "FogImage","GaussianBlurImage"
-            ,"FlipImage","MosaicImage","NeonImage","GrayImage","RebelliousImage"
-            ,"ReliefImage","SharpenImage","TwoValueImage","ColorGradationImage","BlindsImage","IlluminationImage"
-            ,"ZoomBlurImage","ColorQuantizeImage","ColorToneImage","AutoLevelImage","HistogramEqualImage"
-            ,"BrightContrastImage",  "CleanGlassImage" ,"FeatherImage","RaiseFrameImage","ReflectionImage"
-          ,"ThreeDGridImage"
-            };
-            comboBox1.DataSource = source;
-            effectsAssembly = typeof(ImageBuilder).Assembly;
 
             if (Program.Original == null) return;
-            Image image = new Bitmap(new MemoryStream(Program.Original));
-            ImageEffectsVisualizer.TestShowVisualizer(image);
-            this.pictureBox1.Image = image;
-            fileBytes = Program.Original;
+            sourceiamge = new Bitmap(new MemoryStream(Program.Original));
+
+            ImageEffectsVisualizer.TestShowVisualizer(sourceiamge);
+            this.pictureBox1.Image = sourceiamge;
+            //    fileBytes = Program.Original;
             CreateBuilder();
         }
+        Image sourceiamge;
 
-        private readonly Assembly effectsAssembly;
-        private byte[] fileBytes;
 
+        DataTable dt;
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -48,9 +45,10 @@ namespace TestWinform
             var result = fileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                fileBytes = File.ReadAllBytes(fileDialog.FileName);
+                //    fileBytes = File.ReadAllBytes(fileDialog.FileName);
                 var stream = fileDialog.OpenFile();
-                this.pictureBox1.Image = new Bitmap(stream);
+                sourceiamge = new Bitmap(stream);
+                this.pictureBox1.Image = sourceiamge;
                 CreateBuilder();
             }
         }
@@ -64,7 +62,7 @@ namespace TestWinform
             {
                 panel1.Enabled = false;
                 builderobj.SetOpetion(option);
-
+                builderobj.SetSourceImage(this.sourceiamge);
                 this.pictureBox2.Image = checkBox1.Checked
                     ? builderobj.UnsafeProcessBitmap()
                     : builderobj.ProcessBitmap();
@@ -89,25 +87,9 @@ namespace TestWinform
 
         private void CreateBuilder()
         {
-            if (effectsAssembly == null) return;
-            string classname = string.Format("Library.Draw.Effects.{0}", comboBox1.Text);
-            var typeobj = effectsAssembly.GetType(classname);
-            if (typeobj == null) throw new Exception();
-            if (_dicinObjects.ContainsKey(typeobj))
-            {
-                builderobj = _dicinObjects[typeobj];
-            }
-            else
-            {
-                builderobj = typeobj.CreateInstance<IImageBuilder>();
-                builderobj.ProcessCompleted += builderobj_ProcessCompleted;
-                if (fileBytes != null)
-                {
-                    var tmp = new byte[fileBytes.Length];
-                    fileBytes.CopyTo(tmp, 0);
-                    builderobj.SetSourceImage(tmp);
-                }
-            }
+
+            builderobj = comboBox1.SelectedValue as IImageBuilder;
+
             option = builderobj.CreateOption();
             grid.SelectedObject = option;
         }

@@ -492,9 +492,10 @@ namespace Library.Draw
                     switch (Type)
                     {
                         case PropertyTagType.ASCII:
+                        case PropertyTagType.Undefined:
                             {
                                 var str = Encoding.ASCII.GetString(Value);
-                                _displayValue = str != null ? str.Trim() : null; break;
+                                _displayValue = str != null ? str.Trim().Replace("\0", string.Empty) : null; break;
                             }
                         case PropertyTagType.Short: _displayValue = BitConverter.ToUInt16(Value, 0); break;
                         case PropertyTagType.Long:

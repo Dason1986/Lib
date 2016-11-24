@@ -70,6 +70,7 @@
     <Compile Include="Effects\ColorOption.cs" />
     <Compile Include="Effects\ColorQuantizeImage.cs" />
     <Compile Include="Effects\ColorToneImage.cs" />
+    <Compile Include="Effects\EffectsHelper.cs" />
     <Compile Include="Effects\FeatherImage.cs" />
     <Compile Include="Effects\FogImage.cs" />
     <Compile Include="Effects\GaussianBlurImage.cs" />
