@@ -31,7 +31,7 @@ namespace NLog.Revicer.Models
         public string[] SourceItems { get; private set; }
 
         public LogException Error { get; set; }
-
+        public string Address { get; internal set; }
     }
     public class LogException
     {

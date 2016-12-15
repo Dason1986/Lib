@@ -32,7 +32,7 @@ namespace NLog.Revicer.Listeners
                         data = new byte[Config.BuffSize];
                         //发送接受信息
                         recv = newsock.ReceiveFrom(data, ref Remote);
-                        ReceiveNewLog(data);
+                        ReceiveNewLog(data,Remote.ToString());
                     }
                     catch (Exception ex)
                     {

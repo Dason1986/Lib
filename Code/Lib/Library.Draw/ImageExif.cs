@@ -11,6 +11,160 @@ using System.Text;
 
 namespace Library.Draw
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public struct Rational
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static  Rational GetRational(byte[] B)
+        {
+            Rational R = new Rational();
+     
+            R.Denominator = BitConverter.ToInt32(B,0);
+            R.Numerator = BitConverter.ToInt32(B,4);
+            return R;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Numerator;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Denominator;
+
+ 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return ToString("/");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Delimiter"></param>
+        /// <returns></returns>
+        public string ToString(string Delimiter)
+        {
+            return Numerator + "/" + Denominator;
+        }
+ 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public double ToDouble()
+        {
+            return (double)Numerator / Denominator;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public struct URational
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static URational GetRational(byte[] B)
+        {
+            URational R = new URational();
+
+            R.Denominator = BitConverter.ToUInt32(B, 0);
+            R.Numerator = BitConverter.ToUInt32(B, 4);
+            return R;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public uint Numerator;
+        /// <summary>
+        /// 
+        /// </summary>
+        public uint Denominator;
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return ToString("/");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Delimiter"></param>
+        /// <returns></returns>
+        public string ToString(string Delimiter)
+        {
+            return Numerator + "/" + Denominator;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public double ToDouble()
+        {
+            return (double)Numerator / Denominator;
+        }
+    }
+    /// <summary>
+    /// (\\\\\\\\)
+    /// </summary>
+    public enum ExposurePrograms:short
+    {
+        /// <summary>
+        /// 無
+        /// </summary>
+        None = 0,
+        /// <summary>
+        /// 手動
+        /// </summary>
+        Manual = 1,
+        /// <summary>
+        /// 一般
+        /// </summary>
+        Normal = 2,
+        /// <summary>
+        /// 光圈先決
+        /// </summary>
+        AperturePriority = 3,
+        /// <summary>
+        /// 快門先決
+        /// </summary>
+        ShutterPriority = 4,
+        /// <summary>
+        /// 快門優先
+        /// </summary>
+        Creative = 5,
+        /// <summary>
+        /// 景深優先
+        /// </summary>
+        Action = 6,
+        /// <summary>
+        /// 直向模式
+        /// </summary>
+        Portrait = 7,
+        /// <summary>
+        /// 橫向模式
+        /// </summary>
+        Landscape = 8,
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -110,7 +264,7 @@ namespace Library.Draw
         /// <summary>
         ///
         /// </summary>
-        [LanguageCategory("FileInfo"), LanguageDisplayName(@"Rating")]
+        [LanguageCategory("FileInfo"), LanguageDisplayName(@"Rating", typeof(DrawResource))]
         public int Rating { get; set; }
 
         /// <summary>
@@ -130,7 +284,7 @@ namespace Library.Draw
         /// <summary>
         ///
         /// </summary>
-        [LanguageCategory("FileInfo"), LanguageDisplayName(@"RawFormatID")]
+        [LanguageCategory("FileInfo"), LanguageDisplayName(@"RawFormatID", typeof(DrawResource))]
         public Guid RawFormatID { get; set; }
 
         private static readonly Guid BMP = new Guid("B96B3CAB-0728-11D3-9D7B-0000F81EF32E");
@@ -142,7 +296,7 @@ namespace Library.Draw
         /// <summary>
         ///
         /// </summary>
-        [LanguageCategory("FileInfo"), LanguageDisplayName(@"RawFormat")]
+        [LanguageCategory("FileInfo"), LanguageDisplayName(@"RawFormat", typeof(DrawResource))]
         public string RawFormat
         {
             get
@@ -213,7 +367,7 @@ namespace Library.Draw
         ///
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ExposureProgram", typeof(DrawResource))]
-        public int ExposureProgram { get; set; }
+        public ExposurePrograms ExposureProgram { get; set; }
 
         //41989 35mm胶卷
         /// <summary>
@@ -296,7 +450,7 @@ namespace Library.Draw
         /// 282,283
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"Resolution", typeof(DrawResource))]
-        public Size? Resolution { get; set; }
+        public SizeF? Resolution { get; set; }
 
         /// <summary>
         /// 37377
@@ -308,7 +462,7 @@ namespace Library.Draw
         /// 33434
         /// </summary>
         [LanguageCategory("ImageInfo", typeof(DrawResource)), LanguageDisplayName(@"ExposureTime", typeof(DrawResource))]
-        public double ExposureTime { get; set; }
+        public Rational ExposureTime { get; set; }
 
         #endregion base
 
@@ -520,7 +674,7 @@ namespace Library.Draw
                                         }
                                     case 8:
                                         {
-                                            _displayValue = BitConverter.ToInt32(Value, 0) / (float)BitConverter.ToInt32(Value, 4);
+                                            _displayValue =Rational.GetRational(Value);
                                             break;
                                         }
                                     case 16:
@@ -568,7 +722,7 @@ namespace Library.Draw
                                         }
                                     case 8:
                                         {
-                                            _displayValue = BitConverter.ToUInt32(Value, 0) / (float)BitConverter.ToUInt32(Value, 4);
+                                            _displayValue = URational.GetRational(Value);
                                             break;
                                         }
                                     case 16:
@@ -1575,12 +1729,18 @@ namespace Library.Draw
             ///
             /// </summary>
             GpsIFD = 0x8825,
-
+            /// <summary>
+            /// 整个场景中的主要被摄体的位置和面积
+            /// </summary>
+            SubjectLocation = 0x9214,
             /// <summary>
             ///
             /// </summary>
             ExifISOSpeed = 0x8827,
-
+            /// <summary>
+            /// 
+            /// </summary>
+            CameraSerialNumber= 0xc62f,
             /// <summary>
             ///
             /// </summary>
@@ -1807,7 +1967,11 @@ namespace Library.Draw
                     case 270: exif.Description = ObjectUtility.Cast<string>(exit.DisplayValue); break;
                     case 271: exif.EquipmentMake = ObjectUtility.Cast<string>(exit.DisplayValue); break;
                     case 272: exif.EquipmentModel = ObjectUtility.Cast<string>(exit.DisplayValue); break;
-                    case 34850: exif.ExposureProgram = ObjectUtility.Cast<short>(exit.DisplayValue); break;
+                    case 34850:
+                        {
+                            var value = ObjectUtility.Cast<short>(exit.DisplayValue);
+                            exif.ExposureProgram = ObjectUtility.Cast<ExposurePrograms>(value); ; break;
+                        }
                     case 34855: exif.ISOSpeedRatings = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 37384: exif.Flash = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 37385: exif.LightSource = ObjectUtility.Cast<short>(exit.DisplayValue); break;
@@ -1817,7 +1981,7 @@ namespace Library.Draw
                     case 41992: exif.Contrast = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 41993: exif.Saturation = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 41994: exif.Sharpness = ObjectUtility.Cast<short>(exit.DisplayValue); break;
-                    case 33434: exif.ExposureTime = ObjectUtility.Cast<double>(exit.DisplayValue); break;
+                    case 33434: exif.ExposureTime =Rational.GetRational(exit.Value) ; break;
                     case 41989: exif.FocalLengthIn35mmFilm = ObjectUtility.Cast<short>(exit.DisplayValue); break;
                     case 36867: exif.DateTimeOriginal = GetDateTime(image, hex); break;
                     case 37377: exif.ShutterSpeed = GetDouble(image, hex); break;
@@ -1833,8 +1997,14 @@ namespace Library.Draw
                     case 282:
                     case 283:
                         {
+                            var unit = exif.ResolutionUnit;
+                            if (unit == 0 && image.PropertyIdList.Contains(296))
+                            {
+                                unit = GetInt(image, 296);
+                            }
+                            var r = (unit == 3) ? 2.54f : 1f;
                             if (exif.Resolution == null && image.PropertyIdList.Contains(282) && image.PropertyIdList.Contains(283))
-                                exif.Resolution = new Size(GetInt(image, 282), GetInt(image, 283)); break;
+                                exif.Resolution = new SizeF(r * GetInt(image, 282), r * GetInt(image, 283)); break;
                         }
                     case 20525:
                     case 20526:

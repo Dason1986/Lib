@@ -253,10 +253,10 @@
     <value>測光</value>
   </data>
   <data name="Other" xml:space="preserve">
-    <value>Other</value>
+    <value>其它</value>
   </data>
   <data name="RawFormat" xml:space="preserve">
-    <value />
+    <value>圖片格式</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>Unknown</value>
@@ -326,5 +326,14 @@
   </data>
   <data name="Flash_Name95" xml:space="preserve">
     <value>閃光燈,自动,紅眼,回應閃光</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>星星</value>
+  </data>
+  <data name="RawFormatID" xml:space="preserve">
+    <value>圖片格式編號</value>
   </data>
 </root>

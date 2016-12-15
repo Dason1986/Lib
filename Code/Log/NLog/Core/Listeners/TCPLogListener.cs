@@ -38,7 +38,7 @@ namespace NLog.Revicer.Listeners
 
                         // Shutdown and end connection
                         client.Close();
-                        ReceiveNewLog(bytes);
+                        ReceiveNewLog(bytes,null);
                     }
                     catch (Exception ex)
                     {

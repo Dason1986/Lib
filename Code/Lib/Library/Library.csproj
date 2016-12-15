@@ -90,6 +90,7 @@
     <Compile Include="HelperUtility\OSUtility.cs" />
     <Compile Include="HelperUtility\RangeItemHelper.cs" />
     <Compile Include="HelperUtility\StreamHelper.cs" />
+    <Compile Include="HelperUtility\UserProflieHelper.cs" />
     <Compile Include="IDCrad\ChineseIDCard.cs" />
     <Compile Include="IDCrad\HongKongIDCard.cs" />
     <Compile Include="IDCrad\IDCardException.cs" />

@@ -583,7 +583,16 @@ namespace Library.Draw {
         }
         
         /// <summary>
-        ///   查找类似 Other 的本地化字符串。
+        ///   查找类似 方向 的本地化字符串。
+        /// </summary>
+        internal static string Orientation {
+            get {
+                return ResourceManager.GetString("Orientation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 其它 的本地化字符串。
         /// </summary>
         internal static string Other {
             get {
@@ -601,11 +610,29 @@ namespace Library.Draw {
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 星星 的本地化字符串。
+        /// </summary>
+        internal static string Rating {
+            get {
+                return ResourceManager.GetString("Rating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 圖片格式 的本地化字符串。
         /// </summary>
         internal static string RawFormat {
             get {
                 return ResourceManager.GetString("RawFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 圖片格式編號 的本地化字符串。
+        /// </summary>
+        internal static string RawFormatID {
+            get {
+                return ResourceManager.GetString("RawFormatID", resourceCulture);
             }
         }
         

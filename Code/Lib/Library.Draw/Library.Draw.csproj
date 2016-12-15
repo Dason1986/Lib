@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspectRatio.cs" />
     <Compile Include="ChromatoGram.cs" />
     <Compile Include="Code\BarCode.cs" />
     <Compile Include="Code\QRCode.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="SimilarImages\LiveEnum.cs" />
     <Compile Include="SimilarImages\SimilarAlgorithm.cs" />
     <Compile Include="SimilarImages\SimilarityResult.cs" />
+    <Compile Include="SizeUtility.cs" />
     <Compile Include="Water\WaterImageBuilder.cs" />
     <Compile Include="Water\WaterImageBuilderByText.cs" />
     <Compile Include="Water\WaterImageFactory.cs" />

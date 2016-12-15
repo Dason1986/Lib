@@ -1,4 +1,5 @@
 ﻿using NLog.Revicer.Models;
+using System.Net;
 
 namespace NLog.Revicer.Listeners
 {
@@ -33,15 +34,17 @@ namespace NLog.Revicer.Listeners
 
 
       
-        protected virtual void ReceiveNewLog(byte[] data)
+        protected virtual void ReceiveNewLog(byte[] data, string address)
         {
             var log = GetLog(data);
+            log.Address = address;
             Report.AddLog(log);
             OnNewLog(log);
         }
-        protected virtual void ReceiveNewLog(string data)
+        protected virtual void ReceiveNewLog(string data, string address)
         {
             var log = LogProvider.Log(data);
+            log.Address = address;
             Report.AddLog(log);
             OnNewLog(log);
         }

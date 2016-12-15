@@ -48,7 +48,7 @@ namespace TestWinform
             if (ChkPreview.Checked) Builder(path, TxtWaterPic.Text);
         }
 
-        private readonly WaterImageBuilder _builder = WaterImageFactory.CreateBuilder(WaterImageType.Text);
+        private readonly WaterImageBuilder _builder = WaterImageFactory.CreateBuilder(WaterImageType.Pixel);
 
         public void Builder(string sourceImg, string waterImg)
         {

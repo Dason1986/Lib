@@ -38,7 +38,7 @@ namespace NLog.Revicer.Listeners
                         var st = request.InputStream;
                         byte[] data = new byte[request.ContentLength64];
                         st.Read(data, 0, data.Length);
-                        ReceiveNewLog(data);
+                        ReceiveNewLog(data, request.LocalEndPoint.ToString());
                     }
                     catch (Exception e)
                     {

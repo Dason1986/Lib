@@ -87,6 +87,12 @@
     <Compile Include="EffectsForm.Designer.cs">
       <DependentUpon>EffectsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GifView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GifView.Designer.cs">
+      <DependentUpon>GifView.cs</DependentUpon>
+    </Compile>
     <Compile Include="IDCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EffectsForm.resx">
       <DependentUpon>EffectsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GifView.resx">
+      <DependentUpon>GifView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SheetForm.resx">
       <DependentUpon>SheetForm.cs</DependentUpon>
@@ -188,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="original.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="giphy.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,6 +18,7 @@ namespace TestWinform
             listBox1.Items.Add("TestWinform.EffectsForm");
             listBox1.Items.Add("TestWinform.DateForm");
             listBox1.Items.Add("TestWinform.IDCardForm");
+            listBox1.Items.Add("TestWinform.GifView");
             sheet = this;
         }
 

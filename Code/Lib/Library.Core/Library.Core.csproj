@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Age.cs" />
     <Compile Include="Att\AttributeHelper.cs" />
     <Compile Include="Att\LanguageCategoryAttribute.cs" />
     <Compile Include="Att\LanguageDescriptionAttribute.cs" />
@@ -64,18 +65,9 @@
     <Compile Include="Bootstrap.cs" />
     <Compile Include="ComponentModel\Logic\ILogicService.cs" />
     <Compile Include="BytesSize.cs" />
-    <Compile Include="ComponentModel\IValueCalculatorProvider.cs" />
     <Compile Include="ComponentModel\Model\IEntity.cs" />
     <Compile Include="enum\Sex.cs" />
     <Compile Include="ResourceManagement.cs" />
-    <Compile Include="IO\MDS\BaseSystemInfo.cs" />
-    <Compile Include="IO\MDS\DMSDirectoryInfo.cs" />
-    <Compile Include="IO\MDS\DMSFileInfo.cs" />
-    <Compile Include="IO\MDS\DocumentManagementException.cs" />
-    <Compile Include="IO\MDS\DocumentManagementProvider.cs" />
-    <Compile Include="IO\MDS\IDocumentManagementAPIProvider.cs" />
-    <Compile Include="IO\MDS\IFileRepositoriey.cs" />
-    <Compile Include="ComponentModel\IIOProvider.cs" />
     <Compile Include="ComponentModel\ISerialNumberBuilder.cs" />
     <Compile Include="ComponentModel\Model\StatusCode.cs" />
     <Compile Include="Date\DateTimePeriod.cs" />
@@ -147,6 +139,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IO\MDS\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

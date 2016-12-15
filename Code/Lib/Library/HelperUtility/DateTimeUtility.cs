@@ -16,6 +16,23 @@ namespace Library.HelperUtility
         /// </summary>
         /// <param name="datestr"></param>
         /// <returns></returns>
+        public static TryResult<DateTime> GetDate(string datestr)
+        {
+            try
+            {
+                return DateTime.ParseExact(datestr, formats, null, System.Globalization.DateTimeStyles.AssumeLocal);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Trace.TraceError(e.GetAllExceptionInfo());
+                return e;
+            }
+        }
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="datestr"></param>
+        /// <returns></returns>
         public static TryResult<DateTime> GetDateddMMyyyy(string datestr)
         {
             try
@@ -28,6 +45,7 @@ namespace Library.HelperUtility
                 return e;
             }
         }
+        private static string[] formats = { "dd/MM/yyyy HH:mm:ss", "dd/MM/yyyy", "dd/M/yyyy", "d/M/yyyy", "d/MM/yyyy", "dd/MM/yy", "dd/M/yy", "d/M/yy", "d/MM/yy", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd" };
 
         /// <summary>
         ///
@@ -218,7 +236,7 @@ namespace Library.HelperUtility
 
             TimeSpan ts = now - datetime;
 
-            if (ts.TotalMinutes.IsBetween(0, 5)) return "煦?";//"A few minutes ago";
+            if (ts.TotalMinutes.IsBetween(0, 5)) return "A few minutes ago";//"A few minutes ago";
 
             int d = ts.Days;
             if ((int)Math.Ceiling(ts.TotalDays) == 1) return string.Format("{0:HH:mm}", datetime);

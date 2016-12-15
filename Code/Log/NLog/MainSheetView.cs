@@ -25,10 +25,11 @@ namespace NLog.Revicer
             listener.SetConfig( config,logic);
             listener.NewLog += Listener_NewLog;
         }
-
+        IList<SourceLog> logs = new System.ComponentModel.BindingList<SourceLog>();
         private void Listener_NewLog(object sender, NewLogEventArgs e)
         {
             var method = System.Reflection.MethodBase.GetCurrentMethod();
+       
             Console.WriteLine(method);
             Action de = () =>
             {
@@ -38,7 +39,8 @@ namespace NLog.Revicer
                     
 
                     var sourcelog = e.Log;
-
+                    logs.Add(sourcelog);
+            
                     string filterlog = txtLogger.Text;
                     if (!string.IsNullOrWhiteSpace(filterlog) && !string.IsNullOrWhiteSpace(sourcelog.Message) && sourcelog.Message.IndexOf(filterlog, StringComparison.OrdinalIgnoreCase) == -1)
                     {
