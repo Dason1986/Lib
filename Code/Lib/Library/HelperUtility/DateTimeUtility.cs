@@ -28,6 +28,7 @@ namespace Library.HelperUtility
                 return e;
             }
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -45,6 +46,7 @@ namespace Library.HelperUtility
                 return e;
             }
         }
+
         private static string[] formats = { "dd/MM/yyyy HH:mm:ss", "dd/MM/yyyy", "dd/M/yyyy", "d/M/yyyy", "d/MM/yyyy", "dd/MM/yy", "dd/M/yy", "d/M/yy", "d/MM/yy", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd" };
 
         /// <summary>
@@ -114,13 +116,16 @@ namespace Library.HelperUtility
             {
                 case DateTimePeriod.NextMonth:
                     {
-                        var today = DateTime.Today;
-                        var nextmonth = today.Month + 1;
-                        return new RangeItem<DateTime>(new DateTime(today.Year, nextmonth, 1), new DateTime(today.Year, nextmonth, DateTime.DaysInMonth(today.Year, nextmonth), 23, 59, 59));
+                        var nextmonth = DateTime.Today.AddMonths(1);
+
+                        return new RangeItem<DateTime>(new DateTime(nextmonth.Year, nextmonth.Month, 1), new DateTime(nextmonth.Year, nextmonth.Month, DateTime.DaysInMonth(nextmonth.Year, nextmonth.Month), 23, 59, 59));
                     }
                 case DateTimePeriod.NextWeek:
                     {
-                        return new RangeItem<DateTime>(DateTime.Now, SqlDateTime.MaxValue.Value);
+                        var week = DateTime.Now.DayOfWeek;
+                        var weekday = DateTime.Now.AddDays((int)week);
+                        var endday = weekday.AddDays(7);
+                        return new RangeItem<DateTime>(weekday.Date, new DateTime(endday.Year, endday.Month, endday.Day, 23, 59, 59));
                     }
                 case DateTimePeriod.TheDayAfterTomorrow:
                     {
@@ -184,7 +189,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 嶲僇
+        /// 輸入時間與當前時間的關係
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
@@ -226,7 +231,7 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 嶲僇
+        /// 日期關係輸出
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
