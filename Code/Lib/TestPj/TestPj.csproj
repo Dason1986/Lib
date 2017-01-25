@@ -59,6 +59,7 @@
     <Compile Include="PermutationAndCombination.cs" />
     <Compile Include="testobj\ConstValue.cs" />
     <Compile Include="Test\AdoTset.cs" />
+    <Compile Include="Test\DynamicCodeTest.cs" />
     <Compile Include="Test\EnumerableTest.cs" />
     <Compile Include="Test\FileSizeTest.cs" />
     <Compile Include="Test\IdentityGeneratorTest.cs" />
@@ -88,6 +89,10 @@
     <ProjectReference Include="..\Library.Draw\Library.Draw.csproj">
       <Project>{4612e29a-0f6c-4029-adbc-b8d3ee99d241}</Project>
       <Name>Library.Draw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.DynamicCode\Library.DynamicCode.csproj">
+      <Project>{15bb70f6-72dc-4045-ae7e-00c42d1007b4}</Project>
+      <Name>Library.DynamicCode</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.FileExtension\Library.FileExtension.csproj">
       <Project>{3b9dea76-4456-4c12-8bcc-5cd46ce8d9cf}</Project>

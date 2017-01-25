@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Library.Infrastructure.Application
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [AppDomainFixedOutput]
     [Layout("CustomJsonLayout")]
@@ -19,7 +19,7 @@ namespace Library.Infrastructure.Application
     public class CustomJsonLayout : JsonLayout
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomJsonLayout()
         {
@@ -31,7 +31,6 @@ namespace Library.Infrastructure.Application
                 new JsonAttribute("Message", "${exception:format=Message}"),
                 new JsonAttribute("InnerException", new JsonLayout
                                 {
-
                                     Attributes =
                                     {
                                         new JsonAttribute("Type", "${exception:format=:innerFormat=Type:MaxInnerExceptionLevel=1:InnerExceptionSeparator=}"),
@@ -59,13 +58,14 @@ namespace Library.Infrastructure.Application
             Attributes.Add(new JsonAttribute("Processtime", Layout.FromString("${processtime}")));
         }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class LoggerHelper
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="ex"></param>
@@ -77,7 +77,7 @@ namespace Library.Infrastructure.Application
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="level"></param>
@@ -91,7 +91,7 @@ namespace Library.Infrastructure.Application
                 Message = message,
                 Level = level,
                 Exception = ex,
-                LoggerName = logger.Name
+                LoggerName = logger.Name,
             };
             if (dictionary != null)
                 foreach (var item in dictionary.Keys)
@@ -100,8 +100,9 @@ namespace Library.Infrastructure.Application
                 }
             logger.Log(theEvent);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="message"></param>
@@ -111,8 +112,9 @@ namespace Library.Infrastructure.Application
             Dictionary<string, object> dic = new Dictionary<string, object> { { "content", content } };
             Log(logger, LogLevel.Info, message, dic);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="message"></param>
@@ -122,8 +124,9 @@ namespace Library.Infrastructure.Application
             Dictionary<string, object> dic = new Dictionary<string, object> { { "content", content } };
             Log(logger, LogLevel.Warn, message, dic);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="message"></param>
@@ -135,19 +138,20 @@ namespace Library.Infrastructure.Application
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="ex"></param>
         /// <param name="message"></param>
         /// <param name="content"></param>
-        public static void ErrorByContent(this ILogger logger,Exception ex, string message, object content)
+        public static void ErrorByContent(this ILogger logger, Exception ex, string message, object content)
         {
             Dictionary<string, object> dic = new Dictionary<string, object> { { "content", content } };
-            Log(logger, LogLevel.Error, message, dic,ex);
+            Log(logger, LogLevel.Error, message, dic, ex);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="message"></param>

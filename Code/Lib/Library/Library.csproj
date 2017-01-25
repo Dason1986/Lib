@@ -88,6 +88,7 @@
     <Compile Include="HelperUtility\EmptyUtility.cs" />
     <Compile Include="HelperUtility\EnumHelper.cs" />
     <Compile Include="HelperUtility\OSUtility.cs" />
+    <Compile Include="HelperUtility\ProviderUtilty.cs" />
     <Compile Include="HelperUtility\RandomHelper.cs" />
     <Compile Include="HelperUtility\RangeItemHelper.cs" />
     <Compile Include="HelperUtility\StreamHelper.cs" />

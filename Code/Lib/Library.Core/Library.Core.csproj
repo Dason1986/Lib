@@ -100,7 +100,6 @@
     <Compile Include="Data\IQueryOrder.cs" />
     <Compile Include="Data\OrderCollection.cs" />
     <Compile Include="Data\QueryHelper.cs" />
-    <Compile Include="Data\IDataCacheMonitor.cs" />
     <Compile Include="ComponentModel\IIDCard.cs" />
     <Compile Include="IO\IFileBuilder.cs" />
     <Compile Include="IO\IOMonitor.cs" />

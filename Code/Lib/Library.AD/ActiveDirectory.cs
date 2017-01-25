@@ -60,7 +60,7 @@ namespace Library.AD
             get { return _customLoginField; }
             set
             {
-                if (value == null || value.Length == 0) throw new Exception();
+                if (string.IsNullOrEmpty(value)) throw new Exception();
                 _customLoginField = value;
             }
         }

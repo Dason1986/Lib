@@ -49,6 +49,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{7B9106CC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Infrastructure.Application", "Library.Infrastructure.Application\Library.Infrastructure.Application.csproj", "{5FADF809-ECBF-4AFE-978B-0321A26F7F12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.DynamicCode", "Library.DynamicCode\Library.DynamicCode.csproj", "{15BB70F6-72DC-4045-AE7E-00C42D1007B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -275,6 +277,18 @@ Global
 		{5FADF809-ECBF-4AFE-978B-0321A26F7F12}.Release|iPhone.Build.0 = Release|Any CPU
 		{5FADF809-ECBF-4AFE-978B-0321A26F7F12}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{5FADF809-ECBF-4AFE-978B-0321A26F7F12}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Release|iPhone.Build.0 = Release|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +315,7 @@ Global
 		{CFB0B65D-85DE-4EC1-8F6F-1869C6B843F7} = {13E3A177-7C84-470F-9F34-9AB4F4A44AA2}
 		{7B9106CC-3934-4763-9B33-611CA6246906} = {E348F05E-0797-4100-BC83-927F773863AE}
 		{5FADF809-ECBF-4AFE-978B-0321A26F7F12} = {7B9106CC-3934-4763-9B33-611CA6246906}
+		{15BB70F6-72DC-4045-AE7E-00C42D1007B4} = {13E3A177-7C84-470F-9F34-9AB4F4A44AA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = .

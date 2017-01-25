@@ -7,13 +7,13 @@ using EntityFramework.Extensions;
 namespace Library.Domain.Data.EF
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     public class Repository<TEntity> : Repository, IRepository<TEntity> where TEntity : Entity
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         public Repository(EFContext context) : base(context)
@@ -22,7 +22,7 @@ namespace Library.Domain.Data.EF
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item"></param>
         public void Add(TEntity item)
@@ -31,12 +31,12 @@ namespace Library.Domain.Data.EF
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected DbSet<TEntity> Set { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         protected virtual DbSet<TEntity> CreateSet()
@@ -45,7 +45,7 @@ namespace Library.Domain.Data.EF
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item"></param>
         public virtual void Attach(TEntity item)
@@ -59,7 +59,7 @@ namespace Library.Domain.Data.EF
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public virtual IQueryable<TEntity> GetAll()
@@ -68,19 +68,19 @@ namespace Library.Domain.Data.EF
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public virtual TEntity Get(Guid id)
         {
-            if (typeof(Library.ComponentModel.Model.IModifiedInfo).IsAssignableFrom(  typeof(TEntity) ))
-               return Set.FirstOrDefault(n => n.ID == id);
+            if (typeof(Library.ComponentModel.Model.IModifiedInfo).IsAssignableFrom(typeof(TEntity)))
+                return Set.FirstOrDefault(n => n.ID == id);
             return Set.AsNoTracking().FirstOrDefault(n => n.ID == id);
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         public virtual void Remove(Guid id)
@@ -91,14 +91,18 @@ namespace Library.Domain.Data.EF
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="whereExpr"></param>
         /// <returns></returns>
         public virtual int DelBatch(Expression<Func<TEntity, bool>> whereExpr)
         {
             return Set.Where(whereExpr).Delete();
+        }
 
+        public IQueryable<TEntity> GetEnabledAll()
+        {
+            return CreateSet().AsNoTracking().Where(n => n.StatusCode == ComponentModel.Model.StatusCode.Enabled);
         }
     }
 }
