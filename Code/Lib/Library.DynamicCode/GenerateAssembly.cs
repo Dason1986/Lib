@@ -59,7 +59,12 @@ namespace Library.DynamicCode
             var res = provider.CompileAssemblyFromDom(compilerParameters, unit);
             StringBuilder builder = new StringBuilder();
             StringWriter writer = new StringWriter(builder);
-            provider.GenerateCodeFromCompileUnit(unit, writer, null);
+            CodeGeneratorOptions codeOptions = new CodeGeneratorOptions();
+            codeOptions.BlankLinesBetweenMembers = false;
+            codeOptions.VerbatimOrder = true;
+            codeOptions.BracingStyle = "C";
+            codeOptions.IndentString = "\t";
+            provider.GenerateCodeFromCompileUnit(unit, writer, codeOptions);
             CodeText = builder.ToString();
             if (res.Errors.HasErrors)
             {

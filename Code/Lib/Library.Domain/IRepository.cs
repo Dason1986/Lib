@@ -57,13 +57,7 @@ namespace Library.Domain.Data
         ///
         /// </summary>
         /// <returns></returns>
-        IQueryable<TEntity> GetAll();
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        IQueryable<TEntity> GetEnabledAll();
+        IQueryable<TEntity> GetAll(StatusCode statusCode = StatusCode.Enabled);
 
         /// <summary>
         ///
@@ -77,5 +71,12 @@ namespace Library.Domain.Data
         /// <param name="whereExpr"></param>
         /// <returns></returns>
         int DelBatch(Expression<Func<TEntity, bool>> whereExpr);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="statusCode"></param>
+        /// <returns></returns>
+        int Count(StatusCode statusCode = StatusCode.Enabled);
     }
 }

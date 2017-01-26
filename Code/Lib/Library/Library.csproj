@@ -57,7 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitComputing.cs" />
-    <Compile Include="CustomExceptionProvider.cs" />
+    <Compile Include="ExceptionProviders\ArgumentExceptionProvider.cs" />
+    <Compile Include="ExceptionProviders\CustomExceptionProvider.cs" />
     <Compile Include="Date\HolidayBuilder.cs" />
     <Compile Include="Date\SafeDateTime.cs" />
     <Compile Include="FastReflection\ConstructorInvoker.cs" />

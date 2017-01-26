@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using EntityFramework.Extensions;
+using Library.ComponentModel.Model;
 
 namespace Library.Domain.Data.EF
 {
@@ -62,9 +63,9 @@ namespace Library.Domain.Data.EF
         ///
         /// </summary>
         /// <returns></returns>
-        public virtual IQueryable<TEntity> GetAll()
+        public virtual IQueryable<TEntity> GetAll(StatusCode statusCode = StatusCode.Enabled)
         {
-            return CreateSet().AsNoTracking();
+            return CreateSet().AsNoTracking().Where(n => n.StatusCode == statusCode);
         }
 
         /// <summary>
@@ -100,9 +101,9 @@ namespace Library.Domain.Data.EF
             return Set.Where(whereExpr).Delete();
         }
 
-        public IQueryable<TEntity> GetEnabledAll()
+        public int Count(StatusCode statusCode = StatusCode.Enabled)
         {
-            return CreateSet().AsNoTracking().Where(n => n.StatusCode == ComponentModel.Model.StatusCode.Enabled);
+            return GetAll(statusCode).Count();
         }
     }
 }

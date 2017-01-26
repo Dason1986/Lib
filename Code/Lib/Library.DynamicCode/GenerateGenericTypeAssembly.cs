@@ -6,7 +6,6 @@ using System.Reflection;
 
 namespace Library.DynamicCode
 {
-
     public class GenerateGenericTypeAssembly : GenerateAssembly
     {
         private readonly Type _interfacType;
@@ -121,12 +120,12 @@ namespace Library.DynamicCode
             var type =
                 currentAssembly.GetTypes()
                     .FirstOrDefault(n => basetype.IsAssignableFrom(n) && n.IsClass && !n.IsAbstract);
-            if (type == null) throw new Exception();
+            if (type == null) throw new Exception(string.Format("{0} not mapping to class", basetype.FullName));
             ConstructorInfo constructor;
-            if (args == null) constructor = type.GetConstructors().First(n => n.GetParameters().Length == 0);
+            if (args == null) constructor = type.GetConstructors().FirstOrDefault(n => n.GetParameters().Length == 0);
             else
             {
-                constructor = type.GetConstructors().First(n =>
+                constructor = type.GetConstructors().FirstOrDefault(n =>
                 {
                     var parm = n.GetParameters();
                     if (parm.Length != args.Length) return false;
@@ -148,6 +147,7 @@ namespace Library.DynamicCode
                 }
                 );
             }
+            if (constructor == null) throw new Exception(string.Format("{0} paramers is not match", type.FullName));
             var obj = constructor.Invoke(args);
             return (T)obj;
         }
