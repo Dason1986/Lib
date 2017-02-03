@@ -2,9 +2,9 @@
 
 namespace Library.Domain.Data.EF
 {
-    public abstract class ModuleProvider : IModuleProvider
+    public abstract class DomainModuleProvider : IDomainModuleProvider
     {
-        protected ModuleProvider(EFContext context)
+        protected DomainModuleProvider(EFContext context)
         {
             Context = context;
             UnitOfWork = new UnitOfWork(context);
@@ -18,14 +18,15 @@ namespace Library.Domain.Data.EF
             return new Repository<TEntity>(Context);
         }
 
-        IRepository<TEntity> IModuleProvider.CreateRepository<TEntity>()
+        IRepository<TEntity> IDomainModuleProvider.CreateRepository<TEntity>()
         {
             return this.CreateRepository<TEntity>();
         }
 
-        IUnitOfWork IModuleProvider.UnitOfWork { get { return this.UnitOfWork; } }
+        IUnitOfWork IDomainModuleProvider.UnitOfWork { get { return this.UnitOfWork; } }
 
         #region IDisposable Support
+
         private bool disposedValue = false; // 要检测冗余调用
 
         protected virtual void Dispose(bool disposing)
@@ -50,7 +51,7 @@ namespace Library.Domain.Data.EF
         }
 
         // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-        ~ModuleProvider()
+        ~DomainModuleProvider()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(false);
@@ -64,6 +65,7 @@ namespace Library.Domain.Data.EF
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             GC.SuppressFinalize(this);
         }
-        #endregion
+
+        #endregion IDisposable Support
     }
 }

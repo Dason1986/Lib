@@ -55,7 +55,7 @@
     <Compile Include="DomainEvents\IEvent.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="IDbContext.cs" />
-    <Compile Include="IModuleProvider.cs" />
+    <Compile Include="IDomainModuleProvider.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Linq\LikeExpressionExtension.cs" />

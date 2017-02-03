@@ -26,7 +26,7 @@ namespace Library.DynamicCode
             return res.Errors.Count == 0 ? res.CompiledAssembly : null;
         }
 
-        public class GenerateNotifyPropertyEntity
+        private class GenerateNotifyPropertyEntity
         {
             public GenerateNotifyPropertyEntity(string className)
             {

@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="DynamicCodeException.cs" />
     <Compile Include="FindInterfaceMappToType.cs" />
+    <Compile Include="GenerateAgentTypeAssembly.cs" />
     <Compile Include="GenerateAssembly.cs" />
+    <Compile Include="GenerateClassCodeType.cs" />
     <Compile Include="GenerateGenericTypeAssembly.cs" />
     <Compile Include="GenerateNotifyPropertyAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

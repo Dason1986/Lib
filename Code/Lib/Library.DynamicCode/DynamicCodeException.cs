@@ -31,4 +31,12 @@ namespace Library.DynamicCode
         {
         }
     }
+
+    public class ExportAttribute : Attribute
+    {
+    }
+
+    public class GenerateAttribute : Attribute
+    {
+    }
 }
