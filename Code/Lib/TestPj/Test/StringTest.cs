@@ -34,6 +34,16 @@ namespace TestPj.Test
         }
 
         [Test]
+        public void TsetCharToInt()
+        {
+            foreach (var i in "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^")
+            {
+                Console.WriteLine("{0} {1}", i, StringUtility.A_ZToNumber(i.ToString()));
+                ;
+            }
+        }
+
+        [Test]
         public void FindLasdItemBySpilt()
         {
             string uName = string.Empty;

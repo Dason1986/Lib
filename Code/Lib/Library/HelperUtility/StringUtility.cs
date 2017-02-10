@@ -103,5 +103,34 @@ namespace Library.HelperUtility
 
             return targetConvter.ConvertFrom(str);
         }
+
+        /// <summary>
+        /// 0-9 轉成0-9
+        /// A-Z 轉成10-35
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public static int A_ZToNumber(string order)
+        {
+            if (string.IsNullOrEmpty(order)) return -1;
+            var chat = order[0];
+            if (chat >= 48 && chat <= 57)
+            {
+                var index = chat - 48;
+                return index;
+            }
+            if (chat >= 97 && chat <= 122)
+            {
+                var index = chat - 97;
+                return 10 + index;
+            }
+            if (chat >= 65 && chat <= 90)
+            {
+                var index = chat - 65;
+                return 10 + index;
+            }
+
+            return -1;
+        }
     }
 }
