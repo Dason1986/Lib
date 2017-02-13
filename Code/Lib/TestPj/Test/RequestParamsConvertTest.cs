@@ -13,7 +13,7 @@ namespace TestPj.Test
     [TestFixture(Category = "參數轉換")]
     public class RequestParamsConvertTest
     {
-        NameValueCollection collection = new NameValueCollection() {
+        private readonly NameValueCollection collection = new NameValueCollection() {
                  {"a1","10/2012" },
                  {"a2","02/10/2012" },
 
@@ -25,24 +25,26 @@ namespace TestPj.Test
                  {"c2","123.12" },
                  {"c3","-123.12" },
             };
+
         [Test(Description = "日期轉換")]
         public void ConverterDateTest()
         {
-
             RequestParamsConvert converter = new RequestParamsConvert(collection);
             var a1 = converter.GetDateTimeOrNull("a1", "MM/yyyy");
             Assert.IsNotNull(a1);
-            Assert.AreEqual("10/2012", a1.Value.ToString("MM/yyyy"));
+            Assert.AreEqual(2012, a1.Value.Year);
+            Assert.AreEqual(10, a1.Value.Month);
 
             var a2 = converter.GetDateTimeOrNull("a2", "dd/MM/yyyy");
             Assert.IsNotNull(a2);
-            Assert.AreEqual("02/10/2012", a2.Value.ToString("dd/MM/yyyy"));
-
+            Assert.AreEqual(2012, a2.Value.Year);
+            Assert.AreEqual(10, a2.Value.Month);
+            Assert.AreEqual(2, a2.Value.Day);
         }
+
         [Test(Description = "數值")]
         public void ConverterNumberTest()
         {
-
             RequestParamsConvert converter = new RequestParamsConvert(collection);
 
             var c1 = converter.GetValue<int>("c1");
@@ -53,16 +55,34 @@ namespace TestPj.Test
             Assert.AreEqual(-123.12d, c3);
         }
 
+        [Test(Description = "實體")]
+        public void ConverterEntityTest()
+        {
+            RequestParamsConvert converter = new RequestParamsConvert(collection);
+            MyClass myClass = new MyClass();
+            var flag = converter.GetModel(myClass);
+            Assert.IsFalse(flag.HasError);
+            Assert.AreEqual(123, myClass.c1);
+            Assert.IsNotNull(myClass.a1);
+            Assert.AreEqual(2012, myClass.a1.Year);
+            Assert.AreEqual(10, myClass.a1.Month);
+            Assert.AreEqual(MyEnum.A1 | MyEnum.B2, myClass.b2);
+        }
+
+        private class MyClass
+        {
+            public DateTime a1 { get; set; }
+            public int c1 { get; set; }
+            public MyEnum b2 { get; set; }
+        }
+
         [Test(Description = "枚舉")]
         public void ConverterEnumTest()
         {
-
             RequestParamsConvert converter = new RequestParamsConvert(collection);
-
 
             var b1 = converter.GetEnum<MyEnum>("b1");
             Assert.AreEqual(MyEnum.A1, b1);
-
 
             var b2 = converter.GetEnum<MyEnum>("b2");
             Assert.AreEqual(MyEnum.A1 | MyEnum.B2, b2);
@@ -79,6 +99,7 @@ namespace TestPj.Test
             Assert.IsFalse(b3.Any(n => n == MyEnum.None));
         }
     }
+
     [Flags]
     internal enum MyEnum
     {

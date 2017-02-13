@@ -21,32 +21,28 @@ namespace Library.Web
         public static TryResult<TModel> TryGetModelWithGet<TModel>() where TModel : class, new()
         {
             var model = new TModel();
-            var flag = SetProperty(HttpContext.Current.Request.QueryString, model);
+            var flag = HttpContext.Current.Request.QueryString.GetModel(model);
             return flag == true ? new TryResult<TModel>(model) : new TryResult<TModel>(flag.Error);
         }
 
-        private static TryResult SetProperty<TModel>(NameValueCollection collection, TModel model) where TModel : class
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static RequestParamsConvert CreateFormConvert(this HttpContext context)
         {
-            if (model == null) return new ArgumentNullException("model");
-            var properties = model.GetType().GetProperties();
+            return new RequestParamsConvert(context.Request.Form);
+        }
 
-            List<Exception> elist = new List<Exception>();
-            foreach (string name in collection.AllKeys)
-            {
-                PropertyInfo property = properties.FirstOrDefault(p => p.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
-                if (property == null) continue;
-                try
-                {
-                    var obj = StringUtility.TryCast(collection[name], property.PropertyType);
-                    if (!obj.HasError)
-                        property.FastSetValue(model, obj);
-                }
-                catch (Exception ex)
-                {
-                    elist.Add(ex);
-                }
-            }
-            return elist.HasRecord() ? new TryResult(elist) : new TryResult(true);
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static RequestParamsConvert CreateQueryConvert(this HttpContext context)
+        {
+            return new RequestParamsConvert(context.Request.QueryString);
         }
 
         /// <summary>
@@ -57,7 +53,7 @@ namespace Library.Web
         public static TryResult<TModel> TryGetModelWithPost<TModel>() where TModel : class, new()
         {
             var model = new TModel();
-            var flag = SetProperty(HttpContext.Current.Request.Form, model);
+            var flag = HttpContext.Current.Request.Form.GetModel(model);
             return flag == true ? new TryResult<TModel>(model) : new TryResult<TModel>(flag.Error);
         }
 

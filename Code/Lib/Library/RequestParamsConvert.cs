@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using Library.Annotations;
 
 namespace Library
 {
@@ -13,8 +14,9 @@ namespace Library
     public class RequestParamsConvert
     {
         private readonly NameValueCollection _collection;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="collection"></param>
         public RequestParamsConvert(NameValueCollection collection)
@@ -22,8 +24,9 @@ namespace Library
             if (collection == null) throw new ArgumentNullException(nameof(collection));
             this._collection = collection;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="requestParam"></param>
@@ -32,8 +35,9 @@ namespace Library
         {
             return GetValue<T>(requestParam, default(T));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="requestParam"></param>
@@ -45,34 +49,38 @@ namespace Library
             if (!value.Item1) return default(T);
 
             return StringUtility.TryCast(value.Item2, defaultValue);
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string ParamNamePageSize = "rows";
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string ParamNamePageNo = "page";
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public int GetPageSize()
         {
             return GetValue<int>(ParamNamePageSize, 5);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public int GetPageNo()
         {
             return GetValue<int>(ParamNamePageNo, 1);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="requestParam"></param>
@@ -85,10 +93,10 @@ namespace Library
             var obj = StringUtility.TryCast<T>(value.Item2);
             if (obj.HasError) return null;
             return obj.Value;
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="requestParam"></param>
@@ -104,8 +112,9 @@ namespace Library
             }
             return array;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="requestParam"></param>
@@ -115,11 +124,11 @@ namespace Library
             var value = GetParamStringValue(requestParam);
             if (!value.Item1) return default(T);
 
-            return ObjectUtility.Cast<T>(value.Item2);
-
+            return StringUtility.TryCast<T>(value.Item2);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="requestParam"></param>
         /// <returns></returns>
@@ -129,8 +138,9 @@ namespace Library
 
             return value.Item2;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="requestParam"></param>
         /// <returns></returns>
@@ -142,6 +152,7 @@ namespace Library
 
             return new Tuple<bool, string>(true, strParam.Trim());
         }
+
         private Tuple<bool, string[]> GetParamStringValues(string requestParam)
         {
             if (string.IsNullOrEmpty(requestParam)) return new Tuple<bool, string[]>(false, null);
@@ -150,9 +161,11 @@ namespace Library
 
             return new Tuple<bool, string[]>(true, strParam.Trim().Split(ch));
         }
-        static readonly char[] ch = { ',', '|' };
+
+        private static readonly char[] ch = { ',', '|' };
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="requestParam"></param>
         /// <returns></returns>
@@ -161,12 +174,10 @@ namespace Library
             var value = GetParamStringValue(requestParam);
             if (!value.Item1) return Guid.Empty;
             return StringUtility.TryCast<Guid>(value.Item2, Guid.Empty);
-
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="requestParam"></param>
         /// <param name="format"></param>
@@ -178,17 +189,25 @@ namespace Library
             if (string.IsNullOrWhiteSpace(format))
                 format = "dd/MM/yyyy";
             if (value.Item2.Length != format.Length) return null;
-            try
-            {
-                DateTime result = DateTime.ParseExact(value.Item2, format, null);
 
+            DateTime result;
+            if (DateTime.TryParseExact(value.Item2, format, null, System.Globalization.DateTimeStyles.None, out result))
+            {
                 return result;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
             return null;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public TryResult GetModel<TModel>(TModel model) where TModel : class
+        {
+            if (model == null) throw new ArgumentNullException(nameof(model));
+            return this._collection.GetModel(model);
         }
     }
 }
