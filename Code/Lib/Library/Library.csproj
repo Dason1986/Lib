@@ -111,6 +111,7 @@
     <Compile Include="HelperUtility\ParameterHeler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Comparable\RangeItemHelper.cs" />
+    <Compile Include="RequestParamsConvert.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.Core\Library.Core.csproj">

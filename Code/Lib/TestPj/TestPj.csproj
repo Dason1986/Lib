@@ -68,6 +68,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\RangeItemTest.cs" />
+    <Compile Include="Test\RequestParamsConvertTest.cs" />
     <Compile Include="Test\StatusCodeTest.cs" />
     <Compile Include="Test\StringTest.cs" />
     <Compile Include="testobj\ParsonModle.cs" />

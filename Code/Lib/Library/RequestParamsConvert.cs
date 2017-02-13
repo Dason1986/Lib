@@ -1,0 +1,194 @@
+﻿using Library.HelperUtility;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Text;
+
+namespace Library
+{
+    /// <summary>
+    /// 轉換參數
+    /// </summary>
+    public class RequestParamsConvert
+    {
+        private readonly NameValueCollection _collection;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="collection"></param>
+        public RequestParamsConvert(NameValueCollection collection)
+        {
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
+            this._collection = collection;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="requestParam"></param>
+        /// <returns></returns>
+        public T GetValue<T>(string requestParam) where T : struct
+        {
+            return GetValue<T>(requestParam, default(T));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="requestParam"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public T GetValue<T>(string requestParam, T defaultValue) where T : struct
+        {
+            var value = GetParamStringValue(requestParam);
+            if (!value.Item1) return default(T);
+
+            return StringUtility.TryCast(value.Item2, defaultValue);
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ParamNamePageSize = "rows";
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ParamNamePageNo = "page";
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int GetPageSize()
+        {
+            return GetValue<int>(ParamNamePageSize, 5);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int GetPageNo()
+        {
+            return GetValue<int>(ParamNamePageNo, 1);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="requestParam"></param>
+        /// <returns></returns>
+        public T? GetValueType<T>(string requestParam) where T : struct
+        {
+            var value = GetParamStringValue(requestParam);
+            if (!value.Item1) return null;
+
+            var obj = StringUtility.TryCast<T>(value.Item2);
+            if (obj.HasError) return null;
+            return obj.Value;
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="requestParam"></param>
+        /// <returns></returns>
+        public T[] GetEnums<T>(string requestParam)
+        {
+            var value = GetParamStringValues(requestParam);
+            if (!value.Item1) return null;
+            T[] array = new T[value.Item2.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = (T)StringUtility.Cast(value.Item2[i], typeof(T));
+            }
+            return array;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="requestParam"></param>
+        /// <returns></returns>
+        public T GetEnum<T>(string requestParam)
+        {
+            var value = GetParamStringValue(requestParam);
+            if (!value.Item1) return default(T);
+
+            return ObjectUtility.Cast<T>(value.Item2);
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestParam"></param>
+        /// <returns></returns>
+        public string GetString(string requestParam)
+        {
+            var value = GetParamStringValue(requestParam);
+
+            return value.Item2;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestParam"></param>
+        /// <returns></returns>
+        private Tuple<bool, string> GetParamStringValue(string requestParam)
+        {
+            if (string.IsNullOrEmpty(requestParam)) return new Tuple<bool, string>(false, string.Empty);
+            var strParam = _collection[requestParam];
+            if (string.IsNullOrWhiteSpace(strParam)) return new Tuple<bool, string>(false, string.Empty);
+
+            return new Tuple<bool, string>(true, strParam.Trim());
+        }
+        private Tuple<bool, string[]> GetParamStringValues(string requestParam)
+        {
+            if (string.IsNullOrEmpty(requestParam)) return new Tuple<bool, string[]>(false, null);
+            var strParam = _collection[requestParam];
+            if (string.IsNullOrWhiteSpace(strParam)) return new Tuple<bool, string[]>(false, null);
+
+            return new Tuple<bool, string[]>(true, strParam.Trim().Split(ch));
+        }
+        static readonly char[] ch = { ',', '|' };
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestParam"></param>
+        /// <returns></returns>
+        public Guid GetGuid(string requestParam)
+        {
+            var value = GetParamStringValue(requestParam);
+            if (!value.Item1) return Guid.Empty;
+            return StringUtility.TryCast<Guid>(value.Item2, Guid.Empty);
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestParam"></param>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public DateTime? GetDateTimeOrNull(string requestParam, string format = "dd/MM/yyyy")
+        {
+            var value = GetParamStringValue(requestParam);
+            if (!value.Item1) return null;
+            if (string.IsNullOrWhiteSpace(format))
+                format = "dd/MM/yyyy";
+            if (value.Item2.Length != format.Length) return null;
+            try
+            {
+                DateTime result = DateTime.ParseExact(value.Item2, format, null);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return null;
+        }
+    }
+}
