@@ -9,10 +9,10 @@ using NUnit.Framework;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category ="Dynamic")]
     public class DynamicCodeTest
     {
-        [Test]
+        [Test,Category("實體")]
         public void CastTestNotifyPropertyEntity()
         {
             GenerateNotifyPropertyAssembly generateNotify = new GenerateNotifyPropertyAssembly("test");

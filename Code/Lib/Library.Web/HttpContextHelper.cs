@@ -13,17 +13,7 @@ namespace Library.Web
     /// </summary>
     public static class HttpContextHelper
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <returns></returns>
-        public static TryResult<TModel> TryGetModelWithGet<TModel>() where TModel : class, new()
-        {
-            var model = new TModel();
-            var flag = HttpContext.Current.Request.QueryString.GetModel(model);
-            return flag == true ? new TryResult<TModel>(model) : new TryResult<TModel>(flag.Error);
-        }
+       
 
         /// <summary>
         ///
@@ -45,17 +35,7 @@ namespace Library.Web
             return new RequestParamsConvert(context.Request.QueryString);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <returns></returns>
-        public static TryResult<TModel> TryGetModelWithPost<TModel>() where TModel : class, new()
-        {
-            var model = new TModel();
-            var flag = HttpContext.Current.Request.Form.GetModel(model);
-            return flag == true ? new TryResult<TModel>(model) : new TryResult<TModel>(flag.Error);
-        }
+      
 
         /// <summary>
         ///

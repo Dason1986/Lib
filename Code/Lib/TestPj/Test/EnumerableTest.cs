@@ -1,4 +1,4 @@
-using Library.HelperUtility;
+﻿using Library.HelperUtility;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using Library.ComponentModel.Test;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category = "数组")]
     public class EnumerableTest
     {
         private readonly List<ParsonModle> _list = new List<ParsonModle>();

@@ -8,10 +8,10 @@ using System.Text;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category = "枚舉")]
     public class StatusCodeTest
     {
-        [Test]
+        [Test,Category("枚舉"), Category("查詢")]
         public void TestStatus()
         {
             var state = StatusCode.Enabled | StatusCode.Disabled;
@@ -19,15 +19,7 @@ namespace TestPj.Test
 
             var count = list.Where(n => (n & state) == n).Count();
             Assert.AreEqual(count, 2);
-            StringBuilder builder = new StringBuilder();
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            for (int i = 0; i < 9999; i++)
-            {
-                var str = IdentityGenerator.NewGuid().ToString();
-                dic.Add(str, str);
-                builder.AppendLine(str);
-            }
-            Console.WriteLine(builder.ToString());
+    
         }
     }
 }

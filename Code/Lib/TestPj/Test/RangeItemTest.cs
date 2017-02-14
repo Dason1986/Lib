@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace TestPj.Test
 {
+    [TestFixture(Category = "區間")]
     public class RangeItemTest
     {
         private class AppData : IRangeItem<DateTime>

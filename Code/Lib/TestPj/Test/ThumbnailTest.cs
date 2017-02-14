@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace TestPj.Test
 {
 
-    [TestFixture]
+    [TestFixture(Category = "圖像")]
     public class ThumbnailTest
     {
         string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -21,47 +21,29 @@ namespace TestPj.Test
             int count = 0;
 
             var files = System.IO.Directory.GetFiles(path, "*.jpg");
-            Thread[] threads = new Thread[20];
-            for (int kk = 0; kk < threads.Length; kk++)
+            foreach (var item in files)
             {
-                threads[kk] = new Thread(n =>
+
+
+                try
                 {
-                    for (int i = 0; i < 9999; i++)
-                    {
-                        foreach (var item in files)
-                        {
-                            try
-                            {
 
 
-                                count++;
-                                var fs = System.IO.File.Open(item, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read);
-                                var image = Image.FromStream(fs);
-                                CreateThumbnail(image);
-                                image.Dispose();
-                                fs.Dispose();
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Count:{0}", count);
-                                Console.WriteLine(e);
+                    count++;
+                    var fs = System.IO.File.Open(item, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read);
+                    var image = Image.FromStream(fs);
+                    CreateThumbnail(image);
+                    image.Dispose();
+                    fs.Dispose();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Count:{0}", count);
+                    Console.WriteLine(e);
 
-                                break;
-                            }
-                        }
 
-                    }
-                });
+                }
             }
-            foreach (var item in threads)
-            {
-                item.Start();
-            }
-            foreach (var item in threads)
-            {
-                item.Join();
-            }
-            Console.WriteLine("OK");
 
         }
         protected void CreateThumbnail(Image image)

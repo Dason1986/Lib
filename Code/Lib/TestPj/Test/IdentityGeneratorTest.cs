@@ -5,7 +5,7 @@ using System;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category = "編號")]
     public class IdentityGeneratorTest
     {
         [Test]

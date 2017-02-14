@@ -56,7 +56,6 @@
   <ItemGroup>
     <Compile Include="Gbt\GBT2260Reader.cs" />
     <Compile Include="ItemComaper.cs" />
-    <Compile Include="PermutationAndCombination.cs" />
     <Compile Include="testobj\ConstValue.cs" />
     <Compile Include="Test\AdoTset.cs" />
     <Compile Include="Test\DynamicCodeTest.cs" />
@@ -64,7 +63,6 @@
     <Compile Include="Test\FileSizeTest.cs" />
     <Compile Include="Test\IdentityGeneratorTest.cs" />
     <Compile Include="Test\LanguageTest.cs" />
-    <Compile Include="Test\NullableTset.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\RangeItemTest.cs" />

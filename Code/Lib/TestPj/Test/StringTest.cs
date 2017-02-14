@@ -6,7 +6,7 @@ using System;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category = "字符")]
     public class StringTest
     {
         private const string Sourcestr = "String String";
@@ -18,7 +18,7 @@ namespace TestPj.Test
             Console.WriteLine("Char count:{0}", Sourcestr.Length);
         }
 
-        [Test]
+        [Test,Category( "查詢")]
         public void FindLasdItemByIndex()
         {
             string uName = string.Empty;
@@ -33,7 +33,7 @@ namespace TestPj.Test
             Console.WriteLine(uName);
         }
 
-        [Test]
+        [Test,Category( "轉換")]
         public void TsetCharToInt()
         {
             foreach (var i in "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^")
@@ -43,7 +43,7 @@ namespace TestPj.Test
             }
         }
 
-        [Test]
+        [Test,Category( "拆分")]
         public void FindLasdItemBySpilt()
         {
             string uName = string.Empty;
@@ -60,7 +60,7 @@ namespace TestPj.Test
         /// <summary>
         ///
         /// </summary>
-        [Test]
+        [Test,Category( "比較")]
         public void CompareByUpper()
         {
             Console.Write("Sourcestr.ToUpper() == Tragestr.ToUpper()  ");
@@ -75,7 +75,7 @@ namespace TestPj.Test
         /// <summary>
         ///
         /// </summary>
-        [Test]
+        [Test,Category( "比較")]
         public void CompareByEquals()
         {
             Console.Write("string.Equals(Sourcestr, Tragestr, StringComparison.OrdinalIgnoreCase))  ");
@@ -86,7 +86,7 @@ namespace TestPj.Test
                   });
         }
 
-        [Test]
+        [Test,Category( "格式化")]
         public void DateFormatText()
         {
             var now = DateTime.Now;
@@ -101,7 +101,7 @@ namespace TestPj.Test
             }
         }
 
-        [Test]
+        [Test,Category( "格式化")]
         public void GetDateFormatText()
         {
             var periods = Enum.GetValues(typeof(DateTimePeriod));

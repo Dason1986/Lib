@@ -26,7 +26,7 @@ namespace TestPj.Test
                  {"c3","-123.12" },
             };
 
-        [Test(Description = "日期轉換")]
+        [Test,Category("日期"),Category("轉換")]
         public void ConverterDateTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);
@@ -42,7 +42,7 @@ namespace TestPj.Test
             Assert.AreEqual(2, a2.Value.Day);
         }
 
-        [Test(Description = "數值")]
+        [Test,Category("數值"), Category("轉換")]
         public void ConverterNumberTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);
@@ -55,7 +55,7 @@ namespace TestPj.Test
             Assert.AreEqual(-123.12d, c3);
         }
 
-        [Test(Description = "實體")]
+        [Test,Category("實體"), Category("轉換")]
         public void ConverterEntityTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);
@@ -76,7 +76,7 @@ namespace TestPj.Test
             public MyEnum b2 { get; set; }
         }
 
-        [Test(Description = "枚舉")]
+        [Test,Category("枚舉"), Category("轉換")]
         public void ConverterEnumTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);

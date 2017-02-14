@@ -4,10 +4,10 @@ using System.Data;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category = "ADO")]
     public class AdoTset
     {
-        [Test]
+        [Test,Category("實體")]
         public void CastTest()
         {
             int count = 10;

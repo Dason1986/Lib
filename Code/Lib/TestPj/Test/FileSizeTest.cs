@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category = "文件")]
     public class FileSizeTest
     {
         [Test]

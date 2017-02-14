@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace TestPj.Test
 {
-    [TestFixture]
+    [TestFixture(Category = "多語言")]
     public class LanguageTest
     {
         [Test]
