@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Library.Annotations;
 
@@ -23,7 +24,10 @@ namespace Library
         {
             if (collection == null) throw new ArgumentNullException(nameof(collection));
             this._collection = collection;
+            Prefixes = prefixes;
         }
+
+        private static readonly string[] prefixes = new[] { "btn", "txt", "cmb", "dtp", "chk", "cbl", "ddl", "hdn", "cal", "lab" };
 
         /// <summary>
         ///
@@ -201,13 +205,47 @@ namespace Library
         /// <summary>
         ///
         /// </summary>
+        public string[] Prefixes { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <param name="model"></param>
         /// <returns></returns>
+
         public TryResult GetModel<TModel>(TModel model) where TModel : class
         {
-            if (model == null) throw new ArgumentNullException(nameof(model));
-            return this._collection.GetModel(model);
+            if (model == null) return new ArgumentNullException("model");
+            var properties = model.GetType().GetProperties();
+
+            List<Exception> elist = new List<Exception>();
+            foreach (string name in this._collection.AllKeys)
+            {
+                var tepname = name;
+
+                if (Prefixes != null && Prefixes.Any(n => name.StartsWith(n)))
+                    tepname = name.Substring(3);
+
+                PropertyInfo property = properties.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.CurrentCultureIgnoreCase)
+                || string.Equals(p.Name, tepname, StringComparison.CurrentCultureIgnoreCase)
+                );
+                if (property == null)
+                {
+                    continue;
+                }
+                try
+                {
+                    var obj = StringUtility.Cast(_collection[name], property.PropertyType);
+
+                    property.FastSetValue(model, obj);
+                }
+                catch (Exception ex)
+                {
+                    elist.Add(ex);
+                }
+            }
+            return elist.HasRecord() ? new TryResult(elist) : new TryResult(true);
         }
     }
 }

@@ -24,9 +24,10 @@ namespace TestPj.Test
                  {"c1","123" },
                  {"c2","123.12" },
                  {"c3","-123.12" },
+                 {"txtc4","-123.12" },
             };
 
-        [Test,Category("日期"),Category("轉換")]
+        [Test, Category("日期"), Category("轉換")]
         public void ConverterDateTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);
@@ -42,7 +43,7 @@ namespace TestPj.Test
             Assert.AreEqual(2, a2.Value.Day);
         }
 
-        [Test,Category("數值"), Category("轉換")]
+        [Test, Category("數值"), Category("轉換")]
         public void ConverterNumberTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);
@@ -55,7 +56,7 @@ namespace TestPj.Test
             Assert.AreEqual(-123.12d, c3);
         }
 
-        [Test,Category("實體"), Category("轉換")]
+        [Test, Category("實體"), Category("轉換")]
         public void ConverterEntityTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);
@@ -63,6 +64,7 @@ namespace TestPj.Test
             var flag = converter.GetModel(myClass);
             Assert.IsFalse(flag.HasError);
             Assert.AreEqual(123, myClass.c1);
+            Assert.AreEqual(-123.12m, myClass.c4);
             Assert.IsNotNull(myClass.a1);
             Assert.AreEqual(2012, myClass.a1.Year);
             Assert.AreEqual(10, myClass.a1.Month);
@@ -73,10 +75,11 @@ namespace TestPj.Test
         {
             public DateTime a1 { get; set; }
             public int c1 { get; set; }
+            public decimal c4 { get; set; }
             public MyEnum b2 { get; set; }
         }
 
-        [Test,Category("枚舉"), Category("轉換")]
+        [Test, Category("枚舉"), Category("轉換")]
         public void ConverterEnumTest()
         {
             RequestParamsConvert converter = new RequestParamsConvert(collection);

@@ -1,6 +1,7 @@
 ﻿using Library.Annotations;
 using Library.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace Library.HelperUtility
     public static class ADONetHepler
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="reader"></param>
         /// <param name="pageIndex"></param>
@@ -65,6 +66,7 @@ namespace Library.HelperUtility
 
             return table;
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -92,6 +94,51 @@ namespace Library.HelperUtility
         {
             if (table == null) throw new ArgumentNullException("table");
             return GetList<T>(table.CreateDataReader());
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="clasType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="DataException"></exception>
+        [NotNull]
+        public static IList GetList([NotNull] this DataTable table, Type clasType)
+        {
+            if (table == null) throw new ArgumentNullException("table");
+            return GetList(table.CreateDataReader(), clasType);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="dataReader"></param>
+        /// <param name="clasType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="DataException"></exception>
+        [NotNull]
+        public static IList GetList([NotNull] this IDataReader dataReader, [NotNull] Type clasType)
+        {
+            if (dataReader == null) throw new ArgumentNullException("dataReader");
+            if (clasType == null) throw new ArgumentNullException("clasType");
+            if (clasType.IsAbstract) throw new Exception("");
+            if (dataReader.IsClosed) throw new DataException("dataReader is close");
+            if (dataReader.Depth == -1 || dataReader.FieldCount == 0) throw new DataException("dataReader 無效");
+            ArrayList list = new ArrayList();
+            var reInfos = GetPropertyInfos(clasType, dataReader);
+
+            while (dataReader.Read())
+            {
+                var item = Activator.CreateInstance(clasType);
+                list.Add(item);
+                object obj = item;
+                GetValue(dataReader, ref obj, reInfos);
+            }
+
+            return list;
         }
 
         /// <summary>
@@ -185,8 +232,9 @@ namespace Library.HelperUtility
             }
             //  return item;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>
@@ -206,8 +254,9 @@ namespace Library.HelperUtility
             }
             return null;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>

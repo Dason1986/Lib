@@ -112,36 +112,5 @@ namespace Library.HelperUtility
             }
             return false;
         }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="collection"></param>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public static TryResult GetModel<TModel>(this NameValueCollection collection, TModel model) where TModel : class
-        {
-            if (model == null) return new ArgumentNullException("model");
-            var properties = model.GetType().GetProperties();
-
-            List<Exception> elist = new List<Exception>();
-            foreach (string name in collection.AllKeys)
-            {
-                PropertyInfo property = properties.FirstOrDefault(p => p.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
-                if (property == null) continue;
-                try
-                {
-                    var obj = StringUtility.Cast(collection[name], property.PropertyType);
-
-                    property.FastSetValue(model, obj);
-                }
-                catch (Exception ex)
-                {
-                    elist.Add(ex);
-                }
-            }
-            return elist.HasRecord() ? new TryResult(elist) : new TryResult(true);
-        }
     }
 }

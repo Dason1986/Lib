@@ -18,7 +18,7 @@ namespace TestPj.Test
             Console.WriteLine("Char count:{0}", Sourcestr.Length);
         }
 
-        [Test,Category( "查詢")]
+        [Test, Category("查詢")]
         public void FindLasdItemByIndex()
         {
             string uName = string.Empty;
@@ -33,7 +33,7 @@ namespace TestPj.Test
             Console.WriteLine(uName);
         }
 
-        [Test,Category( "轉換")]
+        [Test, Category("轉換")]
         public void TsetCharToInt()
         {
             foreach (var i in "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^")
@@ -43,7 +43,7 @@ namespace TestPj.Test
             }
         }
 
-        [Test,Category( "拆分")]
+        [Test, Category("拆分")]
         public void FindLasdItemBySpilt()
         {
             string uName = string.Empty;
@@ -60,7 +60,7 @@ namespace TestPj.Test
         /// <summary>
         ///
         /// </summary>
-        [Test,Category( "比較")]
+        [Test, Category("比較")]
         public void CompareByUpper()
         {
             Console.Write("Sourcestr.ToUpper() == Tragestr.ToUpper()  ");
@@ -75,7 +75,7 @@ namespace TestPj.Test
         /// <summary>
         ///
         /// </summary>
-        [Test,Category( "比較")]
+        [Test, Category("比較")]
         public void CompareByEquals()
         {
             Console.Write("string.Equals(Sourcestr, Tragestr, StringComparison.OrdinalIgnoreCase))  ");
@@ -86,22 +86,22 @@ namespace TestPj.Test
                   });
         }
 
-        [Test,Category( "格式化")]
+        [Test, Category("格式化")]
         public void DateFormatText()
         {
             var now = DateTime.Now;
             var few = now.AddMinutes(-5);
-            Console.WriteLine("{0} {1} {2}", few, DateTimeUtility.GetPeriod(few), DateTimeUtility.FormatPeriodText(few));
+            Console.WriteLine("{0} {1} {2}", few, few.GetPeriod(), few.FormatPeriodText());
             for (int i = 1; i <= 365; i++)
             {
                 var time = now.AddDays(-i);
-                Console.WriteLine("{0} {1} {2}", time, DateTimeUtility.GetPeriod(time), DateTimeUtility.FormatPeriodText(time));
+                Console.WriteLine("{0} {1} {2}", time, time.GetPeriod(), time.FormatPeriodText());
                 time = now.AddDays(+i);
-                Console.WriteLine("{0} {1} {2}", time, DateTimeUtility.GetPeriod(time), DateTimeUtility.FormatPeriodText(time));
+                Console.WriteLine("{0} {1} {2}", time, time.GetPeriod(), time.FormatPeriodText());
             }
         }
 
-        [Test,Category( "格式化")]
+        [Test, Category("格式化")]
         public void GetDateFormatText()
         {
             var periods = Enum.GetValues(typeof(DateTimePeriod));

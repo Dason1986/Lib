@@ -7,8 +7,31 @@ using System.Threading.Tasks;
 
 namespace Library.Domain.Data.Linq
 {
+    /// <summary>
+    ///
+    /// </summary>
     public static class SpecExprExtensions
     {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Expression<Func<T, bool>> True<T>() { return f => true; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Expression<Func<T, bool>> False<T>() { return f => false; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="one"></param>
+        /// <returns></returns>
         public static Expression<Func<T, bool>> Not<T>(this Expression<Func<T, bool>> one)
         {
             var candidateExpr = one.Parameters[0];
@@ -17,6 +40,13 @@ namespace Library.Domain.Data.Linq
             return Expression.Lambda<Func<T, bool>>(body, candidateExpr);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="one"></param>
+        /// <param name="another"></param>
+        /// <returns></returns>
         public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> one,
             Expression<Func<T, bool>> another)
         {
@@ -33,6 +63,13 @@ namespace Library.Domain.Data.Linq
             return Expression.Lambda<Func<T, bool>>(body, candidateExpr);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="one"></param>
+        /// <param name="another"></param>
+        /// <returns></returns>
         public static Expression<Func<T, bool>> Or<T>(
             this Expression<Func<T, bool>> one, Expression<Func<T, bool>> another)
         {
@@ -46,6 +83,7 @@ namespace Library.Domain.Data.Linq
             return Expression.Lambda<Func<T, bool>>(body, candidateExpr);
         }
     }
+
     internal class ParameterReplacer : ExpressionVisitor
     {
         public ParameterReplacer(ParameterExpression paramExpr)

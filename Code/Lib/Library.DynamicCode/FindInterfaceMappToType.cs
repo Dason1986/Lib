@@ -25,12 +25,12 @@ namespace Library.DynamicCode
         {
             IDictionary<Type, Type[]> dictionary = new Dictionary<Type, Type[]>();
             var types = _intefaceAssembly.GetTypes().Where(n =>
-                   _interfacType.IsAssignableFrom(n) && n.IsInterface && n != _interfacType)
+                   _interfacType.IsAssignableFrom(n) && n.IsInterface && n != _interfacType).OrderBy(n => n.Name)
                   .ToArray();
             foreach (var maptoAssembly in _maptoAssemblies)
             {
                 var mapptos = maptoAssembly.GetTypes().Where(n =>
-                  _interfacType.IsAssignableFrom(n) && n.IsClass && !n.IsAbstract && n != _interfacType)
+                  _interfacType.IsAssignableFrom(n) && n.IsClass && !n.IsAbstract && n != _interfacType).OrderBy(n => n.Name)
                  .ToArray();
                 foreach (var type in types)
                 {

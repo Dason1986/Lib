@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Library.Domain.Data.Linq
 {
+    /// <summary>
+    ///
+    /// </summary>
     public static class LikeExpressionExtension
     {
-
-
-
         public static IQueryable<TSource> WhereLike<TSource>(
         this IQueryable<TSource> source,
         Expression<Func<TSource, string>> valueSelector,
@@ -38,8 +38,6 @@ namespace Library.Domain.Data.Linq
             var parameter = valueSelector.Parameters.Single();
             return Expression.Lambda<Func<TElement, bool>>(body, parameter);
         }
-
-
 
         private static MethodInfo GetLikeMethod(string value, char wildcard)
         {
