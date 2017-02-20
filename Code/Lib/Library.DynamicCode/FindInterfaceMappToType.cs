@@ -30,7 +30,7 @@ namespace Library.DynamicCode
             foreach (var maptoAssembly in _maptoAssemblies)
             {
                 var mapptos = maptoAssembly.GetTypes().Where(n =>
-                  _interfacType.IsAssignableFrom(n) && n.IsClass && !n.IsAbstract && n != _interfacType).OrderBy(n => n.Name)
+                  _interfacType.IsAssignableFrom(n) && n.IsClass && !n.IsAbstract && n != _interfacType)
                  .ToArray();
                 foreach (var type in types)
                 {
