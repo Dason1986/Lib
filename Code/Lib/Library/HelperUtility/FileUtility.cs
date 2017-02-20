@@ -29,7 +29,23 @@ namespace Library.HelperUtility
         }
 
         /// <summary>
-        /// 
+        /// 取文SHA1值
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string GetSHA1(string path)
+        {
+            if (!File.Exists(path)) return string.Empty;
+            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            SHA1 sha1 = new SHA1CryptoServiceProvider();
+            byte[] retval = sha1.ComputeHash(file);
+            file.Close();
+
+            return BitConverter.ToString(retval).Replace("-", "");
+        }
+
+        /// <summary>
+        ///
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -42,8 +58,9 @@ namespace Library.HelperUtility
             fs.Dispose();
             return new Guid(bs);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
@@ -52,13 +69,13 @@ namespace Library.HelperUtility
             if (stream.Position != 0)
                 stream.Seek(0, SeekOrigin.Begin);
 
-
             byte[] bs = MD5.Create().ComputeHash(stream);
             stream.Seek(0, SeekOrigin.Begin);
             return new Guid(bs);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filesize"></param>
         /// <returns></returns>
@@ -100,11 +117,34 @@ namespace Library.HelperUtility
         /// <summary>
         ///
         /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static string GetSHA1(Stream stream)
+        {
+            if (!stream.TrySeek()) return string.Empty;
+            var md5B = SHA1.Create().ComputeHash(stream);
+            return BitConverter.ToString(md5B).Replace("-", "");
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="buffter"></param>
         /// <returns></returns>
         public static string FileMD5(byte[] buffter)
         {
             var md5B = MD5.Create().ComputeHash(buffter);
+            return BitConverter.ToString(md5B).Replace("-", "");
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="buffter"></param>
+        /// <returns></returns>
+        public static string GetSHA1(byte[] buffter)
+        {
+            var md5B = SHA1.Create().ComputeHash(buffter);
             return BitConverter.ToString(md5B).Replace("-", "");
         }
 
@@ -173,7 +213,7 @@ namespace Library.HelperUtility
             if (path == null) throw new ArgumentNullException("path");
             if (!File.Exists(path)) throw new FileLoadException("path");
             Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-            System.IO.BinaryReader br = new BinaryReader(stream);
+            BinaryReader br = new BinaryReader(stream);
 
             byte buffer = br.ReadByte();
             string fileclass = buffer.ToString(CultureInfo.InvariantCulture);
@@ -240,15 +280,15 @@ namespace Library.HelperUtility
 
             return fileclass;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
         public static Encoding GetEncoding(Stream stream)
         {
             bool r = false, n = false;
-            byte[] buffer = new byte[stream.Length];
             List<byte> firstLineBytes = new List<byte>();
             while (true)
             {
@@ -275,6 +315,7 @@ namespace Library.HelperUtility
             stream.Seek(0, SeekOrigin.Begin);
             return Encoding.GetEncoding(IdentifyEncoding.GetEncodingName(IdentifyEncoding.ToSByteArray(firstLineBytes.ToArray())));
         }
+
         /// <summary>
         /// 通过文件取得编码
         /// </summary>
@@ -282,26 +323,23 @@ namespace Library.HelperUtility
         /// <returns></returns>
         public static Encoding GetEncoding(string path)
         {
-
-
             FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             var code = GetEncoding(fs);
             fs.Dispose();
             return code;
-
         }
-
 
         /// <summary>
         /// 验证编码
         /// </summary>
-        static class IdentifyEncoding
+        private static class IdentifyEncoding
         {
             #region Fields.....
 
             // Frequency tables to hold the GB, Big5, and EUC-TW character
             // frequencies
             internal static int[][] GBFreq = new int[94][];
+
             internal static int[][] GBKFreq = new int[126][];
             internal static int[][] Big5Freq = new int[94][];
             internal static int[][] EUCTWFreq = new int[94][];
@@ -312,7 +350,7 @@ namespace Library.HelperUtility
     , "ISO 2022CN", "UTF-8", "Unicode", "ASCII", "OTHER"
    };
 
-            #endregion
+            #endregion Fields.....
 
             #region Methods.....
 
@@ -324,12 +362,7 @@ namespace Library.HelperUtility
                 Initialize_Frequencies();
             }
 
-
             #region GetEncodingName.....
-
-
-
-
 
             /// <summary>
             /// 从指定的 <see cref="sbyte"/> 字节数组中判断编码类型
@@ -340,7 +373,7 @@ namespace Library.HelperUtility
             /// 以下示例演示了如何调用 GetEncodingName 方法：
             /// <code>
             ///  IdentifyEncoding ide = new IdentifyEncoding();
-            ///  Response.Write(ide.GetEncodingName(IdentifyEncoding.ToSByteArray(System.Text.Encoding.GetEncoding("gb2312").GetBytes("Lion互动网络(www.lionsky.net)")))); 
+            ///  Response.Write(ide.GetEncodingName(IdentifyEncoding.ToSByteArray(System.Text.Encoding.GetEncoding("gb2312").GetBytes("Lion互动网络(www.lionsky.net)"))));
             /// </code>
             /// </example>
             public static string GetEncodingName(sbyte[] rawtext)
@@ -381,7 +414,7 @@ namespace Library.HelperUtility
                 return Nicename[encoding_guess];
             }
 
-            #endregion
+            #endregion GetEncodingName.....
 
             #region About Probability.....
 
@@ -392,7 +425,7 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int GB2312Probability(sbyte[] rawtext)
+            private static int GB2312Probability(sbyte[] rawtext)
             {
                 int i, rawtextlen = 0;
 
@@ -435,11 +468,10 @@ namespace Library.HelperUtility
                 rangeval = 50 * ((float)gbchars / (float)dbchars);
                 freqval = 50 * ((float)gbfreq / (float)totalfreq);
 
-
                 return (int)(rangeval + freqval);
             }
 
-            #endregion
+            #endregion GB2312Probability
 
             #region GBKProbability.....
 
@@ -448,14 +480,13 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int GBKProbability(sbyte[] rawtext)
+            private static int GBKProbability(sbyte[] rawtext)
             {
                 int i, rawtextlen = 0;
 
                 int dbchars = 1, gbchars = 1;
                 long gbfreq = 0, totalfreq = 1;
                 float rangeval = 0, freqval = 0;
-                int row, column;
 
                 // Stage 1:  Check to see if characters fit into acceptable ranges
                 rawtextlen = rawtext.Length;
@@ -468,6 +499,8 @@ namespace Library.HelperUtility
                     else
                     {
                         dbchars++;
+                        int column;
+                        int row;
                         if ((sbyte)Identity(0xA1) <= rawtext[i] && rawtext[i] <= (sbyte)Identity(0xF7) && (sbyte)Identity(0xA1) <= rawtext[i + 1] && rawtext[i + 1] <= (sbyte)Identity(0xFE))
                         {
                             gbchars++;
@@ -513,7 +546,7 @@ namespace Library.HelperUtility
                 return (int)(rangeval + freqval) - 1;
             }
 
-            #endregion
+            #endregion GBKProbability.....
 
             #region HZProbability.....
 
@@ -522,14 +555,13 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int HZProbability(sbyte[] rawtext)
+            private static int HZProbability(sbyte[] rawtext)
             {
                 int i, rawtextlen;
                 int hzchars = 0, dbchars = 1;
                 long hzfreq = 0, totalfreq = 1;
                 float rangeval = 0, freqval = 0;
                 int hzstart = 0, hzend = 0;
-                int row, column;
 
                 rawtextlen = rawtext.Length;
 
@@ -553,34 +585,39 @@ namespace Library.HelperUtility
                                     i++;
                                     break;
                                 }
-                                else if ((0x21 <= rawtext[i] && rawtext[i] <= 0x77) && (0x21 <= rawtext[i + 1] && rawtext[i + 1] <= 0x77))
+                                else
                                 {
-                                    hzchars += 2;
-                                    row = rawtext[i] - 0x21;
-                                    column = rawtext[i + 1] - 0x21;
-                                    totalfreq += 500;
-                                    if (GBFreq[row][column] != 0)
+                                    int column;
+                                    int row;
+                                    if ((0x21 <= rawtext[i] && rawtext[i] <= 0x77) && (0x21 <= rawtext[i + 1] && rawtext[i + 1] <= 0x77))
                                     {
-                                        hzfreq += GBFreq[row][column];
+                                        hzchars += 2;
+                                        row = rawtext[i] - 0x21;
+                                        column = rawtext[i + 1] - 0x21;
+                                        totalfreq += 500;
+                                        if (GBFreq[row][column] != 0)
+                                        {
+                                            hzfreq += GBFreq[row][column];
+                                        }
+                                        else if (15 <= row && row < 55)
+                                        {
+                                            hzfreq += 200;
+                                        }
                                     }
-                                    else if (15 <= row && row < 55)
+                                    else if (((byte)0xA1 <= rawtext[i] && rawtext[i] <= (byte)0xF7) && ((byte)0xA1 <= rawtext[i + 1] && rawtext[i + 1] <= (byte)0xF7))
                                     {
-                                        hzfreq += 200;
-                                    }
-                                }
-                                else if (((byte)0xA1 <= rawtext[i] && rawtext[i] <= (byte)0xF7) && ((byte)0xA1 <= rawtext[i + 1] && rawtext[i + 1] <= (byte)0xF7))
-                                {
-                                    hzchars += 2;
-                                    row = rawtext[i] + 256 - 0xA1;
-                                    column = rawtext[i + 1] + 256 - 0xA1;
-                                    totalfreq += 500;
-                                    if (GBFreq[row][column] != 0)
-                                    {
-                                        hzfreq += GBFreq[row][column];
-                                    }
-                                    else if (15 <= row && row < 55)
-                                    {
-                                        hzfreq += 200;
+                                        hzchars += 2;
+                                        row = rawtext[i] + 256 - 0xA1;
+                                        column = rawtext[i + 1] + 256 - 0xA1;
+                                        totalfreq += 500;
+                                        if (GBFreq[row][column] != 0)
+                                        {
+                                            hzfreq += GBFreq[row][column];
+                                        }
+                                        else if (15 <= row && row < 55)
+                                        {
+                                            hzfreq += 200;
+                                        }
                                     }
                                 }
                                 dbchars += 2;
@@ -618,11 +655,10 @@ namespace Library.HelperUtility
                 }
                 freqval = 50 * ((float)hzfreq / (float)totalfreq);
 
-
                 return (int)(rangeval + freqval);
             }
 
-            #endregion
+            #endregion HZProbability.....
 
             #region BIG5Probability.....
 
@@ -631,13 +667,12 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int BIG5Probability(sbyte[] rawtext)
+            private static int BIG5Probability(sbyte[] rawtext)
             {
                 int i, rawtextlen = 0;
                 int dbchars = 1, bfchars = 1;
                 float rangeval = 0, freqval = 0;
                 long bffreq = 0, totalfreq = 1;
-                int row, column;
 
                 // Check to see if characters fit into acceptable ranges
 
@@ -655,7 +690,8 @@ namespace Library.HelperUtility
                         {
                             bfchars++;
                             totalfreq += 500;
-                            row = rawtext[i] + 256 - 0xA1;
+                            var row = rawtext[i] + 256 - 0xA1;
+                            int column;
                             if (0x40 <= rawtext[i + 1] && rawtext[i + 1] <= 0x7E)
                             {
                                 column = rawtext[i + 1] - 0x40;
@@ -677,14 +713,13 @@ namespace Library.HelperUtility
                     }
                 }
 
-                rangeval = 50 * ((float)bfchars / (float)dbchars);
-                freqval = 50 * ((float)bffreq / (float)totalfreq);
-
+                rangeval = 50f * (bfchars / (float)dbchars);
+                freqval = 50f * (bffreq / (float)totalfreq);
 
                 return (int)(rangeval + freqval);
             }
 
-            #endregion
+            #endregion BIG5Probability.....
 
             #region ENCTWProbability.....
 
@@ -743,15 +778,13 @@ namespace Library.HelperUtility
                     }
                 }
 
-
                 rangeval = 50 * ((float)cnschars / (float)dbchars);
                 freqval = 50 * ((float)cnsfreq / (float)totalfreq);
-
 
                 return (int)(rangeval + freqval);
             }
 
-            #endregion
+            #endregion ENCTWProbability.....
 
             #region ISO2022CNProbability.....
 
@@ -760,13 +793,12 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int ISO2022CNProbability(sbyte[] rawtext)
+            private static int ISO2022CNProbability(sbyte[] rawtext)
             {
                 int i, rawtextlen = 0;
                 int dbchars = 1, isochars = 1;
                 long isofreq = 0, totalfreq = 1;
                 float rangeval = 0, freqval = 0;
-                int row, column;
 
                 // Check to see if characters fit into acceptable ranges
                 // and have expected frequency of use
@@ -777,6 +809,8 @@ namespace Library.HelperUtility
                     if (rawtext[i] == (sbyte)0x1B && i + 3 < rawtextlen)
                     {
                         // Escape char ESC
+                        int column;
+                        int row;
                         if (rawtext[i + 1] == (sbyte)0x24 && rawtext[i + 2] == 0x29 && rawtext[i + 3] == (sbyte)0x41)
                         {
                             // GB Escape  $ ) A
@@ -843,7 +877,7 @@ namespace Library.HelperUtility
                 return (int)(rangeval + freqval);
             }
 
-            #endregion
+            #endregion ISO2022CNProbability.....
 
             #region UTF8Probability.....
 
@@ -852,7 +886,7 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int UTF8Probability(sbyte[] rawtext)
+            private static int UTF8Probability(sbyte[] rawtext)
             {
                 int score = 0;
                 int i, rawtextlen = 0;
@@ -905,7 +939,7 @@ namespace Library.HelperUtility
                 }
             }
 
-            #endregion
+            #endregion UTF8Probability.....
 
             #region UnicodeProbability.....
 
@@ -914,7 +948,7 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int UnicodeProbability(sbyte[] rawtext)
+            private static int UnicodeProbability(sbyte[] rawtext)
             {
                 //int score = 0;
                 //int i, rawtextlen = 0;
@@ -928,7 +962,7 @@ namespace Library.HelperUtility
                 return 0;
             }
 
-            #endregion
+            #endregion UnicodeProbability.....
 
             #region ASCIIProbability.....
 
@@ -937,7 +971,7 @@ namespace Library.HelperUtility
             /// </summary>
             /// <param name="rawtext">要判断的 <see cref="sbyte"/> 字节数组</param>
             /// <returns>返回 0 至 100 之间的可能性</returns>
-            internal static int ASCIIProbability(sbyte[] rawtext)
+            private static int ASCIIProbability(sbyte[] rawtext)
             {
                 int score = 70;
                 int i, rawtextlen;
@@ -960,9 +994,9 @@ namespace Library.HelperUtility
                 return score;
             }
 
-            #endregion
+            #endregion ASCIIProbability.....
 
-            #endregion
+            #endregion About Probability.....
 
             #region Initialize_Frequencies.....
 
@@ -1382,7 +1416,7 @@ namespace Library.HelperUtility
                     GBFreq[45][19] = 201;
                     GBFreq[18][53] = 200;
 
-                    #endregion
+                    #endregion GBFreq[20][35] = 599;
                 }
 
                 if (GBKFreq[0] == null)
@@ -1697,7 +1731,7 @@ namespace Library.HelperUtility
                     GBKFreq[80][144] = 300;
                     GBKFreq[85][113] = 299;
 
-                    #endregion
+                    #endregion GBKFreq[52][132] = 600;
                 }
 
                 if (Big5Freq[0] == null)
@@ -2109,7 +2143,7 @@ namespace Library.HelperUtility
                     Big5Freq[4][19] = 202;
                     Big5Freq[9][152] = 201;
 
-                    #endregion
+                    #endregion Big5Freq[9][89] = 600;
                 }
 
                 if (EUCTWFreq[0] == null)
@@ -2520,11 +2554,11 @@ namespace Library.HelperUtility
                     EUCTWFreq[36][82] = 202;
                     EUCTWFreq[46][59] = 201;
 
-                    #endregion
+                    #endregion EUC_TWFreq[48][49] = 599;
                 }
             }
 
-            #endregion
+            #endregion Initialize_Frequencies.....
 
             #region ToByteArray.....
 
@@ -2567,7 +2601,7 @@ namespace Library.HelperUtility
                 return byteArray;
             }
 
-            #endregion
+            #endregion ToByteArray.....
 
             #region ToSByteArray.....
 
@@ -2584,7 +2618,7 @@ namespace Library.HelperUtility
                 return sbyteArray;
             }
 
-            #endregion
+            #endregion ToSByteArray.....
 
             #region ReadInput.....
 
@@ -2650,9 +2684,7 @@ namespace Library.HelperUtility
                 return bytesRead;
             }
 
-            #endregion
-
-
+            #endregion ReadInput.....
 
             #region Identity.....
 
@@ -2696,10 +2728,9 @@ namespace Library.HelperUtility
                 return literal;
             }
 
+            #endregion Identity.....
 
-            #endregion
-
-            #endregion
+            #endregion Methods.....
         }
     }
 }
