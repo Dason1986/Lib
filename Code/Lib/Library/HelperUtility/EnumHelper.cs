@@ -73,5 +73,31 @@ namespace Library.HelperUtility
             }
             return list.ToArray();
         }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="inEnum"></param>
+        /// <param name="resource"></param>
+        /// <param name="prefix"></param>
+        /// <returns></returns>
+        public static string GetResourceStrnig(this Enum inEnum, System.Resources.ResourceManager resource, string prefix = "")
+        {
+            var type = inEnum.GetType();
+
+            var flags = inEnum.GetHashCode();
+            var hasPrefix = !string.IsNullOrEmpty(prefix);
+            List<String> list = new List<string>();
+            foreach (Enum n in Enum.GetValues(type))
+            {
+                var x = n.GetHashCode();
+                if (x == 0) continue;
+                if ((x & flags) != x) continue;
+                var name = hasPrefix ? prefix + n : n.ToString();
+                list.Add(resource.GetString(name) ?? name);
+            }
+
+            return string.Join(",", list);
+        }
     }
 }
