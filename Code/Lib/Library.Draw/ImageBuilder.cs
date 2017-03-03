@@ -223,7 +223,7 @@ namespace Library.Draw
         public unsafe void UnsafeProcessBitmapAsync()
         {
             BackgroundWorker background = new BackgroundWorker();
-            Image image = null;
+            Image image = this._source;
             background.DoWork += (x, y) =>
             {
                 image = UnsafeProcessBitmap();
@@ -301,7 +301,7 @@ namespace Library.Draw
         public void ProcessBitmapAsync()
         {
             BackgroundWorker background = new BackgroundWorker();
-            Image image = null;
+            Image image = this._source;
             background.DoWork += (x, y) =>
             {
                 image = ProcessBitmap();

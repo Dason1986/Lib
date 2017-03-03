@@ -79,19 +79,11 @@
     <Compile Include="Standard\ComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Standard\DataGridView\DataGridViewColumnSelector.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Standard\DataGridView\DataGridViewColumnSelector.cs" />
     <Compile Include="Standard\DataGridView\DataGridViewConverterLabelColumn.cs" />
-    <Compile Include="Standard\DataGridView\DataGridViewDateTimeColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Standard\DataGridView\DataGridViewMultiColumnComboColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Standard\DataGridView\DataGridViewQueryLabelColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Standard\DataGridView\DataGridViewDateTimeColumn.cs" />
+    <Compile Include="Standard\DataGridView\DataGridViewMultiColumnComboColumn.cs" />
+    <Compile Include="Standard\DataGridView\DataGridViewQueryLabelColumn.cs" />
     <Compile Include="Standard\GlassButton.cs">
       <SubType>Component</SubType>
     </Compile>

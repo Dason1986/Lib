@@ -16,7 +16,6 @@ namespace TestWinform
 {
     public partial class EffectsForm : Form
     {
-
         public EffectsForm()
         {
             InitializeComponent();
@@ -24,7 +23,6 @@ namespace TestWinform
             comboBox1.DisplayMember = "DisplayName";
             comboBox1.ValueMember = "ImageBuilder";
             comboBox1.DataSource = dt;
-
 
             if (Program.Original == null) return;
             sourceiamge = new Bitmap(new MemoryStream(Program.Original));
@@ -34,10 +32,11 @@ namespace TestWinform
             //    fileBytes = Program.Original;
             CreateBuilder();
         }
-        Image sourceiamge;
 
+        private Image sourceiamge;
 
-        DataTable dt;
+        private DataTable dt;
+
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -87,7 +86,6 @@ namespace TestWinform
 
         private void CreateBuilder()
         {
-
             builderobj = comboBox1.SelectedValue as IImageBuilder;
 
             option = builderobj.CreateOption();
@@ -107,8 +105,8 @@ namespace TestWinform
         private void builderobj_ProcessCompleted(object sender, ImageEventArgs e)
         {
             this.pictureBox2.Image = e.Image;
+            builderobj.ProcessCompleted -= builderobj_ProcessCompleted;
             if (e.Error != null) MessageBox.Show(e.Error.Message);
-
             panel1.Enabled = true;
             cmd.HideOpaqueLayer();
         }
@@ -120,7 +118,8 @@ namespace TestWinform
             panel1.Enabled = false;
             cmd = OpaqueLayer.Show(this, 125, true);
             builderobj.SetOpetion(option);
-
+            builderobj.SetSourceImage(this.sourceiamge);
+            builderobj.ProcessCompleted += builderobj_ProcessCompleted;
             if (checkBox1.Checked)
             {
                 builderobj.UnsafeProcessBitmapAsync();
