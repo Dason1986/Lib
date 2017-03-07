@@ -57,12 +57,14 @@ namespace Library.DynamicCode
             compilerParameters.GenerateExecutable = false;
             compilerParameters.TreatWarningsAsErrors = false;
             ID = Guid.NewGuid();
-            Copyright = "Copyright Dason©  2015";
+            Copyright = "Copyright Dason©  " + DateTime.Now.Year;
             Title = "Generate Assembly";
             RefAssemblies = new List<Assembly>();
+            ResourceFiles = new List<string>();
         }
 
         protected List<Assembly> RefAssemblies { get; set; }
+        protected List<string> ResourceFiles { get; set; }
         protected Assembly CurrentAssembly { get; set; }
         public Version AssemblyVersion { get; set; }
         public string CodeText { get; protected set; }
@@ -73,6 +75,11 @@ namespace Library.DynamicCode
         private readonly CompilerParameters compilerParameters = new CompilerParameters();
 
         private readonly CodeCompileUnit unit = new CodeCompileUnit();
+
+        protected void AddResourceFile(string path)
+        {
+            ResourceFiles.Add(path);
+        }
 
         protected CodeAttributeDeclaration AssemlyAttribute(Type attributeType, object value)
         {
@@ -119,12 +126,25 @@ namespace Library.DynamicCode
             AssemlyAttribute(typeof(GuidAttribute), ID.ToString());
             AssemlyAttribute(typeof(AssemblyCopyrightAttribute), Copyright);
             AssemlyAttribute(typeof(AssemblyTitleAttribute), Title);
+            AddEmbeddedResources();
             var res = provider.CompileAssemblyFromDom(compilerParameters, unit);
             StringBuilder builder = new StringBuilder();
             StringWriter writer = new StringWriter(builder);
             provider.GenerateCodeFromCompileUnit(unit, writer, null);
             CodeText = builder.ToString();
             return res;
+        }
+
+        private void AddEmbeddedResources()
+        {
+            if (provider.Supports(GeneratorSupport.Resources))
+            {
+                foreach (var file in ResourceFiles)
+                {
+                    if (System.IO.File.Exists(file))
+                        compilerParameters.EmbeddedResources.Add(file);
+                }
+            }
         }
 
         public abstract Assembly Generate();
