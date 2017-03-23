@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -61,6 +62,7 @@ namespace Library.DynamicCode
             Title = "Generate Assembly";
             RefAssemblies = new List<Assembly>();
             ResourceFiles = new List<string>();
+            Culture = CultureInfo.CurrentUICulture;
         }
 
         protected List<Assembly> RefAssemblies { get; set; }
@@ -68,6 +70,7 @@ namespace Library.DynamicCode
         protected Assembly CurrentAssembly { get; set; }
         public Version AssemblyVersion { get; set; }
         public string CodeText { get; protected set; }
+        public System.Globalization.CultureInfo Culture { get; protected set; }
         public string Copyright { get; set; }
         public string Title { get; set; }
         public Guid ID { get; set; }
@@ -126,6 +129,7 @@ namespace Library.DynamicCode
             AssemlyAttribute(typeof(GuidAttribute), ID.ToString());
             AssemlyAttribute(typeof(AssemblyCopyrightAttribute), Copyright);
             AssemlyAttribute(typeof(AssemblyTitleAttribute), Title);
+            AssemlyAttribute(typeof(AssemblyCultureAttribute), Culture.Name);
             AddEmbeddedResources();
             var res = provider.CompileAssemblyFromDom(compilerParameters, unit);
             StringBuilder builder = new StringBuilder();

@@ -70,6 +70,7 @@
     <Compile Include="Test\StatusCodeTest.cs" />
     <Compile Include="Test\StringTest.cs" />
     <Compile Include="testobj\ParsonModle.cs" />
+    <Compile Include="Test\TestAlgorithms.cs" />
     <Compile Include="Test\ThumbnailTest.cs" />
   </ItemGroup>
   <ItemGroup>

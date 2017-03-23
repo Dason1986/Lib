@@ -224,9 +224,4 @@ namespace Library.Comparable
         /// </summary>
         Same = 64
     }
- 
-    /// <summary>
-    ///
-    /// </summary>
- 
 }
