@@ -6,24 +6,24 @@ using System.Threading;
 namespace Library.Infrastructure.Application
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class BaseMultiThreadingLogicService : BaseLogicService
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public BaseMultiThreadingLogicService()
         {
-
-
         }
+
         #region property
 
-        int _threadCount = 3;
-        int _batSize = 20;
+        private int _threadCount = 3;
+        private int _batSize = 20;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int ThreadCount
         {
@@ -37,17 +37,19 @@ namespace Library.Infrastructure.Application
                 if (_threadCount != value) _threadCount = value;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected long TotalRecord { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected long CompletedRecord { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int BatchSize
         {
@@ -61,21 +63,23 @@ namespace Library.Infrastructure.Application
                 if (_batSize != value) _batSize = value;
             }
         }
-        #endregion
+
+        #endregion property
+
         #region event
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event EventHandler<LogicServiceProgress> Progress;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event EventHandler<LogicServiceFailure> Failure;
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="error"></param>
         /// <param name="beginIndex"></param>
@@ -90,8 +94,9 @@ namespace Library.Infrastructure.Application
                 handler.Invoke(this, new LogicServiceFailure(error, beginIndex, endIndex));
             }, null);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="beginIndex"></param>
         /// <param name="endIndex"></param>
@@ -105,43 +110,31 @@ namespace Library.Infrastructure.Application
                 handler.Invoke(this, new LogicServiceProgress(TotalRecord, CompletedRecord, beginIndex, endIndex));
             }, null);
         }
-        #endregion
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="begin"></param>
-        /// <param name="end"></param>
-        protected virtual void ThreadPross(long begin, long end)
+
+        #endregion event
+
+        private void ThreadPross(PageItem pageItem)
         {
-            int size = BatchSize;
-            //      Logger.Info(string.Format("begin:{0} end:{1}", begin, end - 1));
-            for (long index = begin; index < end; index = index + size)
+            int index = (int)pageItem.BeginIndex;
+            int endindex = (int)pageItem.EndIndex;
+            try
             {
-                var endindex = index + size - 1;
-                if (endindex >= end) endindex = end;
-                try
-                {
-                    ThreadProssSize((int)index, (int)endindex);
-                    CompletedRecord = CompletedRecord + (endindex - index);
-                    OnProgress(index, endindex);
-                }
-                catch (Exception ex)
-                {
-                    Logger.ErrorByContent(ex, "處理失敗",new Dictionary<string, object>() { { "begin", index}, { "end", endindex} });
-                    OnFailure(ex, index, endindex);
-
-                }
-
-
-
+                ThreadProssSize(index, (int)endindex);
+                CompletedRecord = CompletedRecord + (endindex - index);
+                OnProgress(index, endindex);
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorByContent(ex, "處理失敗", new Dictionary<string, object>() { { "begin", index }, { "end", endindex } });
+                OnFailure(ex, index, endindex);
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected sealed override void OnDowrok()
         {
-
             IMultiThreadingOption option = this.ServiceOption as IMultiThreadingOption;
             if (option != null)
             {
@@ -150,53 +143,59 @@ namespace Library.Infrastructure.Application
             }
             TotalRecord = GetTotalRecord();
             ThreadPross();
-
-
-
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         protected abstract int GetTotalRecord();
+
+        private struct PageItem
+        {
+            public long BeginIndex { get; set; }
+            public long EndIndex { get; set; }
+            public int Take { get; set; }
+        }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected virtual void ThreadPross()
         {
-
-
-            var total = TotalRecord / BatchSize;
-            if (total <= ThreadCount || ThreadCount == 1)
+            var totalPage = TotalRecord / BatchSize;
+            Queue<PageItem> pages = new Queue<PageItem>();
+            if (totalPage <= ThreadCount || ThreadCount == 1)
             {
-
-                ThreadPross(0, (int)TotalRecord - 1);
-
+                ThreadPross(new PageItem() { BeginIndex = 0, EndIndex = TotalRecord - 1, Take = (int)TotalRecord });
             }
             else
             {
-                Thread[] thrads = new Thread[ThreadCount];
-                var totalsize = (decimal)TotalRecord / ThreadCount;
-                for (int i = 0; i < ThreadCount; i++)
+                long currnet = 0;
+                while (currnet < TotalRecord)
                 {
-                    int currentindex = i;
-                    thrads[currentindex] = new Thread(n =>
+                    if (currnet + _batSize >= TotalRecord)
                     {
-                        var beging = (long)Math.Ceiling(totalsize * currentindex);
-                        var end = (long)Math.Floor(beging + totalsize);
-                        if (end >= TotalRecord)
-                        {
-                            end = (int)TotalRecord;
-                        }
-
-                        ThreadPross(beging, end - 1);
-
-                    });
-
+                        pages.Enqueue(new PageItem() { BeginIndex = currnet, EndIndex = TotalRecord - 1, Take = (int)(TotalRecord - currnet) });
+                    }
+                    else
+                    {
+                        pages.Enqueue(new PageItem() { BeginIndex = currnet, EndIndex = currnet + _batSize - 1, Take = _batSize });
+                    }
+                    currnet = currnet + TotalRecord;
                 }
+
+                Thread[] thrads = new Thread[ThreadCount];
                 for (int i = 0; i < ThreadCount; i++)
                 {
+                    thrads[i] = new Thread(() =>
+                    {
+                        while (pages.Count > 0)
+                        {
+                            var item = pages.Dequeue();
+                            ThreadPross(item);
+                        }
+                    });
                     thrads[i].Start();
                 }
                 for (int i = 0; i < ThreadCount; i++)
@@ -205,8 +204,9 @@ namespace Library.Infrastructure.Application
                 }
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="beginindex"></param>
         /// <param name="endindex"></param>
