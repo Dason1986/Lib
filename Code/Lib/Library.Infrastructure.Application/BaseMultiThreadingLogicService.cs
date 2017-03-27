@@ -119,7 +119,7 @@ namespace Library.Infrastructure.Application
             int endindex = (int)pageItem.EndIndex;
             try
             {
-                ThreadProssSize(index, (int)endindex);
+                ThreadProssSize(index, (int)endindex, pageItem.Take);
                 CompletedRecord = CompletedRecord + (endindex - index);
                 OnProgress(index, endindex);
             }
@@ -176,13 +176,24 @@ namespace Library.Infrastructure.Application
                 {
                     if (currnet + _batSize >= TotalRecord)
                     {
-                        pages.Enqueue(new PageItem() { BeginIndex = currnet, EndIndex = TotalRecord - 1, Take = (int)(TotalRecord - currnet) });
+                        pages.Enqueue(new PageItem()
+                        {
+                            BeginIndex = currnet,
+                            EndIndex = TotalRecord - 1,
+                            Take = (int)(TotalRecord - currnet)
+                        });
+                        currnet = currnet + TotalRecord;
                     }
                     else
                     {
-                        pages.Enqueue(new PageItem() { BeginIndex = currnet, EndIndex = currnet + _batSize - 1, Take = _batSize });
+                        pages.Enqueue(new PageItem()
+                        {
+                            BeginIndex = currnet,
+                            EndIndex = currnet + _batSize - 1,
+                            Take = _batSize
+                        });
+                        currnet = currnet + _batSize;
                     }
-                    currnet = currnet + TotalRecord;
                 }
 
                 Thread[] thrads = new Thread[ThreadCount];
@@ -205,11 +216,12 @@ namespace Library.Infrastructure.Application
             }
         }
 
-        /// <summary>
+        ///  <summary>
         ///
-        /// </summary>
-        /// <param name="beginindex"></param>
-        /// <param name="endindex"></param>
-        protected abstract void ThreadProssSize(int beginindex, int endindex);
+        ///  </summary>
+        ///  <param name="beginindex"></param>
+        ///  <param name="endindex"></param>
+        /// <param name="take"></param>
+        protected abstract void ThreadProssSize(int beginindex, int endindex, int take);
     }
 }
