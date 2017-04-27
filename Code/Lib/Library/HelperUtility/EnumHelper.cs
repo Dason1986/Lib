@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
+using Library.Date;
 
 namespace Library.HelperUtility
 {
@@ -26,7 +30,7 @@ namespace Library.HelperUtility
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static bool AnyIsRight(Enum x, Enum[] y)
+        public static bool AnyIsRight(this Enum x, Enum[] y)
         {
             if (!y.HasRecord()) return false;
             return y.Any(y1 => (x.GetHashCode() & y1.GetHashCode()) == y1.GetHashCode());
@@ -38,7 +42,7 @@ namespace Library.HelperUtility
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static bool AllIsRight(Enum x, Enum[] y)
+        public static bool AllIsRight(this Enum x, Enum[] y)
         {
             if (!y.HasRecord()) return false;
             return y.All(y1 => (x.GetHashCode() & y1.GetHashCode()) == y1.GetHashCode());
@@ -73,7 +77,27 @@ namespace Library.HelperUtility
             }
             return list.ToArray();
         }
+        /// <summary>
+        /// 获取DisplayAttribute上指定的Name
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ToDisplay(this Enum value)
+        {
+            var info = value.GetType().GetField(value.ToString());
+            var attribute = (DisplayAttribute)info.GetCustomAttributes(typeof(DisplayAttribute), true).FirstOrDefault();
+            return attribute == null ? value.ToString() : attribute.Name;
+        }
 
+        /// <summary>
+        ///  获取DescriptionAttribute上指定的Description
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ToDescription(this Enum value)
+        {
+            return EnumHelper.GetEnumDescription(value);
+        }
         /// <summary>
         ///
         /// </summary>
@@ -99,5 +123,114 @@ namespace Library.HelperUtility
 
             return string.Join(",", list);
         }
+
+   
+  
+
+        /// <summary>
+        /// 取得枚举类型的说明文字
+        /// </summary>
+        /// <param name="objEnum"></param>
+        /// <returns></returns>
+        public static string GetEnumDescription(this Enum objEnum)
+        {
+            Type typeDescription = typeof(DescriptionAttribute);
+            Type typeField = objEnum.GetType();
+            string strDesc = string.Empty;
+            try
+            {
+                FieldInfo field = typeField.GetField(objEnum.ToString());
+                var arr = field.GetCustomAttributes(typeDescription, true);
+                if (arr.Length > 0)
+                {
+                    strDesc = (arr[0] as DescriptionAttribute).Description;
+                }
+                else
+                {
+                    strDesc = field.Name;
+                }
+            }
+            catch
+            {
+                strDesc = string.Empty;
+            }
+
+            return strDesc;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objEnum"></param>
+        /// <param name="flag">默认值为0.获取Display属性Name值，否则获取Descriptiom</param>
+        /// <returns></returns>
+        public static string GetEnumDisplay(this Enum objEnum, int flag = 0)
+        {
+            var typeDisplayName = typeof(DisplayAttribute);
+            var typeField = objEnum.GetType();
+            string strDesc = string.Empty;
+            try
+            {
+                FieldInfo field = typeField.GetField(objEnum.ToString());
+                var arr = field.GetCustomAttributes(typeDisplayName, true);
+                if (arr.Length > 0)
+                {
+                    var displayAttribute = arr[0] as DisplayAttribute;
+                    if (displayAttribute != null)
+                        strDesc = flag == 0 ? displayAttribute.Name : displayAttribute.Description;
+                }
+                else
+                {
+
+                    strDesc = field.Name;
+                }
+            }
+            catch
+            {
+                strDesc = String.Empty;
+            }
+
+            return strDesc;
+        }
+        /// <summary>
+        /// 取得枚举类型的Display属性
+        /// </summary>
+        /// <param name="objEnum"></param>
+        /// <returns></returns>
+        public static DisplayAttribute[] GetEnumDisplayAttributs(this Enum objEnum)
+        {
+            var typeDisplayName = typeof(DisplayAttribute);
+            var typeField = objEnum.GetType();
+            try
+            {
+                var field = typeField.GetField(objEnum.ToString());
+                var arr = field.GetCustomAttributes(typeDisplayName, true);
+                return arr.OfType<DisplayAttribute>().ToArray();
+            }
+            catch
+            {
+                return new DisplayAttribute[0];
+            }
+        }
+
+        /// <summary>
+        /// 把值转换为相应的枚举类型
+        /// </summary>
+        /// <typeparam name="T">枚举类型</typeparam>
+        /// <param name="rawVal">值</param>
+        /// <param name="defVal">默认值</param>
+        /// <returns></returns>
+        public static T ConvertToEnum<T>(string rawVal, T defVal = default(T)) where T : struct
+        {
+            T objEnum;
+            Type typeEnum = typeof(T);
+            if (String.IsNullOrEmpty(rawVal)) return defVal;
+            //objEnum = (T)Enum.Parse(typeEnum, rawVal.ToString());
+            if (!Enum.TryParse<T>(rawVal, out objEnum) || !Enum.IsDefined(typeEnum, objEnum))
+            {
+                objEnum = defVal;
+            }
+            return objEnum;
+        }
+        
     }
 }

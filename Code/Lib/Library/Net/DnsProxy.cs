@@ -86,6 +86,9 @@ namespace Library.Net
             _tcpQuerySocket = new Socket(addressFamily, SocketType.Stream, ProtocolType.Tcp);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Start()
         {
             EndPoint ep = new IPEndPoint(_addressFamily == AddressFamily.InterNetwork ? IPAddress.Any : IPAddress.IPv6Any, DNS_PORT);
@@ -120,7 +123,10 @@ namespace Library.Net
                 e.AcceptSocket.Disconnect(false);
                 e.AcceptSocket.Dispose();
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
             StartTcpListen();
         }
 
@@ -143,7 +149,10 @@ namespace Library.Net
                 _udpSocket.SendTo(buf, state.EndPoint);
                 state.EndPoint = new IPEndPoint(_addressFamily == AddressFamily.InterNetwork ? IPAddress.Any : IPAddress.IPv6Any, DNS_PORT);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
             StartUdpListen(state);
         }
 
@@ -242,6 +251,9 @@ namespace Library.Net
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Stop()
         {
             _udpSocket.Shutdown(SocketShutdown.Both);
@@ -250,6 +262,8 @@ namespace Library.Net
 
         #region IDisposable.Dispose
 
+        /// <summary>执行与释放或重置非托管资源相关的应用程序定义的任务。</summary>
+        /// <filterpriority>2</filterpriority>
         void IDisposable.Dispose()
         {
             _udpSocket.Dispose();
@@ -275,6 +289,9 @@ namespace Library.Net
 
      */
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class Ping
     {
         private const int SOCKET_ERROR = -1;
@@ -296,9 +313,9 @@ namespace Library.Net
         public string PingHost(string host)
         {
             // 声明 IPHostEntry
-            IPHostEntry ServerHE, fromHE;
+            IPHostEntry ServerHE;
             int nBytes = 0;
-            int dwStart = 0, dwStop = 0;
+            int dwStart = 0;
 
             //初始化ICMP的Socket
             Socket socket =
@@ -319,7 +336,7 @@ namespace Library.Net
             EndPoint epServer = (ipepServer);
 
             // 设定客户机的接收Endpoint
-            fromHE = Dns.GetHostEntry(Dns.GetHostName());
+            var fromHE = Dns.GetHostEntry(Dns.GetHostName());
             IPEndPoint ipEndPointFrom = new IPEndPoint(fromHE.AddressList[0], 0);
             EndPoint EndPointFrom = (ipEndPointFrom);
 
@@ -403,7 +420,6 @@ namespace Library.Net
             nBytes = 0;
             //Receive the bytes
             bool recd = false;
-            int timeout = 0;
 
             //loop for checking the time of the server responding
             while (!recd)
@@ -415,11 +431,11 @@ namespace Library.Net
                 }
                 else if (nBytes > 0)
                 {
-                    dwStop = System.Environment.TickCount - dwStart; // stop timing
+                    var dwStop = System.Environment.TickCount - dwStart;
                     return "Reply from " + epServer.ToString() + " in "
                     + dwStop + "ms.  Received: " + nBytes + " Bytes.";
                 }
-                timeout = System.Environment.TickCount - dwStart;
+                var timeout = System.Environment.TickCount - dwStart;
                 if (timeout > 1000)
                 {
                     return "超时";
@@ -486,8 +502,7 @@ namespace Library.Net
         private UInt16 checksum(UInt16[] buffer, int size)
         {
             Int32 cksum = 0;
-            int counter;
-            counter = 0;
+            var counter = 0;
 
             while (size > 0)
             {
@@ -508,13 +523,31 @@ namespace Library.Net
     /// <summary>
     ///  Class that holds the Pack information
     /// </summary>
-    public class IcmpPacket
+    public struct IcmpPacket
     {
-        public Byte Type;    // type of message
-        public Byte SubCode;    // type of sub code
-        public UInt16 CheckSum;   // ones complement checksum of struct
-        public UInt16 Identifier;      // identifier
-        public UInt16 SequenceNumber;     // sequence number
-        public Byte[] Data;
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte Type { get; set; }    // type of message
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte SubCode { get; set; }    // type of sub code
+        /// <summary>
+        /// 
+        /// </summary>
+        public ushort CheckSum { get; set; }   // ones complement checksum of struct
+        /// <summary>
+        /// 
+        /// </summary>
+        public ushort Identifier { get; set; }      // identifier
+        /// <summary>
+        /// 
+        /// </summary>
+        public ushort SequenceNumber { get; set; }     // sequence number
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[] Data { get; set; }
     } // class IcmpPacket
 }

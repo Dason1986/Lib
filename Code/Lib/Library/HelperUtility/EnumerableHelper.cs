@@ -103,6 +103,7 @@ namespace Library.HelperUtility
         public static bool HasRecord(this IEnumerable list, int count = 1)
         {
             if (list == null) return false;
+          
             var enumerator = list.GetEnumerator();
             int index = 0;
             while (enumerator.MoveNext())
@@ -111,6 +112,55 @@ namespace Library.HelperUtility
                 if (index >= count) return true;
             }
             return false;
+        }
+        /// <summary>
+        /// 判断ICollection 是否有值 或 Null
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty(this IList source)
+        {
+            return source == null || source.Count <= 0;
+        }
+        /// <summary>
+        /// 判断ICollection 是否有值 或 Null
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty(this ICollection source)
+        {
+            return source == null || source.Count <= 0;
+        }
+        /// <summary>
+        /// 判断ICollection 是否有值 或 Null
+        /// </summary> 
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty(this IEnumerable source)
+        {
+            return source == null || !source.GetEnumerator().MoveNext();
+        }
+        /// <summary>
+        /// 添加ICollection中不存在的值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public static bool AddIfNotContains<T>(this ICollection<T> source, T item)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (source.Contains(item))
+            {
+                return false;
+            }
+
+            source.Add(item);
+            return true;
         }
     }
 }

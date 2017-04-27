@@ -68,6 +68,7 @@
     <Compile Include="Test\RangeItemTest.cs" />
     <Compile Include="Test\RequestParamsConvertTest.cs" />
     <Compile Include="Test\StatusCodeTest.cs" />
+    <Compile Include="Test\DateTimeUtilityTest .cs" />
     <Compile Include="Test\StringTest.cs" />
     <Compile Include="testobj\ParsonModle.cs" />
     <Compile Include="Test\TestAlgorithms.cs" />

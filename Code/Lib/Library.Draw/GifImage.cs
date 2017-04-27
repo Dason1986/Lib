@@ -38,6 +38,9 @@ namespace Library.Draw.Gif
             _dimension = new FrameDimension(_gifImage.FrameDimensionsList[0]); //gets the GUID
             _frameCount = _gifImage.GetFrameCount(_dimension); //total frames in the animation
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public Size Size { get { return _gifImage.Size; } }
         /// <summary>
         ///

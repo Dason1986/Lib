@@ -119,31 +119,44 @@ namespace Library.Draw
         }
     }
 
-    public static class HD
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ResolutionEntity
     {
-        public const string HD1080P = "1080P";
-        public const string HD720P = "720P";
-        public const string HD4K = "4K";
-        public const string HD2K = "2K";
-        public const string HD8K = "8K";
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Size Size { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public AspectRatio Ratio { get; set; } 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly ResolutionEntity HD1080P=new ResolutionEntity() {Name ="1080P", Size=new Size(1920, 1080),Ratio = new AspectRatio(16,9)};
 
-        //        4K UHDTV（2160p）的宽高为3840×2160。总像素数是全高清1080p的4倍。
-        //8K UHDTV（4320p）的宽高为7680×4320。总像素数是全高清1080p的16倍。
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly ResolutionEntity HD720P = new ResolutionEntity() { Name = "720P", Size = new Size(1280, 720), Ratio = new AspectRatio(16, 9) };
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly ResolutionEntity HD4K = new ResolutionEntity() { Name = "4K", Size = new Size(4096, 2160), Ratio = new AspectRatio(17, 9) };
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly ResolutionEntity HD8K = new ResolutionEntity() { Name = "8K", Size = new Size(7680, 4320), Ratio = new AspectRatio(16, 9) }; 
 
-        //        DCI 2K(原生分辨率)  2048 × 1080	1.90:1 (256:135, ~17:9)	2,211,840
-        //DCI 2K(扁平裁切)   1998 × 1080	1.85:1	2,157,840
-        //DCI 2K(宽屏幕裁切)  2048 × 858	2.39:1	1,755,136
-        //PC 2K(1080p)   1920 × 1080	1.(7):1 (16:9)	2,073,600
+        
 
-
-        //分辨率有2种规格：3840×2160和4096×2160像素。
-        //public static readonly Size FullAperture4K = new Size(4096 , 3112);1.32:1
-        //public static readonly Size Academy4K = new Size(3656, 2664);1.37:1
-        //public static readonly Size DigitalCinema4K = new Size(4096, 1714);2.39:1
-        //public static readonly Size DigitalCinema4K = new Size(3996, 2160);1.85:1
-
-        //public static readonly Size FullAperture4K = new Size(4096, 3072);4:3
-        //public static readonly Size Academy4K = new Size(3656, 2664);1.37:1
+    
 
 
 

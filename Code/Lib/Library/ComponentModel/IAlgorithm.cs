@@ -335,6 +335,7 @@ namespace Library.ComponentModel
         /// </summary>
         public decimal MaxUnits { get; set; }
 
+        /// <inheritdoc />
         public override void Invoke()
         {
             OnValid();
