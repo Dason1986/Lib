@@ -97,7 +97,7 @@ namespace Library.DynamicCode
             for (int i = 0; i < constructorParameters.Length; i++)
             {
                 var parmtype = constructorParameters[i];
-                var exoprtProterty = exportProperties.FirstOrDefault(n => n.PropertyType.IsAssignableFrom(parmtype.ParameterType));
+                var exoprtProterty = exportProperties.FirstOrDefault(n => n.PropertyType.IsAssignableFrom(parmtype.ParameterType) && n.CanRead);
                 if (exoprtProterty == null)
                 {
                     paramsExpressions[i] = new CodePrimitiveExpression(null);

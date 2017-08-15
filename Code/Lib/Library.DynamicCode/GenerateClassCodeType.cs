@@ -17,7 +17,7 @@ namespace Library.DynamicCode
         }
 
         public CodeTypeDeclaration CodeType { get; private set; }
-        public bool CheckArgs { get; set; }
+       
 
         public void CreateConstructors(Type delegateType)
         {
@@ -26,6 +26,7 @@ namespace Library.DynamicCode
 
             foreach (var constructor in delegateType.GetConstructors(flg))
             {
+                if (constructor.IsPrivate) continue;
                 CodeConstructor codeConstructor = new CodeConstructor() { Attributes = MemberAttributes.Public };
 
                 CodeType.Members.Add(codeConstructor);
@@ -35,8 +36,9 @@ namespace Library.DynamicCode
                         parameter.Name));
 
                     codeConstructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression(parameter.Name));
-                    if (!CheckArgs || !parameter.ParameterType.IsClass) continue;
-
+                    if (!parameter.ParameterType.IsClass) continue;
+                   var checkatt= parameter.GetCustomAttribute(typeof(ChecklArgsNulAttribute), true);
+                    if(checkatt==null) continue;
                     CodeConditionStatement codst = new CodeConditionStatement();
                     CodeExpression rigth;
                     //if (parameter.ParameterType.IsValueType)

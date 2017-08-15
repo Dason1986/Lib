@@ -31,12 +31,16 @@ namespace Library.DynamicCode
         {
         }
     }
-
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public class ExportAttribute : Attribute
     {
     }
 
     public class GenerateAttribute : Attribute
+    {
+    }
+    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false)]
+    public class ChecklArgsNulAttribute : Attribute
     {
     }
 }
