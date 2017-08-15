@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom;
+using System.Reflection;
 
 namespace Library.DynamicCode
 {
@@ -20,7 +21,10 @@ namespace Library.DynamicCode
 
         public void CreateConstructors(Type delegateType)
         {
-            foreach (var constructor in delegateType.GetConstructors())
+            var flg = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic;
+
+
+            foreach (var constructor in delegateType.GetConstructors(flg))
             {
                 CodeConstructor codeConstructor = new CodeConstructor() { Attributes = MemberAttributes.Public };
 

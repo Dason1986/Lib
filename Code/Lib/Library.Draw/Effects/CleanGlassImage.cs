@@ -9,7 +9,7 @@ namespace Library.Draw.Effects
     /// <summary>
     ///
     /// </summary>
-    [LanguageDescription("对比度/亮度"), LanguageDisplayName("对比度/亮度")]
+    [LanguageDescription("鏡頭"), LanguageDisplayName("鏡頭")]
     public class CleanGlassImage : ImageBuilder
     {  /// <summary>
        /// Should be in the range [0, 1].

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
 namespace Library.DynamicCode
 {
+
     public class GenerateAgentTypeAssembly : GenerateAssembly
     {
         public GenerateAgentTypeAssembly(Type interfacetype, Type genericType, Assembly intefaceAssembly, params Assembly[] refAssemblies)
@@ -57,11 +59,8 @@ namespace Library.DynamicCode
         private CodeTypeDeclaration CrateClass(Type interfaceType)
         {
             if (!_delegateType.IsClass) throw new Exception();
-            var exportProperties =
-                interfaceType.GetInterfaces()
-                    .SelectMany(n => n.GetProperties())
-                    .Where(n => n.GetCustomAttributes(typeof(ExportAttribute), true).Length > 0).ToArray();
-
+            var flg = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic;
+            var exportProperties = _delegateType.GetProperties(flg).Where(n => n.GetCustomAttributes(typeof(ExportAttribute), true).Length > 0).ToArray();
             // 类声明
 
             var clsdcl = new GenerateClassCodeType(interfaceType.Name.Substring(1));
@@ -83,7 +82,7 @@ namespace Library.DynamicCode
             return types.FirstOrDefault();
         }
 
-        private void CreateMethod(MethodInfo method, CodeTypeDeclaration clsdcl, PropertyInfo[] exportProperties)
+        private void CreateMethod(MethodInfo method, CodeTypeDeclaration clsdcl, IEnumerable<PropertyInfo> exportProperties)
         {
             var classType = FindCrateClass(method.ReturnType);
             if (classType == null) return;
