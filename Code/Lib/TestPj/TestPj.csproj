@@ -60,6 +60,7 @@
     <Compile Include="Test\AdoTset.cs" />
     <Compile Include="Test\DynamicCodeTest.cs" />
     <Compile Include="Test\EnumerableTest.cs" />
+    <Compile Include="Test\ExpressionsTest.cs" />
     <Compile Include="Test\FileSizeTest.cs" />
     <Compile Include="Test\IdentityGeneratorTest.cs" />
     <Compile Include="Test\LanguageTest.cs" />
@@ -94,10 +95,6 @@
     <ProjectReference Include="..\Library.DynamicCode\Library.DynamicCode.csproj">
       <Project>{15bb70f6-72dc-4045-ae7e-00c42d1007b4}</Project>
       <Name>Library.DynamicCode</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library.FileExtension\Library.FileExtension.csproj">
-      <Project>{3b9dea76-4456-4c12-8bcc-5cd46ce8d9cf}</Project>
-      <Name>Library.FileExtension</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.Management\Library.Management.csproj">
       <Project>{c1cb331b-f9b1-4489-ac4a-4c26f84d6e07}</Project>

@@ -1,15 +1,17 @@
-﻿namespace Library.Domain.Data
+﻿using System.Linq;
+
+namespace Library.Domain.Data
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IDbContext : System.IDisposable
+    public interface IDbContext  
     {
-        //  IQueryable<TEntity> CreateSet<TEntity>() where TEntity : class;
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>
-        IUnitOfWork CreateUnitOfWork();
+        IQueryable<TEntity> CreateSet<TEntity>() where TEntity : class;
     }
 }

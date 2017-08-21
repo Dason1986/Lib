@@ -1,4 +1,5 @@
 ﻿using Library.Domain.Data;
+using Library.Domain.Data.ModuleProviders;
 using Library.Domain.DomainEvents;
 using System;
 using System.Collections.Generic;
@@ -7,42 +8,42 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Library.Domain
+namespace Library.Domain.InThread
 {
     /// <summary>
     ///
     /// </summary>
     /// <typeparam name="TService"></typeparam>
-    public class DomainEventPublish<TService>
+    public class DomainEventPublish<TService> : IDomainEventPublish
         where TService : IDomainService
     {
         /// <summary>
         ///
         /// </summary>
         /// <param name="domainModuleProvider"></param>
-        public DomainEventPublish(IDomainModuleProvider domainModuleProvider)
+        public DomainEventPublish(IModuleProvider domainModuleProvider)
         {
-            if (domainModuleProvider == null) throw new Exception("DomainModuleProvider 爲空");
-            DomainModuleProvider = domainModuleProvider;
+            if (domainModuleProvider == null) throw new Exception("ModuleProvider 爲空");
+            ModuleProvider = domainModuleProvider;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public virtual IDomainModuleProvider DomainModuleProvider { get; private set; }
+        public virtual IModuleProvider ModuleProvider { get; private set; }
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="args"></param>
-        public void Publish(IDomainEventArgs args)
+        public void Publish(DomainEventArgs args)
         {
             Thread thread = new Thread(n =>
             {
                 var service = Bootstrap.Currnet.GetService<TService>();
-                service.DomainModuleProvider = DomainModuleProvider;
+                service.ModuleProvider = ModuleProvider;
                 service.Handle(args);
-                DomainModuleProvider.UnitOfWork.Commit();
+                ModuleProvider.UnitOfWork.Commit();
             });
             thread.Start();
         }
@@ -63,7 +64,7 @@ namespace Library.Domain
         /// <summary>
         ///
         /// </summary>
-        public virtual IDomainModuleProvider DomainModuleProvider { get; set; }
+        public virtual IModuleProvider ModuleProvider { get; set; }
 
         private IList<IDomainEventHandler> handers = new List<IDomainEventHandler>();
 
@@ -84,23 +85,23 @@ namespace Library.Domain
         /// <summary>
         ///
         /// </summary>
-        public virtual void Publish()
+        public virtual void Publish(DomainEventArgs args)
         {
-            PublishThread().Start();
+            PublishThread(args).Start();
         }
 
-        private Thread PublishThread()
+        private Thread PublishThread(DomainEventArgs args)
         {
-            if (DomainModuleProvider == null) throw new Exception("DomainModuleProvider 爲空");
+            if (ModuleProvider == null) throw new Exception("ModuleProvider 爲空");
             Thread thread = new Thread(n =>
             {
                 foreach (var item in handers)
                 {
                     var service = item.CreateService();
-                    service.DomainModuleProvider = DomainModuleProvider;
-                    service.Handle(item.Args);
+                    service.ModuleProvider = ModuleProvider;
+                    service.Handle(args);
                 }
-                DomainModuleProvider.UnitOfWork.Commit();
+                ModuleProvider.UnitOfWork.Commit();
                 handers.Clear();
             });
 
@@ -110,11 +111,91 @@ namespace Library.Domain
         /// <summary>
         ///
         /// </summary>
-        public virtual void PublishAwait()
+        public virtual void PublishAwait(DomainEventArgs args)
         {
-            Thread th = PublishThread();
+            Thread th = PublishThread(args);
             th.Start();
             th.Join();
         }
+    }
+}
+
+namespace Library.Domain.EF
+{
+    /// <summary>
+    ///
+    /// </summary>
+    /// <typeparam name="TService"></typeparam>
+    public class EfDomainEventPublish<TService> : IDomainEventPublish
+        where TService : IDomainService
+    {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="domainModuleProvider"></param>
+        public EfDomainEventPublish(IModuleProvider domainModuleProvider)
+        {
+            if (domainModuleProvider == null) throw new Exception("ModuleProvider 爲空");
+            ModuleProvider = domainModuleProvider;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public virtual IModuleProvider ModuleProvider { get; private set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="args"></param>
+        public void Publish(DomainEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public class EfDomainEventBus : IDomainEventBus
+    {
+        /// <summary>
+        ///
+        /// </summary>
+        public EfDomainEventBus()
+        {
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public virtual IModuleProvider ModuleProvider { get; set; }
+
+        private IList<IDomainEventHandler> handers = new List<IDomainEventHandler>();
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="eventHandler"></param>
+        public void AddEvent(DomainEventHandler eventHandler)
+        {
+            handers.Add(eventHandler);
+        }
+
+        void IDomainEventBus.AddEvent(IDomainEventHandler eventHandler)
+        {
+            if (eventHandler is DomainEventHandler == false) throw new Exception();
+            AddEvent(eventHandler as DomainEventHandler);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public virtual void Publish(DomainEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

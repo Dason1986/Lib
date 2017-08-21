@@ -9,5 +9,5 @@
         /// 顯示名稱
         /// </summary>
         string DisplayName { get; }
-    }
+    } 
 }

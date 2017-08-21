@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Domain.Data;
+using Library.Domain.Data.ModuleProviders;
 
 namespace Library.Domain.DomainEvents
 {
@@ -15,19 +16,30 @@ namespace Library.Domain.DomainEvents
         /// <summary>
         ///
         /// </summary>
-        IDomainModuleProvider DomainModuleProvider { get; set; }
+        IModuleProvider ModuleProvider { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="args"></param>
-        void Handle(IDomainEventArgs args);
+        void Handle(DomainEventArgs args);
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IDomainEventPublish
+    {
+  
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        void Publish(DomainEventArgs args);
+    }
     /// <summary>
     ///
     /// </summary>
-    public interface IDomainService<in TEvent> : IDomainService where TEvent : IDomainEventArgs
+    public interface IDomainService<in TEvent> : IDomainService where TEvent : DomainEventArgs
     {
         /// <summary>
         ///
@@ -41,10 +53,7 @@ namespace Library.Domain.DomainEvents
     /// </summary>
     public interface IDomainEventHandler
     {
-        /// <summary>
-        ///
-        /// </summary>
-        IDomainEventArgs Args { get; }
+
 
         /// <summary>
         ///
@@ -69,80 +78,15 @@ namespace Library.Domain.DomainEvents
     /// <summary>
     ///
     /// </summary>
-    public abstract class DomainEventHandler : IDomainEventHandler
+    public abstract class DomainEventArgs
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="args"></param>
-        public DomainEventHandler(IDomainEventArgs args)
-        {
-            Args = args;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public IDomainEventArgs Args
-        {
-            get; protected set;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        protected abstract IDomainService OnCreateService();
-
-        IDomainService IDomainEventHandler.CreateService()
-        {
-            return OnCreateService();
-        }
     }
-
     /// <summary>
-    ///
+    /// 
     /// </summary>
-    /// <typeparam name="TService"></typeparam>
-    public class DomainEventHandler<TService> : DomainEventHandler, IDomainEventHandler<TService> where TService : IDomainService
+    public sealed class DomainEmtpyArgs : DomainEventArgs
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="args"></param>
-        public DomainEventHandler(IDomainEventArgs args) : base(args)
-        {
-        }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        public virtual TService CreateService()
-        {
-            return Library.Bootstrap.Currnet.GetService<TService>();
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        protected override IDomainService OnCreateService()
-        {
-            return CreateService();
-        }
-
-        IDomainService IDomainEventHandler.CreateService()
-        {
-            return CreateService();
-        }
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public interface IDomainEventArgs
-    {
     }
 
     /// <summary>
@@ -159,6 +103,6 @@ namespace Library.Domain.DomainEvents
         /// <summary>
         ///
         /// </summary>
-        void Publish();
+        void Publish(DomainEventArgs args);
     }
 }

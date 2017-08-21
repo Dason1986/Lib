@@ -54,10 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\Repository~.cs" />
-    <Compile Include="EF\EFContext.cs" />
-    <Compile Include="EF\DomainModuleProvider.cs" />
-    <Compile Include="EF\Repository.cs" />
     <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +68,14 @@
     <ProjectReference Include="..\Library.Domain\Library.Domain.csproj">
       <Project>{013b4b3e-612b-4966-8975-cf6c653162d1}</Project>
       <Name>Library.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.DynamicCode\Library.DynamicCode.csproj">
+      <Project>{15BB70F6-72DC-4045-AE7E-00C42D1007B4}</Project>
+      <Name>Library.DynamicCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>
+      <Name>Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

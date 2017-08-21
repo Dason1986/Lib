@@ -59,10 +59,11 @@
     <Compile Include="Att\AttributeHelper.cs" />
     <Compile Include="Att\LanguageCategoryAttribute.cs" />
     <Compile Include="Att\LanguageDescriptionAttribute.cs" />
+    <Compile Include="ComponentModel\IChangeValue.cs" />
+    <Compile Include="ComponentModel\Model\IPaggingList.cs" />
     <Compile Include="Data\MicroDataTable.cs" />
     <Compile Include="enum\AlignmentType.cs" />
     <Compile Include="Att\LanguageDisplayNameAttribute.cs" />
-    <Compile Include="Bootstrap.cs" />
     <Compile Include="ComponentModel\Logic\ILogicService.cs" />
     <Compile Include="BytesSize.cs" />
     <Compile Include="ComponentModel\Model\IEntity.cs" />

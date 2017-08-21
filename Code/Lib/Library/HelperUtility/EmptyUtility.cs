@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -79,6 +79,14 @@ namespace Library.HelperUtility
         public static bool IsEmpty(this DataTable dt)
         {
             return dt == null || dt.Rows.Count == 0;
+        }
+        /// <summary> 
+        /// 是否为空 
+        /// </summary> 
+        /// <param name="value">值</param> 
+        public static bool IsEmpty(string value)
+        {
+            return string.IsNullOrWhiteSpace(value);
         }
 
         /// <summary>
