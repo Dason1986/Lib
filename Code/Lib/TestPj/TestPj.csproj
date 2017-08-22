@@ -37,9 +37,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -95,10 +94,6 @@
     <ProjectReference Include="..\Library.DynamicCode\Library.DynamicCode.csproj">
       <Project>{15bb70f6-72dc-4045-ae7e-00c42d1007b4}</Project>
       <Name>Library.DynamicCode</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library.Management\Library.Management.csproj">
-      <Project>{c1cb331b-f9b1-4489-ac4a-4c26f84d6e07}</Project>
-      <Name>Library.Management</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library\Library.csproj">
       <Project>{67ead53c-a855-4bc4-91eb-14cf8d812d36}</Project>

@@ -1,5 +1,4 @@
 ﻿using Library;
-using Library.Controls;
 using Library.Draw;
 using Library.Draw.Effects;
 using Library.HelperUtility;
@@ -27,7 +26,7 @@ namespace TestWinform
             if (Program.Original == null) return;
             sourceiamge = new Bitmap(new MemoryStream(Program.Original));
 
-            ImageEffectsVisualizer.TestShowVisualizer(sourceiamge);
+           
             this.pictureBox1.Image = sourceiamge;
             //    fileBytes = Program.Original;
             CreateBuilder();
@@ -108,15 +107,15 @@ namespace TestWinform
             builderobj.ProcessCompleted -= builderobj_ProcessCompleted;
             if (e.Error != null) MessageBox.Show(e.Error.Message);
             panel1.Enabled = true;
-            cmd.HideOpaqueLayer();
+     
         }
 
-        private OpaqueCommand cmd;
+      
 
         private void button3_Click(object sender, EventArgs e)
         {
             panel1.Enabled = false;
-            cmd = OpaqueLayer.Show(this, 125, true);
+        
             builderobj.SetOpetion(option);
             builderobj.SetSourceImage(this.sourceiamge);
             builderobj.ProcessCompleted += builderobj_ProcessCompleted;

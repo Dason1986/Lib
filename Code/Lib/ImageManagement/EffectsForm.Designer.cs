@@ -34,11 +34,11 @@ namespace TestWinform
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new Library.Controls.Button();
-            this.checkBox1 = new Library.Controls.CheckBox();
-            this.comboBox1 = new Library.Controls.ComboBox();
-            this.button2 = new Library.Controls.Button();
-            this.button3 = new Library.Controls.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -163,13 +163,13 @@ namespace TestWinform
         #endregion
 
         private PropertyGrid grid;
-        private Library.Controls.Button button1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Library.Controls.ComboBox comboBox1;
-        private Library.Controls.Button button2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button2;
         private PictureBox pictureBox2;
-        private Library.Controls.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
         private Panel panel1;
-        private Library.Controls.Button button3;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -12,7 +12,7 @@ namespace Library.ComponentModel.Model
     /// <summary>
     ///
     /// </summary>
-    public interface IEntity
+    public interface IEntity: IAggregateRoot<IEntity, Guid>
     {
         /// <summary>
         /// 
@@ -23,7 +23,18 @@ namespace Library.ComponentModel.Model
         /// </summary>
         StatusCode StatusCode { get; set; }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
+    public interface IAggregateRoot<TEntity, TKey> where TEntity : class
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        TKey ID { get; }
+    }
     /// <summary>
     /// 
     /// </summary>

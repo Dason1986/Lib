@@ -11,7 +11,6 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -168,7 +167,7 @@ namespace Library.Domain.Data.EF
         #endregion IQueryableUnitOfWork
     }
 
-    internal class DbContextWrapper<TEntity, TKey> : IDbContextWrapper<TEntity>
+    internal class DbContextWrapper<TEntity, TKey> : IDbContextWrapper<TEntity, TKey>
         where TEntity : class, IAggregateRoot<TEntity, TKey>
 
     {
@@ -239,7 +238,7 @@ namespace Library.Domain.Data.EF
             if (ids == null)
                 return null;
             var array = ids.ToList();
-            return FindAsNoTracking().Where(t => array.Contains(t.Id)).ToList();
+            return FindAsNoTracking().Where(t => array.Contains(t.ID)).ToList();
         }
 
         /// <summary>
@@ -258,7 +257,7 @@ namespace Library.Domain.Data.EF
         {
             if (ids == null)
                 return null;
-            return await FindAsNoTracking().Where(t => ids.Contains(t.Id)).ToListAsync();
+            return await FindAsNoTracking().Where(t => ids.Contains(t.ID)).ToListAsync();
         }
         /// <summary>
         /// 
@@ -279,7 +278,17 @@ namespace Library.Domain.Data.EF
                 throw new ArgumentNullException(nameof(entities));
             sets.AddRange(entities);
         }
+        /// <summary>
+        /// 删除实体
+        /// </summary>
+        /// <param name="id"></param>
+        public void Remove(TKey id)
+        {
+            throw new NotImplementedException();
+        }
+        
     }
+
     public abstract class Repository : IRepository
     {
         protected Repository([ChecklArgsNulAttribute]DbContext dbcontext)
@@ -308,7 +317,7 @@ namespace Library.Domain.Data.EF
 
         }
         private readonly DbContextWrapper<TEntity, Guid> _wrapper;
-        protected IDbContextWrapper<TEntity> Wrapper { get { return _wrapper; } }
+        protected IDbContextWrapper<TEntity, Guid> Wrapper { get { return _wrapper; } }
         public void Add(TEntity item)
         {
             _wrapper.Add(item);
@@ -404,7 +413,9 @@ namespace Library.Domain.Data.EF
 
         public void Remove(Guid id)
         {
-            throw new NotImplementedException();
+         
+            this._wrapper.Remove(id);
+         
         }
 
         public IEnumerable<TEntity> GetAll()

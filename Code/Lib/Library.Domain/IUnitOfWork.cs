@@ -1,16 +1,20 @@
 ﻿using Library.ComponentModel.Model;
 using Library.Domain.Data.Composite;
+using Library.HelperUtility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Library.Domain.Data
 {
+    #region interface
+
     /// <summary>
     /// 
     /// </summary>
-    public interface IUnitOfWork
+    public interface IUnitOfWork  
     {
         /// <summary>
         /// 
@@ -28,41 +32,33 @@ namespace Library.Domain.Data
         void RollbackChanges();
 
     }
+
+
     /// <summary>
     /// 
     /// </summary>
-    public interface IVersion
-    {
-    }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    /// <typeparam name="TKey"></typeparam>
-    public interface IAggregateRoot<TEntity, TKey> where TEntity : class
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        TKey Id { get; }
-    }
-    /// <summary>
-    /// 
-    /// </summary>
-    public interface IDbContext  
+    public interface IDbContext
     {
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>
-        IQueryable<TEntity> CreateSet<TEntity>() where TEntity : class;
+        IQueryable<TEntity> CreateQuerySet<TEntity>() where TEntity : class;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <returns></returns>
+        IEnumerable<TEntity> CreateDataSet<TEntity>() where TEntity : class;
     }
     /// <summary>
     /// 
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IDbContextWrapper<TEntity>
+    /// <typeparam name="TKey"></typeparam>
+    public interface IDbContextWrapper<TEntity, TKey> where TEntity : class, IAggregateRoot<TEntity, TKey>
     {
         /// <summary>
         /// 查找实体
@@ -72,6 +68,45 @@ namespace Library.Domain.Data
         /// 获取未跟踪的实体集
         /// </summary>
         IQueryable<TEntity> FindAsNoTracking();
+
+
+        /// <summary>
+        /// 查找实体
+        /// </summary>
+        /// <param name="id">实体标识</param>
+        TEntity Find(TKey id);
+
+
+
+        /// <summary>
+        /// 查找实体集合
+        /// </summary>
+        /// <param name="ids">实体标识集合</param>
+        IList<TEntity> FindByIds(params TKey[] ids);
+
+        /// <summary>
+        /// 查找实体集合
+        /// </summary>
+        /// <param name="ids">实体标识集合</param>
+        IList<TEntity> FindByIds(IEnumerable<TKey> ids);
+
+
+        /// <summary>
+        /// 删除实体
+        /// </summary>
+        /// <param name="id"></param>
+        void Remove(TKey id);
+
+        /// <summary>
+        /// 
+        /// </summary> 
+        /// <param name="item"></param>
+        void Add(TEntity item);
+        /// <summary>
+        /// 添加实体集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        void Add(IEnumerable<TEntity> entities);
     }
     namespace Composite
     {
@@ -215,6 +250,105 @@ namespace Library.Domain.Data
             /// <typeparam name="TEntity"></typeparam>
             /// <returns></returns>
             Repositorys.IRepository<TEntity> CreateRepository<TEntity>() where TEntity : class, ICreatedInfo, IAggregateRoot<TEntity, Guid>;
+        }
+    }
+
+    #endregion
+
+
+
+    namespace Composite
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public class Specification<T> : ISpecification<T> where T : Entity
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public Specification()
+            {
+                SearchPredicate = ExpressionHelper.True<T>();
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            protected internal Expression<Func<T, bool>> SearchPredicate { get; set; }
+            #region interface
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="status"></param>
+            /// <returns></returns>
+            public virtual ISpecification<T> SetStatusCode(StatusCode status = StatusCode.Enabled)
+            {
+                SearchPredicate = SearchPredicate.And(o => o.StatusCode == status);
+                return this;
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="specification"></param>
+            /// <returns></returns>
+            public virtual ISpecification<T> And(ISpecification<T> specification)
+            {
+
+                SearchPredicate.And(specification.ToExpression());
+                return this;
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="entity"></param>
+            /// <returns></returns>
+            public virtual bool IsSatisifiedBy(T entity)
+            {
+                return SearchPredicate.Compile().Invoke(entity);
+
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
+            public virtual Expression<Func<T, bool>> ToExpression()
+            {
+                return SearchPredicate;
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="specification"></param>
+            /// <returns></returns>
+            public ISpecification<T> Not(ISpecification<T> specification)
+            {
+                SearchPredicate.NotEqual(specification.ToExpression());
+                return this;
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="specification"></param>
+            /// <returns></returns>
+            public ISpecification<T> Or(ISpecification<T> specification)
+            {
+                SearchPredicate.Or(specification.ToExpression());
+                return this;
+            }
+
+            #endregion
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
+            public static ISpecification<T> Enabled()
+            {
+                var sp = new Specification<T>();
+                sp.SetStatusCode(StatusCode.Enabled);
+                return sp;
+            }
         }
     }
 }

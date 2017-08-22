@@ -15,6 +15,7 @@ namespace Library.HelperUtility
     /// </summary>
     public static class ADONetHepler
     {
+        /*
         /// <summary>
         ///
         /// </summary>
@@ -65,7 +66,7 @@ namespace Library.HelperUtility
             table.TotalCount = index;
 
             return table;
-        }
+        }*/
 
         /// <summary>
         ///
