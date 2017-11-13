@@ -39,6 +39,11 @@ namespace Library
         /// </summary>
         /// <param name="value"></param>
         void SetValue(string value);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        string GetValue();
     }
     /// <summary>
     /// 
@@ -103,6 +108,15 @@ namespace Library
         ///
         /// </summary>
         public string Value { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string GetValue()
+        {
+            return Value;
+        }
 
         /// <summary>
         ///

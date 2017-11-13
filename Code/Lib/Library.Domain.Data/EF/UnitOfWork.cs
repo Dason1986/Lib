@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
@@ -27,7 +28,8 @@ namespace Library.Domain.Data.EF
         public static void ClearCache(this IUnitOfWork unitOfWork)
         {
             var dbContext = unitOfWork as DbContext;
-            dbContext?.ChangeTracker.Entries().ToList().ForEach(entry => entry.State = EntityState.Detached);
+            if (dbContext != null && dbContext.ChangeTracker != null)
+                dbContext.ChangeTracker.Entries().ToList().ForEach(entry => entry.State = EntityState.Detached);
         }
     }
     public class UnitOfWork : IUnitOfWork
@@ -151,11 +153,6 @@ namespace Library.Domain.Data.EF
         }
 
         #endregion
-        public bool IsOpen()
-        {
-            var connection = _dbconntext.Database.Connection;
-            return connection.State == System.Data.ConnectionState.Open;
-        }
 
 
 
@@ -164,11 +161,33 @@ namespace Library.Domain.Data.EF
             _dbconntext.ChangeTracker.Entries().ToList().ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
+        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters)
+        {
+            return Dbconntext.Database.SqlQuery<TEntity>(sqlQuery, parameters).ToArray();
+        }
+
+        public int ExecuteCommand(string sqlCommand, params object[] parameters)
+        {
+            return Dbconntext.Database.ExecuteSqlCommand(sqlCommand, parameters);
+        }
+
+        public void Dispose()
+        {
+            if (Dbconntext == null || Dbconntext.Database == null || Dbconntext.Database.Connection == null) return;
+            if (Dbconntext.Database.Connection.State == ConnectionState.Open)
+            {
+                Dbconntext.Database.Connection.Close();
+                Dbconntext.Dispose();
+                _dbconntext = null;
+            }
+
+        }
+
         #endregion IQueryableUnitOfWork
     }
 
-    internal class DbContextWrapper<TEntity, TKey> : IDbContextWrapper<TEntity, TKey>
-        where TEntity : class, IAggregateRoot<TEntity, TKey>
+    public class DbContextWrapper<TEntity, TKey> : IDbContextWrapper<TEntity>
+        where TEntity : class, ICreatedInfo, IAggregateRoot< TKey>
 
     {
         public DbContextWrapper(UnitOfWork unit)
@@ -182,6 +201,11 @@ namespace Library.Domain.Data.EF
         public DbSet<TEntity> CreateSet()
         {
             return Unit.Dbconntext.Set<TEntity>();
+        }
+
+        IQueryable<TEntity> IDbContextWrapper<TEntity>.CreateSet()
+        {
+            return CreateSet();
         }
 
         /// <summary>
@@ -209,6 +233,19 @@ namespace Library.Domain.Data.EF
             return CreateSet().Find(id);
         }
 
+
+        /// <summary>
+        /// 查找实体
+        /// </summary>
+        /// <param name="id">实体标识</param>
+        public void Remove(TKey id)
+        {
+            if (id == null) return;
+
+            var set = CreateSet();
+            var entity = set.Find(id);
+            if (entity != null) set.Remove(entity);
+        }
         /// <summary>
         /// 查找实体
         /// </summary>
@@ -275,61 +312,54 @@ namespace Library.Domain.Data.EF
         public void Add(IEnumerable<TEntity> entities)
         {
             if (entities == null)
-                throw new ArgumentNullException(nameof(entities));
+                throw new ArgumentNullException("entities");
             sets.AddRange(entities);
         }
-        /// <summary>
-        /// 删除实体
-        /// </summary>
-        /// <param name="id"></param>
-        public void Remove(TKey id)
+
+
+        public IEnumerable<TEntity> Find(ISpecification<TEntity> specification, SortDescriptor[] sortings, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            throw new NotImplementedException();
+            var query = this.FindAsNoTracking().Where(specification.ToExpression());
+            int index = 0;
+            #region sortings
+            if (sortings != null && sortings.Length > 0)
+            {
+                foreach (var sorting in sortings)
+                {
+                    if (string.IsNullOrWhiteSpace(sorting.Field))
+                        continue;
+                    if (sorting.Direction == SortDescriptor.SortingDirection.Ascending)
+                    {
+                        query = CallMethod(query, index == 0 ? "OrderBy" : "ThenBy", sorting.Field);
+                        index++;
+                    }
+                    else if (sorting.Direction == SortDescriptor.SortingDirection.Descending)
+                    {
+                        query = CallMethod(query, index == 0 ? "OrderByDescending" : "ThenByDescending", sorting.Field);
+                        index++;
+                    }
+                }
+            }
+            if (index == 0)
+            {
+                query = query.OrderByDescending(n => n.Created);
+            }
+            #endregion
+
+            #region 子屬性 join sql
+
+            if (includeProperties != null && includeProperties.Any())
+            {
+                query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+            }
+            #endregion
+            return query.ToList();
         }
-        
-    }
-
-    public abstract class Repository : IRepository
-    {
-        protected Repository([ChecklArgsNulAttribute]DbContext dbcontext)
-        {
-            if (dbcontext == null) throw new Exception();
-            if (dbcontext.Database == null || dbcontext.Database.Connection == null) throw new Exception();
-            DbContext = dbcontext;
-            UnitOfWork = new UnitOfWork(dbcontext);
-
-        }
-        [ExportAttribute]
-        public IUnitOfWork UnitOfWork { get; private set; }
-
-        [ExportAttribute]
-        protected DbContext DbContext
-        {
-            get; private set;
-        }
-
-    }
-    public class Repository<TEntity> : Repository, IRepository<TEntity> where TEntity : class, ICreatedInfo, IAggregateRoot<TEntity, Guid>
-    {
-        public Repository([ChecklArgsNulAttribute]DbContext dbcontext) : base(dbcontext)
-        {
-            _wrapper = new DbContextWrapper<TEntity, Guid>(this.UnitOfWork as UnitOfWork);
-
-        }
-        private readonly DbContextWrapper<TEntity, Guid> _wrapper;
-        protected IDbContextWrapper<TEntity, Guid> Wrapper { get { return _wrapper; } }
-        public void Add(TEntity item)
-        {
-            _wrapper.Add(item);
-        }
-
-
-
         public IPagingList<TEntity> FindPageList(Expression<Func<TEntity, bool>> criteria,
-            PageSizeDescriptor page, SortDescriptor[] sortings, params Expression<Func<TEntity, object>>[] includeProperties)
+          PageSizeDescriptor page, SortDescriptor[] sortings, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             int index = 0;
-            IQueryable<TEntity> query = _wrapper.FindAsNoTracking();
+            IQueryable<TEntity> query = this.FindAsNoTracking();
             query = query.Where(criteria);
             var totalRowCount = query.Count();
             #region sortings
@@ -403,32 +433,86 @@ namespace Library.Domain.Data.EF
 
 
         #endregion
-
-        public TEntity Get(Guid id)
+    }
+    public abstract class Repository : IRepository
+    {
+        protected Repository([ChecklArgsNulAttribute]DbContext dbcontext)
         {
-            return _wrapper.Find(id);
+            if (dbcontext == null) throw new ArgumentNullException("dbcontext");
+            if (dbcontext.Database == null || dbcontext.Database.Connection == null) throw new ArgumentNullException("Connection");
+            DbContext = dbcontext;
+            UnitOfWork = new UnitOfWork(dbcontext);
+
+        }
+        [ExportAttribute]
+        public IUnitOfWork UnitOfWork { get; private set; }
+
+        [ExportAttribute]
+        protected DbContext DbContext
+        {
+            get; private set;
+        }
+
+    }
+
+    public abstract class Repository<TEntity, TKey> : Repository,  IRepository<TEntity, TKey> where TEntity : class, ICreatedInfo, IAggregateRoot< TKey>
+    {
+        private readonly DbContextWrapper<TEntity, TKey> _wrapper;
+        protected DbContextWrapper<TEntity, TKey> Wrapper { get { return _wrapper; } }
+        public Repository([ChecklArgsNulAttribute]DbContext dbcontext) : base(dbcontext)
+        {
+            _wrapper = new DbContextWrapper<TEntity, TKey>(this.UnitOfWork as UnitOfWork);
+
+        }
+        public IPagingList<TEntity> FindPageList(Expression<Func<TEntity, bool>> criteria,
+           PageSizeDescriptor page, SortDescriptor[] sortings, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            return Wrapper.FindPageList(criteria, page, sortings, includeProperties);
+
+        }
+
+
+        public TEntity Get(TKey id)
+        {
+            return Wrapper.Find(id);
         }
 
 
 
-        public void Remove(Guid id)
+        public void Remove(TKey id)
         {
-         
-            this._wrapper.Remove(id);
-         
+            Wrapper.Remove(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            var set = _wrapper.FindAsNoTracking();
+            var set = Wrapper.FindAsNoTracking();
             return set;
         }
 
-        public IEnumerable<TEntity> Find(ISpecification<TEntity> specification)
+        public IEnumerable<TEntity> Find(ISpecification<TEntity> specification, SortDescriptor[] sortings, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            var query = _wrapper.FindAsNoTracking().Where(specification.ToExpression());
-            return query.ToList();
+            return Wrapper.Find(specification, sortings, includeProperties);
+
         }
+
+        public void Add(TEntity item)
+        {
+            Wrapper.Add(item);
+        }
+    }
+    public class Repository<TEntity> : Repository<TEntity, Guid>, IRepository<TEntity> where TEntity : Entity
+    {
+        public Repository([ChecklArgsNulAttribute]DbContext dbcontext) : base(dbcontext)
+        {
+
+        }
+
+
+
+
+
+
     }
 
     public abstract class ModuleProvider : IModuleProvider
@@ -443,61 +527,12 @@ namespace Library.Domain.Data.EF
         [ExportAttribute]
         protected internal DbContext DbContext { get; private set; }
 
-        public Repository<TEntity> CreateRepository<TEntity>() where TEntity : class, ICreatedInfo, IAggregateRoot<TEntity, Guid>
+        protected Repository<TEntity> CreateRepository<TEntity>() where TEntity : Entity
         {
             return new Repository<TEntity>(DbContext);
         }
 
-        IRepository<TEntity> IModuleProvider.CreateRepository<TEntity>()
-        {
-            return this.CreateRepository<TEntity>();
-        }
+
         IUnitOfWork IModuleProvider.UnitOfWork { get { return this.UnitOfWork; } }
-    }
-
-    public class Specification<T> : ISpecification<T> where T : Entity
-    {
-
-        public static ISpecification<T> Enabled()
-        {
-            var sp = new Specification<T>();
-            sp.SetStatusCode(StatusCode.Enabled);
-            return sp;
-        }
-        protected internal Expression<Func<T, bool>> searchPredicate = ExpressionHelper.True<T>();
-
-        public virtual ISpecification<T> SetStatusCode( StatusCode status =  StatusCode.Enabled)
-        {
-            searchPredicate = searchPredicate.And(o => o.StatusCode == status);
-            return this;
-        }
-
-        public virtual ISpecification<T> And(ISpecification<T> specification)
-        {
-
-            searchPredicate.And(specification.ToExpression());
-            return this;
-        }
-        public virtual bool IsSatisifiedBy(T entity)
-        {
-            return searchPredicate.Compile().Invoke(entity);
-
-        }
-        public virtual Expression<Func<T, bool>> ToExpression()
-        {
-            return searchPredicate;
-        }
-
-        public ISpecification<T> Not(ISpecification<T> specification)
-        {
-            searchPredicate.NotEqual(specification.ToExpression());
-            return this;
-        }
-
-        public ISpecification<T> Or(ISpecification<T> specification)
-        {
-            searchPredicate.Or(specification.ToExpression());
-            return this;
-        }
     }
 }

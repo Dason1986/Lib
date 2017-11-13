@@ -39,9 +39,26 @@ namespace Library.Domain
     /// <summary>
     /// 
     /// </summary>
-    public abstract class Entity : PropertyChangeModel, IEntity, ICreatedInfo
+    public abstract class Entity : PropertyChangeModel, IEntity, ICreatedInfo, IAggregateRoot<Guid>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="createinfo"></param>
+        public Entity(ICreatedInfo createinfo)
+        {
+            ID = IdentityGenerator.NewGuid();
+            Created = DateTime.Now;
+            CreatedBy = createinfo.CreatedBy;
+            StatusCode = StatusCode.Enabled;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Entity()
+        {
 
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -82,8 +99,23 @@ namespace Library.Domain
     public abstract class AuditedEntity : Entity, IAuditedEntity
     {
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public AuditedEntity()
+        {
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="createinfo"></param>
+        public AuditedEntity(ICreatedInfo createinfo) : base(createinfo)
+        {
+            Modified = DateTime.Now;
+            ModifiedBy = createinfo.CreatedBy;
 
 
+        }
 
         /// <summary>
         /// 
@@ -99,7 +131,7 @@ namespace Library.Domain
 
 
 
-    
+
 
 
 

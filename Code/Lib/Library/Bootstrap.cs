@@ -86,6 +86,28 @@ namespace Library
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public abstract object GetService(Type type);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="argtypes"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public abstract object GetService(Type type, Type[] argtypes, object[] obj);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="constantNames"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public abstract object GetService(Type type, string[] constantNames, object[] obj);
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public abstract T GetService<T>(string name);

@@ -12,7 +12,7 @@ namespace Library.ComponentModel.Model
     /// <summary>
     ///
     /// </summary>
-    public interface IEntity: IAggregateRoot<IEntity, Guid>
+    public interface IEntity: IAggregateRoot< Guid>
     {
         /// <summary>
         /// 
@@ -26,9 +26,8 @@ namespace Library.ComponentModel.Model
     /// <summary>
     /// 
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TKey"></typeparam>
-    public interface IAggregateRoot<TEntity, TKey> where TEntity : class
+    public interface IAggregateRoot< TKey>
     {
         /// <summary>
         /// 

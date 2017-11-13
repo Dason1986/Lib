@@ -68,6 +68,7 @@
     <Compile Include="BytesSize.cs" />
     <Compile Include="ComponentModel\Model\IEntity.cs" />
     <Compile Include="enum\Sex.cs" />
+    <Compile Include="IDependencyResolver.cs" />
     <Compile Include="ResourceManagement.cs" />
     <Compile Include="ComponentModel\ISerialNumberBuilder.cs" />
     <Compile Include="ComponentModel\Model\StatusCode.cs" />
