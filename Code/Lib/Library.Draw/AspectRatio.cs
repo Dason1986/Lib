@@ -44,7 +44,23 @@ namespace Library.Draw
         public static AspectRatioF FormSize(float width, float height)
         {
             var gcd = MathUtility.GCD(width, height);
-            return new AspectRatioF(width / gcd, height / gcd);
+            var tempwidth = width / gcd;
+            var tempheight = height / gcd;
+            if (tempwidth >= 100)
+            {
+                var length = tempwidth.ToString().Length - 2;
+                var xu = (float)System.Math.Pow(10, length);
+                tempwidth = tempwidth / xu;
+                tempheight = tempheight / xu;
+            }
+            if (tempheight >= 100)
+            {
+                var length = tempheight.ToString().Length - 2;
+                var xu = (float)System.Math.Pow(10, length);
+                tempwidth = tempwidth / xu;
+                tempheight = tempheight / xu;
+            }
+            return new AspectRatioF(tempwidth, tempheight);
         }
         /// <summary>
         /// 長寬比
@@ -135,11 +151,11 @@ namespace Library.Draw
         /// <summary>
         /// 
         /// </summary>
-        public AspectRatio Ratio { get; set; } 
+        public AspectRatio Ratio { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public static readonly ResolutionEntity HD1080P=new ResolutionEntity() {Name ="1080P", Size=new Size(1920, 1080),Ratio = new AspectRatio(16,9)};
+        public static readonly ResolutionEntity HD1080P = new ResolutionEntity() { Name = "1080P", Size = new Size(1920, 1080), Ratio = new AspectRatio(16, 9) };
 
         /// <summary>
         /// 
@@ -152,11 +168,11 @@ namespace Library.Draw
         /// <summary>
         /// 
         /// </summary>
-        public static readonly ResolutionEntity HD8K = new ResolutionEntity() { Name = "8K", Size = new Size(7680, 4320), Ratio = new AspectRatio(16, 9) }; 
+        public static readonly ResolutionEntity HD8K = new ResolutionEntity() { Name = "8K", Size = new Size(7680, 4320), Ratio = new AspectRatio(16, 9) };
 
-        
 
-    
+
+
 
 
 

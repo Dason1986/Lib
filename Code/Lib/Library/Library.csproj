@@ -92,6 +92,7 @@
     <Compile Include="HelperUtility\FormatUtility.cs" />
     <Compile Include="HelperUtility\EmptyUtility.cs" />
     <Compile Include="HelperUtility\EnumHelper.cs" />
+    <Compile Include="HelperUtility\MathUtility.cs" />
     <Compile Include="HelperUtility\OSUtility.cs" />
     <Compile Include="HelperUtility\ProviderUtilty.cs" />
     <Compile Include="HelperUtility\RandomHelper.cs" />

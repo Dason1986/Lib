@@ -12,3 +12,7 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 *.user
+/Code/Lib/.vs/Library/v15/Server/sqlite3
+/Code/Lib/.vs/Library/v15/sqlite3/db.lock
+/Code/Lib/.vs/Library/v15/sqlite3/storage.ide-shm
+/Code/Lib/.vs/Library/v15/sqlite3/storage.ide-wal

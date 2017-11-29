@@ -1,4 +1,5 @@
-﻿using Library.Draw.Code;
+﻿using Library.Draw;
+using Library.Draw.Code;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
