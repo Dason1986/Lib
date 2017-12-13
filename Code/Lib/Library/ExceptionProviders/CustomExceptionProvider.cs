@@ -2,18 +2,13 @@
 using System.Configuration;
 using System.Configuration.Provider;
 using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace Library.ExceptionProviders
 {
-    /// <summary>
-    ///
-    /// </summary>
     public abstract class CustomExceptionProvider : ProviderBase
     {
-        /// <summary>
-        ///
-        /// </summary>
         public static CustomExceptionCollection Providers
         {
             get
@@ -24,12 +19,21 @@ namespace Library.ExceptionProviders
         }
 
         private static CustomExceptionCollection _provider;
-
-        /// <summary>
-        ///
-        /// </summary>
         public const string DefaultSection = "customExceptions";
+        public string GetLogerName(Exception exception)
+        {
 
+            string logname = string.Format("{0} => {1}", exception.TargetSite.DeclaringType.FullName, exception.TargetSite.Name);
+            return logname;
+        }
+        public static void Add(CustomExceptionProvider provider)
+        {
+            if (_provider == null)
+            {
+                _provider = new CustomExceptionCollection();
+            }
+            _provider.Add(new CustomExceptionElement { Name = provider.Name, Type = provider.GetType().Name, Provider = provider });
+        }
         private static void Initialize()
         {
             if (_provider != null) return;
@@ -72,39 +76,19 @@ namespace Library.ExceptionProviders
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="error"></param>
-        /// <param name="message"></param>
-        /// <returns></returns>
         public abstract Exception ProvideFault(Exception error, ref string message);
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="error"></param>
-        /// <returns></returns>
         public abstract bool HandleError(Exception error);
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class CustomExceptionSection : ConfigurationSection
     {
-        /// <summary>
-        ///
-        /// </summary>
         [ConfigurationProperty("exceptions")]
         public CustomExceptionCollection CustomExceptions
         {
             get { return (CustomExceptionCollection)this["exceptions"]; }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
         [ConfigurationProperty("file", DefaultValue = "customExceptions.config")]
         public string File
         {
@@ -113,26 +97,14 @@ namespace Library.ExceptionProviders
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     [ConfigurationCollection(typeof(CustomExceptionElement))]
     public class CustomExceptionCollection : ConfigurationElementCollection
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
         protected override ConfigurationElement CreateNewElement()
         {
             return new CustomExceptionElement();
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
         public CustomExceptionElement this[int index]
         {
             get { return (CustomExceptionElement)BaseGet(index); }
@@ -145,11 +117,6 @@ namespace Library.ExceptionProviders
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="element"></param>
-        /// <returns></returns>
         protected override object GetElementKey(ConfigurationElement element)
         {
             return ((CustomExceptionElement)element).Name;
@@ -159,18 +126,19 @@ namespace Library.ExceptionProviders
         {
             BaseAdd(element);
         }
+
+        public bool HandleError(Exception error)
+        {
+            return this.OfType<CustomExceptionElement>().Select(n => n.Provider.HandleError(error)).Any(tmpfe => tmpfe == true);
+        }
+
+      
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class CustomExceptionElement : ConfigurationElement
     {
         private CustomExceptionProvider _provider;
 
-        /// <summary>
-        ///
-        /// </summary>
         [ConfigurationProperty("name", DefaultValue = "", IsKey = true, IsRequired = true)]
         public string Name
         {
@@ -178,9 +146,6 @@ namespace Library.ExceptionProviders
             set { this["name"] = value; }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
         [ConfigurationProperty("type", DefaultValue = "", IsRequired = true)]
         public string Type
         {
@@ -188,9 +153,6 @@ namespace Library.ExceptionProviders
             set { this["type"] = value; }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
         public CustomExceptionProvider Provider
         {
             get

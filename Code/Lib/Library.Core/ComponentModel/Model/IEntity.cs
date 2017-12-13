@@ -6,18 +6,15 @@ using System.Linq.Expressions;
 
 namespace Library.ComponentModel.Model
 {
-   
- 
-  
+
+
+
     /// <summary>
     ///
     /// </summary>
-    public interface IEntity: IAggregateRoot< Guid>
+    public interface IEntity : IAggregateRoot<Guid>
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        Guid ID { get; set; }
+      
         /// <summary>
         /// 
         /// </summary>
@@ -27,7 +24,7 @@ namespace Library.ComponentModel.Model
     /// 
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
-    public interface IAggregateRoot< TKey>
+    public interface IAggregateRoot<TKey>
     {
         /// <summary>
         /// 
@@ -37,17 +34,28 @@ namespace Library.ComponentModel.Model
     /// <summary>
     /// 
     /// </summary>
+    public interface IEntityDeleted
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="manaegment"></param>
+        void Delete(ICreatedInfo manaegment);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ICreatedInfo
     {
         /// <summary>
         /// 創建日期
         /// </summary>
-        DateTime Created { get;  }
+        DateTime Created { get; }
 
         /// <summary>
         /// 創建者
         /// </summary>
-        string CreatedBy { get;  }
+        string CreatedBy { get; }
     }
     /// <summary>
     /// 
@@ -57,7 +65,7 @@ namespace Library.ComponentModel.Model
         /// <summary>
         /// 修改日期
         /// </summary>
-        DateTime Modified { get;  }
+        DateTime Modified { get; }
 
         /// <summary>
         /// 修改者
@@ -67,9 +75,9 @@ namespace Library.ComponentModel.Model
     /// <summary>
     /// 
     /// </summary>
-    public interface IAuditedEntity: IEntity, ICreatedInfo,IModifiedInfo
+    public interface IAuditedEntity : IEntity, ICreatedInfo, IModifiedInfo
     {
-     
-    
+
+
     }
 }

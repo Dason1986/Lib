@@ -93,64 +93,21 @@ namespace Library.Domain.Data.EF
         /// </summary>
         protected virtual void SaveChangesBefore()
         {
+            if (InterceptManagment.GetInterceptCount() == 0) return;
+
+            var intercepts = InterceptManagment.GetIntercept();
             foreach (var entry in this.Dbconntext.ChangeTracker.Entries())
             {
-                switch (entry.State)
+                foreach (var item in intercepts)
                 {
-                    case EntityState.Added:
-                        InterceptAddedOperation(entry);
-                        break;
-                    case EntityState.Modified:
-                        InterceptModifiedOperation(entry);
-                        break;
-                    case EntityState.Deleted:
-                        InterceptDeletedOperation(entry);
-                        break;
+                    if (item.CanVerification(entry))
+                        item.Operation(entry);
                 }
+
             }
+
         }
 
-        /// <summary>
-        /// 拦截添加操作
-        /// </summary>
-        protected virtual void InterceptAddedOperation(DbEntityEntry entry)
-        {
-            InitCreationAudited(entry);
-            InitModificationAudited(entry);
-        }
-
-        /// <summary>
-        /// 初始化创建审计信息
-        /// </summary>
-        private void InitCreationAudited(DbEntityEntry entry)
-        {
-            //   CreationAuditedInitializer.Init(entry.Entity, GetSession());
-        }
-
-
-
-        /// <summary>
-        /// 初始化修改审计信息
-        /// </summary>
-        private void InitModificationAudited(DbEntityEntry entry)
-        {
-            //    ModificationAuditedInitializer.Init(entry.Entity, GetSession());
-        }
-
-        /// <summary>
-        /// 拦截修改操作
-        /// </summary>
-        protected virtual void InterceptModifiedOperation(DbEntityEntry entry)
-        {
-            InitModificationAudited(entry);
-        }
-
-        /// <summary>
-        /// 拦截删除操作
-        /// </summary>
-        protected virtual void InterceptDeletedOperation(DbEntityEntry entry)
-        {
-        }
 
         #endregion
 
@@ -161,15 +118,7 @@ namespace Library.Domain.Data.EF
             _dbconntext.ChangeTracker.Entries().ToList().ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
-        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters)
-        {
-            return Dbconntext.Database.SqlQuery<TEntity>(sqlQuery, parameters).ToArray();
-        }
 
-        public int ExecuteCommand(string sqlCommand, params object[] parameters)
-        {
-            return Dbconntext.Database.ExecuteSqlCommand(sqlCommand, parameters);
-        }
 
         public void Dispose()
         {
@@ -185,9 +134,46 @@ namespace Library.Domain.Data.EF
 
         #endregion IQueryableUnitOfWork
     }
+    public interface ISqlCommand
+    {
+        int ExecuteCommand(string sqlCommand, params object[] parameters);
+        IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters);
+        DataTable ExecuteQuery(string sqlQuery, params object[] parameters);
+    }
+    public interface IVersion
+    {
+    }
+    public static class InterceptManagment
+    {
+        static List<IInterceptOperation> List = new List<IInterceptOperation>();
+        public static void Add(IInterceptOperation interceptOperation)
+        {
+            if (interceptOperation == null)
+            {
+                throw new ArgumentNullException(nameof(interceptOperation));
+            }
 
+            List.Add(interceptOperation);
+        }
+
+        public static int GetInterceptCount()
+        {
+            return List.Count;
+        }
+
+        public static IEnumerable<IInterceptOperation> GetIntercept()
+        {
+            return List;
+        }
+    }
+    public interface IInterceptOperation
+    {
+        EntityState State { get; }
+        bool CanVerification(DbEntityEntry entry);
+        void Operation(DbEntityEntry entry);
+    }
     public class DbContextWrapper<TEntity, TKey> : IDbContextWrapper<TEntity>
-        where TEntity : class, ICreatedInfo, IAggregateRoot< TKey>
+        where TEntity : class, ICreatedInfo, IAggregateRoot<TKey>
 
     {
         public DbContextWrapper(UnitOfWork unit)
@@ -453,9 +439,18 @@ namespace Library.Domain.Data.EF
             get; private set;
         }
 
+        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters)
+        {
+            return DbContext.Database.SqlQuery<TEntity>(sqlQuery, parameters).ToArray();
+        }
+
+        public int ExecuteCommand(string sqlCommand, params object[] parameters)
+        {
+            return DbContext.Database.ExecuteSqlCommand(sqlCommand, parameters);
+        }
     }
 
-    public abstract class Repository<TEntity, TKey> : Repository,  IRepository<TEntity, TKey> where TEntity : class, ICreatedInfo, IAggregateRoot< TKey>
+    public abstract class Repository<TEntity, TKey> : Repository, IRepository<TEntity, TKey> where TEntity : class, ICreatedInfo, IAggregateRoot<TKey>
     {
         private readonly DbContextWrapper<TEntity, TKey> _wrapper;
         protected DbContextWrapper<TEntity, TKey> Wrapper { get { return _wrapper; } }
@@ -472,7 +467,7 @@ namespace Library.Domain.Data.EF
         }
 
 
-        public TEntity Get(TKey id)
+        public virtual TEntity Get(TKey id)
         {
             return Wrapper.Find(id);
         }
@@ -535,4 +530,7 @@ namespace Library.Domain.Data.EF
 
         IUnitOfWork IModuleProvider.UnitOfWork { get { return this.UnitOfWork; } }
     }
+
+
+
 }

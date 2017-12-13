@@ -3,6 +3,8 @@ using Library.ComponentModel.Model;
 using System.ComponentModel.DataAnnotations;
 using Library.Domain.DomainEvents;
 using Library.ComponentModel.ComponentPatterns;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace Library.Domain
 {
@@ -21,6 +23,7 @@ namespace Library.Domain
             entity.ID = Library.IdentityGenerator.NewGuid();
             entity.StatusCode = StatusCode.Enabled;
             entity.CreatedBy = created.CreatedBy;
+            entity.Created = DateTime.Now;
         }
 
 
@@ -35,7 +38,25 @@ namespace Library.Domain
             entity.Modified = DateTime.Now;
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    public abstract class IDEntity : PropertyChangeModel, IAggregateRoot<int>
+    {
+        /// <summary>
+        /// 
+        /// </summary>      
+        [Required]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+        /// <summary>
+        /// 創建日期
+        /// </summary>
+        [Required]
+        [DisplayName("創建日期"), Description("創建日期")]
+        DateTime Created { get; }
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -77,26 +98,29 @@ namespace Library.Domain
         public Guid ID { get; set; }
         /// <summary>
         /// 
-        /// </summary>
+        /// </summary>       
+        [DisplayName("數據狀態"), Description("數據狀態")]
         public StatusCode StatusCode { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [Required]
+        [DisplayName("創建日期"), Description("創建日期")]
         public DateTime Created { get; set; }
         /// <summary>
         /// 
         /// </summary>
         [Required]
         [StringLength(20)]
+        [DisplayName("創建者"), Description("創建者")]
         public string CreatedBy { get; set; }
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public abstract class AuditedEntity : Entity, IAuditedEntity
+    public abstract class AuditedEntity : Entity, IAuditedEntity, IEntityDeleted
     {
 
         /// <summary>
@@ -121,20 +145,26 @@ namespace Library.Domain
         /// 
         /// </summary>
         [Required]
+        [DisplayName("修改日期"), Description("修改日期")]
         public DateTime Modified { get; set; }
         /// <summary>
         /// 
         /// </summary>
         [Required]
         [StringLength(20)]
+        [DisplayName("修改者"), Description("修改者")]
         public string ModifiedBy { get; set; }
 
-
-
-
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="manaegment"></param>
+        public void Delete(ICreatedInfo manaegment)
+        {
+            Modified = DateTime.Now;
+            StatusCode = StatusCode.Delete;
+            ModifiedBy = manaegment.CreatedBy;
+        }
     }
 
 }

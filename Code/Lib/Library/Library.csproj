@@ -61,7 +61,6 @@
     <Compile Include="BitComputing.cs" />
     <Compile Include="Bootstrap.cs" />
     <Compile Include="ComponentModel\IAlgorithm.cs" />
-    <Compile Include="ExceptionProviders\ArgumentExceptionProvider.cs" />
     <Compile Include="ExceptionProviders\CustomExceptionProvider.cs" />
     <Compile Include="Date\HolidayBuilder.cs" />
     <Compile Include="Date\SafeDateTime.cs" />
